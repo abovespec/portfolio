@@ -3,31 +3,33 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
 import { siteConfig } from '~/config/site.config';
 const email = siteConfig.org.contactEmail;
 ---
-<BaseLayout title="Contact" description={`Contact ${siteConfig.identity.name}`}>
+<BaseLayout title="Contact" description={`Get in touch with ${siteConfig.identity.name}. One email address, no form.`}>
   <h1 class="text-4xl font-bold">Contact</h1>
-  <p class="mt-4 text-slate-700">
-    Email us at <a class="underline" href={`mailto:${email}`}>{email}</a>, or
-    use the form below.
-  </p>
-  <form class="mt-8 grid gap-4 max-w-lg" method="post" action={`mailto:${email}`} enctype="text/plain">
-    <label class="grid gap-1 text-sm">
-      <span class="font-medium">Name</span>
-      <input required name="name" type="text" class="rounded border border-slate-300 px-3 py-2" />
-    </label>
-    <label class="grid gap-1 text-sm">
-      <span class="font-medium">Email</span>
-      <input required name="email" type="email" class="rounded border border-slate-300 px-3 py-2" />
-    </label>
-    <label class="grid gap-1 text-sm">
-      <span class="font-medium">Message</span>
-      <textarea required name="message" rows="5" class="rounded border border-slate-300 px-3 py-2"></textarea>
-    </label>
-    <button type="submit" class="justify-self-start rounded bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-slate-800">
-      Send
-    </button>
-  </form>
-  <p class="mt-4 text-xs text-slate-500">
-    Note: this skeleton uses a <code>mailto:</code> action. Swap in your form
-    provider (Formspree, Basin, Cloudflare Pages Functions, etc.) per site.
-  </p>
+  <div class="prose prose-slate mt-6 max-w-none">
+    <p class="lead">
+      One email address, no form. Write to
+      <a href={`mailto:${email}`}>{email}</a> and a human will reply.
+    </p>
+
+    <h2>Happy to answer</h2>
+    <ul>
+      <li>Bug reports — what you tried, what happened, which browser.</li>
+      <li>Feature requests and preset suggestions (new passport sizes, new platforms).</li>
+      <li>Privacy or legal questions.</li>
+      <li>Press and partnership inquiries.</li>
+      <li>Sponsored post inquiries (see our <a href="/sponsored/">sponsored page</a> first).</li>
+      <li>A plain "this was useful, thanks" message — those are always nice to get.</li>
+    </ul>
+
+    <h2>Please don't email us about</h2>
+    <ul>
+      <li>Recovering an image — your images never come to us, so we can't retrieve them.</li>
+      <li>SEO outreach, guest-post-for-backlink pitches, or AI-written link requests. They go to trash unread.</li>
+    </ul>
+
+    <p>
+      For privacy or data-rights requests specifically, please include
+      "privacy" in the subject line so we can route it correctly.
+    </p>
+  </div>
 </BaseLayout>

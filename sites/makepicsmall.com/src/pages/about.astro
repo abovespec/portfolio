@@ -1,12 +1,35 @@
 ---
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import { siteConfig } from '~/config/site.config';
+const email = siteConfig.org.contactEmail;
 ---
-<BaseLayout title="About" description={`About ${siteConfig.identity.name}`}>
+<BaseLayout title={`About ${siteConfig.identity.name}`} description="makepicsmall is a privacy-first image compressor. Files stay on your device — compression runs entirely in your browser via WebAssembly.">
   <h1 class="text-4xl font-bold">About {siteConfig.identity.name}</h1>
-  <p class="mt-4 text-slate-700">
-    Replace this placeholder with the site's editorial mission, team bios,
-    review methodology, and sourcing standards. Authoritative About pages
-    directly support E-E-A-T.
-  </p>
+  <div class="prose prose-slate mt-6 max-w-none">
+    <p class="lead">
+      {siteConfig.identity.name} is a privacy-first image compressor.
+      We think image tools shouldn't need your data to shrink a photo.
+      That's the whole pitch.
+    </p>
+    <p>
+      Every other compressor we tried uploaded your images to a server
+      somewhere, ran them through a tool you could just as easily run
+      locally, and sent the result back with a tracker attached. We
+      rebuilt that flow the way it should have been in the first place:
+      the compressor (built on <a href="https://github.com/jamsinclair/jSquash" rel="noopener">jSquash</a>,
+      which wraps the same mozjpeg, oxipng, and libwebp codecs the pros
+      use) runs inside your browser as WebAssembly. Your files never
+      touch our servers because there is no server for them to touch —
+      makepicsmall is a static site hosted on Cloudflare Pages.
+    </p>
+    <p>
+      The result is fast (no round-trip to a server), safe (nothing to
+      leak, because nothing was uploaded), and free (nothing to
+      monetize, because we collect nothing). We hope it's useful.
+    </p>
+    <p>
+      Found a bug, have a feature request, or want to say hi?
+      Email <a href={`mailto:${email}`}>{email}</a>.
+    </p>
+  </div>
 </BaseLayout>

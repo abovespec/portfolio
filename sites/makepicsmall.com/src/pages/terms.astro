@@ -1,19 +1,79 @@
 ---
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import { siteConfig } from '~/config/site.config';
+const email = siteConfig.org.contactEmail;
 ---
-<BaseLayout title="Terms of Service" description="Terms of service">
+<BaseLayout title="Terms of Service" description="Terms of service for makepicsmall — a free, browser-based image compressor.">
   <h1 class="text-4xl font-bold">Terms of Service</h1>
-  <p class="mt-2 text-sm text-slate-500">Last updated: {new Date().toLocaleDateString('en-US')}</p>
+  <p class="mt-2 text-sm text-slate-500">Last updated: 2026-04-22</p>
   <div class="prose prose-slate mt-6 max-w-none">
-    <p>Template terms of service. Customize per site and consult legal counsel.</p>
-    <h2>Acceptance of terms</h2>
-    <p>By using {siteConfig.identity.name} you agree to these terms.</p>
-    <h2>Use of content</h2>
-    <p>Describe permitted use, copyright, and attribution requirements.</p>
-    <h2>Disclaimers</h2>
-    <p>Content is informational and not professional advice.</p>
+    <p>
+      Welcome to {siteConfig.identity.name}. By using this site you agree
+      to the terms below. They are intentionally short. If you disagree
+      with any part, please don't use the service.
+    </p>
+
+    <h2>The service</h2>
+    <p>
+      {siteConfig.identity.name} is a free, browser-based image compressor.
+      All compression happens on your device. We do not charge for the
+      tool and we do not require an account.
+    </p>
+
+    <h2>No warranty — use at your own risk</h2>
+    <p>
+      The service is provided <strong>"as is"</strong> and <strong>"as
+      available"</strong>, without warranty of any kind, express or
+      implied, including warranties of merchantability, fitness for a
+      particular purpose, or non-infringement. We do not warrant that the
+      service will be uninterrupted, error-free, or produce output
+      suitable for any particular use. Always keep an original copy of
+      important images; compression is a lossy process for JPG and WebP.
+    </p>
+
+    <h2>Your content</h2>
+    <p>
+      You keep all rights to any image you compress with the tool. Because
+      images never leave your device, we never receive a copy and claim no
+      rights. <strong>Do not use the tool to process images you do not own
+      or have permission to use</strong>, or that contain illegal content.
+      You are solely responsible for the content you process.
+    </p>
+
+    <h2>Acceptable use</h2>
+    <ul>
+      <li>Don't try to break, reverse, or exploit the site beyond its normal UI.</li>
+      <li>Don't use the site to violate any law or the rights of others.</li>
+      <li>Don't attempt to overload, disrupt, or probe our infrastructure.</li>
+    </ul>
+
+    <h2>Changes to the service</h2>
+    <p>
+      We may change, suspend, or discontinue all or part of the service at
+      any time without notice. We may also update these terms; the "last
+      updated" date above reflects the most recent version.
+    </p>
+
     <h2>Limitation of liability</h2>
-    <p>Standard limitation-of-liability clause — replace with counsel-approved text.</p>
+    <p>
+      To the maximum extent permitted by law, {siteConfig.identity.name},
+      its operators, and its affiliates are not liable for any indirect,
+      incidental, special, consequential, or punitive damages — including
+      lost data, lost profits, or corrupted files — arising from your use
+      of or inability to use the service. Our aggregate liability for any
+      claim relating to the service is limited to US $0, reflecting the
+      fact that the service is provided free of charge.
+    </p>
+
+    <h2>Governing law</h2>
+    <p>
+      These terms are governed by the laws of the jurisdiction in which
+      the site operator is established, without regard to conflict-of-law
+      rules. Any dispute that cannot be resolved informally will be
+      brought in the courts of that jurisdiction.
+    </p>
+
+    <h2>Contact</h2>
+    <p>Questions about these terms: <a href={`mailto:${email}`}>{email}</a>.</p>
   </div>
 </BaseLayout>

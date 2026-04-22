@@ -6,23 +6,23 @@ import { siteConfig } from '~/config/site.config';
 // Static until the sponsored-post engine provides DR/traffic figures at build
 // time. A future iteration should read packages/sponsored-data at build.
 const metrics = {
-  domainRating: 'DR __',
-  monthlyTraffic: '__ / mo',
-  niche: 'See about page',
+  domainRating: 'New site (2026)',
+  monthlyTraffic: 'Growing',
+  niche: 'Image optimization',
 };
 
 const tiers = [
-  { name: 'Standard', price: '$—', features: ['1 do-follow link', 'Permanent placement', '48-72h turnaround'] },
-  { name: 'Premium', price: '$—', features: ['2 do-follow links', 'Homepage feature 7 days', 'Social share'] },
-  { name: 'Package', price: '$—', features: ['3 posts / month', 'Bulk discount', 'Dedicated editor'] },
+  { name: 'Standard', price: 'Contact', features: ['1 do-follow link', 'Permanent placement', '48-72h turnaround'] },
+  { name: 'Premium', price: 'Contact', features: ['2 do-follow links', 'Homepage feature 7 days', 'Social share'] },
+  { name: 'Package', price: 'Contact', features: ['3 posts / month', 'Bulk discount', 'Dedicated editor'] },
 ];
 
 const faq = [
-  { question: 'Do you accept sponsored posts?', answer: 'Yes. We accept a limited number of high-quality sponsored posts each month from vetted partners.' },
-  { question: 'What niches do you accept?', answer: 'Content must be topically relevant to the site. We reject gambling, adult, and illicit-substance content.' },
-  { question: 'Do links pass authority?', answer: 'All links are do-follow unless the content is clearly promotional, in which case we label with rel="sponsored" per Google guidelines.' },
-  { question: 'What is the turnaround?', answer: '48–72 hours from payment and approved copy. Revisions included once.' },
-  { question: 'Can I supply the copy?', answer: 'Yes, subject to editorial review. We reserve the right to decline or request revisions.' },
+  { question: 'Who is the makepicsmall audience?', answer: 'Photographers, bloggers, web developers, designers, and social-media creators who care about image optimization, page speed, and file-size limits on platforms like WhatsApp, Instagram, LinkedIn, and passport applications.' },
+  { question: 'What kind of sponsored posts do you accept?', answer: 'Posts that genuinely help this audience — image optimization tooling, hosting, camera gear, design tools, CDNs, web-performance services. We do NOT accept generic backlink-stuffed guest posts, gambling, adult, illicit substances, or content unrelated to imaging/web performance.' },
+  { question: 'Do links pass authority?', answer: 'All links are do-follow unless the content is clearly promotional, in which case we label them rel="sponsored" per Google guidelines.' },
+  { question: 'What is the turnaround?', answer: '48–72 hours from payment and approved copy. One round of revisions is included.' },
+  { question: 'Can I supply the copy?', answer: 'Yes, subject to editorial review. We reserve the right to decline or request revisions to keep quality high.' },
 ];
 
 if (!siteConfig.features.hasSponsoredIntake) return Astro.redirect('/');
@@ -31,8 +31,11 @@ if (!siteConfig.features.hasSponsoredIntake) return Astro.redirect('/');
   <header class="py-8">
     <h1 class="text-4xl font-bold">Sponsored posts on {siteConfig.identity.name}</h1>
     <p class="mt-3 max-w-2xl text-lg text-slate-600">
-      Partner with us to reach a highly targeted audience. All placements are
-      editorially reviewed.
+      {siteConfig.identity.name} reaches photographers, bloggers, web
+      developers, designers, and social-media creators — people who care
+      about image optimization, file-size limits, and page speed. If
+      your product genuinely helps this audience, we'd love to hear
+      from you.
     </p>
   </header>
 
