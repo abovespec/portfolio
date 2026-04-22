@@ -10,7 +10,10 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "check": "astro check"
+    "check": "astro check",
+    "test": "vitest",
+    "test:e2e": "playwright test",
+    "test:worker": "cd workers && vitest --run"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
@@ -18,10 +21,24 @@
     "@astrojs/preact": "^4.1.3",
     "@astrojs/rss": "^4.0.12",
     "@astrojs/sitemap": "^3.6.0",
+    "@fontsource-variable/fraunces": "^5.2.9",
+    "@fontsource-variable/ibm-plex-sans": "^5.2.8",
+    "@fontsource-variable/source-serif-4": "^5.2.9",
+    "@fontsource/ibm-plex-mono": "^5.2.7",
     "@tailwindcss/vite": "^4.1.16",
     "astro": "^5.15.0",
     "preact": "^10.27.2",
     "tailwindcss": "^4.1.16",
     "typescript": "^5.9.3"
+  },
+  "devDependencies": {
+    "@cloudflare/vitest-pool-workers": "^0.14.9",
+    "@cloudflare/workers-types": "^4.20260422.1",
+    "@playwright/test": "^1.59.1",
+    "@testing-library/preact": "^3.2.4",
+    "@vitest/ui": "^4.1.5",
+    "jsdom": "^29.0.2",
+    "vitest": "^4.1.5",
+    "wrangler": "^4.84.1"
   }
 }
