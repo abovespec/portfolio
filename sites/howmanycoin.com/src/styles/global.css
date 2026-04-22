@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+/*
+ * Per-site theme tokens.
+ *
+ * These custom properties are consumed by Tailwind v4 via the @theme directive
+ * below, and also read directly in layouts (e.g. <meta name="theme-color">).
+ * A forked site can override any of these by editing site.config.ts — the
+ * values are projected into :root in BaseLayout.astro at render time.
+ */
+:root {
+  --site-theme-color: #0f172a;
+  --site-accent-color: #2563eb;
+  --site-font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  --site-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+}
+
+@theme {
+  --color-brand: var(--site-theme-color);
+  --color-accent: var(--site-accent-color);
+  --font-sans: var(--site-font-sans);
+  --font-mono: var(--site-font-mono);
+}
+
+/* Baseline accessibility: visible focus ring on all interactive elements. */
+:focus-visible {
+  outline: 2px solid var(--site-accent-color);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--site-font-sans);
+  background: #ffffff;
+  color: #0f172a;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
