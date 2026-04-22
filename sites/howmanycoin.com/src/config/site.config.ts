@@ -80,13 +80,14 @@ export const siteConfig: SiteConfig = {
   identity: {
     name: 'howmanycoin',
     domain: 'howmanycoin.com',
-    description: 'Live crypto pair conversion rates. How many USDC is 1 ETH? Find out instantly, with direct swap links.',
+    description:
+      'Live crypto pair conversion rates and token-supply explainers. How many USDC is 1 ETH, right now? Direct swap links included.',
     language: 'en',
     timezone: 'UTC',
   },
   branding: {
-    themeColor: '#0f172a',
-    accentColor: '#2563eb',
+    themeColor: '#f7f8fa',
+    accentColor: '#3730a3',
     logoText: 'howmanycoin',
     ogImageStrategy: 'static',
   },
@@ -102,14 +103,14 @@ export const siteConfig: SiteConfig = {
     twitterHandle: '',
   },
   features: {
-    hasBlog: true,
-    hasTool: true,
+    hasBlog: false,
+    hasTool: false,
     hasGame: false,
     hasSponsoredIntake: true,
   },
   monetization: {
     affiliateDisclosure:
-      'This page may contain affiliate links. If you click one and make a purchase we may earn a small commission at no extra cost to you. Our editorial opinions are our own.',
+      'Rates shown are estimates sourced from CoinGecko, refreshed every 60 seconds. Swap and exchange links on this page are affiliate links; if you use one we may earn a commission at no extra cost to you. Not financial advice.',
   },
   schemaDefaults: {
     organizationType: 'Organization',
@@ -117,10 +118,11 @@ export const siteConfig: SiteConfig = {
   },
   nav: {
     primary: [
-      { label: 'Home', href: '/' },
-      { label: 'Blog', href: '/blog/' },
+      { label: 'Convert', href: '/convert/' },
+      { label: 'Supply', href: '/supply/' },
+      { label: 'Guides', href: '/guides/' },
+      { label: 'Methodology', href: '/methodology/' },
       { label: 'About', href: '/about/' },
-      { label: 'Contact', href: '/contact/' },
     ],
   },
 };
