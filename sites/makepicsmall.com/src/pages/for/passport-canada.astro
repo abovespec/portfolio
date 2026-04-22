@@ -1,0 +1,8 @@
+---
+import ToolPage from '../../components/ToolPage.astro';
+import { PRESETS } from '../../config/presets';
+import { TOOL_COPY } from '../../content/tool-copy';
+const path = '/for/passport-canada';
+const copy = TOOL_COPY[path]!;
+---
+<ToolPage title={copy.title} description={copy.description} intro={copy.intro} preset={PRESETS[path]} faq={copy.faq} canonicalPath={path} />
