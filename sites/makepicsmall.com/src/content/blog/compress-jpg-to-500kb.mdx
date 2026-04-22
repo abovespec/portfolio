@@ -1,0 +1,59 @@
+---
+title: "Compress a JPG to 500 KB: the comfortable ceiling for email and blogs"
+description: "A quick guide to compress JPG to 500 KB in your browser. Ideal for email attachments, blog images, and social posts where quality still matters."
+publishDate: 2026-04-23
+updatedDate: 2026-04-23
+author: "makepicsmall team"
+tags: ["jpg", "compression", "tutorial", "size-target"]
+draft: false
+---
+
+500 KB is the "invisible compression" sweet spot. Below it you start to see artifacts if you look hard; above it you are wasting bandwidth for no visible benefit. If you are emailing a photo, attaching one to a blog post, or uploading to a form that caps files around half a megabyte, compressing your JPG to 500 KB gets you the biggest space saving you can pull off without anyone noticing the image has been touched.
+
+This post walks through the fastest way to hit that target, why 500 KB specifically, and when even a generous 500 KB limit will not be enough to save the picture you are trying to send.
+
+## The fast way
+
+1. Grab the photo. Most phone photos come out between 2 MB and 10 MB, so a compression of five to twenty times is typical. Keep the original if you may need it at full quality later.
+2. Open the [Compress JPG to 500 KB tool](/compress/jpg/to/500kb). Drop your photo onto the window, or click to pick it. The tool runs entirely in your browser. Nothing goes to a server.
+3. Wait a beat for the binary search to settle on a quality level. You will see the output size and a before-and-after preview. For almost every real photo, the output is visually identical to the input.
+4. If you need something tighter, the [100 KB version of the tool](/compress/jpg/to/100kb) is one click away. If you do not care about output format and just want the ceiling enforced, [/to/500kb](/to/500kb) preserves whatever format you upload (JPG stays JPG, PNG stays PNG).
+5. Download, attach, upload, send. Done.
+
+## How it works
+
+The tool uses mozjpeg, a well-regarded JPG encoder, running in your browser through WebAssembly. When you set a target of `500 KB` the encoder does not just pick a quality level and hope; it runs a binary search. It encodes at quality 75, checks the size, nudges up or down, and converges on the highest quality setting that stays under the ceiling. For a typical phone photo the final quality usually lands in the 80 to 92 range, which is where JPG compression is essentially invisible to the eye.
+
+Because everything runs locally, the tool works offline once the page has loaded, and your photo never leaves the device. No uploads, no account, no log of what you compressed.
+
+## When it will not work
+
+500 KB is generous, but two cases still trip it up. The first is a very high resolution source, say a 24 megapixel RAW export saved as JPG, where even maximum compression at full dimensions cannot squeeze under the ceiling. The fix is to resize first. Cutting the long side to around 2000 pixels almost always lands under `500 KB` comfortably and is indistinguishable from the full-size image on any screen smaller than a 4K monitor.
+
+The second case is a JPG that has already been compressed several times. Each recompression introduces a little noise, and the encoder has a harder time finding an efficient representation. If you suspect this has happened, start over from the original source.
+
+## Frequently asked questions
+
+### Is 500 KB a real quality target or just a round number?
+
+It is somewhere in between. 500 KB happens to sit just above the threshold where most viewers can no longer see JPG compression artifacts at normal viewing distance on a phone or laptop screen. It is also under the soft cap most email providers recommend for inline images, and it loads fast on a blog even on slow connections. Round numbers are sticky for a reason, but in this case the number is close enough to the perceptual threshold that it earns its popularity.
+
+### Will the tool resize my image or just compress it?
+
+Just compress. The output has the same pixel dimensions as the input. If you also need to resize, either crop the image in your Photos app first, or use a preset page like [for Instagram](/for/instagram) which combines resizing and compression in one pass.
+
+### How does 500 KB compare to sending the original through WhatsApp or iMessage?
+
+Better, usually. WhatsApp and iMessage both recompress photos aggressively when you send them through the photo picker, often producing a 200 to 400 KB file with visible softening. A pre-compressed 500 KB JPG sent as a document (paperclip, then "Document" in WhatsApp) arrives exactly as you sent it, untouched. See our [WhatsApp compression page](/for/whatsapp) for the full workaround.
+
+### What if I need the same photo at multiple size targets?
+
+Just run the tool more than once from the original source. Compressing an already-compressed JPG to a smaller target introduces extra artifacts because the encoder is working on top of previous damage. Always start from the highest quality version you have, and produce each target output from that, rather than chaining 5 MB to 500 KB to 100 KB in sequence.
+
+### Does the tool work on iPhone Safari and Android Chrome?
+
+Yes. The WebAssembly encoder runs anywhere modern browsers run, which includes iOS Safari, Android Chrome, desktop Chrome, Firefox, Edge, and Safari. The first time you load the page it has to download the encoder (a couple of hundred kilobytes). After that it is cached and the tool opens instantly on repeat visits.
+
+## Ready to compress?
+
+[Compress your JPG to 500 KB](/compress/jpg/to/500kb). Drag, drop, download. Takes about as long as reading this sentence.

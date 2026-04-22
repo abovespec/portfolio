@@ -1,0 +1,53 @@
+---
+title: "How to shrink a photo for WhatsApp without it looking terrible"
+description: "Shrink a photo for WhatsApp and keep the quality. A simple workaround for WhatsApp's auto-compression, plus a one-click browser tool that does the prep for you."
+publishDate: 2026-04-25
+updatedDate: 2026-04-25
+author: "makepicsmall team"
+tags: ["whatsapp", "compression", "tutorial", "platform"]
+draft: false
+---
+
+If you have ever sent a photo through WhatsApp and been quietly annoyed that it arrived looking softer and blockier than the version on your phone, you are not imagining it. WhatsApp recompresses every photo you send through the standard photo picker, and its server-side pass is aggressive enough to smear skin tones, mush up text in screenshots, and turn sunset gradients into stripes. The fix is not to send a bigger photo; the fix is to send a photo that has already been sized and compressed the way WhatsApp wants, so its re-encoding pass has nothing left to do.
+
+This post walks through the two-part workaround: pre-shrink the photo to 1600 pixels, then send it as a document instead of a photo. Done right, your recipient gets essentially the same quality you see on your screen.
+
+## The fast way
+
+1. Pick the photo you want to send. If it is a recent phone shot, it is probably 3000 pixels wide or bigger, which is far larger than any phone screen can actually display.
+2. Open the [WhatsApp photo tool](/for/whatsapp). Drop your image onto the page. The tool resizes the long side to `1600 pixels` and compresses to around `500 KB`, which is roughly the quality ceiling WhatsApp uses internally, so its recompression pass has no room to degrade the file further.
+3. Download the result. It will land in your Downloads folder or your camera roll, depending on the device.
+4. In WhatsApp, open the chat, tap the paperclip or attach icon, and choose "Document" instead of "Photo" or "Gallery." Pick the file you just downloaded. This is the critical step. Document mode skips WhatsApp's photo recompression entirely; photo mode does not, no matter how small the source file is.
+5. Send. Your recipient gets the photo at the quality you prepared, not the quality WhatsApp wants to serve over cellular data.
+
+## How it works
+
+WhatsApp's photo picker pipes every image through a lossy JPG encoder at a fixed, fairly low quality setting. That is how a 5 MB photo becomes a 200 KB blur. Their goal is to save bandwidth for users on slow connections, which is fair; the side effect is that high-quality photos get destroyed in transit.
+
+The [tool](/for/whatsapp) runs in your browser using WebAssembly. It uses mozjpeg to compress the output, the same encoder behind Google's Squoosh. It resizes on the fly in an offscreen canvas, then re-encodes the JPG with a quality setting that targets `500 KB` on the long side at 1600 pixels. Nothing uploads to a server. The file stays on your device throughout. If you need a smaller output for some reason, the [general 500 KB compressor](/compress/jpg/to/500kb) gives you the same ceiling without the resize step.
+
+The document-mode trick exists because WhatsApp treats documents as opaque files to deliver as-is, with no recompression. A JPG sent as a document arrives byte-for-byte identical to what you sent.
+
+## When it will not work
+
+A few cases break the workaround. If your recipient is on an old version of WhatsApp, document delivery behaves normally but the preview in the chat may still look rough. Tell them to tap the document to see the real image. If you are sending a photo in a group chat with more than a few hundred members, WhatsApp sometimes applies stricter rules around documents, though this is rare. And if the recipient saves the photo and re-shares it from their own camera roll through the photo picker, WhatsApp will compress it all over again. There is no workaround for that other than asking them to share the document.
+
+For profile pictures rather than chat photos, use the [WhatsApp DP tool](/for/whatsapp-dp) instead; profile photos have different dimensions (640 by 640) and a harder size ceiling.
+
+## Frequently asked questions
+
+### Does this work on iPhone and Android both?
+
+Yes. Document mode exists on both platforms and behaves the same way. On iPhone the paperclip icon is a plus sign inside the chat input; on Android it is a paperclip. In both cases you want the "Document" or "File" option, not the photo or gallery option. The option might be called "Browse" on some Android skins; pick that and navigate to the file.
+
+### Can I send a video with the same trick?
+
+Documents bypass recompression for videos too, but our tool only handles images. For videos, save the file to your device and send it as a document the same way.
+
+### What if the recipient complains the file "is not a photo"?
+
+On WhatsApp a document-delivered image shows up as a file thumbnail rather than inline in the chat. Some people find this visually jarring. Explain that they should tap to view, or that you are sending it that way deliberately to keep the quality intact. Most people stop complaining after they see the difference.
+
+## Ready to send?
+
+[Shrink your photo for WhatsApp](/for/whatsapp) and remember to send it as a document. Five seconds of prep, and your recipient finally gets the photo you actually took.

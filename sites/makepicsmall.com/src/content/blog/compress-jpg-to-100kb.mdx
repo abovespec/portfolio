@@ -1,0 +1,53 @@
+---
+title: "How to compress a JPG to 100 KB (without it looking awful)"
+description: "A plain-English guide to compress JPG to 100 KB in your browser. Works for resume photos, ID forms, and upload portals with strict size limits."
+publishDate: 2026-04-23
+updatedDate: 2026-04-23
+author: "makepicsmall team"
+tags: ["jpg", "compression", "tutorial", "size-target"]
+draft: false
+---
+
+You opened a government upload form, or a resume portal, or one of those old job sites that still looks like 2011, and it rejected your photo with the same cranky error: "File must be under 100 KB." Your phone took a lovely 4 MB shot. The form will not budge. Now you are hunting for a way to compress your JPG to 100 KB without making your face look like it was rendered on a potato.
+
+100 KB is a genuinely tight limit for a full-resolution photo, but it is very doable once you stop trying to preserve every pixel and instead let the software pick a quality level that fits the ceiling. Below is the fastest way to do it, what is happening under the hood, and when it honestly will not work no matter what tool you throw at it.
+
+## The fast way
+
+1. Open the photo you want to shrink. Keep the original somewhere safe in case you need to redo this.
+2. Head to the [Compress JPG to 100 KB tool](/compress/jpg/to/100kb). Drag your photo onto the drop area, or click and pick it from your files. Nothing uploads to a server; the file stays on your device.
+3. Wait a second or two while the tool binary-searches for the highest quality setting that keeps the file under `100 KB`. You will see the final size and a preview.
+4. If the preview looks good, hit download. If it looks rough, your source is probably larger than 100 KB can handle at full dimensions. Keep reading, I will show you how to fix that.
+5. Upload the new file wherever you need to. Double-check the form accepts the result by reading the "uploaded file" row it shows you after submission.
+
+If 100 KB turns out to be too tight for your photo, the [500 KB version of the same tool](/compress/jpg/to/500kb) will give you much more breathing room. If the form specifically wants a resume-style headshot, the [resume photo tool](/for/resume) resizes to 600 by 600 and compresses to under 100 KB in one step, which usually looks better than compressing at full resolution.
+
+## How it works
+
+Under the hood the tool uses mozjpeg, the same JPG encoder Google's Squoosh uses, running in your browser via WebAssembly. Nothing gets uploaded. Your photo never touches our servers, which is both a privacy thing and a speed thing since we are not routing a 4 MB file across the internet and back.
+
+The "pick the right quality" step is a binary search. The encoder runs at quality 75, checks the result, and adjusts up or down until it converges on the highest quality that fits under the `100 KB` ceiling. For a typical phone photo this usually lands somewhere between quality 40 and quality 70, depending on how detailed the scene is. Photos of faces and skin handle aggressive compression better than, say, a picture of a tree or a textured fabric.
+
+## When it will not work
+
+There are cases where 100 KB is just physically too small for the image you are starting with. A 12 megapixel photo of a cluttered scene, full of leaves and fine texture, compressed to 100 KB at full dimensions, will look like a blurry mess no matter which tool you use. The math does not bend.
+
+The fix in those cases is to resize first. If the form does not specify dimensions, bringing the photo down to around 800 pixels on the long side before compressing usually gets you under 100 KB with acceptable quality. Tools like the resume preset handle both steps at once.
+
+## Frequently asked questions
+
+### Will compressing to 100 KB strip my EXIF data?
+
+Yes. The tool discards EXIF metadata as part of encoding, which is usually what you want. It removes the GPS coordinates, camera model, and timestamp, which most people do not want attached to a photo they are uploading to an unfamiliar system. If you need to keep EXIF for archival reasons, compress a copy and save the original untouched.
+
+### Can I compress a PNG to 100 KB with this same tool?
+
+Not on this page; this one converts and outputs JPG. If your source is a PNG and the form will accept either format, JPG will reach 100 KB with far better visual quality on photographs. If the form specifically demands PNG, there is a separate [PNG to 100 KB tool](/compress/png/to/100kb), but read that one's "when it will not work" section first because lossless PNG compression has hard limits.
+
+### Why is my compressed JPG larger than I asked for?
+
+Occasionally the tool cannot reach the target because the image is too complex and the encoder refuses to drop below a minimum quality floor. In that case it returns the smallest version it could produce and flags the result. You can either resize the source smaller and try again, or accept the near-miss if your upload form has any tolerance.
+
+## Ready to shrink?
+
+[Compress your JPG to 100 KB now](/compress/jpg/to/100kb). No signup, no uploads, no email capture. The tool does the thing and you get on with your day.
