@@ -1,0 +1,19 @@
+---
+import { siteConfig } from '../config/site.config';
+const year = new Date().getFullYear();
+---
+<footer class="mt-16 border-t border-[var(--border)] bg-[var(--surface)]">
+  <div class="mx-auto max-w-5xl px-4 py-8 text-sm text-[var(--muted)]">
+    <p>
+      Your photos. Smaller. Squished in your browser — no uploads, ever.
+    </p>
+    <div class="mt-4 flex flex-wrap gap-4">
+      <a href="/about/" class="hover:text-[var(--ink)]">About</a>
+      <a href="/contact/" class="hover:text-[var(--ink)]">Contact</a>
+      <a href="/privacy/" class="hover:text-[var(--ink)]">Privacy</a>
+      <a href="/terms/" class="hover:text-[var(--ink)]">Terms</a>
+      <a href="/sponsored/" class="hover:text-[var(--ink)]">Sponsored</a>
+    </div>
+    <p class="mt-4">© {year} {siteConfig.branding.logoText}</p>
+  </div>
+</footer>
