@@ -76,8 +76,8 @@ body {
   font-weight: 700;
   line-height: 1.3;
   letter-spacing: -0.01em;
-  margin-top: 1.5em;
-  margin-bottom: 0.6em;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
   color: var(--ink);
   scroll-margin-top: 6rem;
 }
@@ -87,8 +87,8 @@ body {
   font-size: 1.25rem;
   font-weight: 600;
   line-height: 1.4;
-  margin-top: 1.25em;
-  margin-bottom: 0.4em;
+  margin-top: 0.9em;
+  margin-bottom: 0.3em;
   color: var(--ink);
   scroll-margin-top: 6rem;
 }

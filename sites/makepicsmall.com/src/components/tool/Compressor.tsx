@@ -86,6 +86,7 @@ export function Compressor({ preset: rawPreset }: Props) {
         const p = (window as unknown as { plausible?: (n: string, o: unknown) => void }).plausible;
         p?.('tool_completed', { props: { format: r.format, hitTarget: r.hitTarget } });
       } else {
+        console.error('[Compressor] job failed', { id: row.id, file: row.file.name, error: result.error });
         setRows((prev) => prev.map((x) =>
           x.id === row.id ? { ...x, state: { kind: 'error', message: result.error ?? 'Unknown error' } } : x,
         ));

@@ -1,5 +1,5 @@
 /** @jsxImportSource preact */
-import { useCallback, useRef, useState } from 'preact/hooks';
+import { useCallback, useEffect, useRef, useState } from 'preact/hooks';
 import type { Preset } from '../../config/presets';
 
 interface Props {
@@ -10,6 +10,17 @@ interface Props {
 export function DropZone({ preset, onFiles }: Props) {
   const [dragging, setDragging] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+  // Track dragging at the document level too — drop events can leave the
+  // dragging state stuck in some browsers if dragleave fires on children.
+  useEffect(() => {
+    const cancel = () => setDragging(false);
+    window.addEventListener('drop', cancel);
+    window.addEventListener('dragend', cancel);
+    return () => {
+      window.removeEventListener('drop', cancel);
+      window.removeEventListener('dragend', cancel);
+    };
+  }, []);
 
   const handleDrop = useCallback((e: DragEvent) => {
     e.preventDefault();
@@ -18,13 +29,23 @@ export function DropZone({ preset, onFiles }: Props) {
     if (files.length) onFiles(files);
   }, [onFiles]);
 
+  const handleInputChange = useCallback((e: Event) => {
+    const input = e.currentTarget as HTMLInputElement;
+    const files = Array.from(input.files ?? []);
+    if (files.length) onFiles(files);
+    // CRITICAL: reset value so re-selecting the same file (or picking more
+    // files in a subsequent interaction) reliably fires onChange again.
+    input.value = '';
+  }, [onFiles]);
+
   return (
     <div
-      class={`rounded-xl border-2 border-dashed p-8 text-center transition ${
+      class={`rounded-xl border-2 border-dashed p-8 text-center transition cursor-pointer ${
         dragging ? 'border-[var(--site-accent-color)] bg-[var(--surface)]' : 'border-[var(--border)]'
       }`}
       onDragOver={(e) => { e.preventDefault(); setDragging(true); }}
       onDragLeave={() => setDragging(false)}
+      onDragEnd={() => setDragging(false)}
       onDrop={handleDrop}
       onClick={() => inputRef.current?.click()}
       role="button"
@@ -40,10 +61,7 @@ export function DropZone({ preset, onFiles }: Props) {
         accept="image/jpeg,image/png,image/webp"
         multiple
         class="hidden"
-        onChange={(e) => {
-          const files = Array.from((e.currentTarget as HTMLInputElement).files ?? []);
-          if (files.length) onFiles(files);
-        }}
+        onChange={handleInputChange}
       />
     </div>
   );
