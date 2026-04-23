@@ -1,0 +1,56 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumb from '~/components/Breadcrumb.astro';
+import { siteUrl } from '~/config/site.config';
+
+interface Props {
+  title: string;
+  description: string;
+  token: string;
+  supplyType: string;
+  totalSupply: string;
+  circulatingSupply: string;
+  burnMechanism?: boolean;
+}
+const { title, description, token, supplyType, totalSupply, circulatingSupply, burnMechanism = false } = Astro.props;
+const url = new URL(Astro.url.pathname, siteUrl).toString();
+const sym = token.toUpperCase();
+const supplyLabel = supplyType.charAt(0).toUpperCase() + supplyType.slice(1);
+---
+<BaseLayout title={title} description={description}>
+  <Breadcrumb items={[
+    { name: 'Home', url: '/' },
+    { name: 'Supply Explainers', url: '/supply/' },
+    { name: sym, url: `/supply/${token}-supply/` },
+  ]} />
+
+  <section class="mt-6">
+    <h1 class="text-4xl font-bold tracking-tight text-slate-900">{title}</h1>
+    <p class="mt-3 text-lg text-slate-600">{description}</p>
+
+    <!-- Supply facts island -->
+    <div class="island mt-6">
+      <p class="mb-3 text-sm font-medium text-slate-700">Supply facts</p>
+      <div class="grid gap-3 sm:grid-cols-2">
+        <div>
+          <label>Total supply</label>
+          <p class="figure">{totalSupply}</p>
+        </div>
+        <div>
+          <label>Circulating</label>
+          <p class="figure">{circulatingSupply}</p>
+        </div>
+        <div>
+          <label>Supply type</label>
+          <p class="figure">{supplyLabel}</p>
+        </div>
+        <div>
+          <label>Burn mechanism</label>
+          <p class="figure">{burnMechanism ? 'Yes' : 'No'}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <slot />
+</BaseLayout>

@@ -1,0 +1,26 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumb from '~/components/Breadcrumb.astro';
+import { siteUrl } from '~/config/site.config';
+
+interface Props {
+  title: string;
+  description: string;
+}
+const { title, description } = Astro.props;
+const url = new URL(Astro.url.pathname, siteUrl).toString();
+---
+<BaseLayout title={title} description={description}>
+  <Breadcrumb items={[
+    { name: 'Home', url: '/' },
+    { name: 'Guides', url: '/guides/' },
+    { name: title, url: Astro.url.pathname },
+  ]} />
+
+  <section class="mt-6 prose wide">
+    <h1 class="text-4xl font-bold tracking-tight text-slate-900">{title}</h1>
+    <p class="text-lg text-slate-600">{description}</p>
+  </section>
+
+  <slot />
+</BaseLayout>

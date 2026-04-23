@@ -15,11 +15,52 @@ const featuredTool = siteConfig.features.hasTool
 const featuredGame = siteConfig.features.hasGame
   ? (await getCollection('games', ({ data }) => !data.draft)).at(0)
   : undefined;
+
+const featuredPairs = (await getCollection('pairs', ({ data }) => !data.draft && data.featured))
+  .slice(0, 4);
 ---
 <BaseLayout title={siteConfig.identity.name} description={siteConfig.identity.description}>
   <section class="py-12 text-center">
     <h1 class="text-5xl font-bold tracking-tight text-slate-900">{siteConfig.identity.name}</h1>
     <p class="mx-auto mt-4 max-w-2xl text-lg text-slate-600">{siteConfig.identity.description}</p>
+  </section>
+
+  <!-- Quick converters (featured pairs) -->
+  {featuredPairs.length > 0 && (
+    <section class="my-10">
+      <h2 class="text-2xl font-semibold mb-4">Quick convert</h2>
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {featuredPairs.map((pair) => (
+          <a href={`/convert/${pair.data.base}-${pair.data.quote}/`}
+            class="rounded-lg border border-slate-200 bg-white p-5 hover:border-slate-400">
+            <p class="text-xs font-medium uppercase tracking-wide text-slate-500">
+              {pair.data.base.toUpperCase()} → {pair.data.quote.toUpperCase()}
+            </p>
+            <h3 class="mt-1 text-lg font-medium">{pair.data.title}</h3>
+          </a>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <!-- Supply explainer links -->
+  <section class="my-10">
+    <h2 class="text-2xl font-semibold mb-4">Supply explainer</h2>
+    <a href="/supply/" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-slate-400">
+      <p class="text-xs font-medium uppercase tracking-wide text-slate-500">Supply</p>
+      <h3 class="mt-1 text-lg font-medium">How much of each token exists?</h3>
+      <p class="mt-2 text-sm text-slate-600">Plain-English supply explainers for 10 major tokens.</p>
+    </a>
+  </section>
+
+  <!-- Evergreen guides -->
+  <section class="my-10">
+    <h2 class="text-2xl font-semibold mb-4">Guides</h2>
+    <a href="/guides/" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-slate-400">
+      <p class="text-xs font-medium uppercase tracking-wide text-slate-500">Learn</p>
+      <h3 class="mt-1 text-lg font-medium">Crypto supply & valuation basics</h3>
+      <p class="mt-2 text-sm text-slate-600">Market cap, FDV, emissions schedules, supply shocks — plain English.</p>
+    </a>
   </section>
 
   {(featuredTool || featuredGame) && (

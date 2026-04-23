@@ -1,0 +1,28 @@
+---
+import PairLayout from '~/layouts/PairLayout.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+import { siteConfig } from '~/config/site.config';
+
+export async function getStaticPaths() {
+  const pairs = await getCollection('pairs', ({ data }) => !data.draft);
+  return pairs.map((pair) => ({
+    params: { slug: pair.data.base + '-' + pair.data.quote },
+    props: { pair },
+  }));
+}
+
+interface Props { pair: CollectionEntry<'pairs'> }
+const { pair } = Astro.props;
+const { Content } = await pair.render();
+const symbol = `${pair.data.base.toUpperCase()}/${pair.data.quote.toUpperCase()}`;
+---
+<PairLayout
+  title={pair.data.title}
+  description={pair.data.description}
+  base={pair.data.base}
+  quote={pair.data.quote}
+>
+  <div class="mt-10 prose wide">
+    <Content />
+  </div>
+</PairLayout>

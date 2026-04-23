@@ -1,0 +1,30 @@
+---
+import SupplyLayout from '~/layouts/SupplyLayout.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+import { siteConfig } from '~/config/site.config';
+
+export async function getStaticPaths() {
+  const supply = await getCollection('supply', ({ data }) => !data.draft);
+  return supply.map((entry) => ({
+    params: { slug: entry.data.token + '-supply' },
+    props: { entry },
+  }));
+}
+
+interface Props { entry: CollectionEntry<'supply'> }
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+<SupplyLayout
+  title={entry.data.title}
+  description={entry.data.description}
+  token={entry.data.token}
+  supplyType={entry.data.supplyType}
+  totalSupply={entry.data.totalSupply}
+  circulatingSupply={entry.data.circulatingSupply}
+  burnMechanism={entry.data.burnMechanism}
+>
+  <div class="mt-10 prose wide">
+    <Content />
+  </div>
+</SupplyLayout>
