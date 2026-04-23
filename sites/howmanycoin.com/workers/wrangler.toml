@@ -1,0 +1,20 @@
+name = "howmanycoin-rate"
+main = "src/rate.ts"
+compatibility_date = "2026-04-22"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+ONEINCH_REFERRER = "0x0000000000000000000000000000000000000000"   # overridden by secret in prod
+JUPITER_PLATFORM_FEE_BPS = "20"
+JUPITER_FEE_ACCOUNT = ""                                           # overridden by secret in prod
+
+[[routes]]
+pattern = "howmanycoin.com/api/rate"
+zone_name = "howmanycoin.com"
+
+[[routes]]
+pattern = "www.howmanycoin.com/api/rate"
+zone_name = "howmanycoin.com"
+
+[observability]
+enabled = true
