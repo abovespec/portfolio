@@ -4,9 +4,16 @@ compatibility_date = "2026-04-22"
 compatibility_flags = ["nodejs_compat"]
 
 [vars]
-ONEINCH_REFERRER = "0x0000000000000000000000000000000000000000"   # overridden by secret in prod
+ONEINCH_REFERRER = "0x0000000000000000000000000000000000000000"
 JUPITER_PLATFORM_FEE_BPS = "20"
-JUPITER_FEE_ACCOUNT = ""                                           # overridden by secret in prod
+JUPITER_FEE_ACCOUNT = ""
+
+[env.production]
+name = "howmanycoin-rate-prod"
+
+[env.production.vars]
+ONEINCH_REFERRER = ""
+JUPITER_FEE_ACCOUNT = ""
 
 [[routes]]
 pattern = "howmanycoin.com/api/rate"
