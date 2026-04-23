@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <rect width="1200" height="630" fill="#f7f8fa"/>
+  <text x="60" y="180" font-family="Georgia, serif" font-size="72" font-weight="500" fill="#0a0e1a">howmanycoin</text>
+  <text x="60" y="260" font-family="Georgia, serif" font-size="40" fill="#4b5568">Live crypto pair rates.</text>
+  <text x="60" y="310" font-family="Georgia, serif" font-size="40" fill="#4b5568">Plain-English supply explainers.</text>
+  <line x1="60" y1="540" x2="1140" y2="540" stroke="#d7dae1" stroke-width="1"/>
+  <text x="60" y="580" font-family="Menlo, monospace" font-size="26" fill="#3730a3">howmanycoin.com</text>
+</svg>

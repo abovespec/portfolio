@@ -99,7 +99,7 @@ export const siteConfig: SiteConfig = {
   },
   seo: {
     titleSeparator: ' | ',
-    defaultOgImage: '/og-default.png',
+    defaultOgImage: '/og-default.svg',
     twitterHandle: '',
   },
   features: {
