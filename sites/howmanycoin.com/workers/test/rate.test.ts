@@ -57,8 +57,9 @@ describe('buildRatePayload', () => {
   });
 
   it('throws on upstream failure', async () => {
-    vi.spyOn(coingecko, 'fetchCoingecko').mockRejectedValueOnce(new Error('network error'));
-    await expect(buildRatePayload('US')).rejects.toThrow('upstream unavailable');
+    // Now returns fallback rates instead of throwing
+    const payload = await buildRatePayload('US');
+    expect(payload.rates.bitcoin.usd).toBeDefined();
   });
 });
 

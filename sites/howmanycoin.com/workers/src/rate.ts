@@ -1,5 +1,5 @@
 import type { Env, RateResponse } from './types';
-import { fetchCoingecko } from './coingecko';
+import { fetchCoingecko, getFallbackRates } from './coingecko';
 import { ctasForCountry } from './cex';
 
 const TTL_SECONDS = 60;
@@ -15,8 +15,9 @@ export async function buildRatePayload(
   >;
   try {
     rates = await fetchCoingecko();
-  } catch (err) {
-    throw new Error(`upstream unavailable: ${String(err)}`);
+  } catch {
+    // Fallback to stale rates when CoinGecko is unavailable
+    rates = getFallbackRates();
   }
 
   return {

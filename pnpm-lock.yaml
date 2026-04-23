@@ -103,6 +103,9 @@ importers:
       '@fontsource/ibm-plex-mono':
         specifier: ^5.2.7
         version: 5.2.7
+      '@preact/signals':
+        specifier: ^2.9.0
+        version: 2.9.0(preact@10.29.1)
       '@tailwindcss/vite':
         specifier: ^4.1.16
         version: 4.2.4(vite@7.3.2(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(yaml@2.8.3))

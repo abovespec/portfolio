@@ -25,6 +25,7 @@
     "@fontsource-variable/ibm-plex-sans": "^5.2.8",
     "@fontsource-variable/source-serif-4": "^5.2.9",
     "@fontsource/ibm-plex-mono": "^5.2.7",
+    "@preact/signals": "^2.9.0",
     "@tailwindcss/vite": "^4.1.16",
     "astro": "^5.15.0",
     "preact": "^10.27.2",
