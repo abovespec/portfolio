@@ -1,0 +1,122 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const all = await getCollection('textures', ({ data }) => !data.draft);
+  return all.map((t) => ({
+    params: { category: t.data.category, slug: t.data.urlSlug },
+    props: { texture: t, allTextures: all },
+  }));
+}
+
+interface Props { texture: CollectionEntry<'textures'>; allTextures: CollectionEntry<'textures'>[] }
+const { texture, allTextures } = Astro.props;
+const { data } = texture;
+
+const siblings = allTextures
+  .filter(t => t.data.category === data.category && t.data.urlSlug !== data.urlSlug)
+  .slice(0, 4);
+
+const mapLabels: Record<string, string> = {
+  albedo: 'Albedo / Diffuse',
+  normal: 'Normal Map',
+  roughness: 'Roughness Map',
+  metallic: 'Metallic Map',
+  height: 'Height Map',
+};
+---
+<BaseLayout title={data.title} description={data.description}>
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <!-- Left: Preview -->
+    <div class="lg:col-span-2">
+      <div class="rounded-lg border border-slate-700 bg-slate-800 p-4 mb-6">
+        <div class="flex items-center justify-between mb-4">
+          <h1 class="text-2xl font-bold text-white">{data.title}</h1>
+          <span class="px-3 py-1 bg-amber-500/20 text-amber-400 text-xs font-medium rounded-full">{data.license}</span>
+        </div>
+        <div class="rounded-lg overflow-hidden bg-slate-900 aspect-square">
+          <img src={data.preview} alt={`${data.title} - preview`} class="w-full h-full object-cover" />
+        </div>
+        <p class="text-slate-500 text-xs mt-2">Preview shown as 4x4 tiled pattern to demonstrate seamless edges.</p>
+      </div>
+
+      <!-- PBR Map Gallery -->
+      <div class="rounded-lg border border-slate-700 bg-slate-800 p-6">
+        <h2 class="text-lg font-semibold text-white mb-4">PBR Maps</h2>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+          {Object.entries(data.maps).map(([map, available]) => {
+            if (!available) return null;
+            return (
+              <div class="rounded-lg border border-slate-700 overflow-hidden">
+                <a href={data.fullSize} download class="block">
+                  <div class="aspect-square bg-slate-900 overflow-hidden">
+                    <img src={data.preview} alt={`${mapLabels[map]} for ${data.title}`} class="w-full h-full object-cover" loading="lazy" />
+                  </div>
+                  <div class="p-3">
+                    <p class="text-white text-sm font-medium">{mapLabels[map]}</p>
+                    <p class="text-slate-500 text-xs mt-1">Click to download</p>
+                  </div>
+                </a>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Details + Downloads (sticky) -->
+    <div class="lg:col-span-1">
+      <div class="rounded-lg border border-slate-700 bg-slate-800 p-6 sticky top-20">
+        <h2 class="text-lg font-semibold text-white mb-4">Download</h2>
+        <div class="space-y-3 mb-6">
+          {Object.entries(data.maps).map(([map, available]) => {
+            if (!available) return null;
+            return (
+              <a href={data.fullSize} download class="flex items-center justify-between p-3 rounded-lg border border-slate-600 hover:border-amber-400 bg-slate-700/50 hover:bg-slate-700 transition-colors block">
+                <span class="text-slate-300 text-sm">{mapLabels[map]}</span>
+                <span class="text-amber-400 text-xs font-medium">PNG</span>
+              </a>
+            );
+          })}
+        </div>
+        <a href={data.fullSize} download class="w-full py-3 bg-amber-500 hover:bg-amber-400 text-slate-900 font-semibold text-center rounded-lg transition-colors block mb-6">
+          Download All Maps (ZIP)
+        </a>
+        <div class="border-t border-slate-700 pt-4">
+          <h3 class="text-slate-400 text-sm font-medium mb-3 uppercase tracking-wide">Details</h3>
+          <dl class="space-y-2 text-sm">
+            <div class="flex justify-between"><dt class="text-slate-500">Resolution</dt><dd class="text-slate-300">{data.resolution} (4096 x 4096)</dd></div>
+            <div class="flex justify-between"><dt class="text-slate-500">Category</dt><dd class="text-slate-300 capitalize">{data.category}</dd></div>
+            <div class="flex justify-between"><dt class="text-slate-500">License</dt><dd class="text-amber-400 font-medium">{data.license}</dd></div>
+            {data.seed && (
+              <div class="flex justify-between"><dt class="text-slate-500">Seed</dt><dd class="text-slate-300 font-mono text-xs">{data.seed}</dd></div>
+            )}
+            <div class="flex justify-between"><dt class="text-slate-500">Generated</dt><dd class="text-slate-300">{data.generatedDate.toLocaleDateString()}</dd></div>
+          </dl>
+        </div>
+        {data.tags.length > 0 && (
+          <div class="border-t border-slate-700 pt-4 mt-4">
+            <h3 class="text-slate-400 text-sm font-medium mb-2 uppercase tracking-wide">Tags</h3>
+            <div class="flex flex-wrap gap-2">
+              {data.tags.map(tag => (<span class="px-2 py-1 bg-slate-700 text-slate-400 text-xs rounded">{tag}</span>))}
+            </div>
+          </div>
+        )}
+        {siblings.length > 0 && (
+          <div class="border-t border-slate-700 pt-4 mt-4">
+            <h3 class="text-slate-400 text-sm font-medium mb-3 uppercase tracking-wide">Similar Textures</h3>
+            <div class="grid grid-cols-2 gap-2">
+              {siblings.map(sibling => (
+                <a href={`/textures/${sibling.data.category}/${sibling.data.urlSlug}/`} class="group">
+                  <img src={sibling.data.thumbnail} alt={sibling.data.title} class="w-full aspect-square object-cover rounded border border-slate-700 group-hover:border-amber-400 transition-colors" loading="lazy" />
+                  <p class="text-slate-400 text-xs mt-1 truncate">{sibling.data.title}</p>
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+</BaseLayout>

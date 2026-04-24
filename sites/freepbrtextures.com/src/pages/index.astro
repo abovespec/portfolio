@@ -3,60 +3,126 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
 import { siteConfig } from '~/config/site.config';
 import { getCollection } from 'astro:content';
 
-const recentPosts = siteConfig.features.hasBlog
-  ? (await getCollection('blog', ({ data }) => !data.draft))
-      .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
-      .slice(0, 6)
-  : [];
+const allTextures = (await getCollection('textures', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
 
-const featuredTool = siteConfig.features.hasTool
-  ? (await getCollection('tools', ({ data }) => !data.draft)).at(0)
-  : undefined;
-const featuredGame = siteConfig.features.hasGame
-  ? (await getCollection('games', ({ data }) => !data.draft)).at(0)
-  : undefined;
+const categories = [...new Set(allTextures.map(t => t.data.category))];
+const recentlyAdded = allTextures.slice(0, 8);
+
+const categoryLabels: Record<string, string> = {
+  wood: 'Wood',
+  stone: 'Stone',
+  metal: 'Metal',
+  concrete: 'Concrete',
+  fabric: 'Fabric',
+  brick: 'Brick',
+  marble: 'Marble',
+  leather: 'Leather',
+  grass: 'Grass',
+  dirt: 'Dirt',
+  sand: 'Sand',
+  asphalt: 'Asphalt',
+  tile: 'Tile',
+  carpet: 'Carpet',
+};
 ---
 <BaseLayout title={siteConfig.identity.name} description={siteConfig.identity.description}>
-  <section class="py-12 text-center">
-    <h1 class="text-5xl font-bold tracking-tight text-slate-900">{siteConfig.identity.name}</h1>
-    <p class="mx-auto mt-4 max-w-2xl text-lg text-slate-600">{siteConfig.identity.description}</p>
+  <!-- Hero Section -->
+  <section class="py-16 sm:py-24 text-center">
+    <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-white max-w-3xl mx-auto">
+      Free Seamless PBR Textures for Game Devs and 3D Artists
+    </h1>
+    <p class="mt-4 text-lg text-slate-400 max-w-2xl mx-auto">
+      4K resolution. CC0 license. No signup required. Generated procedurally for infinite variety.
+    </p>
+    <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+      <a href="/textures/" class="px-6 py-3 bg-amber-500 hover:bg-amber-400 text-slate-900 font-semibold rounded-lg transition-colors">
+        Browse All Textures
+      </a>
+      <a href="/categories/" class="px-6 py-3 border border-slate-600 hover:border-amber-400 text-slate-300 hover:text-amber-400 font-semibold rounded-lg transition-colors">
+        View Categories
+      </a>
+    </div>
+    <div class="mt-12 flex flex-wrap items-center justify-center gap-8 text-sm text-slate-500">
+      <span class="flex items-center gap-2">
+        <span class="text-amber-400 font-bold text-lg">{allTextures.length}+</span> textures
+      </span>
+      <span class="flex items-center gap-2">
+        <span class="text-amber-400 font-bold text-lg">4K</span> resolution
+      </span>
+      <span class="flex items-center gap-2">
+        <span class="text-amber-400 font-bold text-lg">CC0</span> licensed
+      </span>
+      <span class="flex items-center gap-2">
+        <span class="text-amber-400 font-bold text-lg">{categories.length}</span> categories
+      </span>
+    </div>
   </section>
 
-  {(featuredTool || featuredGame) && (
-    <section class="my-10">
-      <h2 class="text-2xl font-semibold mb-4">Featured</h2>
-      <div class="grid gap-4 sm:grid-cols-2">
-        {featuredTool && (
-          <a href={`/tools/${featuredTool.data.urlSlug}/`} class="rounded-lg border border-slate-200 bg-white p-6 hover:border-slate-400">
-            <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Tool</p>
-            <h3 class="mt-2 text-xl font-medium">{featuredTool.data.title}</h3>
-            <p class="mt-2 text-sm text-slate-600">{featuredTool.data.description}</p>
-          </a>
-        )}
-        {featuredGame && (
-          <a href={`/games/${featuredGame.data.urlSlug}/`} class="rounded-lg border border-slate-200 bg-white p-6 hover:border-slate-400">
-            <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Game</p>
-            <h3 class="mt-2 text-xl font-medium">{featuredGame.data.title}</h3>
-            <p class="mt-2 text-sm text-slate-600">{featuredGame.data.description}</p>
-          </a>
-        )}
+  <!-- Category Grid -->
+  {categories.length > 0 && (
+    <section class="py-12">
+      <h2 class="text-2xl font-bold text-white mb-6">Browse by Category</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+        {categories.map((cat) => {
+          const catTextures = allTextures.filter(t => t.data.category === cat);
+          const sample = catTextures[0];
+          return (
+            <a href={`/textures/?category=${cat}`} class="category-card group">
+              {sample && (
+                <img
+                  src={sample.data.thumbnail}
+                  alt={`${categoryLabels[cat] || cat} textures`}
+                  class="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              )}
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 to-transparent flex items-end p-4">
+                <div>
+                  <h3 class="text-white font-semibold text-lg">{categoryLabels[cat] || cat}</h3>
+                  <p class="text-slate-400 text-sm">{catTextures.length} textures</p>
+                </div>
+              </div>
+            </a>
+          );
+        })}
       </div>
     </section>
   )}
 
-  {recentPosts.length > 0 && (
-    <section class="my-10">
-      <h2 class="text-2xl font-semibold mb-4">Recent posts</h2>
-      <ul class="grid gap-4 sm:grid-cols-2">
-        {recentPosts.map((post) => (
-          <li class="rounded-lg border border-slate-200 bg-white p-4 hover:border-slate-400">
-            <a href={`/blog/${post.slug}/`}>
-              <h3 class="text-lg font-medium text-slate-900">{post.data.title}</h3>
-              <p class="mt-1 text-sm text-slate-600">{post.data.description}</p>
-            </a>
-          </li>
+  <!-- Recently Added -->
+  {recentlyAdded.length > 0 && (
+    <section class="py-12">
+      <h2 class="text-2xl font-bold text-white mb-6">Recently Added</h2>
+      <div class="texture-grid">
+        {recentlyAdded.map((texture) => (
+          <a href={`/textures/${texture.data.category}/${texture.data.urlSlug}/`} class="group rounded-lg border border-slate-700 bg-slate-800 hover:border-amber-400 transition-colors overflow-hidden">
+            <div class="aspect-square overflow-hidden">
+              <img
+                src={texture.data.preview}
+                alt={texture.data.title}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                loading="lazy"
+              />
+            </div>
+            <div class="p-4">
+              <h3 class="text-white font-medium text-sm">{texture.data.title}</h3>
+              <p class="text-slate-400 text-xs mt-1 capitalize">{texture.data.category}</p>
+            </div>
+          </a>
         ))}
-      </ul>
+      </div>
     </section>
   )}
+
+  <!-- CC0 Callout -->
+  <section class="py-12 text-center border-t border-slate-800">
+    <h2 class="text-2xl font-bold text-white">All Textures Are CC0 Licensed</h2>
+    <p class="mt-2 text-slate-400 max-w-xl mx-auto">
+      Use them commercially. Modify them. Share them. No attribution required.
+    </p>
+    <a href="/about/" class="mt-4 inline-block text-amber-400 hover:text-amber-300 underline">
+      Learn more about our license
+    </a>
+  </section>
 </BaseLayout>
