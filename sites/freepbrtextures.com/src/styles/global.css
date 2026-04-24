@@ -196,3 +196,43 @@ body {
   font-weight: 600;
   background: var(--surface);
 }
+
+/* Texture card grid */
+.texture-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Tiled texture preview - shows 4x4 tiles to demonstrate seamlessness */
+.texture-tiled {
+  background-repeat: repeat;
+  background-size: 12.5% 12.5%;
+  image-rendering: auto;
+}
+
+/* Texture map swatch strip */
+.map-strip {
+  display: flex;
+  gap: 0.5rem;
+}
+.map-strip img {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+}
+
+/* Category card */
+.category-card {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  aspect-ratio: 16 / 10;
+  transition: border-color 0.2s;
+}
+.category-card:hover {
+  border-color: var(--site-accent-color);
+}
