@@ -14,15 +14,15 @@
  */
 :root {
   --site-theme-color: #0f172a;
-  --site-accent-color: #2563eb;
-  --site-font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, "Noto Sans", sans-serif;
-  --site-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-    "Liberation Mono", "Courier New", monospace;
-  --ink: #0f172a;
-  --muted: #64748b;
-  --surface: #f1f5f9;
-  --border: #e2e8f0;
+  --site-accent-color: #f59e0b;
+  --site-font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  --site-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --ink: #f1f5f9;
+  --muted: #94a3b8;
+  --surface: #1e293b;
+  --border: #334155;
+  --card-bg: #1e293b;
+  --card-hover: #334155;
 }
 
 @theme {
