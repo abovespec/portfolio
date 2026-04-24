@@ -1,0 +1,25 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { siteConfig } from '~/config/site.config';
+import { getCollection } from 'astro:content';
+const allTextures = await getCollection('textures', ({ data }) => !data.draft);
+---
+<BaseLayout title="Free 4K PBR Textures" description="Download free 4K seamless PBR textures. 4096x4096 resolution, CC0 licensed.">
+  <h1 class="text-3xl font-bold text-white mb-4">Free 4K PBR Textures</h1>
+  <p class="text-slate-300 text-lg mb-8 max-w-2xl">All textures on FreePBRTextures are generated at <strong>4K resolution (4096x4096)</strong> -- perfect for high-quality game assets, architectural visualization, and print production.</p>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+    <div class="rounded-lg border border-slate-700 bg-slate-800 p-6">
+      <h2 class="text-xl font-semibold text-white mb-2">4096x4096</h2>
+      <p class="text-slate-400">Full 4K resolution for crisp detail at close range.</p>
+    </div>
+    <div class="rounded-lg border border-slate-700 bg-slate-800 p-6">
+      <h2 class="text-xl font-semibold text-white mb-2">Seamless Tiling</h2>
+      <p class="text-slate-400">Every texture tiles perfectly in both axes.</p>
+    </div>
+    <div class="rounded-lg border border-slate-700 bg-slate-800 p-6">
+      <h2 class="text-xl font-semibold text-white mb-2">Complete PBR Sets</h2>
+      <p class="text-slate-400">Albedo, normal, roughness maps for every texture.</p>
+    </div>
+  </div>
+  <a href="/textures/" class="px-6 py-3 bg-amber-500 hover:bg-amber-400 text-slate-900 font-semibold rounded-lg transition-colors inline-block">Browse All 4K Textures</a>
+</BaseLayout>

@@ -1,0 +1,41 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { siteConfig } from '~/config/site.config';
+import { getCollection } from 'astro:content';
+const allTextures = await getCollection('textures', ({ data }) => !data.draft);
+---
+<BaseLayout title="Free CC0 PBR Textures" description="Download free CC0-licensed PBR textures. Use them commercially with no attribution required.">
+  <h1 class="text-3xl font-bold text-white mb-4">Free CC0 PBR Textures</h1>
+  <p class="text-slate-300 text-lg mb-8 max-w-2xl">Every texture on FreePBRTextures is released under the <strong>CC0 (Public Domain)</strong> license. That means you can use them in any project -- personal or commercial -- without attribution.</p>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+    <div class="rounded-lg border border-slate-700 bg-slate-800 p-6">
+      <h2 class="text-xl font-semibold text-white mb-3">What is CC0?</h2>
+      <p class="text-slate-400">CC0 is a public domain dedication that waives all copyright interests. The work becomes free for anyone to use, modify, and distribute for any purpose without restrictions.</p>
+    </div>
+    <div class="rounded-lg border border-slate-700 bg-slate-800 p-6">
+      <h2 class="text-xl font-semibold text-white mb-3">What Can You Do?</h2>
+      <ul class="text-slate-400 space-y-2">
+        <li>Use in commercial games and applications</li>
+        <li>Use in client projects and freelance work</li>
+        <li>Modify, remap, or combine with other textures</li>
+        <li>Redistribute in asset packs or marketplaces</li>
+        <li>No attribution required (but appreciated)</li>
+      </ul>
+    </div>
+  </div>
+  <h2 class="text-2xl font-bold text-white mb-4">Browse All CC0 Textures</h2>
+  <a href="/textures/" class="px-6 py-3 bg-amber-500 hover:bg-amber-400 text-slate-900 font-semibold rounded-lg transition-colors inline-block">Browse {allTextures.length} Textures</a>
+
+  <!-- FAQ Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type": "Question", "name": "Can I use CC0 textures commercially?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. CC0 textures are in the public domain and can be used for any commercial purpose without attribution."}},
+      {"@type": "Question", "name": "Do I need to credit FreePBRTextures?", "acceptedAnswer": {"@type": "Answer", "text": "No. CC0 requires no attribution, though we always appreciate a link back."}},
+      {"@type": "Question", "name": "What resolution are the textures?", "acceptedAnswer": {"@type": "Answer", "text": "All textures are generated at 4K resolution (4096x4096)."}}
+    ]
+  }
+  </script>
+</BaseLayout>
