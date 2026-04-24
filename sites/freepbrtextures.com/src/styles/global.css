@@ -45,7 +45,7 @@ html {
 
 body {
   font-family: var(--site-font-sans);
-  background: #ffffff;
+  background: #0f172a;
   color: var(--ink);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
