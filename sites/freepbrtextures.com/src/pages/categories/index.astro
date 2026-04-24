@@ -1,0 +1,56 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { siteConfig } from '~/config/site.config';
+import { getCollection } from 'astro:content';
+
+const allTextures = await getCollection('textures', ({ data }) => !data.draft);
+const categories = [...new Set(allTextures.map(t => t.data.category))].sort();
+
+const categoryLabels: Record<string, string> = {
+  wood: 'Wood', stone: 'Stone', metal: 'Metal', concrete: 'Concrete',
+  fabric: 'Fabric', brick: 'Brick', marble: 'Marble', leather: 'Leather',
+  grass: 'Grass', dirt: 'Dirt', sand: 'Sand', asphalt: 'Asphalt',
+  tile: 'Tile', carpet: 'Carpet',
+};
+
+const categoryDescriptions: Record<string, string> = {
+  wood: 'Wood grain, planks, logs, and timber textures.',
+  stone: 'Natural stone, rock faces, and geological formations.',
+  metal: 'Brushed, polished, and weathered metal surfaces.',
+  concrete: 'Cast concrete, cement, and industrial surfaces.',
+  fabric: 'Cloth, canvas, textile, and woven materials.',
+  brick: 'Clay brick, cobblestone, and masonry patterns.',
+  marble: 'Veined marble and polished stone surfaces.',
+  leather: 'Grain leather, suede, and hide textures.',
+  grass: 'Grass, turf, and ground cover textures.',
+  dirt: 'Soil, earth, and ground textures.',
+  sand: 'Sand, sandy ground, and desert surfaces.',
+  asphalt: 'Road, pavement, and asphalt textures.',
+  tile: 'Ceramic tile, mosaic, and patterned floor surfaces.',
+  carpet: 'Carpet, rug, and floor covering textures.',
+};
+---
+<BaseLayout title="Texture Categories" description="Browse free PBR textures organized by material category.">
+  <h1 class="text-3xl font-bold text-white mb-2">Categories</h1>
+  <p class="text-slate-400 mb-8">Browse all {allTextures.length} textures across {categories.length} material categories.</p>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    {categories.map(cat => {
+      const catTextures = allTextures.filter(t => t.data.category === cat);
+      const sample = catTextures[0];
+      return (
+        <a href={`/textures/?category=${cat}`} class="group rounded-lg border border-slate-700 bg-slate-800 hover:border-amber-400 transition-colors overflow-hidden">
+          <div class="aspect-video overflow-hidden bg-slate-900">
+            {sample && (
+              <img src={sample.data.preview} alt={`${categoryLabels[cat] || cat} category`} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200" loading="lazy" />
+            )}
+          </div>
+          <div class="p-4">
+            <h2 class="text-white font-semibold text-lg">{categoryLabels[cat] || cat}</h2>
+            <p class="text-slate-400 text-sm mt-1">{categoryDescriptions[cat] || `${catTextures.length} free PBR textures.`}</p>
+            <p class="text-amber-400 text-xs mt-2 font-medium">{catTextures.length} textures</p>
+          </div>
+        </a>
+      );
+    })}
+  </div>
+</BaseLayout>

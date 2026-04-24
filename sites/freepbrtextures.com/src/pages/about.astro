@@ -2,11 +2,43 @@
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import { siteConfig } from '~/config/site.config';
 ---
-<BaseLayout title="About" description={`About ${siteConfig.identity.name}`}>
-  <h1 class="text-4xl font-bold">About {siteConfig.identity.name}</h1>
-  <p class="mt-4 text-slate-700">
-    Replace this placeholder with the site's editorial mission, team bios,
-    review methodology, and sourcing standards. Authoritative About pages
-    directly support E-E-A-T.
-  </p>
+<BaseLayout title="About" description="Learn about FreePBRTextures, our CC0 license, and how our textures are generated.">
+  <article class="prose max-w-3xl">
+    <h1>About FreePBRTextures</h1>
+    <p>FreePBRTextures is a library of free, seamless PBR (Physically Based Rendering) textures for game developers, 3D artists, and designers. Every texture on this site is released under the <strong>CC0 (Public Domain)</strong> license.</p>
+
+    <h2>How Our Textures Are Made</h2>
+    <p>Our textures are generated procedurally using mathematical noise functions. This approach has several advantages:</p>
+    <ul>
+      <li><strong>Seamless by default</strong> -- wrapping noise coordinates guarantees tileable edges with no artifacts.</li>
+      <li><strong>PBR-native</strong> -- the same procedural functions that generate height maps can derive normal maps, roughness maps, and metallic maps, producing complete PBR sets from a single generation pass.</li>
+      <li><strong>Deterministic</strong> -- every texture is generated from a seed value. The same seed always produces the same texture.</li>
+      <li><strong>Infinite variety</strong> -- randomize the seed and parameters to generate endless unique textures.</li>
+    </ul>
+
+    <h2>CC0 License</h2>
+    <p>All textures on this site are dedicated to the public domain under the <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 license</a>. This means:</p>
+    <ul>
+      <li>Use them commercially -- in games, films, products, client work.</li>
+      <li>Modify them however you want.</li>
+      <li>Share and redistribute freely.</li>
+      <li>No attribution required (though we appreciate it!).</li>
+    </ul>
+
+    <h2>What Is PBR?</h2>
+    <p>PBR (Physically Based Rendering) is a method of rendering graphics that attempts to simulate the real-world behavior of light. PBR textures typically include several maps:</p>
+    <ul>
+      <li><strong>Albedo/Diffuse</strong> -- the base color of the material without lighting information.</li>
+      <li><strong>Normal Map</strong> -- encodes surface detail and bump information.</li>
+      <li><strong>Roughness Map</strong> -- controls how glossy or matte the surface appears.</li>
+      <li><strong>Metallic Map</strong> -- defines which areas are metallic vs non-metallic.</li>
+      <li><strong>Height/Displacement Map</strong> -- provides actual geometric displacement data.</li>
+    </ul>
+
+    <h2>Resolution</h2>
+    <p>All textures are generated at <strong>4K resolution (4096x4096)</strong>, suitable for high-quality game assets, architectural visualization, and print.</p>
+
+    <h2>Contact</h2>
+    <p>Have questions or suggestions? Get in touch at <a href="mailto:hello@freepbrtextures.com">hello@freepbrtextures.com</a>.</p>
+  </article>
 </BaseLayout>
