@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.1.0",
   "private": true,
-  "description": "Free AI-generated seamless PBR textures for game developers and 3D artists. CC0, 4K, download-ready.",
+  "description": "Free seamless PBR textures for game devs and 3D artists. 4K resolution. CC0 license. No signup required.",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",

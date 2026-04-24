@@ -103,9 +103,9 @@ export const siteConfig: SiteConfig = {
   },
   features: {
     hasBlog: true,
-    hasTool: true,
+    hasTool: false,
     hasGame: false,
-    hasSponsoredIntake: true,
+    hasSponsoredIntake: false,
   },
   monetization: {
     affiliateDisclosure:
@@ -117,10 +117,10 @@ export const siteConfig: SiteConfig = {
   },
   nav: {
     primary: [
-      { label: 'Home', href: '/' },
+      { label: 'Textures', href: '/textures/' },
+      { label: 'Categories', href: '/categories/' },
       { label: 'Blog', href: '/blog/' },
       { label: 'About', href: '/about/' },
-      { label: 'Contact', href: '/contact/' },
     ],
   },
 };
