@@ -17,9 +17,9 @@ const url = new URL(Astro.url.pathname, siteUrl).toString();
     { name: title, url: Astro.url.pathname },
   ]} />
 
-  <section class="mt-6 prose wide">
-    <h1 class="text-4xl font-bold tracking-tight text-slate-900">{title}</h1>
-    <p class="text-lg text-slate-600">{description}</p>
+  <section class="mt-6">
+    <h1 class="text-4xl font-bold tracking-tight text-[var(--ink)]">{title}</h1>
+    <p class="text-lg leading-relaxed text-[var(--muted)]">{description}</p>
   </section>
 
   <slot />

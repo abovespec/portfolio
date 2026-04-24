@@ -86,11 +86,23 @@ export default function PairConverter({ base, quote }: Props) {
 
   const fetchRate = useCallback(async () => {
     try {
-      // Try the Worker endpoint first (b-lazy rate service)
+      // Try the rate service endpoint first
+      // On the custom domain, /api/rate is routed to the Worker via Cloudflare
+      // On pages.dev, the Worker isn't reachable, so we use the custom domain's
+      // Worker endpoint directly as a cross-origin fallback.
+      let rateUrl: string;
+      const host = window.location.hostname;
+      if (host === 'howmanycoin.com' || host === 'www.howmanycoin.com') {
+        rateUrl = '/api/rate';
+      } else {
+        // pages.dev or other: hit the Worker directly on the custom domain
+        rateUrl = 'https://howmanycoin.com/api/rate';
+      }
+
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 5000);
 
-      const res = await fetch('/api/rate', { signal: controller.signal });
+      const res = await fetch(rateUrl, { signal: controller.signal });
       clearTimeout(timeoutId);
 
       if (!res.ok) throw new Error('Worker returned ' + res.status);
@@ -101,81 +113,91 @@ export default function PairConverter({ base, quote }: Props) {
 
       if (!baseCG) throw new Error('Unsupported base: ' + base);
 
+      // Check if quote maps to a crypto asset (by CG ID)
+      const cryptoIds = Object.values(CRYPTO_CG);
       let convertedRate: number;
+      let isCryptoQuote = !!quoteCG && cryptoIds.includes(quoteCG);
+      const isFiatQuote = ['usd', 'eur', 'gbp', 'jpy'].includes(quote.toLowerCase());
 
-      if (quoteCG && CRYPTO.includes(quoteCG)) {
+      if (isCryptoQuote) {
         // Both are crypto assets - cross-rate via USD
         if (data.rates[baseCG]?.usd && data.rates[quoteCG]?.usd) {
           convertedRate = data.rates[baseCG].usd / data.rates[quoteCG].usd;
         } else {
           throw new Error('Rate data unavailable for this pair');
         }
+      } else if (isFiatQuote) {
+        // Quote is fiat — Worker now returns all fiat currencies
+        const fiatKey = quote.toLowerCase() as keyof typeof data.rates[baseCG];
+        convertedRate = (data.rates[baseCG] as any)[fiatKey] ?? data.rates[baseCG]?.usd ?? 0;
+        setChange24h(data.rates[baseCG]?.usd_24h_change ?? null);
       } else {
-        // Quote is fiat or stablecoin
+        // Quote is stablecoin (USDC, USDT, DAI) — treat as USD proxy
         convertedRate = data.rates[baseCG]?.usd ?? 0;
       }
 
-      setRate(convertedRate);
+     setRate(convertedRate);
       setChange24h(data.rates[baseCG]?.usd_24h_change ?? null);
       setLastUpdated(new Date(data.generatedAt));
       setError(null);
+      setLoading(false);
     } catch {
       // Fallback: fetch directly from CoinGecko
       try {
         const baseCG = BASE_TO_CG[base];
         if (!baseCG) throw new Error('Unsupported base: ' + base);
 
-        // Always fetch USD and compute cross-rate (CoinGecko free tier limits vs_currencies)
-        const ids = baseCG;
-        const res = await fetch(
-          'https://api.coingecko.com/api/v3/simple/price?ids=' + ids +
-          '&vs_currencies=usd&include_24hr_change=true'
-        );
-
-        if (!res.ok) throw new Error('CoinGecko returned ' + res.status);
-        const data = await res.json() as CoinGeckoResponse;
-
-        const baseRate = data[baseCG]?.usd ?? 0;
-
-        // For fiat quotes, fetch both USD and the fiat currency
+        // Determine which currencies we need
+        const cryptoIds = Object.values(CRYPTO_CG);
         const quoteCG = QUOTE_TO_CG[quote];
-        const isCryptoQuote = quoteCG && CRYPTO.includes(quoteCG);
+        const isCryptoQuote = !!quoteCG && cryptoIds.includes(quoteCG);
+        const isFiatQuote = ['usd', 'eur', 'gbp', 'jpy'].includes(quote.toLowerCase());
 
         let convertedRate: number;
+        let baseRate = 0;
 
         if (isCryptoQuote) {
-          // Crypto-to-crypto: cross-rate via USD
-          const res2 = await fetch(
+          // Crypto-to-crypto: fetch both in USD
+          const res = await fetch(
             'https://api.coingecko.com/api/v3/simple/price?ids=' + baseCG + ',' + quoteCG +
             '&vs_currencies=usd&include_24hr_change=true'
           );
-          if (!res2.ok) throw new Error('CoinGecko returned ' + res2.status);
-          const data2 = await res2.json() as CoinGeckoResponse;
-          const quoteRate = data2[quoteCG]?.usd ?? 1;
+          if (!res.ok) throw new Error('CoinGecko returned ' + res.status);
+          const data = await res.json() as CoinGeckoResponse;
+          baseRate = data[baseCG]?.usd ?? 0;
+          const quoteRate = data[quoteCG]?.usd ?? 1;
           convertedRate = baseRate / quoteRate;
-          setChange24h(data2[baseCG]?.usd_24h_change ?? null);
-        } else {
-          // Fiat quote: fetch base in USD, then convert using a simple rate
-          // For a proper solution, fetch the fiat pair directly
-          const fiatCurrencies = 'usd,gbp,eur,jpy';
-          const res2 = await fetch(
+          setChange24h(data[baseCG]?.usd_24h_change ?? null);
+        } else if (isFiatQuote) {
+          // Fiat quote: fetch crypto price in the target fiat currency directly
+          const res = await fetch(
             'https://api.coingecko.com/api/v3/simple/price?ids=' + baseCG +
-            '&vs_currencies=' + fiatCurrencies + '&include_24hr_change=true'
+            '&vs_currencies=usd,' + quote.toLowerCase() +
+            '&include_24hr_change=true'
           );
-          if (res2.ok) {
-            const data2 = await res2.json() as CoinGeckoResponse;
-            const fiatRate = data2[baseCG]?.[quote.toLowerCase()] ?? 0;
-            convertedRate = fiatRate;
-            setChange24h(data2[baseCG]?.usd_24h_change ?? 0);
-          } else {
-            // If that fails, use rough approximation
-            const fiatUSDMap: Record<string, number> = {
-              gbp: 1.27, eur: 1.08, jpy: 0.0067,
-            };
-            const fiatUsdRate = fiatUSDMap[quote.toLowerCase()] ?? 1;
-            convertedRate = baseRate * fiatUsdRate;
-            setChange24h(data[baseCG]?.usd_24h_change ?? 0);
+          if (!res.ok) throw new Error('CoinGecko returned ' + res.status);
+          const data = await res.json() as CoinGeckoResponse;
+          const fiatRate = data[baseCG]?.[quote.toLowerCase()] ?? 0;
+          convertedRate = fiatRate;
+          baseRate = data[baseCG]?.usd ?? 0;
+          setChange24h(data[baseCG]?.usd_24h_change ?? 0);
+          // Convert 24h change to fiat basis
+          if (baseRate && fiatRate) {
+            // Use USD change as proxy since CoinGecko doesn't give fiat-specific change
           }
+        } else {
+          // Stablecoin quote (USDC, USDT, DAI)
+          const res = await fetch(
+            'https://api.coingecko.com/api/v3/simple/price?ids=' + baseCG +
+            '&vs_currencies=usd,' + quote.toLowerCase() +
+            '&include_24hr_change=true'
+          );
+          if (!res.ok) throw new Error('CoinGecko returned ' + res.status);
+          const data = await res.json() as CoinGeckoResponse;
+          const stabRate = data[baseCG]?.[quote.toLowerCase()] ?? data[baseCG]?.usd ?? 0;
+          convertedRate = stabRate;
+          baseRate = data[baseCG]?.usd ?? 0;
+          setChange24h(data[baseCG]?.usd_24h_change ?? 0);
         }
 
         setRate(convertedRate);

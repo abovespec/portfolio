@@ -3,101 +3,220 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
 import { siteConfig } from '~/config/site.config';
 import { getCollection } from 'astro:content';
 
-const recentPosts = siteConfig.features.hasBlog
-  ? (await getCollection('blog', ({ data }) => !data.draft))
-      .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
-      .slice(0, 6)
-  : [];
+const allPairs = await getCollection('pairs', ({ data }) => !data.draft);
+const featuredPairs = allPairs.filter((p) => p.data.featured).slice(0, 4);
+const allByCategory = allPairs.reduce<Record<string, typeof allPairs>>((acc, pair) => {
+  const cat = pair.data.category;
+  if (!acc[cat]) acc[cat] = [];
+  acc[cat].push(pair);
+  return acc;
+}, {});
 
-const featuredTool = siteConfig.features.hasTool
-  ? (await getCollection('tools', ({ data }) => !data.draft)).at(0)
-  : undefined;
-const featuredGame = siteConfig.features.hasGame
-  ? (await getCollection('games', ({ data }) => !data.draft)).at(0)
-  : undefined;
-
-const featuredPairs = (await getCollection('pairs', ({ data }) => !data.draft && data.featured))
-  .slice(0, 4);
+const categoryOrder = ['major', 'stablecoin', 'l1', 'defi', 'meme'];
+const categoryLabels: Record<string, string> = {
+  major: 'Major pairs',
+  stablecoin: 'Stablecoin pairs',
+  l1: 'Layer 1 tokens',
+  defi: 'DeFi / governance',
+  meme: 'Meme tokens',
+};
 ---
 <BaseLayout title={siteConfig.identity.name} description={siteConfig.identity.description}>
-  <section class="py-12 text-center">
-    <h1 class="text-5xl font-bold tracking-tight text-slate-900">{siteConfig.identity.name}</h1>
-    <p class="mx-auto mt-4 max-w-2xl text-lg text-slate-600">{siteConfig.identity.description}</p>
-  </section>
 
-  <!-- Quick converters (featured pairs) -->
-  {featuredPairs.length > 0 && (
+  <!-- Hero with animated gradient background -->
+  <div class="howmanycoin-hero py-10 sm:py-14">
+    <canvas id="hero-canvas" class="absolute inset-0 z-[1]" aria-hidden="true"></canvas>
+    <div class="relative z-[2] mx-auto max-w-5xl">
+      <h1>{siteConfig.identity.name}</h1>
+      <p class="hero-subtitle">
+        Live crypto pair conversion rates and token-supply explainers. How many USDC is 1 ETH, right now? Direct swap links included.
+      </p>
+    </div>
+    <script is:inline>
+      // Network mesh animation — animated nodes with connecting lines.
+      (function () {
+        var canvas = document.getElementById('hero-canvas');
+        if (!canvas) return;
+        var ctx = canvas.getContext('2d');
+        if (!ctx) return;
+        var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var vw = window.innerWidth;
+        var nodeCount = vw < 640 ? 14 : vw < 1024 ? 22 : 30;
+        var connectionDist = 160;
+        var nodes = [];
+        for (var i = 0; i < nodeCount; i++) {
+          nodes.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            vx: (Math.random() - 0.5) * 0.4,
+            vy: (Math.random() - 0.5) * 0.4,
+            r: 1.5 + Math.random() * 1.5,
+            phase: Math.random() * Math.PI * 2,
+          });
+        }
+        var t = 0;
+        function resize() {
+          var dpr = window.devicePixelRatio || 1;
+          canvas.width = canvas.offsetWidth * dpr;
+          canvas.height = canvas.offsetHeight * dpr;
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+          for (var k = 0; k < nodes.length; k++) {
+            var n = nodes[k];
+            if (n.x > canvas.offsetWidth) n.x = Math.random() * canvas.offsetWidth;
+            if (n.y > canvas.offsetHeight) n.y = Math.random() * canvas.offsetHeight;
+          }
+        }
+        resize();
+        window.addEventListener('resize', resize);
+        function frame() {
+          var w = canvas.offsetWidth;
+          var h = canvas.offsetHeight;
+          ctx.clearRect(0, 0, w, h);
+          for (var k = 0; k < nodes.length; k++) {
+            var n = nodes[k];
+            if (!prefersReduced) {
+              n.x += n.vx;
+              n.y += n.vy;
+              if (n.x < -10) n.x = w + 10;
+              if (n.x > w + 10) n.x = -10;
+              if (n.y < -10) n.y = h + 10;
+              if (n.y > h + 10) n.y = -10;
+            }
+            n.phase += 0.02;
+          }
+          // Connections
+          for (var i = 0; i < nodes.length; i++) {
+            for (var j = i + 1; j < nodes.length; j++) {
+              var a = nodes[i];
+              var b = nodes[j];
+              var dx = a.x - b.x;
+              var dy = a.y - b.y;
+              var dist = Math.sqrt(dx * dx + dy * dy);
+              if (dist < connectionDist) {
+                var alpha = (1 - dist / connectionDist) * 0.12;
+                var pulse = prefersReduced ? 1 : 0.7 + 0.3 * Math.sin(t * 0.01 + a.phase);
+                ctx.beginPath();
+                ctx.moveTo(a.x, a.y);
+                ctx.lineTo(b.x, b.y);
+                ctx.strokeStyle = 'rgba(139, 92, 246, ' + (alpha * pulse) + ')';
+                ctx.lineWidth = 0.8;
+                ctx.stroke();
+              }
+            }
+          }
+          // Nodes
+          for (var k = 0; k < nodes.length; k++) {
+            var n = nodes[k];
+            var pulse = prefersReduced ? 1 : 0.6 + 0.4 * Math.sin(n.phase);
+            var alpha = 0.25 * pulse;
+            var r = n.r * (prefersReduced ? 1 : 0.8 + 0.4 * pulse);
+            ctx.beginPath();
+            ctx.arc(n.x, n.y, r, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(199, 160, 255, ' + alpha + ')';
+            ctx.fill();
+          }
+          t++;
+          requestAnimationFrame(frame);
+        }
+        if (prefersReduced) {
+          frame();
+        } else {
+          frame();
+        }
+      })();
+    </script>
+  </div>
+
+  <div class="mx-auto max-w-5xl">
+    <!-- Quick converters (featured pairs) -->
     <section class="my-10">
-      <h2 class="text-2xl font-semibold mb-4">Quick convert</h2>
-      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <h2 class="hmc-section-title text-2xl font-semibold">Quick convert</h2>
+      <div class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {featuredPairs.map((pair) => (
           <a href={`/convert/${pair.data.base}-${pair.data.quote}/`}
-            class="rounded-lg border border-slate-200 bg-white p-5 hover:border-slate-400">
-            <p class="text-xs font-medium uppercase tracking-wide text-slate-500">
-              {pair.data.base.toUpperCase()} → {pair.data.quote.toUpperCase()}
+            class="hmc-card rounded-lg border border-[var(--border)] bg-white p-5">
+            <p class="text-xs font-medium uppercase tracking-wide text-[var(--muted)]">
+              {pair.data.base.toUpperCase()} to {pair.data.quote.toUpperCase()}
             </p>
-            <h3 class="mt-1 text-lg font-medium">{pair.data.title}</h3>
+            <h3 class="mt-1 text-base font-medium text-[var(--ink)]">{pair.data.title}</h3>
           </a>
         ))}
       </div>
     </section>
-  )}
 
-  <!-- Supply explainer links -->
-  <section class="my-10">
-    <h2 class="text-2xl font-semibold mb-4">Supply explainer</h2>
-    <a href="/supply/" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-slate-400">
-      <p class="text-xs font-medium uppercase tracking-wide text-slate-500">Supply</p>
-      <h3 class="mt-1 text-lg font-medium">How much of each token exists?</h3>
-      <p class="mt-2 text-sm text-slate-600">Plain-English supply explainers for 10 major tokens.</p>
-    </a>
-  </section>
-
-  <!-- Evergreen guides -->
-  <section class="my-10">
-    <h2 class="text-2xl font-semibold mb-4">Guides</h2>
-    <a href="/guides/" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-slate-400">
-      <p class="text-xs font-medium uppercase tracking-wide text-slate-500">Learn</p>
-      <h3 class="mt-1 text-lg font-medium">Crypto supply & valuation basics</h3>
-      <p class="mt-2 text-sm text-slate-600">Market cap, FDV, emissions schedules, supply shocks — plain English.</p>
-    </a>
-  </section>
-
-  {(featuredTool || featuredGame) && (
-    <section class="my-10">
-      <h2 class="text-2xl font-semibold mb-4">Featured</h2>
-      <div class="grid gap-4 sm:grid-cols-2">
-        {featuredTool && (
-          <a href={`/tools/${featuredTool.data.urlSlug}/`} class="rounded-lg border border-slate-200 bg-white p-6 hover:border-slate-400">
-            <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Tool</p>
-            <h3 class="mt-2 text-xl font-medium">{featuredTool.data.title}</h3>
-            <p class="mt-2 text-sm text-slate-600">{featuredTool.data.description}</p>
-          </a>
-        )}
-        {featuredGame && (
-          <a href={`/games/${featuredGame.data.urlSlug}/`} class="rounded-lg border border-slate-200 bg-white p-6 hover:border-slate-400">
-            <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Game</p>
-            <h3 class="mt-2 text-xl font-medium">{featuredGame.data.title}</h3>
-            <p class="mt-2 text-sm text-slate-600">{featuredGame.data.description}</p>
-          </a>
-        )}
+    <!-- All pairs by category -->
+    <section class="my-12">
+      <div class="flex items-baseline justify-between">
+        <h2 class="hmc-section-title text-2xl font-semibold">All pairs</h2>
+        <a href="/convert/" class="text-sm font-medium text-[var(--site-accent-color)] hover:text-[var(--site-accent-color)]/80">
+          View all {allPairs.length} pairs &rarr;
+        </a>
       </div>
+      {categoryOrder.filter(cat => allByCategory[cat]).map((cat) => {
+        const catPairs = allByCategory[cat];
+        return (
+          <div class="mt-4">
+            <h3 class="text-sm font-semibold text-[var(--ink)]/70">{categoryLabels[cat]}</h3>
+            <div class="mt-2 flex flex-wrap gap-2">
+              {catPairs.map((pair) => (
+                <a
+                  href={`/convert/${pair.data.base}-${pair.data.quote}/`}
+                  class="hmc-pill rounded-full border border-[var(--border)] bg-white px-3.5 py-1.5 text-sm font-medium text-[var(--ink)]/80 hover:border-[var(--site-accent-color)]/40 hover:text-[var(--site-accent-color)]"
+                >
+                  {pair.data.base.toUpperCase()}/{pair.data.quote.toUpperCase()}
+                </a>
+              ))}
+            </div>
+          </div>
+        );
+      })}
     </section>
-  )}
 
-  {recentPosts.length > 0 && (
-    <section class="my-10">
-      <h2 class="text-2xl font-semibold mb-4">Recent posts</h2>
-      <ul class="grid gap-4 sm:grid-cols-2">
-        {recentPosts.map((post) => (
-          <li class="rounded-lg border border-slate-200 bg-white p-4 hover:border-slate-400">
-            <a href={`/blog/${post.slug}/`}>
-              <h3 class="text-lg font-medium text-slate-900">{post.data.title}</h3>
-              <p class="mt-1 text-sm text-slate-600">{post.data.description}</p>
+    <!-- Supply explainer section -->
+    <section class="my-12">
+      <div class="flex items-baseline justify-between">
+        <h2 class="hmc-section-title text-2xl font-semibold">Supply explainers</h2>
+        <a href="/supply/" class="text-sm font-medium text-[var(--site-accent-color)] hover:text-[var(--site-accent-color)]/80">
+          View all &rarr;
+        </a>
+      </div>
+      <div class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {allByCategory.l1.slice(0, 3).map((pair) => {
+          const token = pair.data.base;
+          // Map base to supply slug
+          const supplySlug = token === 'ada' ? 'cardano' : token === 'avax' ? 'avalanche' : token;
+          return (
+            <a
+              href={`/supply/${token}-supply/`}
+              class="hmc-card rounded-lg border border-[var(--border)] bg-white p-5"
+            >
+              <p class="text-sm font-semibold text-[var(--site-accent-color)]">{supplySlug.toUpperCase()} supply</p>
+              <p class="mt-1.5 text-sm leading-relaxed text-[var(--muted)] line-clamp-2">{pair.data.description}</p>
             </a>
-          </li>
-        ))}
-      </ul>
+          );
+        })}
+      </div>
     </section>
-  )}
+
+    <!-- Evergreen guides -->
+    <section class="my-12">
+      <div class="flex items-baseline justify-between">
+        <h2 class="hmc-section-title text-2xl font-semibold">Guides</h2>
+        <a href="/guides/" class="text-sm font-medium text-[var(--site-accent-color)] hover:text-[var(--site-accent-color)]/80">
+          View all &rarr;
+        </a>
+      </div>
+      <div class="mt-5 grid gap-4 sm:grid-cols-2">
+        <a href="/guides/market-cap-vs-price/" class="hmc-card rounded-lg border border-[var(--border)] bg-white p-5">
+          <h3 class="text-base font-medium text-[var(--ink)]">Market Cap vs Price: Why It Matters</h3>
+          <p class="mt-1.5 text-sm leading-relaxed text-[var(--muted)]">Why a low coin price does not mean a coin is cheap.</p>
+        </a>
+        <a href="/guides/fully-diluted-valuation/" class="hmc-card rounded-lg border border-[var(--border)] bg-white p-5">
+          <h3 class="text-base font-medium text-[var(--ink)]">Fully Diluted Valuation (FDV) Explained</h3>
+          <p class="mt-1.5 text-sm leading-relaxed text-[var(--muted)]">Compare FDV to market cap to spot future selling pressure.</p>
+        </a>
+      </div>
+    </section>
+  </div>
+
 </BaseLayout>

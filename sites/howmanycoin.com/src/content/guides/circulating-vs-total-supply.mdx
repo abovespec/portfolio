@@ -1,10 +1,105 @@
 ---
-title: "Circulating vs Total vs Max Supply"
-description: "What does circulating supply mean? How is total supply different? Why does max supply matter? A plain-English guide to supply terminology in crypto."
-topic: "circulating-vs-total"
-seoKeywords: ["circulating vs total supply", "crypto supply explained", "max supply vs total"]
+title: 'Circulating, Total, and Max Supply: What Each Number Actually Means'
+description: 'Crypto projects list multiple supply numbers that mean very different things. Learn the difference between circulating supply, total supply, and maximum supply.'
+topic: 'circulating-vs-total'
+seoKeywords:
+  - 'circulating supply vs total supply'
+  - 'max supply crypto'
+  - 'crypto supply explained'
+  - 'what is circulating supply'
+  - 'total supply vs max supply'
 ---
 
-import GuidePage from "~/components/GuidePage.astro";
+When you look up any cryptocurrency on a data site, you will see three different supply numbers: **Circulating Supply**, **Total Supply**, and **Max Supply**. They sound similar but mean very different things. Confusing them leads to bad investment decisions, incorrect market cap calculations, and misunderstanding of a project's inflation dynamics.
 
-<GuidePage />
+This guide breaks down each supply number, what it represents, and why the difference matters.
+
+## Circulating Supply: What Is Actually Tradeable
+
+**Circulating supply** is the number of tokens that are currently in public hands and available to be traded on the open market. This is the supply number that matters most for calculating the current market cap.
+
+**Market Cap = Price x Circulating Supply**
+
+Circulating supply includes tokens held by:
+
+- Retail investors and traders
+- Exchanges and liquidity pools
+- Team members whose tokens have already vested
+- Early investors who have unlocked their allocations
+- Community treasury tokens that are actively distributed
+
+Circulating supply excludes tokens that are still locked, staked and not yet available, or reserved for future distributions. It is a dynamic number that increases over time as more tokens are released.
+
+### Why it matters
+
+Circulating supply determines the current market value of a project. If you are trying to understand whether a project is undervalued or overvalued right now, you look at the market cap calculated from circulating supply. It also tells you about **liquidity** — a coin with a small circulating supply relative to its total supply may be prone to large price swings when new tokens are released.
+
+## Total Supply: Everything That Exists Right Now
+
+**Total supply** is the total number of tokens that currently exist, including those that are circulating plus those that exist but are not yet tradeable.
+
+Tokens in total supply but not yet in circulation may be:
+
+- **Locked in vesting contracts:** Team tokens, investor tokens, or advisor tokens that are released on a schedule
+- **In treasury:** Reserved for future ecosystem funding, grants, or development
+- **Staked or bonded:** Locked in staking contracts and not immediately liquid
+- **Reserved for future sales:** Set aside for upcoming token sales, airdrops, or incentives
+
+### Total Supply minus Circulating Supply = Locked Supply
+
+This difference is the number that tells you how many tokens are waiting in the wings. If total supply is 1 billion and circulating supply is 300 million, then 700 million tokens exist but are locked. When those unlock, they add selling pressure.
+
+### Why it matters
+
+Total supply gives you a snapshot of all tokens that currently exist. Comparing total supply to circulating supply reveals the **unlock pipeline**. A large gap means a lot of tokens will enter the market eventually.
+
+## Max Supply: The Absolute Ceiling
+
+**Max supply** is the total number of tokens that will ever exist for a given project. Not all projects have a max supply, and this distinction is important.
+
+### Projects with a hard cap
+
+Some cryptocurrencies have a fixed maximum supply that can never be exceeded:
+
+- **Bitcoin (BTC):** 21 million BTC will ever be created. This is hard-coded into the protocol. We are currently at approximately 19.6 million mined.
+- **BNB:** Originally 200 million, but BNB conducts regular burns, so the actual max supply is decreasing. The current cap is around 153 million after multiple burns.
+- **Litecoin (LTC):** 84 million maximum, similar to Bitcoin but with faster block times.
+
+### Projects without a hard cap
+
+Some major cryptocurrencies have **no maximum supply** at all:
+
+- **Ethereum (ETH):** There is no hard cap. ETH has an inflationary issuance (currently around 0.5–1% annually after the Merge), but the EIP-1559 burn mechanism destroys a portion of ETH with each transaction. In busy periods, Ethereum can be net deflationary (more burned than issued), but there is no upper limit.
+- **Cardano (ADA):** Has a max supply of 45 billion, but the inflation schedule is built into the protocol and new ADA is still being minted to fund the treasury.
+- **Solana (SOL):** Has no hard cap. Solana has an initial inflation rate of 8% that decreases by 15% each year until reaching a terminal rate of 1.5%. At that point, roughly 580 million SOL will exist, but new SOL continues to be minted in perpetuity.
+
+### Why it matters
+
+Max supply tells you the ultimate dilution ceiling. If a project has no max supply, you need to understand its inflation schedule instead. A project with a fixed cap of 10 million tokens is fundamentally different from one that mints new tokens forever, even if both look similar today.
+
+## Real-World Comparison Table
+
+| Cryptocurrency | Circulating Supply | Total Supply | Max Supply |
+|---------------|-------------------|-------------|------------|
+| Bitcoin (BTC) | ~19.6 million | ~19.6 million | 21 million |
+| Ethereum (ETH) | ~120 million | ~120 million | No cap |
+| Solana (SOL) | ~460 million | ~580 million | No cap (terminal ~580M) |
+| BNB | ~153 million | ~153 million | Decreasing (burns) |
+| Shiba Inu (SHIB) | ~589 trillion | ~589 trillion | No hard cap |
+
+Notice that for Bitcoin, circulating supply and total supply are nearly identical because almost all mined BTC is in circulation. For Solana, there is a significant gap between circulating and total supply because new SOL is continuously minted as staking rewards.
+
+## How to Find Accurate Supply Data
+
+Supply numbers change constantly, so you need to check them from reliable sources:
+
+- **CoinGecko and CoinMarketCap:** Both display circulating supply, total supply, and max supply for every listed token. CoinGecko tends to be more conservative in its circulating supply estimates.
+- **Token.Unlocks.app:** Shows upcoming token unlock schedules, helping you see when locked tokens will enter circulation.
+- **Project documentation:** Most serious projects publish their tokenomics in a white paper or dedicated tokenomics page. Look for details about vesting schedules, treasury allocations, and burn mechanisms.
+- **On-chain data:** For advanced users, block explorers show real-time minting and burning events.
+
+## Bottom Line
+
+Circulating supply tells you what is tradeable right now. Total supply tells you what exists. Max supply tells you what will ever exist. All three numbers are essential for understanding a project's supply dynamics, and none of them can be ignored.
+
+When evaluating a cryptocurrency, always check all three supply numbers and understand the gap between them. A project with a small circulating supply but a massive max supply is fundamentally different from one where most tokens are already in circulation — even if the price and market cap look identical today.

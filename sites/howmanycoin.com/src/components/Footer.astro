@@ -6,17 +6,17 @@ const year = new Date().getFullYear();
 const { organizationName } = siteConfig.org;
 const showDisclosure = siteConfig.features.hasBlog || siteConfig.features.hasTool;
 ---
-<footer class="mt-16 border-t border-slate-200 bg-slate-50">
-  <div class="mx-auto max-w-5xl px-4 py-8 text-sm text-slate-600">
+<footer class="hmc-footer mt-auto border-t border-[var(--border)]">
+  <div class="mx-auto max-w-5xl px-4 py-8 text-sm text-[var(--muted)]">
     {showDisclosure && <AffiliateDisclosure />}
     <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
       <p>&copy; {year} {organizationName}. All rights reserved.</p>
       <nav aria-label="Legal">
         <ul class="flex gap-4">
-          <li><a href="/about/" class="hover:text-slate-900">About</a></li>
-          <li><a href="/contact/" class="hover:text-slate-900">Contact</a></li>
-          <li><a href="/privacy/" class="hover:text-slate-900">Privacy</a></li>
-          <li><a href="/terms/" class="hover:text-slate-900">Terms</a></li>
+          <li><a href="/about/" class="hover:text-[var(--ink)]">About</a></li>
+          <li><a href="/contact/" class="hover:text-[var(--ink)]">Contact</a></li>
+          <li><a href="/privacy/" class="hover:text-[var(--ink)]">Privacy</a></li>
+          <li><a href="/terms/" class="hover:text-[var(--ink)]">Terms</a></li>
         </ul>
       </nav>
     </div>

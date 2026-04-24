@@ -15,6 +15,8 @@ name = "howmanycoin-rate-prod"
 ONEINCH_REFERRER = ""
 JUPITER_FEE_ACCOUNT = ""
 
+# Route all /api/rate requests on the custom domain and pages.dev subdomains
+# The Worker handles /api/rate on any hostname via the Pages project's reverse-proxy config.
 [[routes]]
 pattern = "howmanycoin.com/api/rate"
 zone_name = "howmanycoin.com"
@@ -22,6 +24,10 @@ zone_name = "howmanycoin.com"
 [[routes]]
 pattern = "www.howmanycoin.com/api/rate"
 zone_name = "howmanycoin.com"
+
+# Route /api/rate on the custom domain and www subdomain
+# The pages.dev subdomains will be served by the Pages project directly
+# when the Worker's routes don't match.
 
 [observability]
 enabled = true

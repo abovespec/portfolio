@@ -1,0 +1,50 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { siteConfig } from '~/config/site.config';
+
+const guides = await getCollection('guides', ({ data }) => !data.draft);
+---
+<BaseLayout title="Crypto guides" description="Plain-English guides to crypto market cap, FDV, token emissions, supply shocks, and supply terminology. No jargon, no fluff." keywords="crypto guide, market cap explained, fdv, token emissions, supply shocks, crypto education">
+
+  <section class="mt-6">
+    <h1 class="text-4xl font-bold tracking-tight text-[var(--ink)]">Crypto guides</h1>
+    <p class="mt-3 text-lg leading-relaxed text-[var(--muted)]">
+      Market cap, FDV, emissions schedules, supply shocks -- plain English explanations of the concepts that matter for crypto investing.
+    </p>
+  </section>
+
+  <div class="mt-8 grid gap-5 sm:grid-cols-2">
+    {guides.map((entry) => {
+      const slug = entry.slug.split('/').pop();
+      return (
+        <article class="hmc-card rounded-lg border border-[var(--border)] bg-white p-6">
+          <h2 class="text-lg font-semibold text-[var(--ink)]">
+            <a href={`/guides/${slug}/`}>{entry.data.title}</a>
+          </h2>
+          <p class="mt-2 text-sm leading-relaxed text-[var(--muted)]">
+            {entry.data.description}
+          </p>
+          <div class="mt-3 flex flex-wrap gap-2">
+            {entry.data.seoKeywords.map((kw) => (
+              <span class="rounded-full bg-[var(--surface)] px-2.5 py-1 text-xs font-medium text-[var(--muted)]">
+                {kw}
+              </span>
+            ))}
+          </div>
+        </article>
+      );
+    })}
+  </div>
+
+  <section class="mt-12 rounded-lg border border-[var(--border)] bg-[var(--surface)] p-6">
+    <h3 class="text-sm font-semibold uppercase tracking-wide text-[var(--muted)]">Why these concepts matter</h3>
+    <p class="mt-2 text-sm leading-relaxed text-[var(--muted)]">
+      Understanding token supply and valuation is essential for making informed decisions in crypto.
+      A low token price does not mean a coin is cheap -- market capitalization tells the real story.
+      Similarly, fully diluted valuation reveals the potential selling pressure from future token unlocks.
+      These guides break down each concept with real examples so you can evaluate any token with confidence.
+    </p>
+  </section>
+
+</BaseLayout>

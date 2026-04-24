@@ -1,12 +1,58 @@
 ---
 import BaseLayout from '~/layouts/BaseLayout.astro';
-import { siteConfig } from '~/config/site.config';
 ---
-<BaseLayout title="About" description={`About ${siteConfig.identity.name}`}>
-  <h1 class="text-4xl font-bold">About {siteConfig.identity.name}</h1>
-  <p class="mt-4 text-slate-700">
-    Replace this placeholder with the site's editorial mission, team bios,
-    review methodology, and sourcing standards. Authoritative About pages
-    directly support E-E-A-T.
-  </p>
+<BaseLayout
+  title="About"
+  description="About howmanycoin -- a free crypto conversion tool with live rates and supply explainers."
+>
+
+  <section class="mt-6 prose wide max-w-none">
+    <h1 class="text-4xl font-bold tracking-tight text-slate-900">About howmanycoin</h1>
+    <p class="mt-3 text-lg text-slate-600">
+      Free crypto conversion rates, supply explainers, and educational guides -- no sign-up, no ads, no fluff.
+    </p>
+
+    <h2>What we do</h2>
+    <p>
+      howmanycoin provides instant crypto-to-fiat and crypto-to-crypto conversion rates.
+      Type in any amount, see the result, and swap directly via 1inch or Jupiter if you want
+      to execute a trade. We also publish plain-English explainers on token supply dynamics
+      -- market cap, FDV, emissions schedules, and supply shocks -- so you can evaluate
+      any token beyond just its price.
+    </p>
+
+    <h2>Why we built this</h2>
+    <p>
+      Most crypto sites are bloated with ads, exchange sign-up funnels, and promotional content.
+      We wanted a clean, fast tool that does one thing well: show you the rates and explain
+      the mechanics behind them. No accounts, no tracking, no paywalls.
+    </p>
+
+    <h2>What you can find here</h2>
+    <ul>
+      <li><strong>Converter pages</strong> -- 25+ live currency pairs with real-time rates, 24h change, and direct swap links</li>
+      <li><strong>Supply explainers</strong> -- detailed breakdowns of token supply models for major cryptocurrencies</li>
+      <li><strong>Guides</strong> -- plain-English explanations of market cap, FDV, token emissions, and supply dynamics</li>
+    </ul>
+
+    <h2>Data sources</h2>
+    <p>
+      Live rates are sourced from <strong>CoinGecko</strong>, cached at the edge via Cloudflare
+      Workers, and refreshed every 60 seconds. Supply data is sourced from CoinGecko and
+      supplemented by official project documentation.
+    </p>
+
+    <h2>Transparency</h2>
+    <p>
+      Swap links on this site are affiliate links. If you use one, we may earn a commission
+      at no extra cost to you. This does not affect the rates shown or the quality of our
+      content. We do not accept payment for positive coverage of any project.
+    </p>
+
+    <h2>Get in touch</h2>
+    <p>
+      Have a suggestion, found an error, or want to collaborate? <a href="/contact/">Contact us</a>.
+    </p>
+  </section>
+
 </BaseLayout>

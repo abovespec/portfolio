@@ -3,6 +3,9 @@ const COINGECKO_IDS = [
   'avalanche-2','dogecoin','shiba-inu','pepe','arbitrum','optimism','ripple','cardano','the-open-network',
 ].join(',');
 
+// All currencies we fetch — includes fiat for cross-rate support
+const COINGECKO_CURRENCIES = 'usd,eur,gbp,jpy';
+
 // Fallback rates (approximate, used when CoinGecko is unavailable)
 const FALLBACK_RATES: Record<string, { usd: number; usd_24h_change: number; last_updated_at: number }> = {
   bitcoin: { usd: 77682, usd_24h_change: 0.12, last_updated_at: Math.floor(Date.now() / 1000) },
@@ -25,7 +28,7 @@ const FALLBACK_RATES: Record<string, { usd: number; usd_24h_change: number; last
 };
 
 export async function fetchCoingecko(): Promise<Record<string, { usd: number; usd_24h_change: number; last_updated_at: number }>> {
-  const url = `https://api.coingecko.com/api/v3/simple/price?ids=${COINGECKO_IDS}&vs_currencies=usd&include_24hr_change=true&include_last_updated_at=true`;
+  const url = `https://api.coingecko.com/api/v3/simple/price?ids=${COINGECKO_IDS}&vs_currencies=${COINGECKO_CURRENCIES}&include_24hr_change=true&include_last_updated_at=true`;
   const res = await fetch(url, {
     cf: { cacheEverything: false },
     headers: { 'User-Agent': 'howmanycoin/1.0 (+https://howmanycoin.com)' },

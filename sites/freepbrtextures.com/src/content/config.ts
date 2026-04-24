@@ -70,4 +70,31 @@ const games = defineCollection({
   }),
 });
 
-export const collections = { blog, tools, games };
+const textures = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string().max(80),
+    description: z.string().max(200),
+    category: z.string(),
+    tags: z.array(z.string()).default([]),
+    resolution: z.string().default('4K'),
+    maps: z.object({
+      albedo: z.boolean().default(true),
+      normal: z.boolean().default(true),
+      roughness: z.boolean().default(true),
+      metallic: z.boolean().default(false),
+      height: z.boolean().default(false),
+    }),
+    license: z.string().default('CC0'),
+    seed: z.string().optional(),
+    generatedDate: z.coerce.date(),
+    publishDate: z.coerce.date(),
+    draft: z.boolean().default(false),
+    urlSlug: z.string(),
+    thumbnail: z.string(),
+    preview: z.string(),
+    fullSize: z.string(),
+  }),
+});
+
+export const collections = { blog, tools, games, textures };

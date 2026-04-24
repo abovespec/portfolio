@@ -1,0 +1,112 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { siteConfig } from '~/config/site.config';
+
+const supply = await getCollection('supply', ({ data }) => !data.draft);
+const byType = supply.reduce<Record<string, typeof supply>>((acc, entry) => {
+  const t = entry.data.supplyType;
+  if (!acc[t]) acc[t] = [];
+  acc[t].push(entry);
+  return acc;
+}, {});
+
+const typeOrder = ['fixed', 'capped', 'emission', 'burning', 'flex'];
+const typeLabels: Record<string, string> = {
+  fixed: 'Hard-capped supply',
+  capped: 'Capped with emissions',
+  emission: 'Inflationary / emission schedule',
+  burning: 'Deflationary with burns',
+  flex: 'Flexible supply',
+};
+const typeIcons: Record<string, string> = {
+  fixed: '\uD83D\uDD12',
+  capped: '\uD83D\uDCCA',
+  emission: '\uD83D\uDCC8',
+  burning: '\uD83D\uDD25',
+  flex: '\uD83C\uDFB0',
+};
+const typeDesc: Record<string, string> = {
+  fixed: 'A hard limit on total coins that will ever exist.',
+  capped: 'A maximum supply, but new coins may be created until the cap is reached.',
+  emission: 'New coins are issued over time according to a published schedule.',
+  burning: 'Coins can be permanently removed from circulation, reducing supply.',
+  flex: 'Supply can expand or contract based on protocol decisions.',
+};
+---
+<BaseLayout title="Token supply explainers" description="Understand how much of each crypto token exists. Fixed caps, emission schedules, and burn mechanisms explained in plain English." keywords="crypto supply, tokenomics, market cap, circulating supply, max supply">
+
+  <section class="mt-6">
+    <h1 class="text-4xl font-bold tracking-tight text-slate-900">Token supply explained</h1>
+    <p class="mt-3 text-lg text-slate-600">
+      How much of each token exists? Plain-English supply explainers for {supply.length} major tokens.
+      Learn about hard caps, emission schedules, burn mechanisms, and what they mean for investors.
+    </p>
+  </section>
+
+  <!-- Supply types overview -->
+  <section class="mt-10">
+    <h2 class="text-xl font-semibold text-slate-900 mb-4">What is crypto supply?</h2>
+    <p class="text-slate-600 max-w-3xl">
+      Every token has a different supply model. Some have a fixed maximum (like Bitcoin's 21 million cap).
+      Others issue new coins on a schedule (like Solana's annual emission). Understanding a token's
+      supply type is essential for evaluating its long-term value proposition.
+    </p>
+  </section>
+
+  {typeOrder.filter(t => byType[t]).map((t) => {
+    const entries = byType[t];
+    return (
+      <section class="mt-10">
+        <h2 class="text-xl font-semibold text-slate-900">
+          {typeIcons[t]} {typeLabels[t]}
+        </h2>
+        <p class="mt-1 text-sm text-slate-500">{typeDesc[t]}</p>
+        <div class="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {entries.map((entry) => {
+            const sym = entry.data.token.toUpperCase();
+            return (
+              <a
+                href={`/supply/${entry.data.token}-supply/`}
+                class="group rounded-lg border border-slate-200 bg-white p-4 hover:border-slate-400 hover:shadow-sm"
+              >
+                <p class="text-sm font-medium text-slate-900 group-hover:text-indigo-700">
+                  {sym} supply
+                </p>
+                <p class="mt-0.5 text-xs text-slate-500 line-clamp-2">
+                  {entry.data.description}
+                </p>
+                <p class="mt-2 text-xs text-slate-600">
+                  Total: {entry.data.totalSupply}
+                </p>
+              </a>
+            );
+          })}
+        </div>
+      </section>
+    );
+  })}
+
+  <section class="mt-12 rounded-lg bg-slate-50 p-6">
+    <h3 class="text-sm font-semibold text-slate-900">Key terms</h3>
+    <dl class="mt-3 grid gap-4 sm:grid-cols-2">
+      <div>
+        <dt class="font-medium text-slate-700">Total supply</dt>
+        <dd class="text-sm text-slate-600">The number of coins currently in existence minus any burned coins.</dd>
+      </div>
+      <div>
+        <dt class="font-medium text-slate-700">Circulating supply</dt>
+        <dd class="text-sm text-slate-600">Coins that are freely traded on exchanges and not locked or restricted.</dd>
+      </div>
+      <div>
+        <dt class="font-medium text-slate-700">Max supply</dt>
+        <dd class="text-sm text-slate-600">The absolute upper limit of coins that will ever exist (if any).</dd>
+      </div>
+      <div>
+        <dt class="font-medium text-slate-700">Fully diluted valuation</dt>
+        <dd class="text-sm text-slate-600">Market cap if all future coins were already in circulation.</dd>
+      </div>
+    </dl>
+  </section>
+
+</BaseLayout>

@@ -1,0 +1,85 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { siteConfig } from '~/config/site.config';
+
+const pairs = await getCollection('pairs', ({ data }) => !data.draft);
+const byCategory = pairs.reduce<Record<string, typeof pairs>>((acc, pair) => {
+  const cat = pair.data.category;
+  if (!acc[cat]) acc[cat] = [];
+  acc[cat].push(pair);
+  return acc;
+}, {});
+
+const categoryOrder = ['major', 'stablecoin', 'l1', 'defi', 'meme'];
+const categoryLabels: Record<string, string> = {
+  major: 'Major pairs',
+  stablecoin: 'Stablecoin pairs',
+  l1: 'Layer 1 tokens',
+  defi: 'DeFi / governance',
+  meme: 'Meme tokens',
+};
+const categoryIcons: Record<string, string> = {
+  major: '\u26A1',
+  stablecoin: '\uD83D\uDCB5',
+  l1: '\uD83D\uDD25',
+  defi: '\u2699\uFE0F',
+  meme: '\uD83D\uDC36',
+};
+---
+<BaseLayout title="Convert" description={`Live crypto conversion rates for ${pairs.length} pairs. Convert BTC, ETH, SOL, DOGE and more to USD and other currencies. Real-time rates with swap links.`}>
+
+  <section class="mt-6">
+    <h1 class="text-4xl font-bold tracking-tight text-[var(--ink)]">Crypto conversion rates</h1>
+    <p class="mt-3 text-lg leading-relaxed text-[var(--muted)]">
+      Live {pairs.length} currency pairs updated every 60 seconds. Click any pair to see the current rate and convert any amount.
+    </p>
+  </section>
+
+  {categoryOrder.filter(cat => byCategory[cat]).map((cat) => {
+    const catPairs = byCategory[cat];
+    return (
+      <section class="mt-10">
+        <h2 class="hmc-section-title text-xl font-semibold text-[var(--ink)]">
+          {categoryIcons[cat]} {categoryLabels[cat]}
+        </h2>
+        <div class="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {catPairs.map((pair) => {
+            const symbol = `${pair.data.base.toUpperCase()}/${pair.data.quote.toUpperCase()}`;
+            return (
+              <a
+                href={`/convert/${pair.data.base}-${pair.data.quote}/`}
+                class="hmc-card group rounded-lg border border-[var(--border)] bg-white p-4"
+              >
+                <div class="flex items-center justify-between">
+                  <div>
+                    <p class="text-sm font-semibold text-[var(--ink)] group-hover:text-[var(--site-accent-color)]">
+                      {symbol}
+                    </p>
+                    <p class="mt-0.5 text-xs leading-relaxed text-[var(--muted)]">
+                      {pair.data.title}
+                    </p>
+                  </div>
+                  <span class="text-[var(--muted)] transition-transform group-hover:translate-x-0.5 group-hover:text-[var(--site-accent-color)]">
+                    &rarr;
+                  </span>
+                </div>
+              </a>
+            );
+          })}
+        </div>
+      </section>
+    );
+  })}
+
+  <section class="mt-12 rounded-lg border border-[var(--border)] bg-[var(--surface)] p-6">
+    <h3 class="text-sm font-semibold uppercase tracking-wide text-[var(--muted)]">How rates work</h3>
+    <p class="mt-2 text-sm leading-relaxed text-[var(--muted)]">
+      All rates are sourced from CoinGecko and cached by a Cloudflare Worker for 60 seconds.
+      Crypto-to-fiat rates use the direct USD price. Crypto-to-crypto pairs are cross-rates
+      computed as (base USD price) / (quote USD price). Swap links route through 1inch and
+      Jupiter for the best execution.
+    </p>
+  </section>
+
+</BaseLayout>

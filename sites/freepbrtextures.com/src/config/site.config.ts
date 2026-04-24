@@ -78,20 +78,20 @@ export interface SiteConfig {
 
 export const siteConfig: SiteConfig = {
   identity: {
-    name: 'freepbrtextures',
+    name: 'FreePBRTextures',
     domain: 'freepbrtextures.com',
-    description: 'Free AI-generated seamless PBR textures for game developers and 3D artists. CC0, 4K, download-ready.',
+    description: 'Free seamless PBR textures for game devs and 3D artists. 4K resolution. CC0 license. No signup required.',
     language: 'en',
     timezone: 'UTC',
   },
   branding: {
     themeColor: '#0f172a',
-    accentColor: '#2563eb',
-    logoText: 'freepbrtextures',
+    accentColor: '#f59e0b',
+    logoText: 'FreePBRTextures',
     ogImageStrategy: 'static',
   },
   org: {
-    organizationName: 'freepbrtextures',
+    organizationName: 'FreePBRTextures',
     organizationUrl: 'https://freepbrtextures.com',
     sameAs: [],
     contactEmail: 'hello@freepbrtextures.com',
