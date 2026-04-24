@@ -1,0 +1,16 @@
+{
+  "title": "Brick 2",
+  "description": "Seamless 4K procedural brick texture.",
+  "category": "brick",
+  "seed": 2111190917,
+  "seedName": "brick-2",
+  "params": {
+    "roughness": 0.85,
+    "metallic": 0.0
+  },
+  "shape": [
+    4096,
+    4096
+  ],
+  "generatedDate": "2026-04-24"
+}

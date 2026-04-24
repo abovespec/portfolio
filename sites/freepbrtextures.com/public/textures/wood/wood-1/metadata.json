@@ -1,0 +1,16 @@
+{
+  "title": "Wood 1",
+  "description": "Seamless 4K procedural wood texture.",
+  "category": "wood",
+  "seed": 2168496738,
+  "seedName": "wood-1",
+  "params": {
+    "roughness": 0.7,
+    "metallic": 0.0
+  },
+  "shape": [
+    4096,
+    4096
+  ],
+  "generatedDate": "2026-04-24"
+}

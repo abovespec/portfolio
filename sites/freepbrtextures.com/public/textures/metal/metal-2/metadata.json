@@ -1,0 +1,16 @@
+{
+  "title": "Metal 2",
+  "description": "Seamless 4K procedural metal texture.",
+  "category": "metal",
+  "seed": 2919968423,
+  "seedName": "metal-2",
+  "params": {
+    "roughness": 0.3,
+    "metallic": 1.0
+  },
+  "shape": [
+    4096,
+    4096
+  ],
+  "generatedDate": "2026-04-24"
+}

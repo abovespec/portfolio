@@ -1,0 +1,16 @@
+{
+  "title": "Concrete 2",
+  "description": "Seamless 4K procedural concrete texture.",
+  "category": "concrete",
+  "seed": 680765984,
+  "seedName": "concrete-2",
+  "params": {
+    "roughness": 0.75,
+    "metallic": 0.0
+  },
+  "shape": [
+    4096,
+    4096
+  ],
+  "generatedDate": "2026-04-24"
+}

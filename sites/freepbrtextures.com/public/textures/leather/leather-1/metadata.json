@@ -1,0 +1,16 @@
+{
+  "title": "Leather 1",
+  "description": "Seamless 4K procedural leather texture.",
+  "category": "leather",
+  "seed": 2811499783,
+  "seedName": "leather-1",
+  "params": {
+    "roughness": 0.65,
+    "metallic": 0.0
+  },
+  "shape": [
+    4096,
+    4096
+  ],
+  "generatedDate": "2026-04-24"
+}

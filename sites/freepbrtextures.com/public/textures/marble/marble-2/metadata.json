@@ -1,0 +1,16 @@
+{
+  "title": "Marble 2",
+  "description": "Seamless 4K procedural marble texture.",
+  "category": "marble",
+  "seed": 186693888,
+  "seedName": "marble-2",
+  "params": {
+    "roughness": 0.2,
+    "metallic": 0.0
+  },
+  "shape": [
+    4096,
+    4096
+  ],
+  "generatedDate": "2026-04-24"
+}

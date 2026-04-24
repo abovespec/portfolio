@@ -1,0 +1,16 @@
+{
+  "title": "Stone 2",
+  "description": "Seamless 4K procedural stone texture.",
+  "category": "stone",
+  "seed": 1992841771,
+  "seedName": "stone-2",
+  "params": {
+    "roughness": 0.8,
+    "metallic": 0.0
+  },
+  "shape": [
+    4096,
+    4096
+  ],
+  "generatedDate": "2026-04-24"
+}
