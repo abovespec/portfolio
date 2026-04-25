@@ -1,0 +1,57 @@
+---
+import ToolLayout from '~/layouts/ToolLayout.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+import { siteConfig } from '~/config/site.config';
+import LoanCalculator from '~/components/LoanCalculator';
+import CompoundInterestCalculator from '~/components/CompoundInterestCalculator';
+import ROICalculator from '~/components/ROICalculator';
+import SavingsGoalCalculator from '~/components/SavingsGoalCalculator';
+import MortgageCalculator from '~/components/MortgageCalculator';
+import RetirementCalculator from '~/components/RetirementCalculator';
+
+export async function getStaticPaths() {
+  if (!siteConfig.features.hasTool) return [];
+  const tools = await getCollection('tools', ({ data }) => !data.draft);
+  return tools.map((tool) => ({
+    params: { slug: tool.data.urlSlug },
+    props: { tool },
+  }));
+}
+
+interface Props { tool: CollectionEntry<'tools'> }
+const { tool } = Astro.props;
+const { Content } = await tool.render();
+const s = tool.data.schema;
+const slug = tool.data.urlSlug;
+---
+<ToolLayout
+  title={tool.data.title}
+  description={tool.data.description}
+  slug={slug}
+  applicationCategory={s.applicationCategory}
+  operatingSystem={s.operatingSystem}
+  price={s.price}
+  priceCurrency={s.priceCurrency}
+  ratingValue={s.ratingValue}
+  ratingCount={s.ratingCount}
+>
+  {slug === 'loan-calculator' && (
+    <LoanCalculator slot="tool" client:load />
+  )}
+  {slug === 'compound-interest-calculator' && (
+    <CompoundInterestCalculator slot="tool" client:load />
+  )}
+  {slug === 'roi-calculator' && (
+    <ROICalculator slot="tool" client:load />
+  )}
+  {slug === 'savings-calculator' && (
+    <SavingsGoalCalculator slot="tool" client:load />
+  )}
+  {slug === 'mortgage-calculator' && (
+    <MortgageCalculator slot="tool" client:load />
+  )}
+  {slug === 'retirement-calculator' && (
+    <RetirementCalculator slot="tool" client:load />
+  )}
+  <Content />
+</ToolLayout>
