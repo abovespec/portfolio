@@ -1,0 +1,195 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="HTML Formatter &amp; Minifier — Beautify &amp; Minify HTML Online Free"
+  description="Free online HTML formatter and minifier. Beautify messy HTML with proper indentation, or minify HTML to reduce file size. Runs entirely in your browser."
+>
+
+  <!-- Compact header -->
+  <header class="pb-4 pt-2">
+    <h1 class="text-3xl font-bold tracking-tight text-slate-900">
+      HTML Formatter &amp; Minifier
+    </h1>
+    <p class="mt-1.5 text-sm text-slate-500">
+      Beautify HTML with proper indentation, or minify it to reduce size — runs entirely in your browser.
+    </p>
+  </header>
+
+  <!-- Toolbar -->
+  <div class="flex flex-wrap gap-2 mb-3">
+    <button id="btn-format"  class="rounded-md bg-slate-700 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-slate-800 transition-colors">Format</button>
+    <button id="btn-minify"  class="rounded-md bg-slate-600 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-slate-700 transition-colors">Minify</button>
+    <button id="btn-sample"  class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Sample</button>
+    <div class="flex-1"></div>
+    <button id="btn-clear"   class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Clear</button>
+    <button id="btn-copy"    class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Copy output</button>
+  </div>
+
+  <!-- Dual-pane editor -->
+  <div class="grid gap-3 md:grid-cols-2 min-h-96">
+    <div class="flex flex-col gap-1 min-h-0">
+      <label for="html-input" class="text-xs font-semibold uppercase tracking-wide text-slate-500">Input HTML</label>
+      <textarea
+        id="html-input"
+        class="flex-1 w-full rounded-lg border border-slate-300 bg-slate-950 text-slate-100 p-4 font-mono text-sm resize-none focus:border-slate-500 focus:ring-1 focus:ring-slate-500 placeholder:text-slate-600"
+        placeholder="Paste your HTML here"
+        spellcheck="false"
+        autocomplete="off"
+        rows="16"
+      ></textarea>
+    </div>
+    <div class="flex flex-col gap-1 min-h-0">
+      <label for="html-output" class="text-xs font-semibold uppercase tracking-wide text-slate-500">Output</label>
+      <textarea
+        id="html-output"
+        class="flex-1 w-full rounded-lg border border-slate-200 bg-slate-950 text-slate-100 p-4 font-mono text-sm resize-none"
+        readonly
+        placeholder="Result appears here"
+        spellcheck="false"
+        rows="16"
+      ></textarea>
+    </div>
+  </div>
+
+  <!-- Status bar -->
+  <div id="status" class="mt-2 rounded-md px-3 py-1.5 text-sm font-medium hidden"></div>
+
+  <!-- Keyboard hint -->
+  <p class="mt-2 text-xs text-slate-400">
+    <kbd class="rounded border border-slate-300 bg-slate-100 px-1 py-0.5 font-mono text-slate-600">Ctrl</kbd>
+    +
+    <kbd class="rounded border border-slate-300 bg-slate-100 px-1 py-0.5 font-mono text-slate-600">Enter</kbd>
+    to format
+  </p>
+
+  <!-- ── Below-fold: SEO content ── -->
+  <div class="mt-16 max-w-3xl space-y-10">
+
+    <section aria-labelledby="format-vs-minify-heading">
+      <h2 id="format-vs-minify-heading" class="text-2xl font-bold text-slate-900">Format vs. minify — when to use each</h2>
+      <div class="prose mt-4 max-w-none">
+        <p>
+          <strong>Format (beautify)</strong> — adds consistent indentation and line breaks to make HTML
+          human-readable. Use this when inspecting third-party markup, debugging rendered HTML from
+          DevTools, or reviewing server-rendered templates. The output is functionally identical to
+          the input; only whitespace changes.
+        </p>
+        <p>
+          <strong>Minify</strong> — removes unnecessary whitespace, comments, and optional closing
+          tags to reduce file size. Use this in production where every kilobyte affects page load time.
+          Minified HTML is not meant for humans to read directly — keep the unminified source in version
+          control and minify as part of your build step.
+        </p>
+      </div>
+    </section>
+
+    <section aria-labelledby="html-indentation-heading">
+      <h2 id="html-indentation-heading" class="text-2xl font-bold text-slate-900">HTML formatting conventions</h2>
+      <div class="prose mt-4 max-w-none">
+        <p>This formatter uses 2-space indentation, matching the most common convention in web projects:</p>
+        <ul>
+          <li>Block-level elements (<code>div</code>, <code>section</code>, <code>article</code>, <code>main</code>, etc.) get their own line and indent their children.</li>
+          <li>Inline elements (<code>span</code>, <code>strong</code>, <code>em</code>, <code>a</code>) may remain inline within their parent's line when short.</li>
+          <li>Void elements (<code>br</code>, <code>hr</code>, <code>img</code>, <code>input</code>, <code>meta</code>, <code>link</code>) are self-closing by convention.</li>
+          <li>Attributes are preserved as-is; attribute sorting is not applied.</li>
+        </ul>
+      </div>
+    </section>
+
+  </div>
+
+  <script is:inline>
+    var input  = document.getElementById('html-input');
+    var output = document.getElementById('html-output');
+    var statusEl = document.getElementById('status');
+
+    var SAMPLE = '<html><head><meta charset="UTF-8"><title>My Page</title><link rel="stylesheet" href="style.css"></head><body><div class="container"><header><h1>Hello World</h1><nav><ul><li><a href="/">Home</a></li><li><a href="/about">About</a></li></ul></nav></header><main><p>Welcome to my <strong>page</strong>.</p></main></div></body></html>';
+
+    var VOID = { area:1,base:1,br:1,col:1,embed:1,hr:1,img:1,input:1,link:1,meta:1,param:1,source:1,track:1,wbr:1 };
+    var INLINE_TAGS = { a:1,abbr:1,acronym:1,b:1,bdo:1,big:1,br:1,cite:1,code:1,dfn:1,em:1,i:1,img:1,input:1,kbd:1,label:1,map:1,object:1,q:1,samp:1,select:1,small:1,span:1,strong:1,sub:1,sup:1,textarea:1,tt:1,u:1,var:1 };
+
+    function showStatus(msg, type) {
+      var clsMap = { error: 'bg-red-50 text-red-700 border border-red-200', success: 'bg-emerald-50 text-emerald-700 border border-emerald-200', info: 'bg-blue-50 text-blue-700 border border-blue-200' };
+      statusEl.className = 'mt-2 rounded-md px-3 py-1.5 text-sm font-medium ' + (clsMap[type] || 'bg-slate-100 text-slate-700');
+      statusEl.textContent = msg;
+      statusEl.classList.remove('hidden');
+    }
+
+    function formatHTML(src) {
+      var indent = 0;
+      var result = '';
+      var tokens = src.replace(/>\s*</g, '>\n<').split('\n');
+      tokens.forEach(function(tok) {
+        tok = tok.trim();
+        if (!tok) return;
+        var closeMatch = tok.match(/^<\/([a-zA-Z0-9]+)/);
+        var openMatch  = tok.match(/^<([a-zA-Z0-9]+)/);
+        var tag = openMatch ? openMatch[1].toLowerCase() : '';
+        var isClose = !!closeMatch;
+        var isVoid = VOID[tag];
+        var isSelfClose = tok.endsWith('/>');
+
+        if (isClose) indent = Math.max(0, indent - 1);
+        result += '  '.repeat(indent) + tok + '\n';
+        if (!isClose && !isVoid && !isSelfClose && openMatch) indent++;
+      });
+      return result.trim();
+    }
+
+    function minifyHTML(src) {
+      return src
+        .replace(/<!--[\s\S]*?-->/g, '')
+        .replace(/\s+/g, ' ')
+        .replace(/>\s</g, '><')
+        .replace(/\s+>/g, '>')
+        .replace(/<\s+/g, '<')
+        .trim();
+    }
+
+    function runFormat() {
+      if (!input.value.trim()) { showStatus('Paste some HTML first', 'info'); return; }
+      output.value = formatHTML(input.value);
+      showStatus('Formatted successfully', 'success');
+    }
+
+    document.getElementById('btn-format').addEventListener('click', runFormat);
+
+    document.getElementById('btn-minify').addEventListener('click', function() {
+      if (!input.value.trim()) { showStatus('Paste some HTML first', 'info'); return; }
+      var orig = input.value.length;
+      var result = minifyHTML(input.value);
+      output.value = result;
+      var saved = orig - result.length;
+      showStatus('Minified — saved ' + saved + ' bytes (' + ((saved / orig) * 100).toFixed(1) + '%)', 'success');
+    });
+
+    document.getElementById('btn-sample').addEventListener('click', function() {
+      input.value = SAMPLE;
+      output.value = '';
+      statusEl.classList.add('hidden');
+      input.focus();
+    });
+
+    document.getElementById('btn-clear').addEventListener('click', function() {
+      input.value = ''; output.value = '';
+      statusEl.classList.add('hidden');
+      input.focus();
+    });
+
+    document.getElementById('btn-copy').addEventListener('click', function() {
+      if (!output.value) { showStatus('Nothing to copy yet', 'info'); return; }
+      navigator.clipboard.writeText(output.value).then(function() {
+        showStatus('Copied to clipboard', 'success');
+      }, function() {
+        output.select(); document.execCommand('copy');
+        showStatus('Copied', 'success');
+      });
+    });
+
+    input.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) { e.preventDefault(); runFormat(); }
+    });
+  </script>
+
+</BaseLayout>

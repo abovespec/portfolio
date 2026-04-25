@@ -1,0 +1,189 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="SQL Formatter — Format &amp; Beautify SQL Online Free"
+  description="Free online SQL formatter. Beautify messy SQL queries with consistent indentation and keyword casing. Supports SELECT, INSERT, UPDATE, CREATE TABLE and more."
+>
+
+  <!-- Compact header -->
+  <header class="pb-4 pt-2">
+    <h1 class="text-3xl font-bold tracking-tight text-slate-900">
+      SQL Formatter
+    </h1>
+    <p class="mt-1.5 text-sm text-slate-500">
+      Beautify SQL queries with consistent indentation and UPPERCASE keywords — runs entirely in your browser.
+    </p>
+  </header>
+
+  <!-- Toolbar -->
+  <div class="flex flex-wrap gap-2 mb-3">
+    <button id="btn-format"  class="rounded-md bg-indigo-600 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-indigo-700 transition-colors">Format</button>
+    <button id="btn-minify"  class="rounded-md bg-slate-700 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-slate-800 transition-colors">Minify</button>
+    <button id="btn-sample"  class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Sample</button>
+    <div class="flex-1"></div>
+    <button id="btn-clear"   class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Clear</button>
+    <button id="btn-copy"    class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Copy output</button>
+  </div>
+
+  <!-- Dual-pane editor -->
+  <div class="grid gap-3 md:grid-cols-2 min-h-96">
+    <div class="flex flex-col gap-1 min-h-0">
+      <label for="sql-input" class="text-xs font-semibold uppercase tracking-wide text-slate-500">Input SQL</label>
+      <textarea
+        id="sql-input"
+        class="flex-1 w-full rounded-lg border border-slate-300 bg-slate-950 text-slate-100 p-4 font-mono text-sm resize-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 placeholder:text-slate-600"
+        placeholder="Paste your SQL query here"
+        spellcheck="false"
+        autocomplete="off"
+        rows="16"
+      ></textarea>
+    </div>
+    <div class="flex flex-col gap-1 min-h-0">
+      <label for="sql-output" class="text-xs font-semibold uppercase tracking-wide text-slate-500">Output</label>
+      <textarea
+        id="sql-output"
+        class="flex-1 w-full rounded-lg border border-slate-200 bg-slate-950 text-slate-100 p-4 font-mono text-sm resize-none"
+        readonly
+        placeholder="Result appears here"
+        spellcheck="false"
+        rows="16"
+      ></textarea>
+    </div>
+  </div>
+
+  <!-- Status bar -->
+  <div id="status" class="mt-2 rounded-md px-3 py-1.5 text-sm font-medium hidden"></div>
+
+  <!-- Keyboard hint -->
+  <p class="mt-2 text-xs text-slate-400">
+    <kbd class="rounded border border-slate-300 bg-slate-100 px-1 py-0.5 font-mono text-slate-600">Ctrl</kbd>
+    +
+    <kbd class="rounded border border-slate-300 bg-slate-100 px-1 py-0.5 font-mono text-slate-600">Enter</kbd>
+    to format
+  </p>
+
+  <!-- ── Below-fold: SEO content ── -->
+  <div class="mt-16 max-w-3xl space-y-10">
+
+    <section aria-labelledby="sql-formatting-heading">
+      <h2 id="sql-formatting-heading" class="text-2xl font-bold text-slate-900">SQL formatting conventions</h2>
+      <div class="prose mt-4 max-w-none">
+        <p>
+          This formatter applies the most common SQL style conventions:
+        </p>
+        <ul>
+          <li><strong>Keywords in UPPERCASE</strong> — <code>SELECT</code>, <code>FROM</code>, <code>WHERE</code>, <code>JOIN</code>, etc. Distinguishes reserved words from identifiers and table/column names.</li>
+          <li><strong>Major clauses on new lines</strong> — <code>SELECT</code>, <code>FROM</code>, <code>WHERE</code>, <code>GROUP BY</code>, <code>ORDER BY</code>, <code>HAVING</code>, <code>LIMIT</code> each start on their own line.</li>
+          <li><strong>JOIN conditions indented</strong> — <code>ON</code> clauses are indented under the JOIN keyword.</li>
+          <li><strong>Subqueries indented</strong> — nested SELECTs are indented inside parentheses.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="sql-style-heading">
+      <h2 id="sql-style-heading" class="text-2xl font-bold text-slate-900">Why SQL formatting matters</h2>
+      <div class="prose mt-4 max-w-none">
+        <p>
+          Production SQL queries are often written in tight windows, copied from ORMs, or extracted from
+          query logs — all of which produce minified, hard-to-read SQL. Formatting is the first step before:
+        </p>
+        <ul>
+          <li>Code review of database migrations.</li>
+          <li>Debugging a slow query by finding which subquery or JOIN needs an index.</li>
+          <li>Documenting complex queries in technical specs.</li>
+          <li>Converting raw query logs into readable queries for analysis.</li>
+        </ul>
+      </div>
+    </section>
+
+  </div>
+
+  <script is:inline>
+    var input  = document.getElementById('sql-input');
+    var output = document.getElementById('sql-output');
+    var statusEl = document.getElementById('status');
+
+    var SAMPLE = 'SELECT u.id, u.name, u.email, COUNT(o.id) as order_count, SUM(o.total) as total_spent FROM users u LEFT JOIN orders o ON u.id = o.user_id WHERE u.created_at > \'2024-01-01\' AND u.status = \'active\' GROUP BY u.id, u.name, u.email HAVING total_spent > 100 ORDER BY total_spent DESC LIMIT 50;';
+
+    var KEYWORDS = ['SELECT','FROM','WHERE','JOIN','INNER JOIN','LEFT JOIN','RIGHT JOIN','FULL JOIN','CROSS JOIN','ON','AND','OR','NOT','IN','EXISTS','BETWEEN','LIKE','IS NULL','IS NOT NULL','GROUP BY','ORDER BY','HAVING','LIMIT','OFFSET','UNION','UNION ALL','INTERSECT','EXCEPT','INSERT INTO','VALUES','UPDATE','SET','DELETE FROM','CREATE TABLE','CREATE INDEX','ALTER TABLE','DROP TABLE','ADD','COLUMN','PRIMARY KEY','FOREIGN KEY','REFERENCES','UNIQUE','DEFAULT','NOT NULL','CHECK','INDEX','WITH','AS','DISTINCT','ALL','CASE','WHEN','THEN','ELSE','END','COALESCE','NULLIF','CAST'];
+
+    function showStatus(msg, type) {
+      var clsMap = { error: 'bg-red-50 text-red-700 border border-red-200', success: 'bg-emerald-50 text-emerald-700 border border-emerald-200', info: 'bg-blue-50 text-blue-700 border border-blue-200' };
+      statusEl.className = 'mt-2 rounded-md px-3 py-1.5 text-sm font-medium ' + (clsMap[type] || 'bg-slate-100 text-slate-700');
+      statusEl.textContent = msg;
+      statusEl.classList.remove('hidden');
+    }
+
+    function upperKeywords(sql) {
+      KEYWORDS.forEach(function(kw) {
+        var re = new RegExp('\\b' + kw.replace(/\s+/g, '\\s+') + '\\b', 'gi');
+        sql = sql.replace(re, kw);
+      });
+      return sql;
+    }
+
+    var BREAK_BEFORE = ['SELECT','FROM','WHERE','LEFT JOIN','RIGHT JOIN','INNER JOIN','FULL JOIN','CROSS JOIN','JOIN','ON','GROUP BY','ORDER BY','HAVING','LIMIT','OFFSET','UNION ALL','UNION','INTERSECT','EXCEPT','INSERT INTO','VALUES','UPDATE','SET','DELETE FROM','WITH'];
+
+    function formatSQL(src) {
+      var sql = upperKeywords(src.replace(/\s+/g, ' ').trim());
+      BREAK_BEFORE.forEach(function(kw) {
+        var re = new RegExp('\\b' + kw.replace(/\s+/g, '\\s+') + '\\b', 'g');
+        sql = sql.replace(re, '\n' + kw);
+      });
+      sql = sql
+        .split('\n')
+        .map(function(line) {
+          line = line.trim();
+          if (!line) return '';
+          var isClause = BREAK_BEFORE.some(function(kw) { return line.startsWith(kw); });
+          return (isClause ? '' : '  ') + line;
+        })
+        .filter(function(l) { return l !== ''; })
+        .join('\n');
+      return sql.trim();
+    }
+
+    function runFormat() {
+      if (!input.value.trim()) { showStatus('Paste a SQL query first', 'info'); return; }
+      output.value = formatSQL(input.value);
+      showStatus('Formatted successfully', 'success');
+    }
+
+    document.getElementById('btn-format').addEventListener('click', runFormat);
+
+    document.getElementById('btn-minify').addEventListener('click', function() {
+      if (!input.value.trim()) { showStatus('Paste a SQL query first', 'info'); return; }
+      output.value = input.value.replace(/\s+/g, ' ').trim();
+      showStatus('Minified', 'success');
+    });
+
+    document.getElementById('btn-sample').addEventListener('click', function() {
+      input.value = SAMPLE;
+      output.value = '';
+      statusEl.classList.add('hidden');
+      input.focus();
+    });
+
+    document.getElementById('btn-clear').addEventListener('click', function() {
+      input.value = ''; output.value = '';
+      statusEl.classList.add('hidden');
+      input.focus();
+    });
+
+    document.getElementById('btn-copy').addEventListener('click', function() {
+      if (!output.value) { showStatus('Nothing to copy yet', 'info'); return; }
+      navigator.clipboard.writeText(output.value).then(function() {
+        showStatus('Copied to clipboard', 'success');
+      }, function() {
+        output.select(); document.execCommand('copy');
+        showStatus('Copied', 'success');
+      });
+    });
+
+    input.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) { e.preventDefault(); runFormat(); }
+    });
+  </script>
+
+</BaseLayout>

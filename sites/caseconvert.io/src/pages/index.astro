@@ -1,0 +1,214 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { siteConfig } from '~/config/site.config';
+import { getCollection } from 'astro:content';
+
+const recentPosts = siteConfig.features.hasBlog
+  ? (await getCollection('blog', ({ data }) => !data.draft))
+      .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
+      .slice(0, 3)
+  : [];
+---
+<BaseLayout
+  title="Case Converter — Convert Text to camelCase, snake_case, PascalCase &amp; More"
+  description="Free online case converter. Convert text to camelCase, snake_case, PascalCase, SCREAMING_SNAKE, kebab-case, Title Case, UPPERCASE, and lowercase instantly."
+>
+
+  <!-- Compact header -->
+  <header class="pb-4 pt-2">
+    <h1 class="text-3xl font-bold tracking-tight text-slate-900">
+      Case Converter
+    </h1>
+    <p class="mt-1.5 text-sm text-slate-500">
+      Convert text between camelCase, snake_case, PascalCase, kebab-case, and more — runs entirely in your browser.
+    </p>
+  </header>
+
+  <!-- Toolbar -->
+  <div class="flex flex-wrap gap-2 mb-3">
+    <button id="btn-camel"          class="rounded-md bg-amber-500 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-amber-600 transition-colors">camelCase</button>
+    <button id="btn-pascal"         class="rounded-md bg-amber-500 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-amber-600 transition-colors">PascalCase</button>
+    <button id="btn-snake"          class="rounded-md bg-amber-500 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-amber-600 transition-colors">snake_case</button>
+    <button id="btn-screaming"      class="rounded-md bg-amber-500 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-amber-600 transition-colors">SCREAMING_SNAKE</button>
+    <button id="btn-kebab"          class="rounded-md bg-amber-500 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-amber-600 transition-colors">kebab-case</button>
+    <button id="btn-title"          class="rounded-md bg-amber-500 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-amber-600 transition-colors">Title Case</button>
+    <button id="btn-upper"          class="rounded-md bg-amber-500 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-amber-600 transition-colors">UPPER</button>
+    <button id="btn-lower"          class="rounded-md bg-amber-500 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-amber-600 transition-colors">lower</button>
+    <div class="flex-1"></div>
+    <button id="btn-sample"  class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Sample</button>
+    <button id="btn-clear"   class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Clear</button>
+    <button id="btn-copy"    class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Copy output</button>
+  </div>
+
+  <!-- Dual-pane editor -->
+  <div class="grid gap-3 md:grid-cols-2 min-h-96">
+    <div class="flex flex-col gap-1 min-h-0">
+      <label for="cc-input" class="text-xs font-semibold uppercase tracking-wide text-slate-500">Input</label>
+      <textarea
+        id="cc-input"
+        class="flex-1 w-full rounded-lg border border-slate-300 bg-white p-4 font-mono text-sm resize-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 placeholder:text-slate-400"
+        placeholder="Paste text or variable names here"
+        spellcheck="false"
+        rows="16"
+      ></textarea>
+    </div>
+    <div class="flex flex-col gap-1 min-h-0">
+      <label for="cc-output" class="text-xs font-semibold uppercase tracking-wide text-slate-500">Output</label>
+      <textarea
+        id="cc-output"
+        class="flex-1 w-full rounded-lg border border-slate-200 bg-slate-950 text-slate-100 p-4 font-mono text-sm resize-none"
+        readonly
+        placeholder="Result appears here"
+        spellcheck="false"
+        rows="16"
+      ></textarea>
+    </div>
+  </div>
+
+  <!-- Status bar -->
+  <div id="status" class="mt-2 rounded-md px-3 py-1.5 text-sm font-medium hidden"></div>
+
+  <!-- ── Below-fold: SEO content ── -->
+  <div class="mt-16 max-w-3xl space-y-10">
+
+    <section aria-labelledby="case-types-heading">
+      <h2 id="case-types-heading" class="text-2xl font-bold text-slate-900">Naming case types explained</h2>
+      <div class="prose mt-4 max-w-none">
+        <ul>
+          <li><strong>camelCase</strong> — words joined with first letter of each word capitalized, except the first word. Standard in JavaScript variables, Java, C#, Go.</li>
+          <li><strong>PascalCase</strong> — same as camelCase but the first word is also capitalized. Standard for class names across most languages.</li>
+          <li><strong>snake_case</strong> — words separated by underscores, all lowercase. Standard in Python variables/functions, Ruby, SQL column names.</li>
+          <li><strong>SCREAMING_SNAKE_CASE</strong> — snake_case in all caps. Used for constants and environment variables.</li>
+          <li><strong>kebab-case</strong> — words separated by hyphens, all lowercase. Standard for CSS class names, HTML attributes, URL slugs, and CLI flags.</li>
+          <li><strong>Title Case</strong> — first letter of each word capitalized. Used in headings, book titles, and article titles.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="when-to-use-heading">
+      <h2 id="when-to-use-heading" class="text-2xl font-bold text-slate-900">Which case to use when</h2>
+      <div class="prose mt-4 max-w-none">
+        <p>Follow the conventions of your language or ecosystem — don't mix cases in the same context:</p>
+        <ul>
+          <li><strong>JavaScript / TypeScript:</strong> <code>camelCase</code> for variables and functions, <code>PascalCase</code> for classes and React components.</li>
+          <li><strong>Python:</strong> <code>snake_case</code> for variables and functions (PEP 8), <code>PascalCase</code> for classes, <code>SCREAMING_SNAKE_CASE</code> for module-level constants.</li>
+          <li><strong>CSS:</strong> <code>kebab-case</code> for class names and custom property names (<code>--my-color</code>).</li>
+          <li><strong>SQL:</strong> <code>snake_case</code> for table and column names. SCREAMING_SNAKE for SQL keywords (stylistic, not required).</li>
+          <li><strong>URLs:</strong> <code>kebab-case</code>. Google recommends hyphens over underscores for separating words in URLs.</li>
+          <li><strong>Environment variables:</strong> <code>SCREAMING_SNAKE_CASE</code> by universal convention.</li>
+        </ul>
+      </div>
+    </section>
+
+  </div>
+
+  {recentPosts.length > 0 && (
+    <section class="mt-16" aria-labelledby="articles-heading">
+      <h2 id="articles-heading" class="text-2xl font-bold text-slate-900">Developer Guides</h2>
+      <ul class="mt-6 grid gap-4 sm:grid-cols-3">
+        {recentPosts.map((post) => (
+          <li>
+            <a
+              href={`/blog/${post.slug}/`}
+              class="group block rounded-xl border border-slate-200 bg-white p-5 transition hover:border-amber-400 hover:shadow-sm"
+            >
+              <time
+                datetime={post.data.publishDate.toISOString()}
+                class="text-xs font-medium uppercase tracking-wide text-slate-400"
+              >
+                {post.data.publishDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+              </time>
+              <h3 class="mt-1 text-base font-semibold text-slate-900 group-hover:text-amber-700">{post.data.title}</h3>
+              <p class="mt-2 line-clamp-2 text-sm text-slate-600">{post.data.description}</p>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <div class="mt-6">
+        <a href="/blog/" class="text-sm font-medium text-amber-700 underline underline-offset-2 hover:text-amber-800">
+          View all guides →
+        </a>
+      </div>
+    </section>
+  )}
+
+  <script is:inline>
+    var input = document.getElementById('cc-input');
+    var output = document.getElementById('cc-output');
+    var statusEl = document.getElementById('status');
+    var SAMPLE = 'hello world\nfoo bar baz\nmy variable name\nHTTP response code\nconvertTextToCase';
+
+    function showStatus(msg, type) {
+      var clsMap = { error: 'bg-red-50 text-red-700 border border-red-200', success: 'bg-emerald-50 text-emerald-700 border border-emerald-200', info: 'bg-blue-50 text-blue-700 border border-blue-200' };
+      statusEl.className = 'mt-2 rounded-md px-3 py-1.5 text-sm font-medium ' + (clsMap[type] || 'bg-slate-100 text-slate-700');
+      statusEl.textContent = msg;
+      statusEl.classList.remove('hidden');
+    }
+
+    function tokenize(str) {
+      return str
+        .replace(/([a-z])([A-Z])/g, '$1 $2')
+        .replace(/([A-Z]+)([A-Z][a-z])/g, '$1 $2')
+        .replace(/[-_]+/g, ' ')
+        .trim()
+        .split(/\s+/)
+        .filter(Boolean);
+    }
+
+    function convertLine(line, mode) {
+      if (!line.trim()) return '';
+      var tokens = tokenize(line);
+      if (mode === 'camel') return tokens.map(function(t, i) { return i === 0 ? t.toLowerCase() : t[0].toUpperCase() + t.slice(1).toLowerCase(); }).join('');
+      if (mode === 'pascal') return tokens.map(function(t) { return t[0].toUpperCase() + t.slice(1).toLowerCase(); }).join('');
+      if (mode === 'snake') return tokens.map(function(t) { return t.toLowerCase(); }).join('_');
+      if (mode === 'screaming') return tokens.map(function(t) { return t.toUpperCase(); }).join('_');
+      if (mode === 'kebab') return tokens.map(function(t) { return t.toLowerCase(); }).join('-');
+      if (mode === 'title') return tokens.map(function(t) { return t[0].toUpperCase() + t.slice(1).toLowerCase(); }).join(' ');
+      if (mode === 'upper') return line.toUpperCase();
+      if (mode === 'lower') return line.toLowerCase();
+      return line;
+    }
+
+    function convert(mode) {
+      if (!input.value.trim()) { showStatus('Paste some text first', 'info'); return; }
+      var lines = input.value.split('\n');
+      output.value = lines.map(function(l) { return convertLine(l, mode); }).join('\n');
+      showStatus('Converted to ' + mode, 'success');
+    }
+
+    document.getElementById('btn-camel').addEventListener('click', function() { convert('camel'); });
+    document.getElementById('btn-pascal').addEventListener('click', function() { convert('pascal'); });
+    document.getElementById('btn-snake').addEventListener('click', function() { convert('snake'); });
+    document.getElementById('btn-screaming').addEventListener('click', function() { convert('screaming'); });
+    document.getElementById('btn-kebab').addEventListener('click', function() { convert('kebab'); });
+    document.getElementById('btn-title').addEventListener('click', function() { convert('title'); });
+    document.getElementById('btn-upper').addEventListener('click', function() { convert('upper'); });
+    document.getElementById('btn-lower').addEventListener('click', function() { convert('lower'); });
+
+    document.getElementById('btn-sample').addEventListener('click', function() {
+      input.value = SAMPLE;
+      output.value = '';
+      statusEl.classList.add('hidden');
+      input.focus();
+    });
+
+    document.getElementById('btn-clear').addEventListener('click', function() {
+      input.value = '';
+      output.value = '';
+      statusEl.classList.add('hidden');
+      input.focus();
+    });
+
+    document.getElementById('btn-copy').addEventListener('click', function() {
+      if (!output.value) { showStatus('Nothing to copy yet', 'info'); return; }
+      navigator.clipboard.writeText(output.value).then(function() {
+        showStatus('Copied to clipboard', 'success');
+      }, function() {
+        output.select();
+        document.execCommand('copy');
+        showStatus('Copied', 'success');
+      });
+    });
+  </script>
+
+</BaseLayout>

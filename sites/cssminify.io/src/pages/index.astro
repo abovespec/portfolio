@@ -1,0 +1,207 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="CSS Minifier — Minify &amp; Beautify CSS Online Free"
+  description="Free online CSS minifier and beautifier. Remove whitespace, comments, and redundant code from your CSS. Runs entirely in your browser."
+>
+
+  <!-- Compact header -->
+  <header class="pb-4 pt-2">
+    <h1 class="text-3xl font-bold tracking-tight text-slate-900">
+      CSS Minifier &amp; Beautifier
+    </h1>
+    <p class="mt-1.5 text-sm text-slate-500">
+      Minify or beautify CSS instantly — removes whitespace, comments, and redundant rules. Runs entirely in your browser.
+    </p>
+  </header>
+
+  <!-- Toolbar -->
+  <div class="flex flex-wrap gap-2 mb-3">
+    <button id="btn-minify"   class="rounded-md bg-teal-600 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-teal-700 transition-colors">Minify</button>
+    <button id="btn-beautify" class="rounded-md bg-slate-700 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-slate-800 transition-colors">Beautify</button>
+    <button id="btn-sample"   class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Sample</button>
+    <div class="flex-1"></div>
+    <button id="btn-clear"    class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Clear</button>
+    <button id="btn-copy"     class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Copy output</button>
+  </div>
+
+  <!-- Dual-pane editor -->
+  <div class="grid gap-3 md:grid-cols-2 min-h-96">
+    <div class="flex flex-col gap-1 min-h-0">
+      <label for="css-input" class="text-xs font-semibold uppercase tracking-wide text-slate-500">Input CSS</label>
+      <textarea
+        id="css-input"
+        class="flex-1 w-full rounded-lg border border-slate-300 bg-slate-950 text-slate-100 p-4 font-mono text-sm resize-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500 placeholder:text-slate-600"
+        placeholder="Paste your CSS here"
+        spellcheck="false"
+        autocomplete="off"
+        rows="16"
+      ></textarea>
+    </div>
+    <div class="flex flex-col gap-1 min-h-0">
+      <label for="css-output" class="text-xs font-semibold uppercase tracking-wide text-slate-500">Output</label>
+      <textarea
+        id="css-output"
+        class="flex-1 w-full rounded-lg border border-slate-200 bg-slate-950 text-slate-100 p-4 font-mono text-sm resize-none"
+        readonly
+        placeholder="Result appears here"
+        spellcheck="false"
+        rows="16"
+      ></textarea>
+    </div>
+  </div>
+
+  <!-- Status bar -->
+  <div id="status" class="mt-2 rounded-md px-3 py-1.5 text-sm font-medium hidden"></div>
+
+  <!-- Keyboard hint -->
+  <p class="mt-2 text-xs text-slate-400">
+    <kbd class="rounded border border-slate-300 bg-slate-100 px-1 py-0.5 font-mono text-slate-600">Ctrl</kbd>
+    +
+    <kbd class="rounded border border-slate-300 bg-slate-100 px-1 py-0.5 font-mono text-slate-600">Enter</kbd>
+    to minify
+  </p>
+
+  <!-- ── Below-fold: SEO content ── -->
+  <div class="mt-16 max-w-3xl space-y-10">
+
+    <section aria-labelledby="why-minify-heading">
+      <h2 id="why-minify-heading" class="text-2xl font-bold text-slate-900">Why minify CSS?</h2>
+      <div class="prose mt-4 max-w-none">
+        <p>
+          CSS minification removes unnecessary whitespace, comments, and redundant code from your stylesheet,
+          reducing file size without changing any functionality. Smaller files mean faster network transfer
+          and improved Core Web Vitals scores — particularly LCP (Largest Contentful Paint) and FCP
+          (First Contentful Paint), which Google uses as ranking signals.
+        </p>
+        <p>
+          A typical production stylesheet can shrink 30–60% after minification. For render-blocking CSS
+          in the <code>&lt;head&gt;</code>, every kilobyte counts.
+        </p>
+      </div>
+    </section>
+
+    <section aria-labelledby="what-minify-removes-heading">
+      <h2 id="what-minify-removes-heading" class="text-2xl font-bold text-slate-900">What this minifier removes</h2>
+      <div class="prose mt-4 max-w-none">
+        <ul>
+          <li><strong>Whitespace</strong> — spaces, tabs, and line breaks between tokens.</li>
+          <li><strong>Comments</strong> — <code>/* all comments */</code> including <code>/*! preserved */</code> annotations.</li>
+          <li><strong>Trailing semicolons</strong> — the last declaration in a rule block doesn't need a semicolon.</li>
+          <li><strong>Redundant units</strong> — <code>0px</code> becomes <code>0</code>.</li>
+          <li><strong>Color shorthand</strong> — <code>#ffffff</code> becomes <code>#fff</code>.</li>
+        </ul>
+        <p>
+          The beautifier adds back consistent indentation and line breaks for human readability —
+          useful when working with minified third-party CSS that you need to inspect or modify.
+        </p>
+      </div>
+    </section>
+
+    <section aria-labelledby="workflow-heading">
+      <h2 id="workflow-heading" class="text-2xl font-bold text-slate-900">CSS minification in your build pipeline</h2>
+      <div class="prose mt-4 max-w-none">
+        <p>
+          For production projects, integrate CSS minification into your build pipeline rather than doing it
+          manually. Common options:
+        </p>
+        <ul>
+          <li><strong>Vite / Rollup</strong> — built-in CSS minification with <code>cssnano</code> in production builds.</li>
+          <li><strong>PostCSS + cssnano</strong> — the most configurable option; runs as a PostCSS plugin.</li>
+          <li><strong>esbuild</strong> — fast minifier with <code>--minify-css</code> flag.</li>
+          <li><strong>webpack css-minimizer-webpack-plugin</strong> — wraps cssnano for webpack projects.</li>
+        </ul>
+        <p>
+          This online tool is ideal for one-off minification, inspecting third-party stylesheets,
+          or when you don't have a build pipeline available.
+        </p>
+      </div>
+    </section>
+
+  </div>
+
+  <script is:inline>
+    var input  = document.getElementById('css-input');
+    var output = document.getElementById('css-output');
+    var statusEl = document.getElementById('status');
+
+    var SAMPLE = '/* Navigation styles */\n.nav {\n  display: flex;\n  align-items: center;\n  background-color: #ffffff;\n  padding: 16px 24px;\n  border-bottom: 1px solid #e2e8f0;\n}\n\n.nav-link {\n  color: #1e40af;\n  text-decoration: none;\n  font-size: 14px;\n  font-weight: 500;\n  padding: 0px 12px;\n  transition: color 0.2s ease;\n}\n\n.nav-link:hover {\n  color: #1d4ed8;\n}';
+
+    function showStatus(msg, type) {
+      var clsMap = { error: 'bg-red-50 text-red-700 border border-red-200', success: 'bg-emerald-50 text-emerald-700 border border-emerald-200', info: 'bg-blue-50 text-blue-700 border border-blue-200' };
+      statusEl.className = 'mt-2 rounded-md px-3 py-1.5 text-sm font-medium ' + (clsMap[type] || 'bg-slate-100 text-slate-700');
+      statusEl.textContent = msg;
+      statusEl.classList.remove('hidden');
+    }
+
+    function minifyCSS(src) {
+      return src
+        .replace(/\/\*[\s\S]*?\*\//g, '')
+        .replace(/\s*([{};:,>~+])\s*/g, '$1')
+        .replace(/\s+/g, ' ')
+        .replace(/;}/g, '}')
+        .replace(/\b0(px|em|rem|%|vh|vw)/g, '0')
+        .replace(/#([0-9a-fA-F])\1([0-9a-fA-F])\2([0-9a-fA-F])\3/g, '#$1$2$3')
+        .trim();
+    }
+
+    function beautifyCSS(src) {
+      var result = src
+        .replace(/\s*\{\s*/g, ' {\n  ')
+        .replace(/;\s*/g, ';\n  ')
+        .replace(/\s*\}\s*/g, '\n}\n')
+        .replace(/,\s*/g, ',\n')
+        .replace(/  \n}/g, '\n}')
+        .replace(/\n{3,}/g, '\n\n')
+        .trim();
+      return result;
+    }
+
+    function runMinify() {
+      if (!input.value.trim()) { showStatus('Paste some CSS first', 'info'); return; }
+      var orig = input.value.length;
+      var result = minifyCSS(input.value);
+      output.value = result;
+      var saved = orig - result.length;
+      var pct = ((saved / orig) * 100).toFixed(1);
+      showStatus('Minified — saved ' + saved + ' bytes (' + pct + '%)', 'success');
+    }
+
+    document.getElementById('btn-minify').addEventListener('click', runMinify);
+
+    document.getElementById('btn-beautify').addEventListener('click', function() {
+      if (!input.value.trim()) { showStatus('Paste some CSS first', 'info'); return; }
+      output.value = beautifyCSS(input.value);
+      showStatus('Beautified', 'success');
+    });
+
+    document.getElementById('btn-sample').addEventListener('click', function() {
+      input.value = SAMPLE;
+      output.value = '';
+      statusEl.classList.add('hidden');
+      input.focus();
+    });
+
+    document.getElementById('btn-clear').addEventListener('click', function() {
+      input.value = ''; output.value = '';
+      statusEl.classList.add('hidden');
+      input.focus();
+    });
+
+    document.getElementById('btn-copy').addEventListener('click', function() {
+      if (!output.value) { showStatus('Nothing to copy yet', 'info'); return; }
+      navigator.clipboard.writeText(output.value).then(function() {
+        showStatus('Copied to clipboard', 'success');
+      }, function() {
+        output.select(); document.execCommand('copy');
+        showStatus('Copied', 'success');
+      });
+    });
+
+    input.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) { e.preventDefault(); runMinify(); }
+    });
+  </script>
+
+</BaseLayout>
