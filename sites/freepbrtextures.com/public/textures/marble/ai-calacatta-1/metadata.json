@@ -1,0 +1,17 @@
+{
+  "title": "Ai Calacatta 1",
+  "description": "Seamless 4K AI-generated marble texture. Photorealistic PBR material.",
+  "category": "marble",
+  "seed": 4294717305,
+  "seedName": "ai-calacatta-1",
+  "prompt": "seamless photorealistic texture of calacatta marble surface, bright white marble with bold dramatic gold and gray veining, luxury Italian marble, polished mirror finish, tileable, 4K PBR material",
+  "params": {
+    "roughness": 0.6,
+    "metallic": 0.0
+  },
+  "shape": [
+    4096,
+    4096
+  ],
+  "generatedDate": "2026-04-25"
+}

@@ -1,0 +1,17 @@
+{
+  "title": "Ai Denim 1",
+  "description": "Seamless 4K AI-generated fabric texture. Photorealistic PBR material.",
+  "category": "fabric",
+  "seed": 3546250233,
+  "seedName": "ai-denim-1",
+  "prompt": "seamless photorealistic texture of blue denim fabric material, classic indigo blue diagonal twill weave pattern, cotton jeans fabric, detailed textile look, tileable, 4K PBR material",
+  "params": {
+    "roughness": 0.6,
+    "metallic": 0.0
+  },
+  "shape": [
+    4096,
+    4096
+  ],
+  "generatedDate": "2026-04-25"
+}

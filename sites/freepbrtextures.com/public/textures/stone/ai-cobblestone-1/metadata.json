@@ -1,0 +1,17 @@
+{
+  "title": "Ai Cobblestone 1",
+  "description": "Seamless 4K AI-generated stone texture. Photorealistic PBR material.",
+  "category": "stone",
+  "seed": 3222782469,
+  "seedName": "ai-cobblestone-1",
+  "prompt": "seamless photorealistic texture of weathered cobblestone pavement, rounded gray stones with worn aged mortar joints, old European street paving stones, tileable, 4K PBR material",
+  "params": {
+    "roughness": 0.6,
+    "metallic": 0.0
+  },
+  "shape": [
+    4096,
+    4096
+  ],
+  "generatedDate": "2026-04-25"
+}

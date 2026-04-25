@@ -1,0 +1,17 @@
+{
+  "title": "Ai Slate 1",
+  "description": "Seamless 4K AI-generated stone texture. Photorealistic PBR material.",
+  "category": "stone",
+  "seed": 932742504,
+  "seedName": "ai-slate-1",
+  "prompt": "seamless photorealistic texture of rough slate rock surface, fine-grained dark gray layered slate stone, natural cleavage planes, matte rough texture, tileable, 4K PBR material",
+  "params": {
+    "roughness": 0.6,
+    "metallic": 0.0
+  },
+  "shape": [
+    4096,
+    4096
+  ],
+  "generatedDate": "2026-04-25"
+}
