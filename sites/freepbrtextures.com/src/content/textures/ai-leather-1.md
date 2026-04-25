@@ -1,6 +1,6 @@
 ---
-title: "Leather 2"
-description: "Seamless 4K procedural leather texture."
+title: "Ai Leather 1"
+description: "Seamless 4K AI-generated leather texture. Photorealistic PBR material."
 category: "leather"
 tags:
   - "leather"
@@ -17,23 +17,23 @@ maps:
   metallic: False
   height: false
 license: "CC0"
-seed: "885799482"
+seed: "2543059558"
 generatedDate: "2026-04-24"
 publishDate: "2026-04-24"
-urlSlug: "leather-2"
-thumbnail: "/textures/leather/leather-2/thumbnail.png"
-preview: "/textures/leather/leather-2/preview.png"
-fullSize: "/textures/leather/leather-2/albedo.png"
+urlSlug: "ai-leather-1"
+thumbnail: "/textures/leather/ai-leather-1/thumbnail.png"
+preview: "/textures/leather/ai-leather-1/preview.png"
+fullSize: "/textures/leather/ai-leather-1/albedo.png"
 draft: false
 ---
 
-Seamless 4K procedural leather texture.
+Seamless 4K AI-generated leather texture. Photorealistic PBR material.
 
 ## Maps included
 
-- **Albedo** — 4K color map
-- **Normal** — 4K tangent-space normal map  
-- **Roughness** — 4K surface roughness map
+- **Albedo** --- 4K color map
+- **Normal** --- 4K tangent-space normal map  
+- **Roughness** --- 4K surface roughness map
 
 ## Details
 

@@ -197,7 +197,18 @@ body {
   background: var(--surface);
 }
 
-/* Texture card grid */
+/* Override prose list styles for card grids — RelatedPosts, etc.
+   The .prose ul/ol default padding and list-style fight with Tailwind's
+   list-none on components that live inside a prose container.
+   Note: Tailwind v4 uses logical properties (padding-inline-start),
+   not padding-left. */
+.prose ul.grid,
+.prose ol.grid {
+  list-style: none !important;
+  padding-left: 0 !important;
+  padding-inline-start: 0 !important;
+  margin-left: 0 !important;
+}
 .texture-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));

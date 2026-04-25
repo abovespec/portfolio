@@ -41,7 +41,436 @@ importers:
         specifier: ^5.9.3
         version: 5.9.3
 
+  sites/agecalc.io:
+    dependencies:
+      '@astrojs/check':
+        specifier: ^0.9.4
+        version: 0.9.8(prettier@3.8.3)(typescript@5.9.3)
+      '@astrojs/mdx':
+        specifier: ^4.3.6
+        version: 4.3.14(astro@5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3))
+      '@astrojs/preact':
+        specifier: ^4.1.3
+        version: 4.1.3(@babel/core@7.29.0)(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(preact@10.29.1)(rollup@4.60.2)(yaml@2.8.3)
+      '@astrojs/rss':
+        specifier: ^4.0.12
+        version: 4.0.18
+      '@astrojs/sitemap':
+        specifier: ^3.6.0
+        version: 3.7.2
+      '@tailwindcss/vite':
+        specifier: ^4.1.16
+        version: 4.2.4(vite@7.3.2(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(yaml@2.8.3))
+      astro:
+        specifier: ^5.15.0
+        version: 5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3)
+      preact:
+        specifier: ^10.27.2
+        version: 10.29.1
+      tailwindcss:
+        specifier: ^4.1.16
+        version: 4.2.4
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
+
+  sites/amortcalc.io:
+    dependencies:
+      '@astrojs/check':
+        specifier: ^0.9.4
+        version: 0.9.8(prettier@3.8.3)(typescript@5.9.3)
+      '@astrojs/mdx':
+        specifier: ^4.3.6
+        version: 4.3.14(astro@5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3))
+      '@astrojs/preact':
+        specifier: ^4.1.3
+        version: 4.1.3(@babel/core@7.29.0)(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(preact@10.29.1)(rollup@4.60.2)(yaml@2.8.3)
+      '@astrojs/rss':
+        specifier: ^4.0.12
+        version: 4.0.18
+      '@astrojs/sitemap':
+        specifier: ^3.6.0
+        version: 3.7.2
+      '@tailwindcss/vite':
+        specifier: ^4.1.16
+        version: 4.2.4(vite@7.3.2(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(yaml@2.8.3))
+      astro:
+        specifier: ^5.15.0
+        version: 5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3)
+      preact:
+        specifier: ^10.27.2
+        version: 10.29.1
+      tailwindcss:
+        specifier: ^4.1.16
+        version: 4.2.4
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
+
+  sites/bmicalc.io:
+    dependencies:
+      '@astrojs/check':
+        specifier: ^0.9.4
+        version: 0.9.8(prettier@3.8.3)(typescript@5.9.3)
+      '@astrojs/mdx':
+        specifier: ^4.3.6
+        version: 4.3.14(astro@5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3))
+      '@astrojs/preact':
+        specifier: ^4.1.3
+        version: 4.1.3(@babel/core@7.29.0)(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(preact@10.29.1)(rollup@4.60.2)(yaml@2.8.3)
+      '@astrojs/rss':
+        specifier: ^4.0.12
+        version: 4.0.18
+      '@astrojs/sitemap':
+        specifier: ^3.6.0
+        version: 3.7.2
+      '@tailwindcss/vite':
+        specifier: ^4.1.16
+        version: 4.2.4(vite@7.3.2(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(yaml@2.8.3))
+      astro:
+        specifier: ^5.15.0
+        version: 5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3)
+      preact:
+        specifier: ^10.27.2
+        version: 10.29.1
+      tailwindcss:
+        specifier: ^4.1.16
+        version: 4.2.4
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
+
+  sites/caseconvert.io:
+    dependencies:
+      '@astrojs/check':
+        specifier: ^0.9.4
+        version: 0.9.8(prettier@3.8.3)(typescript@5.9.3)
+      '@astrojs/mdx':
+        specifier: ^4.3.6
+        version: 4.3.14(astro@5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3))
+      '@astrojs/preact':
+        specifier: ^4.1.3
+        version: 4.1.3(@babel/core@7.29.0)(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(preact@10.29.1)(rollup@4.60.2)(yaml@2.8.3)
+      '@astrojs/rss':
+        specifier: ^4.0.12
+        version: 4.0.18
+      '@astrojs/sitemap':
+        specifier: ^3.6.0
+        version: 3.7.2
+      '@tailwindcss/vite':
+        specifier: ^4.1.16
+        version: 4.2.4(vite@7.3.2(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(yaml@2.8.3))
+      astro:
+        specifier: ^5.15.0
+        version: 5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3)
+      preact:
+        specifier: ^10.27.2
+        version: 10.29.1
+      tailwindcss:
+        specifier: ^4.1.16
+        version: 4.2.4
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
+
+  sites/citefast.io:
+    dependencies:
+      '@astrojs/check':
+        specifier: ^0.9.4
+        version: 0.9.8(prettier@3.8.3)(typescript@5.9.3)
+      '@astrojs/mdx':
+        specifier: ^4.3.6
+        version: 4.3.14(astro@5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3))
+      '@astrojs/preact':
+        specifier: ^4.1.3
+        version: 4.1.3(@babel/core@7.29.0)(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(preact@10.29.1)(rollup@4.60.2)(yaml@2.8.3)
+      '@astrojs/rss':
+        specifier: ^4.0.12
+        version: 4.0.18
+      '@astrojs/sitemap':
+        specifier: ^3.6.0
+        version: 3.7.2
+      '@tailwindcss/vite':
+        specifier: ^4.1.16
+        version: 4.2.4(vite@7.3.2(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(yaml@2.8.3))
+      astro:
+        specifier: ^5.15.0
+        version: 5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3)
+      preact:
+        specifier: ^10.27.2
+        version: 10.29.1
+      tailwindcss:
+        specifier: ^4.1.16
+        version: 4.2.4
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
+
+  sites/colorpalette.io:
+    dependencies:
+      '@astrojs/check':
+        specifier: ^0.9.4
+        version: 0.9.8(prettier@3.8.3)(typescript@5.9.3)
+      '@astrojs/mdx':
+        specifier: ^4.3.6
+        version: 4.3.14(astro@5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3))
+      '@astrojs/preact':
+        specifier: ^4.1.3
+        version: 4.1.3(@babel/core@7.29.0)(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(preact@10.29.1)(rollup@4.60.2)(yaml@2.8.3)
+      '@astrojs/rss':
+        specifier: ^4.0.12
+        version: 4.0.18
+      '@astrojs/sitemap':
+        specifier: ^3.6.0
+        version: 3.7.2
+      '@tailwindcss/vite':
+        specifier: ^4.1.16
+        version: 4.2.4(vite@7.3.2(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(yaml@2.8.3))
+      astro:
+        specifier: ^5.15.0
+        version: 5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3)
+      preact:
+        specifier: ^10.27.2
+        version: 10.29.1
+      tailwindcss:
+        specifier: ^4.1.16
+        version: 4.2.4
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
+
+  sites/crontab.io:
+    dependencies:
+      '@astrojs/check':
+        specifier: ^0.9.4
+        version: 0.9.8(prettier@3.8.3)(typescript@5.9.3)
+      '@astrojs/mdx':
+        specifier: ^4.3.6
+        version: 4.3.14(astro@5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3))
+      '@astrojs/preact':
+        specifier: ^4.1.3
+        version: 4.1.3(@babel/core@7.29.0)(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(preact@10.29.1)(rollup@4.60.2)(yaml@2.8.3)
+      '@astrojs/rss':
+        specifier: ^4.0.12
+        version: 4.0.18
+      '@astrojs/sitemap':
+        specifier: ^3.6.0
+        version: 3.7.2
+      '@tailwindcss/vite':
+        specifier: ^4.1.16
+        version: 4.2.4(vite@7.3.2(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(yaml@2.8.3))
+      astro:
+        specifier: ^5.15.0
+        version: 5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3)
+      preact:
+        specifier: ^10.27.2
+        version: 10.29.1
+      tailwindcss:
+        specifier: ^4.1.16
+        version: 4.2.4
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
+
+  sites/cssminify.io:
+    dependencies:
+      '@astrojs/check':
+        specifier: ^0.9.4
+        version: 0.9.8(prettier@3.8.3)(typescript@5.9.3)
+      '@astrojs/mdx':
+        specifier: ^4.3.6
+        version: 4.3.14(astro@5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3))
+      '@astrojs/preact':
+        specifier: ^4.1.3
+        version: 4.1.3(@babel/core@7.29.0)(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(preact@10.29.1)(rollup@4.60.2)(yaml@2.8.3)
+      '@astrojs/rss':
+        specifier: ^4.0.12
+        version: 4.0.18
+      '@astrojs/sitemap':
+        specifier: ^3.6.0
+        version: 3.7.2
+      '@tailwindcss/vite':
+        specifier: ^4.1.16
+        version: 4.2.4(vite@7.3.2(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(yaml@2.8.3))
+      astro:
+        specifier: ^5.15.0
+        version: 5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3)
+      preact:
+        specifier: ^10.27.2
+        version: 10.29.1
+      tailwindcss:
+        specifier: ^4.1.16
+        version: 4.2.4
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
+
+  sites/encodeonline.io:
+    dependencies:
+      '@astrojs/check':
+        specifier: ^0.9.4
+        version: 0.9.8(prettier@3.8.3)(typescript@5.9.3)
+      '@astrojs/mdx':
+        specifier: ^4.3.6
+        version: 4.3.14(astro@5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3))
+      '@astrojs/preact':
+        specifier: ^4.1.3
+        version: 4.1.3(@babel/core@7.29.0)(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(preact@10.29.1)(rollup@4.60.2)(yaml@2.8.3)
+      '@astrojs/rss':
+        specifier: ^4.0.12
+        version: 4.0.18
+      '@astrojs/sitemap':
+        specifier: ^3.6.0
+        version: 3.7.2
+      '@tailwindcss/vite':
+        specifier: ^4.1.16
+        version: 4.2.4(vite@7.3.2(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(yaml@2.8.3))
+      astro:
+        specifier: ^5.15.0
+        version: 5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3)
+      preact:
+        specifier: ^10.27.2
+        version: 10.29.1
+      tailwindcss:
+        specifier: ^4.1.16
+        version: 4.2.4
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
+
+  sites/favicongen.io:
+    dependencies:
+      '@astrojs/check':
+        specifier: ^0.9.4
+        version: 0.9.8(prettier@3.8.3)(typescript@5.9.3)
+      '@astrojs/mdx':
+        specifier: ^4.3.6
+        version: 4.3.14(astro@5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3))
+      '@astrojs/preact':
+        specifier: ^4.1.3
+        version: 4.1.3(@babel/core@7.29.0)(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(preact@10.29.1)(rollup@4.60.2)(yaml@2.8.3)
+      '@astrojs/rss':
+        specifier: ^4.0.12
+        version: 4.0.18
+      '@astrojs/sitemap':
+        specifier: ^3.6.0
+        version: 3.7.2
+      '@tailwindcss/vite':
+        specifier: ^4.1.16
+        version: 4.2.4(vite@7.3.2(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(yaml@2.8.3))
+      astro:
+        specifier: ^5.15.0
+        version: 5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3)
+      preact:
+        specifier: ^10.27.2
+        version: 10.29.1
+      tailwindcss:
+        specifier: ^4.1.16
+        version: 4.2.4
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
+
+  sites/financalc.io:
+    dependencies:
+      '@astrojs/check':
+        specifier: ^0.9.4
+        version: 0.9.8(prettier@3.8.3)(typescript@5.9.3)
+      '@astrojs/mdx':
+        specifier: ^4.3.6
+        version: 4.3.14(astro@5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3))
+      '@astrojs/preact':
+        specifier: ^4.1.3
+        version: 4.1.3(@babel/core@7.29.0)(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(preact@10.29.1)(rollup@4.60.2)(yaml@2.8.3)
+      '@astrojs/rss':
+        specifier: ^4.0.12
+        version: 4.0.18
+      '@astrojs/sitemap':
+        specifier: ^3.6.0
+        version: 3.7.2
+      '@tailwindcss/vite':
+        specifier: ^4.1.16
+        version: 4.2.4(vite@7.3.2(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(yaml@2.8.3))
+      astro:
+        specifier: ^5.15.0
+        version: 5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3)
+      preact:
+        specifier: ^10.27.2
+        version: 10.29.1
+      tailwindcss:
+        specifier: ^4.1.16
+        version: 4.2.4
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
+
+  sites/flexplay.io:
+    dependencies:
+      '@astrojs/check':
+        specifier: ^0.9.4
+        version: 0.9.8(prettier@3.8.3)(typescript@5.9.3)
+      '@astrojs/mdx':
+        specifier: ^4.3.6
+        version: 4.3.14(astro@5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3))
+      '@astrojs/preact':
+        specifier: ^4.1.3
+        version: 4.1.3(@babel/core@7.29.0)(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(preact@10.29.1)(rollup@4.60.2)(yaml@2.8.3)
+      '@astrojs/rss':
+        specifier: ^4.0.12
+        version: 4.0.18
+      '@astrojs/sitemap':
+        specifier: ^3.6.0
+        version: 3.7.2
+      '@tailwindcss/vite':
+        specifier: ^4.1.16
+        version: 4.2.4(vite@7.3.2(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(yaml@2.8.3))
+      astro:
+        specifier: ^5.15.0
+        version: 5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3)
+      preact:
+        specifier: ^10.27.2
+        version: 10.29.1
+      tailwindcss:
+        specifier: ^4.1.16
+        version: 4.2.4
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
+
   sites/freepbrtextures.com:
+    dependencies:
+      '@astrojs/check':
+        specifier: ^0.9.4
+        version: 0.9.8(prettier@3.8.3)(typescript@5.9.3)
+      '@astrojs/mdx':
+        specifier: ^4.3.6
+        version: 4.3.14(astro@5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3))
+      '@astrojs/preact':
+        specifier: ^4.1.3
+        version: 4.1.3(@babel/core@7.29.0)(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(preact@10.29.1)(rollup@4.60.2)(yaml@2.8.3)
+      '@astrojs/rss':
+        specifier: ^4.0.12
+        version: 4.0.18
+      '@astrojs/sitemap':
+        specifier: ^3.6.0
+        version: 3.7.2
+      '@tailwindcss/vite':
+        specifier: ^4.1.16
+        version: 4.2.4(vite@7.3.2(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(yaml@2.8.3))
+      astro:
+        specifier: ^5.15.0
+        version: 5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3)
+      preact:
+        specifier: ^10.27.2
+        version: 10.29.1
+      tailwindcss:
+        specifier: ^4.1.16
+        version: 4.2.4
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
+
+  sites/gradientcss.io:
     dependencies:
       '@astrojs/check':
         specifier: ^0.9.4
@@ -147,6 +576,105 @@ importers:
         specifier: ^4.84.1
         version: 4.84.1(@cloudflare/workers-types@4.20260422.1)
 
+  sites/htmlformat.io:
+    dependencies:
+      '@astrojs/check':
+        specifier: ^0.9.4
+        version: 0.9.8(prettier@3.8.3)(typescript@5.9.3)
+      '@astrojs/mdx':
+        specifier: ^4.3.6
+        version: 4.3.14(astro@5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3))
+      '@astrojs/preact':
+        specifier: ^4.1.3
+        version: 4.1.3(@babel/core@7.29.0)(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(preact@10.29.1)(rollup@4.60.2)(yaml@2.8.3)
+      '@astrojs/rss':
+        specifier: ^4.0.12
+        version: 4.0.18
+      '@astrojs/sitemap':
+        specifier: ^3.6.0
+        version: 3.7.2
+      '@tailwindcss/vite':
+        specifier: ^4.1.16
+        version: 4.2.4(vite@7.3.2(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(yaml@2.8.3))
+      astro:
+        specifier: ^5.15.0
+        version: 5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3)
+      preact:
+        specifier: ^10.27.2
+        version: 10.29.1
+      tailwindcss:
+        specifier: ^4.1.16
+        version: 4.2.4
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
+
+  sites/jsonformat.io:
+    dependencies:
+      '@astrojs/check':
+        specifier: ^0.9.4
+        version: 0.9.8(prettier@3.8.3)(typescript@5.9.3)
+      '@astrojs/mdx':
+        specifier: ^4.3.6
+        version: 4.3.14(astro@5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3))
+      '@astrojs/preact':
+        specifier: ^4.1.3
+        version: 4.1.3(@babel/core@7.29.0)(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(preact@10.29.1)(rollup@4.60.2)(yaml@2.8.3)
+      '@astrojs/rss':
+        specifier: ^4.0.12
+        version: 4.0.18
+      '@astrojs/sitemap':
+        specifier: ^3.6.0
+        version: 3.7.2
+      '@tailwindcss/vite':
+        specifier: ^4.1.16
+        version: 4.2.4(vite@7.3.2(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(yaml@2.8.3))
+      astro:
+        specifier: ^5.15.0
+        version: 5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3)
+      preact:
+        specifier: ^10.27.2
+        version: 10.29.1
+      tailwindcss:
+        specifier: ^4.1.16
+        version: 4.2.4
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
+
+  sites/jwtinspect.io:
+    dependencies:
+      '@astrojs/check':
+        specifier: ^0.9.4
+        version: 0.9.8(prettier@3.8.3)(typescript@5.9.3)
+      '@astrojs/mdx':
+        specifier: ^4.3.6
+        version: 4.3.14(astro@5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3))
+      '@astrojs/preact':
+        specifier: ^4.1.3
+        version: 4.1.3(@babel/core@7.29.0)(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(preact@10.29.1)(rollup@4.60.2)(yaml@2.8.3)
+      '@astrojs/rss':
+        specifier: ^4.0.12
+        version: 4.0.18
+      '@astrojs/sitemap':
+        specifier: ^3.6.0
+        version: 3.7.2
+      '@tailwindcss/vite':
+        specifier: ^4.1.16
+        version: 4.2.4(vite@7.3.2(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(yaml@2.8.3))
+      astro:
+        specifier: ^5.15.0
+        version: 5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3)
+      preact:
+        specifier: ^10.27.2
+        version: 10.29.1
+      tailwindcss:
+        specifier: ^4.1.16
+        version: 4.2.4
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
+
   sites/makepicsmall.com:
     dependencies:
       '@astrojs/check':
@@ -214,7 +742,469 @@ importers:
         specifier: ^4.1.5
         version: 4.1.5(@types/node@24.12.2)(@vitest/ui@4.1.5)(jsdom@29.0.2)(vite@7.3.2(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(yaml@2.8.3))
 
+  sites/margincalc.io:
+    dependencies:
+      '@astrojs/check':
+        specifier: ^0.9.4
+        version: 0.9.8(prettier@3.8.3)(typescript@5.9.3)
+      '@astrojs/mdx':
+        specifier: ^4.3.6
+        version: 4.3.14(astro@5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3))
+      '@astrojs/preact':
+        specifier: ^4.1.3
+        version: 4.1.3(@babel/core@7.29.0)(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(preact@10.29.1)(rollup@4.60.2)(yaml@2.8.3)
+      '@astrojs/rss':
+        specifier: ^4.0.12
+        version: 4.0.18
+      '@astrojs/sitemap':
+        specifier: ^3.6.0
+        version: 3.7.2
+      '@tailwindcss/vite':
+        specifier: ^4.1.16
+        version: 4.2.4(vite@7.3.2(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(yaml@2.8.3))
+      astro:
+        specifier: ^5.15.0
+        version: 5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3)
+      preact:
+        specifier: ^10.27.2
+        version: 10.29.1
+      tailwindcss:
+        specifier: ^4.1.16
+        version: 4.2.4
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
+
+  sites/passwordgen.io:
+    dependencies:
+      '@astrojs/check':
+        specifier: ^0.9.4
+        version: 0.9.8(prettier@3.8.3)(typescript@5.9.3)
+      '@astrojs/mdx':
+        specifier: ^4.3.6
+        version: 4.3.14(astro@5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3))
+      '@astrojs/preact':
+        specifier: ^4.1.3
+        version: 4.1.3(@babel/core@7.29.0)(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(preact@10.29.1)(rollup@4.60.2)(yaml@2.8.3)
+      '@astrojs/rss':
+        specifier: ^4.0.12
+        version: 4.0.18
+      '@astrojs/sitemap':
+        specifier: ^3.6.0
+        version: 3.7.2
+      '@tailwindcss/vite':
+        specifier: ^4.1.16
+        version: 4.2.4(vite@7.3.2(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(yaml@2.8.3))
+      astro:
+        specifier: ^5.15.0
+        version: 5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3)
+      preact:
+        specifier: ^10.27.2
+        version: 10.29.1
+      tailwindcss:
+        specifier: ^4.1.16
+        version: 4.2.4
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
+
+  sites/percentcalc.io:
+    dependencies:
+      '@astrojs/check':
+        specifier: ^0.9.4
+        version: 0.9.8(prettier@3.8.3)(typescript@5.9.3)
+      '@astrojs/mdx':
+        specifier: ^4.3.6
+        version: 4.3.14(astro@5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3))
+      '@astrojs/preact':
+        specifier: ^4.1.3
+        version: 4.1.3(@babel/core@7.29.0)(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(preact@10.29.1)(rollup@4.60.2)(yaml@2.8.3)
+      '@astrojs/rss':
+        specifier: ^4.0.12
+        version: 4.0.18
+      '@astrojs/sitemap':
+        specifier: ^3.6.0
+        version: 3.7.2
+      '@tailwindcss/vite':
+        specifier: ^4.1.16
+        version: 4.2.4(vite@7.3.2(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(yaml@2.8.3))
+      astro:
+        specifier: ^5.15.0
+        version: 5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3)
+      preact:
+        specifier: ^10.27.2
+        version: 10.29.1
+      tailwindcss:
+        specifier: ^4.1.16
+        version: 4.2.4
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
+
+  sites/pomotimer.io:
+    dependencies:
+      '@astrojs/check':
+        specifier: ^0.9.4
+        version: 0.9.8(prettier@3.8.3)(typescript@5.9.3)
+      '@astrojs/mdx':
+        specifier: ^4.3.6
+        version: 4.3.14(astro@5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3))
+      '@astrojs/preact':
+        specifier: ^4.1.3
+        version: 4.1.3(@babel/core@7.29.0)(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(preact@10.29.1)(rollup@4.60.2)(yaml@2.8.3)
+      '@astrojs/rss':
+        specifier: ^4.0.12
+        version: 4.0.18
+      '@astrojs/sitemap':
+        specifier: ^3.6.0
+        version: 3.7.2
+      '@tailwindcss/vite':
+        specifier: ^4.1.16
+        version: 4.2.4(vite@7.3.2(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(yaml@2.8.3))
+      astro:
+        specifier: ^5.15.0
+        version: 5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3)
+      preact:
+        specifier: ^10.27.2
+        version: 10.29.1
+      tailwindcss:
+        specifier: ^4.1.16
+        version: 4.2.4
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
+
+  sites/qrcodegen.io:
+    dependencies:
+      '@astrojs/check':
+        specifier: ^0.9.4
+        version: 0.9.8(prettier@3.8.3)(typescript@5.9.3)
+      '@astrojs/mdx':
+        specifier: ^4.3.6
+        version: 4.3.14(astro@5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3))
+      '@astrojs/preact':
+        specifier: ^4.1.3
+        version: 4.1.3(@babel/core@7.29.0)(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(preact@10.29.1)(rollup@4.60.2)(yaml@2.8.3)
+      '@astrojs/rss':
+        specifier: ^4.0.12
+        version: 4.0.18
+      '@astrojs/sitemap':
+        specifier: ^3.6.0
+        version: 3.7.2
+      '@tailwindcss/vite':
+        specifier: ^4.1.16
+        version: 4.2.4(vite@7.3.2(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(yaml@2.8.3))
+      astro:
+        specifier: ^5.15.0
+        version: 5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3)
+      preact:
+        specifier: ^10.27.2
+        version: 10.29.1
+      tailwindcss:
+        specifier: ^4.1.16
+        version: 4.2.4
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
+
+  sites/quickcurrency.io:
+    dependencies:
+      '@astrojs/check':
+        specifier: ^0.9.4
+        version: 0.9.8(prettier@3.8.3)(typescript@5.9.3)
+      '@astrojs/mdx':
+        specifier: ^4.3.6
+        version: 4.3.14(astro@5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3))
+      '@astrojs/preact':
+        specifier: ^4.1.3
+        version: 4.1.3(@babel/core@7.29.0)(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(preact@10.29.1)(rollup@4.60.2)(yaml@2.8.3)
+      '@astrojs/rss':
+        specifier: ^4.0.12
+        version: 4.0.18
+      '@astrojs/sitemap':
+        specifier: ^3.6.0
+        version: 3.7.2
+      '@tailwindcss/vite':
+        specifier: ^4.1.16
+        version: 4.2.4(vite@7.3.2(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(yaml@2.8.3))
+      astro:
+        specifier: ^5.15.0
+        version: 5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3)
+      preact:
+        specifier: ^10.27.2
+        version: 10.29.1
+      tailwindcss:
+        specifier: ^4.1.16
+        version: 4.2.4
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
+
+  sites/regexbuilder.io:
+    dependencies:
+      '@astrojs/check':
+        specifier: ^0.9.4
+        version: 0.9.8(prettier@3.8.3)(typescript@5.9.3)
+      '@astrojs/mdx':
+        specifier: ^4.3.6
+        version: 4.3.14(astro@5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3))
+      '@astrojs/preact':
+        specifier: ^4.1.3
+        version: 4.1.3(@babel/core@7.29.0)(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(preact@10.29.1)(rollup@4.60.2)(yaml@2.8.3)
+      '@astrojs/rss':
+        specifier: ^4.0.12
+        version: 4.0.18
+      '@astrojs/sitemap':
+        specifier: ^3.6.0
+        version: 3.7.2
+      '@tailwindcss/vite':
+        specifier: ^4.1.16
+        version: 4.2.4(vite@7.3.2(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(yaml@2.8.3))
+      astro:
+        specifier: ^5.15.0
+        version: 5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3)
+      preact:
+        specifier: ^10.27.2
+        version: 10.29.1
+      tailwindcss:
+        specifier: ^4.1.16
+        version: 4.2.4
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
+
+  sites/sqlformat.io:
+    dependencies:
+      '@astrojs/check':
+        specifier: ^0.9.4
+        version: 0.9.8(prettier@3.8.3)(typescript@5.9.3)
+      '@astrojs/mdx':
+        specifier: ^4.3.6
+        version: 4.3.14(astro@5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3))
+      '@astrojs/preact':
+        specifier: ^4.1.3
+        version: 4.1.3(@babel/core@7.29.0)(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(preact@10.29.1)(rollup@4.60.2)(yaml@2.8.3)
+      '@astrojs/rss':
+        specifier: ^4.0.12
+        version: 4.0.18
+      '@astrojs/sitemap':
+        specifier: ^3.6.0
+        version: 3.7.2
+      '@tailwindcss/vite':
+        specifier: ^4.1.16
+        version: 4.2.4(vite@7.3.2(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(yaml@2.8.3))
+      astro:
+        specifier: ^5.15.0
+        version: 5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3)
+      preact:
+        specifier: ^10.27.2
+        version: 10.29.1
+      tailwindcss:
+        specifier: ^4.1.16
+        version: 4.2.4
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
+
   sites/testsite.com:
+    dependencies:
+      '@astrojs/check':
+        specifier: ^0.9.4
+        version: 0.9.8(prettier@3.8.3)(typescript@5.9.3)
+      '@astrojs/mdx':
+        specifier: ^4.3.6
+        version: 4.3.14(astro@5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3))
+      '@astrojs/preact':
+        specifier: ^4.1.3
+        version: 4.1.3(@babel/core@7.29.0)(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(preact@10.29.1)(rollup@4.60.2)(yaml@2.8.3)
+      '@astrojs/rss':
+        specifier: ^4.0.12
+        version: 4.0.18
+      '@astrojs/sitemap':
+        specifier: ^3.6.0
+        version: 3.7.2
+      '@tailwindcss/vite':
+        specifier: ^4.1.16
+        version: 4.2.4(vite@7.3.2(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(yaml@2.8.3))
+      astro:
+        specifier: ^5.15.0
+        version: 5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3)
+      preact:
+        specifier: ^10.27.2
+        version: 10.29.1
+      tailwindcss:
+        specifier: ^4.1.16
+        version: 4.2.4
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
+
+  sites/textdiff.pro:
+    dependencies:
+      '@astrojs/check':
+        specifier: ^0.9.4
+        version: 0.9.8(prettier@3.8.3)(typescript@5.9.3)
+      '@astrojs/mdx':
+        specifier: ^4.3.6
+        version: 4.3.14(astro@5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3))
+      '@astrojs/preact':
+        specifier: ^4.1.3
+        version: 4.1.3(@babel/core@7.29.0)(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(preact@10.29.1)(rollup@4.60.2)(yaml@2.8.3)
+      '@astrojs/rss':
+        specifier: ^4.0.12
+        version: 4.0.18
+      '@astrojs/sitemap':
+        specifier: ^3.6.0
+        version: 3.7.2
+      '@tailwindcss/vite':
+        specifier: ^4.1.16
+        version: 4.2.4(vite@7.3.2(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(yaml@2.8.3))
+      astro:
+        specifier: ^5.15.0
+        version: 5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3)
+      preact:
+        specifier: ^10.27.2
+        version: 10.29.1
+      tailwindcss:
+        specifier: ^4.1.16
+        version: 4.2.4
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
+
+  sites/tipcalc.io:
+    dependencies:
+      '@astrojs/check':
+        specifier: ^0.9.4
+        version: 0.9.8(prettier@3.8.3)(typescript@5.9.3)
+      '@astrojs/mdx':
+        specifier: ^4.3.6
+        version: 4.3.14(astro@5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3))
+      '@astrojs/preact':
+        specifier: ^4.1.3
+        version: 4.1.3(@babel/core@7.29.0)(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(preact@10.29.1)(rollup@4.60.2)(yaml@2.8.3)
+      '@astrojs/rss':
+        specifier: ^4.0.12
+        version: 4.0.18
+      '@astrojs/sitemap':
+        specifier: ^3.6.0
+        version: 3.7.2
+      '@tailwindcss/vite':
+        specifier: ^4.1.16
+        version: 4.2.4(vite@7.3.2(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(yaml@2.8.3))
+      astro:
+        specifier: ^5.15.0
+        version: 5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3)
+      preact:
+        specifier: ^10.27.2
+        version: 10.29.1
+      tailwindcss:
+        specifier: ^4.1.16
+        version: 4.2.4
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
+
+  sites/utmbuilder.io:
+    dependencies:
+      '@astrojs/check':
+        specifier: ^0.9.4
+        version: 0.9.8(prettier@3.8.3)(typescript@5.9.3)
+      '@astrojs/mdx':
+        specifier: ^4.3.6
+        version: 4.3.14(astro@5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3))
+      '@astrojs/preact':
+        specifier: ^4.1.3
+        version: 4.1.3(@babel/core@7.29.0)(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(preact@10.29.1)(rollup@4.60.2)(yaml@2.8.3)
+      '@astrojs/rss':
+        specifier: ^4.0.12
+        version: 4.0.18
+      '@astrojs/sitemap':
+        specifier: ^3.6.0
+        version: 3.7.2
+      '@tailwindcss/vite':
+        specifier: ^4.1.16
+        version: 4.2.4(vite@7.3.2(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(yaml@2.8.3))
+      astro:
+        specifier: ^5.15.0
+        version: 5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3)
+      preact:
+        specifier: ^10.27.2
+        version: 10.29.1
+      tailwindcss:
+        specifier: ^4.1.16
+        version: 4.2.4
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
+
+  sites/uuidgen.io:
+    dependencies:
+      '@astrojs/check':
+        specifier: ^0.9.4
+        version: 0.9.8(prettier@3.8.3)(typescript@5.9.3)
+      '@astrojs/mdx':
+        specifier: ^4.3.6
+        version: 4.3.14(astro@5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3))
+      '@astrojs/preact':
+        specifier: ^4.1.3
+        version: 4.1.3(@babel/core@7.29.0)(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(preact@10.29.1)(rollup@4.60.2)(yaml@2.8.3)
+      '@astrojs/rss':
+        specifier: ^4.0.12
+        version: 4.0.18
+      '@astrojs/sitemap':
+        specifier: ^3.6.0
+        version: 3.7.2
+      '@tailwindcss/vite':
+        specifier: ^4.1.16
+        version: 4.2.4(vite@7.3.2(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(yaml@2.8.3))
+      astro:
+        specifier: ^5.15.0
+        version: 5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3)
+      preact:
+        specifier: ^10.27.2
+        version: 10.29.1
+      tailwindcss:
+        specifier: ^4.1.16
+        version: 4.2.4
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
+
+  sites/wordcounttools.com:
+    dependencies:
+      '@astrojs/check':
+        specifier: ^0.9.4
+        version: 0.9.8(prettier@3.8.3)(typescript@5.9.3)
+      '@astrojs/mdx':
+        specifier: ^4.3.6
+        version: 4.3.14(astro@5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3))
+      '@astrojs/preact':
+        specifier: ^4.1.3
+        version: 4.1.3(@babel/core@7.29.0)(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(preact@10.29.1)(rollup@4.60.2)(yaml@2.8.3)
+      '@astrojs/rss':
+        specifier: ^4.0.12
+        version: 4.0.18
+      '@astrojs/sitemap':
+        specifier: ^3.6.0
+        version: 3.7.2
+      '@tailwindcss/vite':
+        specifier: ^4.1.16
+        version: 4.2.4(vite@7.3.2(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(yaml@2.8.3))
+      astro:
+        specifier: ^5.15.0
+        version: 5.18.1(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3)
+      preact:
+        specifier: ^10.27.2
+        version: 10.29.1
+      tailwindcss:
+        specifier: ^4.1.16
+        version: 4.2.4
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
+
+  sites/worldclock.io:
     dependencies:
       '@astrojs/check':
         specifier: ^0.9.4

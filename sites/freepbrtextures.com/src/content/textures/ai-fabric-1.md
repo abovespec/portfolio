@@ -1,6 +1,6 @@
 ---
-title: "Fabric 2"
-description: "Seamless 4K procedural fabric texture."
+title: "Ai Fabric 1"
+description: "Seamless 4K AI-generated fabric texture. Photorealistic PBR material."
 category: "fabric"
 tags:
   - "fabric"
@@ -17,23 +17,23 @@ maps:
   metallic: False
   height: false
 license: "CC0"
-seed: "680873731"
+seed: "230373267"
 generatedDate: "2026-04-24"
 publishDate: "2026-04-24"
-urlSlug: "fabric-2"
-thumbnail: "/textures/fabric/fabric-2/thumbnail.png"
-preview: "/textures/fabric/fabric-2/preview.png"
-fullSize: "/textures/fabric/fabric-2/albedo.png"
+urlSlug: "ai-fabric-1"
+thumbnail: "/textures/fabric/ai-fabric-1/thumbnail.png"
+preview: "/textures/fabric/ai-fabric-1/preview.png"
+fullSize: "/textures/fabric/ai-fabric-1/albedo.png"
 draft: false
 ---
 
-Seamless 4K procedural fabric texture.
+Seamless 4K AI-generated fabric texture. Photorealistic PBR material.
 
 ## Maps included
 
-- **Albedo** — 4K color map
-- **Normal** — 4K tangent-space normal map  
-- **Roughness** — 4K surface roughness map
+- **Albedo** --- 4K color map
+- **Normal** --- 4K tangent-space normal map  
+- **Roughness** --- 4K surface roughness map
 
 ## Details
 

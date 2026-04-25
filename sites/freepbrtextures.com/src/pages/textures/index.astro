@@ -15,11 +15,14 @@ const categoryLabels: Record<string, string> = {
   tile: 'Tile', carpet: 'Carpet',
 };
 
-const url = new URL(Astro.url);
-const filterCategory = url.searchParams.get('category');
-const filteredTextures = filterCategory
-  ? allTextures.filter(t => t.data.category === filterCategory)
-  : allTextures;
+// Serialize texture data for client-side filtering
+const texturesData = allTextures.map(t => ({
+  category: t.data.category,
+  urlSlug: t.data.urlSlug,
+  title: t.data.title,
+  resolution: t.data.resolution,
+  preview: t.data.preview,
+}));
 ---
 <BaseLayout title="Browse Textures" description="Browse all free PBR textures by category, resolution, and more.">
   <div class="flex flex-col lg:flex-row gap-8">
@@ -28,15 +31,15 @@ const filteredTextures = filterCategory
       <div class="rounded-lg border border-slate-700 bg-slate-800 p-6 sticky top-20">
         <h2 class="text-white font-semibold mb-4">Filters</h2>
         <h3 class="text-slate-400 text-sm font-medium mb-2 uppercase tracking-wide">Category</h3>
-        <ul class="space-y-1 mb-6">
+        <ul id="category-filters" class="space-y-1 mb-6">
           <li>
-            <a href="/textures/" class={`text-sm hover:text-amber-400 ${!filterCategory ? 'text-amber-400 font-medium' : 'text-slate-300'}`}>
+            <a href="/textures/" data-cat="" class="text-sm hover:text-amber-400 text-amber-400 font-medium">
               All ({allTextures.length})
             </a>
           </li>
           {categories.map(cat => (
             <li>
-              <a href={`/textures/?category=${cat}`} class={`text-sm hover:text-amber-400 ${filterCategory === cat ? 'text-amber-400 font-medium' : 'text-slate-300'}`}>
+              <a href={`/textures/?category=${cat}`} data-cat={cat} class="text-sm hover:text-amber-400 text-slate-300">
                 {categoryLabels[cat] || cat} ({allTextures.filter(t => t.data.category === cat).length})
               </a>
             </li>
@@ -56,30 +59,77 @@ const filteredTextures = filterCategory
     <!-- Texture Grid -->
     <div class="flex-1">
       <div class="flex items-center justify-between mb-6">
-        <h1 class="text-2xl font-bold text-white">
-          {filterCategory ? `${categoryLabels[filterCategory] || filterCategory} Textures` : 'All Textures'}
-        </h1>
-        <span class="text-slate-400 text-sm">{filteredTextures.length} textures</span>
+        <h1 id="grid-title" class="text-2xl font-bold text-white">All Textures</h1>
+        <span id="grid-count" class="text-slate-400 text-sm">{allTextures.length} textures</span>
       </div>
-      <div class="texture-grid">
-        {filteredTextures.map(texture => (
-          <a href={`/textures/${texture.data.category}/${texture.data.urlSlug}/`} class="group rounded-lg border border-slate-700 bg-slate-800 hover:border-amber-400 transition-colors overflow-hidden">
-            <div class="aspect-square overflow-hidden bg-slate-900">
-              <img src={texture.data.preview} alt={texture.data.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200" loading="lazy" />
-            </div>
-            <div class="p-4">
-              <h3 class="text-white font-medium text-sm truncate">{texture.data.title}</h3>
-              <div class="flex items-center justify-between mt-2">
-                <span class="text-slate-400 text-xs capitalize">{texture.data.category}</span>
-                <span class="text-slate-500 text-xs">{texture.data.resolution}</span>
+      <div id="texture-grid" class="texture-grid">
+        {texturesData.map(t => (
+          <div class="texture-item" data-category={t.category}>
+            <a href={`/textures/${t.category}/${t.urlSlug}/`} class="group rounded-lg border border-slate-700 bg-slate-800 hover:border-amber-400 transition-colors overflow-hidden">
+              <div class="aspect-square overflow-hidden bg-slate-900">
+                <img src={t.preview} alt={t.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200" loading="lazy" />
               </div>
-            </div>
-          </a>
+              <div class="p-4">
+                <h3 class="text-white font-medium text-sm truncate">{t.title}</h3>
+                <div class="flex items-center justify-between mt-2">
+                  <span class="text-slate-400 text-xs capitalize">{t.category}</span>
+                  <span class="text-slate-500 text-xs">{t.resolution}</span>
+                </div>
+              </div>
+            </a>
+          </div>
         ))}
       </div>
-      {filteredTextures.length === 0 && (
-        <p class="text-center text-slate-400 py-12">No textures found in this category yet. Check back soon!</p>
-      )}
+      <div id="no-results" class="text-center text-slate-400 py-12 hidden">
+        No textures found in this category yet. Check back soon!
+      </div>
     </div>
   </div>
+
+  <script>
+    // Client-side category filtering for static sites
+    const urlParams = new URLSearchParams(window.location.search);
+    const filterCat = urlParams.get('category');
+
+    function applyFilter(cat) {
+      const items = document.querySelectorAll('.texture-item');
+      let visible = 0;
+      items.forEach(item => {
+        const show = !cat || item.dataset.category === cat;
+        item.style.display = show ? '' : 'none';
+        if (show) visible++;
+      });
+
+      const grid = document.getElementById('texture-grid');
+      const title = document.getElementById('grid-title');
+      const count = document.getElementById('grid-count');
+      const noResults = document.getElementById('no-results');
+
+      if (cat) {
+        const labels = {wood:'Wood',stone:'Stone',metal:'Metal',concrete:'Concrete',fabric:'Fabric',brick:'Brick',marble:'Marble',leather:'Leather'};
+        title.textContent = (labels[cat] || cat) + ' Textures';
+      } else {
+        title.textContent = 'All Textures';
+      }
+      count.textContent = visible + ' textures';
+      noResults.classList.toggle('hidden', visible > 0);
+
+      // Update active link style
+      const links = document.querySelectorAll('#category-filters a[data-cat]');
+      links.forEach(link => {
+        const isActive = link.dataset.cat === cat;
+        link.classList.toggle('text-amber-400', isActive);
+        link.classList.toggle('font-medium', isActive);
+        link.classList.toggle('text-slate-300', !isActive);
+      });
+      const allLink = document.querySelector('#category-filters a[data-cat=""]');
+      if (allLink) {
+        allLink.classList.toggle('text-amber-400', !cat);
+        allLink.classList.toggle('font-medium', !cat);
+        allLink.classList.toggle('text-slate-300', !!cat);
+      }
+    }
+
+    applyFilter(filterCat);
+  </script>
 </BaseLayout>

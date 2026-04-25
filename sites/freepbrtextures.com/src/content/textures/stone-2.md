@@ -7,6 +7,8 @@ tags:
   - "seamless"
   - "tileable"
   - "4k"
+  - "texture"
+  - "PBR"
 resolution: "4K"
 maps:
   albedo: true
@@ -24,3 +26,20 @@ preview: "/textures/stone/stone-2/preview.png"
 fullSize: "/textures/stone/stone-2/albedo.png"
 draft: false
 ---
+
+Seamless 4K procedural stone texture.
+
+## Maps included
+
+- **Albedo** — 4K color map
+- **Normal** — 4K tangent-space normal map  
+- **Roughness** — 4K surface roughness map
+
+## Details
+
+- Resolution: 4096 x 4096 pixels
+- Format: PNG
+- License: CC0 (public domain, no attribution required)
+- Generated via AI (ERNIE-Image-Turbo)
+
+Download the full-resolution PBR set and use in your favorite 3D software.

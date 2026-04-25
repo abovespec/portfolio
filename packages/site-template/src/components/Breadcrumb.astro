@@ -12,16 +12,16 @@ const absolute = items.map((c) => ({
   url: c.url.startsWith('http') ? c.url : siteUrl + c.url,
 }));
 ---
-<nav aria-label="Breadcrumb" class="text-sm text-slate-600">
+<nav aria-label="Breadcrumb" class="text-sm text-slate-300">
   <ol class="flex flex-wrap items-center gap-1">
     {items.map((c, i) => (
       <li class="flex items-center gap-1">
         {i < items.length - 1 ? (
-          <a href={c.url} class="hover:underline">{c.name}</a>
+          <a href={c.url} class="text-slate-300 hover:text-white hover:underline">{c.name}</a>
         ) : (
-          <span aria-current="page" class="text-slate-900 font-medium">{c.name}</span>
+          <span aria-current="page" class="text-white font-medium">{c.name}</span>
         )}
-        {i < items.length - 1 && <span aria-hidden="true" class="text-slate-400">/</span>}
+        {i < items.length - 1 && <span aria-hidden="true" class="text-slate-500">/</span>}
       </li>
     ))}
   </ol>

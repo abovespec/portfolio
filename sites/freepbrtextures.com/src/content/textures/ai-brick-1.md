@@ -1,9 +1,9 @@
 ---
-title: "Leather 2"
-description: "Seamless 4K procedural leather texture."
-category: "leather"
+title: "Ai Brick 1"
+description: "Seamless 4K AI-generated brick texture. Photorealistic PBR material."
+category: "brick"
 tags:
-  - "leather"
+  - "brick"
   - "seamless"
   - "tileable"
   - "4k"
@@ -17,23 +17,23 @@ maps:
   metallic: False
   height: false
 license: "CC0"
-seed: "885799482"
+seed: "771567670"
 generatedDate: "2026-04-24"
 publishDate: "2026-04-24"
-urlSlug: "leather-2"
-thumbnail: "/textures/leather/leather-2/thumbnail.png"
-preview: "/textures/leather/leather-2/preview.png"
-fullSize: "/textures/leather/leather-2/albedo.png"
+urlSlug: "ai-brick-1"
+thumbnail: "/textures/brick/ai-brick-1/thumbnail.png"
+preview: "/textures/brick/ai-brick-1/preview.png"
+fullSize: "/textures/brick/ai-brick-1/albedo.png"
 draft: false
 ---
 
-Seamless 4K procedural leather texture.
+Seamless 4K AI-generated brick texture. Photorealistic PBR material.
 
 ## Maps included
 
-- **Albedo** — 4K color map
-- **Normal** — 4K tangent-space normal map  
-- **Roughness** — 4K surface roughness map
+- **Albedo** - 4K color map
+- **Normal** - 4K tangent-space normal map
+- **Roughness** - 4K surface roughness map
 
 ## Details
 

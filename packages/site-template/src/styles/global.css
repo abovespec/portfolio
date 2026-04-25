@@ -196,3 +196,14 @@ body {
   font-weight: 600;
   background: var(--surface);
 }
+
+/* Override prose list styles for card grids — RelatedPosts, etc.
+   The .prose ul/ol default padding and list-style fight with Tailwind's
+   list-none on components that live inside a prose container. */
+.prose ul.grid,
+.prose ol.grid {
+  list-style: none !important;
+  padding-left: 0 !important;
+  padding-inline-start: 0 !important;
+  margin-left: 0 !important;
+}

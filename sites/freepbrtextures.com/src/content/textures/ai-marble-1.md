@@ -1,6 +1,6 @@
 ---
-title: "Marble 1"
-description: "Seamless 4K procedural marble texture."
+title: "Ai Marble 1"
+description: "Seamless 4K AI-generated marble texture. Photorealistic PBR material."
 category: "marble"
 tags:
   - "marble"
@@ -17,23 +17,23 @@ maps:
   metallic: False
   height: false
 license: "CC0"
-seed: "3532060160"
+seed: "1005030598"
 generatedDate: "2026-04-24"
 publishDate: "2026-04-24"
-urlSlug: "marble-1"
-thumbnail: "/textures/marble/marble-1/thumbnail.png"
-preview: "/textures/marble/marble-1/preview.png"
-fullSize: "/textures/marble/marble-1/albedo.png"
+urlSlug: "ai-marble-1"
+thumbnail: "/textures/marble/ai-marble-1/thumbnail.png"
+preview: "/textures/marble/ai-marble-1/preview.png"
+fullSize: "/textures/marble/ai-marble-1/albedo.png"
 draft: false
 ---
 
-Seamless 4K procedural marble texture.
+Seamless 4K AI-generated marble texture. Photorealistic PBR material.
 
 ## Maps included
 
-- **Albedo** — 4K color map
-- **Normal** — 4K tangent-space normal map  
-- **Roughness** — 4K surface roughness map
+- **Albedo** --- 4K color map
+- **Normal** --- 4K tangent-space normal map  
+- **Roughness** --- 4K surface roughness map
 
 ## Details
 
