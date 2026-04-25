@@ -55,7 +55,7 @@ export const siteConfig: SiteConfig = {
   identity: {
     name: 'BMICalc',
     domain: 'bmicalc.io',
-    description: 'Free online bmicalc tool — no signup, instant results in your browser.',
+    description: 'Free BMI calculator with instant results. Medically reviewed BMI information for adults.',
     language: 'en',
     timezone: 'UTC',
   },

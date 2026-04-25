@@ -1,0 +1,46 @@
+---
+import PostLayout from '~/layouts/PostLayout.astro';
+import RelatedPosts from '~/components/RelatedPosts.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+import { siteConfig } from '~/config/site.config';
+
+export async function getStaticPaths() {
+  if (!siteConfig.features.hasBlog) return [];
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+interface Props { post: CollectionEntry<'blog'> }
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+// Pick up to 3 related posts by overlapping tags.
+const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+const related = allPosts
+  .filter((p) => p.slug !== post.slug)
+  .map((p) => {
+    const overlap = p.data.tags.filter((t) => post.data.tags.includes(t)).length;
+    return { p, overlap };
+  })
+  .filter((x) => x.overlap > 0)
+  .sort((a, b) => b.overlap - a.overlap)
+  .slice(0, 3)
+  .map(({ p }) => ({ url: `/blog/${p.slug}/`, title: p.data.title, description: p.data.description }));
+---
+<PostLayout
+  title={post.data.title}
+  description={post.data.description}
+  publishDate={post.data.publishDate}
+  updatedDate={post.data.updatedDate}
+  author={post.data.author}
+  tags={post.data.tags}
+  reviewedBy={post.data.reviewedBy}
+  lastReviewedAt={post.data.lastReviewedAt}
+  sources={post.data.sources}
+>
+  <Content />
+  {related.length > 0 && <RelatedPosts slot="related" posts={related} />}
+</PostLayout>
