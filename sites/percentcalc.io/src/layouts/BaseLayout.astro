@@ -1,0 +1,106 @@
+---
+import '~/styles/global.css';
+import { siteConfig, siteUrl } from '~/config/site.config';
+import Header from '~/components/Header.astro';
+import Footer from '~/components/Footer.astro';
+import CookieBanner from '~/components/CookieBanner.astro';
+import SchemaOrganization from '~/components/SchemaOrganization.astro';
+import SchemaWebsite from '~/components/SchemaWebsite.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  /** If omitted, canonical defaults to the current pathname. */
+  canonical?: string;
+  /** Set to true on pages that should not be indexed (thanks pages, drafts). */
+  noindex?: boolean;
+  /** Append to document <head>. Useful for page-specific JSON-LD. */
+  ogType?: 'website' | 'article';
+}
+
+const {
+  title,
+  description = siteConfig.identity.description,
+  image,
+  canonical,
+  noindex = false,
+  ogType = 'website',
+} = Astro.props;
+
+const fullTitle = title.includes(siteConfig.identity.name)
+  ? title
+  : `${title}${siteConfig.seo.titleSeparator}${siteConfig.identity.name}`;
+
+const canonicalUrl = canonical ?? new URL(Astro.url.pathname, siteUrl).toString();
+const ogImage = image
+  ? (image.startsWith('http') ? image : siteUrl + image)
+  : siteUrl + siteConfig.seo.defaultOgImage;
+
+const themeColor = siteConfig.branding.themeColor;
+const accentColor = siteConfig.branding.accentColor;
+---
+<!doctype html>
+<html lang={siteConfig.identity.language}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content={themeColor} />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate" type="application/rss+xml" title={`${siteConfig.identity.name} RSS`} href="/rss.xml" />
+
+    <!-- Open Graph -->
+    <meta property="og:site_name" content={siteConfig.identity.name} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content={siteConfig.identity.language.replace('-', '_')} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    {siteConfig.seo.twitterHandle && (
+      <meta name="twitter:site" content={siteConfig.seo.twitterHandle} />
+    )}
+
+    <!-- Preconnect hints for common hosts (no-op if unused). -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+
+    <style is:inline define:vars={{ themeColor, accentColor }}>
+      :root { --site-theme-color: var(--themeColor); --site-accent-color: var(--accentColor); }
+    </style>
+
+    <SchemaOrganization />
+    <SchemaWebsite />
+
+    <!--
+      Analytics plug-in point.
+      Sites should inject their Plausible / GA4 / Fathom snippet by overriding
+      this layout (or adding a <slot name="analytics" /> wrapper). No scripts
+      are hardcoded in the template.
+    -->
+    <slot name="head" />
+  </head>
+  <body class="flex min-h-screen flex-col bg-white text-slate-900">
+    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-white focus:px-3 focus:py-2 focus:shadow">
+      Skip to content
+    </a>
+    <Header />
+    <main id="main" class="mx-auto w-full max-w-5xl flex-1 px-4 py-8">
+      <slot />
+    </main>
+    <Footer />
+    <CookieBanner />
+    <slot name="body-end" />
+  </body>
+</html>

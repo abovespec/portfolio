@@ -1,0 +1,27 @@
+---
+interface RelatedPost {
+  url: string;
+  title: string;
+  description?: string;
+  publishDate?: Date | string;
+}
+interface Props {
+  posts: RelatedPost[];
+  heading?: string;
+}
+const { posts, heading = 'Related reading' } = Astro.props;
+if (!posts.length) return null;
+---
+<section class="my-12" aria-labelledby="related-heading">
+  <h2 id="related-heading" class="text-2xl font-semibold mb-4 text-white">{heading}</h2>
+  <ul class="grid gap-4 sm:grid-cols-2 list-none ml-0 pl-0">
+    {posts.map((p) => (
+      <li class="rounded-lg border border-slate-700 bg-slate-800 p-6 transition hover:border-amber-400">
+        <a href={p.url} class="block no-underline" style="text-decoration: none !important">
+          <h3 class="text-lg font-medium text-white">{p.title}</h3>
+          {p.description && <p class="mt-1 text-sm text-slate-300">{p.description}</p>}
+        </a>
+      </li>
+    ))}
+  </ul>
+</section>
