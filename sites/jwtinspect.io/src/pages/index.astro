@@ -1,0 +1,221 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="JWT Decoder &amp; Inspector — Decode JWT Tokens Online Free"
+  description="Free online JWT decoder and inspector. Decode JWT header and payload, inspect claims (exp, iat, iss, sub), and check token expiration. Fully client-side."
+>
+
+  <!-- Compact header -->
+  <header class="pb-4 pt-2">
+    <h1 class="text-3xl font-bold tracking-tight text-slate-900">
+      JWT Inspector
+    </h1>
+    <p class="mt-1.5 text-sm text-slate-500">
+      Decode JWT header and payload, inspect claims, and check expiration — fully client-side, no token leaves your browser.
+    </p>
+  </header>
+
+  <!-- Toolbar -->
+  <div class="flex flex-wrap gap-2 mb-3">
+    <button id="btn-decode" class="rounded-md bg-sky-600 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-sky-700 transition-colors">Decode</button>
+    <label class="flex items-center gap-1.5 text-xs text-slate-500 cursor-pointer select-none px-1">
+      <input id="auto-decode" type="checkbox" class="accent-sky-600" />
+      Auto-decode on paste
+    </label>
+    <button id="btn-sample" class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Sample</button>
+    <div class="flex-1"></div>
+    <button id="btn-clear"  class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Clear</button>
+  </div>
+
+  <!-- Input pane -->
+  <div class="flex flex-col gap-1">
+    <label for="jwt-input" class="text-xs font-semibold uppercase tracking-wide text-slate-500">Token</label>
+    <textarea
+      id="jwt-input"
+      class="w-full rounded-lg border border-slate-300 bg-slate-950 text-slate-100 p-4 font-mono text-sm resize-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 placeholder:text-slate-600"
+      placeholder="Paste your JWT token here (eyJ…)"
+      spellcheck="false"
+      autocomplete="off"
+      rows="4"
+    ></textarea>
+  </div>
+
+  <!-- Status bar -->
+  <div id="status" class="mt-2 rounded-md px-3 py-1.5 text-sm font-medium hidden"></div>
+
+  <!-- Results -->
+  <div id="jwt-results" class="mt-4 hidden space-y-4">
+
+    <!-- Header + Payload dual pane -->
+    <div class="grid gap-3 md:grid-cols-2">
+      <div class="rounded-lg border border-slate-200 bg-white p-4">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-xs font-semibold uppercase tracking-wide text-slate-500">Header</span>
+          <span id="header-alg" class="rounded bg-sky-50 px-2 py-0.5 text-xs font-semibold text-sky-700"></span>
+        </div>
+        <pre id="header-out" class="overflow-x-auto rounded-md bg-slate-900 p-3 text-xs text-emerald-300 font-mono leading-relaxed"></pre>
+      </div>
+      <div class="rounded-lg border border-slate-200 bg-white p-4">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-xs font-semibold uppercase tracking-wide text-slate-500">Payload</span>
+          <span id="payload-status" class="rounded px-2 py-0.5 text-xs font-semibold"></span>
+        </div>
+        <pre id="payload-out" class="overflow-x-auto rounded-md bg-slate-900 p-3 text-xs text-emerald-300 font-mono leading-relaxed"></pre>
+      </div>
+    </div>
+
+    <!-- Claims summary -->
+    <div class="rounded-lg border border-slate-200 bg-white p-4">
+      <div class="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-3">Standard Claims</div>
+      <div id="claims-table" class="space-y-2 text-sm"></div>
+    </div>
+
+    <!-- Signature note -->
+    <div class="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
+      <strong>Signature not verified.</strong> This tool decodes the token without verifying the signature — that requires the issuer's secret key or public certificate. Never trust a decoded token's claims without server-side signature verification.
+    </div>
+
+  </div>
+
+  <!-- ── Below-fold: SEO content ── -->
+  <div class="mt-16 max-w-3xl space-y-10">
+
+    <section aria-labelledby="what-is-jwt-heading">
+      <h2 id="what-is-jwt-heading" class="text-2xl font-bold text-slate-900">What is a JWT?</h2>
+      <div class="prose mt-4 max-w-none">
+        <p>
+          A JSON Web Token (JWT) is a compact, URL-safe way to represent claims between two parties.
+          It is defined by RFC 7519 and consists of three Base64Url-encoded parts separated by dots:
+        </p>
+        <ul>
+          <li><strong>Header</strong> — specifies the token type (<code>typ: "JWT"</code>) and signing algorithm (<code>alg: "HS256"</code>, <code>"RS256"</code>, etc.).</li>
+          <li><strong>Payload</strong> — contains the claims: registered claims like <code>iss</code>, <code>sub</code>, <code>exp</code>, plus any custom application-specific claims.</li>
+          <li><strong>Signature</strong> — the cryptographic signature that allows the recipient to verify the token wasn't tampered with.</li>
+        </ul>
+        <p>
+          JWTs are widely used for stateless authentication (the server validates the token without
+          looking up a session in a database) and for securely passing information in OAuth 2.0
+          and OpenID Connect flows.
+        </p>
+      </div>
+    </section>
+
+    <section aria-labelledby="jwt-claims-heading">
+      <h2 id="jwt-claims-heading" class="text-2xl font-bold text-slate-900">Standard JWT claims</h2>
+      <div class="prose mt-4 max-w-none">
+        <ul>
+          <li><strong>iss (Issuer)</strong> — identifies the principal that issued the JWT. Typically the domain of the auth server.</li>
+          <li><strong>sub (Subject)</strong> — identifies the principal that is the subject — typically a user ID.</li>
+          <li><strong>aud (Audience)</strong> — identifies the intended recipients. The consuming server should reject tokens not intended for it.</li>
+          <li><strong>exp (Expiration Time)</strong> — the time after which the token must not be accepted. A Unix timestamp (seconds since epoch).</li>
+          <li><strong>iat (Issued At)</strong> — the time the JWT was issued. Used to determine the age of the token.</li>
+          <li><strong>nbf (Not Before)</strong> — the time before which the token must not be accepted.</li>
+          <li><strong>jti (JWT ID)</strong> — a unique identifier for the token, used to prevent replay attacks.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="jwt-security-heading">
+      <h2 id="jwt-security-heading" class="text-2xl font-bold text-slate-900">JWT security considerations</h2>
+      <div class="prose mt-4 max-w-none">
+        <p>JWTs are not encrypted by default — the header and payload are only Base64Url encoded, which is trivially reversible. Never put sensitive data (passwords, SSNs, PII) in a JWT payload unless you use JWE (JSON Web Encryption).</p>
+        <ul>
+          <li>Always verify the signature server-side before trusting the payload.</li>
+          <li>Validate <code>exp</code> on every request. Expired tokens must be rejected.</li>
+          <li>Validate <code>aud</code> to ensure the token was issued for your service.</li>
+          <li>Prefer short-lived access tokens (15 minutes) with long-lived refresh tokens stored in HttpOnly cookies.</li>
+          <li>Watch out for the <code>alg: "none"</code> attack — always explicitly whitelist allowed algorithms.</li>
+        </ul>
+      </div>
+    </section>
+
+  </div>
+
+  <script is:inline>
+    var statusEl = document.getElementById('status');
+
+    var SAMPLE_JWT = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJleHAiOjk5OTk5OTk5OTksImlzcyI6ImV4YW1wbGUuY29tIn0.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c';
+
+    function showStatus(msg, type) {
+      var clsMap = { error: 'bg-red-50 text-red-700 border border-red-200', success: 'bg-emerald-50 text-emerald-700 border border-emerald-200', info: 'bg-blue-50 text-blue-700 border border-blue-200' };
+      statusEl.className = 'mt-2 rounded-md px-3 py-1.5 text-sm font-medium ' + (clsMap[type] || 'bg-slate-100 text-slate-700');
+      statusEl.textContent = msg;
+      statusEl.classList.remove('hidden');
+    }
+
+    function base64UrlDecode(str) {
+      str += new Array(5 - str.length % 4).join('=');
+      str = str.replace(/-/g, '+').replace(/_/g, '/');
+      return decodeURIComponent(atob(str).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+      }).join(''));
+    }
+
+    function decode() {
+      var raw = document.getElementById('jwt-input').value.trim();
+      var res = document.getElementById('jwt-results');
+      res.classList.add('hidden');
+      if (!raw) { showStatus('Paste a JWT token first', 'info'); return; }
+      try {
+        var parts = raw.split('.');
+        if (parts.length !== 3) throw new Error('Invalid JWT: expected 3 dot-separated parts, got ' + parts.length);
+        var header  = JSON.parse(base64UrlDecode(parts[0]));
+        var payload = JSON.parse(base64UrlDecode(parts[1]));
+
+        document.getElementById('header-out').textContent = JSON.stringify(header, null, 2);
+        document.getElementById('header-alg').textContent = header.alg || 'unknown';
+
+        document.getElementById('payload-out').textContent = JSON.stringify(payload, null, 2);
+
+        var now = Math.floor(Date.now() / 1000);
+        var statusInfo = { text: 'Valid', cls: 'bg-emerald-50 text-emerald-700' };
+        if (payload.exp && payload.exp < now) statusInfo = { text: 'Expired', cls: 'bg-red-50 text-red-700' };
+        else if (payload.nbf && payload.nbf > now) statusInfo = { text: 'Not Yet Valid', cls: 'bg-amber-50 text-amber-700' };
+        var st = document.getElementById('payload-status');
+        st.textContent = statusInfo.text;
+        st.className = 'rounded px-2 py-0.5 text-xs font-semibold ' + statusInfo.cls;
+
+        var claims = [];
+        if (payload.iss) claims.push(['Issuer (iss)', payload.iss]);
+        if (payload.sub) claims.push(['Subject (sub)', payload.sub]);
+        if (payload.aud) claims.push(['Audience (aud)', Array.isArray(payload.aud) ? payload.aud.join(', ') : String(payload.aud)]);
+        if (payload.exp) claims.push(['Expires (exp)', new Date(payload.exp * 1000).toLocaleString() + (payload.exp < now ? ' — EXPIRED' : '')]);
+        if (payload.iat) claims.push(['Issued At (iat)', new Date(payload.iat * 1000).toLocaleString()]);
+        if (payload.nbf) claims.push(['Not Before (nbf)', new Date(payload.nbf * 1000).toLocaleString()]);
+        if (payload.jti) claims.push(['JWT ID (jti)', payload.jti]);
+        document.getElementById('claims-table').innerHTML = claims.length
+          ? claims.map(function(pair) {
+              return '<div class="flex items-start justify-between gap-4 rounded-md bg-slate-50 px-3 py-2">' +
+                '<span class="font-medium text-slate-600 shrink-0">' + pair[0] + '</span>' +
+                '<span class="text-slate-900 text-right break-all">' + pair[1] + '</span></div>';
+            }).join('')
+          : '<p class="text-sm text-slate-400">No standard registered claims found in payload.</p>';
+
+        res.classList.remove('hidden');
+        showStatus('Decoded — ' + (header.alg || 'unknown') + ' · ' + (payload.exp && payload.exp < now ? 'Expired' : 'Valid'), payload.exp && payload.exp < now ? 'error' : 'success');
+      } catch (e) {
+        showStatus(e.message, 'error');
+      }
+    }
+
+    document.getElementById('btn-decode').addEventListener('click', decode);
+
+    document.getElementById('btn-sample').addEventListener('click', function() {
+      document.getElementById('jwt-input').value = SAMPLE_JWT;
+      decode();
+    });
+
+    document.getElementById('btn-clear').addEventListener('click', function() {
+      document.getElementById('jwt-input').value = '';
+      document.getElementById('jwt-results').classList.add('hidden');
+      statusEl.classList.add('hidden');
+    });
+
+    document.getElementById('jwt-input').addEventListener('paste', function() {
+      if (!document.getElementById('auto-decode').checked) return;
+      setTimeout(decode, 0);
+    });
+  </script>
+
+</BaseLayout>

@@ -1,0 +1,203 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="CSS Gradient Generator — Linear, Radial &amp; Conic Gradients Free"
+  description="Free online CSS gradient generator. Build linear, radial, and conic gradients with live preview, multi-stop support, and one-click CSS copy. Runs in your browser."
+>
+
+  <!-- Compact header -->
+  <header class="pb-4 pt-2">
+    <h1 class="text-3xl font-bold tracking-tight text-slate-900">
+      CSS Gradient Generator
+    </h1>
+    <p class="mt-1.5 text-sm text-slate-500">
+      Build linear, radial, and conic CSS gradients with a live preview and copy-ready code.
+    </p>
+  </header>
+
+  <!-- Toolbar -->
+  <div class="flex flex-wrap gap-2 mb-3">
+    <select id="g-type" class="rounded-md border border-slate-300 bg-white px-3 py-1.5 text-sm text-slate-700 focus:border-purple-500 focus:ring-1 focus:ring-purple-500">
+      <option value="linear">Linear gradient</option>
+      <option value="radial">Radial gradient</option>
+      <option value="conic">Conic gradient</option>
+    </select>
+    <div class="flex items-center gap-2">
+      <input type="range" id="g-angle" min="0" max="360" value="135" class="w-28 accent-purple-600" />
+      <span id="g-angle-label" class="text-sm text-slate-600 font-mono w-14">135deg</span>
+    </div>
+    <button id="btn-add-stop"    class="rounded-md bg-purple-600 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-purple-700 transition-colors">+ Add Stop</button>
+    <button id="btn-random-grad" class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Random</button>
+    <div class="flex-1"></div>
+    <button id="btn-copy-grad"   class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Copy CSS</button>
+  </div>
+
+  <!-- Tool: stops + preview + code -->
+  <div class="grid gap-3 md:grid-cols-2 min-h-96">
+
+    <!-- Stops pane -->
+    <div class="flex flex-col gap-3 rounded-lg border border-slate-200 bg-white p-5">
+      <div class="text-xs font-semibold uppercase tracking-wide text-slate-500">Color Stops</div>
+      <div id="stops-container" class="space-y-3"></div>
+    </div>
+
+    <!-- Preview + output pane -->
+    <div class="flex flex-col gap-3">
+      <div class="text-xs font-semibold uppercase tracking-wide text-slate-500">Preview</div>
+      <div id="grad-preview" class="flex-1 rounded-lg border border-slate-200 min-h-40" style="background:linear-gradient(135deg,#3b82f6,#a855f7)"></div>
+      <div>
+        <div class="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-1">CSS Output</div>
+        <code id="grad-css" class="block rounded-lg bg-slate-900 px-4 py-3 text-sm text-emerald-300 font-mono overflow-x-auto whitespace-pre-wrap break-all">background: linear-gradient(135deg, #3b82f6, #a855f7);</code>
+      </div>
+    </div>
+  </div>
+
+  <!-- Status bar -->
+  <div id="status" class="mt-2 rounded-md px-3 py-1.5 text-sm font-medium hidden"></div>
+
+  <!-- ── Below-fold: SEO content ── -->
+  <div class="mt-16 max-w-3xl space-y-10">
+
+    <section aria-labelledby="gradient-types-heading">
+      <h2 id="gradient-types-heading" class="text-2xl font-bold text-slate-900">CSS gradient types</h2>
+      <div class="prose mt-4 max-w-none">
+        <ul>
+          <li>
+            <strong>linear-gradient()</strong> — color transitions along a straight line defined by an angle
+            (<code>0deg</code> = bottom-to-top, <code>90deg</code> = left-to-right, <code>135deg</code> = diagonal).
+            The most widely used gradient type.
+          </li>
+          <li>
+            <strong>radial-gradient()</strong> — transitions radiate outward from a center point in an ellipse
+            or circle. Useful for spotlight effects, glows, and vignettes.
+          </li>
+          <li>
+            <strong>conic-gradient()</strong> — transitions rotate around a center point, like the face of a
+            clock. Used for pie charts, color wheels, and checkerboard patterns.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="css-gradient-syntax-heading">
+      <h2 id="css-gradient-syntax-heading" class="text-2xl font-bold text-slate-900">CSS gradient syntax reference</h2>
+      <div class="prose mt-4 max-w-none">
+        <p>The generated CSS uses the <code>background</code> shorthand property:</p>
+        <ul>
+          <li><code>background: linear-gradient(135deg, #3b82f6 0%, #a855f7 100%);</code></li>
+          <li><code>background: radial-gradient(circle, #3b82f6 0%, #a855f7 100%);</code></li>
+          <li><code>background: conic-gradient(from 0deg, #3b82f6 0%, #a855f7 100%);</code></li>
+        </ul>
+        <p>
+          Color stops can use any valid CSS color (<code>#hex</code>, <code>rgb()</code>, <code>hsl()</code>,
+          named colors) and any CSS length or percentage as position. Positions can be omitted to let the
+          browser distribute stops evenly.
+        </p>
+      </div>
+    </section>
+
+    <section aria-labelledby="gradient-performance-heading">
+      <h2 id="gradient-performance-heading" class="text-2xl font-bold text-slate-900">Gradients vs. images for backgrounds</h2>
+      <div class="prose mt-4 max-w-none">
+        <p>
+          CSS gradients are rendered on the GPU and have zero network cost — they don't require an HTTP
+          request the way a background image does. For decorative backgrounds, gradients are almost always
+          the right choice:
+        </p>
+        <ul>
+          <li>No image download = faster FCP (First Contentful Paint).</li>
+          <li>Resolution-independent — crisp at any DPR/screen size.</li>
+          <li>Can be animated with CSS transitions or <code>@keyframes</code> by interpolating CSS custom properties.</li>
+        </ul>
+      </div>
+    </section>
+
+  </div>
+
+  <script is:inline>
+    var stops = [{color:'#3b82f6',pos:0},{color:'#a855f7',pos:100}];
+    var statusEl = document.getElementById('status');
+
+    function showStatus(msg, type) {
+      var clsMap = { error: 'bg-red-50 text-red-700 border border-red-200', success: 'bg-emerald-50 text-emerald-700 border border-emerald-200', info: 'bg-blue-50 text-blue-700 border border-blue-200' };
+      statusEl.className = 'mt-2 rounded-md px-3 py-1.5 text-sm font-medium ' + (clsMap[type] || 'bg-slate-100 text-slate-700');
+      statusEl.textContent = msg;
+      statusEl.classList.remove('hidden');
+    }
+
+    function renderStops() {
+      var c = document.getElementById('stops-container');
+      c.innerHTML = stops.map(function(s, i) {
+        return '<div class="flex items-center gap-2">' +
+          '<input type="color" data-i="' + i + '" class="stop-color h-9 w-12 rounded-md border border-slate-300 cursor-pointer" value="' + s.color + '">' +
+          '<div class="flex-1">' +
+            '<input type="range" data-i="' + i + '" class="stop-pos w-full accent-purple-600" min="0" max="100" value="' + s.pos + '">' +
+          '</div>' +
+          '<span class="w-10 text-xs text-slate-500 text-right font-mono">' + s.pos + '%</span>' +
+          '<button data-i="' + i + '" class="btn-del-stop rounded-md border border-red-200 bg-red-50 px-2 py-1 text-xs text-red-700 hover:bg-red-100' + (stops.length <= 2 ? ' opacity-40 cursor-not-allowed' : '') + '">✕</button>' +
+          '</div>';
+      }).join('');
+      c.querySelectorAll('.stop-color').forEach(function(el) {
+        el.addEventListener('input', function() { stops[+el.dataset.i].color = el.value; update(); });
+      });
+      c.querySelectorAll('.stop-pos').forEach(function(el) {
+        el.addEventListener('input', function() {
+          stops[+el.dataset.i].pos = +el.value;
+          el.parentNode.nextElementSibling.textContent = el.value + '%';
+          update();
+        });
+      });
+      c.querySelectorAll('.btn-del-stop').forEach(function(el) {
+        el.addEventListener('click', function() {
+          if (stops.length > 2) { stops.splice(+el.dataset.i, 1); renderStops(); update(); }
+        });
+      });
+    }
+
+    function randomHex() { return '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0'); }
+
+    function update() {
+      stops.sort(function(a, b) { return a.pos - b.pos; });
+      var type = document.getElementById('g-type').value;
+      var angle = document.getElementById('g-angle').value;
+      document.getElementById('g-angle-label').textContent = angle + 'deg';
+      var stopsStr = stops.map(function(s) { return s.color + ' ' + s.pos + '%'; }).join(', ');
+      var css;
+      if (type === 'linear') css = 'linear-gradient(' + angle + 'deg, ' + stopsStr + ')';
+      else if (type === 'radial') css = 'radial-gradient(circle, ' + stopsStr + ')';
+      else css = 'conic-gradient(from ' + angle + 'deg, ' + stopsStr + ')';
+      document.getElementById('grad-preview').style.background = css;
+      document.getElementById('grad-css').textContent = 'background: ' + css + ';';
+    }
+
+    document.getElementById('g-type').addEventListener('change', update);
+    document.getElementById('g-angle').addEventListener('input', update);
+
+    document.getElementById('btn-add-stop').addEventListener('click', function() {
+      stops.push({ color: randomHex(), pos: 50 });
+      renderStops(); update();
+    });
+
+    document.getElementById('btn-random-grad').addEventListener('click', function() {
+      var count = 2 + Math.floor(Math.random() * 2);
+      stops = Array.from({ length: count }, function(_, i) {
+        return { color: randomHex(), pos: Math.round(i / (count - 1) * 100) };
+      });
+      renderStops(); update();
+      showStatus('Random gradient generated', 'success');
+    });
+
+    document.getElementById('btn-copy-grad').addEventListener('click', function() {
+      var css = document.getElementById('grad-css').textContent;
+      navigator.clipboard.writeText(css).then(function() {
+        showStatus('CSS copied to clipboard', 'success');
+      }, function() {
+        showStatus('Copy failed — please copy manually from the code block above', 'error');
+      });
+    });
+
+    renderStops(); update();
+  </script>
+
+</BaseLayout>
