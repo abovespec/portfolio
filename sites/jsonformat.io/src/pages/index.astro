@@ -1,0 +1,349 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { siteConfig } from '~/config/site.config';
+import { getCollection } from 'astro:content';
+
+const recentPosts = siteConfig.features.hasBlog
+  ? (await getCollection('blog', ({ data }) => !data.draft))
+      .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
+      .slice(0, 3)
+  : [];
+---
+<BaseLayout
+  title="JSON Formatter, Validator & Minifier — JSONFormat"
+  description="Free online JSON formatter, validator, and minifier. Instantly format, validate, and convert JSON in your browser. No data sent to servers."
+>
+
+  <!-- Compact page header -->
+  <header class="pb-4 pt-2">
+    <h1 class="text-3xl font-bold tracking-tight text-slate-900">
+      JSON Formatter &amp; Validator
+    </h1>
+    <p class="mt-1.5 text-sm text-slate-500">
+      Format, validate, and minify JSON instantly — runs entirely in your browser, nothing is sent to a server.
+    </p>
+  </header>
+
+  <!-- Toolbar -->
+  <div class="flex flex-wrap gap-2 mb-3">
+    <button id="btn-format"   class="rounded-md bg-blue-600 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-blue-700 transition-colors">Format</button>
+    <button id="btn-minify"   class="rounded-md bg-slate-700 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-slate-800 transition-colors">Minify</button>
+    <button id="btn-validate" class="rounded-md bg-emerald-600 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-emerald-700 transition-colors">Validate</button>
+    <button id="btn-to-xml"   class="rounded-md bg-indigo-600 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-indigo-700 transition-colors">→ XML</button>
+    <button id="btn-to-csv"   class="rounded-md bg-violet-600 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-violet-700 transition-colors">→ CSV</button>
+    <button id="btn-sample"   class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Sample</button>
+    <div class="flex-1"></div>
+    <button id="btn-clear"    class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Clear</button>
+    <button id="btn-copy"     class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Copy output</button>
+  </div>
+
+  <!-- Dual-pane editor -->
+  <div class="grid gap-3 md:grid-cols-2 min-h-96">
+    <div class="flex flex-col gap-1 min-h-0">
+      <div class="flex items-center justify-between">
+        <label for="json-input" class="text-xs font-semibold uppercase tracking-wide text-slate-500">Input</label>
+        <label class="flex items-center gap-1.5 text-xs text-slate-500 cursor-pointer select-none">
+          <input id="auto-format" type="checkbox" class="accent-blue-600" />
+          Auto-format on paste
+        </label>
+      </div>
+      <textarea
+        id="json-input"
+        class="flex-1 w-full rounded-lg border border-slate-300 bg-slate-950 text-slate-100 p-4 font-mono text-sm resize-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 placeholder:text-slate-600"
+        placeholder="Paste your JSON here"
+        spellcheck="false"
+        autocomplete="off"
+        rows="16"
+      ></textarea>
+    </div>
+    <div class="flex flex-col gap-1 min-h-0">
+      <label for="json-output" class="text-xs font-semibold uppercase tracking-wide text-slate-500">Output</label>
+      <textarea
+        id="json-output"
+        class="flex-1 w-full rounded-lg border border-slate-200 bg-slate-950 text-slate-100 p-4 font-mono text-sm resize-none"
+        readonly
+        placeholder="Result appears here"
+        spellcheck="false"
+        rows="16"
+      ></textarea>
+    </div>
+  </div>
+
+  <!-- Status bar -->
+  <div id="status" class="mt-2 rounded-md px-3 py-1.5 text-sm font-medium hidden"></div>
+
+  <!-- Keyboard hint -->
+  <p class="mt-2 text-xs text-slate-400">
+    <kbd class="rounded border border-slate-300 bg-slate-100 px-1 py-0.5 font-mono text-slate-600">Ctrl</kbd>
+    +
+    <kbd class="rounded border border-slate-300 bg-slate-100 px-1 py-0.5 font-mono text-slate-600">Enter</kbd>
+    to format ·
+    <kbd class="rounded border border-slate-300 bg-slate-100 px-1 py-0.5 font-mono text-slate-600">Tab</kbd>
+    inserts spaces in input
+  </p>
+
+  <!-- ── Below-fold: SEO content ── -->
+  <div class="mt-16 max-w-3xl space-y-10">
+
+    <section aria-labelledby="what-is-json-heading">
+      <h2 id="what-is-json-heading" class="text-2xl font-bold text-slate-900">What is JSON?</h2>
+      <div class="prose mt-4 max-w-none">
+        <p>
+          JSON (JavaScript Object Notation) is a lightweight, text-based data interchange format.
+          Despite the "JavaScript" in its name, JSON is completely language-independent and
+          supported natively in Python, Go, Ruby, Java, Rust, and virtually every other language
+          ecosystem.
+        </p>
+        <p>
+          A JSON document is built from two primitives: <strong>objects</strong> (unordered
+          key/value pairs, surrounded by curly braces) and <strong>arrays</strong> (ordered
+          lists, surrounded by square brackets). Values can be strings, numbers, booleans,
+          <code>null</code>, or nested objects and arrays.
+        </p>
+      </div>
+    </section>
+
+    <section aria-labelledby="how-to-format-heading">
+      <h2 id="how-to-format-heading" class="text-2xl font-bold text-slate-900">How to format JSON</h2>
+      <div class="prose mt-4 max-w-none">
+        <p>
+          Formatting JSON means adding consistent indentation and line breaks so the structure is
+          human-readable. Machine-generated JSON is often minified (a single long line with no
+          whitespace), which makes manual inspection painful.
+        </p>
+        <ol>
+          <li>Paste your raw JSON into the <strong>Input</strong> pane above.</li>
+          <li>Click <strong>Format</strong> or press <kbd>Ctrl+Enter</kbd>.</li>
+          <li>The Output pane shows prettified JSON with 2-space indentation.</li>
+          <li>Click <strong>Copy output</strong> to copy the result to your clipboard.</li>
+        </ol>
+        <p>
+          If the input is invalid, you'll see an error message with the specific location where
+          parsing failed, so you can fix the problem quickly.
+        </p>
+      </div>
+    </section>
+
+    <section aria-labelledby="common-errors-heading">
+      <h2 id="common-errors-heading" class="text-2xl font-bold text-slate-900">Common JSON errors</h2>
+      <div class="prose mt-4 max-w-none">
+        <p>The JSON specification is strict. These are the most frequent mistakes:</p>
+        <ul>
+          <li><strong>Trailing commas.</strong> JSON does not allow a comma after the last element of an object or array — <code>{'{"a": 1,}'}</code> is invalid.</li>
+          <li><strong>Single-quoted strings.</strong> Only double quotes are valid.</li>
+          <li><strong>Unquoted keys.</strong> Every object key must be a double-quoted string.</li>
+          <li><strong>Comments.</strong> Standard JSON has no comment syntax.</li>
+          <li><strong>Undefined or NaN.</strong> JSON only has <code>null</code>. JavaScript's <code>undefined</code>, <code>NaN</code>, and <code>Infinity</code> are not valid JSON values.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="minify-heading">
+      <h2 id="minify-heading" class="text-2xl font-bold text-slate-900">When to minify JSON</h2>
+      <div class="prose mt-4 max-w-none">
+        <p>
+          Minifying JSON removes all unnecessary whitespace. The result is functionally identical
+          but smaller in byte size — useful when sending JSON over a network, storing large
+          amounts of JSON, or embedding it in HTML where file size affects page load time.
+        </p>
+        <p>
+          For human-edited files like configuration, prefer formatted JSON (or a format that
+          supports comments, like JSONC or JSON5). Minified JSON makes diff reviews much harder.
+        </p>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Recent blog posts -->
+  {recentPosts.length > 0 && (
+    <section class="mt-16" aria-labelledby="articles-heading">
+      <h2 id="articles-heading" class="text-2xl font-bold text-slate-900">Developer Guides</h2>
+      <ul class="mt-6 grid gap-4 sm:grid-cols-3">
+        {recentPosts.map((post) => (
+          <li>
+            <a
+              href={`/blog/${post.slug}/`}
+              class="group block rounded-xl border border-slate-200 bg-white p-5 transition hover:border-blue-300 hover:shadow-sm"
+            >
+              <time
+                datetime={post.data.publishDate.toISOString()}
+                class="text-xs font-medium uppercase tracking-wide text-slate-400"
+              >
+                {post.data.publishDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+              </time>
+              <h3 class="mt-1 text-base font-semibold text-slate-900 group-hover:text-blue-700">
+                {post.data.title}
+              </h3>
+              <p class="mt-2 line-clamp-2 text-sm text-slate-600">{post.data.description}</p>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <div class="mt-6">
+        <a href="/blog/" class="text-sm font-medium text-blue-700 underline underline-offset-2 hover:text-blue-800">
+          View all guides →
+        </a>
+      </div>
+    </section>
+  )}
+
+  <script is:inline>
+    var input  = document.getElementById('json-input');
+    var output = document.getElementById('json-output');
+    var statusEl = document.getElementById('status');
+
+    var SAMPLE = '{\n  "name": "JSON Formatter",\n  "version": "1.0.0",\n  "features": ["format", "minify", "validate"],\n  "author": { "url": "https://jsonformat.io" },\n  "active": true\n}';
+
+    function showStatus(msg, type) {
+      var clsMap = {
+        error:   'bg-red-50 text-red-700 border border-red-200',
+        success: 'bg-emerald-50 text-emerald-700 border border-emerald-200',
+        info:    'bg-blue-50 text-blue-700 border border-blue-200'
+      };
+      var cls = clsMap[type] || 'bg-slate-100 text-slate-700';
+      statusEl.className = 'mt-2 rounded-md px-3 py-1.5 text-sm font-medium ' + cls;
+      statusEl.textContent = msg;
+      statusEl.classList.remove('hidden');
+    }
+
+    function tryParse(src) {
+      if (!src.trim()) { throw new Error('Input is empty'); }
+      return JSON.parse(src);
+    }
+
+    function formatJson() {
+      try {
+        output.value = JSON.stringify(tryParse(input.value), null, 2);
+        showStatus('Formatted successfully', 'success');
+      } catch (e) {
+        output.value = '';
+        showStatus('Parse error: ' + e.message, 'error');
+      }
+    }
+
+    document.getElementById('btn-format').addEventListener('click', formatJson);
+
+    document.getElementById('btn-minify').addEventListener('click', function() {
+      try {
+        output.value = JSON.stringify(tryParse(input.value));
+        showStatus('Minified successfully', 'success');
+      } catch (e) {
+        output.value = '';
+        showStatus('Parse error: ' + e.message, 'error');
+      }
+    });
+
+    document.getElementById('btn-validate').addEventListener('click', function() {
+      try {
+        var obj = tryParse(input.value);
+        var count = Array.isArray(obj) ? obj.length + ' items' : Object.keys(obj).length + ' keys';
+        showStatus('Valid JSON — ' + count, 'success');
+      } catch (e) {
+        showStatus('Invalid JSON: ' + e.message, 'error');
+      }
+    });
+
+    document.getElementById('btn-to-xml').addEventListener('click', function() {
+      try {
+        var obj = tryParse(input.value);
+        function toXml(o, name) {
+          var tag = (name || 'item').replace(/[^a-zA-Z0-9_-]/g, '_');
+          if (o === null || o === undefined) { return '<' + tag + '/>'; }
+          if (Array.isArray(o)) {
+            return o.map(function(v) { return toXml(v, tag); }).join('\n');
+          }
+          if (typeof o === 'object') {
+            var inner = Object.keys(o).map(function(k) { return toXml(o[k], k); }).join('\n');
+            return '<' + tag + '>\n' + inner + '\n</' + tag + '>';
+          }
+          var esc = String(o).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+          return '<' + tag + '>' + esc + '</' + tag + '>';
+        }
+        output.value = '<?xml version="1.0" encoding="UTF-8"?>\n' + toXml(obj, 'root');
+        showStatus('Converted to XML', 'success');
+      } catch (e) {
+        output.value = '';
+        showStatus('Error: ' + e.message, 'error');
+      }
+    });
+
+    document.getElementById('btn-to-csv').addEventListener('click', function() {
+      try {
+        var arr = tryParse(input.value);
+        if (!Array.isArray(arr) || !arr.length) {
+          throw new Error('Input must be a non-empty JSON array of objects');
+        }
+        var keys = [];
+        arr.forEach(function(row) {
+          Object.keys(row).forEach(function(k) {
+            if (keys.indexOf(k) === -1) { keys.push(k); }
+          });
+        });
+        function escCsv(v) {
+          var s = (v == null) ? '' : String(v);
+          return (s.indexOf(',') >= 0 || s.indexOf('"') >= 0 || s.indexOf('\n') >= 0)
+            ? '"' + s.replace(/"/g, '""') + '"' : s;
+        }
+        var rows = [keys.join(',')].concat(arr.map(function(row) {
+          return keys.map(function(k) { return escCsv(row[k]); }).join(',');
+        }));
+        output.value = rows.join('\n');
+        showStatus('Converted to CSV — ' + arr.length + ' rows', 'success');
+      } catch (e) {
+        output.value = '';
+        showStatus('Error: ' + e.message, 'error');
+      }
+    });
+
+    document.getElementById('btn-sample').addEventListener('click', function() {
+      input.value = SAMPLE;
+      output.value = '';
+      statusEl.classList.add('hidden');
+      input.focus();
+    });
+
+    document.getElementById('btn-clear').addEventListener('click', function() {
+      input.value = '';
+      output.value = '';
+      statusEl.classList.add('hidden');
+      input.focus();
+    });
+
+    document.getElementById('btn-copy').addEventListener('click', function() {
+      if (!output.value) { showStatus('Nothing to copy yet', 'info'); return; }
+      navigator.clipboard.writeText(output.value).then(function() {
+        showStatus('Copied to clipboard', 'success');
+      }, function() {
+        output.select();
+        document.execCommand('copy');
+        showStatus('Copied', 'success');
+      });
+    });
+
+    input.addEventListener('paste', function() {
+      if (!document.getElementById('auto-format').checked) { return; }
+      setTimeout(function() {
+        try {
+          input.value = JSON.stringify(JSON.parse(input.value), null, 2);
+          formatJson();
+        } catch (e2) { /* leave raw */ }
+      }, 0);
+    });
+
+    input.addEventListener('keydown', function(e) {
+      if (e.key === 'Tab') {
+        e.preventDefault();
+        var s = input.selectionStart;
+        var end = input.selectionEnd;
+        input.value = input.value.slice(0, s) + '  ' + input.value.slice(end);
+        input.selectionStart = input.selectionEnd = s + 2;
+      }
+      if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
+        e.preventDefault();
+        formatJson();
+      }
+    });
+  </script>
+
+</BaseLayout>
