@@ -1,0 +1,240 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="UUID Generator — Generate UUID v4, v1, v7 Free Online"
+  description="Free online UUID generator. Generate UUID v4 (random), v1 (time-based), or v7 (sortable). Bulk generation, copy to clipboard. Runs entirely in your browser."
+>
+
+  <!-- Compact header -->
+  <header class="pb-4 pt-2">
+    <h1 class="text-3xl font-bold tracking-tight text-slate-900">
+      UUID Generator
+    </h1>
+    <p class="mt-1.5 text-sm text-slate-500">
+      Generate UUID v4, v1, or v7 identifiers instantly — runs entirely in your browser, nothing is sent to a server.
+    </p>
+  </header>
+
+  <!-- Toolbar -->
+  <div class="flex flex-wrap gap-2 mb-3">
+    <button id="btn-generate" class="rounded-md bg-cyan-600 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-cyan-700 transition-colors">Generate</button>
+    <select id="version-select" class="rounded-md border border-slate-300 bg-white px-3 py-1.5 text-sm text-slate-700 focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500">
+      <option value="4">Version 4 (random)</option>
+      <option value="1">Version 1 (time-based)</option>
+      <option value="7">Version 7 (sortable)</option>
+    </select>
+    <select id="count-select" class="rounded-md border border-slate-300 bg-white px-3 py-1.5 text-sm text-slate-700 focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500">
+      <option value="1">1 UUID</option>
+      <option value="5">5 UUIDs</option>
+      <option value="10">10 UUIDs</option>
+      <option value="25">25 UUIDs</option>
+      <option value="50">50 UUIDs</option>
+      <option value="100">100 UUIDs</option>
+    </select>
+    <select id="format-select" class="rounded-md border border-slate-300 bg-white px-3 py-1.5 text-sm text-slate-700 focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500">
+      <option value="standard">Standard (hyphenated)</option>
+      <option value="no-hyphens">No hyphens</option>
+      <option value="uppercase">UPPERCASE</option>
+      <option value="braces">With braces {}</option>
+    </select>
+    <div class="flex-1"></div>
+    <button id="btn-copy" class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Copy all</button>
+    <button id="btn-clear" class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Clear</button>
+  </div>
+
+  <!-- Output area -->
+  <div class="flex flex-col gap-1 min-h-64">
+    <label for="uuid-output" class="text-xs font-semibold uppercase tracking-wide text-slate-500">Output</label>
+    <textarea
+      id="uuid-output"
+      class="flex-1 w-full rounded-lg border border-slate-200 bg-slate-950 text-slate-100 p-4 font-mono text-sm resize-none min-h-64"
+      readonly
+      placeholder="Click Generate to create UUIDs"
+      spellcheck="false"
+      rows="10"
+    ></textarea>
+  </div>
+
+  <!-- Status bar -->
+  <div id="status" class="mt-2 rounded-md px-3 py-1.5 text-sm font-medium hidden"></div>
+
+  <!-- Keyboard hint -->
+  <p class="mt-2 text-xs text-slate-400">
+    Press
+    <kbd class="rounded border border-slate-300 bg-slate-100 px-1 py-0.5 font-mono text-slate-600">Space</kbd>
+    or
+    <kbd class="rounded border border-slate-300 bg-slate-100 px-1 py-0.5 font-mono text-slate-600">Enter</kbd>
+    (outside a field) to generate a new batch
+  </p>
+
+  <!-- ── Below-fold: SEO content ── -->
+  <div class="mt-16 max-w-3xl space-y-10">
+
+    <section aria-labelledby="what-is-uuid-heading">
+      <h2 id="what-is-uuid-heading" class="text-2xl font-bold text-slate-900">What is a UUID?</h2>
+      <div class="prose mt-4 max-w-none">
+        <p>
+          A UUID (Universally Unique Identifier), also called a GUID (Globally Unique Identifier on Windows
+          platforms), is a 128-bit label defined by RFC 4122. It is represented as 32 hexadecimal digits
+          split into five groups by hyphens: <code>xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx</code>, where
+          <code>M</code> encodes the version and <code>N</code> encodes the variant.
+        </p>
+        <p>
+          The probability of generating a duplicate UUID v4 is astronomically low — you would need to
+          generate about 1 billion UUIDs per second for 85 years before even a 50% chance of a single
+          collision. In practice, UUIDs are treated as globally unique.
+        </p>
+      </div>
+    </section>
+
+    <section aria-labelledby="uuid-versions-heading">
+      <h2 id="uuid-versions-heading" class="text-2xl font-bold text-slate-900">UUID versions compared</h2>
+      <div class="prose mt-4 max-w-none">
+        <ul>
+          <li>
+            <strong>UUID v4 (random)</strong> — generated entirely from random or pseudo-random numbers.
+            The most widely used version. Opaque: reveals nothing about when or where it was generated.
+            The right default for most applications.
+          </li>
+          <li>
+            <strong>UUID v1 (time + MAC address)</strong> — encodes the current timestamp and the MAC
+            address of the generating machine. Our generator uses random bytes for the node field
+            (multicast bit set per RFC 4122) so no real MAC address is exposed.
+          </li>
+          <li>
+            <strong>UUID v7 (Unix timestamp + random)</strong> — introduced in RFC 9562 (2024). Embeds
+            a millisecond-precision Unix timestamp, making v7 UUIDs naturally sortable by creation time.
+            Use v7 as the primary key in databases where time-ordering matters for performance
+            (B-tree indexes stay hot on recent rows).
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="uuid-use-cases-heading">
+      <h2 id="uuid-use-cases-heading" class="text-2xl font-bold text-slate-900">When to use UUIDs</h2>
+      <div class="prose mt-4 max-w-none">
+        <p>
+          UUIDs are the right choice when:
+        </p>
+        <ul>
+          <li>Records are created across distributed systems and you need unique IDs without a central coordinator.</li>
+          <li>You want to avoid sequential IDs that expose row counts or creation order to clients.</li>
+          <li>IDs must be shareable in URLs or API responses without leaking system structure.</li>
+          <li>You're merging data from multiple sources and need namespace isolation.</li>
+        </ul>
+        <p>
+          Sequential integers still win for single-server databases where performance and readability are
+          the top priorities. For distributed systems, v7 UUIDs give you both global uniqueness and
+          database-friendly sortability.
+        </p>
+      </div>
+    </section>
+
+  </div>
+
+  <script is:inline>
+    var statusEl = document.getElementById('status');
+
+    function showStatus(msg, type) {
+      var clsMap = { error: 'bg-red-50 text-red-700 border border-red-200', success: 'bg-emerald-50 text-emerald-700 border border-emerald-200', info: 'bg-blue-50 text-blue-700 border border-blue-200' };
+      statusEl.className = 'mt-2 rounded-md px-3 py-1.5 text-sm font-medium ' + (clsMap[type] || 'bg-slate-100 text-slate-700');
+      statusEl.textContent = msg;
+      statusEl.classList.remove('hidden');
+    }
+
+    function fmtBytes(b) {
+      var h = Array.from(b).map(function(x) { return ('0' + x.toString(16)).slice(-2); }).join('');
+      return h.slice(0,8) + '-' + h.slice(8,12) + '-' + h.slice(12,16) + '-' + h.slice(16,20) + '-' + h.slice(20);
+    }
+
+    function uuidV4() {
+      var b = new Uint8Array(16);
+      crypto.getRandomValues(b);
+      b[6] = (b[6] & 0x0f) | 0x40;
+      b[8] = (b[8] & 0x3f) | 0x80;
+      return fmtBytes(b);
+    }
+
+    function uuidV1() {
+      var b = new Uint8Array(16);
+      crypto.getRandomValues(b);
+      var now = Date.now();
+      var hi100ns = now * 10000 + 122192928000000000;
+      var lo = hi100ns % 0x100000000;
+      var mid_hi = Math.floor(hi100ns / 0x100000000);
+      var mid = mid_hi & 0xffff;
+      var hi  = (mid_hi >>> 16) & 0x0fff;
+      b[0] = (lo >>> 24) & 0xff; b[1] = (lo >>> 16) & 0xff; b[2] = (lo >>> 8) & 0xff; b[3] = lo & 0xff;
+      b[4] = (mid >>> 8) & 0xff; b[5] = mid & 0xff;
+      b[6] = ((hi >>> 8) & 0x0f) | 0x10; b[7] = hi & 0xff;
+      b[8] = (b[8] & 0x3f) | 0x80;
+      b[10] |= 0x01;
+      return fmtBytes(b);
+    }
+
+    function uuidV7() {
+      var b = new Uint8Array(16);
+      crypto.getRandomValues(b);
+      var ms = Date.now();
+      b[0] = (ms / 0x10000000000) | 0;
+      b[1] = (ms / 0x100000000) | 0;
+      b[2] = (ms / 0x1000000) & 0xff;
+      b[3] = (ms / 0x10000) & 0xff;
+      b[4] = (ms / 0x100) & 0xff;
+      b[5] = ms & 0xff;
+      b[6] = (b[6] & 0x0f) | 0x70;
+      b[8] = (b[8] & 0x3f) | 0x80;
+      return fmtBytes(b);
+    }
+
+    function applyFormat(uuid, fmt) {
+      if (fmt === 'no-hyphens') return uuid.replace(/-/g, '');
+      if (fmt === 'uppercase') return uuid.toUpperCase();
+      if (fmt === 'braces') return '{' + uuid + '}';
+      return uuid;
+    }
+
+    function generate() {
+      var version = document.getElementById('version-select').value;
+      var count = parseInt(document.getElementById('count-select').value);
+      var fmt = document.getElementById('format-select').value;
+      var fn = version === '1' ? uuidV1 : version === '7' ? uuidV7 : uuidV4;
+      var lines = [];
+      for (var i = 0; i < count; i++) lines.push(applyFormat(fn(), fmt));
+      document.getElementById('uuid-output').value = lines.join('\n');
+      showStatus('Generated ' + count + ' UUID v' + version, 'success');
+    }
+
+    document.getElementById('btn-generate').addEventListener('click', generate);
+
+    document.getElementById('btn-copy').addEventListener('click', function() {
+      var val = document.getElementById('uuid-output').value;
+      if (!val) { showStatus('Nothing to copy yet', 'info'); return; }
+      navigator.clipboard.writeText(val).then(function() {
+        showStatus('Copied to clipboard', 'success');
+      }, function() {
+        document.getElementById('uuid-output').select();
+        document.execCommand('copy');
+        showStatus('Copied', 'success');
+      });
+    });
+
+    document.getElementById('btn-clear').addEventListener('click', function() {
+      document.getElementById('uuid-output').value = '';
+      statusEl.classList.add('hidden');
+    });
+
+    document.addEventListener('keydown', function(e) {
+      var tag = e.target.tagName;
+      if ((e.key === 'Enter' || e.key === ' ') && tag !== 'INPUT' && tag !== 'TEXTAREA' && tag !== 'SELECT' && tag !== 'BUTTON') {
+        e.preventDefault();
+        generate();
+      }
+    });
+
+    generate();
+  </script>
+
+</BaseLayout>
