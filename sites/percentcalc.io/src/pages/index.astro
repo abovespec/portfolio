@@ -6,57 +6,124 @@ import { getCollection } from 'astro:content';
 const recentPosts = siteConfig.features.hasBlog
   ? (await getCollection('blog', ({ data }) => !data.draft))
       .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
-      .slice(0, 6)
+      .slice(0, 3)
   : [];
 
-const featuredTool = siteConfig.features.hasTool
-  ? (await getCollection('tools', ({ data }) => !data.draft)).at(0)
-  : undefined;
-const featuredGame = siteConfig.features.hasGame
-  ? (await getCollection('games', ({ data }) => !data.draft)).at(0)
-  : undefined;
+const tools = siteConfig.features.hasTool
+  ? (await getCollection('tools', ({ data }) => !data.draft))
+      .sort((a, b) => a.data.title.localeCompare(b.data.title))
+  : [];
+
+const TOOL_ICONS: Record<string, string> = {
+  'percent-of':         '🔢',
+  'percent-change':     '📊',
+  'percent-off':        '🏷️',
+  'percent-increase':   '📈',
+  'percent-difference': '↔️',
+};
 ---
-<BaseLayout title={siteConfig.identity.name} description={siteConfig.identity.description}>
-  <section class="py-12 text-center">
-    <h1 class="text-5xl font-bold tracking-tight text-slate-900">{siteConfig.identity.name}</h1>
-    <p class="mx-auto mt-4 max-w-2xl text-lg text-slate-600">{siteConfig.identity.description}</p>
-  </section>
+<BaseLayout
+  title="Percentage Calculator — 5 Free Percent Calculators"
+  description="Free online percentage calculators: percent of a number, percent change, percent off (discounts), percent increase, and percent difference. Instant, no signup."
+>
 
-  {(featuredTool || featuredGame) && (
-    <section class="my-10">
-      <h2 class="text-2xl font-semibold mb-4">Featured</h2>
-      <div class="grid gap-4 sm:grid-cols-2">
-        {featuredTool && (
-          <a href={`/tools/${featuredTool.data.urlSlug}/`} class="rounded-lg border border-slate-200 bg-white p-6 hover:border-slate-400">
-            <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Tool</p>
-            <h3 class="mt-2 text-xl font-medium">{featuredTool.data.title}</h3>
-            <p class="mt-2 text-sm text-slate-600">{featuredTool.data.description}</p>
-          </a>
-        )}
-        {featuredGame && (
-          <a href={`/games/${featuredGame.data.urlSlug}/`} class="rounded-lg border border-slate-200 bg-white p-6 hover:border-slate-400">
-            <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Game</p>
-            <h3 class="mt-2 text-xl font-medium">{featuredGame.data.title}</h3>
-            <p class="mt-2 text-sm text-slate-600">{featuredGame.data.description}</p>
-          </a>
-        )}
-      </div>
-    </section>
-  )}
+  <header class="pb-8 pt-4">
+    <h1 class="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+      Percentage Calculators
+    </h1>
+    <p class="mt-3 max-w-xl text-lg text-slate-600">
+      Five free percentage calculators for every everyday math situation — discounts,
+      grade changes, price increases, and more.
+    </p>
+  </header>
 
-  {recentPosts.length > 0 && (
-    <section class="my-10">
-      <h2 class="text-2xl font-semibold mb-4">Recent posts</h2>
-      <ul class="grid gap-4 sm:grid-cols-2">
-        {recentPosts.map((post) => (
-          <li class="rounded-lg border border-slate-200 bg-white p-4 hover:border-slate-400">
-            <a href={`/blog/${post.slug}/`}>
-              <h3 class="text-lg font-medium text-slate-900">{post.data.title}</h3>
-              <p class="mt-1 text-sm text-slate-600">{post.data.description}</p>
+  <ul class="flex flex-wrap gap-x-6 gap-y-2 text-sm text-slate-600">
+    {[
+      'Instant results as you type',
+      'No data stored or shared',
+      'Free, no signup required',
+      'Mobile & desktop friendly',
+    ].map((badge) => (
+      <li class="flex items-center gap-1.5">
+        <svg class="h-4 w-4 shrink-0 text-brand" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.061 1.06l2.5 2.5a.75.75 0 001.137-.088l4-5.5z" clip-rule="evenodd" />
+        </svg>
+        {badge}
+      </li>
+    ))}
+  </ul>
+
+  {tools.length > 0 && (
+    <section class="mt-10" aria-labelledby="tools-heading">
+      <h2 id="tools-heading" class="text-2xl font-bold text-slate-900">Our Calculators</h2>
+      <ul class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {tools.map((tool) => (
+          <li>
+            <a
+              href={`/tools/${tool.data.urlSlug}/`}
+              class="group flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-5 transition hover:border-brand/40 hover:shadow-md"
+            >
+              <span class="text-3xl" aria-hidden="true">
+                {TOOL_ICONS[tool.data.urlSlug] ?? '🧮'}
+              </span>
+              <h3 class="mt-3 text-base font-semibold text-slate-900 group-hover:text-brand">
+                {tool.data.title}
+              </h3>
+              <p class="mt-1 flex-1 text-sm text-slate-600 line-clamp-2">{tool.data.description}</p>
+              <span class="mt-3 text-sm font-medium text-brand">Open Calculator →</span>
             </a>
           </li>
         ))}
       </ul>
     </section>
   )}
+
+  <section class="prose prose-slate mt-10 max-w-none">
+    <h2>About PercentCalc</h2>
+    <p>
+      PercentCalc offers five free percentage calculators covering the most common math
+      situations: finding a percent of a number, measuring how much something changed,
+      calculating sale prices and discounts, projecting increases, and comparing two
+      values side by side.
+    </p>
+    <p>
+      All calculations run locally in your browser. No data is collected or transmitted.
+    </p>
+    <h3>Which calculator should I use?</h3>
+    <ul>
+      <li><strong>Tip, tax, commission?</strong> Use <a href="/tools/percent-of/">Percent Of</a> — "15% of $50."</li>
+      <li><strong>Did a price go up or down?</strong> Use <a href="/tools/percent-change/">Percent Change</a> — "from $80 to $100."</li>
+      <li><strong>How much do I save on a sale?</strong> Use <a href="/tools/percent-off/">Percent Off</a> — "20% off $120."</li>
+      <li><strong>New value after a raise or increase?</strong> Use <a href="/tools/percent-increase/">Percent Increase</a> — "salary up 5%."</li>
+      <li><strong>Comparing two values with no clear 'before'?</strong> Use <a href="/tools/percent-difference/">Percent Difference</a>.</li>
+    </ul>
+  </section>
+
+  {recentPosts.length > 0 && (
+    <section class="mt-16" aria-labelledby="articles-heading">
+      <h2 id="articles-heading" class="text-2xl font-bold text-slate-900">Latest Articles</h2>
+      <ul class="mt-6 grid gap-4 sm:grid-cols-3">
+        {recentPosts.map((post) => (
+          <li>
+            <a
+              href={`/blog/${post.slug}/`}
+              class="group block rounded-xl border border-slate-200 bg-white p-5 transition hover:border-brand/40 hover:shadow-sm"
+            >
+              <time
+                datetime={post.data.publishDate.toISOString()}
+                class="text-xs font-medium uppercase tracking-wide text-slate-400"
+              >
+                {post.data.publishDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+              </time>
+              <h3 class="mt-1 text-base font-semibold text-slate-900 group-hover:text-brand">
+                {post.data.title}
+              </h3>
+              <p class="mt-2 line-clamp-2 text-sm text-slate-600">{post.data.description}</p>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
 </BaseLayout>

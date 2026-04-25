@@ -78,7 +78,7 @@ export const siteConfig: SiteConfig = {
   },
   features: {
     hasBlog: true,
-    hasTool: false,
+    hasTool: true,
     hasGame: false,
     hasSponsoredIntake: false,
   },

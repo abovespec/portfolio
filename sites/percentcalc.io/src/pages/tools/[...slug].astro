@@ -2,6 +2,11 @@
 import ToolLayout from '~/layouts/ToolLayout.astro';
 import { getCollection, type CollectionEntry } from 'astro:content';
 import { siteConfig } from '~/config/site.config';
+import PercentOfCalculator from '~/components/PercentOfCalculator';
+import PercentChangeCalculator from '~/components/PercentChangeCalculator';
+import PercentOffCalculator from '~/components/PercentOffCalculator';
+import PercentIncreaseCalculator from '~/components/PercentIncreaseCalculator';
+import PercentDifferenceCalculator from '~/components/PercentDifferenceCalculator';
 
 export async function getStaticPaths() {
   if (!siteConfig.features.hasTool) return [];
@@ -16,11 +21,12 @@ interface Props { tool: CollectionEntry<'tools'> }
 const { tool } = Astro.props;
 const { Content } = await tool.render();
 const s = tool.data.schema;
+const slug = tool.data.urlSlug;
 ---
 <ToolLayout
   title={tool.data.title}
   description={tool.data.description}
-  slug={tool.data.urlSlug}
+  slug={slug}
   applicationCategory={s.applicationCategory}
   operatingSystem={s.operatingSystem}
   price={s.price}
@@ -28,8 +34,20 @@ const s = tool.data.schema;
   ratingValue={s.ratingValue}
   ratingCount={s.ratingCount}
 >
-  <div slot="tool" class="rounded border border-dashed border-slate-300 bg-white p-6 text-center text-sm text-slate-500">
-    Tool UI goes here. Mount a Preact island for the interactive component.
-  </div>
+  {slug === 'percent-of' && (
+    <PercentOfCalculator slot="tool" client:load />
+  )}
+  {slug === 'percent-change' && (
+    <PercentChangeCalculator slot="tool" client:load />
+  )}
+  {slug === 'percent-off' && (
+    <PercentOffCalculator slot="tool" client:load />
+  )}
+  {slug === 'percent-increase' && (
+    <PercentIncreaseCalculator slot="tool" client:load />
+  )}
+  {slug === 'percent-difference' && (
+    <PercentDifferenceCalculator slot="tool" client:load />
+  )}
   <Content />
 </ToolLayout>
