@@ -6,6 +6,16 @@ updatedDate: 2026-04-25
 author: "Editorial Team"
 tags: ["bmi", "limitations of bmi", "body fat", "health screening", "bmi accuracy"]
 draft: false
+sources:
+  - text: "NHLBI — Assessing Your Weight and Health Risk"
+    url: "https://www.nhlbi.nih.gov/health/educational/lose_wt/risk.htm"
+  - text: "WHO — Appropriate body-mass index for Asian populations"
+    url: "https://www.who.int/publications/i/item/WHO-WPR-RBM-01.70"
+  - text: "National Institute on Aging — Maintaining a Healthy Weight"
+    url: "https://www.nia.nih.gov/health/weight-loss-older-adults"
+  - text: "Romero-Corral A, et al. (2010). Normal weight obesity: a risk factor for cardiometabolic dysregulation. Obesity."
+    url: "https://doi.org/10.1038/oby.2009.495"
+  - text: "Flegal KM, et al. (2013). Association of all-cause mortality with overweight and obesity using standard BMI categories. JAMA, 309(1), 71–82."
 ---
 
 > **Medical Disclaimer:** This article is educational and does not constitute medical advice. Consult a licensed healthcare professional for personalised health assessment.
@@ -79,12 +89,3 @@ Use our [BMI calculator](/) to find your number. Then take it to your doctor, no
 
 ---
 
-**Sources**
-
-- National Heart, Lung, and Blood Institute. *Assessing Your Weight and Health Risk.* https://www.nhlbi.nih.gov/health/educational/lose_wt/risk.htm
-- World Health Organization. *Appropriate body-mass index for Asian populations.* https://www.who.int/publications/i/item/WHO-WPR-RBM-01.70
-- National Institute on Aging. *Maintaining a Healthy Weight.* https://www.nia.nih.gov/health/weight-loss-older-adults
-- Romero-Corral A, et al. (2010). *Normal weight obesity: a risk factor for cardiometabolic dysregulation and cardiovascular mortality.* European Heart Journal.
-- Flegal KM, et al. (2013). *Association of all-cause mortality with overweight and obesity using standard body mass index categories.* JAMA, 309(1), 71–82.
-
-*Last reviewed: April 2026 by the BMICalc Editorial Team.*

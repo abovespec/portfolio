@@ -6,6 +6,12 @@ updatedDate: 2026-04-25
 author: "Editorial Team"
 tags: ["bmi", "bmi formula", "how to calculate bmi", "body mass index"]
 draft: false
+sources:
+  - text: "CDC — About Adult BMI (calculation method)"
+    url: "https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/index.html"
+  - text: "NHLBI — BMI Calculator"
+    url: "https://www.nhlbi.nih.gov/health/educational/lose_wt/BMI/bmicalc.htm"
+  - text: "Keys A, et al. (1972). Indices of relative weight and obesity. Journal of Chronic Diseases, 25(6–7), 329–343."
 ---
 
 > **Medical Disclaimer:** BMI is a screening tool, not a diagnostic instrument. The information below is educational. Consult a healthcare professional for personalized health assessment.
@@ -108,10 +114,3 @@ Rather than doing the arithmetic manually, use our [free BMI calculator](/) — 
 
 ---
 
-**Sources**
-
-- Centers for Disease Control and Prevention. *How is BMI calculated and what does it mean?* https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/index.html
-- National Heart, Lung, and Blood Institute. *BMI Calculator.* https://www.nhlbi.nih.gov/health/educational/lose_wt/BMI/bmicalc.htm
-- Keys A, et al. (1972). *Indices of relative weight and obesity.* Journal of Chronic Diseases, 25(6–7), 329–343.
-
-*Last reviewed: April 2026 by the BMICalc Editorial Team.*

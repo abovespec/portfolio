@@ -6,6 +6,16 @@ updatedDate: 2026-04-25
 author: "Editorial Team"
 tags: ["bmi", "bmi chart", "women", "healthy weight", "bmi ranges"]
 draft: false
+sources:
+  - text: "CDC — About Adult BMI"
+    url: "https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/index.html"
+  - text: "CDC — Assessing Your Weight"
+    url: "https://www.cdc.gov/healthyweight/assessing/"
+  - text: "National Institute on Aging — Maintaining a Healthy Weight"
+    url: "https://www.nia.nih.gov/health/weight-loss-older-adults"
+  - text: "WHO — Appropriate body-mass index for Asian populations"
+    url: "https://www.who.int/publications/i/item/WHO-WPR-RBM-01.70"
+  - text: "Institute of Medicine. Weight Gain During Pregnancy: Reexamining the Guidelines. National Academies Press, 2009."
 ---
 
 > **Medical Disclaimer:** This article is educational and does not constitute medical advice. BMI is a screening tool, not a clinical diagnosis. Speak with your doctor for personalised guidance.
@@ -73,12 +83,3 @@ Research consistently shows that women of East and South Asian descent face elev
 
 ---
 
-**Sources**
-
-- Centers for Disease Control and Prevention. *About Adult BMI.* https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/index.html
-- Centers for Disease Control and Prevention. *Assessing Your Weight.* https://www.cdc.gov/healthyweight/assessing/
-- National Institute on Aging. *Maintaining a Healthy Weight.* https://www.nia.nih.gov/health/weight-loss-older-adults
-- World Health Organization. *Appropriate body-mass index for Asian populations.* https://www.who.int/publications/i/item/WHO-WPR-RBM-01.70
-- Institute of Medicine. *Weight Gain During Pregnancy: Reexamining the Guidelines.* National Academies Press, 2009.
-
-*Last reviewed: April 2026 by the BMICalc Editorial Team.*

@@ -6,6 +6,15 @@ updatedDate: 2026-04-25
 author: "Editorial Team"
 tags: ["bmi", "healthy weight", "bmi ranges", "obesity", "health screening"]
 draft: false
+sources:
+  - text: "CDC — About Adult BMI"
+    url: "https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/index.html"
+  - text: "WHO — Obesity and overweight (fact sheet)"
+    url: "https://www.who.int/news-room/fact-sheets/detail/obesity-and-overweight"
+  - text: "WHO — Appropriate body-mass index for Asian populations"
+    url: "https://www.who.int/publications/i/item/WHO-WPR-RBM-01.70"
+  - text: "NHLBI — Health Risks of Overweight & Obesity"
+    url: "https://www.nhlbi.nih.gov/health/educational/lose_wt/risk.htm"
 ---
 
 > **Medical Disclaimer:** This article is for informational purposes only and does not constitute medical advice. BMI is a population-level screening tool, not a diagnostic measure. Consult a licensed healthcare professional before making decisions about your diet, exercise, or health care.
@@ -71,13 +80,3 @@ Your BMI is a useful starting point. Here is how to put it to work:
 
 BMI is the beginning of the conversation, not the end.
 
----
-
-**Sources**
-
-- Centers for Disease Control and Prevention. *About Adult BMI.* https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/index.html
-- World Health Organization. *Obesity and overweight.* https://www.who.int/news-room/fact-sheets/detail/obesity-and-overweight
-- World Health Organization. *Appropriate body-mass index for Asian populations.* https://www.who.int/publications/i/item/WHO-WPR-RBM-01.70
-- National Heart, Lung, and Blood Institute. *Health Risks of Overweight & Obesity.* https://www.nhlbi.nih.gov/health/educational/lose_wt/risk.htm
-
-*Last reviewed: April 2026 by the BMICalc Editorial Team.*

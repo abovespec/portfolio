@@ -6,6 +6,21 @@ updatedDate: 2026-04-25
 author: "Editorial Team"
 tags: ["bmi", "obesity", "health risks", "high bmi", "chronic disease"]
 draft: false
+sources:
+  - text: "CDC — Overweight & Obesity: Health Effects"
+    url: "https://www.cdc.gov/obesity/basics/consequences.html"
+  - text: "NIDDK — Diabetes Prevention Program"
+    url: "https://www.niddk.nih.gov/about-niddk/research-areas/diabetes/diabetes-prevention-program-dpp"
+  - text: "IARC — Body Fatness and Cancer"
+    url: "https://www.iarc.who.int/featured-news/new-report-confirms-links-between-cancer-and-obesity/"
+  - text: "CDC — Arthritis and Obesity"
+    url: "https://www.cdc.gov/arthritis/data_statistics/comorbidities.htm"
+  - text: "NHLBI — Health Risks of Overweight & Obesity"
+    url: "https://www.nhlbi.nih.gov/health/educational/lose_wt/risk.htm"
+  - text: "Blair SN, et al. (1989). Physical fitness and all-cause mortality. JAMA, 262(17), 2395–2401."
+    url: "https://doi.org/10.1001/jama.1989.03430020098038"
+  - text: "NIH — Stigma as a Fundamental Cause of Obesity"
+    url: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3475416/"
 ---
 
 > **Medical Disclaimer:** This article summarises published research and is not a substitute for professional medical advice. If you are concerned about weight-related health risks, speak with your doctor. BMI is a screening tool; a healthcare provider can order tests that give a fuller picture of your metabolic health.
@@ -97,13 +112,3 @@ Use our [BMI calculator](/) to find your current BMI, and bring the number — a
 
 ---
 
-**Sources**
-
-- Centers for Disease Control and Prevention. *Overweight & Obesity: Health Effects.* https://www.cdc.gov/obesity/basics/consequences.html
-- National Institute of Diabetes and Digestive and Kidney Diseases. *Diabetes Prevention Program.* https://www.niddk.nih.gov/about-niddk/research-areas/diabetes/diabetes-prevention-program-dpp
-- IARC. *Body Fatness and Cancer.* https://www.iarc.who.int/featured-news/new-report-confirms-links-between-cancer-and-obesity/
-- Centers for Disease Control and Prevention. *Arthritis and Obesity.* https://www.cdc.gov/arthritis/data_statistics/comorbidities.htm
-- National Heart, Lung, and Blood Institute. *Health Risks of Overweight & Obesity.* https://www.nhlbi.nih.gov/health/educational/lose_wt/risk.htm
-- Blair SN, et al. (1989). *Physical fitness and all-cause mortality.* JAMA, 262(17), 2395–2401.
-
-*Last reviewed: April 2026 by the BMICalc Editorial Team.*

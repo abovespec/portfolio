@@ -6,6 +6,15 @@ updatedDate: 2026-04-25
 author: "Editorial Team"
 tags: ["bmi", "children", "teens", "pediatric bmi", "healthy weight kids"]
 draft: false
+sources:
+  - text: "CDC — About Child and Teen BMI"
+    url: "https://www.cdc.gov/healthyweight/assessing/bmi/childrens_bmi/about_childrens_bmi.html"
+  - text: "CDC — Defining Childhood Obesity"
+    url: "https://www.cdc.gov/obesity/childhood/defining.html"
+  - text: "CDC — BMI Percentile Calculator for Child and Teen"
+    url: "https://www.cdc.gov/healthyweight/assessing/bmi/childrens_bmi/index.html"
+  - text: "NIDDK — Health Risks of Being Overweight"
+    url: "https://www.niddk.nih.gov/health-information/weight-management/health-risks-overweight"
 ---
 
 > **Medical Disclaimer:** This article is for informational purposes only and does not constitute medical advice. If you are concerned about your child's weight or growth, consult a pediatrician. Do not put a child on a weight-loss diet without professional guidance.
@@ -78,11 +87,3 @@ The CDC growth charts are also based on U.S. population data from the 1960s–19
 
 ---
 
-**Sources**
-
-- Centers for Disease Control and Prevention. *About Child and Teen BMI.* https://www.cdc.gov/healthyweight/assessing/bmi/childrens_bmi/about_childrens_bmi.html
-- Centers for Disease Control and Prevention. *Defining Childhood Obesity.* https://www.cdc.gov/obesity/childhood/defining.html
-- Centers for Disease Control and Prevention. *BMI Percentile Calculator for Child and Teen.* https://www.cdc.gov/healthyweight/assessing/bmi/childrens_bmi/index.html
-- National Institute of Diabetes and Digestive and Kidney Diseases. *Health Risks of Being Overweight.* https://www.niddk.nih.gov/health-information/weight-management/health-risks-overweight
-
-*Last reviewed: April 2026 by the BMICalc Editorial Team.*
