@@ -50,6 +50,14 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
         <div class="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-1">CSS Output</div>
         <code id="grad-css" class="block rounded-lg bg-slate-900 px-4 py-3 text-sm text-emerald-300 font-mono overflow-x-auto whitespace-pre-wrap break-all">background: linear-gradient(135deg, #3b82f6, #a855f7);</code>
       </div>
+      <div>
+        <div class="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-1">Tailwind Output</div>
+        <code id="grad-tailwind" class="block rounded-lg bg-slate-900 px-4 py-3 text-sm text-purple-300 font-mono overflow-x-auto whitespace-pre-wrap break-all"></code>
+      </div>
+      <div class="flex flex-wrap gap-2">
+        <button id="btn-copy-svg" class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Copy as SVG fill</button>
+        <button id="btn-animate-toggle" class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Animate</button>
+      </div>
     </div>
   </div>
 
@@ -301,6 +309,90 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
         showStatus('Copy failed — please copy manually from the code block above', 'error');
       });
     });
+
+    // ── Tailwind output ──────────────────────────────────────────────────────
+    function toTailwindGradient(angleDeg, stopsList) {
+      // Map common angles to Tailwind direction classes
+      var angle = ((parseInt(angleDeg, 10) % 360) + 360) % 360;
+      var dirClass;
+      if (angle === 0)   dirClass = 'bg-gradient-to-t';
+      else if (angle === 45)  dirClass = 'bg-gradient-to-tr';
+      else if (angle === 90)  dirClass = 'bg-gradient-to-r';
+      else if (angle === 135) dirClass = 'bg-gradient-to-br';
+      else if (angle === 180) dirClass = 'bg-gradient-to-b';
+      else if (angle === 225) dirClass = 'bg-gradient-to-bl';
+      else if (angle === 270) dirClass = 'bg-gradient-to-l';
+      else if (angle === 315) dirClass = 'bg-gradient-to-tl';
+      else dirClass = 'bg-gradient-to-br'; // fallback
+      var colorStops = stopsList.map(function(s) { return s.color; });
+      var from = colorStops[0] || '#000';
+      var to = colorStops[colorStops.length - 1] || '#fff';
+      var via = colorStops.length > 2 ? ' via-[' + colorStops[Math.floor(colorStops.length / 2)] + ']' : '';
+      return '<div class="' + dirClass + ' from-[' + from + ']' + via + ' to-[' + to + ']">';
+    }
+
+    function toSVGGradient(id, stopsList, angleDeg) {
+      var angle = ((parseInt(angleDeg, 10) % 360) + 360) % 360;
+      var rad = angle * Math.PI / 180;
+      var x2 = parseFloat(Math.abs(Math.sin(rad)).toFixed(2));
+      var y2 = parseFloat(Math.abs(Math.cos(rad)).toFixed(2));
+      // Normalize so max coord is 1
+      var maxCoord = Math.max(x2, y2) || 1;
+      x2 = parseFloat((x2 / maxCoord).toFixed(2));
+      y2 = parseFloat((y2 / maxCoord).toFixed(2));
+      var stopEls = stopsList.map(function(s, i) {
+        return '<stop offset="' + s.pos + '%" stop-color="' + s.color + '"/>';
+      }).join('\n    ');
+      return '<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0">\n  <defs>\n    <linearGradient id="' + id + '" x1="0" y1="0" x2="' + x2 + '" y2="' + y2 + '">\n    ' + stopEls + '\n    </linearGradient>\n  </defs>\n</svg>';
+    }
+
+    // ── Animated gradient ────────────────────────────────────────────────────
+    var animStyleAdded = false;
+    var animOn = false;
+
+    function ensureAnimStyle() {
+      if (animStyleAdded) return;
+      var style = document.createElement('style');
+      style.textContent = '@keyframes gradient-anim {\n  0% { background-position: 0% 50%; }\n  50% { background-position: 100% 50%; }\n  100% { background-position: 0% 50%; }\n}\n.gradient-animated {\n  background-size: 200% 200% !important;\n  animation: gradient-anim 3s ease infinite;\n}';
+      document.head.appendChild(style);
+      animStyleAdded = true;
+    }
+
+    document.getElementById('btn-animate-toggle').addEventListener('click', function() {
+      ensureAnimStyle();
+      animOn = !animOn;
+      var preview = document.getElementById('grad-preview');
+      preview.classList.toggle('gradient-animated', animOn);
+      this.textContent = animOn ? 'Stop Animation' : 'Animate';
+      this.classList.toggle('bg-purple-100', animOn);
+      this.classList.toggle('text-purple-700', animOn);
+    });
+
+    document.getElementById('btn-copy-svg').addEventListener('click', function() {
+      var angle = document.getElementById('g-angle').value;
+      var svg = toSVGGradient('grad0', stops, angle);
+      navigator.clipboard.writeText(svg).then(function() {
+        showStatus('SVG gradient copied to clipboard', 'success');
+      }, function() {
+        showStatus('Copy failed — please copy manually', 'error');
+      });
+    });
+
+    // Patch update() to also update Tailwind output
+    var _origUpdate = update;
+    update = function() {
+      _origUpdate();
+      var type = document.getElementById('g-type').value;
+      var angle = document.getElementById('g-angle').value;
+      var twEl = document.getElementById('grad-tailwind');
+      if (twEl) {
+        if (type === 'linear') {
+          twEl.textContent = toTailwindGradient(angle, stops);
+        } else {
+          twEl.textContent = '/* Tailwind only supports linear gradients — use CSS output above */';
+        }
+      }
+    };
 
     renderStops(); update();
   </script>
