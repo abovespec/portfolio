@@ -192,7 +192,7 @@ export default function CompoundInterestCalculator() {
             onClick={() => setShowGrowth((v) => !v)}
             aria-expanded={showGrowth}
           >
-            <span>Show growth table</span>
+            <span>{showGrowth ? 'Hide' : 'Show'} growth table</span>
             <span class="text-slate-400">{showGrowth ? '▲' : '▼'}</span>
           </button>
 
