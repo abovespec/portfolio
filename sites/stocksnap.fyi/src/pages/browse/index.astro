@@ -13,9 +13,20 @@ import images from '~/data/images.json';
     <aside class="lg:w-52 flex-shrink-0">
       <div class="rounded-lg border border-slate-700 bg-slate-800 p-5 sticky top-20">
         <h2 class="text-white font-semibold mb-4 text-sm uppercase tracking-wide">Filter</h2>
+        <!-- Search -->
+        <input id="search-input" type="text" placeholder="Search photos..." class="w-full rounded-lg border border-slate-600 bg-slate-700 px-3 py-1.5 text-sm text-white placeholder-slate-400 focus:border-indigo-500 focus:outline-none mb-4" />
+        <!-- Mood filter -->
+        <label class="block text-slate-400 text-xs font-medium uppercase tracking-wide mb-1">Mood</label>
+        <select id="mood-filter" class="w-full rounded-lg border border-slate-600 bg-slate-700 px-2 py-1.5 text-sm text-white mb-3">
+          <option value="">All moods</option>
+          <option value="natural">Natural</option>
+          <option value="urban">Urban</option>
+          <option value="abstract">Abstract</option>
+          <option value="minimal">Minimal</option>
+        </select>
         <ul class="space-y-1">
           <li>
-            <a href="/browse/" class="text-sm text-indigo-400 font-medium block py-1 hover:text-indigo-300">
+            <a href="/browse/" data-niche-link="" class="text-sm text-indigo-400 font-medium block py-1 hover:text-indigo-300">
               All ({images.length})
             </a>
           </li>
@@ -31,6 +42,9 @@ import images from '~/data/images.json';
             </li>
           ))}
         </ul>
+        <div class="mt-4 border-t border-slate-700 pt-4">
+          <a href="/collections/" class="text-sm text-indigo-400 hover:text-indigo-300 font-medium">My Favorites &#9825;</a>
+        </div>
       </div>
     </aside>
 
@@ -42,7 +56,7 @@ import images from '~/data/images.json';
       </div>
       <div id="photo-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
         {images.map(img => (
-          <div class="photo-item" data-niche={img.nicheSlug}>
+          <div class="photo-item relative" data-niche={img.nicheSlug} data-slug={img.slug} data-title={img.title.toLowerCase()} data-tags={(img.tags || []).join(' ').toLowerCase()}>
             <ImageCard
               title={img.title}
               imagePath={img.imagePath}
@@ -50,50 +64,98 @@ import images from '~/data/images.json';
               href={`/${img.nicheSlug}/${img.clusterSlug}/${img.slug}/`}
               style={img.styleLabel}
             />
+            <button
+              data-fav-btn={img.slug}
+              onclick={`toggleFavorite('${img.slug}')`}
+              class="absolute top-2 right-2 w-7 h-7 flex items-center justify-center rounded-full bg-slate-900/70 text-slate-300 hover:text-red-400 text-sm z-10 transition-colors"
+              aria-label="Favorite"
+            >&#9825;</button>
           </div>
         ))}
       </div>
       <div id="no-results" class="text-center text-slate-400 py-12 hidden">
-        No photos in this category yet.
+        No photos match your search.
       </div>
     </div>
   </div>
 
-  <script>
+  <script is:inline>
     const params = new URLSearchParams(window.location.search);
-    const active = params.get('niche');
+    const activeNiche = params.get('niche');
 
-    function applyFilter(cat: string | null) {
-      const items = document.querySelectorAll<HTMLElement>('.photo-item');
+    function toggleFavorite(imageId) {
+      try {
+        const favs = JSON.parse(localStorage.getItem('stocksnap-favs') || '[]');
+        const idx = favs.indexOf(imageId);
+        if (idx === -1) favs.push(imageId); else favs.splice(idx, 1);
+        localStorage.setItem('stocksnap-favs', JSON.stringify(favs));
+        updateFavButtons();
+        return idx === -1;
+      } catch { return false; }
+    }
+
+    function updateFavButtons() {
+      try {
+        const favs = JSON.parse(localStorage.getItem('stocksnap-favs') || '[]');
+        document.querySelectorAll('[data-fav-btn]').forEach(btn => {
+          const id = btn.dataset.favBtn;
+          btn.innerHTML = favs.includes(id) ? '&#9829;' : '&#9825;';
+          btn.classList.toggle('text-red-400', favs.includes(id));
+        });
+      } catch {}
+    }
+
+    window.toggleFavorite = toggleFavorite;
+
+    function applyFilter() {
+      const niche = activeNiche;
+      const query = (document.getElementById('search-input')?.value || '').toLowerCase().trim();
+      const mood = (document.getElementById('mood-filter')?.value || '').toLowerCase();
+
+      const items = document.querySelectorAll('.photo-item');
       let visible = 0;
       items.forEach(item => {
-        const show = !cat || item.dataset.niche === cat;
+        const itemNiche = item.dataset.niche;
+        const title = item.dataset.title || '';
+        const tags = item.dataset.tags || '';
+        const text = title + ' ' + tags;
+
+        let show = true;
+        if (niche && itemNiche !== niche) show = false;
+        if (query && !text.includes(query)) show = false;
+        if (mood && !text.includes(mood)) show = false;
+
         item.style.display = show ? '' : 'none';
         if (show) visible++;
       });
-      const title = document.getElementById('grid-title');
-      const count = document.getElementById('grid-count');
+
+      const titleEl = document.getElementById('grid-title');
+      const countEl = document.getElementById('grid-count');
       const noResults = document.getElementById('no-results');
-      if (title) title.textContent = cat
-        ? cat.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase()) + ' Photos'
+      if (titleEl) titleEl.textContent = niche
+        ? niche.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase()) + ' Photos'
         : 'All Photos';
-      if (count) count.textContent = `${visible} photos`;
+      if (countEl) countEl.textContent = visible + ' photos';
       if (noResults) noResults.classList.toggle('hidden', visible > 0);
 
-      document.querySelectorAll<HTMLAnchorElement>('aside a[data-niche]').forEach(link => {
-        const isActive = link.dataset.niche === cat;
+      document.querySelectorAll('aside a[data-niche]').forEach(link => {
+        const isActive = link.dataset.niche === niche;
         link.classList.toggle('text-indigo-400', isActive);
         link.classList.toggle('font-medium', isActive);
         link.classList.toggle('text-slate-300', !isActive);
       });
-      const allLink = document.querySelector<HTMLAnchorElement>('aside a:not([data-niche])');
+      const allLink = document.querySelector('aside a[data-niche-link]');
       if (allLink) {
-        allLink.classList.toggle('text-indigo-400', !cat);
-        allLink.classList.toggle('font-medium', !cat);
-        allLink.classList.toggle('text-slate-300', !!cat);
+        allLink.classList.toggle('text-indigo-400', !niche);
+        allLink.classList.toggle('font-medium', !niche);
+        allLink.classList.toggle('text-slate-300', !!niche);
       }
     }
 
-    applyFilter(active);
+    applyFilter();
+    updateFavButtons();
+
+    document.getElementById('search-input')?.addEventListener('input', applyFilter);
+    document.getElementById('mood-filter')?.addEventListener('change', applyFilter);
   </script>
 </BaseLayout>

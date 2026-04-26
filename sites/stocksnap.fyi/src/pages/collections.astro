@@ -1,0 +1,82 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import images from '~/data/images.json';
+
+// Serialize image data for client-side lookup
+const imagesJson = JSON.stringify(images.map(img => ({
+  slug: img.slug,
+  title: img.title,
+  imagePath: img.imagePath,
+  altText: img.altText,
+  nicheSlug: img.nicheSlug,
+  clusterSlug: img.clusterSlug,
+})));
+---
+<BaseLayout
+  title="My Favorites | StockSnap"
+  description="Your saved favorite photos from StockSnap. Stored locally in your browser."
+>
+  <div class="max-w-5xl mx-auto">
+    <h1 class="text-3xl font-bold text-white mb-2">My Favorites</h1>
+    <p class="text-slate-400 mb-8">Photos you have saved are stored in your browser. They are not synced across devices.</p>
+    <div id="fav-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3"></div>
+    <div id="fav-empty" class="text-center text-slate-400 py-16 hidden">
+      <p class="text-lg mb-4">No favorites saved yet.</p>
+      <a href="/browse/" class="text-indigo-400 hover:text-indigo-300 underline">Browse photos to add some.</a>
+    </div>
+  </div>
+
+  <script is:inline define:vars={{ imagesJson }}>
+    const allImages = JSON.parse(imagesJson);
+
+    function toggleFavorite(imageId) {
+      try {
+        const favs = JSON.parse(localStorage.getItem('stocksnap-favs') || '[]');
+        const idx = favs.indexOf(imageId);
+        if (idx === -1) favs.push(imageId); else favs.splice(idx, 1);
+        localStorage.setItem('stocksnap-favs', JSON.stringify(favs));
+        renderFavs();
+        return idx === -1;
+      } catch { return false; }
+    }
+
+    window.toggleFavorite = toggleFavorite;
+
+    function renderFavs() {
+      try {
+        const favs = JSON.parse(localStorage.getItem('stocksnap-favs') || '[]');
+        const grid = document.getElementById('fav-grid');
+        const empty = document.getElementById('fav-empty');
+        if (!favs.length) {
+          if (grid) grid.innerHTML = '';
+          if (empty) empty.classList.remove('hidden');
+          return;
+        }
+        if (empty) empty.classList.add('hidden');
+        const favImages = favs.map(id => allImages.find(img => img.slug === id)).filter(Boolean);
+        if (grid) {
+          grid.innerHTML = favImages.map(img => `
+            <div class="relative rounded-lg border border-slate-700 bg-slate-800 hover:border-indigo-400 transition-colors overflow-hidden">
+              <a href="/${img.nicheSlug}/${img.clusterSlug}/${img.slug}/" class="block">
+                <div class="aspect-square overflow-hidden bg-slate-900">
+                  <img src="${img.imagePath}" alt="${img.altText}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" loading="lazy" />
+                </div>
+                <div class="p-3">
+                  <h3 class="text-white font-medium text-sm truncate">${img.title}</h3>
+                </div>
+              </a>
+              <button
+                data-fav-btn="${img.slug}"
+                onclick="toggleFavorite('${img.slug}')"
+                class="absolute top-2 right-2 w-7 h-7 flex items-center justify-center rounded-full bg-slate-900/70 text-red-400 hover:text-slate-300 text-sm z-10 transition-colors"
+                aria-label="Remove from favorites"
+              >&#9829;</button>
+            </div>
+          `).join('');
+        }
+      } catch {}
+    }
+
+    renderFavs();
+  </script>
+</BaseLayout>
