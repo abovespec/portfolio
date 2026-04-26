@@ -118,7 +118,7 @@ export const siteConfig: SiteConfig = {
   nav: {
     primary: [
       { label: 'Home', href: '/' },
-      
+      { label: 'Blog', href: '/blog/' },
       { label: 'About', href: '/about/' },
       { label: 'Contact', href: '/contact/' },
     ],
