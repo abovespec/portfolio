@@ -51,8 +51,13 @@ import { siteConfig } from '~/config/site.config';
             </select>
           </label>
           <label class="block"><span class="text-sm font-medium text-slate-700">Monthly units sold</span><input id="fba-units" type="number" value="100" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+          <label class="block"><span class="text-sm font-medium text-slate-700">Ad spend per unit <span class="text-slate-400 font-normal">(optional)</span></span><input type="number" id="fba-ad-spend" placeholder="0.00" min="0" step="0.01" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
         </div>
-        <div class="mt-6 grid gap-4 sm:grid-cols-3">
+        <div class="mt-6 rounded-lg bg-emerald-50 p-4 text-center border border-emerald-100">
+          <p class="text-xs uppercase text-emerald-600">Net Margin</p>
+          <p id="fba-out-margin" class="text-3xl font-bold text-emerald-700">40.4%</p>
+        </div>
+        <div class="mt-4 grid gap-4 sm:grid-cols-3">
           <div class="rounded-lg bg-slate-50 p-4 text-center"><p class="text-xs uppercase text-slate-500">Referral fee</p><p id="fba-out-referral" class="text-xl font-bold text-slate-800">$4.50</p></div>
           <div class="rounded-lg bg-slate-50 p-4 text-center"><p class="text-xs uppercase text-slate-500">FBA fee (est.)</p><p id="fba-out-fba" class="text-xl font-bold text-slate-800">$3.86</p></div>
           <div class="rounded-lg bg-emerald-50 p-4 text-center border border-emerald-100"><p class="text-xs uppercase text-emerald-600">Net profit / unit</p><p id="fba-out-profit" class="text-xl font-bold text-emerald-700">$12.13</p></div>
@@ -266,9 +271,13 @@ import { siteConfig } from '~/config/site.config';
       const weight = val('fba-weight');
       const rate = val('fba-category')/100;
       const units = val('fba-units');
+      const adSpend = parseFloat(document.getElementById('fba-ad-spend')?.value) || 0;
       const referral = price * rate;
       const fbaFee = Math.max(3.22, 3.22 + Math.max(0, weight - 0.75) * 0.38);
-      const profit = price - cogs - inbound - referral - fbaFee;
+      const grossProfit = price - cogs - inbound - referral - fbaFee;
+      const profit = grossProfit - adSpend;
+      const margin = price > 0 ? (profit / price * 100) : 0;
+      $('fba-out-margin').textContent = margin.toFixed(1) + '%';
       $('fba-out-referral').textContent = '$' + referral.toFixed(2);
       $('fba-out-fba').textContent = '$' + fbaFee.toFixed(2);
       $('fba-out-profit').textContent = '$' + profit.toFixed(2);
@@ -390,7 +399,7 @@ import { siteConfig } from '~/config/site.config';
     });
     $('st-lts').addEventListener('change', calcStorage);
 
-    ['fba-price','fba-cogs','fba-inbound','fba-weight','fba-category','fba-units'].forEach(id => $('fba-'+id.split('-')[1])?.addEventListener('input', calcFBA));
+    ['fba-price','fba-cogs','fba-inbound','fba-weight','fba-category','fba-units','fba-ad-spend'].forEach(id => $(id)?.addEventListener('input', calcFBA));
     ['ebay-price','ebay-ship-charged','ebay-ship-cost','ebay-cogs','ebay-category'].forEach(id => $('ebay-'+id.split('-')[1])?.addEventListener('input', calcEbay));
     ['etsy-price','etsy-ship-charged','etsy-ship-cost','etsy-cogs','etsy-qty','etsy-offsite'].forEach(id => $('etsy-'+id.split('-')[1])?.addEventListener('input', calcEtsy));
     ['ds-price','ds-cost','ds-shipping','ds-processing','ds-ads','ds-fees'].forEach(id => $('ds-'+id.split('-')[1])?.addEventListener('input', calcDS));
