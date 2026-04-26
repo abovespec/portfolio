@@ -1,0 +1,282 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { siteConfig } from '~/config/site.config';
+import { getCollection } from 'astro:content';
+
+const recentPosts = siteConfig.features.hasBlog
+  ? (await getCollection('blog', ({ data }) => !data.draft))
+      .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
+      .slice(0, 3)
+  : [];
+---
+<BaseLayout
+  title="Text Diff — Compare Two Texts Online Free"
+  description="Free online text diff tool. Compare two texts and see additions, deletions, and changes highlighted. Line-by-line diff with Myers algorithm. Runs in your browser."
+>
+
+  <!-- Compact header -->
+  <header class="pb-4 pt-2">
+    <h1 class="text-3xl font-bold tracking-tight text-slate-900">
+      Text Diff
+    </h1>
+    <p class="mt-1.5 text-sm text-slate-500">
+      Compare two texts side-by-side — additions, deletions, and unchanged lines highlighted. Runs entirely in your browser.
+    </p>
+  </header>
+
+  <!-- Toolbar -->
+  <div class="flex flex-wrap gap-2 mb-3">
+    <button id="btn-diff"    class="rounded-md bg-zinc-700 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-zinc-800 transition-colors">Compare</button>
+    <button id="btn-sample"  class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Sample</button>
+    <div class="flex-1"></div>
+    <button id="btn-swap"    class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Swap ⇅</button>
+    <button id="btn-clear"   class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Clear</button>
+    <button id="btn-copy"    class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Copy diff</button>
+  </div>
+
+  <!-- Dual-input pane -->
+  <div class="grid gap-3 md:grid-cols-2 min-h-64">
+    <div class="flex flex-col gap-1 min-h-0">
+      <label for="text-a" class="text-xs font-semibold uppercase tracking-wide text-slate-500">Original (A)</label>
+      <textarea
+        id="text-a"
+        class="flex-1 w-full rounded-lg border border-slate-300 bg-slate-950 text-slate-100 p-4 font-mono text-sm resize-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 placeholder:text-slate-600"
+        placeholder="Paste original text here"
+        spellcheck="false"
+        rows="10"
+      ></textarea>
+    </div>
+    <div class="flex flex-col gap-1 min-h-0">
+      <label for="text-b" class="text-xs font-semibold uppercase tracking-wide text-slate-500">Modified (B)</label>
+      <textarea
+        id="text-b"
+        class="flex-1 w-full rounded-lg border border-slate-300 bg-slate-950 text-slate-100 p-4 font-mono text-sm resize-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 placeholder:text-slate-600"
+        placeholder="Paste modified text here"
+        spellcheck="false"
+        rows="10"
+      ></textarea>
+    </div>
+  </div>
+
+  <!-- Status bar -->
+  <div id="status" class="mt-2 rounded-md px-3 py-1.5 text-sm font-medium hidden"></div>
+
+  <!-- Diff output -->
+  <div id="diff-output-wrap" class="mt-4 hidden">
+    <div class="flex items-center justify-between mb-2">
+      <label class="text-xs font-semibold uppercase tracking-wide text-slate-500">Diff</label>
+      <div class="flex gap-4 text-xs text-slate-500">
+        <span class="flex items-center gap-1"><span class="inline-block w-3 h-3 rounded-sm bg-emerald-100 border border-emerald-300"></span>Added</span>
+        <span class="flex items-center gap-1"><span class="inline-block w-3 h-3 rounded-sm bg-red-100 border border-red-300"></span>Removed</span>
+        <span class="flex items-center gap-1"><span class="inline-block w-3 h-3 rounded-sm bg-slate-100 border border-slate-300"></span>Unchanged</span>
+      </div>
+    </div>
+    <div id="diff-output" class="rounded-lg border border-slate-200 bg-white overflow-auto font-mono text-sm"></div>
+  </div>
+
+  <!-- Keyboard hint -->
+  <p class="mt-2 text-xs text-slate-400">
+    <kbd class="rounded border border-slate-300 bg-slate-100 px-1 py-0.5 font-mono text-slate-600">Ctrl</kbd>
+    +
+    <kbd class="rounded border border-slate-300 bg-slate-100 px-1 py-0.5 font-mono text-slate-600">Enter</kbd>
+    to compare
+  </p>
+
+  <!-- ── Below-fold: SEO content ── -->
+  <div class="mt-16 max-w-3xl space-y-10">
+
+    <section aria-labelledby="how-diff-works-heading">
+      <h2 id="how-diff-works-heading" class="text-2xl font-bold text-slate-900">How text diff works</h2>
+      <div class="prose mt-4 max-w-none">
+        <p>
+          This tool uses the Myers diff algorithm, the same algorithm used by <code>git diff</code> and
+          most version control systems. Given two sequences of lines, it finds the shortest edit script
+          (SES) — the minimum number of insertions and deletions needed to transform text A into text B.
+        </p>
+        <p>
+          The output uses a unified diff-style display:
+        </p>
+        <ul>
+          <li>Lines highlighted in <strong>green</strong> exist only in the modified text (added).</li>
+          <li>Lines highlighted in <strong>red</strong> exist only in the original text (removed).</li>
+          <li>Uncolored lines exist in both texts (unchanged).</li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="diff-use-cases-heading">
+      <h2 id="diff-use-cases-heading" class="text-2xl font-bold text-slate-900">Common text diff use cases</h2>
+      <div class="prose mt-4 max-w-none">
+        <ul>
+          <li>Comparing two versions of a document, contract, or essay before and after edits.</li>
+          <li>Checking what changed in a configuration file between environments.</li>
+          <li>Verifying that a code transformation (minification, formatting, transpilation) only changed what was expected.</li>
+          <li>Comparing API responses to find unexpected changes in payload structure.</li>
+          <li>Reviewing student submissions vs. a reference answer.</li>
+        </ul>
+      </div>
+    </section>
+
+  </div>
+
+  {recentPosts.length > 0 && (
+    <section class="mt-16" aria-labelledby="articles-heading">
+      <h2 id="articles-heading" class="text-2xl font-bold text-slate-900">Developer Guides</h2>
+      <ul class="mt-6 grid gap-4 sm:grid-cols-3">
+        {recentPosts.map((post) => (
+          <li>
+            <a
+              href={`/blog/${post.slug}/`}
+              class="group block rounded-xl border border-slate-200 bg-white p-5 transition hover:border-zinc-400 hover:shadow-sm"
+            >
+              <time
+                datetime={post.data.publishDate.toISOString()}
+                class="text-xs font-medium uppercase tracking-wide text-slate-400"
+              >
+                {post.data.publishDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+              </time>
+              <h3 class="mt-1 text-base font-semibold text-slate-900 group-hover:text-zinc-700">{post.data.title}</h3>
+              <p class="mt-2 line-clamp-2 text-sm text-slate-600">{post.data.description}</p>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <div class="mt-6">
+        <a href="/blog/" class="text-sm font-medium text-zinc-700 underline underline-offset-2 hover:text-zinc-900">
+          View all guides →
+        </a>
+      </div>
+    </section>
+  )}
+
+  <script is:inline>
+    var statusEl = document.getElementById('status');
+
+    var SAMPLE_A = 'The quick brown fox\njumps over the lazy dog.\nPack my box with five\ndozen liquor jugs.';
+    var SAMPLE_B = 'The quick brown fox\nleaps over the lazy cat.\nPack my box with six\ndozen liquor jugs.\nHow vexingly quick!';
+
+    function showStatus(msg, type) {
+      var clsMap = { error: 'bg-red-50 text-red-700 border border-red-200', success: 'bg-emerald-50 text-emerald-700 border border-emerald-200', info: 'bg-blue-50 text-blue-700 border border-blue-200' };
+      statusEl.className = 'mt-2 rounded-md px-3 py-1.5 text-sm font-medium ' + (clsMap[type] || 'bg-slate-100 text-slate-700');
+      statusEl.textContent = msg;
+      statusEl.classList.remove('hidden');
+    }
+
+    /* Myers LCS-based line diff */
+    function diffLines(a, b) {
+      var aLines = a.split('\n');
+      var bLines = b.split('\n');
+      var N = aLines.length, M = bLines.length;
+      var MAX = N + M;
+      var v = new Array(2 * MAX + 1);
+      var trace = [];
+      v[MAX + 1] = 0;
+
+      outer:
+      for (var d = 0; d <= MAX; d++) {
+        var snap = v.slice();
+        trace.push(snap);
+        for (var k = -d; k <= d; k += 2) {
+          var x;
+          if (k === -d || (k !== d && v[MAX + k - 1] < v[MAX + k + 1])) {
+            x = v[MAX + k + 1];
+          } else {
+            x = v[MAX + k - 1] + 1;
+          }
+          var y = x - k;
+          while (x < N && y < M && aLines[x] === bLines[y]) { x++; y++; }
+          v[MAX + k] = x;
+          if (x >= N && y >= M) break outer;
+        }
+      }
+
+      var result = [];
+      var x = N, y = M;
+      for (var dd = trace.length - 1; dd >= 0; dd--) {
+        var vv = trace[dd];
+        var kk = x - y;
+        var prevK;
+        if (kk === -dd || (kk !== dd && vv[MAX + kk - 1] < vv[MAX + kk + 1])) {
+          prevK = kk + 1;
+        } else {
+          prevK = kk - 1;
+        }
+        var prevX = vv[MAX + prevK];
+        var prevY = prevX - prevK;
+        while (x > prevX && y > prevY) { result.push({ type: '=', text: aLines[x-1] }); x--; y--; }
+        if (dd > 0) {
+          if (x === prevX) { result.push({ type: '+', text: bLines[y-1] }); y--; }
+          else { result.push({ type: '-', text: aLines[x-1] }); x--; }
+        }
+      }
+      return result.reverse();
+    }
+
+    function escHtml(str) {
+      return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    }
+
+    function runDiff() {
+      var a = document.getElementById('text-a').value;
+      var b = document.getElementById('text-b').value;
+      if (!a && !b) { showStatus('Paste text into both panes first', 'info'); return; }
+      var ops = diffLines(a, b);
+      var added = 0, removed = 0, unchanged = 0;
+      var lines = ops.map(function(op) {
+        var bg, prefix;
+        if (op.type === '+') { bg = 'bg-emerald-50 text-emerald-900'; prefix = '+'; added++; }
+        else if (op.type === '-') { bg = 'bg-red-50 text-red-900'; prefix = '-'; removed++; }
+        else { bg = ''; prefix = ' '; unchanged++; }
+        return '<div class="flex items-start gap-3 px-4 py-0.5 ' + bg + '">' +
+          '<span class="select-none text-slate-400 w-4 shrink-0">' + prefix + '</span>' +
+          '<span class="whitespace-pre-wrap break-all">' + escHtml(op.text) + '</span></div>';
+      }).join('');
+      var out = document.getElementById('diff-output');
+      out.innerHTML = lines || '<div class="px-4 py-3 text-sm text-slate-400">No differences found.</div>';
+      document.getElementById('diff-output-wrap').classList.remove('hidden');
+      showStatus('+' + added + ' added · -' + removed + ' removed · ' + unchanged + ' unchanged', 'success');
+    }
+
+    document.getElementById('btn-diff').addEventListener('click', runDiff);
+
+    document.getElementById('btn-sample').addEventListener('click', function() {
+      document.getElementById('text-a').value = SAMPLE_A;
+      document.getElementById('text-b').value = SAMPLE_B;
+      document.getElementById('diff-output-wrap').classList.add('hidden');
+      statusEl.classList.add('hidden');
+    });
+
+    document.getElementById('btn-swap').addEventListener('click', function() {
+      var a = document.getElementById('text-a').value;
+      document.getElementById('text-a').value = document.getElementById('text-b').value;
+      document.getElementById('text-b').value = a;
+      document.getElementById('diff-output-wrap').classList.add('hidden');
+      statusEl.classList.add('hidden');
+    });
+
+    document.getElementById('btn-clear').addEventListener('click', function() {
+      document.getElementById('text-a').value = '';
+      document.getElementById('text-b').value = '';
+      document.getElementById('diff-output-wrap').classList.add('hidden');
+      statusEl.classList.add('hidden');
+    });
+
+    document.getElementById('btn-copy').addEventListener('click', function() {
+      var out = document.getElementById('diff-output');
+      if (!out.textContent.trim()) { showStatus('Nothing to copy yet', 'info'); return; }
+      var text = Array.from(out.querySelectorAll('div')).map(function(d) {
+        return d.textContent.trim();
+      }).join('\n');
+      navigator.clipboard.writeText(text).then(function() {
+        showStatus('Diff copied to clipboard', 'success');
+      }, function() {
+        showStatus('Copy failed', 'error');
+      });
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) { e.preventDefault(); runDiff(); }
+    });
+  </script>
+
+</BaseLayout>

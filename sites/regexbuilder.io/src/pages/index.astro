@@ -1,0 +1,279 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="Regex Tester — Test Regular Expressions Online Free"
+  description="Free online regex tester. Test JavaScript regular expressions with live match highlighting, capture group display, and flag controls. Runs in your browser."
+>
+
+  <!-- Compact header -->
+  <header class="pb-4 pt-2">
+    <h1 class="text-3xl font-bold tracking-tight text-slate-900">
+      Regex Tester
+    </h1>
+    <p class="mt-1.5 text-sm text-slate-500">
+      Test JavaScript regular expressions with live match highlighting and capture group inspection.
+    </p>
+  </header>
+
+  <!-- Pattern input bar -->
+  <div class="flex items-center gap-2 mb-3">
+    <span class="text-lg text-slate-400 font-mono select-none">/</span>
+    <input
+      id="regex-pattern"
+      type="text"
+      class="flex-1 rounded-lg border border-rose-300 bg-white px-3 py-2 font-mono text-sm focus:border-rose-500 focus:ring-1 focus:ring-rose-500"
+      placeholder="(\\w+)@(\\w+\\.\\w+)"
+      spellcheck="false"
+      autocomplete="off"
+    />
+    <span class="text-lg text-slate-400 font-mono select-none">/</span>
+    <div class="flex gap-1">
+      <label id="lbl-g" title="Global" class="flex items-center gap-0.5 rounded-md border border-slate-300 px-2 py-1.5 text-xs font-mono cursor-pointer hover:bg-slate-50 bg-rose-50 border-rose-300">
+        <input type="checkbox" id="flag-g" checked class="accent-rose-600 w-3 h-3" /><span class="ml-1">g</span>
+      </label>
+      <label id="lbl-i" title="Case insensitive" class="flex items-center gap-0.5 rounded-md border border-slate-300 px-2 py-1.5 text-xs font-mono cursor-pointer hover:bg-slate-50">
+        <input type="checkbox" id="flag-i" class="accent-rose-600 w-3 h-3" /><span class="ml-1">i</span>
+      </label>
+      <label id="lbl-m" title="Multiline" class="flex items-center gap-0.5 rounded-md border border-slate-300 px-2 py-1.5 text-xs font-mono cursor-pointer hover:bg-slate-50">
+        <input type="checkbox" id="flag-m" class="accent-rose-600 w-3 h-3" /><span class="ml-1">m</span>
+      </label>
+      <label id="lbl-s" title="Dot matches all" class="flex items-center gap-0.5 rounded-md border border-slate-300 px-2 py-1.5 text-xs font-mono cursor-pointer hover:bg-slate-50">
+        <input type="checkbox" id="flag-s" class="accent-rose-600 w-3 h-3" /><span class="ml-1">s</span>
+      </label>
+    </div>
+    <button id="btn-sample" class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Sample</button>
+    <button id="btn-clear"  class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Clear</button>
+  </div>
+
+  <!-- Pattern error bar -->
+  <div id="pattern-error" class="mb-2 rounded-md bg-red-50 border border-red-200 px-3 py-1.5 text-sm text-red-700 hidden"></div>
+
+  <!-- Dual-pane: test string + highlighted output -->
+  <div class="grid gap-3 md:grid-cols-2 min-h-80">
+    <div class="flex flex-col gap-1 min-h-0">
+      <label for="test-string" class="text-xs font-semibold uppercase tracking-wide text-slate-500">Test String</label>
+      <textarea
+        id="test-string"
+        class="flex-1 w-full rounded-lg border border-slate-300 bg-slate-950 text-slate-100 p-4 font-mono text-sm resize-none focus:border-rose-500 focus:ring-1 focus:ring-rose-500 placeholder:text-slate-600"
+        placeholder="Paste your test string here"
+        spellcheck="false"
+        rows="12"
+      ></textarea>
+    </div>
+    <div class="flex flex-col gap-1 min-h-0">
+      <label class="text-xs font-semibold uppercase tracking-wide text-slate-500">Matches</label>
+      <div id="match-output" class="flex-1 rounded-lg border border-slate-200 bg-white p-4 font-mono text-sm overflow-auto min-h-48 whitespace-pre-wrap break-words leading-relaxed"></div>
+    </div>
+  </div>
+
+  <!-- Status bar -->
+  <div id="status" class="mt-2 rounded-md px-3 py-1.5 text-sm font-medium hidden"></div>
+
+  <!-- Capture groups table -->
+  <div id="groups-wrap" class="mt-4 hidden">
+    <div class="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-2">Capture Groups</div>
+    <div id="groups-table" class="rounded-lg border border-slate-200 bg-white overflow-auto"></div>
+  </div>
+
+  <!-- ── Below-fold: SEO content ── -->
+  <div class="mt-16 max-w-3xl space-y-10">
+
+    <section aria-labelledby="regex-basics-heading">
+      <h2 id="regex-basics-heading" class="text-2xl font-bold text-slate-900">Regular expression basics</h2>
+      <div class="prose mt-4 max-w-none">
+        <p>
+          A regular expression (regex) is a sequence of characters that defines a search pattern. This tester
+          uses JavaScript's native <code>RegExp</code> engine, which follows the ECMAScript specification.
+        </p>
+        <ul>
+          <li><strong><code>.</code></strong> — matches any character except newline (use <code>s</code> flag for newlines).</li>
+          <li><strong><code>*</code> / <code>+</code> / <code>?</code></strong> — 0+, 1+, or 0–1 repetitions. Add <code>?</code> after for non-greedy (<code>*?</code>, <code>+?</code>).</li>
+          <li><strong><code>&#123;n,m&#125;</code></strong> — matches between n and m repetitions.</li>
+          <li><strong><code>^</code> / <code>$</code></strong> — start / end of string (or line with <code>m</code> flag).</li>
+          <li><strong><code>[abc]</code> / <code>[^abc]</code></strong> — character class / negated character class.</li>
+          <li><strong><code>(…)</code></strong> — capturing group. <code>(?:…)</code> is non-capturing.</li>
+          <li><strong><code>\d \w \s</code></strong> — digit, word character, whitespace. Uppercase negates.</li>
+          <li><strong><code>\b</code></strong> — word boundary.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="regex-flags-heading">
+      <h2 id="regex-flags-heading" class="text-2xl font-bold text-slate-900">Regex flags</h2>
+      <div class="prose mt-4 max-w-none">
+        <ul>
+          <li><strong><code>g</code> (global)</strong> — find all matches, not just the first.</li>
+          <li><strong><code>i</code> (case insensitive)</strong> — <code>A</code> matches <code>a</code>.</li>
+          <li><strong><code>m</code> (multiline)</strong> — <code>^</code> and <code>$</code> match the start/end of each line, not just the whole string.</li>
+          <li><strong><code>s</code> (dot-all)</strong> — <code>.</code> matches newline characters as well.</li>
+          <li><strong><code>u</code> (unicode)</strong> — treat the pattern as a sequence of Unicode code points.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="common-patterns-heading">
+      <h2 id="common-patterns-heading" class="text-2xl font-bold text-slate-900">Common regex patterns</h2>
+      <div class="prose mt-4 max-w-none">
+        <ul>
+          <li><strong>Email (basic)</strong> <code>[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]&#123;2,&#125;</code></li>
+          <li><strong>URL</strong> <code>https?://[^\s/$.?#].[^\s]*</code></li>
+          <li><strong>IPv4</strong> <code>\b(?:\d&#123;1,3&#125;\.)&#123;3&#125;\d&#123;1,3&#125;\b</code></li>
+          <li><strong>Hex color</strong> <code>#(?:[0-9a-fA-F]&#123;3&#125;)&#123;1,2&#125;</code></li>
+          <li><strong>ISO date</strong> <code>\d&#123;4&#125;-\d&#123;2&#125;-\d&#123;2&#125;</code></li>
+          <li><strong>Integer</strong> <code>-?\d+</code></li>
+          <li><strong>Decimal</strong> <code>-?\d+(?:\.\d+)?</code></li>
+          <li><strong>Whitespace trim</strong> <code>^\s+|\s+$</code></li>
+        </ul>
+      </div>
+    </section>
+
+  </div>
+
+  <script is:inline>
+    var statusEl = document.getElementById('status');
+    var SAMPLE_PATTERN = '([\\w.+-]+)@([\\w-]+\\.[\\w.]+)';
+    var SAMPLE_TEXT = 'Contact us at support@example.com\nor reach our team: alice@company.io, bob.smith@org.net\nInvalid: @nodomain, noatsign.com';
+
+    function showStatus(msg, type) {
+      var clsMap = { error: 'bg-red-50 text-red-700 border border-red-200', success: 'bg-emerald-50 text-emerald-700 border border-emerald-200', info: 'bg-blue-50 text-blue-700 border border-blue-200' };
+      statusEl.className = 'mt-2 rounded-md px-3 py-1.5 text-sm font-medium ' + (clsMap[type] || 'bg-slate-100 text-slate-700');
+      statusEl.textContent = msg;
+      statusEl.classList.remove('hidden');
+    }
+
+    function escHtml(str) {
+      return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    }
+
+    function getFlags() {
+      var f = '';
+      if (document.getElementById('flag-g').checked) f += 'g';
+      if (document.getElementById('flag-i').checked) f += 'i';
+      if (document.getElementById('flag-m').checked) f += 'm';
+      if (document.getElementById('flag-s').checked) f += 's';
+      return f;
+    }
+
+    function runMatch() {
+      var pattern = document.getElementById('regex-pattern').value;
+      var text = document.getElementById('test-string').value;
+      var errEl = document.getElementById('pattern-error');
+      var matchOut = document.getElementById('match-output');
+      var groupsWrap = document.getElementById('groups-wrap');
+      var groupsTable = document.getElementById('groups-table');
+
+      errEl.classList.add('hidden');
+      groupsWrap.classList.add('hidden');
+
+      if (!pattern) {
+        matchOut.innerHTML = '<span class="text-slate-400">Enter a pattern above…</span>';
+        statusEl.classList.add('hidden');
+        return;
+      }
+
+      var re;
+      try {
+        re = new RegExp(pattern, getFlags());
+      } catch (e) {
+        errEl.textContent = 'Invalid pattern: ' + e.message;
+        errEl.classList.remove('hidden');
+        matchOut.innerHTML = '';
+        statusEl.classList.add('hidden');
+        return;
+      }
+
+      if (!text) {
+        matchOut.innerHTML = '<span class="text-slate-400">Paste a test string…</span>';
+        statusEl.classList.add('hidden');
+        return;
+      }
+
+      var highlighted = '';
+      var matchCount = 0;
+      var allMatches = [];
+
+      if (re.global) {
+        var lastIndex = 0;
+        var m;
+        re.lastIndex = 0;
+        while ((m = re.exec(text)) !== null) {
+          highlighted += escHtml(text.slice(lastIndex, m.index));
+          highlighted += '<mark class="rounded bg-yellow-200 text-slate-900 px-0.5">' + escHtml(m[0]) + '</mark>';
+          lastIndex = m.index + m[0].length;
+          matchCount++;
+          allMatches.push(m);
+          if (m.index === re.lastIndex) re.lastIndex++;
+        }
+        highlighted += escHtml(text.slice(lastIndex));
+      } else {
+        var m2 = re.exec(text);
+        if (m2) {
+          highlighted += escHtml(text.slice(0, m2.index));
+          highlighted += '<mark class="rounded bg-yellow-200 text-slate-900 px-0.5">' + escHtml(m2[0]) + '</mark>';
+          highlighted += escHtml(text.slice(m2.index + m2[0].length));
+          matchCount = 1;
+          allMatches = [m2];
+        } else {
+          highlighted = escHtml(text);
+        }
+      }
+
+      matchOut.innerHTML = highlighted;
+      showStatus(matchCount + ' match' + (matchCount !== 1 ? 'es' : '') + ' found', matchCount > 0 ? 'success' : 'info');
+
+      if (allMatches.length > 0 && allMatches[0].length > 1) {
+        var rows = allMatches.map(function(m, mi) {
+          var cols = '<td class="px-3 py-2 text-slate-400 border-r border-slate-100">' + (mi + 1) + '</td>' +
+            '<td class="px-3 py-2 text-slate-900 font-mono border-r border-slate-100">' + escHtml(m[0]) + '</td>';
+          for (var g = 1; g < m.length; g++) {
+            cols += '<td class="px-3 py-2 text-slate-700 font-mono' + (m[g] === undefined ? ' text-slate-300' : '') + '">' + (m[g] !== undefined ? escHtml(m[g]) : 'undefined') + '</td>';
+          }
+          return '<tr class="border-b border-slate-100 hover:bg-slate-50">' + cols + '</tr>';
+        }).join('');
+        var headers = '<th class="px-3 py-2 text-left text-xs font-semibold text-slate-500 border-r border-slate-100">#</th><th class="px-3 py-2 text-left text-xs font-semibold text-slate-500 border-r border-slate-100">Full match</th>';
+        for (var g2 = 1; g2 < allMatches[0].length; g2++) {
+          headers += '<th class="px-3 py-2 text-left text-xs font-semibold text-slate-500">Group ' + g2 + '</th>';
+        }
+        groupsTable.innerHTML = '<table class="w-full text-sm"><thead class="border-b border-slate-200 bg-slate-50"><tr>' + headers + '</tr></thead><tbody>' + rows + '</tbody></table>';
+        groupsWrap.classList.remove('hidden');
+      }
+    }
+
+    ['regex-pattern','test-string'].forEach(function(id) {
+      document.getElementById(id).addEventListener('input', runMatch);
+    });
+    ['g','i','m','s'].forEach(function(f) {
+      var el = document.getElementById('flag-' + f);
+      el.addEventListener('change', function() {
+        var lbl = document.getElementById('lbl-' + f);
+        if (el.checked) {
+          lbl.classList.add('bg-rose-50', 'border-rose-300');
+          lbl.classList.remove('border-slate-300');
+        } else {
+          lbl.classList.remove('bg-rose-50', 'border-rose-300');
+          lbl.classList.add('border-slate-300');
+        }
+        runMatch();
+      });
+    });
+
+    document.getElementById('btn-sample').addEventListener('click', function() {
+      document.getElementById('regex-pattern').value = SAMPLE_PATTERN;
+      document.getElementById('test-string').value = SAMPLE_TEXT;
+      runMatch();
+    });
+
+    document.getElementById('btn-clear').addEventListener('click', function() {
+      document.getElementById('regex-pattern').value = '';
+      document.getElementById('test-string').value = '';
+      document.getElementById('match-output').innerHTML = '';
+      document.getElementById('groups-wrap').classList.add('hidden');
+      document.getElementById('pattern-error').classList.add('hidden');
+      statusEl.classList.add('hidden');
+    });
+
+    runMatch();
+  </script>
+
+</BaseLayout>
