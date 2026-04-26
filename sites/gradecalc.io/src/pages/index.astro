@@ -27,15 +27,49 @@ import { siteConfig } from '~/config/site.config';
   <div class="mx-auto max-w-5xl">
     <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm mb-8">
       <h2 class="text-xl font-semibold mb-4 text-slate-800">GPA Calculator</h2>
-      <div class="grid gap-3 sm:grid-cols-4 mb-3 text-sm font-medium text-slate-500">
-        <div>Course name</div><div>Credits</div><div>Grade</div><div></div>
+
+      <!-- GPA Scale + Weighted toggle -->
+      <div class="flex flex-wrap gap-4 mb-4">
+        <label class="block">
+          <span class="text-sm font-medium text-slate-700">GPA Scale</span>
+          <select id="gpa-scale" class="mt-1 rounded-lg border border-slate-300 px-3 py-2 text-sm">
+            <option value="4.0">4.0 Scale</option>
+            <option value="4.3">4.3 Scale (A+ = 4.3)</option>
+            <option value="10.0">10.0 Scale</option>
+          </select>
+        </label>
+        <label class="flex items-center gap-2 mt-5 cursor-pointer select-none">
+          <input type="checkbox" id="gpa-weighted" class="h-4 w-4 rounded accent-violet-600">
+          <span class="text-sm font-medium text-slate-700">Honor/AP weighted (+10%)</span>
+        </label>
+      </div>
+
+      <div class="grid gap-3 sm:grid-cols-5 mb-3 text-sm font-medium text-slate-500">
+        <div class="sm:col-span-2">Course name</div><div>Credits</div><div>Grade</div><div>Honor/AP</div><div></div>
       </div>
       <div id="gpa-lines" class="space-y-2"></div>
       <button id="gpa-add" class="mt-2 text-sm text-violet-600 hover:text-violet-800 font-medium">+ Add course</button>
-      <div class="mt-4 grid gap-4 sm:grid-cols-3">
+
+      <!-- Cumulative GPA inputs -->
+      <div class="mt-5 pt-4 border-t border-slate-100">
+        <p class="text-sm font-semibold text-slate-700 mb-3">Cumulative GPA Tracker <span class="font-normal text-slate-400">(optional)</span></p>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <label class="block"><span class="text-sm font-medium text-slate-700">Previous GPA</span><input id="prev-gpa" type="number" step="0.01" placeholder="e.g. 3.50" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm"></label>
+          <label class="block"><span class="text-sm font-medium text-slate-700">Previous credit hours</span><input id="prev-credits" type="number" placeholder="e.g. 60" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm"></label>
+        </div>
+      </div>
+
+      <div class="mt-4 grid gap-4 sm:grid-cols-4">
         <div class="rounded-lg bg-slate-50 p-4 text-center"><p class="text-xs uppercase text-slate-500">Total credits</p><p id="gpa-out-credits" class="text-xl font-bold text-slate-800">12</p></div>
         <div class="rounded-lg bg-slate-50 p-4 text-center"><p class="text-xs uppercase text-slate-500">Grade points</p><p id="gpa-out-points" class="text-xl font-bold text-slate-800">36</p></div>
-        <div class="rounded-lg bg-violet-50 p-4 text-center border border-violet-100"><p class="text-xs uppercase text-violet-600">GPA</p><p id="gpa-out" class="text-xl font-bold text-violet-700">3.00</p></div>
+        <div class="rounded-lg bg-violet-50 p-4 text-center border border-violet-100"><p class="text-xs uppercase text-violet-600">GPA (this term)</p><p id="gpa-out" class="text-xl font-bold text-violet-700">3.00</p></div>
+        <div id="cumulative-card" class="rounded-lg bg-purple-50 p-4 text-center border border-purple-100 hidden"><p class="text-xs uppercase text-purple-600">Cumulative GPA</p><p id="gpa-cumulative" class="text-xl font-bold text-purple-700">3.00</p></div>
+      </div>
+
+      <!-- Grade distribution chart -->
+      <div id="grade-chart" class="mt-4 hidden">
+        <p class="text-xs font-semibold uppercase text-slate-500 mb-2">Grade Distribution</p>
+        <div id="grade-chart-bars" class="space-y-0.5"></div>
       </div>
     </div>
 
@@ -76,16 +110,127 @@ import { siteConfig } from '~/config/site.config';
   <script is:inline>
     function $(id){ return document.getElementById(id); }
     function val(id){ return parseFloat($(id).value)||0; }
-    const gradeMap={'A+':4.0,'A':4.0,'A-':3.7,'B+':3.3,'B':3.0,'B-':2.7,'C+':2.3,'C':2.0,'C-':1.7,'D+':1.3,'D':1.0,'F':0};
-    let gpaCount=0;
-    function addGPA(name,credits,grade){ gpaCount++; const div=document.createElement('div'); div.className='grid gap-2 sm:grid-cols-4 items-center'; div.innerHTML='<input type="text" placeholder="Course" class="rounded-lg border border-slate-300 px-3 py-2 text-sm" value="'+(name||'')+'"><input type="number" placeholder="Credits" class="rounded-lg border border-slate-300 px-3 py-2 text-sm gpa-cred" value="'+(credits||'')+'"><select class="rounded-lg border border-slate-300 px-3 py-2 text-sm gpa-grade"><option>A</option><option>A-</option><option>B+</option><option selected>B</option><option>B-</option><option>C+</option><option>C</option><option>C-</option><option>D</option><option>F</option></select><button class="text-red-500 text-sm remove-gpa">&times;</button>'; $('gpa-lines').appendChild(div); div.querySelector('.remove-gpa').addEventListener('click',()=>{div.remove();calcGPA();}); div.querySelectorAll('input,select').forEach(i=>i.addEventListener('input',calcGPA)); if(grade){ div.querySelector('.gpa-grade').value=grade; } }
-    addGPA('Math',3,'B'); addGPA('English',3,'A-'); addGPA('History',3,'B+'); addGPA('Science',3,'B');
-    function calcGPA(){ let cred=0,pts=0; document.querySelectorAll('#gpa-lines > div').forEach(row=>{ const c=parseFloat(row.querySelector('.gpa-cred').value)||0; const g=row.querySelector('.gpa-grade').value; const p=(gradeMap[g]||0)*c; cred+=c; pts+=p; }); $('gpa-out-credits').textContent=cred; $('gpa-out-points').textContent=pts.toFixed(1); $('gpa-out').textContent=cred?(pts/cred).toFixed(2):'0.00'; }
-    $('gpa-add').addEventListener('click',()=>addGPA('',3,'B'));
+
+    const GPA_SCALES = {
+      '4.0': {'A+':4.0,'A':4.0,'A-':3.7,'B+':3.3,'B':3.0,'B-':2.7,'C+':2.3,'C':2.0,'C-':1.7,'D+':1.3,'D':1.0,'F':0.0},
+      '4.3': {'A+':4.3,'A':4.0,'A-':3.7,'B+':3.3,'B':3.0,'B-':2.7,'C+':2.3,'C':2.0,'C-':1.7,'D+':1.3,'D':1.0,'F':0.0},
+      '10.0':{'A+':10,'A':9,'A-':8.5,'B+':8,'B':7,'B-':6.5,'C+':6,'C':5,'C-':4.5,'D':4,'F':0},
+    };
+
+    function getScale() { return GPA_SCALES[$('gpa-scale').value] || GPA_SCALES['4.0']; }
+    function isWeighted() { return $('gpa-weighted').checked; }
+
+    let gpaCount = 0;
+    function addGPA(name, credits, grade, honor) {
+      gpaCount++;
+      const scale = getScale();
+      const grades = Object.keys(scale);
+      const opts = grades.map(g => '<option'+(g===grade?' selected':'')+'>'+g+'</option>').join('');
+      const div = document.createElement('div');
+      div.className = 'grid gap-2 sm:grid-cols-5 items-center';
+      div.innerHTML =
+        '<input type="text" placeholder="Course" class="sm:col-span-2 rounded-lg border border-slate-300 px-3 py-2 text-sm" value="'+(name||'')+'">' +
+        '<input type="number" placeholder="Credits" class="rounded-lg border border-slate-300 px-3 py-2 text-sm gpa-cred" value="'+(credits||'')+'">' +
+        '<select class="rounded-lg border border-slate-300 px-3 py-2 text-sm gpa-grade">'+opts+'</select>' +
+        '<div class="flex items-center gap-2"><input type="checkbox" class="h-4 w-4 rounded accent-violet-600 gpa-honor"'+(honor?' checked':'')+' title="Honor/AP"><button class="text-red-500 text-sm remove-gpa">&times;</button></div>';
+      $('gpa-lines').appendChild(div);
+      div.querySelector('.remove-gpa').addEventListener('click', () => { div.remove(); calcGPA(); });
+      div.querySelectorAll('input,select').forEach(i => i.addEventListener('input', calcGPA));
+    }
+
+    function rebuildGradeSelects() {
+      const scale = getScale();
+      const grades = Object.keys(scale);
+      document.querySelectorAll('#gpa-lines > div').forEach(row => {
+        const sel = row.querySelector('.gpa-grade');
+        const current = sel.value;
+        sel.innerHTML = grades.map(g => '<option'+(g===current?' selected':'')+'>'+g+'</option>').join('');
+      });
+    }
+
+    function renderGradeChart(courses) {
+      const counts = {};
+      courses.forEach(c => { counts[c.grade] = (counts[c.grade]||0)+1; });
+      if (!Object.keys(counts).length) return '';
+      const maxCount = Math.max(...Object.values(counts), 1);
+      const order = ['A+','A','A-','B+','B','B-','C+','C','C-','D+','D','F'];
+      return order.filter(g => counts[g]).map(g =>
+        '<div class="flex items-center gap-2 py-0.5">' +
+          '<span class="w-6 text-right text-xs font-mono text-slate-700">'+g+'</span>' +
+          '<div class="flex-1 h-3 bg-slate-100 rounded-full overflow-hidden">' +
+            '<div class="h-full bg-brand rounded-full" style="width:'+(counts[g]/maxCount*100).toFixed(0)+'%"></div>' +
+          '</div>' +
+          '<span class="text-xs text-slate-500">'+counts[g]+'</span>' +
+        '</div>'
+      ).join('');
+    }
+
+    function calcCumulativeGPA(currentGPA, currentCredits, prevGPA, prevCredits) {
+      const totalCredits = currentCredits + prevCredits;
+      if (totalCredits <= 0) return currentGPA;
+      return (currentGPA * currentCredits + prevGPA * prevCredits) / totalCredits;
+    }
+
+    function calcGPA() {
+      const scale = getScale();
+      const weighted = isWeighted();
+      let cred = 0, pts = 0;
+      const courses = [];
+      document.querySelectorAll('#gpa-lines > div').forEach(row => {
+        const c = parseFloat(row.querySelector('.gpa-cred').value) || 0;
+        const g = row.querySelector('.gpa-grade').value;
+        const honor = row.querySelector('.gpa-honor').checked;
+        let p = (scale[g] || 0) * c;
+        if (weighted && honor) p *= 1.1;
+        cred += c;
+        pts += p;
+        courses.push({ grade: g });
+      });
+      $('gpa-out-credits').textContent = cred;
+      $('gpa-out-points').textContent = pts.toFixed(1);
+      const termGPA = cred ? pts / cred : 0;
+      $('gpa-out').textContent = termGPA.toFixed(2);
+
+      // Cumulative
+      const prevGPAVal = parseFloat($('prev-gpa').value);
+      const prevCreditsVal = parseFloat($('prev-credits').value);
+      const cumCard = $('cumulative-card');
+      if (!isNaN(prevGPAVal) && !isNaN(prevCreditsVal) && prevCreditsVal > 0) {
+        const cumGPA = calcCumulativeGPA(termGPA, cred, prevGPAVal, prevCreditsVal);
+        $('gpa-cumulative').textContent = cumGPA.toFixed(2);
+        cumCard.classList.remove('hidden');
+      } else {
+        cumCard.classList.add('hidden');
+      }
+
+      // Chart
+      const chartDiv = $('grade-chart');
+      const chartBars = $('grade-chart-bars');
+      const chartHtml = renderGradeChart(courses);
+      if (chartHtml && courses.length > 0) {
+        chartBars.innerHTML = chartHtml;
+        chartDiv.classList.remove('hidden');
+      } else {
+        chartDiv.classList.add('hidden');
+      }
+    }
+
+    $('gpa-add').addEventListener('click', () => addGPA('', 3, 'B', false));
+    $('gpa-scale').addEventListener('change', () => { rebuildGradeSelects(); calcGPA(); });
+    $('gpa-weighted').addEventListener('change', calcGPA);
+    $('prev-gpa').addEventListener('input', calcGPA);
+    $('prev-credits').addEventListener('input', calcGPA);
+
+    addGPA('Math', 3, 'B', false);
+    addGPA('English', 3, 'A-', false);
+    addGPA('History', 3, 'B+', false);
+    addGPA('Science', 3, 'B', false);
     calcGPA();
+
     function calcGP(){ const cur=val('gp-cur'), w=val('gp-weight'), t=val('gp-target'); const need=(t-cur*(1-w/100))/(w/100); $('gp-out').textContent=need.toFixed(1)+'%'; }
     ['gp-cur','gp-weight','gp-target'].forEach(id=>$(id)?.addEventListener('input',calcGP));
     calcGP();
+
     const today=new Date(); const twoWeeks=new Date(); twoWeeks.setDate(today.getDate()+14);
     $('ss-date').value=twoWeeks.toISOString().split('T')[0];
     $('ss-gen').addEventListener('click',()=>{
