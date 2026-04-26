@@ -28,6 +28,7 @@ const recentPosts = siteConfig.features.hasBlog
   <div class="flex gap-1 mb-4 border-b border-slate-200">
     <button id="tab-main" class="px-4 py-2 text-sm font-medium text-blue-700 border-b-2 border-blue-600 -mb-px transition-colors">Format / Convert</button>
     <button id="tab-ts"   class="px-4 py-2 text-sm font-medium text-slate-500 border-b-2 border-transparent -mb-px hover:text-slate-700 transition-colors">TypeScript</button>
+    <button id="tab-diff" class="px-4 py-2 text-sm font-medium text-slate-500 border-b-2 border-transparent -mb-px hover:text-slate-700 transition-colors">Diff</button>
   </div>
 
   <!-- ══ MAIN PANEL ══ -->
@@ -80,6 +81,22 @@ const recentPosts = siteConfig.features.hasBlog
     <!-- Status bar -->
     <div id="status" class="mt-2 rounded-md px-3 py-1.5 text-sm font-medium hidden"></div>
 
+    <!-- JSON Path Query -->
+    <div class="mt-3">
+      <div class="flex items-center gap-2">
+        <label for="json-path-query" class="text-xs font-semibold uppercase tracking-wide text-slate-500 shrink-0">Path query:</label>
+        <input
+          id="json-path-query"
+          type="text"
+          class="flex-1 rounded-md border border-slate-300 bg-white px-3 py-1.5 font-mono text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 placeholder:text-slate-400"
+          placeholder="e.g. user.name or items[0].price"
+          spellcheck="false"
+          autocomplete="off"
+        />
+      </div>
+      <div id="path-query-result" class="mt-1 hidden rounded-md bg-slate-900 text-emerald-300 font-mono text-sm px-3 py-2"></div>
+    </div>
+
     <!-- Keyboard hint -->
     <p class="mt-2 text-xs text-slate-400">
       <kbd class="rounded border border-slate-300 bg-slate-100 px-1 py-0.5 font-mono text-slate-600">Ctrl</kbd>
@@ -89,6 +106,41 @@ const recentPosts = siteConfig.features.hasBlog
       <kbd class="rounded border border-slate-300 bg-slate-100 px-1 py-0.5 font-mono text-slate-600">Tab</kbd>
       inserts spaces in input
     </p>
+  </div>
+
+  <!-- ══ DIFF PANEL ══ -->
+  <div id="panel-diff" class="hidden">
+    <div class="flex flex-wrap gap-2 mb-3">
+      <button id="btn-diff-compare" class="rounded-md bg-blue-600 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-blue-700 transition-colors">Compare</button>
+      <div class="flex-1"></div>
+    </div>
+    <div class="grid gap-3 md:grid-cols-2 mb-3">
+      <div class="flex flex-col gap-1">
+        <label for="diff-input-a" class="text-xs font-semibold uppercase tracking-wide text-slate-500">JSON A</label>
+        <textarea
+          id="diff-input-a"
+          class="w-full rounded-lg border border-slate-300 bg-slate-950 text-slate-100 p-4 font-mono text-sm resize-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 placeholder:text-slate-600"
+          placeholder="Paste first JSON here"
+          spellcheck="false"
+          rows="12"
+        ></textarea>
+      </div>
+      <div class="flex flex-col gap-1">
+        <label for="diff-input-b" class="text-xs font-semibold uppercase tracking-wide text-slate-500">JSON B</label>
+        <textarea
+          id="diff-input-b"
+          class="w-full rounded-lg border border-slate-300 bg-slate-950 text-slate-100 p-4 font-mono text-sm resize-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 placeholder:text-slate-600"
+          placeholder="Paste second JSON here"
+          spellcheck="false"
+          rows="12"
+        ></textarea>
+      </div>
+    </div>
+    <div id="diff-status" class="mb-2 rounded-md px-3 py-1.5 text-sm font-medium hidden"></div>
+    <div id="diff-results" class="hidden space-y-1">
+      <div class="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-2">Differences</div>
+      <div id="diff-list" class="rounded-lg border border-slate-200 bg-white p-3 space-y-1 text-sm font-mono"></div>
+    </div>
   </div>
 
   <!-- ══ TYPESCRIPT PANEL ══ -->
@@ -238,19 +290,25 @@ const recentPosts = siteConfig.features.hasBlog
     /* ── Tab switching ── */
     var tabMain   = document.getElementById('tab-main');
     var tabTs     = document.getElementById('tab-ts');
+    var tabDiff   = document.getElementById('tab-diff');
     var panelMain = document.getElementById('panel-main');
     var panelTs   = document.getElementById('panel-ts');
+    var panelDiff = document.getElementById('panel-diff');
 
     function activateTab(name) {
-      var isTs = (name === 'ts');
-      tabMain.className = 'px-4 py-2 text-sm font-medium border-b-2 -mb-px transition-colors ' + (isTs ? 'text-slate-500 border-transparent hover:text-slate-700' : 'text-blue-700 border-blue-600');
-      tabTs.className   = 'px-4 py-2 text-sm font-medium border-b-2 -mb-px transition-colors ' + (isTs ? 'text-blue-700 border-blue-600' : 'text-slate-500 border-transparent hover:text-slate-700');
-      panelMain.classList.toggle('hidden', isTs);
-      panelTs.classList.toggle('hidden', !isTs);
+      var activeClass = 'px-4 py-2 text-sm font-medium border-b-2 -mb-px transition-colors text-blue-700 border-blue-600';
+      var inactiveClass = 'px-4 py-2 text-sm font-medium border-b-2 -mb-px transition-colors text-slate-500 border-transparent hover:text-slate-700';
+      tabMain.className  = name === 'main'  ? activeClass : inactiveClass;
+      tabTs.className    = name === 'ts'    ? activeClass : inactiveClass;
+      tabDiff.className  = name === 'diff'  ? activeClass : inactiveClass;
+      panelMain.classList.toggle('hidden', name !== 'main');
+      panelTs.classList.toggle('hidden',   name !== 'ts');
+      panelDiff.classList.toggle('hidden', name !== 'diff');
     }
 
     tabMain.addEventListener('click', function() { activateTab('main'); });
     tabTs.addEventListener('click',   function() { activateTab('ts'); });
+    tabDiff.addEventListener('click', function() { activateTab('diff'); });
 
     /* ── Main panel logic ── */
     var input  = document.getElementById('json-input');
@@ -276,13 +334,24 @@ const recentPosts = siteConfig.features.hasBlog
       return JSON.parse(src);
     }
 
+    function getErrorLine(jsonStr, error) {
+      var msg = error.message || '';
+      var posMatch = msg.match(/position (\d+)/i) || msg.match(/at (\d+)/i);
+      if (!posMatch) return null;
+      var pos = parseInt(posMatch[1]);
+      var before = jsonStr.slice(0, pos);
+      return (before.match(/\n/g) || []).length + 1;
+    }
+
     function formatJson() {
       try {
         output.value = JSON.stringify(tryParse(input.value), null, 2);
         showStatus('Formatted successfully', 'success');
       } catch (e) {
         output.value = '';
-        showStatus('Parse error: ' + e.message, 'error');
+        var lineNum = getErrorLine(input.value, e);
+        var msg = lineNum ? 'Syntax error at line ' + lineNum + ': ' + e.message : 'Parse error: ' + e.message;
+        showStatus(msg, 'error');
       }
     }
 
@@ -294,7 +363,8 @@ const recentPosts = siteConfig.features.hasBlog
         showStatus('Minified successfully', 'success');
       } catch (e) {
         output.value = '';
-        showStatus('Parse error: ' + e.message, 'error');
+        var lineNum = getErrorLine(input.value, e);
+        showStatus(lineNum ? 'Syntax error at line ' + lineNum + ': ' + e.message : 'Parse error: ' + e.message, 'error');
       }
     });
 
@@ -304,7 +374,8 @@ const recentPosts = siteConfig.features.hasBlog
         var count = Array.isArray(obj) ? obj.length + ' items' : Object.keys(obj).length + ' keys';
         showStatus('Valid JSON — ' + count, 'success');
       } catch (e) {
-        showStatus('Invalid JSON: ' + e.message, 'error');
+        var lineNum = getErrorLine(input.value, e);
+        showStatus(lineNum ? 'Syntax error at line ' + lineNum + ': ' + e.message : 'Invalid JSON: ' + e.message, 'error');
       }
     });
 
@@ -531,6 +602,89 @@ const recentPosts = siteConfig.features.hasBlog
       }, function() {
         showTsStatus('Copy failed', 'error');
       });
+    });
+
+    /* ── JSON Path Query ── */
+    function queryJSONPath(obj, path) {
+      var parts = path.split(/[\.\[\]]+/).filter(Boolean);
+      var curr = obj;
+      for (var i = 0; i < parts.length; i++) {
+        var p = parts[i];
+        if (curr === null || curr === undefined) return undefined;
+        curr = curr[isNaN(Number(p)) ? p : Number(p)];
+      }
+      return curr;
+    }
+
+    document.getElementById('json-path-query').addEventListener('input', function() {
+      var pathVal = this.value.trim();
+      var resultEl = document.getElementById('path-query-result');
+      if (!pathVal) { resultEl.classList.add('hidden'); return; }
+      try {
+        var parsed = JSON.parse(input.value);
+        var result = queryJSONPath(parsed, pathVal);
+        resultEl.textContent = result === undefined ? '(undefined)' : JSON.stringify(result, null, 2);
+        resultEl.classList.remove('hidden');
+      } catch(e) {
+        resultEl.textContent = 'Parse input JSON first';
+        resultEl.classList.remove('hidden');
+      }
+    });
+
+    /* ── JSON Diff ── */
+    function diffJSON(jsonA, jsonB) {
+      try {
+        var a = JSON.parse(jsonA), b = JSON.parse(jsonB);
+        var diffs = [];
+        function compare(a, b, path) {
+          var allKeys = new Set([].concat(Object.keys(a || {}), Object.keys(b || {})));
+          allKeys.forEach(function(k) {
+            var fullPath = path ? path + '.' + k : k;
+            if (!(k in (a||{}))) diffs.push({type:'added', path:fullPath, value:b[k]});
+            else if (!(k in (b||{}))) diffs.push({type:'removed', path:fullPath, value:a[k]});
+            else if (JSON.stringify(a[k]) !== JSON.stringify(b[k])) {
+              if (a[k] && b[k] && typeof a[k]==='object' && typeof b[k]==='object') compare(a[k],b[k],fullPath);
+              else diffs.push({type:'changed', path:fullPath, from:a[k], to:b[k]});
+            }
+          });
+        }
+        compare(a, b, '');
+        return diffs;
+      } catch(e) { return null; }
+    }
+
+    function showDiffStatus(msg, type) {
+      var el = document.getElementById('diff-status');
+      var clsMap = { error: 'bg-red-50 text-red-700 border border-red-200', success: 'bg-emerald-50 text-emerald-700 border border-emerald-200', info: 'bg-blue-50 text-blue-700 border border-blue-200' };
+      el.className = 'mb-2 rounded-md px-3 py-1.5 text-sm font-medium ' + (clsMap[type] || 'bg-slate-100 text-slate-700');
+      el.textContent = msg;
+      el.classList.remove('hidden');
+    }
+
+    document.getElementById('btn-diff-compare').addEventListener('click', function() {
+      var aVal = document.getElementById('diff-input-a').value.trim();
+      var bVal = document.getElementById('diff-input-b').value.trim();
+      if (!aVal || !bVal) { showDiffStatus('Paste JSON into both panes first', 'info'); return; }
+      var diffs = diffJSON(aVal, bVal);
+      if (diffs === null) { showDiffStatus('Invalid JSON in one or both panes', 'error'); return; }
+      var resultsEl = document.getElementById('diff-results');
+      var listEl    = document.getElementById('diff-list');
+      if (diffs.length === 0) {
+        showDiffStatus('No differences found — JSON objects are identical', 'success');
+        resultsEl.classList.add('hidden');
+        return;
+      }
+      showDiffStatus(diffs.length + ' difference' + (diffs.length !== 1 ? 's' : '') + ' found', 'info');
+      listEl.innerHTML = diffs.map(function(d) {
+        if (d.type === 'added') {
+          return '<div class="text-emerald-700"><span class="font-semibold">+ ' + d.path + '</span>: ' + JSON.stringify(d.value) + '</div>';
+        } else if (d.type === 'removed') {
+          return '<div class="text-red-600"><span class="font-semibold">- ' + d.path + '</span>: ' + JSON.stringify(d.value) + '</div>';
+        } else {
+          return '<div class="text-amber-700"><span class="font-semibold">~ ' + d.path + '</span>: ' + JSON.stringify(d.from) + ' &#8594; ' + JSON.stringify(d.to) + '</div>';
+        }
+      }).join('');
+      resultsEl.classList.remove('hidden');
     });
   </script>
 
