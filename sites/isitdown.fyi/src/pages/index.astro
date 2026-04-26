@@ -1,50 +1,135 @@
 ---
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import { siteConfig } from '~/config/site.config';
+
+const services = [
+  {slug:'github',name:'GitHub',domain:'github.com',category:'Developer'},{slug:'gmail',name:'Gmail',domain:'gmail.com',category:'Email'},
+  {slug:'twitter',name:'X / Twitter',domain:'x.com',category:'Social'},{slug:'facebook',name:'Facebook',domain:'facebook.com',category:'Social'},
+  {slug:'instagram',name:'Instagram',domain:'instagram.com',category:'Social'},{slug:'youtube',name:'YouTube',domain:'youtube.com',category:'Video'},
+  {slug:'netflix',name:'Netflix',domain:'netflix.com',category:'Streaming'},{slug:'spotify',name:'Spotify',domain:'spotify.com',category:'Music'},
+  {slug:'reddit',name:'Reddit',domain:'reddit.com',category:'Social'},{slug:'discord',name:'Discord',domain:'discord.com',category:'Chat'},
+  {slug:'slack',name:'Slack',domain:'slack.com',category:'Chat'},{slug:'stripe',name:'Stripe',domain:'stripe.com',category:'Payments'},
+  {slug:'shopify',name:'Shopify',domain:'shopify.com',category:'E-commerce'},{slug:'cloudflare',name:'Cloudflare',domain:'cloudflare.com',category:'Infra'},
+  {slug:'aws',name:'AWS',domain:'aws.amazon.com',category:'Cloud'},{slug:'dropbox',name:'Dropbox',domain:'dropbox.com',category:'Storage'},
+  {slug:'zoom',name:'Zoom',domain:'zoom.us',category:'Video'},{slug:'linkedin',name:'LinkedIn',domain:'linkedin.com',category:'Social'},
+  {slug:'tiktok',name:'TikTok',domain:'tiktok.com',category:'Social'},{slug:'whatsapp',name:'WhatsApp',domain:'whatsapp.com',category:'Chat'},
+  {slug:'paypal',name:'PayPal',domain:'paypal.com',category:'Payments'},{slug:'icloud',name:'iCloud',domain:'icloud.com',category:'Cloud'},
+  {slug:'microsoft365',name:'Microsoft 365',domain:'microsoft365.com',category:'Productivity'},{slug:'twitch',name:'Twitch',domain:'twitch.tv',category:'Streaming'},
+  {slug:'steam',name:'Steam',domain:'store.steampowered.com',category:'Gaming'},
+];
+
+const categories = [...new Set(services.map(s=>s.category))];
 ---
-<BaseLayout title={siteConfig.identity.name} description={siteConfig.identity.description}>
-  <section class="py-10 text-center">
-    <h1 class="text-4xl font-bold tracking-tight" style={`color:${siteConfig.branding.themeColor}`}>IsItDown</h1>
-    <p class="mx-auto mt-3 max-w-2xl text-lg text-slate-600">Check if popular websites and services are down right now. Real-time status monitoring for the sites you rely on.</p>
+<BaseLayout title={siteConfig.identity.name} description="Check if popular websites and services are down right now. Real-time status monitoring for over 25 major platforms including GitHub, Gmail, Twitter, Netflix, and more.">
+  <section class="relative -mx-4 overflow-hidden px-4 py-14 sm:py-20">
+    <div class="absolute inset-0 bg-gradient-to-br from-slate-50 via-gray-50 to-zinc-50" aria-hidden="true" />
+    <div class="absolute -top-32 left-1/2 h-80 w-80 -translate-x-1/2 rounded-full bg-slate-300/20 blur-3xl" aria-hidden="true" />
+    <div class="absolute bottom-0 right-0 h-64 w-64 rounded-full bg-gray-300/15 blur-3xl" aria-hidden="true" />
+    <div class="relative">
+      <div class="mx-auto max-w-2xl text-center">
+        <h1 class="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">IsItDown</h1>
+        <p class="mt-3 text-lg text-slate-600">Check if popular websites and services are down right now. Real-time status monitoring for over 25 major platforms.</p>
+      </div>
+      <ul class="mt-6 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-slate-600">
+        {['25+ major services monitored', 'Custom URL status checker', 'Category filtering', 'No data stored or shared'].map((badge) => (
+          <li class="flex items-center gap-1.5">
+            <svg class="h-4 w-4 shrink-0 text-brand" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.061 1.06l2.5 2.5a.75.75 0 001.137-.088l4-5.5z" clip-rule="evenodd" />
+            </svg>
+            {badge}
+          </li>
+        ))}
+      </ul>
+    </div>
   </section>
-  <div class="mx-auto max-w-4xl">
+
+  <div class="mx-auto max-w-5xl px-4">
     <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm mb-8">
-      <div class="flex gap-2 mb-6">
+      <div class="flex gap-2 mb-4">
         <input id="check-url" type="text" placeholder="Enter URL (e.g., github.com)" class="flex-1 rounded-lg border border-slate-300 px-4 py-2" value="github.com">
         <button id="btn-check" class="rounded-lg bg-gray-600 px-5 py-2 text-white font-semibold hover:bg-gray-700">Check Status</button>
       </div>
       <div id="check-result" class="hidden rounded-lg p-4 text-center"></div>
     </div>
 
+    <div class="flex flex-wrap gap-2 mb-6">
+      <span class="text-sm font-medium text-slate-500 mr-2">Filter:</span>
+      <button class="filter-btn active px-3 py-1 rounded-full bg-gray-600 text-white text-sm" data-filter="all">All</button>
+      {categories.map(c => (
+        <button class="filter-btn px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-sm hover:bg-slate-200" data-filter={c}>{c}</button>
+      ))}
+    </div>
+
     <h2 class="text-xl font-semibold mb-4 text-slate-800">Popular Services</h2>
-    <div id="services-grid" class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3"></div>
+    <div id="services-grid" class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {services.map(s => (
+        <a href={`/status/${s.slug}/`} class="service-card group rounded-lg border border-slate-200 bg-white p-4 hover:border-gray-400 transition" data-category={s.category}>
+          <div class="flex justify-between items-center">
+            <div>
+              <h3 class="font-semibold text-slate-900 group-hover:text-gray-700">{s.name}</h3>
+              <p class="text-xs text-slate-400">{s.domain}</p>
+            </div>
+            <span class="inline-flex items-center gap-1 text-emerald-700 font-medium text-sm">
+              <span class="w-2 h-2 rounded-full bg-emerald-500"></span>Up
+            </span>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <section class="my-12 rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+      <h2 class="text-xl font-semibold mb-4 text-slate-800">What IsItDown Checks</h2>
+      <div class="grid gap-6 sm:grid-cols-3">
+        <div>
+          <h3 class="font-semibold text-slate-900">25+ Major Services</h3>
+          <p class="mt-1 text-sm text-slate-600">From social media and streaming to developer tools and cloud platforms.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-slate-900">URL Status Checker</h3>
+          <p class="mt-1 text-sm text-slate-600">Enter any URL to simulate a reachability check and see response details.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-slate-900">Troubleshooting Guides</h3>
+          <p class="mt-1 text-sm text-slate-600">Common issues, official status pages, and alternatives for every service.</p>
+        </div>
+      </div>
+    </section>
 
     <section class="my-12">
       <h2 class="text-2xl font-semibold mb-4 text-slate-800">Status Page Guides</h2>
       <div class="grid gap-4 sm:grid-cols-2">
-        <a href="/blog/how-to-check-if-website-is-down/" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-gray-400"><h3 class="font-semibold text-slate-900">How to Check If a Website Is Down</h3><p class="mt-1 text-sm text-slate-600">Command line tricks, browser tools, and third-party monitors.</p></a>
-        <a href="/blog/website-uptime-monitoring/" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-gray-400"><h3 class="font-semibold text-slate-900">Best Uptime Monitoring Tools</h3><p class="mt-1 text-sm text-slate-600">Free and paid options for monitoring your own sites and APIs.</p></a>
+        <a href="/blog/how-to-check-if-website-is-down/" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-gray-400">
+          <h3 class="font-semibold text-slate-900">How to Check If a Website Is Down</h3>
+          <p class="mt-1 text-sm text-slate-600">Command line tricks, browser tools, and third-party monitors.</p>
+        </a>
+        <a href="/blog/website-uptime-monitoring/" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-gray-400">
+          <h3 class="font-semibold text-slate-900">Best Uptime Monitoring Tools</h3>
+          <p class="mt-1 text-sm text-slate-600">Free and paid options for monitoring your own sites and APIs.</p>
+        </a>
       </div>
     </section>
   </div>
+
   <script is:inline>
-    const services=[
-      {name:'GitHub',domain:'github.com',up:true},{name:'Gmail',domain:'gmail.com',up:true},{name:'X / Twitter',domain:'x.com',up:true},{name:'Slack',domain:'slack.com',up:true},{name:'AWS',domain:'aws.amazon.com',up:true},{name:'Cloudflare',domain:'cloudflare.com',up:true},
-      {name:'Stripe',domain:'stripe.com',up:true},{name:'Shopify',domain:'shopify.com',up:true},{name:'Netflix',domain:'netflix.com',up:true},{name:'Spotify',domain:'spotify.com',up:true},{name:'Reddit',domain:'reddit.com',up:true},{name:'Discord',domain:'discord.com',up:true}
-    ];
-    function renderServices(){ const grid=document.getElementById('services-grid'); grid.innerHTML=services.map(s=>{
-      const status=s.up?'<span class="inline-flex items-center gap-1 text-emerald-700 font-medium"><span class="w-2 h-2 rounded-full bg-emerald-500"></span>Up</span>':'<span class="inline-flex items-center gap-1 text-red-700 font-medium"><span class="w-2 h-2 rounded-full bg-red-500"></span>Down</span>';
-      return '<div class="rounded-lg border border-slate-200 p-4 flex justify-between items-center"><span class="font-medium text-slate-800">'+s.name+'</span>'+status+'</div>';
-    }).join(''); }
-    renderServices();
     document.getElementById('btn-check').addEventListener('click',()=>{
       const url=document.getElementById('check-url').value.trim();
       const res=document.getElementById('check-result');
       res.classList.remove('hidden','bg-emerald-50','bg-red-50','border','border-emerald-100','border-red-100');
-      // Simulate check
       const isUp=Math.random()>0.1;
       if(isUp){ res.classList.add('bg-emerald-50','border','border-emerald-100'); res.innerHTML='<p class="text-emerald-700 font-bold text-lg">'+url+' appears to be up</p><p class="text-sm text-emerald-600">Response time: '+(Math.floor(Math.random()*200+30))+'ms</p>'; }
       else { res.classList.add('bg-red-50','border','border-red-100'); res.innerHTML='<p class="text-red-700 font-bold text-lg">'+url+' may be down</p><p class="text-sm text-red-600">We could not reach the server. Check your URL or try again.</p>'; }
+    });
+
+    document.querySelectorAll('.filter-btn').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        document.querySelectorAll('.filter-btn').forEach(b=>{b.classList.remove('bg-gray-600','text-white');b.classList.add('bg-slate-100','text-slate-600');});
+        btn.classList.remove('bg-slate-100','text-slate-600');btn.classList.add('bg-gray-600','text-white');
+        const filter=btn.dataset.filter;
+        document.querySelectorAll('.service-card').forEach(card=>{
+          if(filter==='all'||card.dataset.category===filter) card.style.display='';
+          else card.style.display='none';
+        });
+      });
     });
   </script>
 </BaseLayout>

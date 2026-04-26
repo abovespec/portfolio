@@ -29,9 +29,26 @@ const categories = [
 ];
 ---
 <BaseLayout title={siteConfig.identity.name} description="Compare 115+ software tools across 23 categories. Side-by-side tables, pricing, and interactive quizzes to find your perfect stack.">
-  <section class="py-12 text-center">
-    <h1 class="text-5xl font-bold tracking-tight" style={`color:${siteConfig.branding.themeColor}`}>PickTheStack</h1>
-    <p class="mx-auto mt-4 max-w-2xl text-lg text-slate-600">Compare 115+ software tools across 23 categories. Side-by-side tables, real pricing, and interactive decision quizzes to find your perfect stack.</p>
+  <section class="relative -mx-4 overflow-hidden px-4 py-14 sm:py-20">
+    <div class="absolute inset-0 bg-gradient-to-br from-indigo-50 via-blue-50 to-violet-50" aria-hidden="true" />
+    <div class="absolute -top-32 left-1/2 h-80 w-80 -translate-x-1/2 rounded-full bg-indigo-300/20 blur-3xl" aria-hidden="true" />
+    <div class="absolute bottom-0 right-0 h-64 w-64 rounded-full bg-blue-300/15 blur-3xl" aria-hidden="true" />
+    <div class="relative">
+      <div class="mx-auto max-w-2xl text-center">
+        <h1 class="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">PickTheStack</h1>
+        <p class="mt-3 text-lg text-slate-600">Compare 115+ software tools across 23 categories. Side-by-side tables, real pricing, and interactive decision quizzes to find your perfect stack.</p>
+      </div>
+      <ul class="mt-6 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-slate-600">
+        {['115+ tools compared', 'Real pricing & feature breakdowns', 'Side-by-side comparisons', 'No data stored or shared'].map((badge) => (
+          <li class="flex items-center gap-1.5">
+            <svg class="h-4 w-4 shrink-0 text-brand" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.061 1.06l2.5 2.5a.75.75 0 001.137-.088l4-5.5z" clip-rule="evenodd" />
+            </svg>
+            {badge}
+          </li>
+        ))}
+      </ul>
+    </div>
   </section>
 
   <div class="mx-auto max-w-6xl px-4">
