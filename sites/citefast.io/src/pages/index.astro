@@ -158,6 +158,18 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
       <!-- Journal form -->
       <div id="form-journal" class="hidden">
         <p class="text-xs font-semibold text-stone-500 uppercase tracking-wide mb-2">Journal Article Details</p>
+        <div class="mb-4 p-3 rounded-lg bg-slate-50 border border-slate-200">
+          <label class="block text-xs font-medium text-slate-600 mb-1">Auto-fill from DOI</label>
+          <div class="flex gap-2">
+            <input type="text" id="doi-input" placeholder="e.g. 10.1000/xyz123"
+              class="flex-1 rounded-lg border border-slate-300 px-3 py-1.5 text-sm focus:border-brand focus:outline-none">
+            <button id="doi-lookup-btn" onclick="lookupDOI(document.getElementById('doi-input').value)"
+              class="px-3 py-1.5 rounded-lg bg-stone-700 text-white text-sm font-medium hover:bg-stone-600">
+              Look Up DOI
+            </button>
+          </div>
+          <p id="doi-status" class="text-xs text-slate-400 mt-1">Enter a DOI to auto-fill the form</p>
+        </div>
         <div class="grid grid-cols-2 gap-2">
           <div>
             <label class="block text-xs text-stone-600 mb-1" for="journal-author-last">Author Last Name</label>
@@ -444,8 +456,29 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
         <span id="status-msg"></span>
       </div>
 
+      <!-- Add to Bibliography button -->
+      <div class="mt-2">
+        <button id="btn-add-bib"
+          class="w-full px-4 py-2 bg-stone-100 hover:bg-stone-200 text-stone-700 rounded-lg text-sm font-medium transition"
+          onclick="addCurrentToBib()">
+          + Add to Bibliography
+        </button>
+      </div>
+
     </div>
   </div>
+
+  <!-- Bibliography Section -->
+  <section id="bib-section" class="hidden mt-6 rounded-xl border border-slate-200 bg-white p-4">
+    <div class="flex items-center justify-between mb-3">
+      <h2 class="text-sm font-semibold text-slate-700">Bibliography</h2>
+      <button id="copy-bib-btn" onclick="copyBib()"
+        class="text-xs px-3 py-1.5 rounded-lg bg-stone-700 text-white hover:bg-stone-600 font-medium">
+        Copy Bibliography
+      </button>
+    </div>
+    <div id="bib-list"></div>
+  </section>
 
   <!-- SEO content block -->
   <section class="mt-12 max-w-3xl mx-auto">
@@ -1061,6 +1094,94 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
         input.addEventListener('change', generateAll);
       });
     });
+
+    // ── Bibliography Builder ──
+    var bibItems = [];
+
+    function addCurrentToBib() {
+      var citation = citationPlainText.apa || citationPlainText.mla || citationPlainText.chicago;
+      addToBib(citation);
+    }
+
+    function addToBib(citation) {
+      if (!citation || !citation.trim()) { showStatus('Generate a citation first, then add it.'); return; }
+      bibItems.push(citation.trim());
+      renderBib();
+      document.getElementById('bib-section').classList.remove('hidden');
+    }
+
+    function removeBibItem(index) {
+      bibItems.splice(index, 1);
+      renderBib();
+      if (!bibItems.length) document.getElementById('bib-section').classList.add('hidden');
+    }
+
+    function renderBib() {
+      var el = document.getElementById('bib-list');
+      if (!el) return;
+      el.innerHTML = bibItems.map(function(item, i) {
+        return '<div class="flex gap-2 items-start text-sm py-2 border-b border-slate-100 last:border-0">' +
+          '<span class="text-slate-400 min-w-[1.5rem] text-right shrink-0">' + (i+1) + '.</span>' +
+          '<span class="flex-1 text-slate-700">' + item.replace(/</g,'&lt;').replace(/>/g,'&gt;') + '</span>' +
+          '<button onclick="removeBibItem(' + i + ')" class="shrink-0 text-slate-400 hover:text-red-500 text-xs px-1">✕</button>' +
+          '</div>';
+      }).join('');
+    }
+
+    function copyBib() {
+      if (!bibItems.length) return;
+      navigator.clipboard.writeText(bibItems.join('\n\n'));
+      var btn = document.getElementById('copy-bib-btn');
+      if (btn) { btn.textContent = 'Copied!'; setTimeout(function() { btn.textContent = 'Copy Bibliography'; }, 2000); }
+    }
+
+    window.removeBibItem = removeBibItem;
+    window.copyBib = copyBib;
+    window.addCurrentToBib = addCurrentToBib;
+
+    // ── DOI Lookup ──
+    async function lookupDOI(doi) {
+      if (!doi || !doi.trim()) return;
+      var doiLookupBtn = document.getElementById('doi-lookup-btn');
+      if (doiLookupBtn) { doiLookupBtn.disabled = true; doiLookupBtn.textContent = 'Looking up...'; }
+      try {
+        var res = await fetch('https://api.crossref.org/works/' + encodeURIComponent(doi.trim()), {
+          headers: { 'User-Agent': 'citefast.io/1.0 (mailto:info@citefast.io)' }
+        });
+        if (!res.ok) throw new Error('Not found');
+        var data = await res.json();
+        var msg = data.message;
+        var title = (msg.title || [''])[0] || '';
+        var authors = (msg.author || []).map(function(a) { return (a.family || '') + ', ' + ((a.given||'').charAt(0)||'') + '.'; }).join(', ');
+        var year = (msg.published && msg.published['date-parts'] && msg.published['date-parts'][0] && msg.published['date-parts'][0][0]) ? String(msg.published['date-parts'][0][0]) : '';
+        var journal = (msg['container-title'] && msg['container-title'][0]) || '';
+        var volume = msg.volume || '';
+        var issue = msg.issue || '';
+        var pages = msg.page || '';
+        // Fill journal form fields
+        var fieldMap = { 'journal-author-last': authors.split(',')[0] || '', 'journal-author-first': '', 'journal-year': year, 'journal-article-title': title, 'journal-name': journal, 'journal-volume': volume, 'journal-issue': issue, 'journal-pages': pages };
+        Object.keys(fieldMap).forEach(function(id) {
+          var el = document.getElementById(id);
+          if (el && fieldMap[id]) el.value = fieldMap[id];
+        });
+        generateAll();
+        showDOISuccess('Found: "' + title.slice(0,60) + (title.length>60?'…':'') + '"');
+      } catch(e) {
+        showDOIError('DOI not found or CrossRef unavailable');
+      } finally {
+        if (doiLookupBtn) { doiLookupBtn.disabled = false; doiLookupBtn.textContent = 'Look Up DOI'; }
+      }
+    }
+
+    function showDOISuccess(msg) {
+      var el = document.getElementById('doi-status');
+      if (el) { el.textContent = msg; el.className = 'text-xs text-green-600 mt-1'; }
+    }
+    function showDOIError(msg) {
+      var el = document.getElementById('doi-status');
+      if (el) { el.textContent = msg; el.className = 'text-xs text-red-500 mt-1'; }
+    }
+    window.lookupDOI = lookupDOI;
   </script>
 
 </BaseLayout>
