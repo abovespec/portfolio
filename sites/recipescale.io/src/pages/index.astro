@@ -35,6 +35,10 @@ import { siteConfig } from '~/config/site.config';
       <button id="rs-add" class="mt-2 text-sm text-orange-600 hover:text-orange-800 font-medium">+ Add ingredient</button>
       <div class="mt-4 rounded-lg bg-yellow-50 p-3 text-center border border-yellow-100"><p class="text-sm text-orange-700 font-medium">Scale factor: <span id="rs-factor">1.5</span>x</p></div>
       <p class="mt-2 text-xs text-slate-400">Use the unit dropdown on each row to convert the scaled quantity to a different unit.</p>
+      <div class="mt-4 flex flex-wrap gap-2">
+        <button id="rs-download" onclick="downloadScaledRecipe()" class="rounded-lg border border-slate-300 px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Download as .txt</button>
+        <button id="rs-copy-recipe" onclick="copyScaledRecipe()" class="rounded-lg border border-slate-300 px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Copy Recipe</button>
+      </div>
     </div>
 
     <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm mb-8">
@@ -105,6 +109,38 @@ import { siteConfig } from '~/config/site.config';
       return units.map(u => '<option value="' + u + '"' + (u === currentUnit ? ' selected' : '') + '>' + u + '</option>').join('');
     }
 
+    const INGREDIENT_GRAMS = {
+      'flour': { cup: 125, tbsp: 7.8, tsp: 2.6 },
+      'all-purpose flour': { cup: 125, tbsp: 7.8, tsp: 2.6 },
+      'sugar': { cup: 200, tbsp: 12.5, tsp: 4.2 },
+      'brown sugar': { cup: 220, tbsp: 13.75, tsp: 4.6 },
+      'powdered sugar': { cup: 120, tbsp: 7.5, tsp: 2.5 },
+      'butter': { cup: 227, tbsp: 14.2, tsp: 4.7 },
+      'oil': { cup: 218, tbsp: 13.6, tsp: 4.5 },
+      'milk': { cup: 244, tbsp: 15.3, tsp: 5.1 },
+      'water': { cup: 237, tbsp: 14.8, tsp: 4.9 },
+      'honey': { cup: 340, tbsp: 21.3, tsp: 7.1 },
+      'cocoa': { cup: 86, tbsp: 5.4, tsp: 1.8 },
+      'cocoa powder': { cup: 86, tbsp: 5.4, tsp: 1.8 },
+      'salt': { cup: 273, tbsp: 17.1, tsp: 5.7 },
+      'baking powder': { cup: 230, tbsp: 14.4, tsp: 4.8 },
+      'baking soda': { cup: 220, tbsp: 13.75, tsp: 4.6 },
+      'oats': { cup: 90, tbsp: 5.6, tsp: 1.9 },
+      'rice': { cup: 185, tbsp: 11.6, tsp: 3.9 },
+      'breadcrumbs': { cup: 108, tbsp: 6.75, tsp: 2.25 },
+    };
+
+    function getGrams(ingredientName, unit, amount) {
+      const name = ingredientName.toLowerCase().trim();
+      const match = Object.keys(INGREDIENT_GRAMS).find(k => name.includes(k));
+      if (!match) return null;
+      const convs = INGREDIENT_GRAMS[match];
+      const unitLower = unit.toLowerCase();
+      const factor = convs[unitLower] || convs['cup'];
+      if (!factor) return null;
+      return (parseFloat(amount) * factor).toFixed(0);
+    }
+
     let rsCount = 0;
     function addRS(name, qty, unit) {
       rsCount++;
@@ -115,7 +151,8 @@ import { siteConfig } from '~/config/site.config';
         '<input type="text" placeholder="Ingredient" class="flex-1 min-w-0 rounded-lg border border-slate-300 px-3 py-2 text-sm" value="' + (name||'') + '">' +
         '<input type="number" placeholder="Qty" class="w-20 rounded-lg border border-slate-300 px-2 py-2 text-sm rs-qty" value="' + (qty||'') + '">' +
         '<select class="rs-unit w-28 rounded-lg border border-slate-300 px-2 py-2 text-sm">' + buildUnitOptions(unitVal) + '</select>' +
-        '<span class="rs-out text-sm font-medium text-orange-700 w-28 text-right"></span>';
+        '<span class="rs-out text-sm font-medium text-orange-700 w-28 text-right"></span>' +
+        '<span class="rs-gram text-xs text-slate-400"></span>';
       $('rs-lines').appendChild(div);
 
       const qtyInput = div.querySelector('.rs-qty');
@@ -151,22 +188,26 @@ import { siteConfig } from '~/config/site.config';
         const qtyInput = row.querySelector('.rs-qty');
         const unitSelect = row.querySelector('.rs-unit');
         const outEl = row.querySelector('.rs-out');
+        const gramEl = row.querySelector('.rs-gram');
+        const nameInput = row.querySelector('input[type="text"]');
         const origQty = parseFloat(qtyInput.value) || 0;
         const scaledQty = origQty * factor;
         const fromUnit = unitSelect ? (unitSelect.dataset.prevUnit || unitSelect.value || '') : '';
         const toUnit = unitSelect ? unitSelect.value : '';
         if (fromUnit && toUnit && fromUnit !== toUnit) {
-          // Converting: we use the original unit (before last change) to the new unit
-          // But since prevUnit tracks the "previous selection" and value is current,
-          // we treat the qty input as being in the base unit when it was typed.
-          // Simpler: qty input is always in the unit shown in the select (current toUnit).
-          // When user changes unit select, we convert the scaled qty.
           outEl.textContent = scaledQty.toFixed(3);
         } else {
           outEl.textContent = scaledQty.toFixed(3);
         }
         if (unitSelect) outEl.textContent = scaledQty.toFixed(3) + (toUnit ? ' ' + toUnit : '');
         else outEl.textContent = scaledQty.toFixed(3);
+        // Gram badge
+        if (gramEl && nameInput && toUnit && scaledQty > 0) {
+          const grams = getGrams(nameInput.value, toUnit, scaledQty);
+          gramEl.textContent = grams ? '≈ ' + grams + 'g' : '';
+        } else if (gramEl) {
+          gramEl.textContent = '';
+        }
       });
     }
 
@@ -220,5 +261,43 @@ import { siteConfig } from '~/config/site.config';
     }
     ['mp-cals', 'mp-prot', 'mp-meals'].forEach(id => $(id)?.addEventListener('input', calcMP));
     calcMP();
+
+    function getScaledRecipeText() {
+      const factor = (val('rs-new') / Math.max(1, val('rs-orig'))).toFixed(2);
+      const lines = [];
+      lines.push('Scaled Recipe (factor: ' + factor + 'x)');
+      lines.push('='.repeat(30));
+      document.querySelectorAll('#rs-lines > div').forEach(row => {
+        const nameInput = row.querySelector('input[type="text"]');
+        const outEl = row.querySelector('.rs-out');
+        const gramEl = row.querySelector('.rs-gram');
+        const name = nameInput ? nameInput.value.trim() : '';
+        const qty = outEl ? outEl.textContent.trim() : '';
+        const grams = gramEl ? gramEl.textContent.trim() : '';
+        if (name || qty) lines.push((name || '?') + ': ' + qty + (grams ? ' ' + grams : ''));
+      });
+      return lines.join('\n');
+    }
+
+    function downloadScaledRecipe() {
+      const text = getScaledRecipeText();
+      const blob = new Blob([text], { type: 'text/plain' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'scaled-recipe.txt';
+      a.click();
+      URL.revokeObjectURL(a.href);
+    }
+
+    function copyScaledRecipe() {
+      const text = getScaledRecipeText();
+      navigator.clipboard.writeText(text).then(function() {
+        const btn = $('rs-copy-recipe');
+        if (btn) { btn.textContent = 'Copied!'; setTimeout(function() { btn.textContent = 'Copy Recipe'; }, 2000); }
+      });
+    }
+
+    window.downloadScaledRecipe = downloadScaledRecipe;
+    window.copyScaledRecipe = copyScaledRecipe;
   </script>
 </BaseLayout>
