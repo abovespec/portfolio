@@ -15,7 +15,7 @@ Freelancing without an income goal is like driving without a destination. You mi
 1. **Annual living expenses:** Rent, food, utilities, transportation, insurance.
 2. **Savings goals:** Emergency fund, retirement, travel.
 3. **Business expenses:** Software, equipment, coworking, marketing.
-4. **Tax reserve:** 25-35% of net income, depending on jurisdiction.
+4. **Tax reserve:** 25-35% of net income, depending on jurisdiction. The [IRS self-employment tax center](https://www.irs.gov/businesses/small-businesses-self-employed/self-employed-individuals-tax-center) explains the self-employment tax obligations freelancers carry that salaried employees do not.
 
 **Example:**
 - Living expenses: $60,000
@@ -41,7 +41,7 @@ Our [freelance rate calculator](/) connects these variables. Input your income g
 
 ## The Reality of Billable Hours
 
-Most freelancers can only bill 50-60% of their working hours. The rest goes to:
+Most freelancers can only bill 50-60% of their working hours, a pattern consistent with findings from the [Freelancers Union](https://www.freelancersunion.org/). The rest goes to:
 - Administrative tasks
 - Marketing and sales
 - Client communication
@@ -70,3 +70,7 @@ Review your income monthly. Compare actual to goal. If you are behind after Q1, 
 - **Year 3:** Build passive income streams to reduce reliance on billable hours.
 
 Use our calculator to set your goal now. Then work backward to the daily actions that get you there.
+
+---
+
+*Disclaimer: The information on this page is for general informational purposes only and does not constitute financial, tax, or legal advice. Freelance rates vary significantly by industry, experience, and geography. Consult a qualified financial advisor or accountant for advice tailored to your situation.*

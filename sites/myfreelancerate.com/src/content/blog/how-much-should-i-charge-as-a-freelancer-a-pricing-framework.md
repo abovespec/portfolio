@@ -16,7 +16,7 @@ Your floor is the minimum rate that keeps you in business. Calculate it with our
 
 ## Step 2: Research Market Rates
 
-Look at job boards, competitor websites, and industry reports. Glassdoor, ZipRecruiter, and freelance platforms publish rate data. Your rate should fall within the market range unless you have a clear differentiator.
+Look at job boards, competitor websites, and industry reports. [Glassdoor salary data](https://www.glassdoor.com/Salaries/index.htm) and freelance platforms publish rate data. Your rate should fall within the market range unless you have a clear differentiator.
 
 ## Step 3: Factor in Value
 
@@ -33,7 +33,7 @@ Start at the midpoint of your research range. If 70% of prospects say yes immedi
 ## Common Pricing Mistakes
 
 - **Copying competitors exactly:** Their cost structure differs from yours.
-- **Charging what you made as an employee:** Freelancers pay self-employment tax, health insurance, and have no paid time off.
+- **Charging what you made as an employee:** Freelancers pay self-employment tax, health insurance, and have no paid time off. The [IRS self-employment tax center](https://www.irs.gov/businesses/small-businesses-self-employed/self-employed-individuals-tax-center) details why these obligations add roughly 15.3% to your tax burden before income tax.
 - **Lowering rates to win work:** Cheap clients are often the most demanding.
 - **Not raising rates annually:** Inflation and experience both justify increases.
 
@@ -44,3 +44,7 @@ Our [hourly rate calculator](/) finds your minimum viable rate. Our [project est
 ## The Bottom Line
 
 Charge what you need to earn, what the market supports, and what your value justifies. The intersection of those three numbers is your rate. Revisit it every six months.
+
+---
+
+*Disclaimer: The information on this page is for general informational purposes only and does not constitute financial, tax, or legal advice. Freelance rates vary significantly by industry, experience, and geography. Consult a qualified financial advisor or accountant for advice tailored to your situation.*

@@ -28,6 +28,8 @@ Always calculate round trip unless you are flying back.
 
 ## Variables That Affect MPG
 
+The [U.S. Department of Energy](https://www.fueleconomy.gov/) documents how driving conditions substantially alter real-world fuel economy from EPA-rated figures:
+
 | Factor | Impact |
 |---|---|
 | Highway driving | +10-20% vs city |
@@ -50,7 +52,7 @@ Our [fuel cost calculator](/) handles one-way, round-trip, and multi-stop routes
 
 - Add 15% to fuel estimates for safety
 - Use apps like GasBuddy to find cheapest stations
-- Drive 65-70 mph for optimal highway efficiency
+- Drive 65-70 mph for optimal highway efficiency ([Car and Driver testing](https://www.caranddriver.com/) confirms 65 mph as the sweet spot for most vehicles)
 - Remove roof racks when not in use
 - Keep tires properly inflated
 
@@ -67,3 +69,7 @@ EV road trips require different planning. Use charging cost calculators and map 
 | Chicago to Denver | 920 | 26 | $3.20 | $113 |
 
 Use our calculator to plan your next road trip budget. Knowing fuel costs upfront lets you spend more on experiences and less at the pump.
+
+---
+
+*Disclaimer: The information on this page is for general informational purposes only and does not constitute financial or investment advice. Vehicle values, depreciation rates, and cost estimates vary widely by market conditions. Always consult a qualified financial professional before making major purchasing decisions.*

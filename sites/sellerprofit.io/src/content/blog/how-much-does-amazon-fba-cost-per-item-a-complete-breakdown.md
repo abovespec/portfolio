@@ -14,8 +14,8 @@ Before you send inventory to Amazon warehouses, you need a clear per-unit cost m
 
 1. **Product cost** - What you paid the manufacturer or supplier.
 2. **Inbound shipping** - Freight to Amazon fulfillment centers, usually $0.50 to $2.00 per unit depending on volume and origin.
-3. **Referral fee** - 8% to 45% of selling price by category. Most items pay 15%.
-4. **Fulfillment fee** - Based on dimensions and weight. Small standard items start at $3.22.
+3. **Referral fee** - 8% to 45% of selling price by category. Most items pay 15% — see the [current Amazon referral fee schedule](https://sell.amazon.com/pricing) for category-specific rates.
+4. **Fulfillment fee** - Based on dimensions and weight. Small standard items start at $3.22 — check the [FBA fee schedule](https://sell.amazon.com/fulfillment-by-amazon/fees) for current size-tier rates.
 5. **Storage fee** - Averages $0.87/cu ft in off-peak months. For a single unit, this is pennies per month unless it sits for a year.
 
 ## Real Examples
@@ -45,3 +45,7 @@ Instead of spreadsheets, use our [FBA profit calculator](/) to model per-item co
 ## Final Thoughts
 
 FBA costs per item typically range from $6 to $15 for standard-size consumer goods. Oversize, heavy, or low-price items can see fees eat 50% or more of revenue. Always calculate before you commit to a purchase order.
+
+---
+
+*Disclaimer: The information on this page is for general informational purposes only. Platform fees, commission rates, and fulfillment costs change frequently. Always verify current rates directly with the platform before making business decisions. This content does not constitute financial or business advice.*

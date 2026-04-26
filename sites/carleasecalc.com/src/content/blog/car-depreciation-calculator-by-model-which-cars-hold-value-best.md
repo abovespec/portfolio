@@ -16,6 +16,8 @@ Depreciation is the difference between what you pay and what the car is worth la
 
 ## Depreciation by Year (Average)
 
+According to [iSeeCars depreciation research](https://www.iseecars.com/depreciation), new vehicles follow a predictable decline curve:
+
 - End of year 1: 20-25% loss
 - End of year 3: 40-50% loss
 - End of year 5: 55-65% loss
@@ -43,7 +45,7 @@ Depreciation is the difference between what you pay and what the car is worth la
 | Maserati | 30-35% |
 | Fiat | 30-35% |
 
-Luxury sedans depreciate faster than trucks and SUVs. Electric vehicles have mixed records depending on tax credits and technology updates.
+Luxury sedans depreciate faster than trucks and SUVs. Electric vehicles have mixed records depending on tax credits and technology updates. [Kelley Blue Book's resale value data](https://www.kbb.com/) tracks these trends annually across all segments.
 
 ## Using Our Calculator
 
@@ -75,3 +77,7 @@ Our [car depreciation calculator](/) estimates future value by make, model, year
 For business owners, rapid depreciation can actually be a tax advantage through Section 179 deductions and bonus depreciation. Consult your accountant about whether accelerated depreciation strategies apply to your vehicle purchases.
 
 Use our calculator before your next purchase. The difference between a 60% retention vehicle and a 40% retention vehicle on a $40,000 purchase is $8,000 in value after five years.
+
+---
+
+*Disclaimer: The information on this page is for general informational purposes only and does not constitute financial or investment advice. Vehicle values, depreciation rates, and cost estimates vary widely by market conditions. Always consult a qualified financial professional before making major purchasing decisions.*

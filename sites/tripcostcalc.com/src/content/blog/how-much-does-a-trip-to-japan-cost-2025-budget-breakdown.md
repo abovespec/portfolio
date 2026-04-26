@@ -12,7 +12,7 @@ Japan is a dream destination, but budgeting for it can feel overwhelming. Costs 
 
 ## Flights
 
-From North America to Tokyo:
+From North America to Tokyo, you can search and compare fares via [Google Flights](https://www.google.com/travel/flights) or [Skyscanner](https://www.skyscanner.com/):
 - Economy: $800-1,500 round trip
 - Premium economy: $1,500-2,500
 - Business: $3,500-7,000
@@ -37,11 +37,11 @@ Japan offers food at every price point.
 - Mid-range restaurant: $20-40
 - High-end sushi/kaiseki: $100-300+
 
-Budget $40-60 per day for comfortable eating. Foodies should budget $80-120.
+According to [Numbeo cost of living data for Japan](https://www.numbeo.com/cost-of-living/), budget $40-60 per day for comfortable eating. Foodies should budget $80-120.
 
 ## Transportation
 
-The JR Pass is worth it for multi-city trips:
+The JR Pass is worth it for multi-city trips (current pass prices via [Japan National Tourism Organization](https://www.jnto.go.jp/eng/)):
 - 7-day pass: ~$280
 - 14-day pass: ~$450
 
@@ -92,3 +92,7 @@ Our [trip cost calculator](/) builds custom Japan budgets. Input your travel sty
 - Travel in shoulder season for lower prices.
 
 Japan can be affordable or extravagant. Use our calculator to plan your perfect trip within your budget.
+
+---
+
+*Disclaimer: The information on this page is for general informational purposes only. Travel costs, exchange rates, and prices change frequently and vary by season, booking timing, and personal preferences. All cost estimates are approximations. Always verify current prices before booking. This content does not constitute financial advice.*

@@ -14,7 +14,7 @@ The sticker price is not the real cost. A $35,000 car can easily cost $700-900 p
 
 ### 1. Depreciation
 
-Cars lose 15-25% of value in year one, then 10-15% annually. A $35,000 car loses roughly $5,000-7,500 in the first year alone. Over five years, depreciation often exceeds all other costs combined.
+Cars lose 15-25% of value in year one, then 10-15% annually. A $35,000 car loses roughly $5,000-7,500 in the first year alone. Over five years, depreciation often exceeds all other costs combined. [Edmunds' ownership cost data](https://www.edmunds.com/car-buying/car-depreciation.html) consistently shows depreciation accounting for roughly 40% of total 5-year ownership costs.
 
 ### 2. Financing
 
@@ -59,7 +59,7 @@ Our [total cost of ownership calculator](/) adds all these categories. Input pur
 
 ## Cost Per Mile
 
-The average US driver spends $0.60-0.80 per mile in total ownership costs. Luxury and electric vehicles have different profiles. EVs save on fuel and maintenance but may cost more upfront and in insurance.
+The average US driver spends $0.60-0.80 per mile in total ownership costs, broadly consistent with figures published by [Consumer Reports on car ownership expenses](https://www.consumerreports.org/cars/). Luxury and electric vehicles have different profiles. EVs save on fuel and maintenance but may cost more upfront and in insurance.
 
 ## How to Reduce Ownership Costs
 
@@ -72,3 +72,7 @@ The average US driver spends $0.60-0.80 per mile in total ownership costs. Luxur
 ## The Bottom Line
 
 Before buying any car, calculate total ownership cost. A cheaper car with better reliability often costs less than a more expensive car with high maintenance. Use our calculator to see your real number.
+
+---
+
+*Disclaimer: The information on this page is for general informational purposes only and does not constitute financial or investment advice. Vehicle values, depreciation rates, and cost estimates vary widely by market conditions. Always consult a qualified financial professional before making major purchasing decisions.*

@@ -20,7 +20,7 @@ Break the project into tasks. Estimate each task separately. Add them up. Then a
 
 ### Hourly Rate
 
-Use your calculated minimum rate or your standard rate, whichever is higher. Do not discount for fixed-price work. You are taking on risk; the price should reflect that.
+Use your calculated minimum rate or your standard rate, whichever is higher. Do not discount for fixed-price work. You are taking on risk; the price should reflect that. [PayScale](https://www.payscale.com/) and [Glassdoor](https://www.glassdoor.com/Salaries/index.htm) provide market benchmarks you can use to validate your rate against industry norms.
 
 ### Buffer
 
@@ -59,7 +59,7 @@ Our [project estimate calculator](/) handles the math. Input hours, rate, materi
 
 ## Protecting Your Price
 
-Always define scope in writing. List what is included and what is not. Specify revision rounds. State that additional work requires a change order. The contract protects both you and the client.
+Always define scope in writing. List what is included and what is not. Specify revision rounds. State that additional work requires a change order. The contract protects both you and the client. [SCORE small business resources](https://www.score.org/) offer free contract and scope-of-work templates suitable for freelancers.
 
 ## When Project Pricing Fails
 
@@ -72,3 +72,7 @@ Avoid fixed-price work when:
 In these cases, hourly or weekly billing reduces your risk.
 
 Project pricing rewards efficiency. Use our calculator, define scope clearly, and build in buffers. Done right, fixed-price projects are your most profitable work.
+
+---
+
+*Disclaimer: The information on this page is for general informational purposes only and does not constitute financial, tax, or legal advice. Freelance rates vary significantly by industry, experience, and geography. Consult a qualified financial advisor or accountant for advice tailored to your situation.*

@@ -14,8 +14,8 @@ Dropshipping attracts beginners because it requires no inventory. But the margin
 
 1. **Product cost** - What you pay the supplier per unit.
 2. **Shipping to customer** - Often free from AliExpress suppliers, but 10-20 days. Faster shipping costs $3-8.
-3. **Payment processing** - Shopify Payments charges 2.9% + $0.30. PayPal is similar.
-4. **Platform fees** - Shopify starts at $39/month. Other apps add up.
+3. **Payment processing** - Shopify Payments charges 2.9% + $0.30. See [PayPal's merchant fee schedule](https://www.paypal.com/us/webapps/mpp/merchant-fees) for PayPal rates.
+4. **Platform fees** - Shopify plans and current pricing are listed on the [Shopify pricing page](https://www.shopify.com/pricing). Other apps add up.
 5. **Advertising** - This is usually the largest cost. Facebook and TikTok ads often run $10-30 per purchase for new stores.
 
 ## Why Gross Margin Lies
@@ -44,3 +44,7 @@ A sustainable dropshipping store typically needs 20-30% net margin after all cos
 - Build an email list to drive free repeat purchases.
 
 Dropshipping can work, but only with honest math. Use our calculator before scaling any product to confirm the margin supports your growth.
+
+---
+
+*Disclaimer: The information on this page is for general informational purposes only. Platform fees, commission rates, and fulfillment costs change frequently. Always verify current rates directly with the platform before making business decisions. This content does not constitute financial or business advice.*

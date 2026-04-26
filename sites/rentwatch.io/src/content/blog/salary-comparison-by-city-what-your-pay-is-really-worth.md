@@ -16,7 +16,7 @@ Nominal salary ignores cost of living. A 20% raise that requires moving to a cit
 
 ## Cost-of-Living Adjusted Salaries
 
-To compare apples to apples, adjust for living costs:
+To compare apples to apples, adjust for living costs. [Numbeo's cost of living index](https://www.numbeo.com/cost-of-living/) and the [BLS Consumer Expenditure Survey](https://www.bls.gov/cex/) both provide the underlying data used to build city cost indexes.
 
 **Equivalent Salary = Offered Salary / (Target City Index / 100)**
 
@@ -40,7 +40,7 @@ The $90,000 San Francisco offer is worse than staying in Atlanta.
 | Phoenix | $65,000 | 105 | $61,905 |
 | Cleveland | $58,000 | 85 | $68,235 |
 
-Cleveland offers the highest real purchasing power despite the lowest nominal salary.
+Cleveland offers the highest real purchasing power despite the lowest nominal salary. The [MIT Living Wage calculator](https://livingwage.mit.edu/) offers an independent measure of what incomes actually need to cover basic expenses in each metro area.
 
 ## Remote Work Salary Arbitrage
 
@@ -80,3 +80,7 @@ Austin is the better financial choice despite the lower nominal salary.
 ## The Bottom Line
 
 Always compare salaries in real terms. Use our calculator to cut through nominal numbers and find where your income truly goes furthest.
+
+---
+
+*Disclaimer: The information on this page is for general informational purposes only and does not constitute financial or real estate advice. Rent prices, cost of living data, and salary comparisons change frequently and vary by neighborhood and individual circumstances. Consult a financial advisor or housing counselor for advice specific to your situation.*

@@ -8,13 +8,13 @@ canonical: "cost-of-living-comparison-by-city-salary-vs-expenses"
 
 # Cost of Living Comparison by City: Salary vs Expenses
 
-A $100,000 salary in San Francisco is not the same as $100,000 in Austin. Cost of living varies by 50-100% between US cities. This guide compares major expense categories and shows how to evaluate relocation offers.
+A $100,000 salary in San Francisco is not the same as $100,000 in Austin. Cost of living varies by 50-100% between US cities. This guide compares major expense categories and shows how to evaluate relocation offers. Expense breakdowns reference the [BLS Consumer Expenditure Survey](https://www.bls.gov/cex/) and [Numbeo's city cost-of-living data](https://www.numbeo.com/cost-of-living/).
 
 ## Major Cost Categories
 
 ### Housing
 
-Housing usually represents 25-35% of expenses. It varies most dramatically by city.
+Housing usually represents 25-35% of expenses — the largest single category tracked by the [BLS Consumer Expenditure Survey](https://www.bls.gov/cex/). It varies most dramatically by city.
 
 | City | Median Rent (1BR) | Home Price |
 |---|---|---|
@@ -84,3 +84,7 @@ Many remote workers relocate to lower-cost cities while keeping high salaries. T
 ## The Bottom Line
 
 Cost of living data turns gut feelings into numbers. Use our calculator before accepting a job offer in a new city or deciding where to move as a remote worker.
+
+---
+
+*Disclaimer: The information on this page is for general informational purposes only and does not constitute financial or real estate advice. Rent prices, cost of living data, and salary comparisons change frequently and vary by neighborhood and individual circumstances. Consult a financial advisor or housing counselor for advice specific to your situation.*

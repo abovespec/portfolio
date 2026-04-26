@@ -18,10 +18,10 @@ Most sellers stop at revenue minus COGS. That is gross profit, not net profit. N
 
 ## Platform Fee Variations
 
-- **Amazon FBA:** 15% referral + fulfillment + storage
-- **eBay:** 13.25% final value + insertion + promoted listings
-- **Etsy:** 6.5% transaction + 3% payment + $0.20 listing + offsite ads
-- **Shopify:** Monthly plan + 2.9% payment + app fees
+- **Amazon FBA:** 15% referral + fulfillment + storage — see the [Amazon seller fees overview](https://sellercentral.amazon.com/help/hub/reference/200336920) for full details.
+- **eBay:** 13.25% final value + insertion + promoted listings — current rates on the [eBay selling fees page](https://www.ebay.com/help/selling/fees-credits-invoices/selling-fees?id=4364).
+- **Etsy:** 6.5% transaction + 3% payment + $0.20 listing + offsite ads — see [Etsy's fees page](https://www.etsy.com/legal/fees/) for current rates.
+- **Shopify:** Monthly plan + 2.9% payment + app fees — see [Shopify pricing](https://www.shopify.com/pricing).
 - **Your own site:** Payment processing + hosting + no platform fee
 
 Each platform has a different fee fingerprint. A product profitable on Shopify might lose money on Amazon if fulfillment costs are high.
@@ -55,3 +55,7 @@ Track these lines every month:
 ## Final Thoughts
 
 Net profit is the only metric that matters for sustainability. A store doing $50,000 monthly with 5% net profit earns $2,500. Another doing $20,000 with 25% net profit earns $5,000. Focus on margin, not just scale. Use our calculators to keep your numbers honest.
+
+---
+
+*Disclaimer: The information on this page is for general informational purposes only. Platform fees, commission rates, and fulfillment costs change frequently. Always verify current rates directly with the platform before making business decisions. This content does not constitute financial or business advice.*

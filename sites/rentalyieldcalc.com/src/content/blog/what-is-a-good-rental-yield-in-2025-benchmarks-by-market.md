@@ -22,6 +22,8 @@ Rental yield is the foundation of property investment returns. But "good" depend
 
 ## Yield Benchmarks by Location
 
+According to [Zillow Research](https://www.zillow.com/research/) and [Redfin's data center](https://www.redfin.com/news/data-center/), rental yield expectations vary significantly by region due to differences in home prices, local rent levels, and market demand.
+
 **United States:**
 - Midwest/South: 8-12% gross typical
 - Northeast: 5-8% gross typical
@@ -62,3 +64,7 @@ Input your specific numbers into our [rental yield calculator](/). It handles gr
 Interest rates remain elevated compared to 2021, compressing yields in leveraged purchases. All-cash buyers have an advantage. Markets with job growth and limited housing supply continue to perform well despite higher rates.
 
 Target net yields above 4% for single-family and above 6% for multifamily. Anything below 3% net is difficult to justify unless appreciation is virtually guaranteed.
+
+---
+
+*Disclaimer: The information on this page is for general informational purposes only and does not constitute financial, investment, or real estate advice. Rental yields, cap rates, and property returns vary by location, property type, and market conditions. Past performance does not guarantee future results. Always consult a licensed real estate professional or financial advisor before making investment decisions.*

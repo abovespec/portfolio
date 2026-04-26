@@ -25,6 +25,8 @@ Youth (under 28) and senior discounts apply.
 
 ## Point-to-Point Ticket Estimates
 
+Individual ticket prices can be checked on [Rome2rio](https://www.rome2rio.com/) or national rail booking sites. Typical ranges (booked in advance):
+
 | Route | High-Speed Train | Regional Train |
 |---|---|---|
 | Paris to Amsterdam | $150-200 | $80-120 |
@@ -35,6 +37,7 @@ Youth (under 28) and senior discounts apply.
 
 ## When Eurail Wins
 
+According to [Lonely Planet's Europe rail travel guidance](https://www.lonelyplanet.com/), a Eurail pass tends to offer the best value when:
 - Visiting 4+ countries with many train rides
 - Traveling spontaneously without fixed dates
 - Taking long-distance trains regularly
@@ -84,3 +87,7 @@ If booked last-minute, individual tickets jump to $550. Then Eurail saves $140.
 ## The Bottom Line
 
 Eurail is a convenience product, not always a money-saver. Use our calculator with your actual itinerary to find the cheapest and most comfortable option for your trip.
+
+---
+
+*Disclaimer: The information on this page is for general informational purposes only. Travel costs, exchange rates, and prices change frequently and vary by season, booking timing, and personal preferences. All cost estimates are approximations. Always verify current prices before booking. This content does not constitute financial advice.*

@@ -33,6 +33,8 @@ This measures return on your down payment and closing costs. It ignores apprecia
 
 ## Total ROI with Appreciation
 
+According to [Zillow Research](https://www.zillow.com/research/), long-run home appreciation has historically averaged around 3-4% annually at the national level, though it varies widely by metro.
+
 If the property appreciates 3% annually on a $250,000 value:
 - Annual appreciation: $7,500
 - Equity paydown year one: ~$3,000
@@ -44,7 +46,7 @@ This is why real estate investors talk about "total return" rather than just cas
 
 ## Tax Considerations
 
-Depreciation lets you deduct a portion of the property value annually. For residential property, this is roughly 3.6% of the building value over 27.5 years. On a $200,000 building, that is $7,200 in annual deductions without spending a dollar.
+Depreciation lets you deduct a portion of the property value annually. For residential property, this is roughly 3.6% of the building value over 27.5 years. On a $200,000 building, that is $7,200 in annual deductions without spending a dollar. [NAREIT](https://www.reit.com/) provides detailed analysis of how depreciation and tax benefits affect total real estate investment returns.
 
 ## Using Our Calculators
 
@@ -69,3 +71,7 @@ Start with our [rental yield calculator](/) for cash flow. Then use our [cap rat
 Rental property ROI is multidimensional. A property with thin cash flow but strong appreciation can outperform a high-cash-flow property in a stagnant market. Calculate all four components before you judge a deal.
 
 Use our suite of [real estate calculators](/) to model every scenario. The investor who runs the numbers first wins.
+
+---
+
+*Disclaimer: The information on this page is for general informational purposes only and does not constitute financial, investment, or real estate advice. Rental yields, cap rates, and property returns vary by location, property type, and market conditions. Past performance does not guarantee future results. Always consult a licensed real estate professional or financial advisor before making investment decisions.*

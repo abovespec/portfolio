@@ -51,11 +51,11 @@ Specify consequences for late payment. Common wording:
 
 > "A late fee of 1.5% per month will be applied to balances past due."
 
-Some jurisdictions regulate maximum late fees. Check your local laws.
+Some jurisdictions regulate maximum late fees. Check your local laws. The [FTC's consumer guidance](https://www.consumer.ftc.gov/) and individual state statutes govern what fee rates are enforceable, so verify limits that apply in your region before adding a late fee clause.
 
 ## Early Payment Discounts
 
-Offer a small discount for early payment to improve cash flow.
+Offer a small discount for early payment to improve cash flow. According to [SCORE](https://www.score.org/), early payment discount strategies are one of the most underused cash-flow tools for small businesses and freelancers.
 
 > "2/10 Net 30" means a 2% discount if paid within 10 days, otherwise full amount due in 30.
 
@@ -70,3 +70,7 @@ State terms clearly on every invoice. Include them in your contract or proposal.
 Our [invoice generator](/) includes a payment terms field. Add your terms once and they appear on every invoice automatically.
 
 Choose terms that protect your cash flow while respecting client relationships. The best term is the one both parties honor.
+
+---
+
+*Disclaimer: The information on this page is for general informational purposes only and does not constitute legal or financial advice. Invoice regulations, payment terms, and tax requirements vary by country and jurisdiction. Consult a qualified accountant or attorney for advice specific to your situation.*

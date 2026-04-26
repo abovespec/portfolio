@@ -23,6 +23,8 @@ Property prices and rents move independently by area. A postcode with modest pri
 
 ## How to Research by Postcode
 
+Data from [Zillow Research](https://www.zillow.com/research/) and [Redfin's data center](https://www.redfin.com/news/data-center/) can help you find median property prices and rent trends by location. The [National Association of Realtors](https://www.nar.realtor/research-and-statistics) also publishes regional housing data useful for benchmarking yields.
+
 1. **Find median property prices** on Zillow, Redfin, or local equivalents.
 2. **Check average rents** on rental listing sites.
 3. **Estimate expenses** at 25-35% of gross rent for management, maintenance, and vacancy.
@@ -57,3 +59,7 @@ UK investors often target 5-7% gross yield. US markets vary wildly: Midwest citi
 - Refinance to lower mortgage costs.
 
 Use our calculator to test any postcode. The numbers do not lie.
+
+---
+
+*Disclaimer: The information on this page is for general informational purposes only and does not constitute financial, investment, or real estate advice. Rental yields, cap rates, and property returns vary by location, property type, and market conditions. Past performance does not guarantee future results. Always consult a licensed real estate professional or financial advisor before making investment decisions.*

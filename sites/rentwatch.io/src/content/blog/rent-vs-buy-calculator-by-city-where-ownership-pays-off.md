@@ -8,7 +8,7 @@ canonical: "rent-vs-buy-calculator-by-city-where-ownership-pays-off"
 
 # Rent vs Buy Calculator by City: Where Ownership Pays Off
 
-The rent vs buy decision depends on local prices, interest rates, and how long you plan to stay. This guide breaks down the math by city and provides a calculator to find your breakeven point.
+The rent vs buy decision depends on local prices, interest rates, and how long you plan to stay. This guide breaks down the math by city and provides a calculator to find your breakeven point. Home price and rent data referenced here is sourced from the [Zillow Rent Index](https://www.zillow.com/research/data/).
 
 ## The 5-Year Rule
 
@@ -58,7 +58,7 @@ Breakeven happens when equity gains exceed the excess cost of owning plus opport
 | San Francisco, CA | 25 | Rent |
 | New York, NY | 24 | Rent |
 
-Lower ratios favor buying. Higher ratios favor renting.
+Lower ratios favor buying. Higher ratios favor renting. The [HUD housing affordability dataset](https://www.huduser.gov/portal/datasets/rhfs.html) provides additional context on owner- vs renter-cost burdens across metro areas.
 
 ## Using Our Calculator
 
@@ -85,3 +85,7 @@ Our [rent vs buy calculator](/) customizes results by city. It includes:
 ## The Bottom Line
 
 Rent vs buy is a math problem disguised as a lifestyle choice. Use our calculator to find the numbers for your city. Then decide based on facts, not feelings.
+
+---
+
+*Disclaimer: The information on this page is for general informational purposes only and does not constitute financial or real estate advice. Rent prices, cost of living data, and salary comparisons change frequently and vary by neighborhood and individual circumstances. Consult a financial advisor or housing counselor for advice specific to your situation.*

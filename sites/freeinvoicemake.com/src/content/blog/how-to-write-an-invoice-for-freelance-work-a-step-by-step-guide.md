@@ -29,7 +29,7 @@ Specific line items reduce disputes and justify your total.
 
 ## Step 4: Totals and Tax
 
-Add a subtotal. Apply tax if your jurisdiction requires it. State the tax rate clearly. Show the final total in bold.
+Add a subtotal. Apply tax if your jurisdiction requires it. State the tax rate clearly. Show the final total in bold. Per [IRS guidance for small businesses and self-employed individuals](https://www.irs.gov/businesses/small-businesses-self-employed), freelancers are generally responsible for self-employment tax and must keep accurate records of all invoiced income.
 
 ## Step 5: Payment Instructions
 
@@ -39,7 +39,7 @@ Tell the client exactly how to pay. Include:
 - Stripe payment link
 - Check mailing address
 
-Also state your late payment policy. A common approach is a 1.5% monthly late fee after the due date.
+Also state your late payment policy. A common approach is a 1.5% monthly late fee after the due date. According to the [HubSpot invoice guide](https://blog.hubspot.com/sales/invoice), including a written late fee policy on every invoice significantly reduces the average time clients take to pay.
 
 ## Use Our Template
 
@@ -59,3 +59,7 @@ Email the invoice as a PDF attachment. Keep the email body short:
 If payment is not received by the due date, send a polite reminder. Most late payments are oversights, not refusals. A simple nudge resolves 80% of delays.
 
 Writing invoices gets easier with practice. Use our tool for your first few, then develop your own system as volume grows.
+
+---
+
+*Disclaimer: The information on this page is for general informational purposes only and does not constitute legal or financial advice. Invoice regulations, payment terms, and tax requirements vary by country and jurisdiction. Consult a qualified accountant or attorney for advice specific to your situation.*

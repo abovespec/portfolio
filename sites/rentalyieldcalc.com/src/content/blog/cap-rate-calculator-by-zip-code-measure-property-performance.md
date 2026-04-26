@@ -29,6 +29,8 @@ Cap rate strips out financing differences. Two investors with different mortgage
 
 ## Cap Rate Benchmarks
 
+According to [NAREIT](https://www.reit.com/), cap rate benchmarks vary substantially by property type and geography, but the following ranges are commonly used by investors:
+
 | Cap Rate | Assessment |
 |---|---|
 | Below 4% | Premium market, likely strong appreciation |
@@ -50,10 +52,14 @@ Same cap rate, different scale. Choose based on your capital and risk preference
 
 ## Cap Rate vs Interest Rates
 
-When interest rates rise, cap rates typically follow. A property bought at 5% cap rate with 3% financing was profitable. At 7% financing, the same property might lose money monthly. Always compare cap rate to your cost of capital.
+When interest rates rise, cap rates typically follow. A property bought at 5% cap rate with 3% financing was profitable. At 7% financing, the same property might lose money monthly. Always compare cap rate to your cost of capital. [Federal Reserve FRED housing data](https://fred.stlouisfed.org/categories/97) tracks interest rate trends that directly affect cap rate spreads.
 
 ## Limitations
 
 Cap rate ignores financing, taxes, and future appreciation. It assumes stable income. A property with deferred maintenance might show an inflated cap rate until repairs hit.
 
 Use cap rate as one tool among several. Combine it with cash-on-cash return and total ROI for a complete picture. Our [full suite of real estate calculators](/) covers all three.
+
+---
+
+*Disclaimer: The information on this page is for general informational purposes only and does not constitute financial, investment, or real estate advice. Rental yields, cap rates, and property returns vary by location, property type, and market conditions. Past performance does not guarantee future results. Always consult a licensed real estate professional or financial advisor before making investment decisions.*

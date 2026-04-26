@@ -52,6 +52,8 @@ Our calculator applies seasonal multipliers to flight and hotel estimates.
 
 ## Regional Cost Differences
 
+According to [Japan National Tourism Organization data](https://www.jnto.go.jp/eng/), costs vary significantly by region. Below are typical ranges for accommodation and food:
+
 | Region | Hotel/Night | Food/Day |
 |---|---|---|
 | Tokyo | $120-250 | $50-100 |
@@ -63,7 +65,7 @@ Our calculator applies seasonal multipliers to flight and hotel estimates.
 
 ## JR Pass Math
 
-The 7-day JR Pass costs roughly $280. It pays for itself if you take:
+The 7-day JR Pass costs roughly $280 (verify current pricing via [Japan National Tourism Organization](https://www.jnto.go.jp/eng/)). It pays for itself if you take:
 - Tokyo to Kyoto round trip (Shinkansen)
 - Or three medium-distance trips
 
@@ -85,9 +87,13 @@ Our calculator includes a JR Pass recommendation based on your city list.
 
 ## Booking Strategy
 
-- Book flights 2-3 months in advance
+- Book flights 2-3 months in advance using [Skyscanner](https://www.skyscanner.com/) or [Google Flights](https://www.google.com/travel/flights) for the best fares
 - Reserve popular hotels and ryokans 3-6 months ahead
 - Purchase JR Pass before arrival (it is cheaper)
 - Book TeamLab and Ghibli Museum tickets well in advance
 
 Use our calculator to lock in your budget before booking anything. Knowing your numbers prevents overspending and travel stress.
+
+---
+
+*Disclaimer: The information on this page is for general informational purposes only. Travel costs, exchange rates, and prices change frequently and vary by season, booking timing, and personal preferences. All cost estimates are approximations. Always verify current prices before booking. This content does not constitute financial advice.*

@@ -14,7 +14,7 @@ Every destination has a different cost fingerprint. Southeast Asia is cheap. Swi
 
 ### 1. Flights
 
-Use Google Flights or Skyscanner for estimates. Set price alerts. Flexibility with dates saves 20-40%.
+Use [Google Flights](https://www.google.com/travel/flights) or [Skyscanner](https://www.skyscanner.com/) for estimates. Set price alerts. Flexibility with dates saves 20-40%.
 
 ### 2. Accommodation
 
@@ -51,6 +51,8 @@ Our [trip cost calculator](/) includes cost databases for 50+ destinations. Sele
 
 ## Regional Daily Budgets (Mid-Range, 2025)
 
+The figures below are based on [Budget Your Trip averages](https://www.budgetyourtrip.com/) and [Numbeo cost of living comparisons](https://www.numbeo.com/cost-of-living/):
+
 | Region | Daily Cost |
 |---|---|
 | Southeast Asia | $50-80 |
@@ -80,3 +82,7 @@ Add 10% to every budget for unexpected expenses. Missed flights, medical needs, 
 ## The Bottom Line
 
 Budgeting does not restrict travel. It enables it. When you know your numbers, you can say yes to experiences confidently. Use our calculator to plan your next adventure.
+
+---
+
+*Disclaimer: The information on this page is for general informational purposes only. Travel costs, exchange rates, and prices change frequently and vary by season, booking timing, and personal preferences. All cost estimates are approximations. Always verify current prices before booking. This content does not constitute financial advice.*

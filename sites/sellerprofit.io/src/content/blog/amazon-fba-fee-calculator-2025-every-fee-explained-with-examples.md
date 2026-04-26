@@ -12,9 +12,9 @@ Selling on Amazon through FBA sounds simple until you see the fee breakdown. Bet
 
 ## The Two Big Fees Every Seller Pays
 
-**Referral fees** are category-based commissions Amazon charges on every sale. Most categories sit at 15%, but electronics drop to 8% and accessories can hit 45%. This fee applies to the total selling price including shipping.
+**Referral fees** are category-based commissions Amazon charges on every sale. Most categories sit at 15%, but electronics drop to 8% and accessories can hit 45%. This fee applies to the total selling price including shipping — see the [Amazon referral fee schedule](https://sell.amazon.com/pricing) for current category rates.
 
-**Fulfillment fees** cover picking, packing, shipping, and customer service. These depend on your product's size tier and weight. A small standard non-apparel item under 12 oz costs around $3.22 to fulfill, while large oversize items can exceed $90.
+**Fulfillment fees** cover picking, packing, shipping, and customer service. These depend on your product's size tier and weight. A small standard non-apparel item under 12 oz costs around $3.22 to fulfill, while large oversize items can exceed $90 — consult the [FBA fee schedule](https://sell.amazon.com/fulfillment-by-amazon/fees) for the latest size-tier rates.
 
 ## Hidden Fees That Eat Margin
 
@@ -36,3 +36,7 @@ Our [Amazon FBA fee calculator](/) lets you input product price, cost of goods, 
 ## Bottom Line
 
 FBA remains the easiest way to offer Prime shipping, but fees can consume 25-40% of revenue depending on category and size. Model every SKU before ordering inventory. Use our calculator to avoid surprises and price for actual profit, not just revenue.
+
+---
+
+*Disclaimer: The information on this page is for general informational purposes only. Platform fees, commission rates, and fulfillment costs change frequently. Always verify current rates directly with the platform before making business decisions. This content does not constitute financial or business advice.*

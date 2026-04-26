@@ -54,4 +54,10 @@ A simple generator works for freelancers with occasional invoices. Consider dedi
 - Include your preferred payment method and any late fee policy.
 - Send invoices within 48 hours of project completion.
 
+According to [Intuit's invoicing guide](https://quickbooks.intuit.com/r/invoicing/), consistent invoicing habits — including prompt delivery and clear payment instructions — are among the most effective ways to reduce average days to payment. The [U.S. Small Business Administration](https://www.sba.gov/) also recommends establishing clear billing procedures from day one to support healthy cash flow.
+
 Use our generator for your next invoice and skip the account creation hassle entirely.
+
+---
+
+*Disclaimer: The information on this page is for general informational purposes only and does not constitute legal or financial advice. Invoice regulations, payment terms, and tax requirements vary by country and jurisdiction. Consult a qualified accountant or attorney for advice specific to your situation.*

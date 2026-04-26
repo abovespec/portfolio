@@ -26,13 +26,15 @@ The federal tax credit up to $7,500 narrows this gap for qualifying vehicles.
 **Gas car:** 25 MPG, 12,000 miles, $3.50/gallon = $1,680/year
 **EV:** 3.5 miles/kWh, 12,000 miles, $0.14/kWh = $480/year
 
+Energy cost estimates are based on [U.S. Department of Energy fuel economy data](https://www.fueleconomy.gov/) and national average electricity rates.
+
 Annual savings: $1,200. Over 5 years: $6,000.
 
 Home charging at off-peak rates saves even more. Public fast charging at $0.40/kWh raises costs to $1,371/year, reducing savings significantly.
 
 ## Maintenance Costs
 
-EVs have fewer moving parts. No oil changes, no transmission, fewer brake replacements (thanks to regenerative braking).
+EVs have fewer moving parts. No oil changes, no transmission, fewer brake replacements (thanks to regenerative braking). [Consumer Reports' EV reliability data](https://www.consumerreports.org/cars/) shows EV owners consistently report lower maintenance costs than comparable gas vehicle owners.
 
 **Annual maintenance:**
 - Gas car: $800-1,200
@@ -88,3 +90,7 @@ Our [total cost of ownership calculator](/) compares EV and gas side by side. In
 - Buying used (limited EV used market)
 
 Use our calculator with your actual numbers. The EV math improves every year as prices drop and charging infrastructure expands.
+
+---
+
+*Disclaimer: The information on this page is for general informational purposes only and does not constitute financial or investment advice. Vehicle values, depreciation rates, and cost estimates vary widely by market conditions. Always consult a qualified financial professional before making major purchasing decisions.*

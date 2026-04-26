@@ -29,7 +29,7 @@ A clean invoice signals professionalism. Clients process well-organized bills fa
 - **Vague descriptions:** "Consulting" is not enough. Write "Q3 marketing strategy session - 3 hours."
 - **Missing due dates:** Always specify when payment is expected.
 - **No payment method:** Make it effortless to pay you.
-- **Inconsistent numbering:** This creates accounting headaches at tax time.
+- **Inconsistent numbering:** This creates accounting headaches at tax time. According to the [IRS guidance for small businesses and self-employed](https://www.irs.gov/businesses/small-businesses-self-employed), maintaining accurate and consistent records is essential for tax compliance.
 
 ## Using Our Template
 
@@ -44,6 +44,10 @@ Our [free invoice generator](/) acts as a live template. Enter your business det
 
 ## When to Switch to Accounting Software
 
-Up to 10 invoices monthly, our free tool is perfect. Beyond that, consider Wave, FreshBooks, or QuickBooks for automatic tracking, reports, and tax preparation.
+Up to 10 invoices monthly, our free tool is perfect. Beyond that, consider Wave, FreshBooks, or QuickBooks for automatic tracking, reports, and tax preparation. [SCORE](https://www.score.org/) offers free mentoring and resources to help small business owners choose the right financial tools as they grow.
 
 Start with our template today. A professional invoice is one of the cheapest ways to improve your business image.
+
+---
+
+*Disclaimer: The information on this page is for general informational purposes only and does not constitute legal or financial advice. Invoice regulations, payment terms, and tax requirements vary by country and jurisdiction. Consult a qualified accountant or attorney for advice specific to your situation.*

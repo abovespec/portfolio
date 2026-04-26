@@ -24,9 +24,9 @@ A quick screen: monthly rent should be at least 1% of purchase price. A $200,000
 
 ## Market-by-Market Reality
 
-In expensive coastal markets, the 1% rule is impossible. A $800,000 property renting for $3,500 is normal. These properties rely on appreciation, not cash flow.
+In expensive coastal markets, the 1% rule is impossible. A $800,000 property renting for $3,500 is normal. These properties rely on appreciation, not cash flow. [Zillow Research](https://www.zillow.com/research/) tracks rent-to-price ratios by metro, confirming the wide divergence between coastal and inland markets.
 
-In Midwest and Southern markets, $150,000 properties renting for $1,500 still exist. These are your cash flow markets.
+In Midwest and Southern markets, $150,000 properties renting for $1,500 still exist. These are your cash flow markets. The [National Association of Realtors](https://www.nar.realtor/research-and-statistics) regularly publishes metro-level housing affordability data that helps investors identify these opportunities.
 
 ## Expenses to Include
 
@@ -67,3 +67,7 @@ Positive, but thin. A vacancy or repair wipes out months of profit.
 Cash flow positive properties provide stability. They let you hold through downturns. They fund your next purchase. Do not buy negative cash flow properties unless you have substantial reserves and a clear appreciation thesis.
 
 Verify every deal with our calculator before you write an offer.
+
+---
+
+*Disclaimer: The information on this page is for general informational purposes only and does not constitute financial, investment, or real estate advice. Rental yields, cap rates, and property returns vary by location, property type, and market conditions. Past performance does not guarantee future results. Always consult a licensed real estate professional or financial advisor before making investment decisions.*

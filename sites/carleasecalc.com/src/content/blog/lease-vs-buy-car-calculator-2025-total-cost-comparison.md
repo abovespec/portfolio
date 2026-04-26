@@ -31,6 +31,8 @@ When you buy, you finance the full purchase price minus your down payment. You o
 - Term: 48-72 months
 - Monthly payment covers principal and interest
 
+[Edmunds' lease vs. buy analysis](https://www.edmunds.com/car-buying/car-depreciation.html) notes that residual value is the single biggest lever in determining whether leasing or buying comes out ahead.
+
 ## Total Cost Comparison Example
 
 $40,000 vehicle, 36 months, 12,000 miles/year, $3,000 down.
@@ -77,6 +79,12 @@ Our [lease vs buy calculator](/) handles all of these inputs. Enter vehicle pric
 - Wear and tear charges
 - Early termination penalties
 
+[Kelley Blue Book's leasing guide](https://www.kbb.com/) provides a detailed breakdown of fees to negotiate before signing any lease agreement.
+
 ## The Bottom Line
 
 Leasing is usually cheaper in the short term. Buying is usually cheaper in the long term. Our calculator shows you exactly where your breakeven falls based on your specific numbers.
+
+---
+
+*Disclaimer: The information on this page is for general informational purposes only and does not constitute financial or investment advice. Vehicle values, depreciation rates, and cost estimates vary widely by market conditions. Always consult a qualified financial professional before making major purchasing decisions.*

@@ -12,7 +12,7 @@ Hourly billing penalizes efficiency. The faster you work, the less you earn. Val
 
 ## What Is Value-Based Pricing?
 
-Value-based pricing means setting your fee as a percentage of the value you create for the client. Instead of "I charge $100 per hour," you say "My fee is based on the revenue impact of this project."
+Value-based pricing means setting your fee as a percentage of the value you create for the client. Instead of "I charge $100 per hour," you say "My fee is based on the revenue impact of this project." According to [Upwork's freelancer research](https://www.upwork.com/research/), top-earning independent professionals are significantly more likely to price based on project outcomes than on time alone.
 
 ## When Value Pricing Works
 
@@ -61,6 +61,10 @@ This positions your fee as an investment, not a cost.
 
 ## Transitioning from Hourly
 
-Start with one project. Test the model. Track results. Build case studies. Value pricing becomes easier with proof.
+Start with one project. Test the model. Track results. Build case studies. Value pricing becomes easier with proof. [SCORE small business resources](https://www.score.org/) offer free mentoring and worksheets that can help you build the business case for value-based proposals.
 
 Our worksheet gives you the framework. Your results give you the confidence.
+
+---
+
+*Disclaimer: The information on this page is for general informational purposes only and does not constitute financial, tax, or legal advice. Freelance rates vary significantly by industry, experience, and geography. Consult a qualified financial advisor or accountant for advice tailored to your situation.*

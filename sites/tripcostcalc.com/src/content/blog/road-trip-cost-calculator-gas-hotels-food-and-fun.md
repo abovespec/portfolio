@@ -14,6 +14,8 @@ Road trips offer freedom and flexibility, but costs add up quickly. Gas, hotels,
 
 **Formula:** (Total Miles / MPG) x Price Per Gallon
 
+Use [Rome2rio](https://www.rome2rio.com/) to estimate driving distances and total mileage between stops before applying the formula below.
+
 **Example:** 2,000 miles in a 28 MPG car, gas at $3.50
 - Gallons: 71.4
 - Cost: $250
@@ -21,6 +23,8 @@ Road trips offer freedom and flexibility, but costs add up quickly. Gas, hotels,
 Add 15% for city driving, detours, and idling.
 
 ## Accommodation
+
+Nightly rates below are typical U.S. ranges; verify current prices on booking platforms. Per [Budget Your Trip data](https://www.budgetyourtrip.com/), costs shift significantly by region and season.
 
 | Option | Price/Night | Best For |
 |---|---|---|
@@ -81,7 +85,7 @@ It outputs total estimated cost and cost per mile.
 
 ## Money-Saving Tips
 
-- Use GasBuddy to find cheapest stations
+- Use [GasBuddy](https://www.gasbuddy.com/) to find cheapest stations
 - Pack a cooler with snacks and drinks
 - Book hotels 2+ weeks ahead
 - Visit free attractions (hikes, beaches, downtown walks)
@@ -90,3 +94,7 @@ It outputs total estimated cost and cost per mile.
 ## The Bottom Line
 
 Road trips can be cheap or expensive depending on choices. A camping trip with home-cooked meals costs a fraction of a hotel-and-restaurant trip. Use our calculator to model both and pick what fits your budget.
+
+---
+
+*Disclaimer: The information on this page is for general informational purposes only. Travel costs, exchange rates, and prices change frequently and vary by season, booking timing, and personal preferences. All cost estimates are approximations. Always verify current prices before booking. This content does not constitute financial advice.*

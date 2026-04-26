@@ -16,11 +16,11 @@ Etsy charges $0.20 per listing. Each listing lasts four months or until sold. If
 
 ## Transaction Fees
 
-The transaction fee is 6.5% of the total sale price including shipping and gift wrapping. This applies to every transaction regardless of payment method.
+The transaction fee is 6.5% of the total sale price including shipping and gift wrapping. This applies to every transaction regardless of payment method — see [Etsy's official fees page](https://www.etsy.com/legal/fees/) for current rates.
 
 ## Payment Processing Fees
 
-For Etsy Payments, the processing fee is 3% of the total sale price plus $0.25 per transaction. Rates vary slightly by country. If you use PayPal, PayPal sets its own rates, typically similar.
+For Etsy Payments, the processing fee is 3% of the total sale price plus $0.25 per transaction. Rates vary slightly by country. If you use PayPal, [PayPal's merchant fee schedule](https://www.paypal.com/us/webapps/mpp/merchant-fees) applies.
 
 ## Offsite Ads Fees
 
@@ -49,3 +49,7 @@ Many Etsy sellers underprice because they forget offsite ads. Price as if every 
 - Use calculated shipping so buyers pay exact costs, reducing your transaction fee base.
 
 Use our calculator to model every product before listing. Knowing your numbers is the difference between a hobby and a profitable shop.
+
+---
+
+*Disclaimer: The information on this page is for general informational purposes only. Platform fees, commission rates, and fulfillment costs change frequently. Always verify current rates directly with the platform before making business decisions. This content does not constitute financial or business advice.*

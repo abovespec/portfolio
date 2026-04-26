@@ -12,7 +12,7 @@ You do not need to pay for invoicing when you are starting out. Several excellen
 
 ## 1. Wave (Completely Free)
 
-Wave offers unlimited invoicing, accounting, and receipt scanning at no cost. It makes money through optional payment processing and payroll. The interface is clean and designed for small business owners, not accountants.
+Wave offers unlimited invoicing, accounting, and receipt scanning at no cost. It makes money through optional payment processing and payroll. The interface is clean and designed for small business owners, not accountants. According to [Intuit's invoicing resource center](https://quickbooks.intuit.com/r/invoicing/), selecting software that integrates bookkeeping with invoicing reduces year-end tax preparation time substantially.
 
 **Best for:** Freelancers and small businesses in the US and Canada.
 **Limitation:** No multi-currency support on the free plan.
@@ -26,7 +26,7 @@ Zoho Invoice is free forever for up to 1,000 customers. It includes time trackin
 
 ## 3. Stripe Invoicing (Free to Send)
 
-Stripe Invoicing charges no fee to create and send invoices. You only pay Stripe's standard payment processing fee when you get paid. It is simple, fast, and integrates with any Stripe-connected business.
+Stripe Invoicing charges no fee to create and send invoices. You only pay Stripe's standard payment processing fee when you get paid. It is simple, fast, and integrates with any Stripe-connected business. The [IRS guidance for self-employed individuals](https://www.irs.gov/businesses/small-businesses-self-employed) notes that freelancers should track all payment processor receipts as part of their income records regardless of which platform they use.
 
 **Best for:** Businesses already using Stripe.
 **Limitation:** Basic feature set compared to full accounting tools.
@@ -60,3 +60,7 @@ No account, no limits, no cost. Enter details, generate, print. Perfect for occa
 Use our [invoice generator](/) for occasional billing. Switch to Wave if you need accounting integration. Choose Zoho if you bill internationally. Pick Stripe or PayPal if getting paid quickly matters most.
 
 Free does not mean limited. The right tool depends on your volume and workflow.
+
+---
+
+*Disclaimer: The information on this page is for general informational purposes only and does not constitute legal or financial advice. Invoice regulations, payment terms, and tax requirements vary by country and jurisdiction. Consult a qualified accountant or attorney for advice specific to your situation.*

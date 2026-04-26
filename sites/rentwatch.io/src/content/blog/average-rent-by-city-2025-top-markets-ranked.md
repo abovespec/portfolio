@@ -8,7 +8,7 @@ canonical: "average-rent-by-city-2025-top-markets-ranked"
 
 # Average Rent by City 2025: Top Markets Ranked
 
-Rent prices shifted dramatically in recent years. Some cities saw double-digit increases while others stabilized or declined. This guide ranks average rent by major city in 2025, broken down by apartment size.
+Rent prices shifted dramatically in recent years. Some cities saw double-digit increases while others stabilized or declined. This guide ranks average rent by major city in 2025, broken down by apartment size. Data is drawn from the [Zillow Rent Index](https://www.zillow.com/research/data/) and [Apartment List rental research](https://www.apartmentlist.com/research/).
 
 ## Most Expensive Cities (1-Bedroom Average)
 
@@ -76,8 +76,12 @@ Our [rent comparison tool](/) shows current averages for any city. Input a city 
 
 ## Rent vs Income
 
-Financial advisors recommend spending no more than 30% of gross income on rent. At $2,000 monthly rent, you need $80,000 annual income to stay within the 30% rule.
+Financial advisors recommend spending no more than 30% of gross income on rent — a threshold backed by [HUD's definition of cost-burdened households](https://www.hud.gov/). At $2,000 monthly rent, you need $80,000 annual income to stay within the 30% rule.
 
 ## The Bottom Line
 
 Location drives rent more than any other factor. Our tool helps you compare cities, calculate affordability, and plan relocations. Use it before signing your next lease.
+
+---
+
+*Disclaimer: The information on this page is for general informational purposes only and does not constitute financial or real estate advice. Rent prices, cost of living data, and salary comparisons change frequently and vary by neighborhood and individual circumstances. Consult a financial advisor or housing counselor for advice specific to your situation.*

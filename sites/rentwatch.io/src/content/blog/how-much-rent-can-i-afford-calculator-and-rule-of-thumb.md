@@ -17,7 +17,7 @@ The 30% rule states that rent should not exceed 30% of gross monthly income.
 **Example:** $60,000 annual income = $5,000 monthly gross
 Maximum rent: $5,000 x 0.30 = **$1,500**
 
-This rule originated from housing guidelines and works well for moderate incomes without significant debt.
+This rule has roots in [HUD housing assistance programs](https://www.hud.gov/), which define "cost-burdened" households as those spending more than 30% of income on housing. It works well for moderate incomes without significant debt.
 
 ## The 50/30/20 Budget
 
@@ -57,7 +57,7 @@ It outputs a recommended maximum rent and shows what percentage of income rent c
 ## When to Break the 30% Rule
 
 - **High-income earners:** 30% of $200,000 leaves plenty for everything else.
-- **Low-income earners:** 30% may be impossible in expensive cities. Subsidies or roommates may be necessary.
+- **Low-income earners:** 30% may be impossible in expensive cities. According to [HUD housing affordability research](https://www.huduser.gov/portal/datasets/rhfs.html), nearly half of renter households in major metros are cost-burdened. Subsidies or roommates may be necessary.
 - **Short-term situations:** Paying 35% temporarily for a career opportunity can make sense.
 
 ## Roommate Math
@@ -80,3 +80,7 @@ Budget beyond base rent:
 ## The Bottom Line
 
 Affordable rent depends on your complete financial picture, not just income. Use our calculator to find your number before apartment hunting.
+
+---
+
+*Disclaimer: The information on this page is for general informational purposes only and does not constitute financial or real estate advice. Rent prices, cost of living data, and salary comparisons change frequently and vary by neighborhood and individual circumstances. Consult a financial advisor or housing counselor for advice specific to your situation.*

@@ -12,6 +12,8 @@ Setting your freelance hourly rate is one of the most important business decisio
 
 ## Hourly Rate Benchmarks by Industry (US, 2025)
 
+The ranges below draw on data from [Upwork freelancer research](https://www.upwork.com/research/) and [PayScale](https://www.payscale.com/). Treat them as starting points — your actual rate should be validated with your cost floor formula.
+
 | Industry | Entry Level | Mid Level | Expert |
 |---|---|---|---|
 | Web Development | $50-75 | $75-150 | $150-300 |
@@ -31,7 +33,7 @@ Your minimum hourly rate must cover your income goal, expenses, taxes, and billa
 
 1. **Annual income goal:** What you want to earn.
 2. **Business expenses:** Software, insurance, coworking, equipment.
-3. **Tax rate:** Typically 25-35% for self-employed.
+3. **Tax rate:** Typically 25-35% for self-employed. The [IRS self-employment tax center](https://www.irs.gov/businesses/small-businesses-self-employed/self-employed-individuals-tax-center) outlines how freelancers must pay both the employee and employer portions of Social Security and Medicare taxes.
 4. **Billable hours:** How many hours you can actually bill per year.
 
 **Example:**
@@ -60,3 +62,7 @@ Rates vary by location. US coastal cities command 20-40% premiums over rural are
 Most freelancers undercharge. If you are booked solid, raise rates by 10-20% for new clients. Keep existing clients at current rates for 3-6 months, then adjust. The market will tell you if you went too high.
 
 Use our calculator to find your floor, then charge what the market will bear above that floor.
+
+---
+
+*Disclaimer: The information on this page is for general informational purposes only and does not constitute financial, tax, or legal advice. Freelance rates vary significantly by industry, experience, and geography. Consult a qualified financial advisor or accountant for advice tailored to your situation.*

@@ -12,7 +12,7 @@ House flipping looks simple on TV. Buy low, renovate, sell high. Reality involve
 
 ## The 70% Rule
 
-Experienced flippers use the 70% rule: never pay more than 70% of the after-repair value (ARV) minus repair costs.
+Experienced flippers use the 70% rule: never pay more than 70% of the after-repair value (ARV) minus repair costs. This rule of thumb is widely discussed in the investor community, including by [BiggerPockets](https://www.biggerpockets.com/), and is designed to leave margin for profit, unexpected costs, and market shifts.
 
 **Maximum Offer = (ARV x 0.70) - Repair Costs**
 
@@ -53,6 +53,10 @@ Our [fix-and-flip calculator](/) handles the entire formula. Input ARV, purchase
 
 ## When to Walk Away
 
-If the calculator shows less than 15% ROI, the deal is probably not worth the risk. Your time, capital, and credit are better deployed elsewhere.
+If the calculator shows less than 15% ROI, the deal is probably not worth the risk. Your time, capital, and credit are better deployed elsewhere. The [Urban Land Institute](https://uli.org/) publishes annual market outlooks that help investors assess whether local conditions support fix-and-flip returns.
 
 Use our calculator before you make an offer. The numbers should excite you, not scare you.
+
+---
+
+*Disclaimer: The information on this page is for general informational purposes only and does not constitute financial, investment, or real estate advice. Rental yields, cap rates, and property returns vary by location, property type, and market conditions. Past performance does not guarantee future results. Always consult a licensed real estate professional or financial advisor before making investment decisions.*

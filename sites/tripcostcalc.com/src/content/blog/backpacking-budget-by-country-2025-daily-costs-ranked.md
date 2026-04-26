@@ -19,7 +19,7 @@ Our daily estimates include:
 - One paid attraction or activity
 - A small contingency
 
-They do not include intercity transport or alcohol, which vary by itinerary and personal choice.
+They do not include intercity transport or alcohol, which vary by itinerary and personal choice. Daily cost ranges are cross-referenced with [Budget Your Trip](https://www.budgetyourtrip.com/) and [Numbeo cost of living data](https://www.numbeo.com/cost-of-living/).
 
 ## Cheapest Countries ($15-30/day)
 
@@ -112,4 +112,8 @@ Our [trip cost calculator](/) includes a backpacking mode. Select countries, dur
 
 ## The Bottom Line
 
-Your money goes furthest in Southeast Asia and South Asia. A three-month trip in Southeast Asia costs roughly the same as three weeks in Scandinavia. Use our calculator to match destinations with your budget and trip length.
+Your money goes furthest in Southeast Asia and South Asia. A three-month trip in Southeast Asia costs roughly the same as three weeks in Scandinavia. Use our calculator to match destinations with your budget and trip length. For destination-specific cost verification before you book, consult [Lonely Planet's destination guides](https://www.lonelyplanet.com/) and [Budget Your Trip](https://www.budgetyourtrip.com/).
+
+---
+
+*Disclaimer: The information on this page is for general informational purposes only. Travel costs, exchange rates, and prices change frequently and vary by season, booking timing, and personal preferences. All cost estimates are approximations. Always verify current prices before booking. This content does not constitute financial advice.*

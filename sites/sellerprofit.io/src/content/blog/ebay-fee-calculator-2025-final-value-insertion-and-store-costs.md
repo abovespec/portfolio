@@ -12,7 +12,7 @@ eBay changed its fee structure when it moved to managed payments, and many selle
 
 ## Final Value Fees
 
-eBay charges a final value fee on the total amount of the sale, including item price, shipping, and handling. For most categories, the rate is 13.25% on the first $7,500, plus $0.30 per order. Some categories differ: books and music sit at 12.9%, while clothing and shoes are 15%.
+eBay charges a final value fee on the total amount of the sale, including item price, shipping, and handling. For most categories, the rate is 13.25% on the first $7,500, plus $0.30 per order. Some categories differ: books and music sit at 12.9%, while clothing and shoes are 15%. Always check the [official eBay selling fees page](https://www.ebay.com/help/selling/fees-credits-invoices/selling-fees?id=4364) for current rates as these change periodically.
 
 ## Insertion Fees
 
@@ -47,3 +47,7 @@ Our [eBay fee calculator](/) lets you enter sale price, shipping charged, actual
 - Avoid categories with higher rates unless margins support it.
 
 Understanding eBay's fee stack helps you price competitively while protecting margin. Use our calculator before every listing to know your real profit.
+
+---
+
+*Disclaimer: The information on this page is for general informational purposes only. Platform fees, commission rates, and fulfillment costs change frequently. Always verify current rates directly with the platform before making business decisions. This content does not constitute financial or business advice.*

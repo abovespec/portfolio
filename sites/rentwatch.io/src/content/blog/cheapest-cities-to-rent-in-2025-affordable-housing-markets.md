@@ -8,7 +8,7 @@ canonical: "cheapest-cities-to-rent-in-2025-affordable-housing-markets"
 
 # Cheapest Cities to Rent in 2025: Affordable Housing Markets
 
-High rent prices in coastal cities push renters to explore more affordable markets. The good news is that many cities offer reasonable rents, growing job markets, and decent quality of life. This guide ranks the cheapest cities to rent in 2025.
+High rent prices in coastal cities push renters to explore more affordable markets. The good news is that many cities offer reasonable rents, growing job markets, and decent quality of life. This guide ranks the cheapest cities to rent in 2025. Rent figures are sourced from the [Zillow Rent Index](https://www.zillow.com/research/data/) and [Apartment List rental research](https://www.apartmentlist.com/research/).
 
 ## Top 10 Cheapest Major Cities (1-Bedroom)
 
@@ -56,7 +56,7 @@ Trade-offs exist. Lower rent often means car-dependent living and fewer amenitie
 
 ## Remote Worker Advantage
 
-Remote workers earning coastal salaries in these cities enjoy exceptional purchasing power. A $90,000 remote salary in Wichita (rent $850) leaves enormous disposable income.
+Remote workers earning coastal salaries in these cities enjoy exceptional purchasing power. A $90,000 remote salary in Wichita (rent $850) leaves enormous disposable income. The [MIT Living Wage calculator](https://livingwage.mit.edu/) can confirm what a genuinely livable income looks like in each of these markets.
 
 ## Up-and-Coming Affordable Cities
 
@@ -73,3 +73,7 @@ Our [rent comparison tool](/) tracks prices in 200+ cities. Filter by state, ren
 ## The Bottom Line
 
 You do not need to pay $3,000 for a one-bedroom. Excellent cities offer rents under $1,100 with jobs and community. Use our tool to explore options outside the expensive coastal bubble.
+
+---
+
+*Disclaimer: The information on this page is for general informational purposes only and does not constitute financial or real estate advice. Rent prices, cost of living data, and salary comparisons change frequently and vary by neighborhood and individual circumstances. Consult a financial advisor or housing counselor for advice specific to your situation.*

@@ -12,7 +12,7 @@ canonical: "is-it-better-to-lease-or-buy-a-car-decision-framework"
 
 ## Question 1: How Long Do You Keep Cars?
 
-If you get a new car every 2-3 years, leasing often costs less. If you drive cars until they die, buying saves money. The average American keeps a car for 8 years. At that timeline, buying is almost always cheaper.
+If you get a new car every 2-3 years, leasing often costs less. If you drive cars until they die, buying saves money. The average American keeps a car for 8 years. At that timeline, buying is almost always cheaper. [Consumer Reports' car ownership research](https://www.consumerreports.org/cars/) confirms that long ownership periods strongly favor purchasing over leasing.
 
 ## Question 2: How Many Miles Do You Drive?
 
@@ -28,7 +28,7 @@ Leased vehicles must be returned in original condition. No window tinting, no af
 
 ## Question 5: Is This for Business Use?
 
-Business owners can often deduct lease payments more easily than loan payments. Consult your accountant, but leasing sometimes offers tax advantages for business vehicles.
+Business owners can often deduct lease payments more easily than loan payments. Consult your accountant, but leasing sometimes offers tax advantages for business vehicles. The [IRS standard mileage rate guidance](https://www.irs.gov/tax-professionals/standard-mileage-rates) is the starting point for understanding vehicle-related business deductions.
 
 ## The Financial Test
 
@@ -56,3 +56,7 @@ Buying gives you:
 Use our [lease vs buy calculator](/) to input your specific numbers. The framework above narrows your options. The calculator gives you the definitive answer.
 
 For most people who drive average mileage and keep cars 5+ years, buying is the better financial decision. For people who love new cars and drive predictable, low mileage, leasing can make sense.
+
+---
+
+*Disclaimer: The information on this page is for general informational purposes only and does not constitute financial or investment advice. Vehicle values, depreciation rates, and cost estimates vary widely by market conditions. Always consult a qualified financial professional before making major purchasing decisions.*
