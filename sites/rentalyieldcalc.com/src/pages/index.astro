@@ -35,13 +35,40 @@ import { siteConfig } from '~/config/site.config';
     <div id="panel-ry" class="calc-panel">
       <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
         <h2 class="text-xl font-semibold mb-4 text-slate-800">Rental Yield Calculator</h2>
-        <div class="grid gap-4 sm:grid-cols-2">
-          <label class="block"><span class="text-sm font-medium text-slate-700">Monthly rent ($)</span><input id="ry-rent" type="number" value="2500" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
-          <label class="block"><span class="text-sm font-medium text-slate-700">Property value ($)</span><input id="ry-value" type="number" value="450000" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
-          <label class="block"><span class="text-sm font-medium text-slate-700">Monthly expenses ($)</span><input id="ry-exp" type="number" value="600" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
-          <label class="block"><span class="text-sm font-medium text-slate-700">Vacancy rate (%)</span><input id="ry-vac" type="number" value="5" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+
+        <!-- Properties container -->
+        <div id="ry-properties" class="space-y-4"></div>
+        <button id="ry-add-prop" class="mt-3 text-sm text-amber-600 hover:text-amber-800 font-medium">+ Add property</button>
+
+        <!-- CapEx reserve -->
+        <div class="mt-5 pt-4 border-t border-slate-100">
+          <label class="flex items-center gap-3">
+            <div class="flex-1">
+              <span class="text-sm font-medium text-slate-700">CapEx reserve (% of value/year)</span>
+              <p class="text-xs text-slate-400">e.g. 1.5% = major repair fund</p>
+            </div>
+            <input id="ry-capex" type="number" value="1.5" step="0.1" min="0" class="w-24 rounded-lg border border-slate-300 px-3 py-2 text-sm">
+          </label>
         </div>
-        <div class="mt-6 grid gap-4 sm:grid-cols-3">
+
+        <!-- Multi-property comparison table -->
+        <div id="ry-comparison" class="mt-6 hidden overflow-x-auto">
+          <p class="text-sm font-semibold text-slate-700 mb-2">Property Comparison</p>
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="bg-slate-50 border-b border-slate-200">
+                <th class="text-left py-2 px-3 font-semibold text-slate-600">Property</th>
+                <th class="text-right py-2 px-3 font-semibold text-slate-600">Cap Rate</th>
+                <th class="text-right py-2 px-3 font-semibold text-slate-600">Gross Yield</th>
+                <th class="text-right py-2 px-3 font-semibold text-slate-600">Net Cash Flow/mo</th>
+              </tr>
+            </thead>
+            <tbody id="ry-compare-body" class="divide-y divide-slate-100"></tbody>
+          </table>
+        </div>
+
+        <!-- Single-property summary (shown when only 1 property) -->
+        <div id="ry-single-summary" class="mt-6 grid gap-4 sm:grid-cols-3">
           <div class="rounded-lg bg-slate-50 p-4 text-center"><p class="text-xs uppercase text-slate-500">Gross yield</p><p id="ry-gross" class="text-xl font-bold text-slate-800">6.67%</p></div>
           <div class="rounded-lg bg-slate-50 p-4 text-center"><p class="text-xs uppercase text-slate-500">Net yield</p><p id="ry-net" class="text-xl font-bold text-slate-800">5.07%</p></div>
           <div class="rounded-lg bg-amber-50 p-4 text-center border border-amber-100"><p class="text-xs uppercase text-amber-600">Monthly cash flow</p><p id="ry-cf" class="text-xl font-bold text-amber-700">$1,775</p></div>
@@ -123,14 +150,98 @@ import { siteConfig } from '~/config/site.config';
         $('panel-'+t).classList.remove('hidden'); $('tab-'+t).classList.remove('bg-slate-200','text-slate-700'); $('tab-'+t).classList.add('bg-amber-600','text-white');
       });
     });
-    function calcRY(){ const rent=val('ry-rent'), value=val('ry-value'), exp=val('ry-exp'), vac=val('ry-vac'); const gross=(rent*12/value)*100; const net=((rent*12*(1-vac/100)-exp*12)/value)*100; const cf=rent*(1-vac/100)-exp; $('ry-gross').textContent=gross.toFixed(2)+'%'; $('ry-net').textContent=net.toFixed(2)+'%'; $('ry-cf').textContent='$'+cf.toFixed(0); }
+    // Multi-property tracker
+    let ryProps = [];
+    let ryPropCounter = 0;
+
+    function calcPropData(el) {
+      const rent = parseFloat(el.querySelector('.ry-p-rent').value)||0;
+      const value = parseFloat(el.querySelector('.ry-p-value').value)||0;
+      const exp = parseFloat(el.querySelector('.ry-p-exp').value)||0;
+      const vac = parseFloat(el.querySelector('.ry-p-vac').value)||0;
+      const capexRate = parseFloat($('ry-capex').value)||0;
+      const annualCapex = value * capexRate / 100;
+      const grossCF = rent*(1-vac/100) - exp;
+      const netCashFlow = grossCF - annualCapex/12;
+      const gross = value > 0 ? (rent*12/value)*100 : 0;
+      const net = value > 0 ? ((rent*12*(1-vac/100)-exp*12)/value)*100 : 0;
+      const capRate = value > 0 ? ((rent*12*(1-vac/100)-exp*12)/value)*100 : 0;
+      return { gross, net, capRate, netCashFlow, annualCapex };
+    }
+
+    function renderRY() {
+      const propEls = document.querySelectorAll('#ry-properties > div');
+      if (propEls.length === 1) {
+        // Single property summary
+        $('ry-single-summary').classList.remove('hidden');
+        $('ry-comparison').classList.add('hidden');
+        const data = calcPropData(propEls[0]);
+        $('ry-gross').textContent = data.gross.toFixed(2) + '%';
+        $('ry-net').textContent = data.net.toFixed(2) + '%';
+        $('ry-cf').textContent = '$' + data.netCashFlow.toFixed(0);
+      } else {
+        $('ry-single-summary').classList.add('hidden');
+        $('ry-comparison').classList.remove('hidden');
+        const rows = [];
+        propEls.forEach((el, i) => {
+          const data = calcPropData(el);
+          const name = el.querySelector('.ry-p-name').value || ('Property ' + (i+1));
+          const cfColor = data.netCashFlow >= 0 ? 'text-emerald-700' : 'text-red-600';
+          rows.push(
+            '<tr class="hover:bg-slate-50">' +
+              '<td class="py-2 px-3 font-medium text-slate-700">' + name + '</td>' +
+              '<td class="py-2 px-3 text-right">' + data.capRate.toFixed(2) + '%</td>' +
+              '<td class="py-2 px-3 text-right">' + data.gross.toFixed(2) + '%</td>' +
+              '<td class="py-2 px-3 text-right font-semibold ' + cfColor + '">$' + data.netCashFlow.toFixed(0) + '</td>' +
+            '</tr>'
+          );
+        });
+        $('ry-compare-body').innerHTML = rows.join('');
+      }
+    }
+
+    function addRYProperty() {
+      if (ryProps.length >= 3) return;
+      const id = ++ryPropCounter;
+      ryProps.push(id);
+      const div = document.createElement('div');
+      div.id = 'ry-prop-' + id;
+      div.className = 'rounded-lg border border-slate-100 bg-slate-50 p-4';
+      const canRemove = ryProps.length > 1;
+      div.innerHTML =
+        '<div class="flex items-center justify-between mb-3">' +
+          '<input type="text" class="ry-p-name text-sm font-semibold text-slate-700 bg-transparent border-none outline-none w-48" placeholder="Property ' + ryProps.length + '">' +
+          (canRemove ? '<button class="ry-remove-prop text-xs text-red-400 hover:text-red-600 font-medium">&times; Remove</button>' : '') +
+        '</div>' +
+        '<div class="grid gap-3 sm:grid-cols-2">' +
+          '<label class="block"><span class="text-xs text-slate-600">Monthly rent ($)</span><input type="number" class="ry-p-rent mt-0.5 w-full rounded border border-slate-300 px-2 py-1.5 text-sm" value="2500"></label>' +
+          '<label class="block"><span class="text-xs text-slate-600">Property value ($)</span><input type="number" class="ry-p-value mt-0.5 w-full rounded border border-slate-300 px-2 py-1.5 text-sm" value="450000"></label>' +
+          '<label class="block"><span class="text-xs text-slate-600">Monthly expenses ($)</span><input type="number" class="ry-p-exp mt-0.5 w-full rounded border border-slate-300 px-2 py-1.5 text-sm" value="600"></label>' +
+          '<label class="block"><span class="text-xs text-slate-600">Vacancy rate (%)</span><input type="number" class="ry-p-vac mt-0.5 w-full rounded border border-slate-300 px-2 py-1.5 text-sm" value="5"></label>' +
+        '</div>';
+      $('ry-properties').appendChild(div);
+      div.querySelectorAll('input').forEach(inp => inp.addEventListener('input', renderRY));
+      const rmBtn = div.querySelector('.ry-remove-prop');
+      if (rmBtn) {
+        rmBtn.addEventListener('click', () => {
+          ryProps = ryProps.filter(r => r !== id);
+          div.remove();
+          renderRY();
+        });
+      }
+      renderRY();
+    }
+
+    $('ry-add-prop').addEventListener('click', addRYProperty);
+    $('ry-capex').addEventListener('input', renderRY);
+    addRYProperty(); // add first property
+
     function calcCR(){ const noi=val('cr-noi'), value=val('cr-value'); $('cr-out').textContent=((noi/value)*100).toFixed(2)+'%'; }
     function calcCOC(){ const cf=val('coc-cf'), invest=val('coc-invest'); $('coc-out').textContent=((cf/invest)*100).toFixed(2)+'%'; }
     function calcFlip(){ const arv=val('f-arv'), buy=val('f-buy'), repair=val('f-repair'), hold=val('f-hold'), sell=val('f-sell'); const sellCost=arv*(sell/100); const invest=buy+repair+hold; const profit=arv-sellCost-invest; $('f-out-sell').textContent='$'+sellCost.toFixed(0); $('f-out-invest').textContent='$'+invest.toFixed(0); $('f-out-profit').textContent='$'+profit.toFixed(0); }
-    ['ry-rent','ry-value','ry-exp','ry-vac'].forEach(id => $('ry-'+id.split('-')[1])?.addEventListener('input',calcRY));
     ['cr-noi','cr-value'].forEach(id => $('cr-'+id.split('-')[1])?.addEventListener('input',calcCR));
     ['coc-cf','coc-invest'].forEach(id => $('coc-'+id.split('-')[1])?.addEventListener('input',calcCOC));
     ['f-arv','f-buy','f-repair','f-hold','f-sell'].forEach(id => $('f-'+id.split('-')[1])?.addEventListener('input',calcFlip));
-    calcRY(); calcCR(); calcCOC(); calcFlip();
+    calcCR(); calcCOC(); calcFlip();
   </script>
 </BaseLayout>
