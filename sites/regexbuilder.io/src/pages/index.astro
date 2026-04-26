@@ -118,6 +118,45 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
     <div id="replace-status" class="mt-2 rounded-md px-3 py-1.5 text-sm font-medium hidden"></div>
   </div>
 
+  <!-- ── Regex Cheatsheet ── -->
+  <details class="mt-6 rounded-xl border border-slate-200 overflow-hidden">
+    <summary class="px-4 py-3 text-sm font-semibold text-slate-700 bg-slate-50 hover:bg-slate-100 cursor-pointer list-none flex justify-between items-center">
+      Regex Quick Reference
+      <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+    </summary>
+    <div class="p-4 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1.5 text-xs">
+      <div class="col-span-full text-xs font-semibold text-slate-500 uppercase tracking-wide mt-1 mb-0.5">Character Classes</div>
+      <div><code class="font-mono text-violet-700 mr-1">.</code><span class="text-slate-600">Any character except newline</span></div>
+      <div><code class="font-mono text-violet-700 mr-1">\d</code><span class="text-slate-600">Digit [0-9]</span></div>
+      <div><code class="font-mono text-violet-700 mr-1">\D</code><span class="text-slate-600">Non-digit</span></div>
+      <div><code class="font-mono text-violet-700 mr-1">\w</code><span class="text-slate-600">Word char [a-zA-Z0-9_]</span></div>
+      <div><code class="font-mono text-violet-700 mr-1">\W</code><span class="text-slate-600">Non-word character</span></div>
+      <div><code class="font-mono text-violet-700 mr-1">\s</code><span class="text-slate-600">Whitespace</span></div>
+      <div><code class="font-mono text-violet-700 mr-1">[abc]</code><span class="text-slate-600">Character set</span></div>
+      <div><code class="font-mono text-violet-700 mr-1">[^abc]</code><span class="text-slate-600">Negated set</span></div>
+      <div><code class="font-mono text-violet-700 mr-1">[a-z]</code><span class="text-slate-600">Range</span></div>
+      <div class="col-span-full text-xs font-semibold text-slate-500 uppercase tracking-wide mt-2 mb-0.5">Anchors</div>
+      <div><code class="font-mono text-violet-700 mr-1">^</code><span class="text-slate-600">Start of string/line</span></div>
+      <div><code class="font-mono text-violet-700 mr-1">$</code><span class="text-slate-600">End of string/line</span></div>
+      <div><code class="font-mono text-violet-700 mr-1">\b</code><span class="text-slate-600">Word boundary</span></div>
+      <div><code class="font-mono text-violet-700 mr-1">\B</code><span class="text-slate-600">Non-word boundary</span></div>
+      <div class="col-span-full text-xs font-semibold text-slate-500 uppercase tracking-wide mt-2 mb-0.5">Quantifiers</div>
+      <div><code class="font-mono text-violet-700 mr-1">*</code><span class="text-slate-600">0 or more (greedy)</span></div>
+      <div><code class="font-mono text-violet-700 mr-1">+</code><span class="text-slate-600">1 or more (greedy)</span></div>
+      <div><code class="font-mono text-violet-700 mr-1">?</code><span class="text-slate-600">0 or 1 (optional)</span></div>
+      <div><code class="font-mono text-violet-700 mr-1">&#123;n&#125;</code><span class="text-slate-600">Exactly n times</span></div>
+      <div><code class="font-mono text-violet-700 mr-1">&#123;n,m&#125;</code><span class="text-slate-600">Between n and m times</span></div>
+      <div><code class="font-mono text-violet-700 mr-1">*?</code><span class="text-slate-600">0 or more (lazy)</span></div>
+      <div class="col-span-full text-xs font-semibold text-slate-500 uppercase tracking-wide mt-2 mb-0.5">Groups &amp; Alternation</div>
+      <div><code class="font-mono text-violet-700 mr-1">(abc)</code><span class="text-slate-600">Capture group</span></div>
+      <div><code class="font-mono text-violet-700 mr-1">(?:abc)</code><span class="text-slate-600">Non-capturing group</span></div>
+      <div><code class="font-mono text-violet-700 mr-1">a|b</code><span class="text-slate-600">Alternation (a or b)</span></div>
+      <div><code class="font-mono text-violet-700 mr-1">(?=abc)</code><span class="text-slate-600">Positive lookahead</span></div>
+      <div><code class="font-mono text-violet-700 mr-1">(?!abc)</code><span class="text-slate-600">Negative lookahead</span></div>
+      <div><code class="font-mono text-violet-700 mr-1">\1</code><span class="text-slate-600">Backreference to group 1</span></div>
+    </div>
+  </details>
+
   <!-- ── Pattern Library ── -->
   <div class="mt-6">
     <button id="library-toggle" class="flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-slate-900 transition-colors">
