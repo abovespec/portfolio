@@ -3,6 +3,8 @@ import BaseLayout from './BaseLayout.astro';
 import Breadcrumb from '~/components/Breadcrumb.astro';
 import SchemaArticle from '~/components/SchemaArticle.astro';
 import { siteUrl } from '~/config/site.config';
+import { existsSync } from 'node:fs';
+import path from 'node:path';
 
 interface Props {
   title: string;
@@ -24,10 +26,21 @@ const {
 
 const url = new URL(Astro.url.pathname, siteUrl).toString();
 
+// Convention-based blog image discovery — checks public/images/blog/<slug>-{hero,1,2}.png at build time
+const slug = Astro.url.pathname.replace(/^\/blog\//, '').replace(/\/$/, '');
+const imgDir = path.join(process.cwd(), 'public', 'images', 'blog');
+const heroSrc = `/images/blog/${slug}-hero.png`;
+const img1Src = `/images/blog/${slug}-1.png`;
+const img2Src = `/images/blog/${slug}-2.png`;
+const hasHero = existsSync(path.join(imgDir, `${slug}-hero.png`));
+const hasImg1 = existsSync(path.join(imgDir, `${slug}-1.png`));
+const hasImg2 = existsSync(path.join(imgDir, `${slug}-2.png`));
+const ogImage = image ?? (hasHero ? heroSrc : undefined);
+
 const fmt = (d: Date | string) =>
   new Date(d).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 ---
-<BaseLayout title={title} description={description} image={image} ogType="article">
+<BaseLayout title={title} description={description} image={ogImage} ogType="article">
   <article>
     <Breadcrumb items={[
       { name: 'Home', url: '/' },
@@ -78,9 +91,51 @@ const fmt = (d: Date | string) =>
       )}
     </header>
 
-    <div class="prose prose-slate max-w-none">
+    {hasHero && (
+      <figure class="not-prose my-6 overflow-hidden rounded-xl">
+        <img
+          src={heroSrc}
+          alt={title}
+          width="1200"
+          height="630"
+          class="w-full object-cover"
+          loading="eager"
+          decoding="async"
+          fetchpriority="high"
+        />
+      </figure>
+    )}
+
+    <div class="prose prose-slate max-w-none flow-root">
+      {hasImg1 && (
+        <figure class="not-prose mb-6 overflow-hidden rounded-lg sm:float-right sm:mb-4 sm:ml-6 sm:w-5/12">
+          <img
+            src={img1Src}
+            alt=""
+            width="600"
+            height="400"
+            class="w-full object-cover"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+      )}
       <slot />
     </div>
+
+    {hasImg2 && (
+      <figure class="not-prose my-8 overflow-hidden rounded-xl">
+        <img
+          src={img2Src}
+          alt=""
+          width="1200"
+          height="630"
+          class="w-full object-cover"
+          loading="lazy"
+          decoding="async"
+        />
+      </figure>
+    )}
 
     <slot name="related" />
 
@@ -106,7 +161,7 @@ const fmt = (d: Date | string) =>
     headline={title}
     description={description}
     url={url}
-    image={image}
+    image={ogImage}
     datePublished={publishDate}
     dateModified={updatedDate}
     author={author}
