@@ -46,11 +46,26 @@ import { siteConfig } from '~/config/site.config';
         <div class="grid gap-4 sm:grid-cols-2">
           <label class="block"><span class="text-sm font-medium text-slate-700">Destination</span>
             <select id="tc-dest" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2">
-              <option value="tokyo">Tokyo, Japan</option>
-              <option value="paris">Paris, France</option>
-              <option value="nyc">New York, USA</option>
-              <option value="bangkok">Bangkok, Thailand</option>
-              <option value="london">London, UK</option>
+              <option value="Tokyo">Tokyo, Japan</option>
+              <option value="Paris">Paris, France</option>
+              <option value="New York">New York, USA</option>
+              <option value="Bangkok">Bangkok, Thailand</option>
+              <option value="London">London, UK</option>
+              <option value="Bali">Bali, Indonesia</option>
+              <option value="Barcelona">Barcelona, Spain</option>
+              <option value="Dubai">Dubai, UAE</option>
+              <option value="Sydney">Sydney, Australia</option>
+              <option value="Amsterdam">Amsterdam, Netherlands</option>
+              <option value="Rome">Rome, Italy</option>
+              <option value="Singapore">Singapore</option>
+              <option value="Lisbon">Lisbon, Portugal</option>
+              <option value="Prague">Prague, Czech Republic</option>
+              <option value="Cape Town">Cape Town, South Africa</option>
+              <option value="Buenos Aires">Buenos Aires, Argentina</option>
+              <option value="Istanbul">Istanbul, Turkey</option>
+              <option value="Mexico City">Mexico City, Mexico</option>
+              <option value="Ho Chi Minh City">Ho Chi Minh City, Vietnam</option>
+              <option value="Medellin">Medellin, Colombia</option>
               <option value="custom" selected>Custom</option>
             </select>
           </label>
@@ -71,6 +86,10 @@ import { siteConfig } from '~/config/site.config';
           <p class="text-xs uppercase text-slate-500">Trip total (local currency)</p>
           <p id="dest1-local-total" class="text-lg font-bold text-slate-700"></p>
         </div>
+        <div id="dest1-chart" class="mt-4 hidden">
+          <p class="text-xs font-semibold uppercase text-slate-500 mb-2">Cost Per Day Breakdown</p>
+          <div id="dest1-chart-bars" class="space-y-1"></div>
+        </div>
       </div>
 
       <!-- Destination 2 (hidden by default) -->
@@ -85,11 +104,26 @@ import { siteConfig } from '~/config/site.config';
         <div class="grid gap-4 sm:grid-cols-2">
           <label class="block"><span class="text-sm font-medium text-slate-700">Destination</span>
             <select id="tc2-dest" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2">
-              <option value="tokyo">Tokyo, Japan</option>
-              <option value="paris" selected>Paris, France</option>
-              <option value="nyc">New York, USA</option>
-              <option value="bangkok">Bangkok, Thailand</option>
-              <option value="london">London, UK</option>
+              <option value="Tokyo">Tokyo, Japan</option>
+              <option value="Paris" selected>Paris, France</option>
+              <option value="New York">New York, USA</option>
+              <option value="Bangkok">Bangkok, Thailand</option>
+              <option value="London">London, UK</option>
+              <option value="Bali">Bali, Indonesia</option>
+              <option value="Barcelona">Barcelona, Spain</option>
+              <option value="Dubai">Dubai, UAE</option>
+              <option value="Sydney">Sydney, Australia</option>
+              <option value="Amsterdam">Amsterdam, Netherlands</option>
+              <option value="Rome">Rome, Italy</option>
+              <option value="Singapore">Singapore</option>
+              <option value="Lisbon">Lisbon, Portugal</option>
+              <option value="Prague">Prague, Czech Republic</option>
+              <option value="Cape Town">Cape Town, South Africa</option>
+              <option value="Buenos Aires">Buenos Aires, Argentina</option>
+              <option value="Istanbul">Istanbul, Turkey</option>
+              <option value="Mexico City">Mexico City, Mexico</option>
+              <option value="Ho Chi Minh City">Ho Chi Minh City, Vietnam</option>
+              <option value="Medellin">Medellin, Colombia</option>
               <option value="custom">Custom</option>
             </select>
           </label>
@@ -142,21 +176,53 @@ import { siteConfig } from '~/config/site.config';
     function $(id){ return document.getElementById(id); }
     function val(id){ return parseFloat($(id).value)||0; }
 
-    const presets = {
-      tokyo:   { hotel:180, food:90,  act:60, trans:15 },
-      paris:   { hotel:200, food:100, act:50, trans:10 },
-      nyc:     { hotel:220, food:110, act:70, trans:15 },
-      bangkok: { hotel:60,  food:40,  act:30, trans:10 },
-      london:  { hotel:190, food:95,  act:55, trans:12 },
+    const TRIP_PRESETS = {
+      'Tokyo':             { hotel:120, food:60,  act:40, trans:20 },
+      'Paris':             { hotel:180, food:70,  act:50, trans:25 },
+      'New York':          { hotel:200, food:80,  act:60, trans:35 },
+      'Bangkok':           { hotel:50,  food:20,  act:25, trans:8  },
+      'London':            { hotel:190, food:65,  act:55, trans:30 },
+      'Bali':              { hotel:60,  food:25,  act:30, trans:10 },
+      'Barcelona':         { hotel:130, food:55,  act:40, trans:15 },
+      'Dubai':             { hotel:150, food:70,  act:65, trans:20 },
+      'Sydney':            { hotel:160, food:70,  act:50, trans:30 },
+      'Amsterdam':         { hotel:170, food:60,  act:45, trans:20 },
+      'Rome':              { hotel:140, food:55,  act:45, trans:15 },
+      'Singapore':         { hotel:140, food:40,  act:50, trans:20 },
+      'Lisbon':            { hotel:100, food:45,  act:30, trans:12 },
+      'Prague':            { hotel:80,  food:35,  act:25, trans:10 },
+      'Cape Town':         { hotel:90,  food:40,  act:40, trans:15 },
+      'Buenos Aires':      { hotel:70,  food:30,  act:25, trans:8  },
+      'Istanbul':          { hotel:80,  food:30,  act:30, trans:8  },
+      'Mexico City':       { hotel:75,  food:30,  act:25, trans:10 },
+      'Ho Chi Minh City':  { hotel:45,  food:15,  act:20, trans:5  },
+      'Medellin':          { hotel:60,  food:25,  act:20, trans:7  },
     };
 
+    const presets = TRIP_PRESETS; // alias for backward compat
+
     const EXCHANGE_RATES = {
-      tokyo:   { currency: 'JPY', rate: 150,  symbol: '¥' },
-      paris:   { currency: 'EUR', rate: 0.92, symbol: '€' },
-      nyc:     { currency: 'USD', rate: 1,    symbol: '$' },
-      bangkok: { currency: 'THB', rate: 35,   symbol: '฿' },
-      london:  { currency: 'GBP', rate: 0.79, symbol: '£' },
-      custom:  null,
+      'Tokyo':            { currency: 'JPY', rate: 150,  symbol: '¥' },
+      'Paris':            { currency: 'EUR', rate: 0.92, symbol: '€' },
+      'New York':         { currency: 'USD', rate: 1,    symbol: '$' },
+      'Bangkok':          { currency: 'THB', rate: 35,   symbol: '฿' },
+      'London':           { currency: 'GBP', rate: 0.79, symbol: '£' },
+      'Bali':             { currency: 'IDR', rate: 15800, symbol: 'Rp' },
+      'Barcelona':        { currency: 'EUR', rate: 0.92, symbol: '€' },
+      'Dubai':            { currency: 'AED', rate: 3.67, symbol: 'AED' },
+      'Sydney':           { currency: 'AUD', rate: 1.55, symbol: 'A$' },
+      'Amsterdam':        { currency: 'EUR', rate: 0.92, symbol: '€' },
+      'Rome':             { currency: 'EUR', rate: 0.92, symbol: '€' },
+      'Singapore':        { currency: 'SGD', rate: 1.35, symbol: 'S$' },
+      'Lisbon':           { currency: 'EUR', rate: 0.92, symbol: '€' },
+      'Prague':           { currency: 'CZK', rate: 23,   symbol: 'Kč' },
+      'Cape Town':        { currency: 'ZAR', rate: 18.5, symbol: 'R' },
+      'Buenos Aires':     { currency: 'ARS', rate: 900,  symbol: '$' },
+      'Istanbul':         { currency: 'TRY', rate: 32,   symbol: '₺' },
+      'Mexico City':      { currency: 'MXN', rate: 17.5, symbol: 'MX$' },
+      'Ho Chi Minh City': { currency: 'VND', rate: 25000, symbol: '₫' },
+      'Medellin':         { currency: 'COP', rate: 4000, symbol: 'COL$' },
+      'custom':  null,
     };
 
     function formatLocal(usd, destKey) {
@@ -167,6 +233,30 @@ import { siteConfig } from '~/config/site.config';
         return info.symbol + Math.round(amount).toLocaleString() + ' ' + info.currency;
       }
       return info.symbol + amount.toFixed(0) + ' ' + info.currency;
+    }
+
+    function renderTripChart(costs, chartBarsId, chartId) {
+      const cats = [
+        { label: 'Accommodation', key: 'hotel', color: '#6366f1' },
+        { label: 'Food',          key: 'food',  color: '#f59e0b' },
+        { label: 'Activities',    key: 'activities', color: '#10b981' },
+        { label: 'Transport',     key: 'transport',  color: '#3b82f6' },
+      ];
+      const totalPerDay = cats.reduce((s,c) => s + (costs[c.key]||0), 0);
+      const chartDiv = $(chartId);
+      const chartBars = $(chartBarsId);
+      if (!totalPerDay) { chartDiv && chartDiv.classList.add('hidden'); return; }
+      const html = cats.map(c =>
+        '<div class="flex items-center gap-2 text-xs py-0.5">' +
+          '<span class="w-24 text-slate-600 truncate">' + c.label + '</span>' +
+          '<div class="flex-1 h-2.5 bg-slate-100 rounded-full overflow-hidden">' +
+            '<div class="h-full rounded-full" style="width:' + ((costs[c.key]||0)/totalPerDay*100).toFixed(0) + '%;background:' + c.color + '"></div>' +
+          '</div>' +
+          '<span class="text-slate-500">$' + (costs[c.key]||0) + '/day</span>' +
+        '</div>'
+      ).join('');
+      if (chartBars) chartBars.innerHTML = html;
+      if (chartDiv) chartDiv.classList.remove('hidden');
     }
 
     function calcTrip1() {
@@ -187,7 +277,7 @@ import { siteConfig } from '~/config/site.config';
       const localStr = formatLocal(total, destKey);
       const badge = $('dest1-currency-badge');
       const localDiv = $('dest1-local');
-      if (localStr && destKey !== 'custom' && destKey !== 'nyc') {
+      if (localStr && destKey !== 'custom' && destKey !== 'New York') {
         $('dest1-local-total').textContent = localStr;
         localDiv.classList.remove('hidden');
         badge.textContent = EXCHANGE_RATES[destKey].currency;
@@ -195,6 +285,9 @@ import { siteConfig } from '~/config/site.config';
         localDiv.classList.add('hidden');
         badge.textContent = '';
       }
+
+      // Render per-day chart
+      renderTripChart({ hotel: hotel, food: food, activities: act, transport: trans }, 'dest1-chart-bars', 'dest1-chart');
 
       compareDestinations();
       return total;
@@ -218,7 +311,7 @@ import { siteConfig } from '~/config/site.config';
       const localStr = formatLocal(total, destKey);
       const badge = $('dest2-currency-badge');
       const localDiv = $('dest2-local');
-      if (localStr && destKey !== 'custom' && destKey !== 'nyc') {
+      if (localStr && destKey !== 'custom' && destKey !== 'New York') {
         $('dest2-local-total').textContent = localStr;
         localDiv.classList.remove('hidden');
         badge.textContent = EXCHANGE_RATES[destKey].currency;
@@ -251,12 +344,12 @@ import { siteConfig } from '~/config/site.config';
     }
 
     $('tc-dest').addEventListener('change', () => {
-      const p = presets[$('tc-dest').value];
+      const p = TRIP_PRESETS[$('tc-dest').value];
       if (p) { $('tc-hotel').value = p.hotel; $('tc-food').value = p.food; $('tc-act').value = p.act; $('tc-trans').value = p.trans; }
       calcTrip1();
     });
     $('tc2-dest').addEventListener('change', () => {
-      const p = presets[$('tc2-dest').value];
+      const p = TRIP_PRESETS[$('tc2-dest').value];
       if (p) { $('tc2-hotel').value = p.hotel; $('tc2-food').value = p.food; $('tc2-act').value = p.act; $('tc2-trans').value = p.trans; }
       calcTrip2();
     });
@@ -269,7 +362,7 @@ import { siteConfig } from '~/config/site.config';
       $('destinations-grid').classList.add('sm:grid-cols-2');
       $('btn-compare').classList.add('hidden');
       // Trigger preset load for destination 2
-      const p = presets[$('tc2-dest').value];
+      const p = TRIP_PRESETS[$('tc2-dest').value];
       if (p) { $('tc2-hotel').value = p.hotel; $('tc2-food').value = p.food; $('tc2-act').value = p.act; $('tc2-trans').value = p.trans; }
       calcTrip2();
     });
