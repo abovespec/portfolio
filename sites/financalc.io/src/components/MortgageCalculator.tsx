@@ -126,12 +126,22 @@ export default function MortgageCalculator() {
 
       <div>
         <label class="mb-1 block text-sm font-medium text-slate-700">Loan Term</label>
-        <div class="flex gap-2">
+        <div class="relative">
+          <input
+            type="number" min="1" max="40" step="1" placeholder="30"
+            value={years}
+            onInput={(e) => setYears((e.target as HTMLInputElement).value)}
+            class={inputCls}
+            aria-label="Loan term in years"
+          />
+          <span class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400">yrs</span>
+        </div>
+        <div class="mt-2 flex gap-2">
           {([15, 20, 30] as const).map((y) => (
             <button
               key={y}
               type="button"
-              class={`flex-1 rounded-lg border py-2 text-sm font-medium transition-all ${
+              class={`flex-1 rounded-lg border py-1.5 text-xs font-medium transition-all ${
                 parseInt(years, 10) === y
                   ? 'border-brand bg-brand text-white'
                   : 'border-slate-300 text-slate-600 hover:border-brand/50'
@@ -211,7 +221,7 @@ export default function MortgageCalculator() {
             onClick={() => setShowAmort((v) => !v)}
             aria-expanded={showAmort}
           >
-            <span>Show amortization schedule</span>
+            <span>{showAmort ? 'Hide' : 'Show'} amortization schedule</span>
             <span class="text-slate-400">{showAmort ? '▲' : '▼'}</span>
           </button>
 
