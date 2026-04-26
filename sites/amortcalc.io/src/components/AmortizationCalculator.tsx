@@ -101,6 +101,21 @@ function fmtUsd(n: number) {
 const inputCls =
   'w-full rounded-lg border border-slate-300 px-3 py-2 pr-10 text-sm focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand';
 
+// P3: CSV download function
+function downloadAmortCsv(rows: {month:number;payment:number;principal:number;interest:number;balance:number}[]) {
+  const header = 'Month,Payment,Principal,Interest,Balance\n';
+  const body = rows.map(r =>
+    `${r.month},${r.payment.toFixed(2)},${r.principal.toFixed(2)},${r.interest.toFixed(2)},${r.balance.toFixed(2)}`
+  ).join('\n');
+  const blob = new Blob([header + body], { type: 'text/csv' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'amortization-schedule.csv';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
 export default function AmortizationCalculator() {
   const [principal, setPrincipal] = useState('300000');
   const [rate, setRate]           = useState('6.5');
@@ -134,6 +149,23 @@ export default function AmortizationCalculator() {
   const maxBal = chartPoints.length > 0 ? chartPoints[0].std : 1;
   const stdPts = chartPoints.map(pt => pt.std);
   const extraPts = chartPoints.map(pt => pt.extra);
+
+  // Full amort rows for CSV (all months)
+  const fullRows = useMemo(() => {
+    if (p <= 0 || r <= 0 || y <= 0) return [];
+    const rate = r / 100 / 12;
+    const n = y * 12;
+    const monthly = (p * rate * Math.pow(1 + rate, n)) / (Math.pow(1 + rate, n) - 1);
+    let balance = p;
+    const rows: AmortRow[] = [];
+    for (let i = 1; i <= n; i++) {
+      const interest = balance * rate;
+      const princ = monthly - interest;
+      balance = Math.max(0, balance - princ);
+      rows.push({ month: i, payment: monthly, principal: princ, interest, balance });
+    }
+    return rows;
+  }, [p, r, y]);
 
   return (
     <div class="space-y-4">
@@ -303,13 +335,26 @@ export default function AmortizationCalculator() {
             </div>
           )}
 
-          <button
-            type="button"
-            onClick={() => setShowTable((v) => !v)}
-            class="mt-1 text-xs font-medium text-brand underline underline-offset-2 hover:opacity-80"
-          >
-            {showTable ? 'Hide' : 'Show'} amortization schedule
-          </button>
+          <div class="flex items-center justify-between">
+            <button
+              type="button"
+              onClick={() => setShowTable((v) => !v)}
+              class="mt-1 text-xs font-medium text-brand underline underline-offset-2 hover:opacity-80"
+            >
+              {showTable ? 'Hide' : 'Show'} amortization schedule
+            </button>
+
+            {/* P3: Download CSV button */}
+            {fullRows.length > 0 && (
+              <button
+                type="button"
+                onClick={() => downloadAmortCsv(fullRows)}
+                class="text-sm px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium"
+              >
+                Download CSV
+              </button>
+            )}
+          </div>
 
           {showTable && (
             <div class="max-h-64 overflow-auto rounded-lg border border-slate-200 bg-white text-xs">
