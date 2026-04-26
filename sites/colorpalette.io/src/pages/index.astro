@@ -50,13 +50,25 @@ const recentPosts = siteConfig.features.hasBlog
           <!-- HEX codes -->
           <div id="palette-codes" class="mt-3 flex flex-wrap gap-2 font-mono text-sm"></div>
 
-          <!-- CSS Variables export -->
-          <div class="mt-3 flex items-center gap-2">
+          <!-- CSS Variables export + Tailwind config + JSON tokens -->
+          <div class="mt-3 flex flex-wrap items-center gap-2">
             <button id="btn-copy-css-vars" class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-700 hover:bg-slate-50 transition">
               Copy CSS Variables
             </button>
-            <span id="css-vars-copied" class="hidden text-xs font-medium text-emerald-600">Copied!</span>
+            <button id="btn-copy-tailwind" class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-700 hover:bg-slate-50 transition">
+              Copy Tailwind Config
+            </button>
+            <button id="btn-copy-json-tokens" class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-700 hover:bg-slate-50 transition">
+              Copy JSON Tokens
+            </button>
+            <span id="export-copied" class="hidden text-xs font-medium text-emerald-600">Copied!</span>
           </div>
+
+          <!-- Palette history -->
+          <section class="mt-6">
+            <h2 class="text-sm font-semibold text-slate-700 mb-2">Recent Palettes</h2>
+            <div id="palette-history-list" class="space-y-2"></div>
+          </section>
         </div>
       </div>
 
@@ -265,6 +277,7 @@ const recentPosts = siteConfig.features.hasBlog
     // Update hero background with palette colors
     document.getElementById('hero-bg').style.background =
       'linear-gradient(135deg, '+colors[0]+'22 0%, '+colors[2]+'22 50%, '+colors[4]+'22 100%)';
+    savePaletteHistory(colors);
   }
 
   document.getElementById('btn-gen-pal').addEventListener('click', updatePalette);
@@ -274,31 +287,120 @@ const recentPosts = siteConfig.features.hasBlog
     updatePalette();
   });
 
+  function showExportCopied() {
+    var el = document.getElementById('export-copied');
+    el.classList.remove('hidden');
+    setTimeout(function() { el.classList.add('hidden'); }, 2000);
+  }
+
+  function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(showExportCopied, function() {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      showExportCopied();
+    });
+  }
+
   document.getElementById('btn-copy-css-vars').addEventListener('click', function() {
     var seed = document.getElementById('pal-seed').value;
     var colors = generatePalette(seed);
     var css = ':root {\n' + colors.map(function(c, i) {
       return '  --color-' + (i + 1) + ': ' + c + ';';
     }).join('\n') + '\n}';
-    navigator.clipboard.writeText(css).then(function() {
-      var copiedEl = document.getElementById('css-vars-copied');
-      copiedEl.classList.remove('hidden');
-      setTimeout(function() { copiedEl.classList.add('hidden'); }, 2000);
-    }, function() {
-      // Fallback
-      var ta = document.createElement('textarea');
-      ta.value = css;
-      document.body.appendChild(ta);
-      ta.select();
-      document.execCommand('copy');
-      document.body.removeChild(ta);
-      var copiedEl = document.getElementById('css-vars-copied');
-      copiedEl.classList.remove('hidden');
-      setTimeout(function() { copiedEl.classList.add('hidden'); }, 2000);
-    });
+    copyToClipboard(css);
   });
 
+  function exportTailwindConfig(palette) {
+    var colorNames = ['primary', 'secondary', 'accent', 'neutral', 'surface'];
+    var colors = palette.reduce(function(acc, color, i) {
+      var name = (typeof color === 'object' && color.name) ? color.name : (colorNames[i] || ('color-' + (i+1)));
+      acc[name] = (typeof color === 'object') ? (color.hex || color) : color;
+      return acc;
+    }, {});
+    var colorStr = Object.entries(colors).map(function(entry) {
+      return "      '" + entry[0] + "': '" + entry[1] + "',";
+    }).join('\n');
+    return "// tailwind.config.js\nmodule.exports = {\n  theme: {\n    extend: {\n      colors: {\n" + colorStr + "\n      }\n    }\n  }\n}";
+  }
+
+  function exportJSONTokens(palette) {
+    var names = ['primary', 'secondary', 'accent', 'neutral', 'surface'];
+    var tokens = palette.reduce(function(acc, color, i) {
+      var name = (typeof color === 'object' && color.name) ? color.name : (names[i] || ('color-' + (i+1)));
+      var hex = (typeof color === 'object') ? (color.hex || color) : color;
+      acc['color-' + name] = { value: hex, type: 'color' };
+      return acc;
+    }, {});
+    return JSON.stringify(tokens, null, 2);
+  }
+
+  document.getElementById('btn-copy-tailwind').addEventListener('click', function() {
+    var seed = document.getElementById('pal-seed').value;
+    var colors = generatePalette(seed);
+    copyToClipboard(exportTailwindConfig(colors));
+  });
+
+  document.getElementById('btn-copy-json-tokens').addEventListener('click', function() {
+    var seed = document.getElementById('pal-seed').value;
+    var colors = generatePalette(seed);
+    copyToClipboard(exportJSONTokens(colors));
+  });
+
+  /* ---- Palette history ---- */
+  function savePaletteHistory(palette) {
+    try {
+      var history = JSON.parse(localStorage.getItem('palette-history') || '[]');
+      history.unshift({ ts: Date.now(), colors: Array.isArray(palette) ? palette : Object.values(palette) });
+      if (history.length > 12) history.pop();
+      localStorage.setItem('palette-history', JSON.stringify(history));
+      renderPaletteHistory();
+    } catch(e) {}
+  }
+
+  function renderPaletteHistory() {
+    var el = document.getElementById('palette-history-list');
+    if (!el) return;
+    try {
+      var history = JSON.parse(localStorage.getItem('palette-history') || '[]');
+      if (!history.length) {
+        el.innerHTML = '<p class="text-xs text-slate-400">No saved palettes yet</p>';
+        return;
+      }
+      el.innerHTML = history.map(function(entry, i) {
+        var colors = Array.isArray(entry.colors) ? entry.colors : [];
+        var swatches = colors.slice(0,5).map(function(c) {
+          var hex = typeof c === 'string' ? c : (c.hex || '#ccc');
+          return '<span class="w-6 h-6 rounded-sm inline-block" style="background:' + hex + '" title="' + hex + '"></span>';
+        }).join('');
+        return '<button onclick="loadHistoryPalette(' + i + ')" class="flex items-center gap-1.5 p-2 rounded-lg border border-slate-200 hover:border-slate-400 transition-colors w-full text-left">' +
+          swatches +
+          '<span class="text-xs text-slate-500 ml-1">' + new Date(entry.ts).toLocaleDateString() + '</span>' +
+          '</button>';
+      }).join('');
+    } catch(e) {}
+  }
+
+  window.loadHistoryPalette = function(index) {
+    try {
+      var history = JSON.parse(localStorage.getItem('palette-history') || '[]');
+      if (history[index]) {
+        var colors = history[index].colors;
+        if (colors && colors.length > 0) {
+          // Use the first color of the palette as the seed
+          var firstColor = typeof colors[0] === 'string' ? colors[0] : (colors[0].hex || '#6366f1');
+          document.getElementById('pal-seed').value = firstColor;
+          updatePalette();
+        }
+      }
+    } catch(e) {}
+  };
+
   updatePalette();
+  renderPaletteHistory();
 
   /* ---- Contrast ---- */
   function updateContrast() {
