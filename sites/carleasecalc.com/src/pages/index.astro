@@ -32,7 +32,8 @@ import { siteConfig } from '~/config/site.config';
       <button id="tab-dep" class="tab-btn px-4 py-2 rounded-full font-semibold text-sm bg-slate-200 text-slate-700">Depreciation</button>
     </div>
 
-    <div id="panel-lease" class="calc-panel">
+    <div id="panel-lease" class="calc-panel space-y-6">
+      <!-- Monthly payment card -->
       <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
         <h2 class="text-xl font-semibold mb-4 text-slate-800">Lease vs Buy Calculator</h2>
         <div class="grid gap-4 sm:grid-cols-2">
@@ -48,6 +49,62 @@ import { siteConfig } from '~/config/site.config';
           <div class="rounded-lg bg-sky-50 p-4 text-center border border-sky-100"><p class="text-xs uppercase text-sky-600">Est. monthly lease</p><p id="l-out-lease" class="text-2xl font-bold text-sky-700">$552</p></div>
           <div class="rounded-lg bg-slate-50 p-4 text-center"><p class="text-xs uppercase text-slate-500">Monthly loan payment</p><p id="l-out-loan" class="text-2xl font-bold text-slate-800">$805</p></div>
         </div>
+      </div>
+
+      <!-- ── Lease vs Buy Analysis card ── -->
+      <div class="rounded-xl border border-sky-200 bg-white p-6 shadow-sm">
+        <h2 class="text-xl font-semibold mb-1 text-slate-800">Lease vs Buy Analysis</h2>
+        <p class="text-sm text-slate-500 mb-5">Total money out-of-pocket over the lease/loan period, including estimated equity retained when buying.</p>
+
+        <!-- Extra buy inputs -->
+        <div class="grid gap-4 sm:grid-cols-2 mb-6 pb-6 border-b border-slate-100">
+          <label class="block">
+            <span class="text-sm font-medium text-slate-700">Acquisition fee ($)</span>
+            <input id="lva-acq" type="number" value="895" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2">
+            <span class="text-xs text-slate-400">Typical dealer/lender fee at lease start</span>
+          </label>
+          <label class="block">
+            <span class="text-sm font-medium text-slate-700">Disposition fee ($)</span>
+            <input id="lva-disp" type="number" value="395" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2">
+            <span class="text-xs text-slate-400">Fee at lease end if you don't buy the car</span>
+          </label>
+          <label class="block">
+            <span class="text-sm font-medium text-slate-700">Buy down payment ($)</span>
+            <input id="lva-buydown" type="number" value="3000" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2">
+          </label>
+          <label class="block">
+            <span class="text-sm font-medium text-slate-700">Annual depreciation rate (%)</span>
+            <input id="lva-dep" type="number" value="15" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2">
+            <span class="text-xs text-slate-400">Used to estimate car value at lease end</span>
+          </label>
+        </div>
+
+        <!-- Side-by-side results -->
+        <div class="grid gap-4 sm:grid-cols-2 mb-6">
+          <div class="rounded-xl border border-sky-200 bg-sky-50 p-5">
+            <p class="text-xs font-semibold uppercase tracking-wide text-sky-600 mb-3">Lease path</p>
+            <div class="space-y-2 text-sm text-slate-700">
+              <div class="flex justify-between"><span>Monthly payments total</span><span id="lva-lease-payments" class="font-medium">—</span></div>
+              <div class="flex justify-between"><span>Down / cap reduction</span><span id="lva-lease-down" class="font-medium">—</span></div>
+              <div class="flex justify-between"><span>Acquisition fee</span><span id="lva-lease-acq" class="font-medium">—</span></div>
+              <div class="flex justify-between"><span>Disposition fee</span><span id="lva-lease-disp" class="font-medium">—</span></div>
+              <div class="flex justify-between border-t border-sky-200 pt-2 text-base font-bold text-sky-700"><span>Total lease cost</span><span id="lva-lease-total">—</span></div>
+            </div>
+          </div>
+          <div class="rounded-xl border border-slate-200 bg-slate-50 p-5">
+            <p class="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-3">Buy path</p>
+            <div class="space-y-2 text-sm text-slate-700">
+              <div class="flex justify-between"><span>Monthly loan payments</span><span id="lva-buy-payments" class="font-medium">—</span></div>
+              <div class="flex justify-between"><span>Down payment</span><span id="lva-buy-down" class="font-medium">—</span></div>
+              <div class="flex justify-between border-t border-slate-200 pt-2 font-semibold"><span>Total out-of-pocket</span><span id="lva-buy-gross">—</span></div>
+              <div class="flex justify-between text-emerald-700"><span>Est. car value at lease end</span><span id="lva-buy-equity" class="font-medium">—</span></div>
+              <div class="flex justify-between border-t border-slate-200 pt-2 text-base font-bold text-slate-800"><span>Net buy cost</span><span id="lva-buy-total">—</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Verdict banner -->
+        <div id="lva-verdict" class="rounded-xl p-4 text-center text-sm font-semibold"></div>
       </div>
     </div>
 
@@ -129,6 +186,8 @@ import { siteConfig } from '~/config/site.config';
   <script is:inline>
     function $(id){ return document.getElementById(id); }
     function val(id){ return parseFloat($(id).value) || 0; }
+    var fmt = function(n){ return '$' + Math.round(n).toLocaleString(); };
+
     const tabs=['lease','tco','fuel','dep'];
     tabs.forEach(t=>{
       $('tab-'+t).addEventListener('click',()=>{
@@ -136,11 +195,80 @@ import { siteConfig } from '~/config/site.config';
         $('panel-'+t).classList.remove('hidden'); $('tab-'+t).classList.remove('bg-slate-200','text-slate-700'); $('tab-'+t).classList.add('bg-sky-600','text-white');
       });
     });
-    function calcLease(){ const msrp=val('l-msrp'), term=val('l-term'), mf=val('l-mf'), res=val('l-res'), down=val('l-down'), apr=val('l-apr'), loanM=val('l-loan'); const dep=(msrp*(1-res/100)-down)/term; const rent=(msrp+msrp*(res/100)-down)*mf; const leaseMo=dep+rent; const r=apr/1200; const loanMo=(msrp-down)*r/(1-Math.pow(1+r,-loanM)); $('l-out-lease').textContent='$'+leaseMo.toFixed(0); $('l-out-loan').textContent='$'+loanMo.toFixed(0); }
+
+    function calcLease(){
+      const msrp=val('l-msrp'), term=val('l-term'), mf=val('l-mf'), res=val('l-res'), down=val('l-down'), apr=val('l-apr'), loanM=val('l-loan');
+      const dep=(msrp*(1-res/100)-down)/term;
+      const rent=(msrp+msrp*(res/100)-down)*mf;
+      const leaseMo=dep+rent;
+      const r=apr/1200;
+      const loanMo=(msrp-down)*r/(1-Math.pow(1+r,-loanM));
+      $('l-out-lease').textContent='$'+leaseMo.toFixed(0);
+      $('l-out-loan').textContent='$'+loanMo.toFixed(0);
+      calcLeaseVsBuy(leaseMo, loanMo);
+    }
+
+    function calcLeaseVsBuy(leaseMo, loanMo) {
+      const msrp     = val('l-msrp');
+      const term     = val('l-term');
+      const loanM    = val('l-loan');
+      const down     = val('l-down');
+      const res      = val('l-res');
+      const acq      = val('lva-acq');
+      const disp     = val('lva-disp');
+      const buyDown  = val('lva-buydown');
+      const depRate  = val('lva-dep') / 100;
+
+      // Lease total
+      const leasePayments = leaseMo * term;
+      const leaseTotalCost = leasePayments + down + acq + disp;
+
+      // Buy total — use the *loan* term for monthly payments
+      // But we compare over the *lease* term months: remaining loan balance scenario
+      // For simplicity: total loan payments over full loan term + down
+      const buyPayments = loanMo * loanM;
+      const buyGross = buyPayments + buyDown;
+
+      // Estimated car value at lease-end (term months, compounded monthly)
+      const monthlyDepRate = Math.pow(1 - depRate, 1/12);
+      var carValue = msrp;
+      for (var m = 0; m < term; m++) { carValue *= monthlyDepRate; }
+      const buyNet = buyGross - carValue;
+
+      // Populate
+      $('lva-lease-payments').textContent = fmt(leasePayments);
+      $('lva-lease-down').textContent     = fmt(down);
+      $('lva-lease-acq').textContent      = fmt(acq);
+      $('lva-lease-disp').textContent     = fmt(disp);
+      $('lva-lease-total').textContent    = fmt(leaseTotalCost);
+
+      $('lva-buy-payments').textContent   = fmt(buyPayments);
+      $('lva-buy-down').textContent       = fmt(buyDown);
+      $('lva-buy-gross').textContent      = fmt(buyGross);
+      $('lva-buy-equity').textContent     = fmt(carValue);
+      $('lva-buy-total').textContent      = fmt(buyNet);
+
+      // Verdict
+      var verdict = $('lva-verdict');
+      var diff = Math.abs(leaseTotalCost - buyNet);
+      if (leaseTotalCost < buyNet) {
+        verdict.className = 'rounded-xl p-4 text-center text-sm font-semibold bg-sky-50 border border-sky-200 text-sky-800';
+        verdict.textContent = 'Leasing saves an estimated ' + fmt(diff) + ' over ' + term + ' months compared to buying (net of equity).';
+      } else if (buyNet < leaseTotalCost) {
+        verdict.className = 'rounded-xl p-4 text-center text-sm font-semibold bg-emerald-50 border border-emerald-200 text-emerald-800';
+        verdict.textContent = 'Buying saves an estimated ' + fmt(diff) + ' over ' + term + ' months compared to leasing (net of equity).';
+      } else {
+        verdict.className = 'rounded-xl p-4 text-center text-sm font-semibold bg-slate-50 border border-slate-200 text-slate-700';
+        verdict.textContent = 'Lease and buy costs are roughly equal over ' + term + ' months.';
+      }
+    }
+
     function calcTco(){ const price=val('t-price'), ins=val('t-ins'), fuel=val('t-fuel'), maint=val('t-maint'), reg=val('t-reg'), resale=val('t-resale'); const spent=price+(ins+fuel+maint+reg)*5; const net=spent-resale; $('t-out-spent').textContent='$'+spent.toLocaleString(); $('t-out-resale').textContent='$'+resale.toLocaleString(); $('t-out-net').textContent='$'+net.toLocaleString(); }
     function calcFuel(){ const miles=val('fuel-miles'), mpg=val('fuel-mpg'), price=val('fuel-price'); $('fuel-out').textContent='$'+((miles/mpg)*price).toFixed(0); }
     function calcDep(){ const price=val('d-price'); const rates={avg:0.15,steep:0.20,gentle:0.10}; const rate=rates[$('d-method').value]; let tbody=''; let v=price; for(let y=1;y<=5;y++){ const lost=v*rate; v-=lost; tbody+='<tr class="border-b border-slate-100"><td class="py-2">Year '+y+'</td><td class="py-2 text-right font-medium">$'+v.toFixed(0)+'</td><td class="py-2 text-right text-red-600">-$'+lost.toFixed(0)+'</td></tr>'; } $('d-table').innerHTML=tbody; }
+
     ['l-msrp','l-term','l-mf','l-res','l-down','l-apr','l-loan'].forEach(id=>$(id)?.addEventListener('input',calcLease));
+    ['lva-acq','lva-disp','lva-buydown','lva-dep'].forEach(id=>$(id)?.addEventListener('input',calcLease));
     ['t-price','t-ins','t-fuel','t-maint','t-reg','t-resale'].forEach(id=>$(id)?.addEventListener('input',calcTco));
     ['fuel-miles','fuel-mpg','fuel-price'].forEach(id=>$(id)?.addEventListener('input',calcFuel));
     ['d-price','d-method'].forEach(id=>$(id)?.addEventListener('input',calcDep));

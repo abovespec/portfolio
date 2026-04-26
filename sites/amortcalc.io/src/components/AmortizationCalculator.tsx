@@ -31,6 +31,69 @@ function calcAmort(principal: number, annualRate: number, years: number) {
   return { monthly, totalCost, totalInterest, interestPct, rows };
 }
 
+function calcAmortWithExtra(principal: number, annualRate: number, years: number, extraMonthly: number) {
+  if (principal <= 0 || annualRate <= 0 || years <= 0) return null;
+  const r = annualRate / 100 / 12;
+  const n = years * 12;
+  const monthly = (principal * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+  const totalPayment = monthly + extraMonthly;
+
+  let balance = principal;
+  let totalInterestPaid = 0;
+  let month = 0;
+  while (balance > 0 && month < n) {
+    month++;
+    const interest = balance * r;
+    totalInterestPaid += interest;
+    const princ = Math.min(totalPayment - interest, balance);
+    balance = Math.max(0, balance - princ);
+  }
+
+  return { months: month, totalInterest: totalInterestPaid };
+}
+
+// Build yearly balance snapshots for chart (standard + extra payment)
+function buildChartPoints(
+  principal: number, annualRate: number, years: number, extraMonthly: number
+): { yr: number; std: number; extra: number }[] {
+  if (principal <= 0 || annualRate <= 0 || years <= 0) return [];
+  const r = annualRate / 100 / 12;
+  const n = years * 12;
+  const monthly = (principal * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+
+  // Simulate month by month for both scenarios
+  const stdBalances: number[] = [principal];
+  const extraBalances: number[] = [principal];
+  let stdBal = principal;
+  let extraBal = principal;
+
+  for (let i = 1; i <= n; i++) {
+    if (stdBal > 0) {
+      const interest = stdBal * r;
+      stdBal = Math.max(0, stdBal - (monthly - interest));
+    }
+    if (extraBal > 0) {
+      const interest = extraBal * r;
+      extraBal = Math.max(0, extraBal - (monthly + extraMonthly - interest));
+    }
+    stdBalances.push(stdBal);
+    extraBalances.push(extraBal);
+  }
+
+  // Sample 12 data points (year 0 through year N)
+  const points: { yr: number; std: number; extra: number }[] = [];
+  for (let p = 0; p < 12; p++) {
+    const monthIdx = Math.round((p / 11) * n);
+    const clampedIdx = Math.min(monthIdx, n);
+    points.push({
+      yr: Math.round(clampedIdx / 12 * 10) / 10,
+      std: stdBalances[clampedIdx] ?? 0,
+      extra: extraBalances[clampedIdx] ?? 0,
+    });
+  }
+  return points;
+}
+
 function fmtUsd(n: number) {
   return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 }
@@ -42,12 +105,35 @@ export default function AmortizationCalculator() {
   const [principal, setPrincipal] = useState('300000');
   const [rate, setRate]           = useState('6.5');
   const [years, setYears]         = useState('30');
+  const [extra, setExtra]         = useState('0');
   const [showTable, setShowTable] = useState(false);
 
-  const result = useMemo(
-    () => calcAmort(parseFloat(principal) || 0, parseFloat(rate) || 0, parseFloat(years) || 0),
-    [principal, rate, years],
-  );
+  const p = parseFloat(principal) || 0;
+  const r = parseFloat(rate) || 0;
+  const y = parseFloat(years) || 0;
+  const ex = parseFloat(extra) || 0;
+
+  const result = useMemo(() => calcAmort(p, r, y), [p, r, y]);
+  const extraResult = useMemo(() => ex > 0 ? calcAmortWithExtra(p, r, y, ex) : null, [p, r, y, ex]);
+  const chartPoints = useMemo(() => buildChartPoints(p, r, y, ex > 0 ? ex : 0), [p, r, y, ex]);
+
+  const SVG_H = 120;
+  const SVG_PAD = { top: 8, bottom: 20, left: 8, right: 8 };
+  const chartWidth = 100; // percent-based via viewBox
+  const chartInnerW = chartWidth - SVG_PAD.left - SVG_PAD.right;
+  const chartInnerH = SVG_H - SVG_PAD.top - SVG_PAD.bottom;
+
+  function toSvgPts(balances: number[], maxBal: number) {
+    return chartPoints.map((pt, i) => {
+      const x = SVG_PAD.left + (i / (chartPoints.length - 1)) * chartInnerW;
+      const y = SVG_PAD.top + (1 - balances[i] / maxBal) * chartInnerH;
+      return `${x.toFixed(2)},${y.toFixed(2)}`;
+    }).join(' ');
+  }
+
+  const maxBal = chartPoints.length > 0 ? chartPoints[0].std : 1;
+  const stdPts = chartPoints.map(pt => pt.std);
+  const extraPts = chartPoints.map(pt => pt.extra);
 
   return (
     <div class="space-y-4">
@@ -93,6 +179,22 @@ export default function AmortizationCalculator() {
         </div>
       </div>
 
+      <div>
+        <label class="mb-1 block text-sm font-medium text-slate-700">
+          Extra Monthly Payment <span class="text-slate-400 font-normal">(optional)</span>
+        </label>
+        <div class="relative">
+          <span class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-xs text-slate-400">$</span>
+          <input
+            type="number" min="0" step="50" placeholder="0"
+            value={extra}
+            onInput={(e) => setExtra((e.target as HTMLInputElement).value)}
+            class={`${inputCls} pl-6`}
+            aria-label="Extra monthly payment in dollars"
+          />
+        </div>
+      </div>
+
       {result && (
         <div role="status" aria-live="polite" class="space-y-3 rounded-xl border border-indigo-200 bg-indigo-50 p-4">
           <div class="flex items-baseline justify-between">
@@ -120,6 +222,86 @@ export default function AmortizationCalculator() {
               <div class="bg-orange-400" style={{ width: `${result.interestPct}%` }} />
             </div>
           </div>
+
+          {/* Extra payment results */}
+          {extraResult && ex > 0 && (
+            <div class="rounded-lg border border-green-200 bg-green-50 p-3 text-sm space-y-1">
+              <div class="font-semibold text-green-800 text-xs uppercase tracking-wide mb-2">Extra Payment Impact</div>
+              <div class="flex justify-between">
+                <span class="text-slate-600">Paid off in</span>
+                <span class="font-semibold text-slate-900">
+                  {Math.floor(extraResult.months / 12)}y {extraResult.months % 12}mo
+                  <span class="text-slate-400 font-normal ml-1">vs {y}y 0mo</span>
+                </span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-slate-600">Months saved</span>
+                <span class="font-semibold text-green-700">{y * 12 - extraResult.months} months</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-slate-600">Interest saved</span>
+                <span class="font-semibold text-green-700">{fmtUsd(result.totalInterest - extraResult.totalInterest)}</span>
+              </div>
+            </div>
+          )}
+
+          {/* Balance-over-time SVG chart */}
+          {chartPoints.length > 1 && (
+            <div class="space-y-1">
+              <div class="text-xs font-semibold text-slate-500 uppercase tracking-wide">Balance Over Time</div>
+              {ex > 0 && (
+                <div class="flex gap-4 text-[11px] text-slate-500">
+                  <span class="flex items-center gap-1">
+                    <span class="inline-block w-6 h-0.5 bg-indigo-500"></span>Standard
+                  </span>
+                  <span class="flex items-center gap-1">
+                    <span class="inline-block w-6 h-0.5 bg-green-500"></span>With extra payment
+                  </span>
+                </div>
+              )}
+              <div class="rounded-lg bg-white border border-slate-200 overflow-hidden">
+                <svg
+                  viewBox={`0 0 ${chartWidth} ${SVG_H}`}
+                  preserveAspectRatio="none"
+                  class="w-full"
+                  style={{ height: '120px' }}
+                  aria-label="Loan balance over time chart"
+                >
+                  {/* Horizontal grid line at midpoint */}
+                  <line
+                    x1={SVG_PAD.left} y1={SVG_PAD.top + chartInnerH / 2}
+                    x2={SVG_PAD.left + chartInnerW} y2={SVG_PAD.top + chartInnerH / 2}
+                    stroke="#e2e8f0" stroke-width="0.5"
+                  />
+                  {/* Standard payoff line */}
+                  <polyline
+                    points={toSvgPts(stdPts, maxBal)}
+                    fill="none"
+                    stroke="#6366f1"
+                    stroke-width="1.2"
+                    stroke-linejoin="round"
+                    stroke-linecap="round"
+                  />
+                  {/* Extra payment line */}
+                  {ex > 0 && (
+                    <polyline
+                      points={toSvgPts(extraPts, maxBal)}
+                      fill="none"
+                      stroke="#22c55e"
+                      stroke-width="1.2"
+                      stroke-linejoin="round"
+                      stroke-linecap="round"
+                      stroke-dasharray="2,1"
+                    />
+                  )}
+                  {/* Y-axis labels */}
+                  <text x={SVG_PAD.left} y={SVG_PAD.top - 1} font-size="3.5" fill="#94a3b8">${Math.round(maxBal / 1000)}k</text>
+                  <text x={SVG_PAD.left} y={SVG_PAD.top + chartInnerH + 6} font-size="3.5" fill="#94a3b8">Yr 0</text>
+                  <text x={SVG_PAD.left + chartInnerW - 8} y={SVG_PAD.top + chartInnerH + 6} font-size="3.5" fill="#94a3b8">Yr {y}</text>
+                </svg>
+              </div>
+            </div>
+          )}
 
           <button
             type="button"

@@ -13,14 +13,12 @@ function calcRetirement(
   const r = annualReturn / 100 / 12;
   const n = yearsToRetirement * 12;
 
-  // Future value: lump sum growth + annuity contributions
   const fvLump = currentSavings * Math.pow(1 + r, n);
   const fvAnnuity = r > 0
     ? monthlyContrib * ((Math.pow(1 + r, n) - 1) / r)
     : monthlyContrib * n;
   const balanceAtRetirement = fvLump + fvAnnuity;
 
-  // How long will it last?
   let drawdownMonths = 0;
   if (monthlyIncomeNeeded > 0) {
     let balance = balanceAtRetirement;
@@ -39,6 +37,7 @@ function calcRetirement(
     growthEarned,
     drawdownYears: drawdownMonths > 0 ? drawdownMonths / 12 : null,
     drawdownForever: monthlyIncomeNeeded <= 0 || drawdownMonths >= 600,
+    yearsToRetirement,
   };
 }
 
@@ -46,6 +45,10 @@ function fmtUsd(n: number) {
   if (n >= 1_000_000) return '$' + (n / 1_000_000).toFixed(2) + 'M';
   if (n >= 1_000) return '$' + (n / 1_000).toFixed(0) + 'K';
   return '$' + n.toFixed(0);
+}
+
+function fmtUsdFull(n: number) {
+  return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
 }
 
 const inputCls =
@@ -58,6 +61,7 @@ export default function RetirementCalculator() {
   const [monthlyContrib, setMonthlyContrib] = useState('1000');
   const [annualReturn, setAnnualReturn]     = useState('7');
   const [monthlyIncome, setMonthlyIncome]   = useState('5000');
+  const [inflationRate, setInflationRate]   = useState('3');
 
   const result = useMemo(
     () => calcRetirement(
@@ -74,6 +78,16 @@ export default function RetirementCalculator() {
   const isOnTrack = result
     ? (result.drawdownForever || (result.drawdownYears !== null && result.drawdownYears >= 25))
     : null;
+
+  const withdrawalMonthly = result ? result.balanceAtRetirement * 0.04 / 12 : 0;
+  const incomeGoal = parseFloat(monthlyIncome) || 0;
+  const withdrawalMeetsGoal = withdrawalMonthly >= incomeGoal;
+
+  const inflationAdjusted = useMemo(() => {
+    if (!result) return 0;
+    const inf = parseFloat(inflationRate) || 0;
+    return incomeGoal * Math.pow(1 + inf / 100, result.yearsToRetirement);
+  }, [result, inflationRate, incomeGoal]);
 
   return (
     <div class="space-y-4">
@@ -156,6 +170,20 @@ export default function RetirementCalculator() {
         </div>
       </div>
 
+      <div>
+        <label class="mb-1 block text-sm font-medium text-slate-700">Inflation Rate</label>
+        <div class="relative">
+          <input
+            type="number" min="0" max="20" step="0.1" placeholder="3"
+            value={inflationRate}
+            onInput={(e) => setInflationRate((e.target as HTMLInputElement).value)}
+            class={inputCls}
+            aria-label="Expected annual inflation rate as percentage"
+          />
+          <span class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400">%</span>
+        </div>
+      </div>
+
       {result && (
         <div
           role="status"
@@ -181,6 +209,20 @@ export default function RetirementCalculator() {
               <div class="font-semibold text-green-700">{fmtUsd(result.growthEarned)}</div>
             </div>
           </div>
+
+          <div class={`rounded-lg px-3 py-2 text-sm ${withdrawalMeetsGoal ? 'bg-green-100 text-green-800' : 'bg-amber-100 text-amber-800'}`}>
+            <span class="font-medium">4% Rule:</span> {fmtUsdFull(withdrawalMonthly)}/mo sustainable income
+            {withdrawalMeetsGoal
+              ? ' — meets your income goal'
+              : ' — below your income goal'}
+          </div>
+
+          {result.yearsToRetirement > 0 && incomeGoal > 0 && (
+            <div class="rounded-lg bg-slate-100 px-3 py-2 text-sm text-slate-700">
+              In {result.yearsToRetirement} years, {fmtUsdFull(incomeGoal)}/mo today = <span class="font-semibold">{fmtUsdFull(inflationAdjusted)}/mo needed</span> (at {inflationRate}% inflation)
+            </div>
+          )}
+
           {result.drawdownYears !== null && !result.drawdownForever && (
             <div class={`rounded-lg px-3 py-2 text-sm ${isOnTrack ? 'bg-green-100 text-green-800' : 'bg-amber-100 text-amber-800'}`}>
               {isOnTrack
@@ -194,7 +236,6 @@ export default function RetirementCalculator() {
               ✓ Projected to last 50+ years at this withdrawal rate
             </div>
           )}
-          {/* Contributions vs growth bar */}
           {(() => {
             const contribPct = (result.totalContributed / result.balanceAtRetirement) * 100;
             return (

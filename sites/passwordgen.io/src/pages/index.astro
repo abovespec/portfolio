@@ -16,93 +16,179 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
     </p>
   </header>
 
-  <!-- Toolbar -->
-  <div class="flex flex-wrap gap-2 mb-3">
-    <button id="btn-generate" class="rounded-md bg-red-700 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-red-800 transition-colors">Generate</button>
-    <div class="flex-1"></div>
-    <button id="btn-copy" class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Copy</button>
+  <!-- Mode tabs -->
+  <div class="flex gap-1 mb-4 border-b border-slate-200">
+    <button id="tab-password" class="tab-btn px-4 py-2 text-sm font-medium border-b-2 border-red-500 text-red-600 -mb-px">
+      Password
+    </button>
+    <button id="tab-passphrase" class="tab-btn px-4 py-2 text-sm font-medium border-b-2 border-transparent text-slate-500 hover:text-slate-700 -mb-px transition-colors">
+      Passphrase
+    </button>
   </div>
 
-  <!-- Dual-pane: options + output -->
-  <div class="grid gap-3 md:grid-cols-2 min-h-96">
-
-    <!-- Options pane -->
-    <div class="flex flex-col gap-4 rounded-lg border border-slate-200 bg-white p-5">
-      <div class="text-xs font-semibold uppercase tracking-wide text-slate-500">Options</div>
-
-      <!-- Length -->
-      <div>
-        <div class="flex items-center justify-between mb-2">
-          <label for="length-range" class="text-sm font-medium text-slate-700">Length</label>
-          <span id="length-display" class="rounded bg-slate-100 px-2 py-0.5 font-mono text-sm font-semibold text-slate-900">16</span>
-        </div>
-        <input type="range" id="length-range" min="4" max="128" value="16"
-          class="w-full accent-red-600" />
-        <div class="flex justify-between text-xs text-slate-400 mt-1"><span>4</span><span>128</span></div>
-      </div>
-
-      <!-- Character classes -->
-      <div class="space-y-2">
-        <div class="text-sm font-medium text-slate-700">Character classes</div>
-        <label class="flex items-center gap-2 cursor-pointer">
-          <input type="checkbox" id="use-upper" checked class="accent-red-600 w-4 h-4" />
-          <span class="text-sm text-slate-700">Uppercase <span class="text-slate-400 font-mono text-xs">A–Z</span></span>
-        </label>
-        <label class="flex items-center gap-2 cursor-pointer">
-          <input type="checkbox" id="use-lower" checked class="accent-red-600 w-4 h-4" />
-          <span class="text-sm text-slate-700">Lowercase <span class="text-slate-400 font-mono text-xs">a–z</span></span>
-        </label>
-        <label class="flex items-center gap-2 cursor-pointer">
-          <input type="checkbox" id="use-numbers" checked class="accent-red-600 w-4 h-4" />
-          <span class="text-sm text-slate-700">Numbers <span class="text-slate-400 font-mono text-xs">0–9</span></span>
-        </label>
-        <label class="flex items-center gap-2 cursor-pointer">
-          <input type="checkbox" id="use-symbols" checked class="accent-red-600 w-4 h-4" />
-          <span class="text-sm text-slate-700">Symbols <span class="text-slate-400 font-mono text-xs">!@#$%^&amp;*</span></span>
-        </label>
-        <label class="flex items-center gap-2 cursor-pointer">
-          <input type="checkbox" id="no-ambiguous" class="accent-red-600 w-4 h-4" />
-          <span class="text-sm text-slate-700">Exclude ambiguous <span class="text-slate-400 font-mono text-xs">0Oo1lI|</span></span>
-        </label>
-      </div>
-
-      <!-- Count -->
-      <div>
-        <label for="count-select" class="block text-sm font-medium text-slate-700 mb-1">Quantity</label>
-        <select id="count-select" class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm focus:border-red-500 focus:ring-1 focus:ring-red-500">
-          <option value="1">1 password</option>
-          <option value="5">5 passwords</option>
-          <option value="10">10 passwords</option>
-          <option value="25">25 passwords</option>
-        </select>
-      </div>
+  <!-- ── PASSWORD MODE ── -->
+  <div id="panel-password">
+    <!-- Toolbar -->
+    <div class="flex flex-wrap gap-2 mb-3">
+      <button id="btn-generate" class="rounded-md bg-red-700 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-red-800 transition-colors">Generate</button>
+      <div class="flex-1"></div>
+      <button id="btn-copy" class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Copy</button>
     </div>
 
-    <!-- Output pane -->
-    <div class="flex flex-col gap-3">
-      <div class="text-xs font-semibold uppercase tracking-wide text-slate-500">Output</div>
+    <!-- Dual-pane: options + output -->
+    <div class="grid gap-3 md:grid-cols-2 min-h-96">
 
-      <!-- Strength meter -->
-      <div class="rounded-lg border border-slate-200 bg-white p-4">
-        <div class="flex items-center justify-between mb-2">
-          <span class="text-xs font-semibold uppercase tracking-wide text-slate-500">Strength</span>
-          <span id="strength-label" class="text-sm font-semibold text-slate-400">—</span>
+      <!-- Options pane -->
+      <div class="flex flex-col gap-4 rounded-lg border border-slate-200 bg-white p-5">
+        <div class="text-xs font-semibold uppercase tracking-wide text-slate-500">Options</div>
+
+        <!-- Length -->
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <label for="length-range" class="text-sm font-medium text-slate-700">Length</label>
+            <span id="length-display" class="rounded bg-slate-100 px-2 py-0.5 font-mono text-sm font-semibold text-slate-900">16</span>
+          </div>
+          <input type="range" id="length-range" min="4" max="128" value="16"
+            class="w-full accent-red-600" />
+          <div class="flex justify-between text-xs text-slate-400 mt-1"><span>4</span><span>128</span></div>
         </div>
-        <div class="h-2 rounded-full bg-slate-100 overflow-hidden">
-          <div id="strength-bar" class="h-full rounded-full transition-all duration-300 bg-slate-200 w-0"></div>
+
+        <!-- Character classes -->
+        <div class="space-y-2">
+          <div class="text-sm font-medium text-slate-700">Character classes</div>
+          <label class="flex items-center gap-2 cursor-pointer">
+            <input type="checkbox" id="use-upper" checked class="accent-red-600 w-4 h-4" />
+            <span class="text-sm text-slate-700">Uppercase <span class="text-slate-400 font-mono text-xs">A&#8211;Z</span></span>
+          </label>
+          <label class="flex items-center gap-2 cursor-pointer">
+            <input type="checkbox" id="use-lower" checked class="accent-red-600 w-4 h-4" />
+            <span class="text-sm text-slate-700">Lowercase <span class="text-slate-400 font-mono text-xs">a&#8211;z</span></span>
+          </label>
+          <label class="flex items-center gap-2 cursor-pointer">
+            <input type="checkbox" id="use-numbers" checked class="accent-red-600 w-4 h-4" />
+            <span class="text-sm text-slate-700">Numbers <span class="text-slate-400 font-mono text-xs">0&#8211;9</span></span>
+          </label>
+          <label class="flex items-center gap-2 cursor-pointer">
+            <input type="checkbox" id="use-symbols" checked class="accent-red-600 w-4 h-4" />
+            <span class="text-sm text-slate-700">Symbols <span class="text-slate-400 font-mono text-xs">!@#$%^&amp;*</span></span>
+          </label>
+          <label class="flex items-center gap-2 cursor-pointer">
+            <input type="checkbox" id="no-ambiguous" class="accent-red-600 w-4 h-4" />
+            <span class="text-sm text-slate-700">Exclude ambiguous <span class="text-slate-400 font-mono text-xs">0Oo1lI|</span></span>
+          </label>
         </div>
-        <div id="strength-info" class="mt-1 text-xs text-slate-400"></div>
+
+        <!-- Count -->
+        <div>
+          <label for="count-select" class="block text-sm font-medium text-slate-700 mb-1">Quantity</label>
+          <select id="count-select" class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm focus:border-red-500 focus:ring-1 focus:ring-red-500">
+            <option value="1">1 password</option>
+            <option value="5">5 passwords</option>
+            <option value="10">10 passwords</option>
+            <option value="25">25 passwords</option>
+          </select>
+        </div>
       </div>
 
-      <!-- Password output -->
-      <textarea
-        id="pwd-output"
-        class="flex-1 w-full rounded-lg border border-slate-200 bg-slate-950 text-slate-100 p-4 font-mono text-sm resize-none min-h-48"
-        readonly
-        placeholder="Click Generate to create passwords"
-        spellcheck="false"
-        rows="8"
-      ></textarea>
+      <!-- Output pane -->
+      <div class="flex flex-col gap-3">
+        <div class="text-xs font-semibold uppercase tracking-wide text-slate-500">Output</div>
+
+        <!-- Strength meter -->
+        <div class="rounded-lg border border-slate-200 bg-white p-4">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-semibold uppercase tracking-wide text-slate-500">Strength</span>
+            <span id="strength-label" class="text-sm font-semibold text-slate-400">&#8212;</span>
+          </div>
+          <div class="h-2 rounded-full bg-slate-100 overflow-hidden">
+            <div id="strength-bar" class="h-full rounded-full transition-all duration-300 bg-slate-200 w-0"></div>
+          </div>
+          <div id="strength-info" class="mt-1 text-xs text-slate-400"></div>
+        </div>
+
+        <!-- Password output -->
+        <textarea
+          id="pwd-output"
+          class="flex-1 w-full rounded-lg border border-slate-200 bg-slate-950 text-slate-100 p-4 font-mono text-sm resize-none min-h-48"
+          readonly
+          placeholder="Click Generate to create passwords"
+          spellcheck="false"
+          rows="8"
+        ></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PASSPHRASE MODE ── -->
+  <div id="panel-passphrase" class="hidden">
+    <!-- Toolbar -->
+    <div class="flex flex-wrap gap-2 mb-3">
+      <button id="btn-pp-generate" class="rounded-md bg-red-700 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-red-800 transition-colors">Generate</button>
+      <div class="flex-1"></div>
+      <button id="btn-pp-copy" class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Copy</button>
+    </div>
+
+    <div class="grid gap-3 md:grid-cols-2 min-h-80">
+      <!-- Options pane -->
+      <div class="flex flex-col gap-4 rounded-lg border border-slate-200 bg-white p-5">
+        <div class="text-xs font-semibold uppercase tracking-wide text-slate-500">Options</div>
+
+        <!-- Word count -->
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <label for="pp-word-count" class="text-sm font-medium text-slate-700">Word Count</label>
+            <span id="pp-word-display" class="rounded bg-slate-100 px-2 py-0.5 font-mono text-sm font-semibold text-slate-900">4</span>
+          </div>
+          <input type="range" id="pp-word-count" min="3" max="8" value="4"
+            class="w-full accent-red-600" />
+          <div class="flex justify-between text-xs text-slate-400 mt-1"><span>3</span><span>8</span></div>
+        </div>
+
+        <!-- Separator -->
+        <div>
+          <label for="pp-separator" class="block text-sm font-medium text-slate-700 mb-1">Separator</label>
+          <select id="pp-separator" class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm focus:border-red-500 focus:ring-1 focus:ring-red-500">
+            <option value="-">Hyphen (-)</option>
+            <option value=".">Dot (.)</option>
+            <option value=" ">Space ( )</option>
+            <option value="_">Underscore (_)</option>
+            <option value="number">Number between words</option>
+          </select>
+        </div>
+
+        <!-- Capitalize -->
+        <label class="flex items-center gap-2 cursor-pointer">
+          <input type="checkbox" id="pp-capitalize" class="accent-red-600 w-4 h-4" />
+          <span class="text-sm text-slate-700">Capitalize first letter of each word</span>
+        </label>
+      </div>
+
+      <!-- Output pane -->
+      <div class="flex flex-col gap-3">
+        <div class="text-xs font-semibold uppercase tracking-wide text-slate-500">Output</div>
+
+        <!-- Strength meter -->
+        <div class="rounded-lg border border-slate-200 bg-white p-4">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-semibold uppercase tracking-wide text-slate-500">Strength</span>
+            <span id="pp-strength-label" class="text-sm font-semibold text-slate-400">&#8212;</span>
+          </div>
+          <div class="h-2 rounded-full bg-slate-100 overflow-hidden">
+            <div id="pp-strength-bar" class="h-full rounded-full transition-all duration-300 bg-slate-200 w-0"></div>
+          </div>
+          <div id="pp-strength-info" class="mt-1 text-xs text-slate-400"></div>
+        </div>
+
+        <!-- Passphrase output -->
+        <textarea
+          id="pp-output"
+          class="flex-1 w-full rounded-lg border border-slate-200 bg-slate-950 text-slate-100 p-4 font-mono text-sm resize-none min-h-32"
+          readonly
+          placeholder="Click Generate to create a passphrase"
+          spellcheck="false"
+          rows="4"
+        ></textarea>
+      </div>
     </div>
   </div>
 
@@ -127,16 +213,32 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
         <p>
           Password strength is primarily a function of two factors: <strong>length</strong> and
           <strong>character-set size</strong>. A password's entropy is measured in bits:
-          <code>entropy = length × log₂(charset_size)</code>.
+          <code>entropy = length &#215; log&#8322;(charset_size)</code>.
         </p>
         <ul>
           <li><strong>12 characters, mixed case + numbers + symbols</strong> — ~79 bits. Acceptable for most accounts.</li>
           <li><strong>16 characters, mixed case + numbers + symbols</strong> — ~105 bits. Strong. Recommended default.</li>
-          <li><strong>24+ characters, all classes</strong> — ≥157 bits. Effectively uncrackable with current hardware.</li>
+          <li><strong>24+ characters, all classes</strong> — &#8805;157 bits. Effectively uncrackable with current hardware.</li>
         </ul>
         <p>
           Length gains entropy faster than adding more character classes. A 20-character lowercase-only
           password is stronger than a 10-character password with every class enabled.
+        </p>
+      </div>
+    </section>
+
+    <section aria-labelledby="passphrase-heading">
+      <h2 id="passphrase-heading" class="text-2xl font-bold text-slate-900">Why use a passphrase?</h2>
+      <div class="prose mt-4 max-w-none">
+        <p>
+          Passphrases combine random dictionary words into a memorable string like <code>correct-horse-battery-staple</code>.
+          A 4-word passphrase from a 100-word list gives roughly 26 bits of entropy, while a 6-word phrase
+          from a 7,776-word Diceware list exceeds 77 bits — more than enough for most uses, and far easier
+          to remember and type than a random character string.
+        </p>
+        <p>
+          Use passphrases for accounts you type manually (Wi-Fi passwords, disk encryption, password manager
+          master password). Use random character passwords for everything stored in your password manager.
         </p>
       </div>
     </section>
@@ -164,7 +266,7 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
       <h2 id="entropy-heading" class="text-2xl font-bold text-slate-900">Password entropy calculator</h2>
       <div class="prose mt-4 max-w-none">
         <p>
-          The strength meter above calculates entropy as <code>n × log₂(pool)</code> where <code>n</code>
+          The strength meter above calculates entropy as <code>n &#215; log&#8322;(pool)</code> where <code>n</code>
           is the password length and <code>pool</code> is the total number of characters in the enabled
           classes (26 uppercase + 26 lowercase + 10 digits + ~32 symbols = 94 with all classes). It then
           estimates crack time assuming 100 billion guesses per second — a realistic figure for offline
@@ -182,6 +284,28 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
     var NUMBERS = '0123456789';
     var SYMBOLS = '!@#$%^&*()-_=+[]{}|;:,.<>?';
     var AMBIGUOUS = /[0Oo1lI|]/g;
+
+    var WORDS = ['apple', 'brave', 'cloud', 'dance', 'eagle', 'flame', 'grace', 'heart', 'island', 'jungle', 'kite', 'lemon', 'music', 'noble', 'ocean', 'pizza', 'quiet', 'river', 'storm', 'tiger', 'umbrella', 'violet', 'water', 'xray', 'yacht', 'zebra', 'amber', 'blaze', 'crisp', 'drift', 'ember', 'frost', 'globe', 'haven', 'ivory', 'jewel', 'karma', 'lunar', 'maple', 'night', 'orbit', 'pearl', 'quest', 'ridge', 'solar', 'tower', 'ultra', 'vista', 'winds', 'xenon', 'yield', 'zingy', 'angel', 'blade', 'cedar', 'daisy', 'earth', 'fairy', 'giant', 'honey', 'index', 'joker', 'kudos', 'laser', 'mango', 'nexus', 'ozone', 'pixel', 'quartz', 'raven', 'sigma', 'topaz', 'unity', 'vapor', 'waltz', 'xenon', 'young', 'zesty', 'arrow', 'beach', 'candy', 'delta', 'equal', 'fancy', 'gamma', 'happy', 'inner', 'jazzy', 'kings', 'light', 'magic', 'north', 'omega', 'plumb', 'queen', 'royal', 'swift', 'truth', 'upper', 'valid', 'whirl', 'extra', 'yards'];
+
+    var currentTab = 'password';
+
+    // Tab switching
+    document.getElementById('tab-password').addEventListener('click', function() {
+      currentTab = 'password';
+      document.getElementById('panel-password').classList.remove('hidden');
+      document.getElementById('panel-passphrase').classList.add('hidden');
+      document.getElementById('tab-password').className = 'tab-btn px-4 py-2 text-sm font-medium border-b-2 border-red-500 text-red-600 -mb-px';
+      document.getElementById('tab-passphrase').className = 'tab-btn px-4 py-2 text-sm font-medium border-b-2 border-transparent text-slate-500 hover:text-slate-700 -mb-px transition-colors';
+    });
+
+    document.getElementById('tab-passphrase').addEventListener('click', function() {
+      currentTab = 'passphrase';
+      document.getElementById('panel-password').classList.add('hidden');
+      document.getElementById('panel-passphrase').classList.remove('hidden');
+      document.getElementById('tab-passphrase').className = 'tab-btn px-4 py-2 text-sm font-medium border-b-2 border-red-500 text-red-600 -mb-px';
+      document.getElementById('tab-password').className = 'tab-btn px-4 py-2 text-sm font-medium border-b-2 border-transparent text-slate-500 hover:text-slate-700 -mb-px transition-colors';
+      generatePassphrase();
+    });
 
     function showStatus(msg, type) {
       var clsMap = { error: 'bg-red-50 text-red-700 border border-red-200', success: 'bg-emerald-50 text-emerald-700 border border-emerald-200', info: 'bg-blue-50 text-blue-700 border border-blue-200' };
@@ -207,6 +331,13 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
       return pool[arr[0] % pool.length];
     }
 
+    function randInt(max) {
+      var arr = new Uint32Array(1);
+      var limit = Math.floor(0x100000000 / max) * max;
+      do { crypto.getRandomValues(arr); } while (arr[0] >= limit);
+      return arr[0] % max;
+    }
+
     function generateOne(length, pool) {
       var out = '';
       for (var i = 0; i < length; i++) out += randChar(pool);
@@ -217,11 +348,10 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
       return length * Math.log2(poolSize);
     }
 
-    function updateStrength(pwd, poolSize) {
-      var bits = calcEntropy(pwd.length, poolSize);
-      var bar = document.getElementById('strength-bar');
-      var label = document.getElementById('strength-label');
-      var info = document.getElementById('strength-info');
+    function applyStrength(bits, barId, labelId, infoId) {
+      var bar = document.getElementById(barId);
+      var label = document.getElementById(labelId);
+      var info = document.getElementById(infoId);
       var pct, color, text, crackTime;
       if (bits < 40) { pct = 15; color = 'bg-red-500'; text = 'Very Weak'; crackTime = 'instantly'; }
       else if (bits < 60) { pct = 30; color = 'bg-orange-500'; text = 'Weak'; crackTime = 'seconds to minutes'; }
@@ -235,6 +365,11 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
       info.textContent = Math.round(bits) + ' bits of entropy · estimated crack time: ' + crackTime;
     }
 
+    function updateStrength(pwd, poolSize) {
+      var bits = calcEntropy(pwd.length, poolSize);
+      applyStrength(bits, 'strength-bar', 'strength-label', 'strength-info');
+    }
+
     function generate() {
       var pool = getPool();
       if (!pool) { showStatus('Select at least one character class', 'error'); return; }
@@ -245,6 +380,38 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
       document.getElementById('pwd-output').value = lines.join('\n');
       updateStrength(lines[0], pool.length);
       showStatus('Generated ' + count + ' password' + (count > 1 ? 's' : ''), 'success');
+    }
+
+    function generatePassphrase() {
+      var wordCount = parseInt(document.getElementById('pp-word-count').value);
+      var sep = document.getElementById('pp-separator').value;
+      var capitalize = document.getElementById('pp-capitalize').checked;
+
+      var parts = [];
+      for (var i = 0; i < wordCount; i++) {
+        var word = WORDS[randInt(WORDS.length)];
+        if (capitalize) word = word.charAt(0).toUpperCase() + word.slice(1);
+        parts.push(word);
+        if (sep === 'number' && i < wordCount - 1) {
+          parts.push(String(randInt(10)));
+        }
+      }
+
+      var phrase;
+      if (sep === 'number') {
+        phrase = parts.join('');
+      } else {
+        phrase = parts.join(sep);
+      }
+
+      document.getElementById('pp-output').value = phrase;
+
+      // Entropy: log2(wordlist_size) per word
+      var bitsPerWord = Math.log2(WORDS.length);
+      var totalBits = bitsPerWord * wordCount;
+      if (sep === 'number') totalBits += Math.log2(10) * (wordCount - 1);
+      applyStrength(totalBits, 'pp-strength-bar', 'pp-strength-label', 'pp-strength-info');
+      showStatus('Passphrase generated (' + Math.round(totalBits) + ' bits)', 'success');
     }
 
     document.getElementById('length-range').addEventListener('input', function() {
@@ -270,11 +437,34 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
       });
     });
 
+    // Passphrase controls
+    document.getElementById('pp-word-count').addEventListener('input', function() {
+      document.getElementById('pp-word-display').textContent = this.value;
+      generatePassphrase();
+    });
+
+    document.getElementById('pp-separator').addEventListener('change', generatePassphrase);
+    document.getElementById('pp-capitalize').addEventListener('change', generatePassphrase);
+    document.getElementById('btn-pp-generate').addEventListener('click', generatePassphrase);
+
+    document.getElementById('btn-pp-copy').addEventListener('click', function() {
+      var val = document.getElementById('pp-output').value;
+      if (!val) { showStatus('Nothing to copy yet', 'info'); return; }
+      navigator.clipboard.writeText(val).then(function() {
+        showStatus('Copied to clipboard', 'success');
+      }, function() {
+        document.getElementById('pp-output').select();
+        document.execCommand('copy');
+        showStatus('Copied', 'success');
+      });
+    });
+
     document.addEventListener('keydown', function(e) {
       var tag = e.target.tagName;
       if ((e.key === 'Enter' || e.key === ' ') && tag !== 'INPUT' && tag !== 'TEXTAREA' && tag !== 'SELECT' && tag !== 'BUTTON') {
         e.preventDefault();
-        generate();
+        if (currentTab === 'passphrase') generatePassphrase();
+        else generate();
       }
     });
 

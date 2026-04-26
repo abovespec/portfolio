@@ -3,6 +3,24 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
 import { siteConfig } from '~/config/site.config';
 ---
 <BaseLayout title={siteConfig.identity.name} description={siteConfig.identity.description}>
+
+  <style is:inline>
+    @media print {
+      body * { visibility: hidden !important; }
+      #invoice-preview, #invoice-preview * { visibility: visible !important; }
+      #invoice-preview {
+        position: fixed !important;
+        top: 0 !important; left: 0 !important;
+        width: 100% !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 2cm !important;
+        margin: 0 !important;
+      }
+    }
+    @page { size: A4; margin: 1cm; }
+  </style>
+
   <section class="relative -mx-4 overflow-hidden px-4 py-14 sm:py-20">
     <div class="absolute inset-0 bg-gradient-to-br from-emerald-50 via-teal-50 to-green-50" aria-hidden="true" />
     <div class="absolute -top-32 left-1/2 h-80 w-80 -translate-x-1/2 rounded-full bg-emerald-300/20 blur-3xl" aria-hidden="true" />
@@ -28,6 +46,27 @@ import { siteConfig } from '~/config/site.config';
   <div class="mx-auto max-w-5xl grid gap-8 lg:grid-cols-2">
     <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
       <h2 class="text-lg font-semibold mb-4 text-slate-800">Invoice Details</h2>
+
+      <!-- Logo upload -->
+      <div class="mb-4">
+        <span class="block text-sm font-medium text-slate-700 mb-2">Company Logo</span>
+        <div id="logo-drop-zone"
+          class="relative flex flex-col items-center justify-center gap-1 rounded-lg border-2 border-dashed border-slate-300 bg-slate-50 px-4 py-4 cursor-pointer hover:border-blue-400 hover:bg-blue-50/30 transition"
+          onclick="document.getElementById('logo-file-input').click()"
+        >
+          <div id="logo-placeholder" class="text-center">
+            <svg class="mx-auto h-8 w-8 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            <p class="mt-1 text-xs text-slate-500">Click or drag &amp; drop to upload logo</p>
+            <p class="text-xs text-slate-400">PNG, JPG, SVG</p>
+          </div>
+          <img id="logo-preview-thumb" class="hidden max-h-16 max-w-full object-contain rounded" alt="Logo preview" />
+        </div>
+        <input id="logo-file-input" type="file" accept="image/png,image/jpeg,image/svg+xml" class="hidden" />
+        <button id="btn-remove-logo" class="hidden mt-1 text-xs text-red-500 hover:text-red-700 font-medium">Remove logo</button>
+      </div>
+
       <div class="grid gap-3 sm:grid-cols-2">
         <label class="block"><span class="text-sm font-medium text-slate-700">Your business name</span><input id="inv-from-name" type="text" value="Acme Design Co." class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm"></label>
         <label class="block"><span class="text-sm font-medium text-slate-700">Your email</span><input id="inv-from-email" type="text" value="hello@acme.design" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm"></label>
@@ -44,14 +83,22 @@ import { siteConfig } from '~/config/site.config';
       <button id="add-line" class="mt-2 text-sm text-blue-600 hover:text-blue-800 font-medium">+ Add line item</button>
 
       <div class="mt-5 flex gap-2">
-        <button id="btn-print" class="flex-1 rounded-lg bg-blue-600 px-4 py-2 text-white font-semibold hover:bg-blue-700">Print / Save PDF</button>
+        <button id="btn-print" class="flex-1 rounded-lg bg-blue-600 px-4 py-2 text-white font-semibold hover:bg-blue-700 flex items-center justify-center gap-2">
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+          </svg>
+          Download PDF (Print)
+        </button>
         <button id="btn-reset" class="rounded-lg bg-slate-100 px-4 py-2 text-slate-700 font-medium hover:bg-slate-200">Reset</button>
       </div>
+      <p class="mt-1.5 text-xs text-slate-400">Your browser will open the print dialog — choose "Save as PDF" to download.</p>
     </div>
 
     <div id="invoice-preview" class="rounded-xl border border-slate-200 bg-white p-8 shadow-sm min-h-[600px]">
       <div class="flex justify-between items-start mb-6">
         <div>
+          <!-- Logo in preview (hidden when no logo) -->
+          <img id="prev-logo" class="hidden mb-2 max-h-16 max-w-[180px] object-contain" alt="Company logo" />
           <h2 id="prev-from-name" class="text-xl font-bold text-slate-900">Acme Design Co.</h2>
           <p id="prev-from-email" class="text-sm text-slate-500">hello@acme.design</p>
         </div>
@@ -92,7 +139,7 @@ import { siteConfig } from '~/config/site.config';
   </aside>
 
   <section class="my-12 mx-auto max-w-5xl">
-    <h2 class="text-2xl font-semibold mb-4 text-slate-800">Freelancer & Small Business Guides</h2>
+    <h2 class="text-2xl font-semibold mb-4 text-slate-800">Freelancer &amp; Small Business Guides</h2>
     <div class="grid gap-4 sm:grid-cols-2">
       <a href="/blog/how-to-write-an-invoice-for-freelance-work-a-step-by-step-guide/" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-blue-400">
         <h3 class="font-semibold text-slate-900">How to Write a Professional Invoice</h3>
@@ -175,10 +222,68 @@ import { siteConfig } from '~/config/site.config';
       $(id).addEventListener('input', updatePreview);
     });
 
+    // ── Logo upload ──
+    const logoInput = $('logo-file-input');
+    const dropZone  = $('logo-drop-zone');
+    const logoThumb = $('logo-preview-thumb');
+    const logoPrev  = $('prev-logo');
+    const logoPlaceholder = $('logo-placeholder');
+    const btnRemoveLogo   = $('btn-remove-logo');
+
+    function applyLogo(dataUrl) {
+      logoThumb.src = dataUrl;
+      logoThumb.classList.remove('hidden');
+      logoPlaceholder.classList.add('hidden');
+      btnRemoveLogo.classList.remove('hidden');
+      logoPrev.src = dataUrl;
+      logoPrev.classList.remove('hidden');
+    }
+
+    function removeLogo() {
+      logoThumb.src = '';
+      logoThumb.classList.add('hidden');
+      logoPlaceholder.classList.remove('hidden');
+      btnRemoveLogo.classList.add('hidden');
+      logoPrev.src = '';
+      logoPrev.classList.add('hidden');
+      logoInput.value = '';
+    }
+
+    logoInput.addEventListener('change', function() {
+      const file = this.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e) { applyLogo(e.target.result); };
+      reader.readAsDataURL(file);
+    });
+
+    // Drag and drop
+    dropZone.addEventListener('dragover', function(e) {
+      e.preventDefault();
+      this.classList.add('border-blue-400', 'bg-blue-50/30');
+    });
+    dropZone.addEventListener('dragleave', function() {
+      this.classList.remove('border-blue-400', 'bg-blue-50/30');
+    });
+    dropZone.addEventListener('drop', function(e) {
+      e.preventDefault();
+      this.classList.remove('border-blue-400', 'bg-blue-50/30');
+      const file = e.dataTransfer.files[0];
+      if (!file || !file.type.startsWith('image/')) return;
+      const reader = new FileReader();
+      reader.onload = function(ev) { applyLogo(ev.target.result); };
+      reader.readAsDataURL(file);
+    });
+
+    btnRemoveLogo.addEventListener('click', removeLogo);
+
+    // ── Print / PDF ──
     $('btn-print').addEventListener('click', () => { window.print(); });
+
     $('btn-reset').addEventListener('click', () => {
       $('line-items').innerHTML = '';
       addLine('Website Design',1,1500); addLine('Logo Design',2,350);
+      removeLogo();
       updatePreview();
     });
 

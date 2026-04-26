@@ -56,6 +56,23 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
   <!-- Status bar -->
   <div id="status" class="mt-2 rounded-md px-3 py-1.5 text-sm font-medium hidden"></div>
 
+  <!-- ── Preset Gallery ── -->
+  <div class="mt-8">
+    <button
+      id="presets-toggle"
+      class="flex w-full items-center justify-between rounded-xl border border-slate-200 bg-white px-5 py-3.5 text-sm font-semibold text-slate-700 hover:bg-slate-50 transition-colors"
+      aria-expanded="false"
+    >
+      <span>Preset Gradients <span class="ml-1.5 rounded-full bg-purple-100 px-2 py-0.5 text-xs font-medium text-purple-700">24</span></span>
+      <svg id="presets-chevron" class="h-4 w-4 text-slate-400 transition-transform duration-200" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+      </svg>
+    </button>
+    <div id="presets-panel" class="hidden mt-3">
+      <div class="grid grid-cols-4 gap-3 sm:grid-cols-6 lg:grid-cols-8" id="presets-grid"></div>
+    </div>
+  </div>
+
   <!-- ── Below-fold: SEO content ── -->
   <div class="mt-16 max-w-3xl space-y-10">
 
@@ -119,6 +136,94 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
     var stops = [{color:'#3b82f6',pos:0},{color:'#a855f7',pos:100}];
     var statusEl = document.getElementById('status');
 
+    // ── Preset gallery ───────────────────────────────────────────────────────
+    var PRESETS = [
+      { name: 'Sunrise',   value: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)' },
+      { name: 'Ocean',     value: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' },
+      { name: 'Candy',     value: 'linear-gradient(135deg, #f6d365 0%, #fda085 100%)' },
+      { name: 'Forest',    value: 'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)' },
+      { name: 'Midnight',  value: 'linear-gradient(135deg, #0c0c0c 0%, #434343 100%)' },
+      { name: 'Arctic',    value: 'linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%)' },
+      { name: 'Lava',      value: 'linear-gradient(135deg, #ff0844 0%, #ffb199 100%)' },
+      { name: 'Sage',      value: 'linear-gradient(135deg, #b8d8d8 0%, #7a9e7e 100%)' },
+      { name: 'Dusk',      value: 'linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%)' },
+      { name: 'Citrus',    value: 'linear-gradient(135deg, #f9d423 0%, #ff4e50 100%)' },
+      { name: 'Teal',      value: 'linear-gradient(135deg, #96fbc4 0%, #f9f586 100%)' },
+      { name: 'Blueberry', value: 'linear-gradient(135deg, #4776e6 0%, #8e54e9 100%)' },
+      { name: 'Peach',     value: 'linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)' },
+      { name: 'Mint',      value: 'linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%)' },
+      { name: 'Ember',     value: 'linear-gradient(135deg, #f77062 0%, #fe5196 100%)' },
+      { name: 'Steel',     value: 'linear-gradient(135deg, #616161 0%, #9bc5c3 100%)' },
+      { name: 'Lavender',  value: 'linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%)' },
+      { name: 'Sunset',    value: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)' },
+      { name: 'Deep Sea',  value: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)' },
+      { name: 'Rose Gold', value: 'linear-gradient(135deg, #f093fb 0%, #f5576c 50%, #fda085 100%)' },
+      { name: 'Northern',  value: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)' },
+      { name: 'Crimson',   value: 'linear-gradient(135deg, #c94b4b 0%, #4b134f 100%)' },
+      { name: 'Sky',       value: 'linear-gradient(135deg, #74b9ff 0%, #a29bfe 100%)' },
+      { name: 'Autumn',    value: 'linear-gradient(135deg, #c44e00 0%, #ff8c00 50%, #ffd700 100%)' },
+    ];
+
+    // Parse a linear-gradient CSS string into stops array + angle
+    function parseLinearGradient(css) {
+      var match = css.match(/linear-gradient\((\d+)deg,\s*(.+)\)/);
+      if (!match) return null;
+      var angle = parseInt(match[1], 10);
+      var stopsRaw = match[2].split(',').map(function(s) { return s.trim(); });
+      var parsed = stopsRaw.map(function(s) {
+        var parts = s.split(/\s+/);
+        var color = parts[0];
+        var pos = parts[1] ? parseInt(parts[1], 10) : null;
+        return { color: color, pos: pos };
+      });
+      // Assign evenly-spaced positions if any are null
+      parsed.forEach(function(s, i) {
+        if (s.pos === null) s.pos = Math.round(i / (parsed.length - 1) * 100);
+      });
+      return { angle: angle, stops: parsed };
+    }
+
+    function applyPreset(preset) {
+      var parsed = parseLinearGradient(preset.value);
+      if (parsed) {
+        document.getElementById('g-type').value = 'linear';
+        document.getElementById('g-angle').value = parsed.angle;
+        stops = parsed.stops;
+        renderStops();
+        update();
+        showStatus('Applied preset: ' + preset.name, 'success');
+      } else {
+        // Radial/conic or unparseable — just set the preview and CSS directly
+        document.getElementById('grad-preview').style.background = preset.value;
+        document.getElementById('grad-css').textContent = 'background: ' + preset.value + ';';
+        showStatus('Applied preset: ' + preset.name, 'success');
+      }
+    }
+
+    function renderPresets() {
+      var grid = document.getElementById('presets-grid');
+      grid.innerHTML = PRESETS.map(function(p, i) {
+        return '<button class="preset-swatch group flex flex-col items-center gap-1.5" data-i="' + i + '" title="' + p.name + '">' +
+          '<div class="h-12 w-full rounded-lg border border-slate-200 shadow-sm transition group-hover:scale-105 group-hover:shadow-md" style="background:' + p.value + '"></div>' +
+          '<span class="text-xs text-slate-500 group-hover:text-slate-800 truncate w-full text-center leading-tight">' + p.name + '</span>' +
+          '</button>';
+      }).join('');
+      grid.querySelectorAll('.preset-swatch').forEach(function(btn) {
+        btn.addEventListener('click', function() { applyPreset(PRESETS[+btn.dataset.i]); });
+      });
+    }
+
+    document.getElementById('presets-toggle').addEventListener('click', function() {
+      var panel = document.getElementById('presets-panel');
+      var chevron = document.getElementById('presets-chevron');
+      var open = !panel.classList.contains('hidden');
+      panel.classList.toggle('hidden', open);
+      chevron.style.transform = open ? '' : 'rotate(180deg)';
+      this.setAttribute('aria-expanded', String(!open));
+      if (!open) renderPresets();
+    });
+
+    // ── Gradient builder ─────────────────────────────────────────────────────
     function showStatus(msg, type) {
       var clsMap = { error: 'bg-red-50 text-red-700 border border-red-200', success: 'bg-emerald-50 text-emerald-700 border border-emerald-200', info: 'bg-blue-50 text-blue-700 border border-blue-200' };
       statusEl.className = 'mt-2 rounded-md px-3 py-1.5 text-sm font-medium ' + (clsMap[type] || 'bg-slate-100 text-slate-700');
@@ -135,7 +240,7 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
             '<input type="range" data-i="' + i + '" class="stop-pos w-full accent-purple-600" min="0" max="100" value="' + s.pos + '">' +
           '</div>' +
           '<span class="w-10 text-xs text-slate-500 text-right font-mono">' + s.pos + '%</span>' +
-          '<button data-i="' + i + '" class="btn-del-stop rounded-md border border-red-200 bg-red-50 px-2 py-1 text-xs text-red-700 hover:bg-red-100' + (stops.length <= 2 ? ' opacity-40 cursor-not-allowed' : '') + '">✕</button>' +
+          '<button data-i="' + i + '" class="btn-del-stop rounded-md border border-red-200 bg-red-50 px-2 py-1 text-xs text-red-700 hover:bg-red-100' + (stops.length <= 2 ? ' opacity-40 cursor-not-allowed' : '') + '">&#10005;</button>' +
           '</div>';
       }).join('');
       c.querySelectorAll('.stop-color').forEach(function(el) {

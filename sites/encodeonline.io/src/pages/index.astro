@@ -2,8 +2,8 @@
 import BaseLayout from '~/layouts/BaseLayout.astro';
 ---
 <BaseLayout
-  title="Encode &amp; Decode Online — Base64, URL, HTML, SHA-256, MD5"
-  description="Free online encoder and decoder. Base64 encode/decode, URL encode/decode, HTML entity encode, MD5, SHA-256, SHA-512 hash. Runs entirely in your browser."
+  title="Encode &amp; Decode Online — Base64, URL, HTML, SHA-256, SHA-512"
+  description="Free online encoder and decoder. Base64 encode/decode, URL encode/decode, HTML entity encode, SHA-256, SHA-512 hash. Runs entirely in your browser."
 >
 
   <!-- Compact header -->
@@ -12,7 +12,7 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
       Encode &amp; Decode
     </h1>
     <p class="mt-1.5 text-sm text-slate-500">
-      Base64, URL, HTML entities, MD5, SHA-256, SHA-512 — all client-side, nothing sent to a server.
+      Base64, URL, HTML entities, SHA-256, SHA-512 — all client-side, nothing sent to a server.
     </p>
   </header>
 
@@ -25,7 +25,6 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
     <button data-mode="html-enc"   class="mode-btn rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">HTML Entities</button>
     <button data-mode="sha256"     class="mode-btn rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">SHA-256</button>
     <button data-mode="sha512"     class="mode-btn rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">SHA-512</button>
-    <button data-mode="md5"        class="mode-btn rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">MD5</button>
     <div class="flex-1"></div>
     <button id="btn-process" class="rounded-md bg-slate-700 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-slate-800 transition-colors">Process</button>
     <button id="btn-swap"    class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Swap ⇅</button>
@@ -109,7 +108,7 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
     </section>
 
     <section aria-labelledby="hash-heading">
-      <h2 id="hash-heading" class="text-2xl font-bold text-slate-900">SHA-256, SHA-512 &amp; MD5 hashing</h2>
+      <h2 id="hash-heading" class="text-2xl font-bold text-slate-900">SHA-256 &amp; SHA-512 hashing</h2>
       <div class="prose mt-4 max-w-none">
         <p>
           Hash functions produce a fixed-length digest from any input. The same input always produces
@@ -118,10 +117,12 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
         <ul>
           <li><strong>SHA-256</strong> — 256-bit output, part of the SHA-2 family. Used in TLS certificates, code signing, Bitcoin, and most modern cryptographic protocols.</li>
           <li><strong>SHA-512</strong> — 512-bit output. Stronger than SHA-256 but produces a longer digest. Used when hash length matters for collision resistance.</li>
-          <li><strong>MD5</strong> — 128-bit output. Cryptographically broken (collision attacks are practical). Safe only for checksums and fingerprinting non-security-critical data.</li>
         </ul>
         <p>
-          SHA and MD5 hashes are computed in your browser using the Web Crypto API — no data is transmitted.
+          Hashes are computed in your browser using the Web Crypto API — no data is transmitted.
+        </p>
+        <p>
+          <strong>Note on MD5:</strong> MD5 is not available here. Modern browser security APIs (Web Crypto) do not support MD5 because it is cryptographically broken — collision attacks are practical and it should not be used for security purposes. Use SHA-256 or SHA-512 instead.
         </p>
       </div>
     </section>
@@ -142,7 +143,7 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
     var MODE_LABELS = {
       'base64-enc': 'Base64 Encode', 'base64-dec': 'Base64 Decode',
       'url-enc': 'URL Encode', 'url-dec': 'URL Decode',
-      'html-enc': 'HTML Entities', 'md5': 'MD5 Hash',
+      'html-enc': 'HTML Entities',
       'sha256': 'SHA-256 Hash', 'sha512': 'SHA-512 Hash'
     };
 
@@ -168,26 +169,6 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
       return Array.from(new Uint8Array(hashBuf)).map(function(b) { return b.toString(16).padStart(2, '0'); }).join('');
     }
 
-    /* MD5 - pure JS implementation (non-crypto use only) */
-    function md5(str) {
-      function safeAdd(x, y) { var l = (x & 0xffff) + (y & 0xffff); return ((x >> 16) + (y >> 16) + (l >> 16)) << 16 | l & 0xffff; }
-      function rotateLeft(n, c) { return n << c | n >>> (32 - c); }
-      function cmn(q, a, b, x, s, t) { return safeAdd(rotateLeft(safeAdd(safeAdd(a, q), safeAdd(x, t)), s), b); }
-      function ff(a,b,c,d,x,s,t){return cmn(b&c|~b&d,a,b,x,s,t);}
-      function gg(a,b,c,d,x,s,t){return cmn(b&d|c&~d,a,b,x,s,t);}
-      function hh(a,b,c,d,x,s,t){return cmn(b^c^d,a,b,x,s,t);}
-      function ii(a,b,c,d,x,s,t){return cmn(c^(b|~d),a,b,x,s,t);}
-      var m = [];
-      for (var i = 0; i < str.length * 2; i += 2) {
-        var code = str.charCodeAt(i / 2);
-        m[i >> 5] |= (code & 0xff) << i % 32;
-        m[(i >> 5) + ((str.length * 2 + 64 >>> 9 << 4) + 14)] = undefined;
-        if (code > 0x7f) for (var j = 1; j < 4; j++) m[(i + j * 2) >> 5] |= ((code >> (j * 8 - 8)) & 0xff) << (i + j * 2) % 32;
-      }
-      /* simplified approach - use SubtleCrypto polyfill wasn't viable, fall back to standard */
-      return 'md5-not-available';
-    }
-
     async function process() {
       var input = document.getElementById('enc-input');
       var output = document.getElementById('enc-output');
@@ -202,11 +183,6 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
         else if (currentMode === 'html-enc') { result = val.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
         else if (currentMode === 'sha256') { result = await hashString('SHA-256', val); }
         else if (currentMode === 'sha512') { result = await hashString('SHA-512', val); }
-        else if (currentMode === 'md5') {
-          /* SubtleCrypto doesn't support MD5 — compute via SHA-1 workaround not applicable. Note to user. */
-          showStatus('MD5 is not supported by the Web Crypto API due to it being cryptographically broken. Use SHA-256 instead.', 'info');
-          return;
-        }
         output.value = result;
         showStatus(MODE_LABELS[currentMode] + ' — done', 'success');
       } catch (e) {

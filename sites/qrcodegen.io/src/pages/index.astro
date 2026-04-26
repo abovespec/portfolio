@@ -3,7 +3,7 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
 ---
 <BaseLayout
   title="QR Code Generator — Free Online QR Code Maker"
-  description="Free online QR code generator. Create QR codes for URLs, text, phone numbers, and more. Download as PNG. Runs entirely in your browser."
+  description="Free online QR code generator. Create QR codes for URLs, text, Wi-Fi credentials, and more. Download as PNG. Runs entirely in your browser."
 >
 
   <!-- Compact header -->
@@ -16,16 +16,55 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
     </p>
   </header>
 
-  <!-- Input -->
-  <div class="mb-3">
-    <label for="qr-input" class="block text-sm font-medium text-slate-700 mb-1">Text or URL</label>
-    <textarea
-      id="qr-input"
-      rows="3"
-      placeholder="https://example.com or any text..."
-      class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 resize-none"
-      spellcheck="false"
-    ></textarea>
+  <!-- Mode tabs -->
+  <div class="flex gap-1 mb-4 border-b border-slate-200">
+    <button id="tab-text" class="tab-btn px-4 py-2 text-sm font-medium border-b-2 border-emerald-500 text-emerald-600 -mb-px">
+      Text / URL
+    </button>
+    <button id="tab-wifi" class="tab-btn px-4 py-2 text-sm font-medium border-b-2 border-transparent text-slate-500 hover:text-slate-700 -mb-px transition-colors">
+      WiFi
+    </button>
+  </div>
+
+  <!-- Text/URL panel -->
+  <div id="panel-text">
+    <div class="mb-3">
+      <label for="qr-input" class="block text-sm font-medium text-slate-700 mb-1">Text or URL</label>
+      <textarea
+        id="qr-input"
+        rows="3"
+        placeholder="https://example.com or any text..."
+        class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 resize-none"
+        spellcheck="false"
+      ></textarea>
+    </div>
+  </div>
+
+  <!-- WiFi panel -->
+  <div id="panel-wifi" class="hidden mb-3">
+    <div class="rounded-lg border border-slate-200 bg-white p-4 space-y-3">
+      <div>
+        <label for="wifi-ssid" class="block text-sm font-medium text-slate-700 mb-1">Network Name (SSID)</label>
+        <input type="text" id="wifi-ssid" placeholder="My WiFi Network"
+          class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500" />
+      </div>
+      <div>
+        <label for="wifi-pass" class="block text-sm font-medium text-slate-700 mb-1">Password</label>
+        <input type="text" id="wifi-pass" placeholder="WiFi password"
+          class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500" />
+      </div>
+      <div>
+        <label for="wifi-sec" class="block text-sm font-medium text-slate-700 mb-1">Security</label>
+        <select id="wifi-sec" class="rounded-md border border-slate-300 bg-white px-2 py-1.5 text-sm focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500">
+          <option value="WPA">WPA / WPA2</option>
+          <option value="WEP">WEP</option>
+          <option value="">None (open)</option>
+        </select>
+      </div>
+      <button id="btn-wifi-gen" class="rounded-md bg-emerald-600 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-emerald-700 transition-colors">
+        Generate WiFi QR
+      </button>
+    </div>
   </div>
 
   <!-- Toolbar -->
@@ -65,14 +104,25 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
         <option value="4" selected>Normal</option>
       </select>
     </label>
+    <!-- Color pickers -->
+    <label class="flex items-center gap-2 text-sm font-medium text-slate-700">
+      Foreground:
+      <input type="color" id="qr-fg-color" value="#000000"
+        class="h-8 w-10 cursor-pointer rounded border border-slate-300" />
+    </label>
+    <label class="flex items-center gap-2 text-sm font-medium text-slate-700">
+      Background:
+      <input type="color" id="qr-bg-color" value="#ffffff"
+        class="h-8 w-10 cursor-pointer rounded border border-slate-300" />
+    </label>
   </div>
 
   <!-- Status bar -->
   <div id="status" class="mt-3 rounded-md px-3 py-1.5 text-sm font-medium hidden"></div>
 
-  <!-- Output area -->
+  <!-- Output area (canvas-based for color support) -->
   <div id="qr-output" class="mt-4 flex justify-center items-center min-h-48 rounded-lg border border-slate-200 bg-white p-6 hidden">
-    <!-- SVG injected here -->
+    <canvas id="qr-canvas"></canvas>
   </div>
 
   <!-- Download button (hidden until QR generated) -->
@@ -184,12 +234,56 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
     var statusEl = document.getElementById('status');
     var outputEl = document.getElementById('qr-output');
     var downloadWrapEl = document.getElementById('download-wrap');
+    var canvasEl = document.getElementById('qr-canvas');
     var debounceTimer = null;
     var qrLibLoaded = false;
     var qrLibLoading = false;
     var pendingGenerate = false;
+    var currentMode = 'text'; // 'text' or 'wifi'
 
-    var SIZE_MAP = { small: { cellSize: 3, maxWidth: '200px' }, medium: { cellSize: 5, maxWidth: '300px' }, large: { cellSize: 8, maxWidth: '400px' } };
+    var SIZE_MAP = { small: { cellSize: 3, px: 200 }, medium: { cellSize: 5, px: 300 }, large: { cellSize: 8, px: 400 } };
+
+    // Tab switching
+    document.getElementById('tab-text').addEventListener('click', function() {
+      currentMode = 'text';
+      document.getElementById('panel-text').classList.remove('hidden');
+      document.getElementById('panel-wifi').classList.add('hidden');
+      document.getElementById('btn-generate').classList.remove('hidden');
+      document.getElementById('tab-text').className = 'tab-btn px-4 py-2 text-sm font-medium border-b-2 border-emerald-500 text-emerald-600 -mb-px';
+      document.getElementById('tab-wifi').className = 'tab-btn px-4 py-2 text-sm font-medium border-b-2 border-transparent text-slate-500 hover:text-slate-700 -mb-px transition-colors';
+    });
+
+    document.getElementById('tab-wifi').addEventListener('click', function() {
+      currentMode = 'wifi';
+      document.getElementById('panel-text').classList.add('hidden');
+      document.getElementById('panel-wifi').classList.remove('hidden');
+      document.getElementById('btn-generate').classList.add('hidden');
+      document.getElementById('tab-wifi').className = 'tab-btn px-4 py-2 text-sm font-medium border-b-2 border-emerald-500 text-emerald-600 -mb-px';
+      document.getElementById('tab-text').className = 'tab-btn px-4 py-2 text-sm font-medium border-b-2 border-transparent text-slate-500 hover:text-slate-700 -mb-px transition-colors';
+    });
+
+    // WiFi QR generation
+    document.getElementById('btn-wifi-gen').addEventListener('click', function() {
+      var ssid = document.getElementById('wifi-ssid').value;
+      var pass = document.getElementById('wifi-pass').value;
+      var sec = document.getElementById('wifi-sec').value;
+      if (!ssid) { showStatus('Enter a network name (SSID)', 'error'); return; }
+      // Escape special chars in SSID and password for WiFi QR format
+      function escWifi(s) { return s.replace(/\\/g,'\\\\').replace(/;/g,'\\;').replace(/,/g,'\\,').replace(/"/g,'\\"'); }
+      var wifiStr = 'WIFI:T:' + (sec || 'nopass') + ';S:' + escWifi(ssid) + ';P:' + escWifi(pass) + ';;';
+      // Populate the text input and generate
+      document.getElementById('qr-input').value = wifiStr;
+      generateFromText(wifiStr);
+    });
+
+    // WiFi fields auto-generate on input
+    ['wifi-ssid', 'wifi-pass', 'wifi-sec'].forEach(function(id) {
+      document.getElementById(id).addEventListener('input', function() {
+        var ssid = document.getElementById('wifi-ssid').value;
+        if (!ssid) return;
+        document.getElementById('btn-wifi-gen').click();
+      });
+    });
 
     function showStatus(msg, type) {
       var clsMap = {
@@ -225,8 +319,7 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
       document.head.appendChild(s);
     }
 
-    function generate() {
-      var text = document.getElementById('qr-input').value.trim();
+    function generateFromText(text) {
       if (!text) {
         outputEl.classList.add('hidden');
         downloadWrapEl.classList.add('hidden');
@@ -236,27 +329,41 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
 
       if (!qrLibLoaded) {
         showStatus('Loading QR library…', 'info');
-        loadQrLib(function() { generate(); });
+        loadQrLib(function() { generateFromText(text); });
         return;
       }
 
       var ecc = document.getElementById('qr-ecc').value;
       var sizeKey = document.getElementById('qr-size').value;
       var margin = parseInt(document.getElementById('qr-margin').value, 10);
+      var fgColor = document.getElementById('qr-fg-color').value;
+      var bgColor = document.getElementById('qr-bg-color').value;
       var sizeConfig = SIZE_MAP[sizeKey] || SIZE_MAP['medium'];
 
       try {
         var qr = qrcode(0, ecc);
         qr.addData(text);
         qr.make();
-        var svgStr = qr.createSvgTag(sizeConfig.cellSize, margin, 'QR Code');
 
-        outputEl.innerHTML = svgStr;
-        var svgEl = outputEl.querySelector('svg');
-        if (svgEl) {
-          svgEl.style.cssText = 'width: 100%; max-width: ' + sizeConfig.maxWidth + '; height: auto; display: block;';
-          svgEl.removeAttribute('width');
-          svgEl.removeAttribute('height');
+        var moduleCount = qr.getModuleCount();
+        var cellSize = sizeConfig.cellSize;
+        var marginPx = margin * cellSize;
+        var totalPx = moduleCount * cellSize + marginPx * 2;
+
+        canvasEl.width = totalPx;
+        canvasEl.height = totalPx;
+        canvasEl.style.cssText = 'width:100%;max-width:' + sizeConfig.px + 'px;height:auto;display:block;';
+
+        var ctx = canvasEl.getContext('2d');
+        ctx.fillStyle = bgColor;
+        ctx.fillRect(0, 0, totalPx, totalPx);
+        ctx.fillStyle = fgColor;
+        for (var row = 0; row < moduleCount; row++) {
+          for (var col = 0; col < moduleCount; col++) {
+            if (qr.isDark(row, col)) {
+              ctx.fillRect(marginPx + col * cellSize, marginPx + row * cellSize, cellSize, cellSize);
+            }
+          }
         }
 
         outputEl.classList.remove('hidden');
@@ -269,38 +376,18 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
       }
     }
 
+    function generate() {
+      var text = document.getElementById('qr-input').value.trim();
+      generateFromText(text);
+    }
+
     function downloadPng() {
-      var svgEl = document.querySelector('#qr-output svg');
-      if (!svgEl) { showStatus('No QR code to download', 'info'); return; }
-
-      var sizeKey = document.getElementById('qr-size').value;
-      var sizeConfig = SIZE_MAP[sizeKey] || SIZE_MAP['medium'];
-      var pxSize = parseInt(sizeConfig.maxWidth, 10);
-
-      var clone = svgEl.cloneNode(true);
-      clone.setAttribute('width', pxSize);
-      clone.setAttribute('height', pxSize);
-
-      var svgStr = new XMLSerializer().serializeToString(clone);
-      var img = new Image();
-      img.onload = function() {
-        var canvas = document.createElement('canvas');
-        canvas.width = pxSize;
-        canvas.height = pxSize;
-        var ctx = canvas.getContext('2d');
-        ctx.fillStyle = '#ffffff';
-        ctx.fillRect(0, 0, pxSize, pxSize);
-        ctx.drawImage(img, 0, 0, pxSize, pxSize);
-        var a = document.createElement('a');
-        a.href = canvas.toDataURL('image/png');
-        a.download = 'qrcode.png';
-        a.click();
-        showStatus('PNG downloaded', 'success');
-      };
-      img.onerror = function() {
-        showStatus('Failed to export PNG', 'error');
-      };
-      img.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svgStr)));
+      if (!canvasEl.width) { showStatus('No QR code to download', 'info'); return; }
+      var a = document.createElement('a');
+      a.href = canvasEl.toDataURL('image/png');
+      a.download = 'qrcode.png';
+      a.click();
+      showStatus('PNG downloaded', 'success');
     }
 
     function scheduleGenerate() {
@@ -313,6 +400,8 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
     document.getElementById('qr-ecc').addEventListener('change', generate);
     document.getElementById('qr-size').addEventListener('change', generate);
     document.getElementById('qr-margin').addEventListener('change', generate);
+    document.getElementById('qr-fg-color').addEventListener('input', generate);
+    document.getElementById('qr-bg-color').addEventListener('input', generate);
 
     document.getElementById('btn-generate').addEventListener('click', function() {
       clearTimeout(debounceTimer);
@@ -321,10 +410,11 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
 
     document.getElementById('btn-clear').addEventListener('click', function() {
       document.getElementById('qr-input').value = '';
+      document.getElementById('wifi-ssid').value = '';
+      document.getElementById('wifi-pass').value = '';
       outputEl.classList.add('hidden');
       downloadWrapEl.classList.add('hidden');
       hideStatus();
-      document.getElementById('qr-input').focus();
     });
 
     document.getElementById('btn-download').addEventListener('click', downloadPng);

@@ -99,14 +99,68 @@ const recentPosts = siteConfig.features.hasBlog
                     <label class="block text-xs font-medium text-slate-600 mb-1">gap: <span id="f-gap-val">8px</span></label>
                     <input type="range" id="f-gap" min="0" max="32" value="8" class="w-full accent-teal-600" />
                   </div>
+
+                  <!-- Item count controls -->
+                  <div>
+                    <label class="block text-xs font-medium text-slate-600 mb-1">Items: <span id="f-item-count">4</span></label>
+                    <div class="flex gap-1">
+                      <button id="f-item-minus" class="flex-1 rounded-lg border border-slate-300 bg-white py-1 text-sm font-bold text-slate-600 hover:bg-slate-100 transition">&#8722;</button>
+                      <button id="f-item-plus"  class="flex-1 rounded-lg border border-slate-300 bg-white py-1 text-sm font-bold text-slate-600 hover:bg-slate-100 transition">&#43;</button>
+                    </div>
+                  </div>
                 </div>
+
                 <div class="md:col-span-2 rounded-xl border border-slate-200 bg-white p-4">
-                  <h3 class="text-sm font-semibold text-slate-700 uppercase tracking-wide mb-2">Preview</h3>
+                  <h3 class="text-sm font-semibold text-slate-700 uppercase tracking-wide mb-2">Preview <span class="text-xs font-normal text-slate-400 normal-case">(click an item to edit it)</span></h3>
                   <div id="flex-preview" class="h-56 rounded-lg border-2 border-dashed border-teal-200 bg-teal-50/50 p-2" style="display:flex;flex-direction:row;justify-content:flex-start;align-items:stretch;flex-wrap:nowrap;gap:8px;">
-                    <div class="rounded-lg bg-teal-500 text-white font-bold text-sm flex items-center justify-center" style="min-width:48px;min-height:48px;">1</div>
-                    <div class="rounded-lg bg-emerald-500 text-white font-bold text-sm flex items-center justify-center" style="min-width:48px;min-height:48px;">2</div>
-                    <div class="rounded-lg bg-cyan-500 text-white font-bold text-sm flex items-center justify-center" style="min-width:48px;min-height:48px;">3</div>
-                    <div class="rounded-lg bg-violet-500 text-white font-bold text-sm flex items-center justify-center" style="min-width:48px;min-height:48px;">4</div>
+                  </div>
+
+                  <!-- Per-item control panel (hidden until item clicked) -->
+                  <div id="item-panel" class="hidden mt-3 rounded-lg border border-teal-200 bg-teal-50/40 p-3">
+                    <div class="flex items-center justify-between mb-2">
+                      <span class="text-xs font-bold text-teal-700 uppercase tracking-wide">Item <span id="item-panel-label">1</span> Properties</span>
+                      <button id="btn-item-reset" class="text-xs text-red-500 hover:text-red-700 font-medium">Reset item</button>
+                    </div>
+                    <div class="grid grid-cols-2 gap-2 sm:grid-cols-3">
+                      <div>
+                        <label class="block text-xs font-medium text-slate-600 mb-1">flex-grow</label>
+                        <select id="item-grow" class="w-full rounded border border-slate-300 bg-white px-2 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-teal-400">
+                          <option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label class="block text-xs font-medium text-slate-600 mb-1">flex-shrink</label>
+                        <select id="item-shrink" class="w-full rounded border border-slate-300 bg-white px-2 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-teal-400">
+                          <option value="1">1</option><option value="0">0</option><option value="2">2</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label class="block text-xs font-medium text-slate-600 mb-1">flex-basis</label>
+                        <select id="item-basis" class="w-full rounded border border-slate-300 bg-white px-2 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-teal-400">
+                          <option value="auto">auto</option><option value="0">0</option><option value="25%">25%</option><option value="50%">50%</option><option value="100%">100%</option><option value="custom">custom…</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label class="block text-xs font-medium text-slate-600 mb-1">align-self</label>
+                        <select id="item-align-self" class="w-full rounded border border-slate-300 bg-white px-2 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-teal-400">
+                          <option value="auto">auto</option><option value="flex-start">flex-start</option><option value="center">center</option><option value="flex-end">flex-end</option><option value="stretch">stretch</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label class="block text-xs font-medium text-slate-600 mb-1">order</label>
+                        <select id="item-order" class="w-full rounded border border-slate-300 bg-white px-2 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-teal-400">
+                          <option value="-2">-2</option><option value="-1">-1</option><option value="0">0</option><option value="1">1</option><option value="2">2</option>
+                        </select>
+                      </div>
+                      <div id="item-basis-custom-wrap" class="hidden">
+                        <label class="block text-xs font-medium text-slate-600 mb-1">custom basis</label>
+                        <input id="item-basis-custom" type="text" placeholder="e.g. 200px" class="w-full rounded border border-slate-300 bg-white px-2 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-teal-400" />
+                      </div>
+                    </div>
+                    <div class="mt-2">
+                      <span class="text-xs font-medium text-slate-500">Computed CSS:</span>
+                      <code id="item-css-display" class="ml-2 text-xs font-mono text-teal-700"></code>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -182,21 +236,21 @@ const recentPosts = siteConfig.features.hasBlog
       <div class="rounded-xl border border-slate-200 bg-white p-6">
         <h3 class="text-lg font-semibold text-teal-700">Use Flexbox when…</h3>
         <ul class="mt-3 space-y-2 text-sm text-slate-600">
-          <li class="flex gap-2"><span class="text-teal-500 mt-0.5">→</span>Layout flows in <strong>one dimension</strong> (row or column)</li>
-          <li class="flex gap-2"><span class="text-teal-500 mt-0.5">→</span>You need items to <strong>shrink or grow</strong> based on available space</li>
-          <li class="flex gap-2"><span class="text-teal-500 mt-0.5">→</span>Aligning items in a <strong>nav bar or toolbar</strong></li>
-          <li class="flex gap-2"><span class="text-teal-500 mt-0.5">→</span><strong>Centering</strong> a single element inside a container</li>
-          <li class="flex gap-2"><span class="text-teal-500 mt-0.5">→</span>Cards in a <strong>wrapping row</strong> where items can be different widths</li>
+          <li class="flex gap-2"><span class="text-teal-500 mt-0.5">&#8594;</span>Layout flows in <strong>one dimension</strong> (row or column)</li>
+          <li class="flex gap-2"><span class="text-teal-500 mt-0.5">&#8594;</span>You need items to <strong>shrink or grow</strong> based on available space</li>
+          <li class="flex gap-2"><span class="text-teal-500 mt-0.5">&#8594;</span>Aligning items in a <strong>nav bar or toolbar</strong></li>
+          <li class="flex gap-2"><span class="text-teal-500 mt-0.5">&#8594;</span><strong>Centering</strong> a single element inside a container</li>
+          <li class="flex gap-2"><span class="text-teal-500 mt-0.5">&#8594;</span>Cards in a <strong>wrapping row</strong> where items can be different widths</li>
         </ul>
       </div>
       <div class="rounded-xl border border-slate-200 bg-white p-6">
         <h3 class="text-lg font-semibold text-emerald-700">Use Grid when…</h3>
         <ul class="mt-3 space-y-2 text-sm text-slate-600">
-          <li class="flex gap-2"><span class="text-emerald-500 mt-0.5">→</span>Layout spans <strong>two dimensions</strong> (rows AND columns)</li>
-          <li class="flex gap-2"><span class="text-emerald-500 mt-0.5">→</span>You want items to align to a <strong>fixed column track</strong></li>
-          <li class="flex gap-2"><span class="text-emerald-500 mt-0.5">→</span>Building a <strong>page-level layout</strong> with header, sidebar, main, footer</li>
-          <li class="flex gap-2"><span class="text-emerald-500 mt-0.5">→</span>Items need to <strong>span multiple rows or columns</strong></li>
-          <li class="flex gap-2"><span class="text-emerald-500 mt-0.5">→</span>A <strong>photo gallery</strong> or card grid where all cells must align</li>
+          <li class="flex gap-2"><span class="text-emerald-500 mt-0.5">&#8594;</span>Layout spans <strong>two dimensions</strong> (rows AND columns)</li>
+          <li class="flex gap-2"><span class="text-emerald-500 mt-0.5">&#8594;</span>You want items to align to a <strong>fixed column track</strong></li>
+          <li class="flex gap-2"><span class="text-emerald-500 mt-0.5">&#8594;</span>Building a <strong>page-level layout</strong> with header, sidebar, main, footer</li>
+          <li class="flex gap-2"><span class="text-emerald-500 mt-0.5">&#8594;</span>Items need to <strong>span multiple rows or columns</strong></li>
+          <li class="flex gap-2"><span class="text-emerald-500 mt-0.5">&#8594;</span>A <strong>photo gallery</strong> or card grid where all cells must align</li>
         </ul>
       </div>
     </div>
@@ -269,6 +323,152 @@ const recentPosts = siteConfig.features.hasBlog
 </BaseLayout>
 
 <script is:inline>
+  // ── Item colors ──
+  var ITEM_COLORS = ['bg-teal-500','bg-emerald-500','bg-cyan-500','bg-violet-500','bg-amber-500','bg-rose-500','bg-blue-500','bg-pink-500','bg-orange-500','bg-lime-500','bg-indigo-500','bg-fuchsia-500'];
+  var COLOR_STYLES = ['background:#14b8a6','background:#10b981','background:#06b6d4','background:#8b5cf6','background:#f59e0b','background:#f43f5e','background:#3b82f6','background:#ec4899','background:#f97316','background:#84cc16','background:#6366f1','background:#a855f7'];
+
+  // ── Flex items state ──
+  var flexItemCount = 4;
+  var flexItemStyles = {}; // keyed by 1-based index
+
+  var selectedItem = null; // 1-based index
+
+  function getItemStyle(i) {
+    return flexItemStyles[i] || { grow: '0', shrink: '1', basis: 'auto', alignSelf: 'auto', order: '0' };
+  }
+
+  function buildFlexItem(i) {
+    var el = document.createElement('div');
+    var colorStyle = COLOR_STYLES[(i - 1) % COLOR_STYLES.length];
+    el.style.cssText = colorStyle + ';border-radius:0.5rem;color:white;font-weight:700;font-size:0.875rem;display:flex;align-items:center;justify-content:center;min-width:48px;min-height:48px;cursor:pointer;transition:outline 0.1s;user-select:none;';
+    el.dataset.itemIndex = i;
+    el.textContent = i;
+    applyItemStyleToEl(el, i);
+    el.addEventListener('click', function() { selectItem(i, el); });
+    return el;
+  }
+
+  function applyItemStyleToEl(el, i) {
+    var s = getItemStyle(i);
+    el.style.flexGrow    = s.grow;
+    el.style.flexShrink  = s.shrink;
+    el.style.flexBasis   = s.basis;
+    el.style.alignSelf   = s.alignSelf;
+    el.style.order       = s.order;
+  }
+
+  function renderFlexItems() {
+    var preview = document.getElementById('flex-preview');
+    preview.innerHTML = '';
+    for (var i = 1; i <= flexItemCount; i++) {
+      preview.appendChild(buildFlexItem(i));
+    }
+    // Deselect if selected item no longer exists
+    if (selectedItem && selectedItem > flexItemCount) {
+      selectedItem = null;
+      document.getElementById('item-panel').classList.add('hidden');
+    }
+    document.getElementById('f-item-count').textContent = flexItemCount;
+    updateFlexCSS();
+  }
+
+  function selectItem(i, el) {
+    // Deselect previous
+    document.querySelectorAll('#flex-preview > div').forEach(function(d) {
+      d.style.outline = '';
+    });
+    if (selectedItem === i) {
+      // Toggle off
+      selectedItem = null;
+      document.getElementById('item-panel').classList.add('hidden');
+      return;
+    }
+    selectedItem = i;
+    el.style.outline = '3px solid #0d9488';
+    document.getElementById('item-panel').classList.remove('hidden');
+    document.getElementById('item-panel-label').textContent = i;
+
+    var s = getItemStyle(i);
+    document.getElementById('item-grow').value = s.grow;
+    document.getElementById('item-shrink').value = s.shrink;
+
+    var basisSel = document.getElementById('item-basis');
+    var knownVals = ['auto','0','25%','50%','100%'];
+    if (knownVals.indexOf(s.basis) !== -1) {
+      basisSel.value = s.basis;
+      document.getElementById('item-basis-custom-wrap').classList.add('hidden');
+    } else {
+      basisSel.value = 'custom';
+      document.getElementById('item-basis-custom').value = s.basis;
+      document.getElementById('item-basis-custom-wrap').classList.remove('hidden');
+    }
+    document.getElementById('item-align-self').value = s.alignSelf;
+    document.getElementById('item-order').value = s.order;
+    updateItemCSSDisplay();
+  }
+
+  function updateItemCSSDisplay() {
+    if (!selectedItem) return;
+    var s = getItemStyle(selectedItem);
+    var parts = [];
+    if (s.grow !== '0')      parts.push('flex-grow: ' + s.grow);
+    if (s.shrink !== '1')    parts.push('flex-shrink: ' + s.shrink);
+    if (s.basis !== 'auto')  parts.push('flex-basis: ' + s.basis);
+    if (s.alignSelf !== 'auto') parts.push('align-self: ' + s.alignSelf);
+    if (s.order !== '0')     parts.push('order: ' + s.order);
+    document.getElementById('item-css-display').textContent = parts.length ? parts.join('; ') + ';' : '(defaults)';
+  }
+
+  function applyItemPanelToSelected() {
+    if (!selectedItem) return;
+    var basisSel = document.getElementById('item-basis');
+    var basis = basisSel.value;
+    if (basis === 'custom') {
+      basis = document.getElementById('item-basis-custom').value.trim() || 'auto';
+    }
+    flexItemStyles[selectedItem] = {
+      grow: document.getElementById('item-grow').value,
+      shrink: document.getElementById('item-shrink').value,
+      basis: basis,
+      alignSelf: document.getElementById('item-align-self').value,
+      order: document.getElementById('item-order').value,
+    };
+    // Apply to DOM element
+    var el = document.querySelector('#flex-preview > div[data-item-index="' + selectedItem + '"]');
+    if (el) applyItemStyleToEl(el, selectedItem);
+    updateItemCSSDisplay();
+    updateFlexCSS();
+  }
+
+  document.getElementById('item-basis').addEventListener('change', function() {
+    var isCustom = this.value === 'custom';
+    document.getElementById('item-basis-custom-wrap').classList.toggle('hidden', !isCustom);
+    applyItemPanelToSelected();
+  });
+  document.getElementById('item-basis-custom').addEventListener('input', applyItemPanelToSelected);
+  ['item-grow','item-shrink','item-align-self','item-order'].forEach(function(id) {
+    document.getElementById(id).addEventListener('change', applyItemPanelToSelected);
+  });
+
+  document.getElementById('btn-item-reset').addEventListener('click', function() {
+    if (!selectedItem) return;
+    delete flexItemStyles[selectedItem];
+    var el = document.querySelector('#flex-preview > div[data-item-index="' + selectedItem + '"]');
+    if (el) applyItemStyleToEl(el, selectedItem);
+    // Re-select to refresh panel
+    selectItem(selectedItem, el);
+    updateFlexCSS();
+  });
+
+  // ── Item count buttons ──
+  document.getElementById('f-item-minus').addEventListener('click', function() {
+    if (flexItemCount > 1) { flexItemCount--; renderFlexItems(); }
+  });
+  document.getElementById('f-item-plus').addEventListener('click', function() {
+    if (flexItemCount < 12) { flexItemCount++; renderFlexItems(); }
+  });
+
+  // ── Tab switching ──
   function showTab(t) {
     var isFlex = t === 'flex';
     document.getElementById('panel-flex').classList.toggle('hidden', !isFlex);
@@ -284,6 +484,42 @@ const recentPosts = siteConfig.features.hasBlog
     }
   }
 
+  function updateFlexCSS() {
+    var dir     = document.getElementById('f-dir').value;
+    var justify = document.getElementById('f-justify').value;
+    var align   = document.getElementById('f-align').value;
+    var wrap    = document.getElementById('f-wrap').value;
+    var gap     = document.getElementById('f-gap').value;
+
+    var lines = [
+      '.container {',
+      '  display: flex;',
+      '  flex-direction: ' + dir + ';',
+      '  justify-content: ' + justify + ';',
+      '  align-items: ' + align + ';',
+      '  flex-wrap: ' + wrap + ';',
+      '  gap: ' + gap + 'px;',
+      '}'
+    ];
+
+    // Append per-item CSS for any customized items
+    for (var i = 1; i <= flexItemCount; i++) {
+      if (flexItemStyles[i]) {
+        var s = flexItemStyles[i];
+        var itemLines = ['.item-' + i + ' {'];
+        if (s.grow !== '0')      itemLines.push('  flex-grow: ' + s.grow + ';');
+        if (s.shrink !== '1')    itemLines.push('  flex-shrink: ' + s.shrink + ';');
+        if (s.basis !== 'auto')  itemLines.push('  flex-basis: ' + s.basis + ';');
+        if (s.alignSelf !== 'auto') itemLines.push('  align-self: ' + s.alignSelf + ';');
+        if (s.order !== '0')     itemLines.push('  order: ' + s.order + ';');
+        itemLines.push('}');
+        if (itemLines.length > 2) lines = lines.concat(['', '/* Item ' + i + ' */'], itemLines);
+      }
+    }
+
+    document.getElementById('flex-css').textContent = lines.join('\n');
+  }
+
   function updateFlex() {
     var p = document.getElementById('flex-preview');
     var dir = document.getElementById('f-dir').value;
@@ -297,17 +533,9 @@ const recentPosts = siteConfig.features.hasBlog
     p.style.alignItems = align;
     p.style.flexWrap = wrap;
     p.style.gap = gap + 'px';
-    document.getElementById('flex-css').textContent = [
-      '.container {',
-      '  display: flex;',
-      '  flex-direction: ' + dir + ';',
-      '  justify-content: ' + justify + ';',
-      '  align-items: ' + align + ';',
-      '  flex-wrap: ' + wrap + ';',
-      '  gap: ' + gap + 'px;',
-      '}'
-    ].join('\n');
+    updateFlexCSS();
   }
+
   ['f-dir','f-justify','f-align','f-wrap','f-gap'].forEach(function(id) {
     document.getElementById(id).addEventListener('input', updateFlex);
   });
@@ -349,5 +577,8 @@ const recentPosts = siteConfig.features.hasBlog
   document.getElementById('tab-flex').addEventListener('click', function() { showTab('flex'); });
   document.getElementById('tab-grid').addEventListener('click', function() { showTab('grid'); });
 
-  updateFlex(); updateGrid();
+  // Initial render
+  renderFlexItems();
+  updateFlex();
+  updateGrid();
 </script>

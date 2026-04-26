@@ -23,6 +23,14 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
     <button id="btn-clear-history" class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Clear history</button>
   </div>
 
+  <!-- Campaign Presets -->
+  <div class="mb-4 rounded-lg border border-slate-200 bg-slate-50 p-4">
+    <p class="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-2.5">Campaign Presets</p>
+    <div class="flex flex-wrap gap-2" id="preset-buttons">
+      <!-- Rendered by JS -->
+    </div>
+  </div>
+
   <!-- Dual-pane: form left | output right -->
   <div class="grid gap-3 md:grid-cols-2 min-h-96">
 
@@ -173,6 +181,50 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
     var utmHistory = JSON.parse(localStorage.getItem('utm_history') || '[]');
     var statusEl = document.getElementById('status');
 
+    // Campaign presets
+    var PRESETS = [
+      { label: 'Email Newsletter', source: 'newsletter', medium: 'email' },
+      { label: 'Google Ads',       source: 'google',     medium: 'cpc' },
+      { label: 'Facebook Post',    source: 'facebook',   medium: 'social' },
+      { label: 'Instagram',        source: 'instagram',  medium: 'social' },
+      { label: 'LinkedIn',         source: 'linkedin',   medium: 'social' },
+      { label: 'Twitter/X',        source: 'twitter',    medium: 'social' },
+      { label: 'YouTube',          source: 'youtube',    medium: 'video' },
+      { label: 'Press Release',    source: 'press',      medium: 'referral' },
+      { label: 'QR Code',          source: 'qr-code',    medium: 'print' },
+    ];
+
+    var activePreset = null;
+
+    function applyPreset(idx) {
+      var p = PRESETS[idx];
+      document.getElementById('utm-source').value = p.source;
+      document.getElementById('utm-medium').value = p.medium;
+      activePreset = idx;
+      renderPresets();
+      // Focus campaign field so user fills it next
+      document.getElementById('utm-campaign').focus();
+    }
+
+    function renderPresets() {
+      var container = document.getElementById('preset-buttons');
+      container.innerHTML = '';
+      PRESETS.forEach(function(p, i) {
+        var btn = document.createElement('button');
+        var isActive = activePreset === i;
+        btn.type = 'button';
+        btn.textContent = p.label;
+        btn.className = 'rounded-full border px-3 py-1 text-xs font-medium transition ' +
+          (isActive
+            ? 'border-orange-500 bg-orange-500 text-white'
+            : 'border-slate-300 bg-white text-slate-600 hover:border-orange-400 hover:text-orange-600');
+        btn.addEventListener('click', function() { applyPreset(i); });
+        container.appendChild(btn);
+      });
+    }
+
+    renderPresets();
+
     function showStatus(msg, type) {
       var clsMap = { error: 'bg-red-50 text-red-700 border border-red-200', success: 'bg-emerald-50 text-emerald-700 border border-emerald-200', info: 'bg-blue-50 text-blue-700 border border-blue-200' };
       statusEl.className = 'mt-2 rounded-md px-3 py-1.5 text-sm font-medium ' + (clsMap[type] || 'bg-slate-100 text-slate-700');
@@ -205,6 +257,8 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
       document.getElementById('utm-term').value = 'utm+builder';
       document.getElementById('utm-content').value = 'hero_cta';
       statusEl.classList.add('hidden');
+      activePreset = null;
+      renderPresets();
     });
 
     document.getElementById('btn-build').addEventListener('click', function() {

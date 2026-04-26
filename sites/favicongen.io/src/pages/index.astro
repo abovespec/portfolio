@@ -11,7 +11,7 @@ const recentPosts = siteConfig.features.hasBlog
 ---
 <BaseLayout
   title="Favicon Generator — Create ICO, PNG & SVG Favicons Free"
-  description="Generate favicon sets (16x16, 32x32, 180x180 Apple Touch, and SVG) from any image. Free, runs in your browser — nothing uploaded."
+  description="Generate favicon sets (16x16, 32x32, 180x180 Apple Touch, and SVG) from any image or text/emoji. Free, runs in your browser — nothing uploaded."
 >
 
   <!-- Hero: upload area + live favicon preview as focal point -->
@@ -26,7 +26,7 @@ const recentPosts = siteConfig.features.hasBlog
           Favicon Generator
         </h1>
         <p class="mt-3 text-lg text-slate-600">
-          Upload any image and get a complete favicon set — PNG sizes, Apple Touch icon, and SVG.
+          Upload any image — or type initials/emoji — and get a complete favicon set.
           Generates in your browser. No uploads.
         </p>
       </div>
@@ -35,80 +35,151 @@ const recentPosts = siteConfig.features.hasBlog
         {[
           '16×16, 32×32, 48×48 PNG',
           '180×180 Apple Touch',
-          'SVG favicon',
+          'Text &amp; Emoji mode',
           'Nothing uploaded',
         ].map((badge) => (
           <li class="flex items-center gap-1.5">
             <svg class="h-4 w-4 shrink-0 text-fuchsia-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
               <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.061 1.06l2.5 2.5a.75.75 0 001.137-.088l4-5.5z" clip-rule="evenodd" />
             </svg>
-            {badge}
+            <span set:html={badge} />
           </li>
         ))}
       </ul>
 
-      <!-- Generator card: upload + live preview -->
+      <!-- Generator card -->
       <div class="mx-auto mt-8 w-full max-w-2xl">
         <div class="rounded-2xl border border-fuchsia-200/80 bg-white p-6 shadow-sm">
 
-          <!-- Upload zone -->
-          <div
-            id="drop-zone"
-            class="flex flex-col items-center justify-center rounded-xl border-2 border-dashed border-fuchsia-300 bg-fuchsia-50/60 px-6 py-10 text-center transition hover:border-fuchsia-500 hover:bg-fuchsia-50 cursor-pointer"
-            onclick="document.getElementById('file-input').click()"
-            ondragover="event.preventDefault();this.classList.add('border-fuchsia-500','bg-fuchsia-50')"
-            ondragleave="this.classList.remove('border-fuchsia-500','bg-fuchsia-50')"
-            ondrop="handleDrop(event)"
-          >
-            <svg class="h-12 w-12 text-fuchsia-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3 21h18" />
-            </svg>
-            <p class="mt-3 text-sm font-medium text-slate-700">Drop an image here or <span class="text-fuchsia-600 underline underline-offset-2">browse</span></p>
-            <p class="mt-1 text-xs text-slate-400">PNG, JPG, SVG, WebP — square image gives the best results</p>
-            <input type="file" id="file-input" accept="image/*" class="hidden" onchange="handleFileInput(this)" />
+          <!-- Mode tabs -->
+          <div class="flex rounded-xl border border-slate-200 bg-slate-50 p-1 mb-6 gap-1">
+            <button id="tab-upload" class="flex-1 rounded-lg py-2 text-sm font-semibold bg-white text-fuchsia-700 shadow-sm transition">Upload Image</button>
+            <button id="tab-text"   class="flex-1 rounded-lg py-2 text-sm font-semibold text-slate-500 hover:text-slate-700 transition">Text / Emoji</button>
           </div>
 
-          <!-- Live preview section — shown after upload -->
-          <div id="preview-section" class="hidden mt-6">
-            <h2 class="text-sm font-semibold text-slate-700 mb-4">Preview &amp; Download</h2>
+          <!-- ── Upload mode ── -->
+          <div id="mode-upload">
+            <div
+              id="drop-zone"
+              class="flex flex-col items-center justify-center rounded-xl border-2 border-dashed border-fuchsia-300 bg-fuchsia-50/60 px-6 py-10 text-center transition hover:border-fuchsia-500 hover:bg-fuchsia-50 cursor-pointer"
+              onclick="document.getElementById('file-input').click()"
+              ondragover="event.preventDefault();this.classList.add('border-fuchsia-500','bg-fuchsia-50')"
+              ondragleave="this.classList.remove('border-fuchsia-500','bg-fuchsia-50')"
+              ondrop="handleDrop(event)"
+            >
+              <svg class="h-12 w-12 text-fuchsia-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3 21h18" />
+              </svg>
+              <p class="mt-3 text-sm font-medium text-slate-700">Drop an image here or <span class="text-fuchsia-600 underline underline-offset-2">browse</span></p>
+              <p class="mt-1 text-xs text-slate-400">PNG, JPG, SVG, WebP — square image gives the best results</p>
+              <input type="file" id="file-input" accept="image/*" class="hidden" onchange="handleFileInput(this)" />
+            </div>
 
-            <!-- Preview tiles -->
-            <div class="flex flex-wrap items-end gap-6 justify-center mb-6">
-              <div class="text-center">
-                <canvas id="prev-16" width="16" height="16" class="block mx-auto rounded border border-slate-200 fav-checkerboard" style="image-rendering:pixelated;width:64px;height:64px"></canvas>
-                <p class="mt-1.5 text-xs text-slate-500">16×16</p>
+            <!-- Live preview section — shown after upload -->
+            <div id="preview-section" class="hidden mt-6">
+              <h2 class="text-sm font-semibold text-slate-700 mb-4">Preview &amp; Download</h2>
+              <div class="flex flex-wrap items-end gap-6 justify-center mb-6">
+                <div class="text-center">
+                  <canvas id="prev-16" width="16" height="16" class="block mx-auto rounded border border-slate-200 fav-checkerboard" style="image-rendering:pixelated;width:64px;height:64px"></canvas>
+                  <p class="mt-1.5 text-xs text-slate-500">16×16</p>
+                </div>
+                <div class="text-center">
+                  <canvas id="prev-32" width="32" height="32" class="block mx-auto rounded border border-slate-200 fav-checkerboard" style="image-rendering:pixelated;width:64px;height:64px"></canvas>
+                  <p class="mt-1.5 text-xs text-slate-500">32×32</p>
+                </div>
+                <div class="text-center">
+                  <canvas id="prev-48" width="48" height="48" class="block mx-auto rounded border border-slate-200 fav-checkerboard" style="image-rendering:pixelated;width:64px;height:64px"></canvas>
+                  <p class="mt-1.5 text-xs text-slate-500">48×48</p>
+                </div>
+                <div class="text-center">
+                  <canvas id="prev-180" width="180" height="180" class="block mx-auto rounded border border-slate-200 fav-checkerboard" style="width:64px;height:64px"></canvas>
+                  <p class="mt-1.5 text-xs text-slate-500">180×180</p>
+                  <p class="text-xs text-slate-400">Apple Touch</p>
+                </div>
               </div>
-              <div class="text-center">
-                <canvas id="prev-32" width="32" height="32" class="block mx-auto rounded border border-slate-200 fav-checkerboard" style="image-rendering:pixelated;width:64px;height:64px"></canvas>
-                <p class="mt-1.5 text-xs text-slate-500">32×32</p>
+              <div class="flex flex-wrap gap-3 justify-center">
+                <button onclick="downloadPng(16)" class="rounded-lg border border-fuchsia-200 bg-fuchsia-50 px-4 py-2 text-sm font-medium text-fuchsia-700 hover:bg-fuchsia-100 transition">16×16 PNG</button>
+                <button onclick="downloadPng(32)" class="rounded-lg border border-fuchsia-200 bg-fuchsia-50 px-4 py-2 text-sm font-medium text-fuchsia-700 hover:bg-fuchsia-100 transition">32×32 PNG</button>
+                <button onclick="downloadPng(48)" class="rounded-lg border border-fuchsia-200 bg-fuchsia-50 px-4 py-2 text-sm font-medium text-fuchsia-700 hover:bg-fuchsia-100 transition">48×48 PNG</button>
+                <button onclick="downloadPng(180)" class="rounded-lg border border-fuchsia-200 bg-fuchsia-50 px-4 py-2 text-sm font-medium text-fuchsia-700 hover:bg-fuchsia-100 transition">Apple Touch PNG</button>
+                <button onclick="downloadSvg()" class="rounded-lg border border-fuchsia-200 bg-fuchsia-50 px-4 py-2 text-sm font-medium text-fuchsia-700 hover:bg-fuchsia-100 transition">SVG</button>
               </div>
-              <div class="text-center">
-                <canvas id="prev-48" width="48" height="48" class="block mx-auto rounded border border-slate-200 fav-checkerboard" style="image-rendering:pixelated;width:64px;height:64px"></canvas>
-                <p class="mt-1.5 text-xs text-slate-500">48×48</p>
+              <div class="mt-6">
+                <p class="text-xs font-semibold text-slate-600 mb-2">HTML to paste in your <code class="font-mono text-fuchsia-700">&lt;head&gt;</code></p>
+                <pre id="html-snippet" class="overflow-x-auto rounded-xl bg-slate-900 p-4 text-xs text-emerald-300 font-mono leading-relaxed"></pre>
+                <button onclick="navigator.clipboard.writeText(document.getElementById('html-snippet').textContent)" class="mt-2 rounded-lg bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-700 hover:bg-slate-200 transition">Copy HTML</button>
               </div>
-              <div class="text-center">
-                <canvas id="prev-180" width="180" height="180" class="block mx-auto rounded border border-slate-200 fav-checkerboard" style="width:64px;height:64px"></canvas>
-                <p class="mt-1.5 text-xs text-slate-500">180×180</p>
-                <p class="text-xs text-slate-400">Apple Touch</p>
+            </div>
+          </div>
+
+          <!-- ── Text / Emoji mode ── -->
+          <div id="mode-text" class="hidden">
+            <div class="grid gap-4 sm:grid-cols-2">
+              <div class="sm:col-span-2">
+                <label class="block text-sm font-medium text-slate-700 mb-1">Text or Emoji <span class="text-slate-400 font-normal">(1–3 characters)</span></label>
+                <input
+                  id="txt-input"
+                  type="text"
+                  maxlength="3"
+                  placeholder="AB or &#128640;"
+                  class="w-full rounded-lg border border-slate-300 px-4 py-3 text-2xl text-center tracking-widest focus:border-fuchsia-500 focus:ring-1 focus:ring-fuchsia-500 outline-none"
+                  oninput="updateTextPreview()"
+                />
+              </div>
+              <label class="block">
+                <span class="text-sm font-medium text-slate-700">Background color</span>
+                <div class="mt-1 flex items-center gap-2">
+                  <input type="color" id="txt-bg" value="#4F46E5" class="h-9 w-14 rounded-md border border-slate-300 cursor-pointer" oninput="updateTextPreview()" />
+                  <span class="text-sm text-slate-500 font-mono" id="txt-bg-label">#4F46E5</span>
+                </div>
+              </label>
+              <label class="block">
+                <span class="text-sm font-medium text-slate-700">Text color</span>
+                <div class="mt-1 flex items-center gap-2">
+                  <input type="color" id="txt-fg" value="#FFFFFF" class="h-9 w-14 rounded-md border border-slate-300 cursor-pointer" oninput="updateTextPreview()" />
+                  <span class="text-sm text-slate-500 font-mono" id="txt-fg-label">#FFFFFF</span>
+                </div>
+              </label>
+              <div class="sm:col-span-2">
+                <label class="block text-sm font-medium text-slate-700 mb-1">Font size adjustment</label>
+                <div class="flex items-center gap-3">
+                  <input type="range" id="txt-size-factor" min="50" max="100" value="75" class="flex-1 accent-fuchsia-600" oninput="updateTextPreview()" />
+                  <span class="text-sm font-mono text-slate-500 w-10 text-right" id="txt-size-label">75%</span>
+                </div>
+                <p class="mt-1 text-xs text-slate-400">Auto-scales by character count; drag to fine-tune</p>
               </div>
             </div>
 
-            <!-- Download buttons -->
-            <div class="flex flex-wrap gap-3 justify-center">
-              <button onclick="downloadPng(16)" class="rounded-lg border border-fuchsia-200 bg-fuchsia-50 px-4 py-2 text-sm font-medium text-fuchsia-700 hover:bg-fuchsia-100 transition">16×16 PNG</button>
-              <button onclick="downloadPng(32)" class="rounded-lg border border-fuchsia-200 bg-fuchsia-50 px-4 py-2 text-sm font-medium text-fuchsia-700 hover:bg-fuchsia-100 transition">32×32 PNG</button>
-              <button onclick="downloadPng(48)" class="rounded-lg border border-fuchsia-200 bg-fuchsia-50 px-4 py-2 text-sm font-medium text-fuchsia-700 hover:bg-fuchsia-100 transition">48×48 PNG</button>
-              <button onclick="downloadPng(180)" class="rounded-lg border border-fuchsia-200 bg-fuchsia-50 px-4 py-2 text-sm font-medium text-fuchsia-700 hover:bg-fuchsia-100 transition">Apple Touch PNG</button>
-              <button onclick="downloadSvg()" class="rounded-lg border border-fuchsia-200 bg-fuchsia-50 px-4 py-2 text-sm font-medium text-fuchsia-700 hover:bg-fuchsia-100 transition">SVG</button>
-            </div>
-
-            <!-- HTML snippet -->
+            <!-- Live preview -->
             <div class="mt-6">
-              <p class="text-xs font-semibold text-slate-600 mb-2">HTML to paste in your <code class="font-mono text-fuchsia-700">&lt;head&gt;</code></p>
-              <pre id="html-snippet" class="overflow-x-auto rounded-xl bg-slate-900 p-4 text-xs text-emerald-300 font-mono leading-relaxed"></pre>
-              <button onclick="navigator.clipboard.writeText(document.getElementById('html-snippet').textContent)" class="mt-2 rounded-lg bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-700 hover:bg-slate-200 transition">Copy HTML</button>
+              <p class="text-sm font-semibold text-slate-700 mb-3">Live Preview</p>
+              <div class="flex flex-wrap items-end gap-6 justify-center mb-6">
+                <div class="text-center">
+                  <canvas id="txt-prev-16" width="16" height="16" class="block mx-auto rounded border border-slate-200" style="image-rendering:pixelated;width:64px;height:64px"></canvas>
+                  <p class="mt-1.5 text-xs text-slate-500">16×16</p>
+                </div>
+                <div class="text-center">
+                  <canvas id="txt-prev-32" width="32" height="32" class="block mx-auto rounded border border-slate-200" style="image-rendering:pixelated;width:64px;height:64px"></canvas>
+                  <p class="mt-1.5 text-xs text-slate-500">32×32</p>
+                </div>
+                <div class="text-center">
+                  <canvas id="txt-prev-64" width="64" height="64" class="block mx-auto rounded border border-slate-200" style="width:64px;height:64px"></canvas>
+                  <p class="mt-1.5 text-xs text-slate-500">64×64</p>
+                </div>
+                <div class="text-center">
+                  <canvas id="txt-prev-128" width="128" height="128" class="block mx-auto rounded border border-slate-200" style="width:64px;height:64px"></canvas>
+                  <p class="mt-1.5 text-xs text-slate-500">128×128</p>
+                </div>
+              </div>
+              <div class="flex flex-wrap gap-3 justify-center">
+                <button onclick="downloadTextPng(16)"  class="rounded-lg border border-fuchsia-200 bg-fuchsia-50 px-4 py-2 text-sm font-medium text-fuchsia-700 hover:bg-fuchsia-100 transition">16×16 PNG</button>
+                <button onclick="downloadTextPng(32)"  class="rounded-lg border border-fuchsia-200 bg-fuchsia-50 px-4 py-2 text-sm font-medium text-fuchsia-700 hover:bg-fuchsia-100 transition">32×32 PNG</button>
+                <button onclick="downloadTextPng(64)"  class="rounded-lg border border-fuchsia-200 bg-fuchsia-50 px-4 py-2 text-sm font-medium text-fuchsia-700 hover:bg-fuchsia-100 transition">64×64 PNG</button>
+                <button onclick="downloadTextPng(128)" class="rounded-lg border border-fuchsia-200 bg-fuchsia-50 px-4 py-2 text-sm font-medium text-fuchsia-700 hover:bg-fuchsia-100 transition">128×128 PNG</button>
+              </div>
             </div>
           </div>
+
         </div>
       </div>
     </div>
@@ -178,7 +249,7 @@ const recentPosts = siteConfig.features.hasBlog
   )}
 
   <footer class="mt-16 border-t border-slate-200 pt-8 text-sm text-slate-500">
-    <span>Content last reviewed: <time datetime="2026-04-25">April 25, 2026</time>.</span>
+    <span>Content last reviewed: <time datetime="2026-04-26">April 26, 2026</time>.</span>
   </footer>
 
 </BaseLayout>
@@ -195,6 +266,7 @@ const recentPosts = siteConfig.features.hasBlog
 </style>
 
 <script is:inline>
+  // ── Image upload mode ──────────────────────────────────────────────────────
   var srcImg = null;
 
   function handleDrop(e) {
@@ -278,4 +350,76 @@ const recentPosts = siteConfig.features.hasBlog
     a.click();
     URL.revokeObjectURL(a.href);
   }
+
+  // ── Text / Emoji mode ──────────────────────────────────────────────────────
+  function textToCanvas(text, bgColor, fgColor, sizeFactor, size) {
+    var canvas = document.createElement('canvas');
+    canvas.width = size;
+    canvas.height = size;
+    var ctx = canvas.getContext('2d');
+    ctx.fillStyle = bgColor;
+    ctx.fillRect(0, 0, size, size);
+    ctx.fillStyle = fgColor;
+    var autoScale = text.length === 1 ? 0.6 : text.length === 2 ? 0.45 : 0.35;
+    var fontSize = Math.floor(size * autoScale * (sizeFactor / 75));
+    ctx.font = 'bold ' + fontSize + 'px system-ui, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(text, size / 2, size / 2);
+    return canvas;
+  }
+
+  function updateTextPreview() {
+    var text = document.getElementById('txt-input').value.trim() || 'A';
+    var bg = document.getElementById('txt-bg').value;
+    var fg = document.getElementById('txt-fg').value;
+    var factor = parseInt(document.getElementById('txt-size-factor').value, 10);
+    document.getElementById('txt-bg-label').textContent = bg.toUpperCase();
+    document.getElementById('txt-fg-label').textContent = fg.toUpperCase();
+    document.getElementById('txt-size-label').textContent = factor + '%';
+    [16, 32, 64, 128].forEach(function(size) {
+      var src = textToCanvas(text, bg, fg, factor, size);
+      var dest = document.getElementById('txt-prev-' + size);
+      dest.width = size;
+      dest.height = size;
+      dest.getContext('2d').drawImage(src, 0, 0);
+    });
+  }
+
+  function downloadTextPng(size) {
+    var text = document.getElementById('txt-input').value.trim() || 'A';
+    var bg = document.getElementById('txt-bg').value;
+    var fg = document.getElementById('txt-fg').value;
+    var factor = parseInt(document.getElementById('txt-size-factor').value, 10);
+    var canvas = textToCanvas(text, bg, fg, factor, size);
+    var a = document.createElement('a');
+    a.download = 'favicon-' + size + 'x' + size + '.png';
+    a.href = canvas.toDataURL('image/png');
+    a.click();
+  }
+
+  // ── Mode tab switching ─────────────────────────────────────────────────────
+  document.getElementById('tab-upload').addEventListener('click', function() {
+    document.getElementById('mode-upload').classList.remove('hidden');
+    document.getElementById('mode-text').classList.add('hidden');
+    this.classList.add('bg-white', 'text-fuchsia-700', 'shadow-sm');
+    this.classList.remove('text-slate-500');
+    var t = document.getElementById('tab-text');
+    t.classList.remove('bg-white', 'text-fuchsia-700', 'shadow-sm');
+    t.classList.add('text-slate-500');
+  });
+
+  document.getElementById('tab-text').addEventListener('click', function() {
+    document.getElementById('mode-text').classList.remove('hidden');
+    document.getElementById('mode-upload').classList.add('hidden');
+    this.classList.add('bg-white', 'text-fuchsia-700', 'shadow-sm');
+    this.classList.remove('text-slate-500');
+    var u = document.getElementById('tab-upload');
+    u.classList.remove('bg-white', 'text-fuchsia-700', 'shadow-sm');
+    u.classList.add('text-slate-500');
+    updateTextPreview();
+  });
+
+  // Initial text preview render
+  updateTextPreview();
 </script>

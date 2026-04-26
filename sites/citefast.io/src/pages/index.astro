@@ -3,17 +3,17 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
 ---
 <BaseLayout
   title="Citation Generator — APA, MLA, Chicago Format Online Free"
-  description="Free online citation generator. Create formatted citations in APA, MLA, and Chicago style for books, websites, and journal articles. Copy-ready output."
+  description="Free online citation generator. Create formatted citations in APA, MLA, and Chicago style for books, websites, journal articles, YouTube, podcasts, government documents, and dissertations."
 >
 
   <!-- Header -->
   <header class="text-center mb-8">
     <h1 class="text-4xl font-bold text-stone-800 mb-2">Citation Generator</h1>
-    <p class="text-stone-600 text-lg">Generate APA, MLA, and Chicago citations instantly — books, websites, and journal articles.</p>
+    <p class="text-stone-600 text-lg">Generate APA, MLA, and Chicago citations instantly — books, websites, journal articles, and more.</p>
   </header>
 
   <!-- Source type tabs -->
-  <div class="flex gap-2 mb-3">
+  <div class="flex flex-wrap gap-2 mb-3">
     <button id="tab-book"
       class="px-4 py-2 rounded-lg text-sm font-medium transition bg-stone-700 text-white"
       onclick="switchTab('book')">
@@ -28,6 +28,26 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
       class="px-4 py-2 rounded-lg text-sm font-medium transition bg-stone-100 text-stone-700 hover:bg-stone-200"
       onclick="switchTab('journal')">
       Journal Article
+    </button>
+    <button id="tab-video"
+      class="px-4 py-2 rounded-lg text-sm font-medium transition bg-stone-100 text-stone-700 hover:bg-stone-200"
+      onclick="switchTab('video')">
+      YouTube / Video
+    </button>
+    <button id="tab-podcast"
+      class="px-4 py-2 rounded-lg text-sm font-medium transition bg-stone-100 text-stone-700 hover:bg-stone-200"
+      onclick="switchTab('podcast')">
+      Podcast
+    </button>
+    <button id="tab-govdoc"
+      class="px-4 py-2 rounded-lg text-sm font-medium transition bg-stone-100 text-stone-700 hover:bg-stone-200"
+      onclick="switchTab('govdoc')">
+      Government Doc
+    </button>
+    <button id="tab-dissertation"
+      class="px-4 py-2 rounded-lg text-sm font-medium transition bg-stone-100 text-stone-700 hover:bg-stone-200"
+      onclick="switchTab('dissertation')">
+      Dissertation / Thesis
     </button>
   </div>
 
@@ -189,6 +209,175 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
         </div>
       </div>
 
+      <!-- YouTube / Video form -->
+      <div id="form-video" class="hidden">
+        <p class="text-xs font-semibold text-stone-500 uppercase tracking-wide mb-2">YouTube / Video Details</p>
+        <div class="mt-2">
+          <label class="block text-xs text-stone-600 mb-1" for="video-creator">Creator / Channel Name</label>
+          <input id="video-creator" type="text" placeholder="Kurzgesagt – In a Nutshell"
+            class="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-stone-400" />
+        </div>
+        <div class="mt-2">
+          <label class="block text-xs text-stone-600 mb-1" for="video-title">Video Title</label>
+          <input id="video-title" type="text" placeholder="Why Black Holes Are Awesome"
+            class="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-stone-400" />
+        </div>
+        <div class="grid grid-cols-3 gap-2 mt-2">
+          <div>
+            <label class="block text-xs text-stone-600 mb-1" for="video-year">Year</label>
+            <input id="video-year" type="text" placeholder="2024"
+              class="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-stone-400" />
+          </div>
+          <div>
+            <label class="block text-xs text-stone-600 mb-1" for="video-month">Month <span class="text-stone-400">(opt.)</span></label>
+            <input id="video-month" type="text" placeholder="March"
+              class="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-stone-400" />
+          </div>
+          <div>
+            <label class="block text-xs text-stone-600 mb-1" for="video-day">Day <span class="text-stone-400">(opt.)</span></label>
+            <input id="video-day" type="text" placeholder="15"
+              class="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-stone-400" />
+          </div>
+        </div>
+        <div class="mt-2">
+          <label class="block text-xs text-stone-600 mb-1" for="video-platform">Platform</label>
+          <select id="video-platform" class="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-stone-400">
+            <option value="YouTube">YouTube</option>
+            <option value="Vimeo">Vimeo</option>
+            <option value="TED">TED</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="mt-2">
+          <label class="block text-xs text-stone-600 mb-1" for="video-url">URL</label>
+          <input id="video-url" type="text" placeholder="https://www.youtube.com/watch?v=..."
+            class="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-stone-400" />
+        </div>
+      </div>
+
+      <!-- Podcast form -->
+      <div id="form-podcast" class="hidden">
+        <p class="text-xs font-semibold text-stone-500 uppercase tracking-wide mb-2">Podcast Details</p>
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <label class="block text-xs text-stone-600 mb-1" for="pod-host-last">Host Last Name</label>
+            <input id="pod-host-last" type="text" placeholder="Rogen"
+              class="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-stone-400" />
+          </div>
+          <div>
+            <label class="block text-xs text-stone-600 mb-1" for="pod-host-first">Host First Name</label>
+            <input id="pod-host-first" type="text" placeholder="Joe"
+              class="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-stone-400" />
+          </div>
+        </div>
+        <div class="mt-2">
+          <label class="block text-xs text-stone-600 mb-1" for="pod-episode-title">Episode Title</label>
+          <input id="pod-episode-title" type="text" placeholder="Episode with Elon Musk"
+            class="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-stone-400" />
+        </div>
+        <div class="mt-2">
+          <label class="block text-xs text-stone-600 mb-1" for="pod-podcast-name">Podcast Name</label>
+          <input id="pod-podcast-name" type="text" placeholder="The Joe Rogan Experience"
+            class="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-stone-400" />
+        </div>
+        <div class="grid grid-cols-3 gap-2 mt-2">
+          <div>
+            <label class="block text-xs text-stone-600 mb-1" for="pod-year">Year</label>
+            <input id="pod-year" type="text" placeholder="2024"
+              class="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-stone-400" />
+          </div>
+          <div>
+            <label class="block text-xs text-stone-600 mb-1" for="pod-month">Month <span class="text-stone-400">(opt.)</span></label>
+            <input id="pod-month" type="text" placeholder="January"
+              class="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-stone-400" />
+          </div>
+          <div>
+            <label class="block text-xs text-stone-600 mb-1" for="pod-episode-num">Episode # <span class="text-stone-400">(opt.)</span></label>
+            <input id="pod-episode-num" type="text" placeholder="2054"
+              class="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-stone-400" />
+          </div>
+        </div>
+        <div class="mt-2">
+          <label class="block text-xs text-stone-600 mb-1" for="pod-url">URL <span class="text-stone-400">(optional)</span></label>
+          <input id="pod-url" type="text" placeholder="https://open.spotify.com/..."
+            class="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-stone-400" />
+        </div>
+      </div>
+
+      <!-- Government Document form -->
+      <div id="form-govdoc" class="hidden">
+        <p class="text-xs font-semibold text-stone-500 uppercase tracking-wide mb-2">Government Document Details</p>
+        <div class="mt-2">
+          <label class="block text-xs text-stone-600 mb-1" for="gov-agency">Agency / Department</label>
+          <input id="gov-agency" type="text" placeholder="U.S. Department of Health and Human Services"
+            class="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-stone-400" />
+        </div>
+        <div class="mt-2">
+          <label class="block text-xs text-stone-600 mb-1" for="gov-title">Document Title</label>
+          <input id="gov-title" type="text" placeholder="Annual Report on Health Disparities"
+            class="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-stone-400" />
+        </div>
+        <div class="mt-2">
+          <label class="block text-xs text-stone-600 mb-1" for="gov-year">Year</label>
+          <input id="gov-year" type="text" placeholder="2024"
+            class="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-stone-400" />
+        </div>
+        <div class="mt-2">
+          <label class="block text-xs text-stone-600 mb-1" for="gov-pub-num">Publication Number <span class="text-stone-400">(optional)</span></label>
+          <input id="gov-pub-num" type="text" placeholder="HHS-2024-001"
+            class="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-stone-400" />
+        </div>
+        <div class="mt-2">
+          <label class="block text-xs text-stone-600 mb-1" for="gov-url">URL <span class="text-stone-400">(optional)</span></label>
+          <input id="gov-url" type="text" placeholder="https://www.hhs.gov/..."
+            class="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-stone-400" />
+        </div>
+      </div>
+
+      <!-- Dissertation / Thesis form -->
+      <div id="form-dissertation" class="hidden">
+        <p class="text-xs font-semibold text-stone-500 uppercase tracking-wide mb-2">Dissertation / Thesis Details</p>
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <label class="block text-xs text-stone-600 mb-1" for="diss-author-last">Author Last Name</label>
+            <input id="diss-author-last" type="text" placeholder="Smith"
+              class="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-stone-400" />
+          </div>
+          <div>
+            <label class="block text-xs text-stone-600 mb-1" for="diss-author-first">Author First Name</label>
+            <input id="diss-author-first" type="text" placeholder="Jane"
+              class="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-stone-400" />
+          </div>
+        </div>
+        <div class="mt-2">
+          <label class="block text-xs text-stone-600 mb-1" for="diss-title">Title</label>
+          <input id="diss-title" type="text" placeholder="Neural correlates of decision-making"
+            class="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-stone-400" />
+        </div>
+        <div class="mt-2">
+          <label class="block text-xs text-stone-600 mb-1" for="diss-year">Year</label>
+          <input id="diss-year" type="text" placeholder="2024"
+            class="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-stone-400" />
+        </div>
+        <div class="mt-2">
+          <label class="block text-xs text-stone-600 mb-1" for="diss-institution">Institution</label>
+          <input id="diss-institution" type="text" placeholder="Harvard University"
+            class="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-stone-400" />
+        </div>
+        <div class="mt-2">
+          <label class="block text-xs text-stone-600 mb-1" for="diss-type">Type</label>
+          <select id="diss-type" class="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-stone-400">
+            <option value="Doctoral dissertation">Doctoral dissertation</option>
+            <option value="Master's thesis">Master's thesis</option>
+          </select>
+        </div>
+        <div class="mt-2">
+          <label class="block text-xs text-stone-600 mb-1" for="diss-url">Database / URL <span class="text-stone-400">(optional)</span></label>
+          <input id="diss-url" type="text" placeholder="ProQuest Dissertations &amp; Theses"
+            class="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-stone-400" />
+        </div>
+      </div>
+
       <!-- Action buttons -->
       <div class="flex gap-2 mt-1">
         <button id="btn-generate"
@@ -305,12 +494,13 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
   </section>
 
   <script is:inline>
+    var ALL_TABS = ['book', 'website', 'journal', 'video', 'podcast', 'govdoc', 'dissertation'];
     var currentTab = 'book';
     var citationPlainText = { apa: '', mla: '', chicago: '' };
 
     function switchTab(tab) {
       currentTab = tab;
-      ['book', 'website', 'journal'].forEach(function(t) {
+      ALL_TABS.forEach(function(t) {
         var form = document.getElementById('form-' + t);
         var btn = document.getElementById('tab-' + t);
         if (t === tab) {
@@ -350,6 +540,16 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
     function sentenceCase(str) {
       if (!str) return '';
       return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+    }
+
+    var MONTH_ABBREV = {
+      'january':'Jan.','february':'Feb.','march':'Mar.','april':'Apr.',
+      'may':'May','june':'June','july':'July','august':'Aug.',
+      'september':'Sept.','october':'Oct.','november':'Nov.','december':'Dec.'
+    };
+
+    function monthAbbr(month) {
+      return month ? (MONTH_ABBREV[month.toLowerCase()] || month) : '';
     }
 
     function generateBook() {
@@ -430,16 +630,11 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
       else if (year)            dateAPA = year;
       else                      dateAPA = 'n.d.';
 
-      var monthAbbrevMap = {
-        'january':'Jan.','february':'Feb.','march':'Mar.','april':'Apr.',
-        'may':'May','june':'June','july':'July','august':'Aug.',
-        'september':'Sept.','october':'Oct.','november':'Nov.','december':'Dec.'
-      };
-      var monthAbbrev = month ? (monthAbbrevMap[month.toLowerCase()] || month) : '';
+      var mabbr = monthAbbr(month);
       var dateMLA = '';
-      if (day && monthAbbrev && year)  dateMLA = day + ' ' + monthAbbrev + ' ' + year;
-      else if (monthAbbrev && year)    dateMLA = monthAbbrev + ' ' + year;
-      else if (year)                   dateMLA = year;
+      if (day && mabbr && year)  dateMLA = day + ' ' + mabbr + ' ' + year;
+      else if (mabbr && year)    dateMLA = mabbr + ' ' + year;
+      else if (year)             dateMLA = year;
 
       // APA
       var apaHtml = '';
@@ -556,6 +751,231 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
       setOutputs(apaHtml, apaPlain, mlaHtml, mlaPlain, chicagoHtml, chicagoPlain);
     }
 
+    function generateVideo() {
+      var creator  = val('video-creator');
+      var title    = val('video-title');
+      var year     = val('video-year');
+      var month    = val('video-month');
+      var day      = val('video-day');
+      var platform = val('video-platform') || 'YouTube';
+      var url      = val('video-url');
+
+      if (!creator && !title) { setPlaceholders(); return; }
+
+      var creatorLabel = creator || 'Creator';
+
+      // APA: Creator [Channel]. (Year, Month Day). Title [Video]. Platform. URL
+      var dateAPA = '';
+      if (year && month && day) dateAPA = year + ', ' + month + ' ' + day;
+      else if (year && month)   dateAPA = year + ', ' + month;
+      else if (year)            dateAPA = year;
+      else                      dateAPA = 'n.d.';
+
+      var apaHtml = creatorLabel + ' [Channel]. (' + dateAPA + '). <em>' + (title || 'Title') + '</em> [Video]. ' + platform + '.';
+      if (url) apaHtml += ' ' + url;
+      var apaPlain = creatorLabel + ' [Channel]. (' + dateAPA + '). ' + (title || 'Title') + ' [Video]. ' + platform + '.';
+      if (url) apaPlain += ' ' + url;
+
+      // MLA: Creator. "Title." Platform, Day Month Year, URL.
+      var mabbr = monthAbbr(month);
+      var dateMLA = '';
+      if (day && mabbr && year) dateMLA = day + ' ' + mabbr + ' ' + year;
+      else if (mabbr && year)   dateMLA = mabbr + ' ' + year;
+      else if (year)            dateMLA = year;
+
+      var mlaHtml = creatorLabel + '. &quot;' + (title || 'Title') + '.&quot; <em>' + platform + '</em>';
+      if (dateMLA) mlaHtml += ', ' + dateMLA;
+      if (url) mlaHtml += ', ' + url;
+      mlaHtml += '.';
+
+      var mlaPlain = creatorLabel + '. "' + (title || 'Title') + '." ' + platform;
+      if (dateMLA) mlaPlain += ', ' + dateMLA;
+      if (url) mlaPlain += ', ' + url;
+      mlaPlain += '.';
+
+      // Chicago: Creator. "Title." Platform video, Month Day, Year. URL.
+      var dateChicago = '';
+      if (month && day && year) dateChicago = month + ' ' + day + ', ' + year;
+      else if (month && year)   dateChicago = month + ' ' + year;
+      else if (year)            dateChicago = year;
+
+      var chicagoHtml = creatorLabel + '. &quot;' + (title || 'Title') + '.&quot; <em>' + platform + '</em> video';
+      if (dateChicago) chicagoHtml += ', ' + dateChicago;
+      if (url) chicagoHtml += '. ' + url;
+      chicagoHtml += '.';
+
+      var chicagoPlain = creatorLabel + '. "' + (title || 'Title') + '." ' + platform + ' video';
+      if (dateChicago) chicagoPlain += ', ' + dateChicago;
+      if (url) chicagoPlain += '. ' + url;
+      chicagoPlain += '.';
+
+      setOutputs(apaHtml, apaPlain, mlaHtml, mlaPlain, chicagoHtml, chicagoPlain);
+    }
+
+    function generatePodcast() {
+      var hostLast    = val('pod-host-last');
+      var hostFirst   = val('pod-host-first');
+      var epTitle     = val('pod-episode-title');
+      var podName     = val('pod-podcast-name');
+      var year        = val('pod-year');
+      var month       = val('pod-month');
+      var epNum       = val('pod-episode-num');
+      var url         = val('pod-url');
+
+      if (!hostLast && !epTitle && !podName) { setPlaceholders(); return; }
+
+      var hostFull = hostLast && hostFirst ? hostLast + ', ' + hostFirst : (hostLast || hostFirst || 'Host');
+      var hostAPA  = hostLast && hostFirst ? hostLast + ', ' + initial(hostFirst) : (hostLast || hostFirst || 'Host');
+
+      var mabbr = monthAbbr(month);
+
+      // APA: Host, A. A. (Year, Month). Episode title [Audio podcast episode]. In Podcast Name. URL
+      var dateAPA = year && month ? year + ', ' + month : (year || 'n.d.');
+      var apaHtml = hostAPA + ' (Host). (' + dateAPA + '). ';
+      if (epTitle) apaHtml += epTitle + ' [Audio podcast episode]. ';
+      if (podName) apaHtml += 'In <em>' + podName + '</em>.';
+      if (url) apaHtml += ' ' + url;
+
+      var apaPlain = hostAPA + ' (Host). (' + dateAPA + '). ';
+      if (epTitle) apaPlain += epTitle + ' [Audio podcast episode]. ';
+      if (podName) apaPlain += 'In ' + podName + '.';
+      if (url) apaPlain += ' ' + url;
+
+      // MLA: Host, First. "Episode Title." Podcast Name, no. EpNum, Month Year. URL.
+      var mlaHtml = hostFull + ' (Host). &quot;' + (epTitle || 'Episode Title') + '.&quot;';
+      if (podName) mlaHtml += ' <em>' + podName + '</em>';
+      if (epNum) mlaHtml += ', no. ' + epNum;
+      if (mabbr && year) mlaHtml += ', ' + mabbr + ' ' + year;
+      else if (year) mlaHtml += ', ' + year;
+      if (url) mlaHtml += '. ' + url;
+      mlaHtml += '.';
+
+      var mlaPlain = hostFull + ' (Host). "' + (epTitle || 'Episode Title') + '."';
+      if (podName) mlaPlain += ' ' + podName;
+      if (epNum) mlaPlain += ', no. ' + epNum;
+      if (mabbr && year) mlaPlain += ', ' + mabbr + ' ' + year;
+      else if (year) mlaPlain += ', ' + year;
+      if (url) mlaPlain += '. ' + url;
+      mlaPlain += '.';
+
+      // Chicago: Host, First. "Episode Title." Podcast Name. Podcast audio, Month Year. URL.
+      var dateChicago = mabbr && year ? mabbr + ' ' + year : (year || '');
+      var chicagoHtml = hostFull + ' (Host). &quot;' + (epTitle || 'Episode Title') + '.&quot;';
+      if (podName) chicagoHtml += ' <em>' + podName + '</em>.';
+      chicagoHtml += ' Podcast audio';
+      if (dateChicago) chicagoHtml += ', ' + dateChicago;
+      if (url) chicagoHtml += '. ' + url;
+      chicagoHtml += '.';
+
+      var chicagoPlain = hostFull + ' (Host). "' + (epTitle || 'Episode Title') + '."';
+      if (podName) chicagoPlain += ' ' + podName + '.';
+      chicagoPlain += ' Podcast audio';
+      if (dateChicago) chicagoPlain += ', ' + dateChicago;
+      if (url) chicagoPlain += '. ' + url;
+      chicagoPlain += '.';
+
+      setOutputs(apaHtml, apaPlain, mlaHtml, mlaPlain, chicagoHtml, chicagoPlain);
+    }
+
+    function generateGovDoc() {
+      var agency  = val('gov-agency');
+      var title   = val('gov-title');
+      var year    = val('gov-year');
+      var pubNum  = val('gov-pub-num');
+      var url     = val('gov-url');
+
+      if (!agency && !title) { setPlaceholders(); return; }
+
+      var agencyLabel = agency || 'Agency';
+
+      // APA: Agency. (Year). Title. Publisher. URL
+      var apaHtml = agencyLabel + '. (' + (year || 'n.d.') + '). <em>' + (title || 'Title') + '</em>.';
+      if (pubNum) apaHtml += ' ' + pubNum + '.';
+      if (url) apaHtml += ' ' + url;
+      var apaPlain = agencyLabel + '. (' + (year || 'n.d.') + '). ' + (title || 'Title') + '.';
+      if (pubNum) apaPlain += ' ' + pubNum + '.';
+      if (url) apaPlain += ' ' + url;
+
+      // MLA: Agency. Title. Publication Number, Year. URL.
+      var mlaHtml = agencyLabel + '. <em>' + (title || 'Title') + '</em>.';
+      if (pubNum) mlaHtml += ' ' + pubNum + ',';
+      if (year) mlaHtml += ' ' + year + '.';
+      if (url) mlaHtml += ' ' + url + '.';
+
+      var mlaPlain = agencyLabel + '. ' + (title || 'Title') + '.';
+      if (pubNum) mlaPlain += ' ' + pubNum + ',';
+      if (year) mlaPlain += ' ' + year + '.';
+      if (url) mlaPlain += ' ' + url + '.';
+
+      // Chicago: Agency. "Title." Publication Number. Year. URL.
+      var chicagoHtml = agencyLabel + '. &quot;' + (title || 'Title') + '.&quot;';
+      if (pubNum) chicagoHtml += ' ' + pubNum + '.';
+      if (year) chicagoHtml += ' ' + year + '.';
+      if (url) chicagoHtml += ' ' + url + '.';
+
+      var chicagoPlain = agencyLabel + '. "' + (title || 'Title') + '."';
+      if (pubNum) chicagoPlain += ' ' + pubNum + '.';
+      if (year) chicagoPlain += ' ' + year + '.';
+      if (url) chicagoPlain += ' ' + url + '.';
+
+      setOutputs(apaHtml, apaPlain, mlaHtml, mlaPlain, chicagoHtml, chicagoPlain);
+    }
+
+    function generateDissertation() {
+      var last        = val('diss-author-last');
+      var first       = val('diss-author-first');
+      var title       = val('diss-title');
+      var year        = val('diss-year');
+      var institution = val('diss-institution');
+      var dissType    = val('diss-type') || 'Doctoral dissertation';
+      var url         = val('diss-url');
+
+      if (!last && !title) { setPlaceholders(); return; }
+
+      var authorFull = last && first ? last + ', ' + first : (last || first || 'Author');
+      var authorAPA  = last && first ? last + ', ' + initial(first) : (last || first || 'Author');
+
+      // APA: Author, A. A. (Year). Title [Doctoral dissertation, Institution]. Database/URL
+      var apaHtml = authorAPA + ' (' + (year || 'n.d.') + '). <em>' + (title || 'Title') + '</em>';
+      apaHtml += ' [' + dissType;
+      if (institution) apaHtml += ', ' + institution;
+      apaHtml += '].';
+      if (url) apaHtml += ' ' + url;
+      var apaPlain = authorAPA + ' (' + (year || 'n.d.') + '). ' + (title || 'Title');
+      apaPlain += ' [' + dissType;
+      if (institution) apaPlain += ', ' + institution;
+      apaPlain += '].';
+      if (url) apaPlain += ' ' + url;
+
+      // MLA: Author. Title. Diss. Type, Institution, Year. Database.
+      var mlaHtml = authorFull + '. <em>' + (title || 'Title') + '</em>.';
+      mlaHtml += ' ' + dissType + ',';
+      if (institution) mlaHtml += ' ' + institution + ',';
+      if (year) mlaHtml += ' ' + year + '.';
+      if (url) mlaHtml += ' ' + url + '.';
+
+      var mlaPlain = authorFull + '. ' + (title || 'Title') + '.';
+      mlaPlain += ' ' + dissType + ',';
+      if (institution) mlaPlain += ' ' + institution + ',';
+      if (year) mlaPlain += ' ' + year + '.';
+      if (url) mlaPlain += ' ' + url + '.';
+
+      // Chicago: Author. "Title." Disstype, Institution, Year. URL.
+      var chicagoHtml = authorFull + '. &quot;' + (title || 'Title') + '.&quot; ' + dissType;
+      if (institution) chicagoHtml += ', ' + institution;
+      if (year) chicagoHtml += ', ' + year;
+      chicagoHtml += '.';
+      if (url) chicagoHtml += ' ' + url + '.';
+
+      var chicagoPlain = authorFull + '. "' + (title || 'Title') + '." ' + dissType;
+      if (institution) chicagoPlain += ', ' + institution;
+      if (year) chicagoPlain += ', ' + year;
+      chicagoPlain += '.';
+      if (url) chicagoPlain += ' ' + url + '.';
+
+      setOutputs(apaHtml, apaPlain, mlaHtml, mlaPlain, chicagoHtml, chicagoPlain);
+    }
+
     function setOutputs(apaHtml, apaPlain, mlaHtml, mlaPlain, chicagoHtml, chicagoPlain) {
       document.getElementById('output-apa').innerHTML     = apaHtml;
       document.getElementById('output-mla').innerHTML     = mlaHtml;
@@ -582,13 +1002,17 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
     }
 
     function generateAll() {
-      if (currentTab === 'book')         generateBook();
-      else if (currentTab === 'website') generateWebsite();
-      else                               generateJournal();
+      if (currentTab === 'book')           generateBook();
+      else if (currentTab === 'website')   generateWebsite();
+      else if (currentTab === 'journal')   generateJournal();
+      else if (currentTab === 'video')     generateVideo();
+      else if (currentTab === 'podcast')   generatePodcast();
+      else if (currentTab === 'govdoc')    generateGovDoc();
+      else if (currentTab === 'dissertation') generateDissertation();
     }
 
     function clearAll() {
-      ['book', 'website', 'journal'].forEach(function(f) {
+      ALL_TABS.forEach(function(f) {
         var container = document.getElementById('form-' + f);
         if (container) {
           container.querySelectorAll('input').forEach(function(input) { input.value = ''; });
@@ -632,8 +1056,9 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
 
     // Auto-generate on any input change
     document.addEventListener('DOMContentLoaded', function() {
-      document.querySelectorAll('input').forEach(function(input) {
+      document.querySelectorAll('input, select').forEach(function(input) {
         input.addEventListener('input', generateAll);
+        input.addEventListener('change', generateAll);
       });
     });
   </script>

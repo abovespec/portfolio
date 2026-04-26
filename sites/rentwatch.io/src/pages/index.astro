@@ -13,7 +13,7 @@ import { siteConfig } from '~/config/site.config';
         <p class="mt-3 text-lg text-slate-600">Visualize rent prices by city, salary data by job title, and cost-of-living comparisons across regions.</p>
       </div>
       <ul class="mt-6 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-slate-600">
-        {['Rent prices across 20+ cities', 'Salary-to-rent ratio analysis', 'Affordability calculator', 'No data stored or shared'].map((badge) => (
+        {['Rent prices across 25 cities', 'Salary-to-rent ratio analysis', 'Affordability calculator', 'No data stored or shared'].map((badge) => (
           <li class="flex items-center gap-1.5">
             <svg class="h-4 w-4 shrink-0 text-brand" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
               <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.061 1.06l2.5 2.5a.75.75 0 001.137-.088l4-5.5z" clip-rule="evenodd" />
@@ -25,19 +25,27 @@ import { siteConfig } from '~/config/site.config';
     </div>
   </section>
   <div class="mx-auto max-w-5xl">
+
+    <!-- City rent table with salary-to-rent ratio -->
     <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm mb-8">
-      <h2 class="text-xl font-semibold mb-4 text-slate-800">Average Rent by City (1BR Apartment)</h2>
-      <div class="space-y-3">
-        <div><div class="flex justify-between text-sm mb-1"><span class="text-slate-700">San Francisco, CA</span><span class="font-medium text-slate-900">$3,200</span></div><div class="w-full bg-slate-100 rounded-full h-3"><div class="bg-emerald-500 h-3 rounded-full" style="width:100%"></div></div></div>
-        <div><div class="flex justify-between text-sm mb-1"><span class="text-slate-700">New York, NY</span><span class="font-medium text-slate-900">$3,100</span></div><div class="w-full bg-slate-100 rounded-full h-3"><div class="bg-emerald-500 h-3 rounded-full" style="width:97%"></div></div></div>
-        <div><div class="flex justify-between text-sm mb-1"><span class="text-slate-700">Boston, MA</span><span class="font-medium text-slate-900">$2,800</span></div><div class="w-full bg-slate-100 rounded-full h-3"><div class="bg-emerald-500 h-3 rounded-full" style="width:88%"></div></div></div>
-        <div><div class="flex justify-between text-sm mb-1"><span class="text-slate-700">Seattle, WA</span><span class="font-medium text-slate-900">$2,400</span></div><div class="w-full bg-slate-100 rounded-full h-3"><div class="bg-emerald-500 h-3 rounded-full" style="width:75%"></div></div></div>
-        <div><div class="flex justify-between text-sm mb-1"><span class="text-slate-700">Austin, TX</span><span class="font-medium text-slate-900">$1,800</span></div><div class="w-full bg-slate-100 rounded-full h-3"><div class="bg-emerald-500 h-3 rounded-full" style="width:56%"></div></div></div>
-        <div><div class="flex justify-between text-sm mb-1"><span class="text-slate-700">Denver, CO</span><span class="font-medium text-slate-900">$1,700</span></div><div class="w-full bg-slate-100 rounded-full h-3"><div class="bg-emerald-500 h-3 rounded-full" style="width:53%"></div></div></div>
-        <div><div class="flex justify-between text-sm mb-1"><span class="text-slate-700">Atlanta, GA</span><span class="font-medium text-slate-900">$1,500</span></div><div class="w-full bg-slate-100 rounded-full h-3"><div class="bg-emerald-500 h-3 rounded-full" style="width:47%"></div></div></div>
-        <div><div class="flex justify-between text-sm mb-1"><span class="text-slate-700">Phoenix, AZ</span><span class="font-medium text-slate-900">$1,350</span></div><div class="w-full bg-slate-100 rounded-full h-3"><div class="bg-emerald-500 h-3 rounded-full" style="width:42%"></div></div></div>
+      <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
+        <h2 class="text-xl font-semibold text-slate-800">Average Rent by City (1BR Apartment)</h2>
+        <div class="flex items-center gap-2 text-xs text-slate-500">
+          <span class="inline-block h-3 w-3 rounded-sm bg-emerald-500"></span> rent bar
+          <span class="ml-2 inline-block h-3 w-3 rounded-sm bg-amber-400"></span> salary burden
+        </div>
       </div>
-      <p class="mt-3 text-xs text-slate-400">Data based on market averages for 2025. Actual rents vary by neighborhood and building quality.</p>
+
+      <!-- Table header -->
+      <div class="hidden sm:grid sm:grid-cols-[1fr_80px_80px_100px] gap-x-4 pb-2 mb-2 border-b border-slate-100 text-xs font-semibold uppercase tracking-wide text-slate-400">
+        <span>City</span>
+        <span class="text-right">Rent/mo</span>
+        <span class="text-right">Rent/yr</span>
+        <span class="text-right">Salary months</span>
+      </div>
+
+      <div id="city-list" class="space-y-3"></div>
+      <p class="mt-4 text-xs text-slate-400">Data based on market averages for 2024–2025. "Salary months" = months of median household income needed to cover one year of rent. Actual rents vary by neighborhood and building quality.</p>
     </div>
 
     <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm mb-8">
@@ -62,7 +70,7 @@ import { siteConfig } from '~/config/site.config';
       Consult a licensed financial advisor before making decisions.
     </aside>
     <section class="my-12">
-      <h2 class="text-2xl font-semibold mb-4 text-slate-800">Housing & Cost of Living Guides</h2>
+      <h2 class="text-2xl font-semibold mb-4 text-slate-800">Housing &amp; Cost of Living Guides</h2>
       <div class="grid gap-4 sm:grid-cols-2">
         <a href="/blog/how-much-rent-can-i-afford-calculator-and-rule-of-thumb/" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-emerald-400"><h3 class="font-semibold text-slate-900">Rent Affordability Rules Explained</h3><p class="mt-1 text-sm text-slate-600">30% rule, 50/30/20 budget, and why debt-to-income matters more than rent alone.</p></a>
         <a href="/blog/cheapest-cities-to-rent-in-2025-affordable-housing-markets/" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-emerald-400"><h3 class="font-semibold text-slate-900">Cheapest Cities to Live in 2025</h3><p class="mt-1 text-sm text-slate-600">Cost-of-living index, rent prices, and salary data for affordable U.S. cities.</p></a>
@@ -74,8 +82,96 @@ import { siteConfig } from '~/config/site.config';
   <script is:inline>
     function $(id){ return document.getElementById(id); }
     function val(id){ return parseFloat($(id).value)||0; }
-    function calcRW(){ const inc=val('rw-income'), debt=val('rw-debt'); $('rw-out-30').textContent='$'+(inc*0.3).toFixed(0); $('rw-out-50').textContent='$'+((inc-debt)*0.5).toFixed(0); $('rw-out-rec').textContent='$'+((inc-debt)*0.3).toFixed(0); }
+
+    // City data: [name, state, monthlyRent, medianHouseholdIncome]
+    var CITIES = [
+      ['San Francisco', 'CA',  3500, 112000],
+      ['New York',      'NY',  3100,  70000],
+      ['Boston',        'MA',  3200,  85000],
+      ['San Diego',     'CA',  2800,  78000],
+      ['Seattle',       'WA',  2200,  95000],
+      ['Los Angeles',   'CA',  2100,  68000],
+      ['Denver',        'CO',  1800,  72000],
+      ['Philadelphia',  'PA',  1800,  49000],
+      ['Austin',        'TX',  1900,  71000],
+      ['Portland',      'OR',  1700,  71000],
+      ['Sacramento',    'CA',  1900,  65000],
+      ['Tampa',         'FL',  1900,  52000],
+      ['Nashville',     'TN',  1900,  61000],
+      ['Chicago',       'IL',  1800,  62000],
+      ['Miami',         'FL',  1800,  56000],
+      ['Minneapolis',   'MN',  1500,  68000],
+      ['Raleigh',       'NC',  1600,  65000],
+      ['Charlotte',     'NC',  1600,  62000],
+      ['Phoenix',       'AZ',  1600,  58000],
+      ['Las Vegas',     'NV',  1600,  55000],
+      ['Houston',       'TX',  1500,  57000],
+      ['Dallas',        'TX',  1500,  58000],
+      ['Atlanta',       'GA',  1500,  56000],
+      ['Detroit',       'MI',   900,  32000],
+      ['Oklahoma City', 'OK',   900,  52000],
+    ];
+
+    // Sort by rent descending
+    CITIES.sort(function(a, b) { return b[2] - a[2]; });
+
+    var maxRent = CITIES[0][2];
+
+    function salaryMonths(monthlyRent, annualIncome) {
+      return ((monthlyRent * 12) / annualIncome * 12).toFixed(1);
+    }
+
+    function burdenColor(months) {
+      var m = parseFloat(months);
+      if (m <= 2.0) return 'bg-emerald-500';
+      if (m <= 3.0) return 'bg-yellow-400';
+      if (m <= 4.5) return 'bg-orange-400';
+      return 'bg-red-500';
+    }
+
+    function renderCities() {
+      var list = document.getElementById('city-list');
+      list.innerHTML = CITIES.map(function(c) {
+        var name = c[0], state = c[1], rent = c[2], income = c[3];
+        var rentPct = Math.round((rent / maxRent) * 100);
+        var months = salaryMonths(rent, income);
+        var mNum = parseFloat(months);
+        var bColor = burdenColor(months);
+        var burdenPct = Math.min(100, Math.round((mNum / 8) * 100));
+        return '<div class="grid sm:grid-cols-[1fr_80px_80px_100px] gap-x-4 gap-y-1 items-center">' +
+          '<div>' +
+            '<div class="flex items-baseline justify-between sm:justify-start gap-2 mb-1">' +
+              '<span class="text-sm font-medium text-slate-700">' + name + ', ' + state + '</span>' +
+              '<span class="text-sm font-semibold text-slate-900 sm:hidden">$' + rent.toLocaleString() + '/mo</span>' +
+            '</div>' +
+            '<div class="flex gap-1.5">' +
+              '<div class="flex-1 bg-slate-100 rounded-full h-2.5">' +
+                '<div class="bg-emerald-500 h-2.5 rounded-full" style="width:' + rentPct + '%"></div>' +
+              '</div>' +
+              '<div class="flex-1 bg-slate-100 rounded-full h-2.5">' +
+                '<div class="' + bColor + ' h-2.5 rounded-full" style="width:' + burdenPct + '%"></div>' +
+              '</div>' +
+            '</div>' +
+          '</div>' +
+          '<span class="hidden sm:block text-right text-sm font-semibold text-slate-900">$' + rent.toLocaleString() + '</span>' +
+          '<span class="hidden sm:block text-right text-sm text-slate-600">$' + (rent * 12).toLocaleString() + '</span>' +
+          '<div class="hidden sm:flex justify-end items-center gap-1.5">' +
+            '<span class="inline-flex h-5 w-5 items-center justify-center rounded-full ' + bColor + ' text-white text-xs font-bold">&nbsp;</span>' +
+            '<span class="text-sm font-semibold text-slate-800">' + months + ' mo</span>' +
+          '</div>' +
+          '</div>';
+      }).join('');
+    }
+
+    function calcRW(){
+      const inc=val('rw-income'), debt=val('rw-debt');
+      $('rw-out-30').textContent='$'+(inc*0.3).toFixed(0);
+      $('rw-out-50').textContent='$'+((inc-debt)*0.5).toFixed(0);
+      $('rw-out-rec').textContent='$'+((inc-debt)*0.3).toFixed(0);
+    }
+
     ['rw-income','rw-debt'].forEach(id=>$(id)?.addEventListener('input',calcRW));
+    renderCities();
     calcRW();
   </script>
 </BaseLayout>

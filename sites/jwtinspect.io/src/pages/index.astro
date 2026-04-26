@@ -16,66 +16,158 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
     </p>
   </header>
 
-  <!-- Toolbar -->
-  <div class="flex flex-wrap gap-2 mb-3">
-    <button id="btn-decode" class="rounded-md bg-sky-600 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-sky-700 transition-colors">Decode</button>
-    <label class="flex items-center gap-1.5 text-xs text-slate-500 cursor-pointer select-none px-1">
-      <input id="auto-decode" type="checkbox" class="accent-sky-600" />
-      Auto-decode on paste
-    </label>
-    <button id="btn-sample" class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Sample</button>
-    <div class="flex-1"></div>
-    <button id="btn-clear"  class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Clear</button>
+  <!-- Tab bar -->
+  <div class="flex gap-1 mb-4 border-b border-slate-200">
+    <button id="tab-decode" class="px-4 py-2 text-sm font-medium text-sky-700 border-b-2 border-sky-600 -mb-px transition-colors">Decode</button>
+    <button id="tab-create" class="px-4 py-2 text-sm font-medium text-slate-500 border-b-2 border-transparent -mb-px hover:text-slate-700 transition-colors">Create JWT</button>
   </div>
 
-  <!-- Input pane -->
-  <div class="flex flex-col gap-1">
-    <label for="jwt-input" class="text-xs font-semibold uppercase tracking-wide text-slate-500">Token</label>
-    <textarea
-      id="jwt-input"
-      class="w-full rounded-lg border border-slate-300 bg-slate-950 text-slate-100 p-4 font-mono text-sm resize-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 placeholder:text-slate-600"
-      placeholder="Paste your JWT token here (eyJ…)"
-      spellcheck="false"
-      autocomplete="off"
-      rows="4"
-    ></textarea>
+  <!-- ══ DECODE PANEL ══ -->
+  <div id="panel-decode">
+    <!-- Toolbar -->
+    <div class="flex flex-wrap gap-2 mb-3">
+      <button id="btn-decode" class="rounded-md bg-sky-600 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-sky-700 transition-colors">Decode</button>
+      <label class="flex items-center gap-1.5 text-xs text-slate-500 cursor-pointer select-none px-1">
+        <input id="auto-decode" type="checkbox" class="accent-sky-600" />
+        Auto-decode on paste
+      </label>
+      <button id="btn-sample" class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Sample</button>
+      <div class="flex-1"></div>
+      <button id="btn-clear"  class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Clear</button>
+    </div>
+
+    <!-- Input pane -->
+    <div class="flex flex-col gap-1">
+      <label for="jwt-input" class="text-xs font-semibold uppercase tracking-wide text-slate-500">Token</label>
+      <textarea
+        id="jwt-input"
+        class="w-full rounded-lg border border-slate-300 bg-slate-950 text-slate-100 p-4 font-mono text-sm resize-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 placeholder:text-slate-600"
+        placeholder="Paste your JWT token here (eyJ…)"
+        spellcheck="false"
+        autocomplete="off"
+        rows="4"
+      ></textarea>
+    </div>
+
+    <!-- Status bar (decode) -->
+    <div id="status" class="mt-2 rounded-md px-3 py-1.5 text-sm font-medium hidden"></div>
+
+    <!-- Results -->
+    <div id="jwt-results" class="mt-4 hidden space-y-4">
+
+      <!-- Header + Payload dual pane -->
+      <div class="grid gap-3 md:grid-cols-2">
+        <div class="rounded-lg border border-slate-200 bg-white p-4">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-semibold uppercase tracking-wide text-slate-500">Header</span>
+            <span id="header-alg" class="rounded bg-sky-50 px-2 py-0.5 text-xs font-semibold text-sky-700"></span>
+          </div>
+          <pre id="header-out" class="overflow-x-auto rounded-md bg-slate-900 p-3 text-xs text-emerald-300 font-mono leading-relaxed"></pre>
+        </div>
+        <div class="rounded-lg border border-slate-200 bg-white p-4">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-semibold uppercase tracking-wide text-slate-500">Payload</span>
+            <span id="payload-status" class="rounded px-2 py-0.5 text-xs font-semibold"></span>
+          </div>
+          <pre id="payload-out" class="overflow-x-auto rounded-md bg-slate-900 p-3 text-xs text-emerald-300 font-mono leading-relaxed"></pre>
+        </div>
+      </div>
+
+      <!-- Claims summary -->
+      <div class="rounded-lg border border-slate-200 bg-white p-4">
+        <div class="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-3">Standard Claims</div>
+        <div id="claims-table" class="space-y-2 text-sm"></div>
+      </div>
+
+      <!-- Signature note -->
+      <div class="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
+        <strong>Signature not verified.</strong> This tool decodes the token without verifying the signature — that requires the issuer's secret key or public certificate. Never trust a decoded token's claims without server-side signature verification.
+      </div>
+
+    </div>
   </div>
 
-  <!-- Status bar -->
-  <div id="status" class="mt-2 rounded-md px-3 py-1.5 text-sm font-medium hidden"></div>
+  <!-- ══ CREATE PANEL ══ -->
+  <div id="panel-create" class="hidden">
+    <div class="grid gap-4 md:grid-cols-2">
+      <!-- Left column: inputs -->
+      <div class="space-y-4">
 
-  <!-- Results -->
-  <div id="jwt-results" class="mt-4 hidden space-y-4">
-
-    <!-- Header + Payload dual pane -->
-    <div class="grid gap-3 md:grid-cols-2">
-      <div class="rounded-lg border border-slate-200 bg-white p-4">
-        <div class="flex items-center justify-between mb-2">
-          <span class="text-xs font-semibold uppercase tracking-wide text-slate-500">Header</span>
-          <span id="header-alg" class="rounded bg-sky-50 px-2 py-0.5 text-xs font-semibold text-sky-700"></span>
+        <!-- Algorithm + Secret -->
+        <div class="rounded-lg border border-slate-200 bg-white p-4 space-y-3">
+          <div class="text-xs font-semibold uppercase tracking-wide text-slate-500">Signing</div>
+          <div class="flex items-center gap-3">
+            <label for="create-alg" class="text-sm text-slate-600 shrink-0 w-20">Algorithm</label>
+            <select id="create-alg" class="flex-1 rounded-md border border-slate-300 bg-white px-3 py-1.5 text-sm text-slate-800 focus:border-sky-500 focus:ring-1 focus:ring-sky-500">
+              <option value="HS256">HS256</option>
+              <option value="HS384">HS384</option>
+              <option value="HS512">HS512</option>
+            </select>
+          </div>
+          <div class="flex items-center gap-3">
+            <label for="create-secret" class="text-sm text-slate-600 shrink-0 w-20">Secret</label>
+            <input
+              id="create-secret"
+              type="text"
+              class="flex-1 rounded-md border border-slate-300 bg-slate-950 text-slate-100 px-3 py-1.5 font-mono text-sm focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
+              value="your-256-bit-secret"
+              spellcheck="false"
+              autocomplete="off"
+            />
+          </div>
         </div>
-        <pre id="header-out" class="overflow-x-auto rounded-md bg-slate-900 p-3 text-xs text-emerald-300 font-mono leading-relaxed"></pre>
-      </div>
-      <div class="rounded-lg border border-slate-200 bg-white p-4">
-        <div class="flex items-center justify-between mb-2">
-          <span class="text-xs font-semibold uppercase tracking-wide text-slate-500">Payload</span>
-          <span id="payload-status" class="rounded px-2 py-0.5 text-xs font-semibold"></span>
+
+        <!-- Header -->
+        <div class="rounded-lg border border-slate-200 bg-white p-4 space-y-2">
+          <div class="text-xs font-semibold uppercase tracking-wide text-slate-500">Header</div>
+          <pre id="create-header-preview" class="rounded-md bg-slate-900 p-3 text-xs text-emerald-300 font-mono leading-relaxed">&#123;"alg": "HS256", "typ": "JWT"&#125;</pre>
+          <p class="text-xs text-slate-400">Auto-updated from algorithm selection above.</p>
         </div>
-        <pre id="payload-out" class="overflow-x-auto rounded-md bg-slate-900 p-3 text-xs text-emerald-300 font-mono leading-relaxed"></pre>
+
+        <!-- Payload -->
+        <div class="rounded-lg border border-slate-200 bg-white p-4 space-y-2">
+          <div class="text-xs font-semibold uppercase tracking-wide text-slate-500">Payload</div>
+          <textarea
+            id="create-payload"
+            class="w-full rounded-md border border-slate-300 bg-slate-950 text-slate-100 p-3 font-mono text-sm resize-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
+            spellcheck="false"
+            rows="7"
+          >&#123;
+  "sub": "1234567890",
+  "name": "John Doe",
+  "iat": 1516239022
+&#125;</textarea>
+        </div>
+
+        <button id="btn-generate" class="w-full rounded-md bg-sky-600 px-3.5 py-2 text-sm font-medium text-white hover:bg-sky-700 transition-colors">Generate JWT</button>
+      </div>
+
+      <!-- Right column: output -->
+      <div class="space-y-4">
+        <!-- Status bar (create) -->
+        <div id="create-status" class="rounded-md px-3 py-1.5 text-sm font-medium hidden"></div>
+
+        <div id="create-result" class="hidden rounded-lg border border-slate-200 bg-white p-4 space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-semibold uppercase tracking-wide text-slate-500">Generated Token</span>
+            <button id="btn-copy-jwt" class="rounded border border-slate-300 px-2.5 py-1 text-xs font-medium text-slate-600 hover:bg-slate-50 transition-colors">Copy</button>
+          </div>
+          <div class="rounded-md bg-slate-900 p-3 font-mono text-xs break-all leading-relaxed">
+            <span id="jwt-out-header" class="text-red-400"></span><span class="text-slate-500">.</span><span id="jwt-out-payload" class="text-violet-400"></span><span class="text-slate-500">.</span><span id="jwt-out-sig" class="text-sky-400"></span>
+          </div>
+          <p class="text-xs text-slate-400">
+            <span class="text-red-400 font-medium">Red</span> = header &nbsp;·&nbsp;
+            <span class="text-violet-400 font-medium">Violet</span> = payload &nbsp;·&nbsp;
+            <span class="text-sky-400 font-medium">Blue</span> = signature
+          </p>
+        </div>
+
+        <!-- Security reminder -->
+        <div class="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
+          <strong>Client-side only.</strong> Your secret never leaves the browser. For production use, always sign JWTs server-side in a trusted environment.
+        </div>
       </div>
     </div>
-
-    <!-- Claims summary -->
-    <div class="rounded-lg border border-slate-200 bg-white p-4">
-      <div class="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-3">Standard Claims</div>
-      <div id="claims-table" class="space-y-2 text-sm"></div>
-    </div>
-
-    <!-- Signature note -->
-    <div class="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
-      <strong>Signature not verified.</strong> This tool decodes the token without verifying the signature — that requires the issuer's secret key or public certificate. Never trust a decoded token's claims without server-side signature verification.
-    </div>
-
   </div>
 
   <!-- ── Below-fold: SEO content ── -->
@@ -137,6 +229,24 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
 
     var SAMPLE_JWT = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJleHAiOjk5OTk5OTk5OTksImlzcyI6ImV4YW1wbGUuY29tIn0.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c';
 
+    /* ── Tab switching ── */
+    var tabDecode  = document.getElementById('tab-decode');
+    var tabCreate  = document.getElementById('tab-create');
+    var panelDecode = document.getElementById('panel-decode');
+    var panelCreate = document.getElementById('panel-create');
+
+    function activateTab(name) {
+      var isCreate = (name === 'create');
+      tabDecode.className  = 'px-4 py-2 text-sm font-medium border-b-2 -mb-px transition-colors ' + (isCreate ? 'text-slate-500 border-transparent hover:text-slate-700' : 'text-sky-700 border-sky-600');
+      tabCreate.className  = 'px-4 py-2 text-sm font-medium border-b-2 -mb-px transition-colors ' + (isCreate ? 'text-sky-700 border-sky-600' : 'text-slate-500 border-transparent hover:text-slate-700');
+      panelDecode.classList.toggle('hidden', isCreate);
+      panelCreate.classList.toggle('hidden', !isCreate);
+    }
+
+    tabDecode.addEventListener('click', function() { activateTab('decode'); });
+    tabCreate.addEventListener('click', function() { activateTab('create'); });
+
+    /* ── Decode logic ── */
     function showStatus(msg, type) {
       var clsMap = { error: 'bg-red-50 text-red-700 border border-red-200', success: 'bg-emerald-50 text-emerald-700 border border-emerald-200', info: 'bg-blue-50 text-blue-700 border border-blue-200' };
       statusEl.className = 'mt-2 rounded-md px-3 py-1.5 text-sm font-medium ' + (clsMap[type] || 'bg-slate-100 text-slate-700');
@@ -215,6 +325,94 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
     document.getElementById('jwt-input').addEventListener('paste', function() {
       if (!document.getElementById('auto-decode').checked) return;
       setTimeout(decode, 0);
+    });
+
+    /* ── Create JWT logic ── */
+    function showCreateStatus(msg, type) {
+      var el = document.getElementById('create-status');
+      var clsMap = { error: 'bg-red-50 text-red-700 border border-red-200', success: 'bg-emerald-50 text-emerald-700 border border-emerald-200', info: 'bg-blue-50 text-blue-700 border border-blue-200' };
+      el.className = 'rounded-md px-3 py-1.5 text-sm font-medium ' + (clsMap[type] || 'bg-slate-100 text-slate-700');
+      el.textContent = msg;
+      el.classList.remove('hidden');
+    }
+
+    /* Update header preview when algorithm changes */
+    document.getElementById('create-alg').addEventListener('change', function() {
+      document.getElementById('create-header-preview').textContent = '{"alg": "' + this.value + '", "typ": "JWT"}';
+    });
+
+    function base64UrlEncode(str) {
+      return btoa(str).replace(/=/g, '').replace(/\+/g, '-').replace(/\//g, '_');
+    }
+
+    function objToB64Url(obj) {
+      return base64UrlEncode(JSON.stringify(obj));
+    }
+
+    async function signJWT(header, payload, secret) {
+      var encoder = new TextEncoder();
+      var headerB64  = objToB64Url(header);
+      var payloadB64 = objToB64Url(payload);
+      var message = headerB64 + '.' + payloadB64;
+
+      var algMap = { HS256: 'SHA-256', HS384: 'SHA-384', HS512: 'SHA-512' };
+      var hashName = algMap[header.alg] || 'SHA-256';
+
+      var key = await crypto.subtle.importKey(
+        'raw',
+        encoder.encode(secret),
+        { name: 'HMAC', hash: hashName },
+        false,
+        ['sign']
+      );
+      var sig = await crypto.subtle.sign('HMAC', key, encoder.encode(message));
+      var sigB64 = btoa(String.fromCharCode.apply(null, new Uint8Array(sig)))
+        .replace(/=/g, '').replace(/\+/g, '-').replace(/\//g, '_');
+
+      return { headerB64: headerB64, payloadB64: payloadB64, sigB64: sigB64 };
+    }
+
+    document.getElementById('btn-generate').addEventListener('click', async function() {
+      var algValue  = document.getElementById('create-alg').value;
+      var secret    = document.getElementById('create-secret').value;
+      var payloadTx = document.getElementById('create-payload').value.trim();
+
+      if (!secret) { showCreateStatus('Enter a secret key', 'error'); return; }
+      if (!payloadTx) { showCreateStatus('Payload is empty', 'error'); return; }
+
+      var payloadObj;
+      try {
+        payloadObj = JSON.parse(payloadTx);
+      } catch (e) {
+        showCreateStatus('Payload JSON parse error: ' + e.message, 'error');
+        return;
+      }
+
+      var header = { alg: algValue, typ: 'JWT' };
+
+      try {
+        var parts = await signJWT(header, payloadObj, secret);
+        document.getElementById('jwt-out-header').textContent  = parts.headerB64;
+        document.getElementById('jwt-out-payload').textContent = parts.payloadB64;
+        document.getElementById('jwt-out-sig').textContent     = parts.sigB64;
+        document.getElementById('create-result').classList.remove('hidden');
+        showCreateStatus('Token generated — ' + algValue, 'success');
+      } catch (e) {
+        showCreateStatus('Signing error: ' + e.message, 'error');
+      }
+    });
+
+    document.getElementById('btn-copy-jwt').addEventListener('click', function() {
+      var h = document.getElementById('jwt-out-header').textContent;
+      var p = document.getElementById('jwt-out-payload').textContent;
+      var s = document.getElementById('jwt-out-sig').textContent;
+      if (!h) { return; }
+      var token = h + '.' + p + '.' + s;
+      navigator.clipboard.writeText(token).then(function() {
+        showCreateStatus('Token copied to clipboard', 'success');
+      }, function() {
+        showCreateStatus('Copy failed', 'error');
+      });
     });
   </script>
 

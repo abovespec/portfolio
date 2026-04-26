@@ -1,5 +1,7 @@
 import { useState, useMemo } from 'preact/hooks';
 
+const PMI_RATE = 0.0085;
+
 function calcMortgage(homePrice: number, downPayment: number, annualRate: number, years: number) {
   const principal = homePrice - downPayment;
   if (principal <= 0 || annualRate < 0 || years <= 0) return null;
@@ -11,7 +13,36 @@ function calcMortgage(homePrice: number, downPayment: number, annualRate: number
   const total = monthly * n;
   const interest = total - principal;
   const downPct = homePrice > 0 ? (downPayment / homePrice) * 100 : 0;
-  return { monthly, total, interest, principal, downPct };
+  const hasPmi = downPct < 20;
+  const pmiMonthly = hasPmi ? (principal * PMI_RATE) / 12 : 0;
+  return { monthly, total, interest, principal, downPct, hasPmi, pmiMonthly, n, r };
+}
+
+function buildAmortizationSchedule(principal: number, r: number, monthly: number, totalMonths: number) {
+  const rows: { year: number; principalPaid: number; interestPaid: number; endingBalance: number }[] = [];
+  let balance = principal;
+  let yearPrincipal = 0;
+  let yearInterest = 0;
+
+  for (let m = 1; m <= totalMonths; m++) {
+    const interestPayment = balance * r;
+    const principalPayment = monthly - interestPayment;
+    balance = Math.max(0, balance - principalPayment);
+    yearPrincipal += principalPayment;
+    yearInterest += interestPayment;
+
+    if (m % 12 === 0 || m === totalMonths) {
+      rows.push({
+        year: Math.ceil(m / 12),
+        principalPaid: yearPrincipal,
+        interestPaid: yearInterest,
+        endingBalance: balance,
+      });
+      yearPrincipal = 0;
+      yearInterest = 0;
+    }
+  }
+  return rows;
 }
 
 function fmtUsd(n: number) {
@@ -22,10 +53,11 @@ const inputCls =
   'w-full rounded-lg border border-slate-300 px-3 py-2 pr-10 text-sm focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand';
 
 export default function MortgageCalculator() {
-  const [homePrice, setHomePrice]   = useState('400000');
+  const [homePrice, setHomePrice]     = useState('400000');
   const [downPayment, setDownPayment] = useState('80000');
-  const [rate, setRate]             = useState('7.0');
-  const [years, setYears]           = useState('30');
+  const [rate, setRate]               = useState('7.0');
+  const [years, setYears]             = useState('30');
+  const [showAmort, setShowAmort]     = useState(false);
 
   const result = useMemo(
     () => calcMortgage(
@@ -36,6 +68,11 @@ export default function MortgageCalculator() {
     ),
     [homePrice, downPayment, rate, years],
   );
+
+  const amortRows = useMemo(() => {
+    if (!result || !showAmort) return [];
+    return buildAmortizationSchedule(result.principal, result.r, result.monthly, result.n);
+  }, [result, showAmort]);
 
   return (
     <div class="space-y-4">
@@ -68,6 +105,7 @@ export default function MortgageCalculator() {
         {result && (
           <p class="mt-1 text-[11px] text-slate-400">
             {result.downPct.toFixed(1)}% of home price
+            {result.hasPmi && ' — PMI applies (down payment below 20%)'}
           </p>
         )}
       </div>
@@ -111,10 +149,25 @@ export default function MortgageCalculator() {
         <div role="status" aria-live="polite" class="space-y-3 rounded-xl border border-indigo-200 bg-indigo-50 p-4">
           <div class="flex items-baseline justify-between">
             <span class="text-sm text-slate-600">Monthly Payment</span>
-            <span class="text-2xl font-bold tabular-nums text-brand">{fmtUsd(result.monthly)}</span>
+            <span class="text-2xl font-bold tabular-nums text-brand">{fmtUsd(result.monthly + result.pmiMonthly)}</span>
           </div>
+          {result.hasPmi && (
+            <p class="text-[11px] text-amber-700">
+              Includes PMI (~{fmtUsd(result.pmiMonthly)}/mo) — removed once you reach 20% equity
+            </p>
+          )}
           <div class="h-px bg-slate-200" />
           <div class="grid grid-cols-2 gap-2 text-sm">
+            <div>
+              <div class="text-slate-500">P&amp;I Payment</div>
+              <div class="font-semibold text-slate-900">{fmtUsd(result.monthly)}</div>
+            </div>
+            {result.hasPmi && (
+              <div>
+                <div class="text-slate-500">PMI</div>
+                <div class="font-semibold text-amber-700">{fmtUsd(result.pmiMonthly)}/mo</div>
+              </div>
+            )}
             <div>
               <div class="text-slate-500">Loan Amount</div>
               <div class="font-semibold text-slate-900">{fmtUsd(result.principal)}</div>
@@ -132,7 +185,6 @@ export default function MortgageCalculator() {
               <div class="font-semibold text-slate-900">{fmtUsd(parseFloat(downPayment) || 0)}</div>
             </div>
           </div>
-          {/* Principal vs interest bar */}
           {(() => {
             const interestPct = (result.interest / result.total) * 100;
             return (
@@ -151,8 +203,47 @@ export default function MortgageCalculator() {
         </div>
       )}
 
+      {result && (
+        <div>
+          <button
+            type="button"
+            class="flex w-full items-center justify-between rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 hover:border-brand/50 hover:text-brand"
+            onClick={() => setShowAmort((v) => !v)}
+            aria-expanded={showAmort}
+          >
+            <span>Show amortization schedule</span>
+            <span class="text-slate-400">{showAmort ? '▲' : '▼'}</span>
+          </button>
+
+          {showAmort && amortRows.length > 0 && (
+            <div class="mt-2 overflow-x-auto rounded-xl border border-slate-200">
+              <table class="w-full text-sm">
+                <thead>
+                  <tr class="border-b border-slate-200 bg-slate-50">
+                    <th class="px-3 py-2 text-left font-medium text-slate-600">Year</th>
+                    <th class="px-3 py-2 text-right font-medium text-slate-600">Principal</th>
+                    <th class="px-3 py-2 text-right font-medium text-slate-600">Interest</th>
+                    <th class="px-3 py-2 text-right font-medium text-slate-600">Balance</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {amortRows.map((row, i) => (
+                    <tr key={row.year} class={i % 2 === 0 ? 'bg-white' : 'bg-slate-50'}>
+                      <td class="px-3 py-2 tabular-nums text-slate-700">{row.year}</td>
+                      <td class="px-3 py-2 text-right tabular-nums text-brand">{fmtUsd(row.principalPaid)}</td>
+                      <td class="px-3 py-2 text-right tabular-nums text-orange-600">{fmtUsd(row.interestPaid)}</td>
+                      <td class="px-3 py-2 text-right tabular-nums font-medium text-slate-900">{fmtUsd(row.endingBalance)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </div>
+      )}
+
       <p class="text-xs leading-relaxed text-slate-500">
-        Estimates principal and interest only. Does not include property tax, insurance, or PMI.
+        Estimates principal and interest only. Does not include property tax or homeowner's insurance. PMI estimate uses 0.85% annual rate and may vary by lender.
       </p>
     </div>
   );

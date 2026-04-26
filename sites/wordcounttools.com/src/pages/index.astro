@@ -80,6 +80,10 @@ const recentPosts = siteConfig.features.hasBlog
           <div class="mt-1 text-xs font-medium uppercase tracking-wide text-slate-500">Read time</div>
         </div>
         <div class="rounded-lg border border-slate-200 bg-white p-4 text-center">
+          <div id="stat-speaktime" class="text-3xl font-bold text-emerald-600">—</div>
+          <div class="mt-1 text-xs font-medium uppercase tracking-wide text-slate-500">Speak time</div>
+        </div>
+        <div class="rounded-lg border border-slate-200 bg-white p-4 text-center col-span-2">
           <div id="stat-reading" class="text-2xl font-bold text-emerald-600 leading-tight">—</div>
           <div class="mt-1 text-xs font-medium uppercase tracking-wide text-slate-500">Reading level</div>
         </div>
@@ -117,6 +121,7 @@ const recentPosts = siteConfig.features.hasBlog
           <li><strong>Paragraphs</strong> — blocks separated by blank lines.</li>
           <li><strong>Syllables</strong> — heuristic English syllable count (vowel-cluster approach).</li>
           <li><strong>Read time</strong> — assumes 225 words per minute (average adult silent reading speed).</li>
+          <li><strong>Speak time</strong> — assumes 130 words per minute (average conversational speaking pace). Useful for presentations, speeches, and video scripts.</li>
         </ul>
       </div>
     </section>
@@ -231,6 +236,7 @@ const recentPosts = siteConfig.features.hasBlog
       var chars = text.length;
       var charsNoSpace = text.replace(/\s/g, '').length;
       var readTime = words.length === 0 ? 0 : Math.ceil(words.length / 225 * 60);
+      var speakTime = words.length === 0 ? 0 : Math.ceil(words.length / 130 * 60);
 
       var readingLevel = '—';
       if (words.length > 1 && sentences.length > 0) {
@@ -254,6 +260,7 @@ const recentPosts = siteConfig.features.hasBlog
       document.getElementById('stat-paragraphs').textContent = paragraphs.length;
       document.getElementById('stat-syllables').textContent = syllables;
       document.getElementById('stat-readtime').textContent = words.length === 0 ? '—' : fmtTime(readTime);
+      document.getElementById('stat-speaktime').textContent = words.length === 0 ? '—' : fmtTime(speakTime);
       document.getElementById('stat-reading').textContent = readingLevel;
 
       var freq = {};

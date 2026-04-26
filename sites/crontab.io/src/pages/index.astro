@@ -10,94 +10,272 @@ const recentPosts = siteConfig.features.hasBlog
   : [];
 ---
 <BaseLayout
-  title="Cron Expression Explainer — Understand Cron Schedules Online"
-  description="Free online cron expression explainer. Parse any cron schedule, see next run times, and get plain-English field-by-field explanations. Runs in your browser."
+  title="Cron Expression Explainer — Understand &amp; Build Cron Schedules Online"
+  description="Free online cron expression explainer and visual builder. Parse any cron schedule, see next run times, or build expressions with dropdowns. Runs in your browser."
 >
 
   <!-- Compact header -->
   <header class="pb-4 pt-2">
     <h1 class="text-3xl font-bold tracking-tight text-slate-900">Cron Expression Explainer</h1>
-    <p class="mt-1.5 text-sm text-slate-500">Parse any cron schedule and see next run times — all client-side.</p>
+    <p class="mt-1.5 text-sm text-slate-500">Parse any cron schedule and see next run times — or build one visually. All client-side.</p>
   </header>
 
-  <!-- Input toolbar -->
-  <div class="flex flex-wrap gap-2 mb-3 items-center">
-    <input
-      id="cron-input"
-      type="text"
-      class="flex-1 min-w-0 rounded-md border border-slate-300 bg-white px-3.5 py-1.5 font-mono text-sm focus:border-violet-500 focus:ring-1 focus:ring-violet-500 placeholder:text-slate-400"
-      placeholder="e.g. 0 9 * * 1-5"
-      spellcheck="false"
-      autocomplete="off"
-    />
-    <button id="btn-parse"  class="rounded-md bg-violet-600 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-violet-700 transition-colors">Parse</button>
-    <button id="btn-sample" class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Sample</button>
-    <button id="btn-clear"  class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Clear</button>
+  <!-- Mode tab switcher -->
+  <div class="flex gap-1 mb-4 border-b border-slate-200">
+    <button id="tab-parse" class="px-4 py-2 text-sm font-medium border-b-2 border-violet-600 text-violet-700 -mb-px transition-colors">Parse</button>
+    <button id="tab-build" class="px-4 py-2 text-sm font-medium border-b-2 border-transparent text-slate-500 -mb-px hover:text-slate-700 transition-colors">Build</button>
   </div>
 
-  <!-- Error bar (hidden initially) -->
-  <div id="cron-error" class="mb-3 rounded-md bg-red-50 border border-red-200 px-3 py-1.5 text-sm font-medium text-red-700 hidden"></div>
-
-  <!-- Status bar -->
-  <div id="status" class="mb-3 rounded-md px-3 py-1.5 text-sm font-medium hidden"></div>
-
-  <!-- 5-field cards (hidden until parsed) -->
-  <div id="cards-section" class="hidden">
-    <div class="grid grid-cols-2 gap-3 md:grid-cols-5 mb-4">
-
-      <!-- Minute -->
-      <div id="card-min" class="rounded-xl border border-slate-200 bg-white p-4 border-t-4 border-t-violet-600">
-        <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Minute</p>
-        <p class="text-xs text-slate-400 mt-0.5">0 – 59</p>
-        <p id="val-min" class="mt-2 text-2xl font-mono font-bold text-violet-700">*</p>
-        <p id="exp-min" class="mt-1 text-xs text-slate-600 leading-snug">every minute</p>
-      </div>
-
-      <!-- Hour -->
-      <div id="card-hour" class="rounded-xl border border-slate-200 bg-white p-4 border-t-4 border-t-violet-600">
-        <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Hour</p>
-        <p class="text-xs text-slate-400 mt-0.5">0 – 23</p>
-        <p id="val-hour" class="mt-2 text-2xl font-mono font-bold text-violet-700">*</p>
-        <p id="exp-hour" class="mt-1 text-xs text-slate-600 leading-snug">every hour</p>
-      </div>
-
-      <!-- Day of Month -->
-      <div id="card-dom" class="rounded-xl border border-slate-200 bg-white p-4 border-t-4 border-t-violet-600">
-        <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Day</p>
-        <p class="text-xs text-slate-400 mt-0.5">1 – 31</p>
-        <p id="val-dom" class="mt-2 text-2xl font-mono font-bold text-violet-700">*</p>
-        <p id="exp-dom" class="mt-1 text-xs text-slate-600 leading-snug">every day</p>
-      </div>
-
-      <!-- Month -->
-      <div id="card-mon" class="rounded-xl border border-slate-200 bg-white p-4 border-t-4 border-t-violet-600">
-        <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Month</p>
-        <p class="text-xs text-slate-400 mt-0.5">1 – 12</p>
-        <p id="val-mon" class="mt-2 text-2xl font-mono font-bold text-violet-700">*</p>
-        <p id="exp-mon" class="mt-1 text-xs text-slate-600 leading-snug">every month</p>
-      </div>
-
-      <!-- Weekday -->
-      <div id="card-dow" class="rounded-xl border border-slate-200 bg-white p-4 border-t-4 border-t-violet-600">
-        <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Weekday</p>
-        <p class="text-xs text-slate-400 mt-0.5">0 – 6 (Sun – Sat)</p>
-        <p id="val-dow" class="mt-2 text-2xl font-mono font-bold text-violet-700">*</p>
-        <p id="exp-dow" class="mt-1 text-xs text-slate-600 leading-snug">every weekday</p>
-      </div>
-
+  <!-- ── PARSE MODE ── -->
+  <div id="parse-mode">
+    <!-- Input toolbar -->
+    <div class="flex flex-wrap gap-2 mb-3 items-center">
+      <input
+        id="cron-input"
+        type="text"
+        class="flex-1 min-w-0 rounded-md border border-slate-300 bg-white px-3.5 py-1.5 font-mono text-sm focus:border-violet-500 focus:ring-1 focus:ring-violet-500 placeholder:text-slate-400"
+        placeholder="e.g. 0 9 * * 1-5"
+        spellcheck="false"
+        autocomplete="off"
+      />
+      <button id="btn-parse"  class="rounded-md bg-violet-600 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-violet-700 transition-colors">Parse</button>
+      <button id="btn-sample" class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Sample</button>
+      <button id="btn-clear"  class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Clear</button>
     </div>
 
-    <!-- Human-readable description -->
+    <!-- Error bar (hidden initially) -->
+    <div id="cron-error" class="mb-3 rounded-md bg-red-50 border border-red-200 px-3 py-1.5 text-sm font-medium text-red-700 hidden"></div>
+
+    <!-- Status bar -->
+    <div id="status" class="mb-3 rounded-md px-3 py-1.5 text-sm font-medium hidden"></div>
+
+    <!-- 5-field cards (hidden until parsed) -->
+    <div id="cards-section" class="hidden">
+      <div class="grid grid-cols-2 gap-3 md:grid-cols-5 mb-4">
+
+        <!-- Minute -->
+        <div id="card-min" class="rounded-xl border border-slate-200 bg-white p-4 border-t-4 border-t-violet-600">
+          <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Minute</p>
+          <p class="text-xs text-slate-400 mt-0.5">0 &ndash; 59</p>
+          <p id="val-min" class="mt-2 text-2xl font-mono font-bold text-violet-700">*</p>
+          <p id="exp-min" class="mt-1 text-xs text-slate-600 leading-snug">every minute</p>
+        </div>
+
+        <!-- Hour -->
+        <div id="card-hour" class="rounded-xl border border-slate-200 bg-white p-4 border-t-4 border-t-violet-600">
+          <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Hour</p>
+          <p class="text-xs text-slate-400 mt-0.5">0 &ndash; 23</p>
+          <p id="val-hour" class="mt-2 text-2xl font-mono font-bold text-violet-700">*</p>
+          <p id="exp-hour" class="mt-1 text-xs text-slate-600 leading-snug">every hour</p>
+        </div>
+
+        <!-- Day of Month -->
+        <div id="card-dom" class="rounded-xl border border-slate-200 bg-white p-4 border-t-4 border-t-violet-600">
+          <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Day</p>
+          <p class="text-xs text-slate-400 mt-0.5">1 &ndash; 31</p>
+          <p id="val-dom" class="mt-2 text-2xl font-mono font-bold text-violet-700">*</p>
+          <p id="exp-dom" class="mt-1 text-xs text-slate-600 leading-snug">every day</p>
+        </div>
+
+        <!-- Month -->
+        <div id="card-mon" class="rounded-xl border border-slate-200 bg-white p-4 border-t-4 border-t-violet-600">
+          <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Month</p>
+          <p class="text-xs text-slate-400 mt-0.5">1 &ndash; 12</p>
+          <p id="val-mon" class="mt-2 text-2xl font-mono font-bold text-violet-700">*</p>
+          <p id="exp-mon" class="mt-1 text-xs text-slate-600 leading-snug">every month</p>
+        </div>
+
+        <!-- Weekday -->
+        <div id="card-dow" class="rounded-xl border border-slate-200 bg-white p-4 border-t-4 border-t-violet-600">
+          <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Weekday</p>
+          <p class="text-xs text-slate-400 mt-0.5">0 &ndash; 6 (Sun &ndash; Sat)</p>
+          <p id="val-dow" class="mt-2 text-2xl font-mono font-bold text-violet-700">*</p>
+          <p id="exp-dow" class="mt-1 text-xs text-slate-600 leading-snug">every weekday</p>
+        </div>
+
+      </div>
+
+      <!-- Human-readable description -->
+      <div class="rounded-xl border border-violet-200 bg-violet-50 px-5 py-4 mb-4">
+        <p class="text-xs font-semibold uppercase tracking-wide text-violet-600 mb-1">Schedule</p>
+        <p id="cron-desc" class="text-base font-medium text-slate-800">&mdash;</p>
+      </div>
+
+      <!-- Next 5 runs -->
+      <div class="rounded-xl border border-slate-200 bg-white px-5 py-4">
+        <p class="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-3">Next 5 Scheduled Runs</p>
+        <ol id="next-runs" class="space-y-1.5 text-sm font-mono text-slate-700 list-decimal list-inside"></ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── BUILD MODE ── -->
+  <div id="build-mode" class="hidden">
+
+    <!-- Preset buttons -->
+    <div class="mb-4">
+      <p class="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-2">Quick Presets</p>
+      <div class="flex flex-wrap gap-2">
+        <button data-preset="* * * * *"      class="preset-btn rounded-md border border-slate-300 px-3 py-1 text-xs font-medium text-slate-700 hover:bg-violet-50 hover:border-violet-300 transition-colors">Every minute</button>
+        <button data-preset="0 * * * *"      class="preset-btn rounded-md border border-slate-300 px-3 py-1 text-xs font-medium text-slate-700 hover:bg-violet-50 hover:border-violet-300 transition-colors">Every hour</button>
+        <button data-preset="0 0 * * *"      class="preset-btn rounded-md border border-slate-300 px-3 py-1 text-xs font-medium text-slate-700 hover:bg-violet-50 hover:border-violet-300 transition-colors">Every day at midnight</button>
+        <button data-preset="0 9 * * 1"      class="preset-btn rounded-md border border-slate-300 px-3 py-1 text-xs font-medium text-slate-700 hover:bg-violet-50 hover:border-violet-300 transition-colors">Every Monday at 9am</button>
+        <button data-preset="0 0 1 * *"      class="preset-btn rounded-md border border-slate-300 px-3 py-1 text-xs font-medium text-slate-700 hover:bg-violet-50 hover:border-violet-300 transition-colors">First of every month</button>
+        <button data-preset="*/15 * * * *"   class="preset-btn rounded-md border border-slate-300 px-3 py-1 text-xs font-medium text-slate-700 hover:bg-violet-50 hover:border-violet-300 transition-colors">Every 15 minutes</button>
+      </div>
+    </div>
+
+    <!-- Builder fields -->
+    <div class="rounded-xl border border-slate-200 bg-white p-5 mb-4">
+      <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+
+        <!-- Minute -->
+        <div>
+          <label class="block text-xs font-semibold uppercase tracking-wide text-slate-500 mb-2">Minute</label>
+          <select id="b-min-type" class="w-full rounded-md border border-slate-300 bg-white px-3 py-1.5 text-sm focus:border-violet-500 focus:ring-1 focus:ring-violet-500">
+            <option value="every">Every minute (*)</option>
+            <option value="step">Every N minutes (*/N)</option>
+            <option value="exact">At specific minute</option>
+          </select>
+          <div id="b-min-step-wrap" class="mt-2 hidden">
+            <input id="b-min-step" type="number" min="2" max="59" value="15" class="w-full rounded-md border border-slate-300 px-3 py-1.5 text-sm focus:border-violet-500 focus:ring-1 focus:ring-violet-500" placeholder="N (2-59)" />
+          </div>
+          <div id="b-min-exact-wrap" class="mt-2 hidden">
+            <input id="b-min-exact" type="number" min="0" max="59" value="0" class="w-full rounded-md border border-slate-300 px-3 py-1.5 text-sm focus:border-violet-500 focus:ring-1 focus:ring-violet-500" placeholder="0-59" />
+          </div>
+        </div>
+
+        <!-- Hour -->
+        <div>
+          <label class="block text-xs font-semibold uppercase tracking-wide text-slate-500 mb-2">Hour</label>
+          <select id="b-hour-type" class="w-full rounded-md border border-slate-300 bg-white px-3 py-1.5 text-sm focus:border-violet-500 focus:ring-1 focus:ring-violet-500">
+            <option value="every">Every hour (*)</option>
+            <option value="step">Every N hours (*/N)</option>
+            <option value="exact">At specific hour</option>
+          </select>
+          <div id="b-hour-step-wrap" class="mt-2 hidden">
+            <input id="b-hour-step" type="number" min="2" max="23" value="6" class="w-full rounded-md border border-slate-300 px-3 py-1.5 text-sm focus:border-violet-500 focus:ring-1 focus:ring-violet-500" placeholder="N (2-23)" />
+          </div>
+          <div id="b-hour-exact-wrap" class="mt-2 hidden">
+            <select id="b-hour-exact" class="w-full rounded-md border border-slate-300 bg-white px-3 py-1.5 text-sm focus:border-violet-500 focus:ring-1 focus:ring-violet-500">
+              <option value="0">0 — Midnight</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9 — 9 AM</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12 — Noon</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+              <option value="21">21</option>
+              <option value="22">22</option>
+              <option value="23">23</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Day of Month -->
+        <div>
+          <label class="block text-xs font-semibold uppercase tracking-wide text-slate-500 mb-2">Day of Month</label>
+          <select id="b-dom-type" class="w-full rounded-md border border-slate-300 bg-white px-3 py-1.5 text-sm focus:border-violet-500 focus:ring-1 focus:ring-violet-500">
+            <option value="every">Every day (*)</option>
+            <option value="exact">On specific day</option>
+            <option value="step">Every N days</option>
+          </select>
+          <div id="b-dom-exact-wrap" class="mt-2 hidden">
+            <input id="b-dom-exact" type="number" min="1" max="31" value="1" class="w-full rounded-md border border-slate-300 px-3 py-1.5 text-sm focus:border-violet-500 focus:ring-1 focus:ring-violet-500" placeholder="1-31" />
+          </div>
+          <div id="b-dom-step-wrap" class="mt-2 hidden">
+            <input id="b-dom-step" type="number" min="2" max="31" value="7" class="w-full rounded-md border border-slate-300 px-3 py-1.5 text-sm focus:border-violet-500 focus:ring-1 focus:ring-violet-500" placeholder="N (2-31)" />
+          </div>
+        </div>
+
+        <!-- Month -->
+        <div>
+          <label class="block text-xs font-semibold uppercase tracking-wide text-slate-500 mb-2">Month</label>
+          <select id="b-mon-type" class="w-full rounded-md border border-slate-300 bg-white px-3 py-1.5 text-sm focus:border-violet-500 focus:ring-1 focus:ring-violet-500">
+            <option value="every">Every month (*)</option>
+            <option value="exact">Specific month</option>
+          </select>
+          <div id="b-mon-exact-wrap" class="mt-2 hidden">
+            <select id="b-mon-exact" class="w-full rounded-md border border-slate-300 bg-white px-3 py-1.5 text-sm focus:border-violet-500 focus:ring-1 focus:ring-violet-500">
+              <option value="1">January</option>
+              <option value="2">February</option>
+              <option value="3">March</option>
+              <option value="4">April</option>
+              <option value="5">May</option>
+              <option value="6">June</option>
+              <option value="7">July</option>
+              <option value="8">August</option>
+              <option value="9">September</option>
+              <option value="10">October</option>
+              <option value="11">November</option>
+              <option value="12">December</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Day of Week -->
+        <div class="sm:col-span-2 lg:col-span-2">
+          <label class="block text-xs font-semibold uppercase tracking-wide text-slate-500 mb-2">Day of Week</label>
+          <select id="b-dow-type" class="w-full rounded-md border border-slate-300 bg-white px-3 py-1.5 text-sm focus:border-violet-500 focus:ring-1 focus:ring-violet-500 mb-2">
+            <option value="any">Any day (*)</option>
+            <option value="specific">Specific days</option>
+            <option value="weekdays">Weekdays only (Mon-Fri)</option>
+            <option value="weekend">Weekend only (Sat-Sun)</option>
+          </select>
+          <div id="b-dow-specific-wrap" class="hidden">
+            <div class="flex flex-wrap gap-2">
+              <label class="flex items-center gap-1.5 text-sm cursor-pointer">
+                <input type="checkbox" class="dow-check accent-violet-600" value="0" /> Sun
+              </label>
+              <label class="flex items-center gap-1.5 text-sm cursor-pointer">
+                <input type="checkbox" class="dow-check accent-violet-600" value="1" /> Mon
+              </label>
+              <label class="flex items-center gap-1.5 text-sm cursor-pointer">
+                <input type="checkbox" class="dow-check accent-violet-600" value="2" /> Tue
+              </label>
+              <label class="flex items-center gap-1.5 text-sm cursor-pointer">
+                <input type="checkbox" class="dow-check accent-violet-600" value="3" /> Wed
+              </label>
+              <label class="flex items-center gap-1.5 text-sm cursor-pointer">
+                <input type="checkbox" class="dow-check accent-violet-600" value="4" /> Thu
+              </label>
+              <label class="flex items-center gap-1.5 text-sm cursor-pointer">
+                <input type="checkbox" class="dow-check accent-violet-600" value="5" /> Fri
+              </label>
+              <label class="flex items-center gap-1.5 text-sm cursor-pointer">
+                <input type="checkbox" class="dow-check accent-violet-600" value="6" /> Sat
+              </label>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Generated expression output -->
     <div class="rounded-xl border border-violet-200 bg-violet-50 px-5 py-4 mb-4">
-      <p class="text-xs font-semibold uppercase tracking-wide text-violet-600 mb-1">Schedule</p>
-      <p id="cron-desc" class="text-base font-medium text-slate-800">—</p>
+      <p class="text-xs font-semibold uppercase tracking-wide text-violet-600 mb-2">Generated Expression</p>
+      <div class="flex items-center gap-3 flex-wrap">
+        <span id="build-output" class="text-2xl font-mono font-bold text-violet-700">* * * * *</span>
+        <button id="btn-use-expression" class="rounded-md bg-violet-600 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-violet-700 transition-colors">Use &amp; Parse this expression</button>
+      </div>
+      <p id="build-desc" class="mt-2 text-sm text-slate-600">Every minute.</p>
     </div>
 
-    <!-- Next 5 runs -->
-    <div class="rounded-xl border border-slate-200 bg-white px-5 py-4">
-      <p class="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-3">Next 5 Scheduled Runs</p>
-      <ol id="next-runs" class="space-y-1.5 text-sm font-mono text-slate-700 list-decimal list-inside"></ol>
-    </div>
   </div>
 
   <!-- ── Below-fold: SEO content ── -->
@@ -139,33 +317,33 @@ const recentPosts = siteConfig.features.hasBlog
           <tbody class="text-slate-700">
             <tr class="even:bg-slate-50">
               <td class="px-3 py-2 border border-slate-200 font-medium">Minute</td>
-              <td class="px-3 py-2 border border-slate-200 font-mono">0 – 59</td>
+              <td class="px-3 py-2 border border-slate-200 font-mono">0 &ndash; 59</td>
               <td class="px-3 py-2 border border-slate-200 font-mono">* , - /</td>
-              <td class="px-3 py-2 border border-slate-200"><code>*/15</code> — every 15 minutes</td>
+              <td class="px-3 py-2 border border-slate-200"><code>*/15</code> &mdash; every 15 minutes</td>
             </tr>
             <tr class="even:bg-slate-50">
               <td class="px-3 py-2 border border-slate-200 font-medium">Hour</td>
-              <td class="px-3 py-2 border border-slate-200 font-mono">0 – 23</td>
+              <td class="px-3 py-2 border border-slate-200 font-mono">0 &ndash; 23</td>
               <td class="px-3 py-2 border border-slate-200 font-mono">* , - /</td>
-              <td class="px-3 py-2 border border-slate-200"><code>9-17</code> — 9 AM through 5 PM</td>
+              <td class="px-3 py-2 border border-slate-200"><code>9-17</code> &mdash; 9 AM through 5 PM</td>
             </tr>
             <tr class="even:bg-slate-50">
               <td class="px-3 py-2 border border-slate-200 font-medium">Day of month</td>
-              <td class="px-3 py-2 border border-slate-200 font-mono">1 – 31</td>
+              <td class="px-3 py-2 border border-slate-200 font-mono">1 &ndash; 31</td>
               <td class="px-3 py-2 border border-slate-200 font-mono">* , - /</td>
-              <td class="px-3 py-2 border border-slate-200"><code>1,15</code> — 1st and 15th</td>
+              <td class="px-3 py-2 border border-slate-200"><code>1,15</code> &mdash; 1st and 15th</td>
             </tr>
             <tr class="even:bg-slate-50">
               <td class="px-3 py-2 border border-slate-200 font-medium">Month</td>
-              <td class="px-3 py-2 border border-slate-200 font-mono">1 – 12</td>
+              <td class="px-3 py-2 border border-slate-200 font-mono">1 &ndash; 12</td>
               <td class="px-3 py-2 border border-slate-200 font-mono">* , - /</td>
-              <td class="px-3 py-2 border border-slate-200"><code>1-6</code> — January through June</td>
+              <td class="px-3 py-2 border border-slate-200"><code>1-6</code> &mdash; January through June</td>
             </tr>
             <tr class="even:bg-slate-50">
               <td class="px-3 py-2 border border-slate-200 font-medium">Day of week</td>
-              <td class="px-3 py-2 border border-slate-200 font-mono">0 – 6 (Sun=0)</td>
+              <td class="px-3 py-2 border border-slate-200 font-mono">0 &ndash; 6 (Sun=0)</td>
               <td class="px-3 py-2 border border-slate-200 font-mono">* , - /</td>
-              <td class="px-3 py-2 border border-slate-200"><code>1-5</code> — Monday through Friday</td>
+              <td class="px-3 py-2 border border-slate-200"><code>1-5</code> &mdash; Monday through Friday</td>
             </tr>
           </tbody>
         </table>
@@ -176,7 +354,7 @@ const recentPosts = siteConfig.features.hasBlog
           <code>*</code> matches every value in the field.
           <code>,</code> separates a list of values (e.g. <code>1,3,5</code>).
           <code>-</code> defines an inclusive range (e.g. <code>9-17</code>).
-          <code>/</code> defines a step — <code>*/5</code> means every 5 units, <code>10/5</code> means every 5 units starting at 10.
+          <code>/</code> defines a step &mdash; <code>*/5</code> means every 5 units, <code>10/5</code> means every 5 units starting at 10.
         </p>
       </div>
     </section>
@@ -202,7 +380,7 @@ const recentPosts = siteConfig.features.hasBlog
             </tr>
             <tr class="even:bg-slate-50">
               <td class="px-3 py-2 border border-slate-200 font-mono">0 9 * * 1-5</td>
-              <td class="px-3 py-2 border border-slate-200">9:00 AM on weekdays (Mon – Fri)</td>
+              <td class="px-3 py-2 border border-slate-200">9:00 AM on weekdays (Mon &ndash; Fri)</td>
             </tr>
             <tr class="even:bg-slate-50">
               <td class="px-3 py-2 border border-slate-200 font-mono">0 0 * * *</td>
@@ -275,7 +453,7 @@ const recentPosts = siteConfig.features.hasBlog
       </ul>
       <div class="mt-6">
         <a href="/blog/" class="text-sm font-medium text-violet-700 underline underline-offset-2 hover:text-violet-800">
-          View all guides →
+          View all guides &rarr;
         </a>
       </div>
     </section>
@@ -303,6 +481,34 @@ const recentPosts = siteConfig.features.hasBlog
     var descEl    = document.getElementById('cron-desc');
     var runsEl    = document.getElementById('next-runs');
 
+    // ── Tab switching ──
+    var tabParse = document.getElementById('tab-parse');
+    var tabBuild = document.getElementById('tab-build');
+    var parseMode = document.getElementById('parse-mode');
+    var buildMode = document.getElementById('build-mode');
+
+    function activateTab(tab) {
+      if (tab === 'parse') {
+        tabParse.classList.add('border-violet-600', 'text-violet-700');
+        tabParse.classList.remove('border-transparent', 'text-slate-500');
+        tabBuild.classList.add('border-transparent', 'text-slate-500');
+        tabBuild.classList.remove('border-violet-600', 'text-violet-700');
+        parseMode.classList.remove('hidden');
+        buildMode.classList.add('hidden');
+      } else {
+        tabBuild.classList.add('border-violet-600', 'text-violet-700');
+        tabBuild.classList.remove('border-transparent', 'text-slate-500');
+        tabParse.classList.add('border-transparent', 'text-slate-500');
+        tabParse.classList.remove('border-violet-600', 'text-violet-700');
+        buildMode.classList.remove('hidden');
+        parseMode.classList.add('hidden');
+      }
+    }
+
+    tabParse.addEventListener('click', function() { activateTab('parse'); });
+    tabBuild.addEventListener('click', function() { activateTab('build'); });
+
+    // ── Parse mode helpers ──
     function showStatus(msg, type) {
       var clsMap = {
         error:   'bg-red-50 text-red-700 border border-red-200',
@@ -616,6 +822,233 @@ const recentPosts = siteConfig.features.hasBlog
         runExplain();
       }
     });
+
+    // ── Build mode logic ──
+    var buildOutput = document.getElementById('build-output');
+    var buildDesc   = document.getElementById('build-desc');
+
+    function getSelectVal(id) { return document.getElementById(id).value; }
+
+    function toggleWrap(wrapId, show) {
+      document.getElementById(wrapId).classList.toggle('hidden', !show);
+    }
+
+    // Wire up sub-field visibility toggles
+    document.getElementById('b-min-type').addEventListener('change', function() {
+      var v = this.value;
+      toggleWrap('b-min-step-wrap',  v === 'step');
+      toggleWrap('b-min-exact-wrap', v === 'exact');
+      updateBuild();
+    });
+    document.getElementById('b-hour-type').addEventListener('change', function() {
+      var v = this.value;
+      toggleWrap('b-hour-step-wrap',  v === 'step');
+      toggleWrap('b-hour-exact-wrap', v === 'exact');
+      updateBuild();
+    });
+    document.getElementById('b-dom-type').addEventListener('change', function() {
+      var v = this.value;
+      toggleWrap('b-dom-exact-wrap', v === 'exact');
+      toggleWrap('b-dom-step-wrap',  v === 'step');
+      updateBuild();
+    });
+    document.getElementById('b-mon-type').addEventListener('change', function() {
+      toggleWrap('b-mon-exact-wrap', this.value === 'exact');
+      updateBuild();
+    });
+    document.getElementById('b-dow-type').addEventListener('change', function() {
+      toggleWrap('b-dow-specific-wrap', this.value === 'specific');
+      updateBuild();
+    });
+
+    // Wire up all inputs/selects in build mode to live-update
+    ['b-min-step','b-min-exact','b-hour-step','b-hour-exact','b-dom-exact','b-dom-step','b-mon-exact'].forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) { el.addEventListener('input', updateBuild); el.addEventListener('change', updateBuild); }
+    });
+    document.querySelectorAll('.dow-check').forEach(function(chk) {
+      chk.addEventListener('change', updateBuild);
+    });
+
+    function buildMinField() {
+      var t = getSelectVal('b-min-type');
+      if (t === 'every') { return '*'; }
+      if (t === 'step') {
+        var n = parseInt(document.getElementById('b-min-step').value, 10);
+        if (isNaN(n) || n < 2) { n = 2; }
+        if (n > 59) { n = 59; }
+        return '*/' + n;
+      }
+      // exact
+      var v = parseInt(document.getElementById('b-min-exact').value, 10);
+      if (isNaN(v) || v < 0) { v = 0; }
+      if (v > 59) { v = 59; }
+      return String(v);
+    }
+
+    function buildHourField() {
+      var t = getSelectVal('b-hour-type');
+      if (t === 'every') { return '*'; }
+      if (t === 'step') {
+        var n = parseInt(document.getElementById('b-hour-step').value, 10);
+        if (isNaN(n) || n < 2) { n = 2; }
+        if (n > 23) { n = 23; }
+        return '*/' + n;
+      }
+      return getSelectVal('b-hour-exact');
+    }
+
+    function buildDomField() {
+      var t = getSelectVal('b-dom-type');
+      if (t === 'every') { return '*'; }
+      if (t === 'exact') {
+        var v = parseInt(document.getElementById('b-dom-exact').value, 10);
+        if (isNaN(v) || v < 1) { v = 1; }
+        if (v > 31) { v = 31; }
+        return String(v);
+      }
+      // step
+      var n = parseInt(document.getElementById('b-dom-step').value, 10);
+      if (isNaN(n) || n < 2) { n = 2; }
+      if (n > 31) { n = 31; }
+      return '*/' + n;
+    }
+
+    function buildMonField() {
+      var t = getSelectVal('b-mon-type');
+      if (t === 'every') { return '*'; }
+      return getSelectVal('b-mon-exact');
+    }
+
+    function buildDowField() {
+      var t = getSelectVal('b-dow-type');
+      if (t === 'any') { return '*'; }
+      if (t === 'weekdays') { return '1-5'; }
+      if (t === 'weekend') { return '0,6'; }
+      // specific — collect checked
+      var checked = [];
+      document.querySelectorAll('.dow-check').forEach(function(chk) {
+        if (chk.checked) { checked.push(parseInt(chk.value, 10)); }
+      });
+      if (checked.length === 0) { return '*'; }
+      checked.sort(function(a, b) { return a - b; });
+      return checked.join(',');
+    }
+
+    function updateBuild() {
+      var min  = buildMinField();
+      var hour = buildHourField();
+      var dom  = buildDomField();
+      var mon  = buildMonField();
+      var dow  = buildDowField();
+      var expr = min + ' ' + hour + ' ' + dom + ' ' + mon + ' ' + dow;
+      buildOutput.textContent = expr;
+      var parts = parseCron(expr);
+      buildDesc.textContent = parts ? describeSchedule(parts) : '';
+    }
+
+    // Preset buttons
+    document.querySelectorAll('.preset-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var expr = btn.getAttribute('data-preset');
+        applyPresetToBuilder(expr);
+      });
+    });
+
+    function applyPresetToBuilder(expr) {
+      var parts = expr.trim().split(/\s+/);
+      if (parts.length !== 5) { return; }
+
+      // Reset all selects to defaults
+      document.getElementById('b-min-type').value  = 'every';
+      document.getElementById('b-hour-type').value = 'every';
+      document.getElementById('b-dom-type').value  = 'every';
+      document.getElementById('b-mon-type').value  = 'every';
+      document.getElementById('b-dow-type').value  = 'any';
+      toggleWrap('b-min-step-wrap',  false);
+      toggleWrap('b-min-exact-wrap', false);
+      toggleWrap('b-hour-step-wrap', false);
+      toggleWrap('b-hour-exact-wrap', false);
+      toggleWrap('b-dom-exact-wrap', false);
+      toggleWrap('b-dom-step-wrap',  false);
+      toggleWrap('b-mon-exact-wrap', false);
+      toggleWrap('b-dow-specific-wrap', false);
+      document.querySelectorAll('.dow-check').forEach(function(c) { c.checked = false; });
+
+      // Minute
+      if (parts[0] === '*') {
+        document.getElementById('b-min-type').value = 'every';
+      } else if (parts[0].indexOf('/') !== -1) {
+        document.getElementById('b-min-type').value = 'step';
+        document.getElementById('b-min-step').value = parts[0].split('/')[1];
+        toggleWrap('b-min-step-wrap', true);
+      } else {
+        document.getElementById('b-min-type').value = 'exact';
+        document.getElementById('b-min-exact').value = parts[0];
+        toggleWrap('b-min-exact-wrap', true);
+      }
+
+      // Hour
+      if (parts[1] === '*') {
+        document.getElementById('b-hour-type').value = 'every';
+      } else if (parts[1].indexOf('/') !== -1) {
+        document.getElementById('b-hour-type').value = 'step';
+        document.getElementById('b-hour-step').value = parts[1].split('/')[1];
+        toggleWrap('b-hour-step-wrap', true);
+      } else {
+        document.getElementById('b-hour-type').value = 'exact';
+        document.getElementById('b-hour-exact').value = parts[1];
+        toggleWrap('b-hour-exact-wrap', true);
+      }
+
+      // DOM
+      if (parts[2] === '*') {
+        document.getElementById('b-dom-type').value = 'every';
+      } else {
+        document.getElementById('b-dom-type').value = 'exact';
+        document.getElementById('b-dom-exact').value = parts[2];
+        toggleWrap('b-dom-exact-wrap', true);
+      }
+
+      // Month
+      if (parts[3] === '*') {
+        document.getElementById('b-mon-type').value = 'every';
+      } else {
+        document.getElementById('b-mon-type').value = 'exact';
+        document.getElementById('b-mon-exact').value = parts[3];
+        toggleWrap('b-mon-exact-wrap', true);
+      }
+
+      // DOW
+      if (parts[4] === '*') {
+        document.getElementById('b-dow-type').value = 'any';
+      } else if (parts[4] === '1-5') {
+        document.getElementById('b-dow-type').value = 'weekdays';
+      } else if (parts[4] === '0,6') {
+        document.getElementById('b-dow-type').value = 'weekend';
+      } else {
+        document.getElementById('b-dow-type').value = 'specific';
+        toggleWrap('b-dow-specific-wrap', true);
+        var days = parts[4].split(',');
+        days.forEach(function(d) {
+          var chk = document.querySelector('.dow-check[value="' + d + '"]');
+          if (chk) { chk.checked = true; }
+        });
+      }
+
+      updateBuild();
+    }
+
+    // "Use & Parse" button: copies generated expression to parse mode
+    document.getElementById('btn-use-expression').addEventListener('click', function() {
+      var expr = buildOutput.textContent.trim();
+      inputEl.value = expr;
+      activateTab('parse');
+      runExplain();
+    });
+
+    // Initialize builder output
+    updateBuild();
   </script>
 
 </BaseLayout>

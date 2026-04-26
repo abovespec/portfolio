@@ -34,6 +34,7 @@ const recentPosts = siteConfig.features.hasBlog
     <button id="btn-title"          class="rounded-md bg-amber-500 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-amber-600 transition-colors">Title Case</button>
     <button id="btn-upper"          class="rounded-md bg-amber-500 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-amber-600 transition-colors">UPPER</button>
     <button id="btn-lower"          class="rounded-md bg-amber-500 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-amber-600 transition-colors">lower</button>
+    <button id="btn-train"          class="rounded-md bg-amber-500 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-amber-600 transition-colors">Train-Case</button>
     <div class="flex-1"></div>
     <button id="btn-sample"  class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Sample</button>
     <button id="btn-clear"   class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Clear</button>
@@ -81,6 +82,7 @@ const recentPosts = siteConfig.features.hasBlog
           <li><strong>SCREAMING_SNAKE_CASE</strong> — snake_case in all caps. Used for constants and environment variables.</li>
           <li><strong>kebab-case</strong> — words separated by hyphens, all lowercase. Standard for CSS class names, HTML attributes, URL slugs, and CLI flags.</li>
           <li><strong>Title Case</strong> — first letter of each word capitalized. Used in headings, book titles, and article titles.</li>
+          <li><strong>Train-Case</strong> — first letter of each word capitalized, joined with hyphens. Used in HTTP header names (e.g. <code>Content-Type</code>, <code>X-Request-Id</code>).</li>
         </ul>
       </div>
     </section>
@@ -166,6 +168,7 @@ const recentPosts = siteConfig.features.hasBlog
       if (mode === 'title') return tokens.map(function(t) { return t[0].toUpperCase() + t.slice(1).toLowerCase(); }).join(' ');
       if (mode === 'upper') return line.toUpperCase();
       if (mode === 'lower') return line.toLowerCase();
+      if (mode === 'train') return tokens.map(function(t) { return t[0].toUpperCase() + t.slice(1).toLowerCase(); }).join('-');
       return line;
     }
 
@@ -184,6 +187,7 @@ const recentPosts = siteConfig.features.hasBlog
     document.getElementById('btn-title').addEventListener('click', function() { convert('title'); });
     document.getElementById('btn-upper').addEventListener('click', function() { convert('upper'); });
     document.getElementById('btn-lower').addEventListener('click', function() { convert('lower'); });
+    document.getElementById('btn-train').addEventListener('click', function() { convert('train'); });
 
     document.getElementById('btn-sample').addEventListener('click', function() {
       input.value = SAMPLE;

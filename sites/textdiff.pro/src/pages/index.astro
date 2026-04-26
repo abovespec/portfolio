@@ -29,6 +29,15 @@ const recentPosts = siteConfig.features.hasBlog
     <button id="btn-diff"    class="rounded-md bg-zinc-700 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-zinc-800 transition-colors">Compare</button>
     <button id="btn-sample"  class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Sample</button>
     <div class="flex-1"></div>
+    <!-- Mode options -->
+    <label class="flex items-center gap-1.5 text-xs text-slate-500 cursor-pointer select-none px-1">
+      <input id="opt-word-level" type="checkbox" class="accent-zinc-700" />
+      Word-level diff
+    </label>
+    <label class="flex items-center gap-1.5 text-xs text-slate-500 cursor-pointer select-none px-1">
+      <input id="opt-ignore-ws" type="checkbox" class="accent-zinc-700" />
+      Ignore whitespace
+    </label>
     <button id="btn-swap"    class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Swap ⇅</button>
     <button id="btn-clear"   class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Clear</button>
     <button id="btn-copy"    class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Copy diff</button>
@@ -212,17 +221,123 @@ const recentPosts = siteConfig.features.hasBlog
       return result.reverse();
     }
 
+    /* Word-level LCS diff — returns array of {text, type: 'same'|'removed'|'added'} */
+    function wordDiff(oldLine, newLine) {
+      var oldTokens = oldLine.split(/(\s+)/);
+      var newTokens = newLine.split(/(\s+)/);
+      var N = oldTokens.length, M = newTokens.length;
+
+      /* Build LCS table */
+      var dp = [];
+      for (var i = 0; i <= N; i++) {
+        dp[i] = new Array(M + 1).fill(0);
+      }
+      for (var i = 1; i <= N; i++) {
+        for (var j = 1; j <= M; j++) {
+          if (oldTokens[i-1] === newTokens[j-1]) {
+            dp[i][j] = dp[i-1][j-1] + 1;
+          } else {
+            dp[i][j] = Math.max(dp[i-1][j], dp[i][j-1]);
+          }
+        }
+      }
+
+      /* Backtrack */
+      var result = [];
+      var i = N, j = M;
+      while (i > 0 || j > 0) {
+        if (i > 0 && j > 0 && oldTokens[i-1] === newTokens[j-1]) {
+          result.push({ text: oldTokens[i-1], type: 'same' });
+          i--; j--;
+        } else if (j > 0 && (i === 0 || dp[i][j-1] >= dp[i-1][j])) {
+          result.push({ text: newTokens[j-1], type: 'added' });
+          j--;
+        } else {
+          result.push({ text: oldTokens[i-1], type: 'removed' });
+          i--;
+        }
+      }
+      result.reverse();
+      return result;
+    }
+
     function escHtml(str) {
       return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    }
+
+    function renderWordDiffLine(tokens, lineType) {
+      /* lineType: '-' means we show removed highlights, '+' means added highlights */
+      return tokens.map(function(tok) {
+        if (tok.type === 'same') {
+          return '<span>' + escHtml(tok.text) + '</span>';
+        } else if (tok.type === 'removed' && lineType === '-') {
+          return '<span class="bg-red-300 text-red-900 rounded-sm">' + escHtml(tok.text) + '</span>';
+        } else if (tok.type === 'added' && lineType === '+') {
+          return '<span class="bg-emerald-300 text-emerald-900 rounded-sm">' + escHtml(tok.text) + '</span>';
+        }
+        /* token type doesn't match the line display side — skip it */
+        return '';
+      }).join('');
+    }
+
+    function normalizeWs(line) {
+      return line.trim().replace(/\s+/g, ' ');
     }
 
     function runDiff() {
       var a = document.getElementById('text-a').value;
       var b = document.getElementById('text-b').value;
       if (!a && !b) { showStatus('Paste text into both panes first', 'info'); return; }
-      var ops = diffLines(a, b);
+
+      var wordLevel = document.getElementById('opt-word-level').checked;
+      var ignoreWs  = document.getElementById('opt-ignore-ws').checked;
+
+      var aProc = a, bProc = b;
+      if (ignoreWs) {
+        aProc = a.split('\n').map(normalizeWs).join('\n');
+        bProc = b.split('\n').map(normalizeWs).join('\n');
+      }
+
+      var ops = diffLines(aProc, bProc);
+
+      /* In word-level mode, pair consecutive removed/added hunks */
+      var renderOps;
+      if (wordLevel) {
+        renderOps = [];
+        var i = 0;
+        while (i < ops.length) {
+          if (ops[i].type === '-' && i + 1 < ops.length && ops[i+1].type === '+') {
+            renderOps.push({ type: 'word', removed: ops[i].text, added: ops[i+1].text });
+            i += 2;
+          } else {
+            renderOps.push(ops[i]);
+            i++;
+          }
+        }
+      } else {
+        renderOps = ops;
+      }
+
       var added = 0, removed = 0, unchanged = 0;
-      var lines = ops.map(function(op) {
+      var lines = renderOps.map(function(op) {
+        if (op.type === 'word') {
+          removed++;
+          added++;
+          var tokens = wordDiff(op.removed, op.added);
+          var removedHtml = renderWordDiffLine(tokens, '-');
+          var addedHtml   = renderWordDiffLine(tokens, '+');
+          return (
+            '<div class="flex items-start gap-3 px-4 py-0.5 bg-red-50 text-red-900">' +
+              '<span class="select-none text-slate-400 w-4 shrink-0">-</span>' +
+              '<span class="whitespace-pre-wrap break-all">' + removedHtml + '</span>' +
+            '</div>' +
+            '<div class="flex items-start gap-3 px-4 py-0.5 bg-emerald-50 text-emerald-900">' +
+              '<span class="select-none text-slate-400 w-4 shrink-0">+</span>' +
+              '<span class="whitespace-pre-wrap break-all">' + addedHtml + '</span>' +
+            '</div>'
+          );
+        }
+
         var bg, prefix;
         if (op.type === '+') { bg = 'bg-emerald-50 text-emerald-900'; prefix = '+'; added++; }
         else if (op.type === '-') { bg = 'bg-red-50 text-red-900'; prefix = '-'; removed++; }
@@ -231,6 +346,7 @@ const recentPosts = siteConfig.features.hasBlog
           '<span class="select-none text-slate-400 w-4 shrink-0">' + prefix + '</span>' +
           '<span class="whitespace-pre-wrap break-all">' + escHtml(op.text) + '</span></div>';
       }).join('');
+
       var out = document.getElementById('diff-output');
       out.innerHTML = lines || '<div class="px-4 py-3 text-sm text-slate-400">No differences found.</div>';
       document.getElementById('diff-output-wrap').classList.remove('hidden');

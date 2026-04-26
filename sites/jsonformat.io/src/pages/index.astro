@@ -24,63 +24,109 @@ const recentPosts = siteConfig.features.hasBlog
     </p>
   </header>
 
-  <!-- Toolbar -->
-  <div class="flex flex-wrap gap-2 mb-3">
-    <button id="btn-format"   class="rounded-md bg-blue-600 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-blue-700 transition-colors">Format</button>
-    <button id="btn-minify"   class="rounded-md bg-slate-700 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-slate-800 transition-colors">Minify</button>
-    <button id="btn-validate" class="rounded-md bg-emerald-600 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-emerald-700 transition-colors">Validate</button>
-    <button id="btn-to-xml"   class="rounded-md bg-indigo-600 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-indigo-700 transition-colors">→ XML</button>
-    <button id="btn-to-csv"   class="rounded-md bg-violet-600 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-violet-700 transition-colors">→ CSV</button>
-    <button id="btn-sample"   class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Sample</button>
-    <div class="flex-1"></div>
-    <button id="btn-clear"    class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Clear</button>
-    <button id="btn-copy"     class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Copy output</button>
+  <!-- Tab bar -->
+  <div class="flex gap-1 mb-4 border-b border-slate-200">
+    <button id="tab-main" class="px-4 py-2 text-sm font-medium text-blue-700 border-b-2 border-blue-600 -mb-px transition-colors">Format / Convert</button>
+    <button id="tab-ts"   class="px-4 py-2 text-sm font-medium text-slate-500 border-b-2 border-transparent -mb-px hover:text-slate-700 transition-colors">TypeScript</button>
   </div>
 
-  <!-- Dual-pane editor -->
-  <div class="grid gap-3 md:grid-cols-2 min-h-96">
-    <div class="flex flex-col gap-1 min-h-0">
-      <div class="flex items-center justify-between">
-        <label for="json-input" class="text-xs font-semibold uppercase tracking-wide text-slate-500">Input</label>
-        <label class="flex items-center gap-1.5 text-xs text-slate-500 cursor-pointer select-none">
-          <input id="auto-format" type="checkbox" class="accent-blue-600" />
-          Auto-format on paste
-        </label>
+  <!-- ══ MAIN PANEL ══ -->
+  <div id="panel-main">
+    <!-- Toolbar -->
+    <div class="flex flex-wrap gap-2 mb-3">
+      <button id="btn-format"   class="rounded-md bg-blue-600 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-blue-700 transition-colors">Format</button>
+      <button id="btn-minify"   class="rounded-md bg-slate-700 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-slate-800 transition-colors">Minify</button>
+      <button id="btn-validate" class="rounded-md bg-emerald-600 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-emerald-700 transition-colors">Validate</button>
+      <button id="btn-to-xml"   class="rounded-md bg-indigo-600 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-indigo-700 transition-colors">→ XML</button>
+      <button id="btn-to-csv"   class="rounded-md bg-violet-600 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-violet-700 transition-colors">→ CSV</button>
+      <button id="btn-sample"   class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Sample</button>
+      <div class="flex-1"></div>
+      <button id="btn-clear"    class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Clear</button>
+      <button id="btn-copy"     class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Copy output</button>
+    </div>
+
+    <!-- Dual-pane editor -->
+    <div class="grid gap-3 md:grid-cols-2 min-h-96">
+      <div class="flex flex-col gap-1 min-h-0">
+        <div class="flex items-center justify-between">
+          <label for="json-input" class="text-xs font-semibold uppercase tracking-wide text-slate-500">Input</label>
+          <label class="flex items-center gap-1.5 text-xs text-slate-500 cursor-pointer select-none">
+            <input id="auto-format" type="checkbox" class="accent-blue-600" />
+            Auto-format on paste
+          </label>
+        </div>
+        <textarea
+          id="json-input"
+          class="flex-1 w-full rounded-lg border border-slate-300 bg-slate-950 text-slate-100 p-4 font-mono text-sm resize-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 placeholder:text-slate-600"
+          placeholder="Paste your JSON here"
+          spellcheck="false"
+          autocomplete="off"
+          rows="16"
+        ></textarea>
       </div>
-      <textarea
-        id="json-input"
-        class="flex-1 w-full rounded-lg border border-slate-300 bg-slate-950 text-slate-100 p-4 font-mono text-sm resize-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 placeholder:text-slate-600"
-        placeholder="Paste your JSON here"
-        spellcheck="false"
-        autocomplete="off"
-        rows="16"
-      ></textarea>
+      <div class="flex flex-col gap-1 min-h-0">
+        <label for="json-output" class="text-xs font-semibold uppercase tracking-wide text-slate-500">Output</label>
+        <textarea
+          id="json-output"
+          class="flex-1 w-full rounded-lg border border-slate-200 bg-slate-950 text-slate-100 p-4 font-mono text-sm resize-none"
+          readonly
+          placeholder="Result appears here"
+          spellcheck="false"
+          rows="16"
+        ></textarea>
+      </div>
     </div>
-    <div class="flex flex-col gap-1 min-h-0">
-      <label for="json-output" class="text-xs font-semibold uppercase tracking-wide text-slate-500">Output</label>
-      <textarea
-        id="json-output"
-        class="flex-1 w-full rounded-lg border border-slate-200 bg-slate-950 text-slate-100 p-4 font-mono text-sm resize-none"
-        readonly
-        placeholder="Result appears here"
-        spellcheck="false"
-        rows="16"
-      ></textarea>
-    </div>
+
+    <!-- Status bar -->
+    <div id="status" class="mt-2 rounded-md px-3 py-1.5 text-sm font-medium hidden"></div>
+
+    <!-- Keyboard hint -->
+    <p class="mt-2 text-xs text-slate-400">
+      <kbd class="rounded border border-slate-300 bg-slate-100 px-1 py-0.5 font-mono text-slate-600">Ctrl</kbd>
+      +
+      <kbd class="rounded border border-slate-300 bg-slate-100 px-1 py-0.5 font-mono text-slate-600">Enter</kbd>
+      to format ·
+      <kbd class="rounded border border-slate-300 bg-slate-100 px-1 py-0.5 font-mono text-slate-600">Tab</kbd>
+      inserts spaces in input
+    </p>
   </div>
 
-  <!-- Status bar -->
-  <div id="status" class="mt-2 rounded-md px-3 py-1.5 text-sm font-medium hidden"></div>
+  <!-- ══ TYPESCRIPT PANEL ══ -->
+  <div id="panel-ts" class="hidden">
+    <div class="flex flex-wrap gap-2 mb-3">
+      <button id="btn-ts-generate" class="rounded-md bg-blue-600 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-blue-700 transition-colors">Generate Interface</button>
+      <button id="btn-ts-sample"   class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Sample</button>
+      <div class="flex-1"></div>
+      <button id="btn-ts-copy"     class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Copy output</button>
+    </div>
 
-  <!-- Keyboard hint -->
-  <p class="mt-2 text-xs text-slate-400">
-    <kbd class="rounded border border-slate-300 bg-slate-100 px-1 py-0.5 font-mono text-slate-600">Ctrl</kbd>
-    +
-    <kbd class="rounded border border-slate-300 bg-slate-100 px-1 py-0.5 font-mono text-slate-600">Enter</kbd>
-    to format ·
-    <kbd class="rounded border border-slate-300 bg-slate-100 px-1 py-0.5 font-mono text-slate-600">Tab</kbd>
-    inserts spaces in input
-  </p>
+    <div class="grid gap-3 md:grid-cols-2 min-h-96">
+      <div class="flex flex-col gap-1 min-h-0">
+        <label for="ts-input" class="text-xs font-semibold uppercase tracking-wide text-slate-500">JSON Input</label>
+        <textarea
+          id="ts-input"
+          class="flex-1 w-full rounded-lg border border-slate-300 bg-slate-950 text-slate-100 p-4 font-mono text-sm resize-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 placeholder:text-slate-600"
+          placeholder="Paste your JSON here"
+          spellcheck="false"
+          autocomplete="off"
+          rows="16"
+        ></textarea>
+      </div>
+      <div class="flex flex-col gap-1 min-h-0">
+        <label for="ts-output" class="text-xs font-semibold uppercase tracking-wide text-slate-500">TypeScript Interfaces</label>
+        <textarea
+          id="ts-output"
+          class="flex-1 w-full rounded-lg border border-slate-200 bg-slate-950 text-slate-100 p-4 font-mono text-sm resize-none"
+          readonly
+          placeholder="Generated TypeScript interfaces appear here"
+          spellcheck="false"
+          rows="16"
+        ></textarea>
+      </div>
+    </div>
+
+    <div id="ts-status" class="mt-2 rounded-md px-3 py-1.5 text-sm font-medium hidden"></div>
+  </div>
 
   <!-- ── Below-fold: SEO content ── -->
   <div class="mt-16 max-w-3xl space-y-10">
@@ -129,7 +175,7 @@ const recentPosts = siteConfig.features.hasBlog
       <div class="prose mt-4 max-w-none">
         <p>The JSON specification is strict. These are the most frequent mistakes:</p>
         <ul>
-          <li><strong>Trailing commas.</strong> JSON does not allow a comma after the last element of an object or array — <code>{'{"a": 1,}'}</code> is invalid.</li>
+          <li><strong>Trailing commas.</strong> JSON does not allow a comma after the last element of an object or array — <code>&#123;"a": 1,&#125;</code> is invalid.</li>
           <li><strong>Single-quoted strings.</strong> Only double quotes are valid.</li>
           <li><strong>Unquoted keys.</strong> Every object key must be a double-quoted string.</li>
           <li><strong>Comments.</strong> Standard JSON has no comment syntax.</li>
@@ -189,6 +235,24 @@ const recentPosts = siteConfig.features.hasBlog
   )}
 
   <script is:inline>
+    /* ── Tab switching ── */
+    var tabMain   = document.getElementById('tab-main');
+    var tabTs     = document.getElementById('tab-ts');
+    var panelMain = document.getElementById('panel-main');
+    var panelTs   = document.getElementById('panel-ts');
+
+    function activateTab(name) {
+      var isTs = (name === 'ts');
+      tabMain.className = 'px-4 py-2 text-sm font-medium border-b-2 -mb-px transition-colors ' + (isTs ? 'text-slate-500 border-transparent hover:text-slate-700' : 'text-blue-700 border-blue-600');
+      tabTs.className   = 'px-4 py-2 text-sm font-medium border-b-2 -mb-px transition-colors ' + (isTs ? 'text-blue-700 border-blue-600' : 'text-slate-500 border-transparent hover:text-slate-700');
+      panelMain.classList.toggle('hidden', isTs);
+      panelTs.classList.toggle('hidden', !isTs);
+    }
+
+    tabMain.addEventListener('click', function() { activateTab('main'); });
+    tabTs.addEventListener('click',   function() { activateTab('ts'); });
+
+    /* ── Main panel logic ── */
     var input  = document.getElementById('json-input');
     var output = document.getElementById('json-output');
     var statusEl = document.getElementById('status');
@@ -343,6 +407,130 @@ const recentPosts = siteConfig.features.hasBlog
         e.preventDefault();
         formatJson();
       }
+    });
+
+    /* ── TypeScript generator ── */
+    var TS_SAMPLE = '{\n  "name": "John",\n  "age": 30,\n  "active": true,\n  "score": null,\n  "address": {\n    "city": "NYC",\n    "zip": "10001"\n  },\n  "tags": ["admin", "user"]\n}';
+
+    function showTsStatus(msg, type) {
+      var el = document.getElementById('ts-status');
+      var clsMap = {
+        error:   'bg-red-50 text-red-700 border border-red-200',
+        success: 'bg-emerald-50 text-emerald-700 border border-emerald-200',
+        info:    'bg-blue-50 text-blue-700 border border-blue-200'
+      };
+      el.className = 'mt-2 rounded-md px-3 py-1.5 text-sm font-medium ' + (clsMap[type] || 'bg-slate-100 text-slate-700');
+      el.textContent = msg;
+      el.classList.remove('hidden');
+    }
+
+    /* Capitalise first letter of a string */
+    function capitalize(str) {
+      if (!str) return str;
+      return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
+    /* Sanitise a key so it can be used as an interface name */
+    function toInterfaceName(key) {
+      return key
+        .replace(/[^a-zA-Z0-9_$]/g, '_')
+        .replace(/^[0-9]/, '_$&');
+    }
+
+    /*
+     * jsonToTs(value, name, interfaces)
+     *   value      — the JSON value to analyse
+     *   name       — suggested interface name for this level (e.g. 'Root', 'Address')
+     *   interfaces — accumulator object: { [InterfaceName]: fieldLines[] }
+     *
+     * Returns the TypeScript type string for this value.
+     */
+    function jsonToTs(value, name, interfaces) {
+      if (value === null) return 'null';
+      if (typeof value === 'boolean') return 'boolean';
+      if (typeof value === 'number')  return 'number';
+      if (typeof value === 'string')  return 'string';
+
+      if (Array.isArray(value)) {
+        if (value.length === 0) return 'unknown[]';
+        /* Infer element type from first element */
+        var elemType = jsonToTs(value[0], name + 'Item', interfaces);
+        /* If element itself is an object we already added its interface above */
+        return elemType + '[]';
+      }
+
+      if (typeof value === 'object') {
+        var interfaceName = capitalize(toInterfaceName(name));
+        var fields = [];
+        Object.keys(value).forEach(function(key) {
+          var fieldVal  = value[key];
+          var childName = capitalize(toInterfaceName(key));
+          var fieldType = jsonToTs(fieldVal, childName, interfaces);
+          /* Quote key if it contains non-identifier chars */
+          var safeKey = /^[a-zA-Z_$][a-zA-Z0-9_$]*$/.test(key) ? key : '"' + key + '"';
+          fields.push('  ' + safeKey + ': ' + fieldType + ';');
+        });
+        /* Store interface — if name already exists, merge (simple: overwrite) */
+        interfaces[interfaceName] = fields;
+        return interfaceName;
+      }
+
+      return 'unknown';
+    }
+
+    function generateTs(jsonStr) {
+      var parsed = JSON.parse(jsonStr);
+      /* If the root is an array, unwrap one level */
+      var rootValue = parsed;
+      var rootName  = 'Root';
+      if (Array.isArray(parsed) && parsed.length > 0 && typeof parsed[0] === 'object' && parsed[0] !== null) {
+        rootValue = parsed[0];
+      }
+
+      var interfaces = {};
+      jsonToTs(rootValue, rootName, interfaces);
+
+      /* Output: child interfaces first, Root last */
+      var names = Object.keys(interfaces);
+      /* Move Root to end */
+      var rootIdx = names.indexOf('Root');
+      if (rootIdx > -1) {
+        names.splice(rootIdx, 1);
+        names.push('Root');
+      }
+
+      return names.map(function(n) {
+        return 'interface ' + n + ' {\n' + interfaces[n].join('\n') + '\n}';
+      }).join('\n\n');
+    }
+
+    document.getElementById('btn-ts-generate').addEventListener('click', function() {
+      var src = document.getElementById('ts-input').value.trim();
+      var tsOut = document.getElementById('ts-output');
+      if (!src) { showTsStatus('Paste JSON into the input pane first', 'info'); return; }
+      try {
+        tsOut.value = generateTs(src);
+        showTsStatus('TypeScript interfaces generated', 'success');
+      } catch (e) {
+        tsOut.value = '';
+        showTsStatus('JSON parse error: ' + e.message, 'error');
+      }
+    });
+
+    document.getElementById('btn-ts-sample').addEventListener('click', function() {
+      document.getElementById('ts-input').value = TS_SAMPLE;
+      document.getElementById('ts-output').value = '';
+      document.getElementById('ts-status').classList.add('hidden');
+    });
+
+    document.getElementById('btn-ts-copy').addEventListener('click', function() {
+      var val = document.getElementById('ts-output').value;
+      if (!val) { showTsStatus('Nothing to copy yet', 'info'); return; }
+      navigator.clipboard.writeText(val).then(function() {
+        showTsStatus('Copied to clipboard', 'success');
+      }, function() {
+        showTsStatus('Copy failed', 'error');
+      });
     });
   </script>
 

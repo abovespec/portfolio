@@ -49,6 +49,14 @@ const recentPosts = siteConfig.features.hasBlog
 
           <!-- HEX codes -->
           <div id="palette-codes" class="mt-3 flex flex-wrap gap-2 font-mono text-sm"></div>
+
+          <!-- CSS Variables export -->
+          <div class="mt-3 flex items-center gap-2">
+            <button id="btn-copy-css-vars" class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-700 hover:bg-slate-50 transition">
+              Copy CSS Variables
+            </button>
+            <span id="css-vars-copied" class="hidden text-xs font-medium text-emerald-600">Copied!</span>
+          </div>
         </div>
       </div>
 
@@ -265,6 +273,31 @@ const recentPosts = siteConfig.features.hasBlog
     document.getElementById('pal-seed').value = '#' + Math.floor(Math.random()*16777215).toString(16).padStart(6,'0');
     updatePalette();
   });
+
+  document.getElementById('btn-copy-css-vars').addEventListener('click', function() {
+    var seed = document.getElementById('pal-seed').value;
+    var colors = generatePalette(seed);
+    var css = ':root {\n' + colors.map(function(c, i) {
+      return '  --color-' + (i + 1) + ': ' + c + ';';
+    }).join('\n') + '\n}';
+    navigator.clipboard.writeText(css).then(function() {
+      var copiedEl = document.getElementById('css-vars-copied');
+      copiedEl.classList.remove('hidden');
+      setTimeout(function() { copiedEl.classList.add('hidden'); }, 2000);
+    }, function() {
+      // Fallback
+      var ta = document.createElement('textarea');
+      ta.value = css;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      var copiedEl = document.getElementById('css-vars-copied');
+      copiedEl.classList.remove('hidden');
+      setTimeout(function() { copiedEl.classList.add('hidden'); }, 2000);
+    });
+  });
+
   updatePalette();
 
   /* ---- Contrast ---- */

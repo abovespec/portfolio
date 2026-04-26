@@ -10,10 +10,10 @@ import { siteConfig } from '~/config/site.config';
     <div class="relative">
       <div class="mx-auto max-w-2xl text-center">
         <h1 class="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">RecipeScale</h1>
-        <p class="mt-3 text-lg text-slate-600">Recipe scaler, nutrition calculator by ingredient, meal plan generator by calorie target, and leftover ingredient finder.</p>
+        <p class="mt-3 text-lg text-slate-600">Recipe scaler with unit conversion, nutrition calculator by ingredient, and meal plan generator.</p>
       </div>
       <ul class="mt-6 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-slate-600">
-        {['Recipe scaling in seconds', 'Nutrition by ingredient', 'Meal plan by calorie target', 'No data stored or shared'].map((badge) => (
+        {['Recipe scaling in seconds', 'Per-row unit conversion', 'Meal plan by calorie target', 'No data stored or shared'].map((badge) => (
           <li class="flex items-center gap-1.5">
             <svg class="h-4 w-4 shrink-0 text-brand" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
               <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.061 1.06l2.5 2.5a.75.75 0 001.137-.088l4-5.5z" clip-rule="evenodd" />
@@ -34,6 +34,7 @@ import { siteConfig } from '~/config/site.config';
       <div id="rs-lines" class="space-y-2"></div>
       <button id="rs-add" class="mt-2 text-sm text-orange-600 hover:text-orange-800 font-medium">+ Add ingredient</button>
       <div class="mt-4 rounded-lg bg-yellow-50 p-3 text-center border border-yellow-100"><p class="text-sm text-orange-700 font-medium">Scale factor: <span id="rs-factor">1.5</span>x</p></div>
+      <p class="mt-2 text-xs text-slate-400">Use the unit dropdown on each row to convert the scaled quantity to a different unit.</p>
     </div>
 
     <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm mb-8">
@@ -63,15 +64,161 @@ import { siteConfig } from '~/config/site.config';
   <script is:inline>
     function $(id){ return document.getElementById(id); }
     function val(id){ return parseFloat($(id).value)||0; }
-    let rsCount=0;
-    function addRS(name,qty,unit){ rsCount++; const div=document.createElement('div'); div.className='flex gap-2 items-center'; div.innerHTML='<input type="text" placeholder="Ingredient" class="flex-1 rounded-lg border border-slate-300 px-3 py-2 text-sm" value="'+(name||'')+'"><input type="number" placeholder="Qty" class="w-20 rounded-lg border border-slate-300 px-2 py-2 text-sm rs-qty" value="'+(qty||'')+'"><input type="text" placeholder="Unit" class="w-24 rounded-lg border border-slate-300 px-2 py-2 text-sm" value="'+(unit||'')+'"><span class="rs-out text-sm font-medium text-orange-700 w-24 text-right"></span>'; $('rs-lines').appendChild(div); div.querySelectorAll('input').forEach(i=>i.addEventListener('input',calcRS)); }
-    addRS('Flour',2,'cups'); addRS('Sugar',0.5,'cups'); addRS('Butter',4,'tbsp');
-    function calcRS(){ const factor=val('rs-new')/Math.max(1,val('rs-orig')); $('rs-factor').textContent=factor.toFixed(2); document.querySelectorAll('#rs-lines > div').forEach(row=>{ const q=parseFloat(row.querySelector('.rs-qty').value)||0; row.querySelector('.rs-out').textContent=(q*factor).toFixed(2); }); }
-    $('rs-add').addEventListener('click',()=>addRS('',1,''));
-    ['rs-orig','rs-new'].forEach(id=>$(id)?.addEventListener('input',calcRS));
+
+    // Unit conversion table (from -> to -> factor)
+    const CONV = {
+      cup:   { ml: 236.6, tbsp: 16, tsp: 48, 'fl oz': 8, cup: 1 },
+      ml:    { cup: 1/236.6, tbsp: 1/14.79, tsp: 1/4.93, 'fl oz': 1/29.57, ml: 1 },
+      tbsp:  { cup: 1/16, ml: 14.79, tsp: 3, 'fl oz': 0.5, tbsp: 1 },
+      tsp:   { cup: 1/48, ml: 4.93, tbsp: 1/3, 'fl oz': 1/6, tsp: 1 },
+      'fl oz': { cup: 1/8, ml: 29.57, tbsp: 2, tsp: 6, 'fl oz': 1 },
+      g:     { oz: 1/28.35, lbs: 1/453.6, g: 1 },
+      oz:    { g: 28.35, lbs: 1/16, oz: 1 },
+      lbs:   { g: 453.6, oz: 16, lbs: 1 },
+    };
+
+    // Unit groups for the selector
+    const UNIT_GROUPS = {
+      volume: ['cup','ml','tbsp','tsp','fl oz'],
+      weight: ['g','oz','lbs'],
+      other: [],
+    };
+    const ALL_UNITS = [...UNIT_GROUPS.volume, ...UNIT_GROUPS.weight];
+
+    function getUnitGroup(unit) {
+      if (UNIT_GROUPS.volume.includes(unit)) return 'volume';
+      if (UNIT_GROUPS.weight.includes(unit)) return 'weight';
+      return 'other';
+    }
+
+    function convertQty(qty, fromUnit, toUnit) {
+      if (fromUnit === toUnit) return qty;
+      const conv = CONV[fromUnit];
+      if (!conv || conv[toUnit] === undefined) return qty; // incompatible
+      return qty * conv[toUnit];
+    }
+
+    function buildUnitOptions(currentUnit) {
+      const group = getUnitGroup(currentUnit);
+      const units = group === 'other' ? [] : (group === 'volume' ? UNIT_GROUPS.volume : UNIT_GROUPS.weight);
+      if (units.length === 0) return '<option value="">' + (currentUnit || 'unit') + '</option>';
+      return units.map(u => '<option value="' + u + '"' + (u === currentUnit ? ' selected' : '') + '>' + u + '</option>').join('');
+    }
+
+    let rsCount = 0;
+    function addRS(name, qty, unit) {
+      rsCount++;
+      const div = document.createElement('div');
+      div.className = 'flex gap-2 items-center flex-wrap';
+      const unitVal = unit || '';
+      div.innerHTML =
+        '<input type="text" placeholder="Ingredient" class="flex-1 min-w-0 rounded-lg border border-slate-300 px-3 py-2 text-sm" value="' + (name||'') + '">' +
+        '<input type="number" placeholder="Qty" class="w-20 rounded-lg border border-slate-300 px-2 py-2 text-sm rs-qty" value="' + (qty||'') + '">' +
+        '<select class="rs-unit w-28 rounded-lg border border-slate-300 px-2 py-2 text-sm">' + buildUnitOptions(unitVal) + '</select>' +
+        '<span class="rs-out text-sm font-medium text-orange-700 w-28 text-right"></span>';
+      $('rs-lines').appendChild(div);
+
+      const qtyInput = div.querySelector('.rs-qty');
+      const unitSelect = div.querySelector('.rs-unit');
+
+      qtyInput.addEventListener('input', calcRS);
+
+      unitSelect.addEventListener('change', () => {
+        // Convert the displayed output to the new unit without re-entering original qty
+        const newUnit = unitSelect.value;
+        const outEl = div.querySelector('.rs-out');
+        // Get the current scaled qty from the output text
+        const currentScaled = parseFloat(outEl.textContent) || 0;
+        // Find old unit from what was shown before
+        const oldUnit = unitSelect.dataset.prevUnit || unitVal;
+        // Re-derive from original qty instead (more reliable)
+        calcRS();
+        unitSelect.dataset.prevUnit = newUnit;
+      });
+
+      unitSelect.dataset.prevUnit = unitVal;
+      div.querySelectorAll('input').forEach(i => i.addEventListener('input', calcRS));
+    }
+
+    addRS('Flour', 2, 'cup');
+    addRS('Sugar', 0.5, 'cup');
+    addRS('Butter', 4, 'tbsp');
+
+    function calcRS() {
+      const factor = val('rs-new') / Math.max(1, val('rs-orig'));
+      $('rs-factor').textContent = factor.toFixed(2);
+      document.querySelectorAll('#rs-lines > div').forEach(row => {
+        const qtyInput = row.querySelector('.rs-qty');
+        const unitSelect = row.querySelector('.rs-unit');
+        const outEl = row.querySelector('.rs-out');
+        const origQty = parseFloat(qtyInput.value) || 0;
+        const scaledQty = origQty * factor;
+        const fromUnit = unitSelect ? (unitSelect.dataset.prevUnit || unitSelect.value || '') : '';
+        const toUnit = unitSelect ? unitSelect.value : '';
+        if (fromUnit && toUnit && fromUnit !== toUnit) {
+          // Converting: we use the original unit (before last change) to the new unit
+          // But since prevUnit tracks the "previous selection" and value is current,
+          // we treat the qty input as being in the base unit when it was typed.
+          // Simpler: qty input is always in the unit shown in the select (current toUnit).
+          // When user changes unit select, we convert the scaled qty.
+          outEl.textContent = scaledQty.toFixed(3);
+        } else {
+          outEl.textContent = scaledQty.toFixed(3);
+        }
+        if (unitSelect) outEl.textContent = scaledQty.toFixed(3) + (toUnit ? ' ' + toUnit : '');
+        else outEl.textContent = scaledQty.toFixed(3);
+      });
+    }
+
+    // Better unit conversion: when user changes unit select, convert current displayed value
+    // Attach on each new row's select with proper conversion
+    function attachUnitConvert(row) {
+      const qtyInput = row.querySelector('.rs-qty');
+      const unitSelect = row.querySelector('.rs-unit');
+      const outEl = row.querySelector('.rs-out');
+      if (!unitSelect) return;
+
+      unitSelect.addEventListener('change', function() {
+        const fromUnit = this.dataset.prevUnit;
+        const toUnit = this.value;
+        if (fromUnit && toUnit && fromUnit !== toUnit) {
+          const curQty = parseFloat(qtyInput.value) || 0;
+          const converted = convertQty(curQty, fromUnit, toUnit);
+          if (converted !== curQty) {
+            qtyInput.value = parseFloat(converted.toFixed(4));
+          }
+        }
+        this.dataset.prevUnit = toUnit;
+        calcRS();
+      });
+    }
+
+    // Re-attach on all initial rows
+    document.querySelectorAll('#rs-lines > div').forEach(row => attachUnitConvert(row));
+
+    // Override addRS to also attach conversion
+    const _addRS = addRS;
+    $('rs-add').addEventListener('click', () => {
+      _addRS('', 1, 'g');
+      const rows = document.querySelectorAll('#rs-lines > div');
+      attachUnitConvert(rows[rows.length - 1]);
+    });
+
+    ['rs-orig', 'rs-new'].forEach(id => $(id)?.addEventListener('input', calcRS));
     calcRS();
-    function calcMP(){ const cals=val('mp-cals'), protPct=val('mp-prot'), meals=val('mp-meals'); const fatPct=Math.max(15,35-protPct/2); const carbPct=100-protPct-fatPct; const protG=(cals*(protPct/100))/4; const carbG=(cals*(carbPct/100))/4; const fatG=(cals*(fatPct/100))/9; $('mp-out-prot').textContent=protG.toFixed(0)+'g'; $('mp-out-carb').textContent=carbG.toFixed(0)+'g'; $('mp-out-fat').textContent=fatG.toFixed(0)+'g'; }
-    ['mp-cals','mp-prot','mp-meals'].forEach(id=>$(id)?.addEventListener('input',calcMP));
+
+    function calcMP() {
+      const cals = val('mp-cals'), protPct = val('mp-prot'), meals = val('mp-meals');
+      const fatPct = Math.max(15, 35 - protPct / 2);
+      const carbPct = 100 - protPct - fatPct;
+      const protG = (cals * (protPct / 100)) / 4;
+      const carbG = (cals * (carbPct / 100)) / 4;
+      const fatG = (cals * (fatPct / 100)) / 9;
+      $('mp-out-prot').textContent = protG.toFixed(0) + 'g';
+      $('mp-out-carb').textContent = carbG.toFixed(0) + 'g';
+      $('mp-out-fat').textContent = fatG.toFixed(0) + 'g';
+    }
+    ['mp-cals', 'mp-prot', 'mp-meals'].forEach(id => $(id)?.addEventListener('input', calcMP));
     calcMP();
   </script>
 </BaseLayout>

@@ -134,6 +134,21 @@ const categoryLabels: Record<string, string> = {
   </div>
 
   <div class="mx-auto max-w-5xl">
+
+    <!-- Live price ticker -->
+    <section class="my-6">
+      <div id="price-ticker" class="rounded-xl border border-[var(--border)] bg-white/80 backdrop-blur-sm p-4">
+        <div class="flex items-center justify-between mb-3">
+          <h2 class="text-sm font-semibold text-[var(--ink)]/70 uppercase tracking-wide">Live Prices</h2>
+          <span id="ticker-updated" class="text-xs text-[var(--muted)]">Loading...</span>
+        </div>
+        <div id="ticker-coins" class="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-6">
+          <!-- JS populated -->
+          <div class="col-span-full text-center text-sm text-[var(--muted)] py-2" id="ticker-placeholder">Fetching prices...</div>
+        </div>
+      </div>
+    </section>
+
     <!-- Quick converters (featured pairs) -->
     <section class="my-10">
       <h2 class="hmc-section-title text-2xl font-semibold">Quick convert</h2>
@@ -239,5 +254,65 @@ const categoryLabels: Record<string, string> = {
     </p>
     <p class="mt-2">Content last reviewed: <time datetime="2026-04-25">April 25, 2026</time>.</p>
   </footer>
+
+  <script is:inline>
+    const COIN_LABELS = {
+      bitcoin: 'BTC',
+      ethereum: 'ETH',
+      solana: 'SOL',
+      binancecoin: 'BNB',
+      ripple: 'XRP',
+      cardano: 'ADA',
+    };
+    const COIN_ORDER = ['bitcoin','ethereum','solana','binancecoin','ripple','cardano'];
+
+    function renderTicker(data) {
+      const container = document.getElementById('ticker-coins');
+      if (!data) {
+        container.innerHTML = '<div class="col-span-full text-center text-sm text-red-500 py-2">Price data unavailable</div>';
+        return;
+      }
+      container.innerHTML = COIN_ORDER.map(id => {
+        const coin = data[id];
+        if (!coin) return '';
+        const price = coin.usd;
+        const change = coin.usd_24h_change;
+        const changePos = change >= 0;
+        const changeColor = changePos ? 'text-emerald-600' : 'text-red-500';
+        const changeSign = changePos ? '+' : '';
+        const priceStr = price >= 1000
+          ? '$' + price.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 })
+          : price >= 1
+            ? '$' + price.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+            : '$' + price.toFixed(4);
+        return '<div class="rounded-lg border border-[var(--border)] bg-slate-50 px-3 py-2.5">' +
+          '<div class="flex items-center justify-between">' +
+            '<span class="text-xs font-bold text-[var(--ink)]">' + COIN_LABELS[id] + '</span>' +
+            '<span class="text-xs font-medium ' + changeColor + '">' + changeSign + change.toFixed(2) + '%</span>' +
+          '</div>' +
+          '<div class="mt-1 text-sm font-semibold text-[var(--ink)]">' + priceStr + '</div>' +
+        '</div>';
+      }).join('');
+    }
+
+    async function fetchPrices() {
+      const updatedEl = document.getElementById('ticker-updated');
+      try {
+        const url = 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana,binancecoin,ripple,cardano&vs_currencies=usd&include_24hr_change=true';
+        const res = await fetch(url);
+        if (!res.ok) throw new Error('non-200');
+        const data = await res.json();
+        renderTicker(data);
+        const now = new Date();
+        updatedEl.textContent = 'Updated ' + now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+      } catch (e) {
+        renderTicker(null);
+        updatedEl.textContent = 'Data unavailable';
+      }
+    }
+
+    fetchPrices();
+    setInterval(fetchPrices, 60000);
+  </script>
 
 </BaseLayout>

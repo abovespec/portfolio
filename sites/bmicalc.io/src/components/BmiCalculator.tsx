@@ -36,6 +36,34 @@ function calcBmiMetric(cm: number, kg: number): number {
   return kg / (m * m);
 }
 
+interface HealthyWeightRange {
+  minLbs: number;
+  maxLbs: number;
+  minKg: number;
+  maxKg: number;
+  heightLabel: string;
+}
+
+function calcHealthyRange(unit: Unit, ft: number, inches: number, cm: number): HealthyWeightRange | null {
+  let heightM = 0;
+  let heightLabel = '';
+  if (unit === 'imperial') {
+    const totalIn = ft * 12 + inches;
+    if (totalIn <= 0) return null;
+    heightM = totalIn * 0.0254;
+    heightLabel = `${ft}' ${inches}"`;
+  } else {
+    if (cm <= 0) return null;
+    heightM = cm / 100;
+    heightLabel = `${cm} cm`;
+  }
+  const minKg = 18.5 * heightM * heightM;
+  const maxKg = 24.9 * heightM * heightM;
+  const minLbs = minKg * 2.20462;
+  const maxLbs = maxKg * 2.20462;
+  return { minLbs, maxLbs, minKg, maxKg, heightLabel };
+}
+
 export default function BmiCalculator() {
   const [unit, setUnit]         = useState<Unit>('imperial');
   const [heightFt, setHeightFt] = useState('');
@@ -57,8 +85,30 @@ export default function BmiCalculator() {
 
   const hasResult = bmi > 0 && isFinite(bmi);
   const category  = hasResult ? getCategory(bmi) : null;
-  // Maps BMI 15–40 range to 0–100% for the gauge marker
   const gaugePct  = hasResult ? Math.min(Math.max(((bmi - 15) / 25) * 100, 0), 100) : 0;
+
+  const healthyRange = useMemo(() => {
+    return calcHealthyRange(
+      unit,
+      parseFloat(heightFt) || 0,
+      parseFloat(heightIn) || 0,
+      parseFloat(heightCm) || 0,
+    );
+  }, [unit, heightFt, heightIn, heightCm]);
+
+  const currentWeightKg = useMemo(() => {
+    if (unit === 'imperial') {
+      const lbs = parseFloat(weightLbs) || 0;
+      return lbs > 0 ? lbs / 2.20462 : 0;
+    }
+    return parseFloat(weightKg) || 0;
+  }, [unit, weightLbs, weightKg]);
+
+  const currentWeightLbs = useMemo(() => {
+    if (unit === 'imperial') return parseFloat(weightLbs) || 0;
+    const kg = parseFloat(weightKg) || 0;
+    return kg > 0 ? kg * 2.20462 : 0;
+  }, [unit, weightLbs, weightKg]);
 
   const inputCls =
     'w-full rounded-lg border border-slate-300 px-3 py-2 pr-10 text-sm focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand';
@@ -155,7 +205,7 @@ export default function BmiCalculator() {
         </div>
       </div>
 
-      {/* Result */}
+      {/* BMI Result */}
       {hasResult && category && (
         <div
           role="status"
@@ -181,7 +231,7 @@ export default function BmiCalculator() {
             </div>
           </div>
 
-          {/* Gauge bar — gradient from underweight (blue) to obese (red) */}
+          {/* Gauge bar */}
           <div>
             <div
               class="relative h-2.5 overflow-hidden rounded-full"
@@ -198,6 +248,57 @@ export default function BmiCalculator() {
               <span>15</span><span>18.5</span><span>25</span><span>30</span><span>40+</span>
             </div>
           </div>
+        </div>
+      )}
+
+      {/* Healthy Weight Range Card */}
+      {healthyRange && (
+        <div class="rounded-xl border border-slate-200 bg-slate-50 p-4 space-y-2">
+          <div class="flex items-center gap-2">
+            <svg class="h-4 w-4 text-emerald-600 shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm-1.293-5.293a1 1 0 001.414 0l4-4a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2z" clip-rule="evenodd" />
+            </svg>
+            <h3 class="text-sm font-semibold text-slate-700">Healthy Weight for Your Height</h3>
+          </div>
+          <p class="text-sm text-slate-600">
+            For a height of <strong>{healthyRange.heightLabel}</strong>, a healthy BMI (18.5–24.9) corresponds to:
+          </p>
+          <div class="grid grid-cols-2 gap-2 text-sm">
+            <div class="rounded-lg bg-white border border-slate-200 p-3 text-center">
+              <div class="font-bold text-slate-800">{healthyRange.minLbs.toFixed(0)}–{healthyRange.maxLbs.toFixed(0)} lbs</div>
+              <div class="text-xs text-slate-500 mt-0.5">Imperial</div>
+            </div>
+            <div class="rounded-lg bg-white border border-slate-200 p-3 text-center">
+              <div class="font-bold text-slate-800">{healthyRange.minKg.toFixed(1)}–{healthyRange.maxKg.toFixed(1)} kg</div>
+              <div class="text-xs text-slate-500 mt-0.5">Metric</div>
+            </div>
+          </div>
+          {/* Status relative to healthy range */}
+          {(currentWeightLbs > 0) && (() => {
+            const diffLbs = currentWeightLbs - healthyRange.maxLbs;
+            const diffBelowLbs = healthyRange.minLbs - currentWeightLbs;
+            if (currentWeightLbs >= healthyRange.minLbs && currentWeightLbs <= healthyRange.maxLbs) {
+              return (
+                <div class="flex items-center gap-2 rounded-lg bg-emerald-50 border border-emerald-100 px-3 py-2 text-sm text-emerald-800">
+                  <span class="text-emerald-600 font-bold">✓</span>
+                  <span>You're in the healthy weight range for your height.</span>
+                </div>
+              );
+            } else if (diffLbs > 0) {
+              return (
+                <div class="rounded-lg bg-amber-50 border border-amber-100 px-3 py-2 text-sm text-amber-800">
+                  You are <strong>{diffLbs.toFixed(0)} lbs ({(diffLbs / 2.20462).toFixed(1)} kg)</strong> above the healthy range for your height.
+                </div>
+              );
+            } else if (diffBelowLbs > 0) {
+              return (
+                <div class="rounded-lg bg-amber-50 border border-amber-100 px-3 py-2 text-sm text-amber-800">
+                  You are <strong>{diffBelowLbs.toFixed(0)} lbs ({(diffBelowLbs / 2.20462).toFixed(1)} kg)</strong> below the healthy range for your height.
+                </div>
+              );
+            }
+            return null;
+          })()}
         </div>
       )}
 
