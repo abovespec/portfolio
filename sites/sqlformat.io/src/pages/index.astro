@@ -33,11 +33,15 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
     </div>
     <button id="btn-format"  class="rounded-md bg-indigo-600 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-indigo-700 transition-colors">Format</button>
     <button id="btn-minify"  class="rounded-md bg-slate-700 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-slate-800 transition-colors">Minify</button>
+    <button id="btn-explain" class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Explain</button>
     <button id="btn-sample"  class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Sample</button>
     <div class="flex-1"></div>
     <button id="btn-clear"   class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Clear</button>
     <button id="btn-copy"    class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Copy output</button>
   </div>
+
+  <!-- SQL Explain callout -->
+  <div id="explain-box" class="hidden mb-3 rounded-lg border border-indigo-200 bg-indigo-50 px-4 py-3 text-sm text-indigo-800"></div>
 
   <!-- Dual-pane editor -->
   <div class="grid gap-3 md:grid-cols-2 min-h-96">
@@ -51,6 +55,14 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
         autocomplete="off"
         rows="16"
       ></textarea>
+      <!-- File drop zone for SQL -->
+      <div
+        id="sql-drop-zone"
+        class="mt-2 border-2 border-dashed border-slate-300 rounded-lg p-3 text-center text-sm text-slate-500 hover:border-slate-400 transition-colors cursor-pointer"
+      >
+        Drop a .sql file here to load it
+      </div>
+      <input type="file" accept=".sql,.txt" id="sql-file-input" class="hidden" />
     </div>
     <div class="flex flex-col gap-1 min-h-0">
       <label for="sql-output" class="text-xs font-semibold uppercase tracking-wide text-slate-500">Output</label>
@@ -239,6 +251,85 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
     });
 
     updateDialectBadge();
+
+    // ── SQL Explain ──
+    var explainActive = false;
+
+    function explainSQL(sql) {
+      var upper = sql.toUpperCase().trim();
+      if (!upper.startsWith('SELECT')) return null;
+      var fromMatch   = sql.match(/\bFROM\s+([`"']?\w+[`"']?)/i);
+      var whereMatch  = sql.match(/\bWHERE\s+([\s\S]+?)(?:\bORDER|\bGROUP|\bLIMIT|\bHAVING|$)/i);
+      var orderMatch  = sql.match(/\bORDER BY\s+([\s\S]+?)(?:\bLIMIT|$)/i);
+      var limitMatch  = sql.match(/\bLIMIT\s+(\d+)/i);
+      var selectMatch = sql.match(/\bSELECT\s+([\s\S]+?)\s+\bFROM/i);
+      var parts = [];
+      var cols = selectMatch ? selectMatch[1].trim() : 'data';
+      parts.push('Selects ' + (cols === '*' ? 'all columns' : cols));
+      if (fromMatch)  parts.push('from the `' + fromMatch[1]  + '` table');
+      if (whereMatch) parts.push('where ' + whereMatch[1].trim().replace(/\s+/g,' '));
+      if (orderMatch) parts.push('sorted by ' + orderMatch[1].trim());
+      if (limitMatch) parts.push('limited to ' + limitMatch[1] + ' rows');
+      return parts.join(', ') + '.';
+    }
+
+    document.getElementById('btn-explain').addEventListener('click', function() {
+      explainActive = !explainActive;
+      var btn = document.getElementById('btn-explain');
+      var box = document.getElementById('explain-box');
+      if (explainActive) {
+        btn.className = 'rounded-md bg-indigo-600 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-indigo-700 transition-colors';
+        var explanation = explainSQL(input.value.trim());
+        if (explanation) {
+          box.textContent = explanation;
+          box.classList.remove('hidden');
+        } else {
+          box.textContent = 'Explain only works for SELECT queries.';
+          box.classList.remove('hidden');
+        }
+      } else {
+        btn.className = 'rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors';
+        box.classList.add('hidden');
+      }
+    });
+
+    // ── SQL File Drop ──
+    var sqlDropZone  = document.getElementById('sql-drop-zone');
+    var sqlFileInput = document.getElementById('sql-file-input');
+
+    sqlDropZone.addEventListener('click', function() { sqlFileInput.click(); });
+    sqlFileInput.addEventListener('change', function() {
+      var file = sqlFileInput.files[0];
+      if (file) {
+        file.text().then(function(t) {
+          input.value = t;
+          output.value = '';
+          statusEl.classList.add('hidden');
+          showStatus('Loaded: ' + file.name, 'info');
+        });
+        sqlFileInput.value = '';
+      }
+    });
+
+    sqlDropZone.addEventListener('dragover', function(e) {
+      e.preventDefault();
+      sqlDropZone.classList.add('border-indigo-400');
+    });
+    sqlDropZone.addEventListener('dragleave', function() {
+      sqlDropZone.classList.remove('border-indigo-400');
+    });
+    sqlDropZone.addEventListener('drop', function(e) {
+      e.preventDefault();
+      sqlDropZone.classList.remove('border-indigo-400');
+      var file = e.dataTransfer && e.dataTransfer.files[0];
+      if (file && (file.name.endsWith('.sql') || file.type === 'text/plain')) {
+        file.text().then(function(t) {
+          input.value = t;
+          input.dispatchEvent(new Event('input'));
+          showStatus('Loaded: ' + file.name, 'info');
+        });
+      }
+    });
   </script>
 
 </BaseLayout>
