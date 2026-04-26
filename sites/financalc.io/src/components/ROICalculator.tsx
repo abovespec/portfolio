@@ -1,5 +1,7 @@
 import { useState, useMemo } from 'preact/hooks';
 
+const SP500_AVG = 10.7;
+
 function calcROI(initial: number, finalVal: number, years: number | null) {
   if (initial <= 0 || finalVal < 0) return null;
   const roi = ((finalVal - initial) / initial) * 100;
@@ -25,6 +27,7 @@ export default function ROICalculator() {
   const [initial, setInitial]   = useState('5000');
   const [finalVal, setFinalVal] = useState('7500');
   const [years, setYears]       = useState('');
+  const [inflationRate, setInflationRate] = useState('3');
 
   const result = useMemo(
     () => calcROI(
@@ -36,6 +39,16 @@ export default function ROICalculator() {
   );
 
   const isPositive = result ? result.roi >= 0 : true;
+
+  const benchmarkDiff = result?.annualized !== null && result?.annualized !== undefined
+    ? result.annualized - SP500_AVG
+    : null;
+
+  const realReturn = useMemo(() => {
+    if (!result?.annualized) return null;
+    const inf = parseFloat(inflationRate) || 0;
+    return ((1 + result.annualized / 100) / (1 + inf / 100) - 1) * 100;
+  }, [result, inflationRate]);
 
   return (
     <div class="space-y-4">
@@ -83,6 +96,20 @@ export default function ROICalculator() {
         </div>
       </div>
 
+      <div>
+        <label class="mb-1 block text-sm font-medium text-slate-700">Inflation Rate <span class="font-normal text-slate-400">(for real return)</span></label>
+        <div class="relative">
+          <input
+            type="number" min="0" max="20" step="0.1" placeholder="3"
+            value={inflationRate}
+            onInput={(e) => setInflationRate((e.target as HTMLInputElement).value)}
+            class={inputCls}
+            aria-label="Inflation rate as percentage"
+          />
+          <span class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400">%</span>
+        </div>
+      </div>
+
       {result && (
         <div
           role="status"
@@ -114,6 +141,30 @@ export default function ROICalculator() {
               </div>
             )}
           </div>
+
+          {result.annualized !== null && (
+            <div class="space-y-2">
+              <div class="rounded-lg bg-slate-100 px-3 py-2 text-sm text-slate-700">
+                <span class="font-medium">S&amp;P 500 30-year average: {SP500_AVG}% annualized</span>
+                {benchmarkDiff !== null && (
+                  <span class={`ml-2 font-semibold ${benchmarkDiff >= 0 ? 'text-green-700' : 'text-red-600'}`}>
+                    {benchmarkDiff >= 0
+                      ? `+${benchmarkDiff.toFixed(2)}% above market average`
+                      : `${benchmarkDiff.toFixed(2)}% below market average`}
+                  </span>
+                )}
+              </div>
+
+              {realReturn !== null && (
+                <div class="rounded-lg bg-slate-100 px-3 py-2 text-sm text-slate-700">
+                  Real return (adj. for {inflationRate}% inflation):{' '}
+                  <span class={`font-semibold ${realReturn >= 0 ? 'text-green-700' : 'text-red-600'}`}>
+                    {realReturn.toFixed(2)}%
+                  </span>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       )}
 

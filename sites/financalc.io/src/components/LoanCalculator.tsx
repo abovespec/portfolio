@@ -65,6 +65,13 @@ export default function LoanCalculator() {
     return { months: withExtra.months, monthsSaved, interestSaved };
   }, [result, extraPayment, principal]);
 
+  const payoffDate = useMemo(() => {
+    if (!result) return null;
+    const d = new Date();
+    d.setMonth(d.getMonth() + result.n);
+    return d.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+  }, [result]);
+
   return (
     <div class="space-y-4">
       <div>
@@ -156,6 +163,12 @@ export default function LoanCalculator() {
               <div class="text-slate-500">Total Interest</div>
               <div class="font-semibold text-slate-900">{fmtUsd(result.interest)}</div>
             </div>
+            {payoffDate && (
+              <div class="col-span-2 border-t border-slate-200 pt-2">
+                <div class="text-slate-500">Loan paid off</div>
+                <div class="font-semibold text-slate-900">{payoffDate}</div>
+              </div>
+            )}
           </div>
           <div>
             <div class="mb-1 flex justify-between text-[11px] text-slate-500">

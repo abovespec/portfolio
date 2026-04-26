@@ -58,6 +58,10 @@ export default function MortgageCalculator() {
   const [rate, setRate]               = useState('7.0');
   const [years, setYears]             = useState('30');
   const [showAmort, setShowAmort]     = useState(false);
+  const [showCompare, setShowCompare] = useState(false);
+  const [annualTax, setAnnualTax]     = useState('3600');
+  const [annualInsurance, setAnnualInsurance] = useState('1200');
+  const [showPiti, setShowPiti]       = useState(false);
 
   const result = useMemo(
     () => calcMortgage(
@@ -68,6 +72,36 @@ export default function MortgageCalculator() {
     ),
     [homePrice, downPayment, rate, years],
   );
+
+  const altResult = useMemo(() => {
+    if (!result || !showCompare) return null;
+    const hp = parseFloat(homePrice) || 0;
+    const dp = parseFloat(downPayment) || 0;
+    const r = parseFloat(rate) || 0;
+    const y = parseFloat(years) || 0;
+    if (y === 30) return calcMortgage(hp, dp, r, 15);
+    if (y === 15) return calcMortgage(hp, dp, r, 30);
+    return calcMortgage(hp, dp, r + 1, y);
+  }, [result, showCompare, homePrice, downPayment, rate, years]);
+
+  const altLabel = useMemo(() => {
+    const y = parseFloat(years) || 0;
+    if (y === 30) return '15-year';
+    if (y === 15) return '30-year';
+    return `${(parseFloat(rate) || 0) + 1}% rate`;
+  }, [years, rate]);
+
+  const pitiMonthly = useMemo(() => {
+    if (!result) return 0;
+    return result.monthly + result.pmiMonthly + (parseFloat(annualTax) || 0) / 12 + (parseFloat(annualInsurance) || 0) / 12;
+  }, [result, annualTax, annualInsurance]);
+
+  const payoffDate = useMemo(() => {
+    if (!result) return null;
+    const d = new Date();
+    d.setMonth(d.getMonth() + result.n);
+    return d.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+  }, [result]);
 
   const amortRows = useMemo(() => {
     if (!result || !showAmort) return [];
@@ -156,6 +190,52 @@ export default function MortgageCalculator() {
       </div>
 
       {result && (
+        <div>
+          <button
+            type="button"
+            class="flex w-full items-center justify-between rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 hover:border-brand/50 hover:text-brand"
+            onClick={() => setShowPiti((v) => !v)}
+            aria-expanded={showPiti}
+          >
+            <span>{showPiti ? 'Hide' : 'Show'} PITI breakdown</span>
+            <span class="text-slate-400">{showPiti ? '▲' : '▼'}</span>
+          </button>
+          {showPiti && (
+            <div class="mt-2 rounded-xl border border-slate-200 bg-slate-50 p-3 space-y-3">
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="mb-1 block text-xs font-medium text-slate-600">Annual Property Tax</label>
+                  <div class="relative">
+                    <span class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-xs text-slate-400">$</span>
+                    <input
+                      type="number" min="0" placeholder="3600"
+                      value={annualTax}
+                      onInput={(e) => setAnnualTax((e.target as HTMLInputElement).value)}
+                      class={`${inputCls} pl-6`}
+                      aria-label="Annual property tax"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label class="mb-1 block text-xs font-medium text-slate-600">Annual Insurance</label>
+                  <div class="relative">
+                    <span class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-xs text-slate-400">$</span>
+                    <input
+                      type="number" min="0" placeholder="1200"
+                      value={annualInsurance}
+                      onInput={(e) => setAnnualInsurance((e.target as HTMLInputElement).value)}
+                      class={`${inputCls} pl-6`}
+                      aria-label="Annual homeowners insurance"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+
+      {result && (
         <div role="status" aria-live="polite" class="space-y-3 rounded-xl border border-indigo-200 bg-indigo-50 p-4">
           <div class="flex items-baseline justify-between">
             <span class="text-sm text-slate-600">Monthly Payment</span>
@@ -194,6 +274,19 @@ export default function MortgageCalculator() {
               <div class="text-slate-500">Down Payment</div>
               <div class="font-semibold text-slate-900">{fmtUsd(parseFloat(downPayment) || 0)}</div>
             </div>
+            {showPiti && (
+              <div class="col-span-2 border-t border-slate-200 pt-2">
+                <div class="text-slate-500">Total PITI</div>
+                <div class="font-semibold text-indigo-700 text-base">{fmtUsd(pitiMonthly)}/mo</div>
+                <div class="text-[11px] text-slate-400 mt-0.5">P&amp;I + PMI + tax + insurance</div>
+              </div>
+            )}
+            {payoffDate && (
+              <div class="col-span-2 border-t border-slate-200 pt-2">
+                <div class="text-slate-500">Loan paid off</div>
+                <div class="font-semibold text-slate-900">{payoffDate}</div>
+              </div>
+            )}
           </div>
           {(() => {
             const interestPct = (result.interest / result.total) * 100;
@@ -210,6 +303,51 @@ export default function MortgageCalculator() {
               </div>
             );
           })()}
+        </div>
+      )}
+
+      {result && (
+        <div>
+          <button
+            type="button"
+            class="flex w-full items-center justify-between rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 hover:border-brand/50 hover:text-brand"
+            onClick={() => setShowCompare((v) => !v)}
+            aria-expanded={showCompare}
+          >
+            <span>Compare Scenarios</span>
+            <span class="text-slate-400">{showCompare ? '▲' : '▼'}</span>
+          </button>
+
+          {showCompare && altResult && (
+            <div class="mt-2 overflow-x-auto rounded-xl border border-slate-200">
+              <table class="w-full text-sm">
+                <thead>
+                  <tr class="border-b border-slate-200 bg-slate-50">
+                    <th class="px-3 py-2 text-left font-medium text-slate-600"></th>
+                    <th class="px-3 py-2 text-right font-medium text-slate-600">Current</th>
+                    <th class="px-3 py-2 text-right font-medium text-slate-600">{altLabel}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="bg-white">
+                    <td class="px-3 py-2 text-slate-600">Monthly P&amp;I</td>
+                    <td class="px-3 py-2 text-right tabular-nums font-medium text-brand">{fmtUsd(result.monthly)}</td>
+                    <td class="px-3 py-2 text-right tabular-nums font-medium text-slate-700">{fmtUsd(altResult.monthly)}</td>
+                  </tr>
+                  <tr class="bg-slate-50">
+                    <td class="px-3 py-2 text-slate-600">Total Interest</td>
+                    <td class="px-3 py-2 text-right tabular-nums font-medium text-brand">{fmtUsd(result.interest)}</td>
+                    <td class="px-3 py-2 text-right tabular-nums font-medium text-slate-700">{fmtUsd(altResult.interest)}</td>
+                  </tr>
+                  <tr class="bg-white">
+                    <td class="px-3 py-2 text-slate-600">Total Cost</td>
+                    <td class="px-3 py-2 text-right tabular-nums font-medium text-brand">{fmtUsd(result.total)}</td>
+                    <td class="px-3 py-2 text-right tabular-nums font-medium text-slate-700">{fmtUsd(altResult.total)}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          )}
         </div>
       )}
 

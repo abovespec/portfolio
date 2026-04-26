@@ -62,6 +62,13 @@ export default function RetirementCalculator() {
   const [annualReturn, setAnnualReturn]     = useState('7');
   const [monthlyIncome, setMonthlyIncome]   = useState('5000');
   const [inflationRate, setInflationRate]   = useState('3');
+  const [socialSecurity, setSocialSecurity] = useState('0');
+  const [showSS, setShowSS]                 = useState(false);
+  const [showTrajectory, setShowTrajectory] = useState(false);
+
+  const incomeGoal = parseFloat(monthlyIncome) || 0;
+  const ssMonthly  = parseFloat(socialSecurity) || 0;
+  const monthlyGap = Math.max(0, incomeGoal - ssMonthly);
 
   const result = useMemo(
     () => calcRetirement(
@@ -70,9 +77,9 @@ export default function RetirementCalculator() {
       parseFloat(currentSavings) || 0,
       parseFloat(monthlyContrib) || 0,
       parseFloat(annualReturn) || 0,
-      parseFloat(monthlyIncome) || 0,
+      monthlyGap,
     ),
-    [currentAge, retirementAge, currentSavings, monthlyContrib, annualReturn, monthlyIncome],
+    [currentAge, retirementAge, currentSavings, monthlyContrib, annualReturn, monthlyGap],
   );
 
   const isOnTrack = result
@@ -80,14 +87,41 @@ export default function RetirementCalculator() {
     : null;
 
   const withdrawalMonthly = result ? result.balanceAtRetirement * 0.04 / 12 : 0;
-  const incomeGoal = parseFloat(monthlyIncome) || 0;
-  const withdrawalMeetsGoal = withdrawalMonthly >= incomeGoal;
+  const withdrawalMeetsGoal = withdrawalMonthly >= monthlyGap;
 
   const inflationAdjusted = useMemo(() => {
     if (!result) return 0;
     const inf = parseFloat(inflationRate) || 0;
     return incomeGoal * Math.pow(1 + inf / 100, result.yearsToRetirement);
   }, [result, inflationRate, incomeGoal]);
+
+  const trajectoryRows = useMemo(() => {
+    const currAge = parseFloat(currentAge) || 0;
+    const retAge  = parseFloat(retirementAge) || 65;
+    const currentBal = parseFloat(currentSavings) || 0;
+    const annual = (parseFloat(monthlyContrib) || 0) * 12;
+    const r = (parseFloat(annualReturn) || 7) / 100;
+    if (!currAge || !retAge || retAge <= currAge) return [];
+    const rows: { age: number; balance: number }[] = [];
+    let bal = currentBal;
+    for (let a = currAge; a <= retAge; a += 1) {
+      rows.push({ age: a, balance: bal });
+      bal = bal * (1 + r) + annual;
+    }
+    return rows;
+  }, [currentAge, retirementAge, currentSavings, monthlyContrib, annualReturn]);
+
+  const trajectoryPoints = useMemo(() => {
+    if (!showTrajectory || trajectoryRows.length < 2) return '';
+    const maxBal = Math.max(...trajectoryRows.map((r) => r.balance));
+    if (maxBal <= 0) return '';
+    const W = 400, H = 120, PAD = 12;
+    return trajectoryRows.map((r, i) => {
+      const x = PAD + (i / (trajectoryRows.length - 1)) * (W - PAD * 2);
+      const y = (H - PAD) - (r.balance / maxBal) * (H - PAD * 2);
+      return `${x.toFixed(1)},${y.toFixed(1)}`;
+    }).join(' ');
+  }, [showTrajectory, trajectoryRows]);
 
   return (
     <div class="space-y-4">
@@ -184,6 +218,38 @@ export default function RetirementCalculator() {
         </div>
       </div>
 
+      <div>
+        <button
+          type="button"
+          class="flex w-full items-center justify-between rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 hover:border-brand/50 hover:text-brand"
+          onClick={() => setShowSS((v) => !v)}
+          aria-expanded={showSS}
+        >
+          <span>Social Security income {showSS ? '' : '(optional)'}</span>
+          <span class="text-slate-400">{showSS ? '▲' : '▼'}</span>
+        </button>
+        {showSS && (
+          <div class="mt-2 rounded-xl border border-slate-200 bg-slate-50 p-3">
+            <label class="mb-1 block text-xs font-medium text-slate-600">Expected Social Security ($/month)</label>
+            <div class="relative">
+              <span class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-xs text-slate-400">$</span>
+              <input
+                type="number" min="0" placeholder="0"
+                value={socialSecurity}
+                onInput={(e) => setSocialSecurity((e.target as HTMLInputElement).value)}
+                class={`${inputCls} pl-6`}
+                aria-label="Expected Social Security monthly benefit"
+              />
+            </div>
+            {ssMonthly > 0 && (
+              <p class="mt-1 text-[11px] text-slate-500">
+                Retirement income gap after SS: {fmtUsdFull(monthlyGap)}/mo
+              </p>
+            )}
+          </div>
+        )}
+      </div>
+
       {result && (
         <div
           role="status"
@@ -212,6 +278,7 @@ export default function RetirementCalculator() {
 
           <div class={`rounded-lg px-3 py-2 text-sm ${withdrawalMeetsGoal ? 'bg-green-100 text-green-800' : 'bg-amber-100 text-amber-800'}`}>
             <span class="font-medium">4% Rule:</span> {fmtUsdFull(withdrawalMonthly)}/mo sustainable income
+            {ssMonthly > 0 && ` + ${fmtUsdFull(ssMonthly)}/mo SS`}
             {withdrawalMeetsGoal
               ? ' — meets your income goal'
               : ' — below your income goal'}
@@ -251,6 +318,33 @@ export default function RetirementCalculator() {
               </div>
             );
           })()}
+        </div>
+      )}
+
+      {result && (
+        <div>
+          <button
+            type="button"
+            class="flex w-full items-center justify-between rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 hover:border-brand/50 hover:text-brand"
+            onClick={() => setShowTrajectory((v) => !v)}
+            aria-expanded={showTrajectory}
+          >
+            <span>{showTrajectory ? 'Hide' : 'Show'} balance trajectory</span>
+            <span class="text-slate-400">{showTrajectory ? '▲' : '▼'}</span>
+          </button>
+
+          {showTrajectory && trajectoryPoints && (
+            <div class="mt-2 rounded-xl border border-slate-200 bg-slate-50 p-3">
+              <p class="text-xs font-medium text-slate-500 mb-2">Balance Trajectory</p>
+              <svg viewBox="0 0 400 120" class="w-full h-24" aria-hidden="true">
+                <polyline points={trajectoryPoints} fill="none" stroke="#6366f1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              <div class="flex justify-between text-xs text-slate-400 mt-1">
+                <span>Age {trajectoryRows[0]?.age}</span>
+                <span>Age {trajectoryRows[trajectoryRows.length - 1]?.age}</span>
+              </div>
+            </div>
+          )}
         </div>
       )}
 

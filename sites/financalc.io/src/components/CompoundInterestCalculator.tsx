@@ -55,6 +55,7 @@ export default function CompoundInterestCalculator() {
   const [freq, setFreq]                 = useState(12);
   const [monthlyContrib, setMonthlyContrib] = useState('100');
   const [showGrowth, setShowGrowth]     = useState(false);
+  const [showChart, setShowChart]       = useState(false);
 
   const result = useMemo(
     () => calcCI(
@@ -68,7 +69,7 @@ export default function CompoundInterestCalculator() {
   );
 
   const growthRows = useMemo(() => {
-    if (!result || !showGrowth) return [];
+    if (!result || (!showGrowth && !showChart)) return [];
     const p = parseFloat(principal) || 0;
     const r = parseFloat(rate) || 0;
     const totalYears = parseFloat(years) || 0;
@@ -80,7 +81,20 @@ export default function CompoundInterestCalculator() {
         const invested = p + mc * y * 12;
         return { year: y, balance, interestEarned: balance - invested };
       });
-  }, [result, showGrowth, principal, rate, years, freq, monthlyContrib]);
+  }, [result, showGrowth, showChart, principal, rate, years, freq, monthlyContrib]);
+
+  const chartPoints = useMemo(() => {
+    if (!showChart || growthRows.length < 2) return '';
+    const getVal = (r: any) => r.balance ?? 0;
+    const maxBal = Math.max(...growthRows.map(getVal));
+    if (maxBal <= 0) return '';
+    const W = 400, H = 120, PAD = 12;
+    return growthRows.map((r, i) => {
+      const x = PAD + (i / (growthRows.length - 1)) * (W - PAD * 2);
+      const y = (H - PAD) - (getVal(r) / maxBal) * (H - PAD * 2);
+      return `${x.toFixed(1)},${y.toFixed(1)}`;
+    }).join(' ');
+  }, [showChart, growthRows]);
 
   return (
     <div class="space-y-4">
@@ -185,19 +199,43 @@ export default function CompoundInterestCalculator() {
       )}
 
       {result && (
-        <div>
-          <button
-            type="button"
-            class="flex w-full items-center justify-between rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 hover:border-brand/50 hover:text-brand"
-            onClick={() => setShowGrowth((v) => !v)}
-            aria-expanded={showGrowth}
-          >
-            <span>{showGrowth ? 'Hide' : 'Show'} growth table</span>
-            <span class="text-slate-400">{showGrowth ? '▲' : '▼'}</span>
-          </button>
+        <div class="space-y-2">
+          <div class="flex gap-2">
+            <button
+              type="button"
+              class="flex flex-1 items-center justify-between rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 hover:border-brand/50 hover:text-brand"
+              onClick={() => setShowGrowth((v) => !v)}
+              aria-expanded={showGrowth}
+            >
+              <span>{showGrowth ? 'Hide' : 'Show'} growth table</span>
+              <span class="text-slate-400">{showGrowth ? '▲' : '▼'}</span>
+            </button>
+            <button
+              type="button"
+              class="flex flex-1 items-center justify-between rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 hover:border-brand/50 hover:text-brand"
+              onClick={() => setShowChart((v) => !v)}
+              aria-expanded={showChart}
+            >
+              <span>{showChart ? 'Hide' : 'Show'} Chart</span>
+              <span class="text-slate-400">{showChart ? '▲' : '▼'}</span>
+            </button>
+          </div>
+
+          {showChart && chartPoints && (
+            <div class="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-3">
+              <p class="text-xs font-medium text-slate-500 mb-2">Balance Over Time</p>
+              <svg viewBox="0 0 400 120" class="w-full h-24" aria-hidden="true">
+                <polyline points={chartPoints} fill="none" stroke="#6366f1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              <div class="flex justify-between text-xs text-slate-400 mt-1">
+                <span>Year 1</span>
+                <span>Year {growthRows[growthRows.length - 1]?.year}</span>
+              </div>
+            </div>
+          )}
 
           {showGrowth && growthRows.length > 0 && (
-            <div class="mt-2 overflow-x-auto rounded-xl border border-slate-200">
+            <div class="overflow-x-auto rounded-xl border border-slate-200">
               <table class="w-full text-sm">
                 <thead>
                   <tr class="border-b border-slate-200 bg-slate-50">
