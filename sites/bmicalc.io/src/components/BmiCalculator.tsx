@@ -72,6 +72,11 @@ export default function BmiCalculator() {
   const [weightLbs, setWeightLbs] = useState('');
   const [weightKg, setWeightKg]   = useState('');
 
+  // P2: Waist state
+  const [showWaist, setShowWaist] = useState(false);
+  const [waistIn, setWaistIn] = useState('');
+  const [waistCm, setWaistCm] = useState('');
+
   const bmi = useMemo(() => {
     if (unit === 'imperial') {
       return calcBmiImperial(
@@ -109,6 +114,19 @@ export default function BmiCalculator() {
     const kg = parseFloat(weightKg) || 0;
     return kg > 0 ? kg * 2.20462 : 0;
   }, [unit, weightLbs, weightKg]);
+
+  // P2: Waist risk
+  const waistRisk = useMemo(() => {
+    if (!showWaist || !hasResult) return null;
+    const inches = unit === 'imperial' ? parseFloat(waistIn)||0 : (parseFloat(waistCm)||0)/2.54;
+    if (!inches) return null;
+    return {
+      inches,
+      cm: inches * 2.54,
+      risk: inches > 40 ? 'High' : inches > 35 ? 'Elevated' : 'Normal',
+      color: inches > 40 ? '#ef4444' : inches > 35 ? '#f97316' : '#15803d',
+    };
+  }, [showWaist, hasResult, waistIn, waistCm, unit]);
 
   const inputCls =
     'w-full rounded-lg border border-slate-300 px-3 py-2 pr-10 text-sm focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand';
@@ -205,6 +223,11 @@ export default function BmiCalculator() {
         </div>
       </div>
 
+      {/* P3: Children note */}
+      <div class="rounded-lg border border-blue-100 bg-blue-50 px-3 py-2 text-xs text-blue-700">
+        Note: BMI interpretation differs for children under 18. These results use adult BMI ranges (18.5–24.9 = healthy).
+      </div>
+
       {/* BMI Result */}
       {hasResult && category && (
         <div
@@ -248,6 +271,71 @@ export default function BmiCalculator() {
               <span>15</span><span>18.5</span><span>25</span><span>30</span><span>40+</span>
             </div>
           </div>
+        </div>
+      )}
+
+      {/* P2: Waist Risk Assessment toggle */}
+      {hasResult && (
+        <button
+          type="button"
+          onClick={() => setShowWaist((v) => !v)}
+          class={`w-full rounded-lg border px-3 py-2 text-sm font-medium transition ${
+            showWaist
+              ? 'border-orange-300 bg-orange-50 text-orange-700'
+              : 'border-slate-200 bg-slate-50 text-slate-600 hover:bg-slate-100'
+          }`}
+        >
+          {showWaist ? 'Hide' : 'Add'} Waist Risk Assessment
+        </button>
+      )}
+
+      {/* P2: Waist input and result */}
+      {hasResult && showWaist && (
+        <div class="rounded-xl border border-orange-200 bg-orange-50 p-4 space-y-3">
+          <div>
+            <label class="mb-1 block text-sm font-medium text-slate-700">
+              Waist Circumference ({unit === 'imperial' ? 'inches' : 'cm'})
+            </label>
+            <div class="relative">
+              <input
+                type="number"
+                min="20"
+                max="100"
+                step="0.1"
+                placeholder={unit === 'imperial' ? '34' : '86'}
+                value={unit === 'imperial' ? waistIn : waistCm}
+                onInput={(e) => {
+                  const v = (e.target as HTMLInputElement).value;
+                  if (unit === 'imperial') setWaistIn(v);
+                  else setWaistCm(v);
+                }}
+                class={inputCls}
+                aria-label={`Waist circumference in ${unit === 'imperial' ? 'inches' : 'centimeters'}`}
+              />
+              <span class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400">
+                {unit === 'imperial' ? 'in' : 'cm'}
+              </span>
+            </div>
+          </div>
+
+          {waistRisk && (
+            <div class="space-y-2">
+              <div class="flex items-center gap-2">
+                <span
+                  class="rounded-full px-2.5 py-0.5 text-xs font-semibold text-white"
+                  style={{ backgroundColor: waistRisk.color }}
+                >
+                  {waistRisk.risk} Risk
+                </span>
+                <span class="text-xs text-slate-600">
+                  {waistRisk.inches.toFixed(1)}" / {waistRisk.cm.toFixed(1)} cm
+                </span>
+              </div>
+              <p class="text-xs text-slate-600">
+                Abdominal obesity (&gt;40&#8243; men, &gt;35&#8243; women) is an independent cardiovascular risk factor.
+              </p>
+            </div>
+          )}
         </div>
       )}
 

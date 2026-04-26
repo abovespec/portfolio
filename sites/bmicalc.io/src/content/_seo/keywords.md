@@ -154,13 +154,13 @@
 | limitations of bmi | `limitations-of-bmi.md` | ✅ published | P4 |
 | bmi for children and teens | `bmi-for-children-and-teens.md` | ✅ published | P5 |
 | high bmi health risks | `high-bmi-health-risks.md` | ✅ published | P6 |
+| bmi calculator for women | `bmi-calculator-for-women.md` | ✅ published | INF-53 |
+| normal bmi range | `normal-bmi-range.md` | ✅ published | INF-53 |
+| bmi vs body fat percentage | `bmi-vs-body-fat-percentage.md` | ✅ published | INF-53 |
+| bmi for athletes | `bmi-for-athletes.md` | ✅ published | INF-53 |
+| how to lower bmi | `how-to-lower-bmi.md` | ✅ published | INF-53 |
 
 ### Next 6 (queue)
-- bmi calculator for women (tool-page copy)
-- bmi vs body fat percentage
-- normal bmi range
-- bmi for athletes
-- how to lower bmi
 - bmi during pregnancy
 
 ### Next 12–24 (backlog)
