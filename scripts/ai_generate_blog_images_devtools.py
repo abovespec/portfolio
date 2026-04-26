@@ -964,6 +964,15 @@ SITE_MANIFESTS = {
                 "their identical 8-4-4-4-12 hex format, dark monospace developer editorial"
             ),
         },
+        {
+            "slug": "what-is-a-uuid-hero",
+            "size": "hero",
+            "prompt": (
+                "Single UUID string 550e8400-e29b-41d4-a716-446655440000 displayed in large "
+                "monospace font with each segment labeled version node timestamp, "
+                "dark terminal aesthetic developer educational editorial"
+            ),
+        },
     ],
 
     # -----------------------------------------------------------------------
