@@ -77,6 +77,15 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
     </button>
   </div>
 
+  <!-- Logo overlay input -->
+  <div class="mt-3">
+    <label class="block text-sm font-medium text-slate-700 mb-1">
+      Logo overlay <span class="text-slate-400 font-normal">(optional)</span>
+    </label>
+    <input type="file" id="logo-upload" accept="image/*" class="text-sm text-slate-600 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-slate-100 file:text-slate-700 hover:file:bg-slate-200">
+    <p class="text-xs text-slate-400 mt-1">Keep logos small — QR error correction handles ~30% of data</p>
+  </div>
+
   <!-- Options row -->
   <div class="flex flex-wrap gap-4 mt-3 items-center">
     <label class="flex items-center gap-2 text-sm font-medium text-slate-700">
@@ -319,6 +328,26 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
       document.head.appendChild(s);
     }
 
+    // ── Logo overlay ─────────────────────────────────────────────────────────
+    function overlayLogoOnQR(qrCanvas, logoFile) {
+      if (!logoFile) return;
+      var img = new Image();
+      var url = URL.createObjectURL(logoFile);
+      img.onload = function() {
+        var ctx = qrCanvas.getContext('2d');
+        var size = qrCanvas.width;
+        var logoSize = Math.round(size * 0.22);
+        var x = Math.round((size - logoSize) / 2);
+        var y = Math.round((size - logoSize) / 2);
+        var pad = 4;
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(x - pad, y - pad, logoSize + pad * 2, logoSize + pad * 2);
+        ctx.drawImage(img, x, y, logoSize, logoSize);
+        URL.revokeObjectURL(url);
+      };
+      img.src = url;
+    }
+
     function generateFromText(text) {
       if (!text) {
         outputEl.classList.add('hidden');
@@ -369,6 +398,12 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
         outputEl.classList.remove('hidden');
         downloadWrapEl.classList.remove('hidden');
         showStatus('QR code generated — ' + text.length + ' character' + (text.length !== 1 ? 's' : '') + ' encoded', 'success');
+
+        // Apply logo overlay if a file is selected
+        var logoInput = document.getElementById('logo-upload');
+        if (logoInput && logoInput.files && logoInput.files[0]) {
+          overlayLogoOnQR(canvasEl, logoInput.files[0]);
+        }
       } catch (err) {
         showStatus('Error generating QR code: ' + (err.message || err), 'error');
         outputEl.classList.add('hidden');
@@ -418,6 +453,13 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
     });
 
     document.getElementById('btn-download').addEventListener('click', downloadPng);
+
+    // Re-apply logo overlay when a new file is chosen (if QR already generated)
+    document.getElementById('logo-upload').addEventListener('change', function() {
+      if (!canvasEl.width) return;
+      var logoFile = this.files[0];
+      if (logoFile) overlayLogoOnQR(canvasEl, logoFile);
+    });
 
     // Pre-load the library immediately so first generate is instant
     loadQrLib(function() {});
