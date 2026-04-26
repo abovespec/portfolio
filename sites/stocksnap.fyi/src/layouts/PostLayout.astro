@@ -1,0 +1,124 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumb from '~/components/Breadcrumb.astro';
+import SchemaArticle from '~/components/SchemaArticle.astro';
+import { siteUrl } from '~/config/site.config';
+import { existsSync } from 'node:fs';
+import path from 'node:path';
+
+interface Props {
+  title: string;
+  description: string;
+  publishDate: Date | string;
+  updatedDate?: Date | string;
+  author?: string;
+  image?: string;
+  tags?: string[];
+}
+const { title, description, publishDate, updatedDate, author, image, tags = [] } = Astro.props;
+const url = new URL(Astro.url.pathname, siteUrl).toString();
+
+// Convention-based blog image discovery — checks public/images/blog/<slug>-{hero,1,2}.png at build time
+const slug = Astro.url.pathname.replace(/^\/blog\//, '').replace(/\/$/, '');
+const imgDir = path.join(process.cwd(), 'public', 'images', 'blog');
+const heroSrc = `/images/blog/${slug}-hero.png`;
+const img1Src = `/images/blog/${slug}-1.png`;
+const img2Src = `/images/blog/${slug}-2.png`;
+const hasHero = existsSync(path.join(imgDir, `${slug}-hero.png`));
+const hasImg1 = existsSync(path.join(imgDir, `${slug}-1.png`));
+const hasImg2 = existsSync(path.join(imgDir, `${slug}-2.png`));
+// Explicit image prop wins; otherwise use hero if present
+const ogImage = image ?? (hasHero ? heroSrc : undefined);
+
+const fmt = (d: Date | string) =>
+  new Date(d).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+<BaseLayout title={title} description={description} image={ogImage} ogType="article">
+  <article class="prose prose-slate max-w-none">
+    <Breadcrumb items={[
+      { name: 'Home', url: '/' },
+      { name: 'Blog', url: '/blog/' },
+      { name: title, url: Astro.url.pathname },
+    ]} />
+    <header class="not-prose mt-4 mb-8">
+      <h1 class="text-4xl font-bold tracking-tight text-slate-900">{title}</h1>
+      <p class="mt-3 text-lg text-slate-600">{description}</p>
+      <div class="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-500">
+        {author && <span>By <span class="font-medium text-slate-700">{author}</span></span>}
+        <span aria-hidden="true">·</span>
+        <time datetime={new Date(publishDate).toISOString()}>{fmt(publishDate)}</time>
+        {updatedDate && (
+          <>
+            <span aria-hidden="true">·</span>
+            <span>Updated <time datetime={new Date(updatedDate).toISOString()}>{fmt(updatedDate)}</time></span>
+          </>
+        )}
+        {tags.length > 0 && (
+          <>
+            <span aria-hidden="true">·</span>
+            <ul class="flex flex-wrap gap-2">
+              {tags.map((t) => <li class="rounded bg-slate-100 px-2 py-0.5 text-xs">{t}</li>)}
+            </ul>
+          </>
+        )}
+      </div>
+    </header>
+
+    {hasHero && (
+      <figure class="not-prose my-6 overflow-hidden rounded-xl">
+        <img
+          src={heroSrc}
+          alt={title}
+          width="1200"
+          height="630"
+          class="w-full object-cover"
+          loading="eager"
+          decoding="async"
+          fetchpriority="high"
+        />
+      </figure>
+    )}
+
+    <div class="prose prose-slate max-w-none flow-root">
+      {hasImg1 && (
+        <figure class="not-prose mb-6 overflow-hidden rounded-lg sm:float-right sm:mb-4 sm:ml-6 sm:w-5/12">
+          <img
+            src={img1Src}
+            alt=""
+            width="600"
+            height="400"
+            class="w-full object-cover"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+      )}
+      <slot />
+    </div>
+
+    {hasImg2 && (
+      <figure class="not-prose my-8 overflow-hidden rounded-xl">
+        <img
+          src={img2Src}
+          alt=""
+          width="1200"
+          height="630"
+          class="w-full object-cover"
+          loading="lazy"
+          decoding="async"
+        />
+      </figure>
+    )}
+
+    <slot name="related" />
+  </article>
+  <SchemaArticle
+    headline={title}
+    description={description}
+    url={url}
+    image={ogImage}
+    datePublished={publishDate}
+    dateModified={updatedDate}
+    author={author}
+  />
+</BaseLayout>
