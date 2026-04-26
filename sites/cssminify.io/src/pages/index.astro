@@ -70,6 +70,12 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
   <!-- Status bar -->
   <div id="status" class="mt-2 rounded-md px-3 py-1.5 text-sm font-medium hidden"></div>
 
+  <!-- Diff summary -->
+  <div id="diff-summary" class="mt-2 rounded-md bg-slate-50 border border-slate-200 px-3 py-1.5 text-sm text-slate-600 hidden"></div>
+
+  <!-- Gzip estimate -->
+  <div id="gzip-estimate" class="mt-1 text-xs text-slate-400 hidden"></div>
+
   <!-- Keyboard hint -->
   <p class="mt-2 text-xs text-slate-400">
     <kbd class="rounded border border-slate-300 bg-slate-100 px-1 py-0.5 font-mono text-slate-600">Ctrl</kbd>
@@ -173,6 +179,29 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
       return result;
     }
 
+    function analyzeCSSChanges(original, minified) {
+      var commentCount = (original.match(/\/\*[\s\S]*?\*\//g) || []).length;
+      var origLines = original.split('\n').length;
+      var removedBytes = original.length - minified.length;
+      var savedPct = original.length > 0 ? ((removedBytes / original.length) * 100).toFixed(1) : 0;
+      return { commentCount: commentCount, origLines: origLines, removedBytes: removedBytes, savedPct: savedPct };
+    }
+
+    async function estimateGzip(text) {
+      if (typeof CompressionStream !== 'undefined') {
+        try {
+          var stream = new CompressionStream('gzip');
+          var writer = stream.writable.getWriter();
+          var reader = stream.readable.getReader();
+          writer.write(new TextEncoder().encode(text)); writer.close();
+          var chunks = []; var done = false;
+          while (!done) { var res = await reader.read(); done = res.done; if(res.value) chunks.push(res.value); }
+          return chunks.reduce(function(a,c) { return a + c.length; }, 0);
+        } catch(e) {}
+      }
+      return Math.round(text.length * 0.3); // fallback
+    }
+
     function runMinify() {
       if (!input.value.trim()) { showStatus('Paste some CSS first', 'info'); return; }
       var orig = input.value.length;
@@ -181,6 +210,20 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
       var saved = orig - result.length;
       var pct = ((saved / orig) * 100).toFixed(1);
       showStatus('Minified — saved ' + saved + ' bytes (' + pct + '%)', 'success');
+
+      // Diff summary
+      var analysis = analyzeCSSChanges(input.value, result);
+      var diffEl = document.getElementById('diff-summary');
+      diffEl.textContent = 'Removed: ' + analysis.commentCount + ' comment' + (analysis.commentCount !== 1 ? 's' : '') + ', ~' + analysis.removedBytes + ' bytes (' + analysis.savedPct + '% reduction)';
+      diffEl.classList.remove('hidden');
+
+      // Gzip estimate (async)
+      var gzipEl = document.getElementById('gzip-estimate');
+      gzipEl.classList.add('hidden');
+      estimateGzip(result).then(function(size) {
+        gzipEl.textContent = 'Estimated gzip: ~' + size + ' bytes';
+        gzipEl.classList.remove('hidden');
+      });
     }
 
     document.getElementById('btn-minify').addEventListener('click', runMinify);
