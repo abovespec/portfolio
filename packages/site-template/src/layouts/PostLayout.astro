@@ -41,10 +41,10 @@ const fmt = (d: Date | string) =>
       { name: title, url: Astro.url.pathname },
     ]} />
     <header class="not-prose mt-4 mb-8">
-      <h1 class="text-4xl font-bold tracking-tight text-white">{title}</h1>
-      <p class="mt-3 text-lg text-slate-300">{description}</p>
-      <div class="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-400">
-        {author && <span>By <span class="font-medium text-slate-200">{author}</span></span>}
+      <h1 class="text-4xl font-bold tracking-tight text-slate-900">{title}</h1>
+      <p class="mt-3 text-lg text-slate-600">{description}</p>
+      <div class="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-500">
+        {author && <span>By <span class="font-medium text-slate-700">{author}</span></span>}
         <span aria-hidden="true">·</span>
         <time datetime={new Date(publishDate).toISOString()}>{fmt(publishDate)}</time>
         {updatedDate && (
