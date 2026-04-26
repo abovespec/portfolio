@@ -1,6 +1,15 @@
 import { useState, useEffect, useCallback, useRef } from 'preact/hooks';
 import { computed } from '@preact/signals';
 
+interface PortfolioEntry { coinId: string; amount: string; }
+
+const COIN_OPTIONS = [
+  {id:'bitcoin',label:'Bitcoin (BTC)'},{id:'ethereum',label:'Ethereum (ETH)'},
+  {id:'solana',label:'Solana (SOL)'},{id:'binancecoin',label:'BNB (BNB)'},
+  {id:'ripple',label:'XRP (XRP)'},{id:'cardano',label:'Cardano (ADA)'},
+  {id:'avalanche-2',label:'Avalanche (AVAX)'},{id:'dogecoin',label:'Dogecoin (DOGE)'},
+];
+
 interface RateData {
   usd: number;
   usd_24h_change: number;
@@ -79,10 +88,38 @@ export default function PairConverter({ base, quote }: Props) {
   const [error, setError] = useState<string | null>(null);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
+  // Portfolio state
+  const [portfolio, setPortfolio] = useState<PortfolioEntry[]>([{coinId:'bitcoin',amount:''}]);
+  const [portfolioTotal, setPortfolioTotal] = useState<number|null>(null);
+  const [portfolioLoading, setPortfolioLoading] = useState(false);
+  const [portfolioError, setPortfolioError] = useState<string|null>(null);
+
   const goodTime = computed(() => {
     if (change24h === null) return null;
     return isGoodTime(change24h, quote);
   });
+
+  async function calcPortfolio() {
+    const entries = portfolio.filter(e => e.amount && parseFloat(e.amount) > 0);
+    if (!entries.length) return;
+    setPortfolioLoading(true);
+    setPortfolioError(null);
+    try {
+      const ids = [...new Set(entries.map(e => e.coinId))].join(',');
+      const res = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${ids}&vs_currencies=usd`);
+      const prices = await res.json();
+      const total = entries.reduce((sum, e) => {
+        const price = prices[e.coinId]?.usd || 0;
+        return sum + (parseFloat(e.amount)||0) * price;
+      }, 0);
+      setPortfolioTotal(total);
+    } catch (err) {
+      setPortfolioError('Failed to fetch prices');
+      setPortfolioTotal(null);
+    } finally {
+      setPortfolioLoading(false);
+    }
+  }
 
   const fetchRate = useCallback(async () => {
     try {
@@ -349,6 +386,88 @@ export default function PairConverter({ base, quote }: Props) {
           </p>
         </>
       )}
+
+      {/* Portfolio Calculator */}
+      <div class="mt-8 border-t border-slate-200 pt-6">
+        <h3 class="text-base font-semibold text-slate-800 mb-3">My Portfolio</h3>
+        <div class="space-y-2">
+          {portfolio.map((entry, idx) => (
+            <div key={idx} class="flex gap-2 items-center">
+              <select
+                value={entry.coinId}
+                onChange={(e) => {
+                  const updated = [...portfolio];
+                  updated[idx] = { ...updated[idx], coinId: (e.target as HTMLSelectElement).value };
+                  setPortfolio(updated);
+                  setPortfolioTotal(null);
+                }}
+                class="flex-1 rounded border border-slate-300 px-2 py-1.5 text-sm bg-white"
+              >
+                {COIN_OPTIONS.map(c => (
+                  <option key={c.id} value={c.id} selected={entry.coinId === c.id}>{c.label}</option>
+                ))}
+              </select>
+              <input
+                type="number"
+                min="0"
+                step="any"
+                placeholder="Amount"
+                value={entry.amount}
+                onInput={(e) => {
+                  const updated = [...portfolio];
+                  updated[idx] = { ...updated[idx], amount: (e.target as HTMLInputElement).value };
+                  setPortfolio(updated);
+                  setPortfolioTotal(null);
+                }}
+                class="w-28 rounded border border-slate-300 px-2 py-1.5 text-sm"
+              />
+              {portfolio.length > 1 && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setPortfolio(portfolio.filter((_, i) => i !== idx));
+                    setPortfolioTotal(null);
+                  }}
+                  class="text-red-400 hover:text-red-600 text-lg font-bold px-1"
+                  title="Remove"
+                >
+                  &times;
+                </button>
+              )}
+            </div>
+          ))}
+        </div>
+        <div class="mt-3 flex flex-wrap gap-2 items-center">
+          {portfolio.length < 10 && (
+            <button
+              type="button"
+              onClick={() => setPortfolio([...portfolio, {coinId:'bitcoin',amount:''}])}
+              class="text-sm text-accent font-medium hover:underline"
+            >
+              + Add coin
+            </button>
+          )}
+          <button
+            type="button"
+            onClick={calcPortfolio}
+            disabled={portfolioLoading}
+            class="rounded bg-accent px-4 py-1.5 text-sm font-medium text-white hover:brightness-110 disabled:opacity-60"
+          >
+            {portfolioLoading ? 'Loading…' : 'Calculate Total Value'}
+          </button>
+        </div>
+        {portfolioError && (
+          <p class="mt-2 text-sm text-red-600">{portfolioError}</p>
+        )}
+        {portfolioTotal !== null && !portfolioLoading && (
+          <div class="mt-3 rounded-lg bg-slate-50 border border-slate-200 p-3 text-center">
+            <p class="text-xs text-slate-500 uppercase">Portfolio Total Value</p>
+            <p class="text-2xl font-bold text-slate-800 mt-1">
+              ${portfolioTotal.toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2})}
+            </p>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
