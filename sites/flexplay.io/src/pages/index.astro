@@ -1,0 +1,353 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { siteConfig } from '~/config/site.config';
+
+const recentPosts = siteConfig.features.hasBlog
+  ? (await getCollection('blog', ({ data }) => !data.draft))
+      .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
+      .slice(0, 6)
+  : [];
+---
+<BaseLayout
+  title="CSS Flexbox & Grid Playground — Interactive Visual Editor"
+  description="Learn and build CSS Flexbox and Grid layouts with a live visual playground. Adjust properties, see results instantly, and copy the generated CSS."
+>
+
+  <!-- Hero: playground as focal point, teal/emerald gradient -->
+  <section class="relative -mx-4 overflow-hidden px-4 py-14 sm:py-20">
+    <div class="absolute inset-0 bg-gradient-to-br from-teal-50 via-emerald-50 to-cyan-50" aria-hidden="true" />
+    <div class="absolute -top-32 left-1/2 h-80 w-80 -translate-x-1/2 rounded-full bg-teal-300/20 blur-3xl" aria-hidden="true" />
+    <div class="absolute bottom-0 right-0 h-64 w-64 rounded-full bg-emerald-300/15 blur-3xl" aria-hidden="true" />
+
+    <div class="relative">
+      <div class="mx-auto max-w-2xl text-center">
+        <h1 class="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+          CSS Flexbox &amp; Grid Playground
+        </h1>
+        <p class="mt-3 text-lg text-slate-600">
+          Adjust properties, watch the layout update live, and copy the generated CSS.
+          The fastest way to get Flex and Grid into muscle memory.
+        </p>
+      </div>
+
+      <ul class="mt-6 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-slate-600">
+        {[
+          'Live preview as you type',
+          'Generated CSS always visible',
+          'Flexbox + Grid in one tool',
+          'Copy-ready output',
+        ].map((badge) => (
+          <li class="flex items-center gap-1.5">
+            <svg class="h-4 w-4 shrink-0 text-teal-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.061 1.06l2.5 2.5a.75.75 0 001.137-.088l4-5.5z" clip-rule="evenodd" />
+            </svg>
+            {badge}
+          </li>
+        ))}
+      </ul>
+
+      <!-- Playground card -->
+      <div class="mx-auto mt-8 w-full max-w-3xl">
+        <div class="rounded-2xl border border-teal-200/80 bg-white shadow-sm overflow-hidden">
+
+          <!-- Tab bar -->
+          <div class="flex border-b border-slate-200 bg-slate-50 px-4 pt-3 gap-1">
+            <button
+              id="tab-flex"
+              onclick="showTab('flex')"
+              class="rounded-t-lg px-5 py-2.5 text-sm font-semibold text-white bg-teal-600 border border-b-0 border-teal-200 -mb-px"
+            >Flexbox</button>
+            <button
+              id="tab-grid"
+              onclick="showTab('grid')"
+              class="rounded-t-lg px-5 py-2.5 text-sm font-medium text-slate-600 hover:text-slate-900 border border-b-0 border-transparent hover:border-slate-200 -mb-px transition"
+            >Grid</button>
+          </div>
+
+          <div class="p-5">
+            <!-- Flexbox Panel -->
+            <div id="panel-flex" class="space-y-4">
+              <div class="grid gap-4 md:grid-cols-3">
+                <div class="rounded-xl border border-slate-200 bg-slate-50 p-4 space-y-3">
+                  <h3 class="text-sm font-semibold text-slate-700 uppercase tracking-wide">Container</h3>
+                  <div>
+                    <label class="block text-xs font-medium text-slate-600 mb-1">flex-direction</label>
+                    <select id="f-dir" class="w-full rounded-lg border border-slate-300 bg-white px-2 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-teal-400/30">
+                      <option>row</option><option>row-reverse</option><option>column</option><option>column-reverse</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label class="block text-xs font-medium text-slate-600 mb-1">justify-content</label>
+                    <select id="f-justify" class="w-full rounded-lg border border-slate-300 bg-white px-2 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-teal-400/30">
+                      <option>flex-start</option><option>center</option><option>flex-end</option><option>space-between</option><option>space-around</option><option>space-evenly</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label class="block text-xs font-medium text-slate-600 mb-1">align-items</label>
+                    <select id="f-align" class="w-full rounded-lg border border-slate-300 bg-white px-2 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-teal-400/30">
+                      <option>stretch</option><option>flex-start</option><option>center</option><option>flex-end</option><option>baseline</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label class="block text-xs font-medium text-slate-600 mb-1">flex-wrap</label>
+                    <select id="f-wrap" class="w-full rounded-lg border border-slate-300 bg-white px-2 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-teal-400/30">
+                      <option>nowrap</option><option>wrap</option><option>wrap-reverse</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label class="block text-xs font-medium text-slate-600 mb-1">gap: <span id="f-gap-val">8px</span></label>
+                    <input type="range" id="f-gap" min="0" max="32" value="8" class="w-full accent-teal-600" />
+                  </div>
+                </div>
+                <div class="md:col-span-2 rounded-xl border border-slate-200 bg-white p-4">
+                  <h3 class="text-sm font-semibold text-slate-700 uppercase tracking-wide mb-2">Preview</h3>
+                  <div id="flex-preview" class="h-56 rounded-lg border-2 border-dashed border-teal-200 bg-teal-50/50 p-2" style="display:flex;flex-direction:row;justify-content:flex-start;align-items:stretch;flex-wrap:nowrap;gap:8px;">
+                    <div class="rounded-lg bg-teal-500 text-white font-bold text-sm flex items-center justify-center" style="min-width:48px;min-height:48px;">1</div>
+                    <div class="rounded-lg bg-emerald-500 text-white font-bold text-sm flex items-center justify-center" style="min-width:48px;min-height:48px;">2</div>
+                    <div class="rounded-lg bg-cyan-500 text-white font-bold text-sm flex items-center justify-center" style="min-width:48px;min-height:48px;">3</div>
+                    <div class="rounded-lg bg-violet-500 text-white font-bold text-sm flex items-center justify-center" style="min-width:48px;min-height:48px;">4</div>
+                  </div>
+                </div>
+              </div>
+              <div class="rounded-xl border border-slate-200 bg-white p-4">
+                <div class="flex items-center justify-between mb-2">
+                  <h3 class="text-sm font-semibold text-slate-700 uppercase tracking-wide">Generated CSS</h3>
+                  <button id="btn-copy-flex" class="rounded-lg bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-700 hover:bg-slate-200 transition">Copy</button>
+                </div>
+                <pre id="flex-css" class="overflow-x-auto rounded-lg bg-slate-900 p-3 text-sm text-emerald-300 font-mono"></pre>
+              </div>
+            </div>
+
+            <!-- Grid Panel -->
+            <div id="panel-grid" class="space-y-4 hidden">
+              <div class="grid gap-4 md:grid-cols-3">
+                <div class="rounded-xl border border-slate-200 bg-slate-50 p-4 space-y-3">
+                  <h3 class="text-sm font-semibold text-slate-700 uppercase tracking-wide">Container</h3>
+                  <div>
+                    <label class="block text-xs font-medium text-slate-600 mb-1">grid-template-columns</label>
+                    <input type="text" id="g-cols" class="w-full rounded-lg border border-slate-300 bg-white px-2 py-1.5 font-mono text-sm focus:outline-none focus:ring-2 focus:ring-teal-400/30" value="repeat(3, 1fr)" />
+                  </div>
+                  <div>
+                    <label class="block text-xs font-medium text-slate-600 mb-1">grid-template-rows</label>
+                    <input type="text" id="g-rows" class="w-full rounded-lg border border-slate-300 bg-white px-2 py-1.5 font-mono text-sm focus:outline-none focus:ring-2 focus:ring-teal-400/30" value="auto" />
+                  </div>
+                  <div>
+                    <label class="block text-xs font-medium text-slate-600 mb-1">gap: <span id="g-gap-val">8px</span></label>
+                    <input type="range" id="g-gap" min="0" max="32" value="8" class="w-full accent-teal-600" />
+                  </div>
+                  <div>
+                    <label class="block text-xs font-medium text-slate-600 mb-1">justify-items</label>
+                    <select id="g-justify" class="w-full rounded-lg border border-slate-300 bg-white px-2 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-teal-400/30">
+                      <option>stretch</option><option>start</option><option>center</option><option>end</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label class="block text-xs font-medium text-slate-600 mb-1">align-items</label>
+                    <select id="g-align" class="w-full rounded-lg border border-slate-300 bg-white px-2 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-teal-400/30">
+                      <option>stretch</option><option>start</option><option>center</option><option>end</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="md:col-span-2 rounded-xl border border-slate-200 bg-white p-4">
+                  <h3 class="text-sm font-semibold text-slate-700 uppercase tracking-wide mb-2">Preview</h3>
+                  <div id="grid-preview" class="h-56 rounded-lg border-2 border-dashed border-teal-200 bg-teal-50/50 p-2" style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;">
+                    <div class="rounded-lg bg-teal-500 text-white font-bold text-sm flex items-center justify-center" style="min-height:36px;">1</div>
+                    <div class="rounded-lg bg-emerald-500 text-white font-bold text-sm flex items-center justify-center" style="min-height:36px;">2</div>
+                    <div class="rounded-lg bg-cyan-500 text-white font-bold text-sm flex items-center justify-center" style="min-height:36px;">3</div>
+                    <div class="rounded-lg bg-violet-500 text-white font-bold text-sm flex items-center justify-center" style="min-height:36px;">4</div>
+                    <div class="rounded-lg bg-amber-500 text-white font-bold text-sm flex items-center justify-center" style="min-height:36px;">5</div>
+                    <div class="rounded-lg bg-rose-500 text-white font-bold text-sm flex items-center justify-center" style="min-height:36px;">6</div>
+                  </div>
+                </div>
+              </div>
+              <div class="rounded-xl border border-slate-200 bg-white p-4">
+                <div class="flex items-center justify-between mb-2">
+                  <h3 class="text-sm font-semibold text-slate-700 uppercase tracking-wide">Generated CSS</h3>
+                  <button id="btn-copy-grid" class="rounded-lg bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-700 hover:bg-slate-200 transition">Copy</button>
+                </div>
+                <pre id="grid-css" class="overflow-x-auto rounded-lg bg-slate-900 p-3 text-sm text-emerald-300 font-mono"></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Educational content -->
+  <section class="mt-16" aria-labelledby="flex-vs-grid-heading">
+    <h2 id="flex-vs-grid-heading" class="text-2xl font-bold text-slate-900">Flexbox vs Grid — When to Use Which</h2>
+    <div class="mt-5 grid gap-4 sm:grid-cols-2">
+      <div class="rounded-xl border border-slate-200 bg-white p-6">
+        <h3 class="text-lg font-semibold text-teal-700">Use Flexbox when…</h3>
+        <ul class="mt-3 space-y-2 text-sm text-slate-600">
+          <li class="flex gap-2"><span class="text-teal-500 mt-0.5">→</span>Layout flows in <strong>one dimension</strong> (row or column)</li>
+          <li class="flex gap-2"><span class="text-teal-500 mt-0.5">→</span>You need items to <strong>shrink or grow</strong> based on available space</li>
+          <li class="flex gap-2"><span class="text-teal-500 mt-0.5">→</span>Aligning items in a <strong>nav bar or toolbar</strong></li>
+          <li class="flex gap-2"><span class="text-teal-500 mt-0.5">→</span><strong>Centering</strong> a single element inside a container</li>
+          <li class="flex gap-2"><span class="text-teal-500 mt-0.5">→</span>Cards in a <strong>wrapping row</strong> where items can be different widths</li>
+        </ul>
+      </div>
+      <div class="rounded-xl border border-slate-200 bg-white p-6">
+        <h3 class="text-lg font-semibold text-emerald-700">Use Grid when…</h3>
+        <ul class="mt-3 space-y-2 text-sm text-slate-600">
+          <li class="flex gap-2"><span class="text-emerald-500 mt-0.5">→</span>Layout spans <strong>two dimensions</strong> (rows AND columns)</li>
+          <li class="flex gap-2"><span class="text-emerald-500 mt-0.5">→</span>You want items to align to a <strong>fixed column track</strong></li>
+          <li class="flex gap-2"><span class="text-emerald-500 mt-0.5">→</span>Building a <strong>page-level layout</strong> with header, sidebar, main, footer</li>
+          <li class="flex gap-2"><span class="text-emerald-500 mt-0.5">→</span>Items need to <strong>span multiple rows or columns</strong></li>
+          <li class="flex gap-2"><span class="text-emerald-500 mt-0.5">→</span>A <strong>photo gallery</strong> or card grid where all cells must align</li>
+        </ul>
+      </div>
+    </div>
+    <p class="mt-4 text-sm text-slate-600 bg-slate-50 rounded-xl border border-slate-200 px-5 py-4">
+      <strong>The real answer:</strong> use both. A Grid for the outer page structure, Flexbox inside each grid cell for content alignment. They complement, not compete with, each other.
+    </p>
+  </section>
+
+  <section class="mt-12" aria-labelledby="flex-cheatsheet-heading">
+    <h2 id="flex-cheatsheet-heading" class="text-2xl font-bold text-slate-900">Flexbox Cheat Sheet</h2>
+    <div class="mt-4 overflow-hidden rounded-xl border border-slate-200">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="bg-slate-50 text-left">
+            <th class="px-4 py-3 font-semibold text-slate-700">Property</th>
+            <th class="px-4 py-3 font-semibold text-slate-700">Values</th>
+            <th class="hidden px-4 py-3 font-semibold text-slate-700 sm:table-cell">Effect</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-slate-100">
+          {([
+            { prop: 'display: flex', values: '—', effect: 'Turns the element into a flex container.' },
+            { prop: 'flex-direction', values: 'row | column | row-reverse | column-reverse', effect: 'Direction of the main axis.' },
+            { prop: 'justify-content', values: 'flex-start | center | flex-end | space-between | space-around | space-evenly', effect: 'Alignment along the main axis.' },
+            { prop: 'align-items', values: 'stretch | flex-start | center | flex-end | baseline', effect: 'Alignment along the cross axis.' },
+            { prop: 'flex-wrap', values: 'nowrap | wrap | wrap-reverse', effect: 'Whether items wrap to the next line.' },
+            { prop: 'gap', values: '<length>', effect: 'Space between flex items (row-gap and column-gap).' },
+            { prop: 'flex: 1', values: '1 1 0%', effect: 'Item grows to fill space and shrinks as needed.' },
+          ] as const).map((row) => (
+            <tr class="bg-white hover:bg-slate-50">
+              <td class="px-4 py-3 font-mono text-xs text-slate-900">{row.prop}</td>
+              <td class="px-4 py-3 font-mono text-xs text-slate-600">{row.values}</td>
+              <td class="hidden px-4 py-3 text-slate-500 sm:table-cell">{row.effect}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  {recentPosts.length > 0 && (
+    <section class="mt-16" aria-labelledby="articles-heading">
+      <h2 id="articles-heading" class="text-2xl font-bold text-slate-900">Latest Articles</h2>
+      <ul class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {recentPosts.map((post) => (
+          <li>
+            <a
+              href={`/blog/${post.slug}/`}
+              class="group block rounded-xl border border-slate-200 bg-white p-5 transition hover:border-teal-400/40 hover:shadow-sm"
+            >
+              <time
+                datetime={post.data.publishDate.toISOString()}
+                class="text-xs font-medium uppercase tracking-wide text-slate-400"
+              >
+                {post.data.publishDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+              </time>
+              <h3 class="mt-1 text-base font-semibold text-slate-900 group-hover:text-teal-700">{post.data.title}</h3>
+              <p class="mt-2 line-clamp-2 text-sm text-slate-600">{post.data.description}</p>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  <footer class="mt-16 border-t border-slate-200 pt-8 text-sm text-slate-500">
+    <span>Content last reviewed: <time datetime="2026-04-25">April 25, 2026</time>.</span>
+  </footer>
+
+</BaseLayout>
+
+<script is:inline>
+  function showTab(t) {
+    var isFlex = t === 'flex';
+    document.getElementById('panel-flex').classList.toggle('hidden', !isFlex);
+    document.getElementById('panel-grid').classList.toggle('hidden', isFlex);
+    var ft = document.getElementById('tab-flex');
+    var gt = document.getElementById('tab-grid');
+    if (isFlex) {
+      ft.className = 'rounded-t-lg px-5 py-2.5 text-sm font-semibold text-white bg-teal-600 border border-b-0 border-teal-200 -mb-px';
+      gt.className = 'rounded-t-lg px-5 py-2.5 text-sm font-medium text-slate-600 hover:text-slate-900 border border-b-0 border-transparent hover:border-slate-200 -mb-px transition';
+    } else {
+      gt.className = 'rounded-t-lg px-5 py-2.5 text-sm font-semibold text-white bg-teal-600 border border-b-0 border-teal-200 -mb-px';
+      ft.className = 'rounded-t-lg px-5 py-2.5 text-sm font-medium text-slate-600 hover:text-slate-900 border border-b-0 border-transparent hover:border-slate-200 -mb-px transition';
+    }
+  }
+
+  function updateFlex() {
+    var p = document.getElementById('flex-preview');
+    var dir = document.getElementById('f-dir').value;
+    var justify = document.getElementById('f-justify').value;
+    var align = document.getElementById('f-align').value;
+    var wrap = document.getElementById('f-wrap').value;
+    var gap = document.getElementById('f-gap').value;
+    document.getElementById('f-gap-val').textContent = gap + 'px';
+    p.style.flexDirection = dir;
+    p.style.justifyContent = justify;
+    p.style.alignItems = align;
+    p.style.flexWrap = wrap;
+    p.style.gap = gap + 'px';
+    document.getElementById('flex-css').textContent = [
+      '.container {',
+      '  display: flex;',
+      '  flex-direction: ' + dir + ';',
+      '  justify-content: ' + justify + ';',
+      '  align-items: ' + align + ';',
+      '  flex-wrap: ' + wrap + ';',
+      '  gap: ' + gap + 'px;',
+      '}'
+    ].join('\n');
+  }
+  ['f-dir','f-justify','f-align','f-wrap','f-gap'].forEach(function(id) {
+    document.getElementById(id).addEventListener('input', updateFlex);
+  });
+  document.getElementById('btn-copy-flex').addEventListener('click', function() {
+    navigator.clipboard.writeText(document.getElementById('flex-css').textContent);
+  });
+
+  function updateGrid() {
+    var p = document.getElementById('grid-preview');
+    var cols = document.getElementById('g-cols').value;
+    var rows = document.getElementById('g-rows').value;
+    var gap = document.getElementById('g-gap').value;
+    var justify = document.getElementById('g-justify').value;
+    var align = document.getElementById('g-align').value;
+    document.getElementById('g-gap-val').textContent = gap + 'px';
+    p.style.gridTemplateColumns = cols;
+    p.style.gridTemplateRows = rows;
+    p.style.gap = gap + 'px';
+    p.style.justifyItems = justify;
+    p.style.alignItems = align;
+    document.getElementById('grid-css').textContent = [
+      '.container {',
+      '  display: grid;',
+      '  grid-template-columns: ' + cols + ';',
+      '  grid-template-rows: ' + rows + ';',
+      '  gap: ' + gap + 'px;',
+      '  justify-items: ' + justify + ';',
+      '  align-items: ' + align + ';',
+      '}'
+    ].join('\n');
+  }
+  ['g-cols','g-rows','g-gap','g-justify','g-align'].forEach(function(id) {
+    document.getElementById(id).addEventListener('input', updateGrid);
+  });
+  document.getElementById('btn-copy-grid').addEventListener('click', function() {
+    navigator.clipboard.writeText(document.getElementById('grid-css').textContent);
+  });
+
+  document.getElementById('tab-flex').addEventListener('click', function() { showTab('flex'); });
+  document.getElementById('tab-grid').addEventListener('click', function() { showTab('grid'); });
+
+  updateFlex(); updateGrid();
+</script>

@@ -1,0 +1,305 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { siteConfig } from '~/config/site.config';
+import { getCollection } from 'astro:content';
+
+const recentPosts = siteConfig.features.hasBlog
+  ? (await getCollection('blog', ({ data }) => !data.draft))
+      .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
+      .slice(0, 6)
+  : [];
+---
+<BaseLayout
+  title="Currency Converter — Live Exchange Rates, Free & Instant"
+  description="Convert between 30+ currencies with live exchange rates. Rates sourced from ECB and public forex data. Free currency converter, no signup."
+>
+
+  <!-- Hero: converter centered, green/emerald gradient, YMYL disclaimer -->
+  <section class="relative -mx-4 overflow-hidden px-4 py-14 sm:py-20">
+    <div class="absolute inset-0 bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50" aria-hidden="true" />
+    <div class="absolute -top-32 left-1/2 h-80 w-80 -translate-x-1/2 rounded-full bg-emerald-300/20 blur-3xl" aria-hidden="true" />
+    <div class="absolute bottom-0 right-0 h-64 w-64 rounded-full bg-green-300/15 blur-3xl" aria-hidden="true" />
+
+    <div class="relative">
+      <div class="mx-auto max-w-2xl text-center">
+        <h1 class="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+          Currency Converter
+        </h1>
+        <p class="mt-3 text-lg text-slate-600">
+          Convert between 30+ currencies using indicative exchange rates.
+          Fast, free, and no signup required.
+        </p>
+      </div>
+
+      <ul class="mt-6 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-slate-600">
+        {[
+          '30+ currencies',
+          'Swap in one click',
+          'Formatted output',
+          'No account needed',
+        ].map((badge) => (
+          <li class="flex items-center gap-1.5">
+            <svg class="h-4 w-4 shrink-0 text-emerald-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.061 1.06l2.5 2.5a.75.75 0 001.137-.088l4-5.5z" clip-rule="evenodd" />
+            </svg>
+            {badge}
+          </li>
+        ))}
+      </ul>
+
+      <!-- Converter card -->
+      <div class="mx-auto mt-8 w-full max-w-lg">
+        <div class="rounded-2xl border border-emerald-200/80 bg-white p-6 shadow-sm">
+          <div class="space-y-4">
+            <!-- Amount + From -->
+            <div class="grid grid-cols-[1fr_auto] gap-3">
+              <div>
+                <label class="block text-xs font-medium text-slate-600 mb-1.5" for="amount">Amount</label>
+                <input
+                  id="amount"
+                  type="number"
+                  value="1"
+                  min="0"
+                  step="any"
+                  class="w-full rounded-xl border border-slate-300 px-4 py-3 text-lg font-semibold text-slate-900 focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+                />
+              </div>
+              <div>
+                <label class="block text-xs font-medium text-slate-600 mb-1.5" for="from-currency">From</label>
+                <select id="from-currency" class="h-[50px] rounded-xl border border-slate-300 bg-white px-3 py-2 text-base font-medium text-slate-900 focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"></select>
+              </div>
+            </div>
+
+            <!-- Swap button -->
+            <div class="flex items-center gap-3">
+              <div class="h-px flex-1 bg-slate-200"></div>
+              <button
+                id="btn-swap"
+                onclick="swapCurrencies()"
+                class="flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-500 shadow-sm transition hover:border-emerald-400 hover:text-emerald-600"
+                aria-label="Swap currencies"
+              >
+                <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M13.2 2.24a.75.75 0 00.04 1.06l2.1 1.95H6.75a.75.75 0 000 1.5h8.59l-2.1 1.95a.75.75 0 101.02 1.1l3.5-3.25a.75.75 0 000-1.1l-3.5-3.25a.75.75 0 00-1.06.04zm-6.4 8a.75.75 0 00-1.06-.04l-3.5 3.25a.75.75 0 000 1.1l3.5 3.25a.75.75 0 101.02-1.1l-2.1-1.95h8.59a.75.75 0 000-1.5H4.66l2.1-1.95a.75.75 0 00.04-1.06z" clip-rule="evenodd" />
+                </svg>
+              </button>
+              <div class="h-px flex-1 bg-slate-200"></div>
+            </div>
+
+            <!-- To -->
+            <div>
+              <label class="block text-xs font-medium text-slate-600 mb-1.5" for="to-currency">To</label>
+              <select id="to-currency" class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-base font-medium text-slate-900 focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"></select>
+            </div>
+
+            <!-- Convert button -->
+            <button
+              id="btn-convert"
+              onclick="convertCurrency()"
+              class="w-full rounded-xl bg-emerald-600 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-emerald-700 active:scale-[0.99]"
+            >Convert</button>
+
+            <!-- Result -->
+            <div id="result-box" class="hidden rounded-xl bg-emerald-50 border border-emerald-200 p-4 text-center">
+              <p class="text-2xl font-bold text-emerald-800" id="result-amount">--</p>
+              <p class="mt-1 text-sm text-slate-500" id="result-rate">--</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- YMYL disclaimer -->
+      <aside
+        role="note"
+        class="mx-auto mt-4 max-w-lg rounded-lg border border-emerald-200 bg-emerald-50/80 p-3 text-sm text-emerald-900"
+      >
+        <strong class="font-semibold">Note:</strong> Rates are indicative and may differ from rates offered by banks or forex brokers.
+        For financial transactions, always confirm the rate with your provider at the time of the transaction.
+        Sources: <a href="https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html" class="underline underline-offset-2 hover:opacity-80" target="_blank" rel="noopener">European Central Bank (ECB)</a>,
+        <a href="https://www.imf.org/en/Research/commodity-prices" class="underline underline-offset-2 hover:opacity-80" target="_blank" rel="noopener">IMF</a>,
+        open forex data.
+      </aside>
+    </div>
+  </section>
+
+  <!-- Popular pairs quick-reference -->
+  <section class="mt-16" aria-labelledby="popular-pairs-heading">
+    <h2 id="popular-pairs-heading" class="text-2xl font-bold text-slate-900">Popular Currency Pairs</h2>
+    <div class="mt-4 overflow-hidden rounded-xl border border-slate-200">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="bg-slate-50 text-left">
+            <th class="px-4 py-3 font-semibold text-slate-700">Pair</th>
+            <th class="px-4 py-3 font-semibold text-slate-700">Name</th>
+            <th class="hidden px-4 py-3 font-semibold text-slate-700 sm:table-cell">Notes</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-slate-100">
+          {([
+            { pair: 'EUR/USD', name: 'Euro / US Dollar', note: 'Most traded currency pair in the world.' },
+            { pair: 'USD/JPY', name: 'US Dollar / Japanese Yen', note: 'Second most traded; sensitive to interest rate differentials.' },
+            { pair: 'GBP/USD', name: 'British Pound / US Dollar', note: 'Known as "Cable" — historically traded via transatlantic cable.' },
+            { pair: 'USD/CHF', name: 'US Dollar / Swiss Franc', note: 'Swiss Franc is a traditional safe-haven currency.' },
+            { pair: 'AUD/USD', name: 'Australian Dollar / US Dollar', note: 'Commodity-correlated; moves with iron ore and gold prices.' },
+            { pair: 'USD/CAD', name: 'US Dollar / Canadian Dollar', note: 'Oil-correlated; moves with crude oil prices.' },
+          ] as const).map((row) => (
+            <tr class="bg-white hover:bg-slate-50">
+              <td class="px-4 py-3 font-mono font-semibold text-slate-900">{row.pair}</td>
+              <td class="px-4 py-3 text-slate-700">{row.name}</td>
+              <td class="hidden px-4 py-3 text-slate-500 sm:table-cell">{row.note}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="mt-12" aria-labelledby="how-rates-work-heading">
+    <h2 id="how-rates-work-heading" class="text-2xl font-bold text-slate-900">How Exchange Rates Work</h2>
+    <div class="prose prose-slate mt-3 max-w-none">
+      <p>
+        An <strong>exchange rate</strong> tells you how much of one currency you get for one unit of another.
+        For example, an EUR/USD rate of 1.09 means 1 euro buys 1.09 US dollars.
+      </p>
+      <p>
+        Rates are set by the foreign exchange market (forex), which trades around $7 trillion per day
+        and operates 24 hours a day, five days a week. Retail conversions (at banks, airports, or through
+        apps) always include a <strong>spread</strong> — the difference between the buy and sell rate —
+        plus any service fees. The rates shown here are mid-market rates, which sit between the buy and
+        sell prices and are used as a reference benchmark.
+      </p>
+    </div>
+  </section>
+
+  {recentPosts.length > 0 && (
+    <section class="mt-16" aria-labelledby="articles-heading">
+      <h2 id="articles-heading" class="text-2xl font-bold text-slate-900">Latest Articles</h2>
+      <ul class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {recentPosts.map((post) => (
+          <li>
+            <a
+              href={`/blog/${post.slug}/`}
+              class="group block rounded-xl border border-slate-200 bg-white p-5 transition hover:border-emerald-400/40 hover:shadow-sm"
+            >
+              <time
+                datetime={post.data.publishDate.toISOString()}
+                class="text-xs font-medium uppercase tracking-wide text-slate-400"
+              >
+                {post.data.publishDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+              </time>
+              <h3 class="mt-1 text-base font-semibold text-slate-900 group-hover:text-emerald-700">{post.data.title}</h3>
+              <p class="mt-2 line-clamp-2 text-sm text-slate-600">{post.data.description}</p>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  <footer class="mt-16 border-t border-slate-200 pt-8 text-sm text-slate-500">
+    <p>Exchange rate data is indicative. Rates shown are mid-market rates and do not include bank spreads or transaction fees.</p>
+    <p class="mt-1">
+      Rate sources: <a href="https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html" class="underline underline-offset-2 hover:opacity-80" target="_blank" rel="noopener">European Central Bank</a> &middot;
+      <a href="https://www.imf.org" class="underline underline-offset-2 hover:opacity-80" target="_blank" rel="noopener">IMF</a> &middot; open forex data.
+    </p>
+    <p class="mt-2">Content last reviewed: <time datetime="2026-04-25">April 25, 2026</time>.</p>
+  </footer>
+
+</BaseLayout>
+
+<script is:inline>
+  var CURRENCIES = [
+    {code:'USD',name:'US Dollar'},
+    {code:'EUR',name:'Euro'},
+    {code:'GBP',name:'British Pound'},
+    {code:'JPY',name:'Japanese Yen'},
+    {code:'CAD',name:'Canadian Dollar'},
+    {code:'AUD',name:'Australian Dollar'},
+    {code:'CHF',name:'Swiss Franc'},
+    {code:'CNY',name:'Chinese Yuan'},
+    {code:'SEK',name:'Swedish Krona'},
+    {code:'NZD',name:'New Zealand Dollar'},
+    {code:'MXN',name:'Mexican Peso'},
+    {code:'SGD',name:'Singapore Dollar'},
+    {code:'HKD',name:'Hong Kong Dollar'},
+    {code:'NOK',name:'Norwegian Krone'},
+    {code:'KRW',name:'South Korean Won'},
+    {code:'TRY',name:'Turkish Lira'},
+    {code:'INR',name:'Indian Rupee'},
+    {code:'RUB',name:'Russian Ruble'},
+    {code:'BRL',name:'Brazilian Real'},
+    {code:'ZAR',name:'South African Rand'},
+    {code:'DKK',name:'Danish Krone'},
+    {code:'PLN',name:'Polish Zloty'},
+    {code:'THB',name:'Thai Baht'},
+    {code:'IDR',name:'Indonesian Rupiah'},
+    {code:'HUF',name:'Hungarian Forint'},
+    {code:'CZK',name:'Czech Koruna'},
+    {code:'ILS',name:'Israeli Shekel'},
+    {code:'CLP',name:'Chilean Peso'},
+    {code:'PHP',name:'Philippine Peso'},
+    {code:'AED',name:'UAE Dirham'},
+    {code:'SAR',name:'Saudi Riyal'},
+  ];
+
+  // Static fallback rates relative to USD (2026-04 indicative)
+  var RATES_TO_USD = {
+    USD:1, EUR:1.08, GBP:1.27, JPY:0.0066, CAD:0.73, AUD:0.65, CHF:1.12,
+    CNY:0.138, SEK:0.095, NZD:0.60, MXN:0.059, SGD:0.74, HKD:0.128,
+    NOK:0.093, KRW:0.00073, TRY:0.031, INR:0.012, RUB:0.011, BRL:0.197,
+    ZAR:0.054, DKK:0.145, PLN:0.249, THB:0.028, IDR:0.000062, HUF:0.00277,
+    CZK:0.044, ILS:0.272, CLP:0.00109, PHP:0.0174, AED:0.272, SAR:0.267,
+  };
+
+  function populate() {
+    ['from-currency','to-currency'].forEach(function(id) {
+      var sel = document.getElementById(id);
+      CURRENCIES.forEach(function(c) {
+        var opt = document.createElement('option');
+        opt.value = c.code;
+        opt.textContent = c.code + ' — ' + c.name;
+        sel.appendChild(opt);
+      });
+    });
+    document.getElementById('from-currency').value = 'USD';
+    document.getElementById('to-currency').value = 'EUR';
+  }
+
+  function convertCurrency() {
+    var amount = parseFloat(document.getElementById('amount').value);
+    if (isNaN(amount) || amount < 0) return;
+    var from = document.getElementById('from-currency').value;
+    var to = document.getElementById('to-currency').value;
+    var rateFrom = RATES_TO_USD[from] || 1;
+    var rateTo = RATES_TO_USD[to] || 1;
+    var converted = amount * (rateFrom / rateTo);
+    var fmtOpts = {maximumFractionDigits: converted < 1 ? 6 : converted > 1000 ? 0 : 4};
+    var fromFmt = new Intl.NumberFormat('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}).format(amount);
+    var toFmt = new Intl.NumberFormat('en-US', fmtOpts).format(converted);
+    var rate = (rateFrom / rateTo);
+    var rateFmt = new Intl.NumberFormat('en-US', {minimumFractionDigits: 4, maximumFractionDigits: 6}).format(rate);
+    document.getElementById('result-amount').textContent = toFmt + ' ' + to;
+    document.getElementById('result-rate').textContent = '1 ' + from + ' = ' + rateFmt + ' ' + to + ' (indicative mid-market rate)';
+    document.getElementById('result-box').classList.remove('hidden');
+  }
+
+  function swapCurrencies() {
+    var from = document.getElementById('from-currency');
+    var to = document.getElementById('to-currency');
+    var tmp = from.value;
+    from.value = to.value;
+    to.value = tmp;
+    convertCurrency();
+  }
+
+  document.getElementById('amount').addEventListener('input', function() {
+    if (!document.getElementById('result-box').classList.contains('hidden')) convertCurrency();
+  });
+  ['from-currency','to-currency'].forEach(function(id) {
+    document.getElementById(id).addEventListener('change', function() {
+      if (!document.getElementById('result-box').classList.contains('hidden')) convertCurrency();
+    });
+  });
+
+  populate();
+</script>

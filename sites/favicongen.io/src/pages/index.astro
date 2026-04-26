@@ -1,0 +1,281 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { siteConfig } from '~/config/site.config';
+
+const recentPosts = siteConfig.features.hasBlog
+  ? (await getCollection('blog', ({ data }) => !data.draft))
+      .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
+      .slice(0, 6)
+  : [];
+---
+<BaseLayout
+  title="Favicon Generator — Create ICO, PNG & SVG Favicons Free"
+  description="Generate favicon sets (16x16, 32x32, 180x180 Apple Touch, and SVG) from any image. Free, runs in your browser — nothing uploaded."
+>
+
+  <!-- Hero: upload area + live favicon preview as focal point -->
+  <section class="relative -mx-4 overflow-hidden px-4 py-14 sm:py-20">
+    <div class="absolute inset-0 bg-gradient-to-br from-fuchsia-50 via-violet-50 to-purple-50" aria-hidden="true" />
+    <div class="absolute -top-32 left-1/2 h-80 w-80 -translate-x-1/2 rounded-full bg-fuchsia-300/20 blur-3xl" aria-hidden="true" />
+    <div class="absolute bottom-0 right-0 h-64 w-64 rounded-full bg-violet-300/15 blur-3xl" aria-hidden="true" />
+
+    <div class="relative">
+      <div class="mx-auto max-w-2xl text-center">
+        <h1 class="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+          Favicon Generator
+        </h1>
+        <p class="mt-3 text-lg text-slate-600">
+          Upload any image and get a complete favicon set — PNG sizes, Apple Touch icon, and SVG.
+          Generates in your browser. No uploads.
+        </p>
+      </div>
+
+      <ul class="mt-6 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-slate-600">
+        {[
+          '16×16, 32×32, 48×48 PNG',
+          '180×180 Apple Touch',
+          'SVG favicon',
+          'Nothing uploaded',
+        ].map((badge) => (
+          <li class="flex items-center gap-1.5">
+            <svg class="h-4 w-4 shrink-0 text-fuchsia-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.061 1.06l2.5 2.5a.75.75 0 001.137-.088l4-5.5z" clip-rule="evenodd" />
+            </svg>
+            {badge}
+          </li>
+        ))}
+      </ul>
+
+      <!-- Generator card: upload + live preview -->
+      <div class="mx-auto mt-8 w-full max-w-2xl">
+        <div class="rounded-2xl border border-fuchsia-200/80 bg-white p-6 shadow-sm">
+
+          <!-- Upload zone -->
+          <div
+            id="drop-zone"
+            class="flex flex-col items-center justify-center rounded-xl border-2 border-dashed border-fuchsia-300 bg-fuchsia-50/60 px-6 py-10 text-center transition hover:border-fuchsia-500 hover:bg-fuchsia-50 cursor-pointer"
+            onclick="document.getElementById('file-input').click()"
+            ondragover="event.preventDefault();this.classList.add('border-fuchsia-500','bg-fuchsia-50')"
+            ondragleave="this.classList.remove('border-fuchsia-500','bg-fuchsia-50')"
+            ondrop="handleDrop(event)"
+          >
+            <svg class="h-12 w-12 text-fuchsia-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3 21h18" />
+            </svg>
+            <p class="mt-3 text-sm font-medium text-slate-700">Drop an image here or <span class="text-fuchsia-600 underline underline-offset-2">browse</span></p>
+            <p class="mt-1 text-xs text-slate-400">PNG, JPG, SVG, WebP — square image gives the best results</p>
+            <input type="file" id="file-input" accept="image/*" class="hidden" onchange="handleFileInput(this)" />
+          </div>
+
+          <!-- Live preview section — shown after upload -->
+          <div id="preview-section" class="hidden mt-6">
+            <h2 class="text-sm font-semibold text-slate-700 mb-4">Preview &amp; Download</h2>
+
+            <!-- Preview tiles -->
+            <div class="flex flex-wrap items-end gap-6 justify-center mb-6">
+              <div class="text-center">
+                <canvas id="prev-16" width="16" height="16" class="block mx-auto rounded border border-slate-200 fav-checkerboard" style="image-rendering:pixelated;width:64px;height:64px"></canvas>
+                <p class="mt-1.5 text-xs text-slate-500">16×16</p>
+              </div>
+              <div class="text-center">
+                <canvas id="prev-32" width="32" height="32" class="block mx-auto rounded border border-slate-200 fav-checkerboard" style="image-rendering:pixelated;width:64px;height:64px"></canvas>
+                <p class="mt-1.5 text-xs text-slate-500">32×32</p>
+              </div>
+              <div class="text-center">
+                <canvas id="prev-48" width="48" height="48" class="block mx-auto rounded border border-slate-200 fav-checkerboard" style="image-rendering:pixelated;width:64px;height:64px"></canvas>
+                <p class="mt-1.5 text-xs text-slate-500">48×48</p>
+              </div>
+              <div class="text-center">
+                <canvas id="prev-180" width="180" height="180" class="block mx-auto rounded border border-slate-200 fav-checkerboard" style="width:64px;height:64px"></canvas>
+                <p class="mt-1.5 text-xs text-slate-500">180×180</p>
+                <p class="text-xs text-slate-400">Apple Touch</p>
+              </div>
+            </div>
+
+            <!-- Download buttons -->
+            <div class="flex flex-wrap gap-3 justify-center">
+              <button onclick="downloadPng(16)" class="rounded-lg border border-fuchsia-200 bg-fuchsia-50 px-4 py-2 text-sm font-medium text-fuchsia-700 hover:bg-fuchsia-100 transition">16×16 PNG</button>
+              <button onclick="downloadPng(32)" class="rounded-lg border border-fuchsia-200 bg-fuchsia-50 px-4 py-2 text-sm font-medium text-fuchsia-700 hover:bg-fuchsia-100 transition">32×32 PNG</button>
+              <button onclick="downloadPng(48)" class="rounded-lg border border-fuchsia-200 bg-fuchsia-50 px-4 py-2 text-sm font-medium text-fuchsia-700 hover:bg-fuchsia-100 transition">48×48 PNG</button>
+              <button onclick="downloadPng(180)" class="rounded-lg border border-fuchsia-200 bg-fuchsia-50 px-4 py-2 text-sm font-medium text-fuchsia-700 hover:bg-fuchsia-100 transition">Apple Touch PNG</button>
+              <button onclick="downloadSvg()" class="rounded-lg border border-fuchsia-200 bg-fuchsia-50 px-4 py-2 text-sm font-medium text-fuchsia-700 hover:bg-fuchsia-100 transition">SVG</button>
+            </div>
+
+            <!-- HTML snippet -->
+            <div class="mt-6">
+              <p class="text-xs font-semibold text-slate-600 mb-2">HTML to paste in your <code class="font-mono text-fuchsia-700">&lt;head&gt;</code></p>
+              <pre id="html-snippet" class="overflow-x-auto rounded-xl bg-slate-900 p-4 text-xs text-emerald-300 font-mono leading-relaxed"></pre>
+              <button onclick="navigator.clipboard.writeText(document.getElementById('html-snippet').textContent)" class="mt-2 rounded-lg bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-700 hover:bg-slate-200 transition">Copy HTML</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Educational content -->
+  <section class="mt-16" aria-labelledby="what-is-favicon-heading">
+    <h2 id="what-is-favicon-heading" class="text-2xl font-bold text-slate-900">What is a Favicon?</h2>
+    <div class="prose prose-slate mt-3 max-w-none">
+      <p>
+        A <strong>favicon</strong> (short for "favorites icon") is the small icon that appears in browser tabs,
+        bookmark lists, history, and search results. Modern browsers support several formats and sizes, so a complete
+        favicon set typically includes:
+      </p>
+    </div>
+    <div class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {([
+        { size: '16×16 PNG', use: 'Browser tabs — the most common favicon size' },
+        { size: '32×32 PNG', use: 'Taskbar pinned sites, Windows shortcut icons' },
+        { size: '48×48 PNG', use: 'Windows site icons and some desktop environments' },
+        { size: '180×180 PNG', use: 'Apple Touch icon — iOS and macOS home screen' },
+        { size: 'SVG', use: 'Modern browsers; crisp at any size, supports dark mode' },
+        { size: 'favicon.ico', use: 'Legacy fallback; embeds 16 and 32 sizes in one file' },
+      ] as const).map((item) => (
+        <div class="rounded-xl border border-slate-200 bg-white p-4">
+          <p class="font-mono text-sm font-semibold text-fuchsia-700">{item.size}</p>
+          <p class="mt-1 text-sm text-slate-600">{item.use}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="mt-12" aria-labelledby="html-guide-heading">
+    <h2 id="html-guide-heading" class="text-2xl font-bold text-slate-900">The Modern Favicon HTML</h2>
+    <div class="prose prose-slate mt-3 max-w-none">
+      <p>Place your favicon files in the site root and add this to your <code>&lt;head&gt;</code>:</p>
+    </div>
+    <pre class="mt-4 overflow-x-auto rounded-xl bg-slate-900 p-5 text-sm text-emerald-300 font-mono leading-relaxed">&lt;link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32"&gt;
+&lt;link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16"&gt;
+&lt;link rel="apple-touch-icon" href="/apple-touch-icon.png"&gt;
+&lt;link rel="icon" type="image/svg+xml" href="/favicon.svg"&gt;</pre>
+  </section>
+
+  {recentPosts.length > 0 && (
+    <section class="mt-16" aria-labelledby="articles-heading">
+      <h2 id="articles-heading" class="text-2xl font-bold text-slate-900">Latest Articles</h2>
+      <ul class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {recentPosts.map((post) => (
+          <li>
+            <a
+              href={`/blog/${post.slug}/`}
+              class="group block rounded-xl border border-slate-200 bg-white p-5 transition hover:border-fuchsia-400/40 hover:shadow-sm"
+            >
+              <time
+                datetime={post.data.publishDate.toISOString()}
+                class="text-xs font-medium uppercase tracking-wide text-slate-400"
+              >
+                {post.data.publishDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+              </time>
+              <h3 class="mt-1 text-base font-semibold text-slate-900 group-hover:text-fuchsia-700">{post.data.title}</h3>
+              <p class="mt-2 line-clamp-2 text-sm text-slate-600">{post.data.description}</p>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  <footer class="mt-16 border-t border-slate-200 pt-8 text-sm text-slate-500">
+    <span>Content last reviewed: <time datetime="2026-04-25">April 25, 2026</time>.</span>
+  </footer>
+
+</BaseLayout>
+
+<style>
+  .fav-checkerboard {
+    background-image: linear-gradient(45deg, #d1d5db 25%, transparent 25%),
+      linear-gradient(-45deg, #d1d5db 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #d1d5db 75%),
+      linear-gradient(-45deg, transparent 75%, #d1d5db 75%);
+    background-size: 8px 8px;
+    background-position: 0 0, 0 4px, 4px -4px, -4px 0px;
+  }
+</style>
+
+<script is:inline>
+  var srcImg = null;
+
+  function handleDrop(e) {
+    e.preventDefault();
+    document.getElementById('drop-zone').classList.remove('border-fuchsia-500','bg-fuchsia-50');
+    var file = e.dataTransfer.files[0];
+    if (file && file.type.startsWith('image/')) loadImageFile(file);
+  }
+
+  function handleFileInput(input) {
+    var file = input.files[0];
+    if (file) loadImageFile(file);
+  }
+
+  function loadImageFile(file) {
+    var reader = new FileReader();
+    reader.onload = function(ev) {
+      var img = new Image();
+      img.onload = function() {
+        srcImg = img;
+        renderPreviews();
+        document.getElementById('preview-section').classList.remove('hidden');
+        var dz = document.getElementById('drop-zone');
+        dz.innerHTML =
+          '<img src="' + ev.target.result + '" class="h-20 w-20 rounded-lg object-cover border border-fuchsia-200 mx-auto" alt="Source" />' +
+          '<p class="mt-2 text-sm text-slate-600 font-medium">' + file.name + '</p>' +
+          '<p class="text-xs text-slate-400 mt-1">Click or drop another image to replace</p>';
+        dz.onclick = function() { document.getElementById('file-input').click(); };
+      };
+      img.src = ev.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+
+  function drawToCanvas(canvasId, size) {
+    if (!srcImg) return null;
+    var c = document.getElementById(canvasId);
+    c.width = size; c.height = size;
+    var ctx = c.getContext('2d');
+    ctx.clearRect(0, 0, size, size);
+    var sw = srcImg.naturalWidth, sh = srcImg.naturalHeight;
+    var minDim = Math.min(sw, sh);
+    var sx = (sw - minDim) / 2, sy = (sh - minDim) / 2;
+    ctx.drawImage(srcImg, sx, sy, minDim, minDim, 0, 0, size, size);
+    return c;
+  }
+
+  function renderPreviews() {
+    [16, 32, 48, 180].forEach(function(s) { drawToCanvas('prev-' + s, s); });
+    document.getElementById('html-snippet').textContent = [
+      '<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">',
+      '<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">',
+      '<link rel="apple-touch-icon" href="/apple-touch-icon.png">',
+      '<link rel="icon" type="image/svg+xml" href="/favicon.svg">',
+    ].join('\n');
+  }
+
+  function downloadPng(size) {
+    var c = drawToCanvas('prev-' + size, size);
+    if (!c) return;
+    var a = document.createElement('a');
+    a.download = (size === 180 ? 'apple-touch-icon' : 'favicon-' + size + 'x' + size) + '.png';
+    a.href = c.toDataURL('image/png');
+    a.click();
+  }
+
+  function downloadSvg() {
+    if (!srcImg) return;
+    var c = document.createElement('canvas');
+    c.width = 32; c.height = 32;
+    var ctx = c.getContext('2d');
+    var sw = srcImg.naturalWidth, sh = srcImg.naturalHeight;
+    var minDim = Math.min(sw, sh);
+    ctx.drawImage(srcImg, (sw-minDim)/2, (sh-minDim)/2, minDim, minDim, 0, 0, 32, 32);
+    var dataUrl = c.toDataURL('image/png');
+    var svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><image href="' + dataUrl + '" width="32" height="32"/></svg>';
+    var blob = new Blob([svg], {type: 'image/svg+xml'});
+    var a = document.createElement('a');
+    a.download = 'favicon.svg';
+    a.href = URL.createObjectURL(blob);
+    a.click();
+    URL.revokeObjectURL(a.href);
+  }
+</script>

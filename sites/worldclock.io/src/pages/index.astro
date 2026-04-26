@@ -1,0 +1,212 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="World Clock & Time Zone Converter — Free Online Tool"
+  description="Convert times between any two time zones instantly. See live clocks for major cities. Free, no signup."
+>
+
+  <!-- Hero: converter as focal point, cool blue/indigo gradient -->
+  <section class="relative -mx-4 overflow-hidden px-4 py-14 sm:py-20">
+    <div class="absolute inset-0 bg-gradient-to-br from-blue-50 via-indigo-50 to-violet-50" aria-hidden="true" />
+    <div class="absolute -top-32 left-1/2 h-80 w-80 -translate-x-1/2 rounded-full bg-blue-300/20 blur-3xl" aria-hidden="true" />
+    <div class="absolute bottom-0 right-0 h-64 w-64 rounded-full bg-indigo-300/15 blur-3xl" aria-hidden="true" />
+
+    <div class="relative">
+      <div class="mx-auto max-w-2xl text-center">
+        <h1 class="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+          World Clock &amp; Time Zone Converter
+        </h1>
+        <p class="mt-3 text-lg text-slate-600">
+          Convert times between any two time zones and see live clocks for cities worldwide.
+        </p>
+      </div>
+
+      <ul class="mt-6 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-slate-600">
+        {[
+          '18 time zones covered',
+          'Live clock updates',
+          'Offset calculation',
+          'No signup needed',
+        ].map((badge) => (
+          <li class="flex items-center gap-1.5">
+            <svg class="h-4 w-4 shrink-0 text-indigo-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.061 1.06l2.5 2.5a.75.75 0 001.137-.088l4-5.5z" clip-rule="evenodd" />
+            </svg>
+            {badge}
+          </li>
+        ))}
+      </ul>
+
+      <!-- Converter card -->
+      <div class="mx-auto mt-8 w-full max-w-2xl">
+        <div class="rounded-2xl border border-indigo-200/80 bg-white p-6 shadow-sm">
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-3 sm:items-end">
+            <div>
+              <label class="block text-sm font-medium text-slate-700 mb-1.5" for="dt">Date &amp; Time</label>
+              <input
+                id="dt"
+                type="datetime-local"
+                class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-slate-900 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
+              />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-slate-700 mb-1.5" for="from-tz">From</label>
+              <select
+                id="from-tz"
+                class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-slate-900 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
+              ></select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-slate-700 mb-1.5" for="to-tz">To</label>
+              <select
+                id="to-tz"
+                class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-slate-900 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
+              ></select>
+            </div>
+          </div>
+          <button
+            onclick="convertTime()"
+            class="mt-4 w-full rounded-xl bg-indigo-600 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-indigo-700 active:scale-[0.99]"
+          >Convert</button>
+          <div id="time-result" class="hidden mt-5 rounded-xl bg-indigo-50 p-4 text-center">
+            <p class="text-3xl font-bold text-indigo-700" id="converted-time">--</p>
+            <p class="mt-1 text-sm text-slate-500" id="time-diff">--</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live clocks grid -->
+      <div class="mx-auto mt-8 w-full max-w-2xl">
+        <h2 class="mb-4 text-center text-sm font-semibold uppercase tracking-wider text-slate-500">Live clocks</h2>
+        <div id="clocks" class="grid grid-cols-2 gap-3 sm:grid-cols-4"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Educational content -->
+  <section class="mt-16" aria-labelledby="tz-guide-heading">
+    <h2 id="tz-guide-heading" class="text-2xl font-bold text-slate-900">Understanding Time Zones</h2>
+    <div class="prose prose-slate mt-3 max-w-none">
+      <p>
+        The world is divided into 24 standard time zones, each spanning roughly 15 degrees of longitude.
+        Every zone is defined as an offset from <strong>Coordinated Universal Time (UTC)</strong> — the modern
+        successor to Greenwich Mean Time (GMT). For example, <em>America/New_York</em> is UTC−5 in winter
+        and UTC−4 in summer (due to Daylight Saving Time).
+      </p>
+    </div>
+  </section>
+
+  <section class="mt-12" aria-labelledby="dst-heading">
+    <h2 id="dst-heading" class="text-2xl font-bold text-slate-900">Daylight Saving Time (DST)</h2>
+    <div class="prose prose-slate mt-3 max-w-none">
+      <p>
+        Most of the United States, Canada, and Europe observe Daylight Saving Time, shifting clocks forward
+        one hour in spring and back in autumn. Not all countries do this — Japan, China, India, and most of
+        Africa stay on standard time year-round. When scheduling international meetings, always confirm whether
+        a region is currently on standard or daylight time. Our converter uses your browser's
+        <code>Intl.DateTimeFormat</code> API and the IANA timezone database, so DST is handled automatically.
+      </p>
+    </div>
+  </section>
+
+  <section class="mt-12" aria-labelledby="common-zones-heading">
+    <h2 id="common-zones-heading" class="text-2xl font-bold text-slate-900">Common Time Zones at a Glance</h2>
+    <div class="mt-4 overflow-hidden rounded-xl border border-slate-200">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="bg-slate-50 text-left">
+            <th class="px-4 py-3 font-semibold text-slate-700">City</th>
+            <th class="px-4 py-3 font-semibold text-slate-700">IANA Zone</th>
+            <th class="hidden px-4 py-3 font-semibold text-slate-700 sm:table-cell">UTC Offset (Standard)</th>
+            <th class="hidden px-4 py-3 font-semibold text-slate-700 md:table-cell">DST?</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-slate-100">
+          {([
+            { city: 'New York',  zone: 'America/New_York',     offset: 'UTC−5', dst: 'Yes → UTC−4' },
+            { city: 'London',    zone: 'Europe/London',        offset: 'UTC+0', dst: 'Yes → UTC+1' },
+            { city: 'Paris',     zone: 'Europe/Paris',         offset: 'UTC+1', dst: 'Yes → UTC+2' },
+            { city: 'Dubai',     zone: 'Asia/Dubai',           offset: 'UTC+4', dst: 'No' },
+            { city: 'Mumbai',    zone: 'Asia/Kolkata',         offset: 'UTC+5:30', dst: 'No' },
+            { city: 'Singapore', zone: 'Asia/Singapore',       offset: 'UTC+8', dst: 'No' },
+            { city: 'Tokyo',     zone: 'Asia/Tokyo',           offset: 'UTC+9', dst: 'No' },
+            { city: 'Sydney',    zone: 'Australia/Sydney',     offset: 'UTC+10', dst: 'Yes → UTC+11' },
+          ] as const).map((row) => (
+            <tr class="bg-white hover:bg-slate-50">
+              <td class="px-4 py-3 font-medium text-slate-900">{row.city}</td>
+              <td class="px-4 py-3 font-mono text-slate-600 text-xs">{row.zone}</td>
+              <td class="hidden px-4 py-3 text-slate-700 sm:table-cell">{row.offset}</td>
+              <td class="hidden px-4 py-3 text-slate-500 md:table-cell">{row.dst}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer class="mt-16 border-t border-slate-200 pt-8 text-sm text-slate-500">
+    <span>Content last reviewed: <time datetime="2026-04-25">April 25, 2026</time>.</span>
+  </footer>
+
+</BaseLayout>
+
+<script is:inline>
+  const zones = ['UTC','America/New_York','America/Chicago','America/Denver','America/Los_Angeles','America/Toronto','America/Sao_Paulo','Europe/London','Europe/Paris','Europe/Berlin','Europe/Moscow','Asia/Dubai','Asia/Kolkata','Asia/Shanghai','Asia/Tokyo','Asia/Seoul','Australia/Sydney','Pacific/Auckland'];
+  const cities = {'UTC':'UTC','America/New_York':'New York','America/Chicago':'Chicago','America/Denver':'Denver','America/Los_Angeles':'Los Angeles','America/Toronto':'Toronto','America/Sao_Paulo':'São Paulo','Europe/London':'London','Europe/Paris':'Paris','Europe/Berlin':'Berlin','Europe/Moscow':'Moscow','Asia/Dubai':'Dubai','Asia/Kolkata':'Mumbai','Asia/Shanghai':'Shanghai','Asia/Tokyo':'Tokyo','Asia/Seoul':'Seoul','Australia/Sydney':'Sydney','Pacific/Auckland':'Auckland'};
+
+  function populate() {
+    ['from-tz','to-tz'].forEach(function(id) {
+      var sel = document.getElementById(id);
+      zones.forEach(function(z) {
+        var opt = document.createElement('option');
+        opt.value = z;
+        opt.textContent = cities[z] + ' (' + z + ')';
+        sel.appendChild(opt);
+      });
+    });
+    document.getElementById('from-tz').value = 'America/New_York';
+    document.getElementById('to-tz').value = 'Europe/London';
+
+    var now = new Date();
+    var pad = function(n) { return n.toString().padStart(2, '0'); };
+    var local = now.getFullYear() + '-' + pad(now.getMonth()+1) + '-' + pad(now.getDate()) + 'T' + pad(now.getHours()) + ':' + pad(now.getMinutes());
+    document.getElementById('dt').value = local;
+  }
+
+  function convertTime() {
+    var dtVal = document.getElementById('dt').value;
+    var from = document.getElementById('from-tz').value;
+    var to = document.getElementById('to-tz').value;
+    if (!dtVal) return;
+    var d = new Date(dtVal);
+    var toStr = d.toLocaleString('en-US', { timeZone: to, weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', timeZoneName: 'short' });
+    document.getElementById('converted-time').textContent = toStr;
+    var offsetMs = new Date(d.toLocaleString('en-US',{timeZone:to})) - new Date(d.toLocaleString('en-US',{timeZone:from}));
+    var offsetHr = offsetMs / 3600000;
+    document.getElementById('time-diff').textContent = (offsetHr >= 0 ? '+' : '') + offsetHr.toFixed(1) + ' hours from ' + cities[from];
+    document.getElementById('time-result').classList.remove('hidden');
+  }
+
+  function updateClocks() {
+    var container = document.getElementById('clocks');
+    container.innerHTML = '';
+    var displayZones = zones.slice(0, 8);
+    displayZones.forEach(function(z) {
+      var now = new Date();
+      var timeStr = now.toLocaleTimeString('en-US', { timeZone: z, hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
+      var dateStr = now.toLocaleDateString('en-US', { timeZone: z, month: 'short', day: 'numeric' });
+      var div = document.createElement('div');
+      div.className = 'rounded-xl border border-indigo-100 bg-white p-3 text-center shadow-sm';
+      div.innerHTML =
+        '<p class="text-xs font-medium text-slate-400 truncate">' + cities[z] + '</p>' +
+        '<p class="mt-1 font-mono text-base font-bold text-slate-900">' + timeStr + '</p>' +
+        '<p class="text-xs text-slate-400">' + dateStr + '</p>';
+      container.appendChild(div);
+    });
+  }
+
+  populate();
+  updateClocks();
+  setInterval(updateClocks, 1000);
+</script>

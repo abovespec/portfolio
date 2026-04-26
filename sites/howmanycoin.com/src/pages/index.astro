@@ -31,6 +31,12 @@ const categoryLabels: Record<string, string> = {
       <p class="hero-subtitle">
         Live crypto pair conversion rates and token-supply explainers. How many USDC is 1 ETH, right now? Direct swap links included.
       </p>
+      <aside
+        role="note"
+        class="mt-5 inline-block rounded-lg border border-violet-200/60 bg-violet-950/5 px-4 py-2.5 text-sm text-violet-200/90 max-w-2xl"
+      >
+        <strong class="font-semibold">Disclaimer:</strong> Rates shown are indicative and may differ from exchange rates at the time of any transaction. Crypto assets are highly volatile. This is not financial advice. Sources: <a href="https://www.coingecko.com" class="underline underline-offset-2 hover:opacity-80" target="_blank" rel="noopener">CoinGecko</a>, <a href="https://finance.yahoo.com/crypto/" class="underline underline-offset-2 hover:opacity-80" target="_blank" rel="noopener">Yahoo Finance</a>, on-chain data.
+      </aside>
     </div>
     <script is:inline>
       // Network mesh animation — animated nodes with connecting lines.
@@ -218,5 +224,20 @@ const categoryLabels: Record<string, string> = {
       </div>
     </section>
   </div>
+
+  <!-- YMYL disclaimer footer -->
+  <footer class="mx-auto max-w-5xl mt-12 border-t border-[var(--border)] pt-8 text-sm text-[var(--muted)]">
+    <p>
+      <strong>Data sources:</strong> Conversion rates and market data sourced from
+      <a href="https://www.coingecko.com" class="underline underline-offset-2 hover:opacity-80" target="_blank" rel="noopener">CoinGecko</a>,
+      <a href="https://finance.yahoo.com/crypto/" class="underline underline-offset-2 hover:opacity-80" target="_blank" rel="noopener">Yahoo Finance</a>,
+      and on-chain data providers. Rates are indicative and update periodically.
+    </p>
+    <p class="mt-2">
+      <strong>Not financial advice.</strong> Cryptocurrency values are highly volatile. Past performance does not predict future results.
+      Always consult a qualified financial advisor before making investment decisions.
+    </p>
+    <p class="mt-2">Content last reviewed: <time datetime="2026-04-25">April 25, 2026</time>.</p>
+  </footer>
 
 </BaseLayout>

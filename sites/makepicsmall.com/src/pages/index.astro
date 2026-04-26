@@ -2,6 +2,14 @@
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import { Compressor } from '~/components/tool/Compressor';
 import { PRESETS } from '~/config/presets';
+import { getCollection } from 'astro:content';
+import { siteConfig } from '~/config/site.config';
+
+const recentPosts = siteConfig.features.hasBlog
+  ? (await getCollection('blog', ({ data }) => !data.draft))
+      .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
+      .slice(0, 6)
+  : [];
 
 const presetCategories = [
   {
@@ -38,29 +46,67 @@ const presetCategories = [
 ];
 ---
 <BaseLayout
-  title="makepicsmall — shrink images in your browser"
-  description="Free, private image compression — nothing uploaded. Shrink JPG, PNG, and WebP files instantly in your browser."
+  title="makepicsmall — Free Image Compressor in Your Browser"
+  description="Shrink JPG, PNG, and WebP images instantly — nothing uploaded to any server. Free, private, works offline. Reduce file size without visible quality loss."
 >
-  <section class="py-6">
-    <h1 class="text-4xl font-bold text-[var(--ink)]">Your photos. Smaller. Squished in your browser.</h1>
-    <p class="mt-3 max-w-2xl text-lg text-[var(--muted)]">
-      Free, private image compression — nothing uploaded. Drop a JPG, PNG, or WebP.
-    </p>
+
+  <!-- Hero: drag-and-drop zone as the focal point -->
+  <section class="relative -mx-4 overflow-hidden px-4 py-14 sm:py-20">
+    <div class="absolute inset-0 bg-gradient-to-br from-slate-50 via-sky-50 to-blue-50" aria-hidden="true" />
+    <div class="absolute -top-32 left-1/2 h-80 w-80 -translate-x-1/2 rounded-full bg-sky-300/20 blur-3xl" aria-hidden="true" />
+    <div class="absolute bottom-0 right-0 h-64 w-64 rounded-full bg-blue-300/15 blur-3xl" aria-hidden="true" />
+
+    <div class="relative">
+      <div class="mx-auto max-w-2xl text-center">
+        <h1 class="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+          Your photos. Smaller.<br class="hidden sm:block" /> Squished right here.
+        </h1>
+        <p class="mt-3 text-lg text-slate-600">
+          Free, private image compression — <strong>nothing leaves your browser</strong>.
+          Drop a JPG, PNG, or WebP and download a smaller file in seconds.
+        </p>
+      </div>
+
+      <ul class="mt-6 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-slate-600">
+        {[
+          'Runs 100% in your browser',
+          'No uploads, no account',
+          'JPG, PNG, WebP',
+          'Works offline',
+        ].map((badge) => (
+          <li class="flex items-center gap-1.5">
+            <svg class="h-4 w-4 shrink-0 text-sky-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.061 1.06l2.5 2.5a.75.75 0 001.137-.088l4-5.5z" clip-rule="evenodd" />
+            </svg>
+            {badge}
+          </li>
+        ))}
+      </ul>
+
+      <!-- Compressor — the focal point -->
+      <div class="mx-auto mt-8 w-full max-w-2xl">
+        <div class="rounded-2xl border border-sky-200/80 bg-white p-6 shadow-sm">
+          <Compressor preset={PRESETS['/']} client:load />
+        </div>
+      </div>
+    </div>
   </section>
-  <section class="mt-2">
-    <Compressor preset={PRESETS['/']} client:load />
-  </section>
-  <section class="mt-14">
-    <h2 class="text-2xl font-semibold">Presets — one page per job</h2>
-    <p class="mt-2 text-[var(--muted)]">Every preset uses the exact dimensions and size the destination actually expects.</p>
-    <div class="mt-6 grid gap-8 md:grid-cols-3">
+
+  <!-- Presets section -->
+  <section class="mt-14" aria-labelledby="presets-heading">
+    <h2 id="presets-heading" class="text-2xl font-bold text-slate-900">Presets — one page per job</h2>
+    <p class="mt-2 text-slate-600">Every preset uses the exact dimensions and file-size limit the destination actually expects.</p>
+    <div class="mt-6 grid gap-8 sm:grid-cols-3">
       {presetCategories.map((cat) => (
         <div>
-          <h3 class="text-sm font-medium uppercase tracking-wide text-[var(--muted)]">{cat.heading}</h3>
+          <h3 class="text-xs font-semibold uppercase tracking-wider text-slate-500">{cat.heading}</h3>
           <ul class="mt-3 space-y-2">
             {cat.items.map((item) => (
               <li>
-                <a href={item.href} class="inline-block rounded-md bg-[var(--surface)] px-3 py-1.5 text-sm text-[var(--ink)] hover:bg-[var(--site-accent-color)] hover:text-white">
+                <a
+                  href={item.href}
+                  class="inline-block rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-700 transition hover:border-sky-400/60 hover:text-sky-700"
+                >
                   {item.label}
                 </a>
               </li>
@@ -70,9 +116,77 @@ const presetCategories = [
       ))}
     </div>
   </section>
-  <section class="mx-auto mt-16 max-w-3xl">
-    <h2 class="text-2xl font-semibold">Why makepicsmall?</h2>
-    <p class="mt-3 text-[var(--ink)]">Most image compressors upload your photos to their servers. We don't. Everything runs in your browser using WebAssembly — the same engines Google uses in Squoosh, just wrapped in a friendlier coat.</p>
-    <p class="mt-3 text-[var(--ink)]">That means: your photos stay on your device. It works offline. There's nothing to sign up for. And it's free.</p>
+
+  <!-- Why private compression -->
+  <section class="mt-16" aria-labelledby="why-heading">
+    <h2 id="why-heading" class="text-2xl font-bold text-slate-900">Why makepicsmall?</h2>
+    <div class="prose prose-slate mt-3 max-w-none">
+      <p>
+        Most image compressors upload your photos to their servers. We don't. Everything runs in your browser
+        using <strong>WebAssembly</strong> — the same codecs Google uses in Squoosh, wrapped in a friendlier interface.
+      </p>
+      <p>
+        That means: your photos never leave your device. The tool works offline after the first page load.
+        There is nothing to sign up for. And it is free.
+      </p>
+    </div>
   </section>
+
+  <section class="mt-12" aria-labelledby="formats-heading">
+    <h2 id="formats-heading" class="text-2xl font-bold text-slate-900">Supported Formats</h2>
+    <div class="mt-4 overflow-hidden rounded-xl border border-slate-200">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="bg-slate-50 text-left">
+            <th class="px-4 py-3 font-semibold text-slate-700">Format</th>
+            <th class="px-4 py-3 font-semibold text-slate-700">Best for</th>
+            <th class="hidden px-4 py-3 font-semibold text-slate-700 sm:table-cell">Compression type</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-slate-100">
+          {([
+            { fmt: 'JPG / JPEG', best: 'Photos, complex images', type: 'Lossy — reduces file size by discarding some detail' },
+            { fmt: 'PNG', best: 'Screenshots, logos, transparency', type: 'Lossless by nature; we reduce with palette + metadata removal' },
+            { fmt: 'WebP', best: 'Web images, icons', type: 'Lossy + lossless; 25–35% smaller than JPEG at similar quality' },
+          ] as const).map((row) => (
+            <tr class="bg-white hover:bg-slate-50">
+              <td class="px-4 py-3 font-medium text-slate-900">{row.fmt}</td>
+              <td class="px-4 py-3 text-slate-700">{row.best}</td>
+              <td class="hidden px-4 py-3 text-slate-500 sm:table-cell">{row.type}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  {recentPosts.length > 0 && (
+    <section class="mt-16" aria-labelledby="articles-heading">
+      <h2 id="articles-heading" class="text-2xl font-bold text-slate-900">Latest Articles</h2>
+      <ul class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {recentPosts.map((post) => (
+          <li>
+            <a
+              href={`/blog/${post.slug}/`}
+              class="group block rounded-xl border border-slate-200 bg-white p-5 transition hover:border-sky-400/40 hover:shadow-sm"
+            >
+              <time
+                datetime={post.data.publishDate.toISOString()}
+                class="text-xs font-medium uppercase tracking-wide text-slate-400"
+              >
+                {post.data.publishDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+              </time>
+              <h3 class="mt-1 text-base font-semibold text-slate-900 group-hover:text-sky-700">{post.data.title}</h3>
+              <p class="mt-2 line-clamp-2 text-sm text-slate-600">{post.data.description}</p>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  <footer class="mt-16 border-t border-slate-200 pt-8 text-sm text-slate-500">
+    <span>Content last reviewed: <time datetime="2026-04-25">April 25, 2026</time>.</span>
+  </footer>
+
 </BaseLayout>
