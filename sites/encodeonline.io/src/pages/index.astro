@@ -3,7 +3,7 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
 ---
 <BaseLayout
   title="Encode &amp; Decode Online — Base64, URL, HTML, SHA-256, SHA-512"
-  description="Free online encoder and decoder. Base64 encode/decode, URL encode/decode, HTML entity encode, SHA-256, SHA-512 hash. Runs entirely in your browser."
+  description="Free online encoder and decoder. Base64 encode/decode, URL encode/decode, HTML entity encode, SHA-256, SHA-512 hash, ROT13, Caesar cipher, HMAC-SHA256, Hex, Binary. Runs entirely in your browser."
 >
 
   <!-- Compact header -->
@@ -12,7 +12,7 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
       Encode &amp; Decode
     </h1>
     <p class="mt-1.5 text-sm text-slate-500">
-      Base64, URL, HTML entities, SHA-256, SHA-512 — all client-side, nothing sent to a server.
+      Base64, URL, HTML entities, SHA-256, SHA-512, ROT13/Caesar, HMAC-SHA256, Hex/Binary — all client-side, nothing sent to a server.
     </p>
   </header>
 
@@ -25,11 +25,38 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
     <button data-mode="html-enc"   class="mode-btn rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">HTML Entities</button>
     <button data-mode="sha256"     class="mode-btn rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">SHA-256</button>
     <button data-mode="sha512"     class="mode-btn rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">SHA-512</button>
+    <button data-mode="rot13"      class="mode-btn rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">ROT13 / Caesar</button>
+    <button data-mode="hmac"       class="mode-btn rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">HMAC-SHA256</button>
+    <button data-mode="hexbin"     class="mode-btn rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Hex / Binary</button>
     <div class="flex-1"></div>
     <button id="btn-process" class="rounded-md bg-slate-700 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-slate-800 transition-colors">Process</button>
-    <button id="btn-swap"    class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Swap ⇅</button>
+    <button id="btn-swap"    class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Swap &#8645;</button>
     <button id="btn-clear"   class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Clear</button>
     <button id="btn-copy"    class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Copy output</button>
+  </div>
+
+  <!-- ROT13/Caesar extra controls -->
+  <div id="rot13-controls" class="hidden mb-3 flex flex-wrap items-center gap-3 rounded-lg border border-slate-200 bg-slate-50 px-4 py-3">
+    <label class="text-xs font-semibold text-slate-600 uppercase tracking-wide">Shift:</label>
+    <input type="range" id="caesar-shift" min="0" max="25" value="13" class="w-40 accent-slate-700" />
+    <span id="caesar-shift-val" class="font-mono text-sm text-slate-700 w-6">13</span>
+    <span id="caesar-mode-label" class="text-xs text-slate-500">(ROT13)</span>
+  </div>
+
+  <!-- HMAC extra controls -->
+  <div id="hmac-controls" class="hidden mb-3 flex flex-wrap items-center gap-3 rounded-lg border border-slate-200 bg-slate-50 px-4 py-3">
+    <label for="hmac-key" class="text-xs font-semibold text-slate-600 uppercase tracking-wide">Key:</label>
+    <input type="text" id="hmac-key" class="flex-1 min-w-48 rounded-md border border-slate-300 bg-white px-3 py-1.5 font-mono text-sm focus:border-slate-500 focus:ring-1 focus:ring-slate-500" placeholder="Enter HMAC secret key" autocomplete="off" spellcheck="false" />
+    <button id="btn-hmac-generate" class="rounded-md bg-slate-700 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-slate-800 transition-colors">Generate</button>
+  </div>
+
+  <!-- Hex/Binary extra controls -->
+  <div id="hexbin-controls" class="hidden mb-3 flex flex-wrap items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-4 py-3">
+    <span class="text-xs font-semibold text-slate-600 uppercase tracking-wide mr-2">Mode:</span>
+    <button data-hbmode="to-hex"    class="hb-btn rounded-md bg-slate-700 px-3 py-1 text-sm font-medium text-white transition-colors">Text → Hex</button>
+    <button data-hbmode="from-hex"  class="hb-btn rounded-md border border-slate-300 px-3 py-1 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Hex → Text</button>
+    <button data-hbmode="to-bin"    class="hb-btn rounded-md border border-slate-300 px-3 py-1 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Text → Binary</button>
+    <button data-hbmode="from-bin"  class="hb-btn rounded-md border border-slate-300 px-3 py-1 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Binary → Text</button>
   </div>
 
   <!-- Dual-pane editor -->
@@ -131,6 +158,7 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
 
   <script is:inline>
     var currentMode = 'base64-enc';
+    var currentHBMode = 'to-hex';
     var statusEl = document.getElementById('status');
 
     function showStatus(msg, type) {
@@ -144,7 +172,10 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
       'base64-enc': 'Base64 Encode', 'base64-dec': 'Base64 Decode',
       'url-enc': 'URL Encode', 'url-dec': 'URL Decode',
       'html-enc': 'HTML Entities',
-      'sha256': 'SHA-256 Hash', 'sha512': 'SHA-512 Hash'
+      'sha256': 'SHA-256 Hash', 'sha512': 'SHA-512 Hash',
+      'rot13': 'ROT13 / Caesar',
+      'hmac': 'HMAC-SHA256',
+      'hexbin': 'Hex / Binary'
     };
 
     function setMode(m) {
@@ -157,10 +188,88 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
         }
       });
       document.getElementById('input-label').textContent = 'Input (' + (MODE_LABELS[m] || m) + ')';
+      // Show/hide extra controls
+      document.getElementById('rot13-controls').classList.toggle('hidden', m !== 'rot13');
+      document.getElementById('hmac-controls').classList.toggle('hidden', m !== 'hmac');
+      document.getElementById('hexbin-controls').classList.toggle('hidden', m !== 'hexbin');
     }
 
     document.querySelectorAll('.mode-btn').forEach(function(b) {
       b.addEventListener('click', function() { setMode(b.dataset.mode); });
+    });
+
+    // ROT13/Caesar
+    function rot13(str) {
+      return str.replace(/[a-zA-Z]/g, function(c) {
+        var b = c < 'a' ? 65 : 97;
+        return String.fromCharCode(((c.charCodeAt(0) - b + 13) % 26) + b);
+      });
+    }
+    function caesarCipher(str, shift) {
+      var s = ((shift % 26) + 26) % 26;
+      return str.replace(/[a-zA-Z]/g, function(c) {
+        var b = c < 'a' ? 65 : 97;
+        return String.fromCharCode(((c.charCodeAt(0) - b + s) % 26) + b);
+      });
+    }
+
+    var shiftSlider = document.getElementById('caesar-shift');
+    var shiftVal    = document.getElementById('caesar-shift-val');
+    var shiftLabel  = document.getElementById('caesar-mode-label');
+    shiftSlider.addEventListener('input', function() {
+      shiftVal.textContent = shiftSlider.value;
+      shiftLabel.textContent = shiftSlider.value === '13' ? '(ROT13)' : '(Caesar shift ' + shiftSlider.value + ')';
+    });
+
+    // HMAC
+    async function generateHMAC(message, key) {
+      var keyMat = await crypto.subtle.importKey('raw', new TextEncoder().encode(key),
+        { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);
+      var sig = await crypto.subtle.sign('HMAC', keyMat, new TextEncoder().encode(message));
+      return Array.from(new Uint8Array(sig)).map(function(b) { return b.toString(16).padStart(2,'0'); }).join('');
+    }
+
+    document.getElementById('btn-hmac-generate').addEventListener('click', function() {
+      var val = document.getElementById('enc-input').value;
+      var key = document.getElementById('hmac-key').value;
+      if (!val) { showStatus('Enter a message first', 'info'); return; }
+      if (!key) { showStatus('Enter an HMAC key', 'info'); return; }
+      generateHMAC(val, key).then(function(hex) {
+        document.getElementById('enc-output').value = hex;
+        showStatus('HMAC-SHA256 generated', 'success');
+      }).catch(function(e) { showStatus('HMAC error: ' + e.message, 'error'); });
+    });
+
+    // Hex/Binary
+    function toHex(str) {
+      return Array.from(new TextEncoder().encode(str)).map(function(b) { return b.toString(16).padStart(2,'0'); }).join(' ');
+    }
+    function fromHex(hex) {
+      try {
+        return new TextDecoder().decode(new Uint8Array(hex.replace(/\s+/g,'').match(/../g).map(function(h) { return parseInt(h,16); })));
+      } catch(e) { return 'Invalid hex input'; }
+    }
+    function toBinary(str) {
+      return Array.from(new TextEncoder().encode(str)).map(function(b) { return b.toString(2).padStart(8,'0'); }).join(' ');
+    }
+    function fromBinary(bin) {
+      try {
+        return new TextDecoder().decode(new Uint8Array(bin.split(/\s+/).filter(Boolean).map(function(b) { return parseInt(b,2); })));
+      } catch(e) { return 'Invalid binary input'; }
+    }
+
+    function setHBMode(m) {
+      currentHBMode = m;
+      document.querySelectorAll('.hb-btn').forEach(function(b) {
+        if (b.dataset.hbmode === m) {
+          b.className = 'hb-btn rounded-md bg-slate-700 px-3 py-1 text-sm font-medium text-white transition-colors';
+        } else {
+          b.className = 'hb-btn rounded-md border border-slate-300 px-3 py-1 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors';
+        }
+      });
+    }
+    document.querySelectorAll('.hb-btn').forEach(function(b) {
+      b.addEventListener('click', function() { setHBMode(b.dataset.hbmode); });
     });
 
     async function hashString(algo, str) {
@@ -183,6 +292,21 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
         else if (currentMode === 'html-enc') { result = val.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
         else if (currentMode === 'sha256') { result = await hashString('SHA-256', val); }
         else if (currentMode === 'sha512') { result = await hashString('SHA-512', val); }
+        else if (currentMode === 'rot13') {
+          var shift = parseInt(document.getElementById('caesar-shift').value);
+          result = shift === 13 ? rot13(val) : caesarCipher(val, shift);
+        }
+        else if (currentMode === 'hmac') {
+          var key = document.getElementById('hmac-key').value;
+          if (!key) { showStatus('Enter an HMAC key', 'info'); return; }
+          result = await generateHMAC(val, key);
+        }
+        else if (currentMode === 'hexbin') {
+          if (currentHBMode === 'to-hex')   result = toHex(val);
+          else if (currentHBMode === 'from-hex') result = fromHex(val);
+          else if (currentHBMode === 'to-bin')   result = toBinary(val);
+          else if (currentHBMode === 'from-bin') result = fromBinary(val);
+        }
         output.value = result;
         showStatus(MODE_LABELS[currentMode] + ' — done', 'success');
       } catch (e) {
