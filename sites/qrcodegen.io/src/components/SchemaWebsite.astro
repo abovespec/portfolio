@@ -1,0 +1,18 @@
+---
+import { siteConfig, siteUrl } from '~/config/site.config';
+
+const data = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: siteConfig.identity.name,
+  url: siteUrl,
+  inLanguage: siteConfig.identity.language,
+  description: siteConfig.identity.description,
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: `${siteUrl}/search/?q={search_term_string}`,
+    'query-input': 'required name=search_term_string',
+  },
+};
+---
+<script is:inline type="application/ld+json" set:html={JSON.stringify(data)} />

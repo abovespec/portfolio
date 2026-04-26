@@ -1,0 +1,641 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="Citation Generator — APA, MLA, Chicago Format Online Free"
+  description="Free online citation generator. Create formatted citations in APA, MLA, and Chicago style for books, websites, and journal articles. Copy-ready output."
+>
+
+  <!-- Header -->
+  <header class="text-center mb-8">
+    <h1 class="text-4xl font-bold text-stone-800 mb-2">Citation Generator</h1>
+    <p class="text-stone-600 text-lg">Generate APA, MLA, and Chicago citations instantly — books, websites, and journal articles.</p>
+  </header>
+
+  <!-- Source type tabs -->
+  <div class="flex gap-2 mb-3">
+    <button id="tab-book"
+      class="px-4 py-2 rounded-lg text-sm font-medium transition bg-stone-700 text-white"
+      onclick="switchTab('book')">
+      Book
+    </button>
+    <button id="tab-website"
+      class="px-4 py-2 rounded-lg text-sm font-medium transition bg-stone-100 text-stone-700 hover:bg-stone-200"
+      onclick="switchTab('website')">
+      Website
+    </button>
+    <button id="tab-journal"
+      class="px-4 py-2 rounded-lg text-sm font-medium transition bg-stone-100 text-stone-700 hover:bg-stone-200"
+      onclick="switchTab('journal')">
+      Journal Article
+    </button>
+  </div>
+
+  <!-- Dual-pane -->
+  <div class="grid gap-4 md:grid-cols-2 min-h-96">
+
+    <!-- LEFT: form -->
+    <div class="bg-stone-50 border border-stone-200 rounded-xl p-5 flex flex-col gap-3">
+
+      <!-- Book form -->
+      <div id="form-book">
+        <p class="text-xs font-semibold text-stone-500 uppercase tracking-wide mb-2">Book Details</p>
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <label class="block text-xs text-stone-600 mb-1" for="book-author-last">Author Last Name</label>
+            <input id="book-author-last" type="text" placeholder="Smith"
+              class="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-stone-400" />
+          </div>
+          <div>
+            <label class="block text-xs text-stone-600 mb-1" for="book-author-first">Author First Name</label>
+            <input id="book-author-first" type="text" placeholder="Jane"
+              class="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-stone-400" />
+          </div>
+        </div>
+        <div class="mt-2">
+          <label class="block text-xs text-stone-600 mb-1" for="book-year">Year</label>
+          <input id="book-year" type="text" placeholder="2024"
+            class="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-stone-400" />
+        </div>
+        <div class="mt-2">
+          <label class="block text-xs text-stone-600 mb-1" for="book-title">Book Title</label>
+          <input id="book-title" type="text" placeholder="The Great Book"
+            class="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-stone-400" />
+        </div>
+        <div class="mt-2">
+          <label class="block text-xs text-stone-600 mb-1" for="book-publisher">Publisher</label>
+          <input id="book-publisher" type="text" placeholder="Oxford University Press"
+            class="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-stone-400" />
+        </div>
+        <div class="grid grid-cols-2 gap-2 mt-2">
+          <div>
+            <label class="block text-xs text-stone-600 mb-1" for="book-city">City <span class="text-stone-400">(Chicago)</span></label>
+            <input id="book-city" type="text" placeholder="New York"
+              class="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-stone-400" />
+          </div>
+          <div>
+            <label class="block text-xs text-stone-600 mb-1" for="book-edition">Edition <span class="text-stone-400">(optional)</span></label>
+            <input id="book-edition" type="text" placeholder="2nd"
+              class="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-stone-400" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Website form -->
+      <div id="form-website" class="hidden">
+        <p class="text-xs font-semibold text-stone-500 uppercase tracking-wide mb-2">Website Details</p>
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <label class="block text-xs text-stone-600 mb-1" for="web-author-last">Author Last <span class="text-stone-400">(optional)</span></label>
+            <input id="web-author-last" type="text" placeholder="Smith"
+              class="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-stone-400" />
+          </div>
+          <div>
+            <label class="block text-xs text-stone-600 mb-1" for="web-author-first">Author First <span class="text-stone-400">(optional)</span></label>
+            <input id="web-author-first" type="text" placeholder="Jane"
+              class="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-stone-400" />
+          </div>
+        </div>
+        <div class="grid grid-cols-3 gap-2 mt-2">
+          <div>
+            <label class="block text-xs text-stone-600 mb-1" for="web-year">Year <span class="text-stone-400">(opt.)</span></label>
+            <input id="web-year" type="text" placeholder="2024"
+              class="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-stone-400" />
+          </div>
+          <div>
+            <label class="block text-xs text-stone-600 mb-1" for="web-month">Month <span class="text-stone-400">(opt.)</span></label>
+            <input id="web-month" type="text" placeholder="March"
+              class="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-stone-400" />
+          </div>
+          <div>
+            <label class="block text-xs text-stone-600 mb-1" for="web-day">Day <span class="text-stone-400">(opt.)</span></label>
+            <input id="web-day" type="text" placeholder="15"
+              class="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-stone-400" />
+          </div>
+        </div>
+        <div class="mt-2">
+          <label class="block text-xs text-stone-600 mb-1" for="web-page-title">Page Title</label>
+          <input id="web-page-title" type="text" placeholder="How to Do Something"
+            class="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-stone-400" />
+        </div>
+        <div class="mt-2">
+          <label class="block text-xs text-stone-600 mb-1" for="web-site-name">Website / Organization Name</label>
+          <input id="web-site-name" type="text" placeholder="Wikipedia"
+            class="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-stone-400" />
+        </div>
+        <div class="mt-2">
+          <label class="block text-xs text-stone-600 mb-1" for="web-url">URL</label>
+          <input id="web-url" type="text" placeholder="https://example.com/page"
+            class="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-stone-400" />
+        </div>
+        <div class="mt-2">
+          <label class="block text-xs text-stone-600 mb-1" for="web-accessed">Accessed Date</label>
+          <input id="web-accessed" type="text" placeholder="April 25, 2026"
+            class="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-stone-400" />
+        </div>
+      </div>
+
+      <!-- Journal form -->
+      <div id="form-journal" class="hidden">
+        <p class="text-xs font-semibold text-stone-500 uppercase tracking-wide mb-2">Journal Article Details</p>
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <label class="block text-xs text-stone-600 mb-1" for="journal-author-last">Author Last Name</label>
+            <input id="journal-author-last" type="text" placeholder="Smith"
+              class="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-stone-400" />
+          </div>
+          <div>
+            <label class="block text-xs text-stone-600 mb-1" for="journal-author-first">Author First Name</label>
+            <input id="journal-author-first" type="text" placeholder="Jane"
+              class="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-stone-400" />
+          </div>
+        </div>
+        <div class="mt-2">
+          <label class="block text-xs text-stone-600 mb-1" for="journal-year">Year</label>
+          <input id="journal-year" type="text" placeholder="2024"
+            class="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-stone-400" />
+        </div>
+        <div class="mt-2">
+          <label class="block text-xs text-stone-600 mb-1" for="journal-article-title">Article Title</label>
+          <input id="journal-article-title" type="text" placeholder="The effects of something on something"
+            class="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-stone-400" />
+        </div>
+        <div class="mt-2">
+          <label class="block text-xs text-stone-600 mb-1" for="journal-name">Journal Name</label>
+          <input id="journal-name" type="text" placeholder="Nature"
+            class="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-stone-400" />
+        </div>
+        <div class="grid grid-cols-3 gap-2 mt-2">
+          <div>
+            <label class="block text-xs text-stone-600 mb-1" for="journal-volume">Volume</label>
+            <input id="journal-volume" type="text" placeholder="12"
+              class="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-stone-400" />
+          </div>
+          <div>
+            <label class="block text-xs text-stone-600 mb-1" for="journal-issue">Issue <span class="text-stone-400">(opt.)</span></label>
+            <input id="journal-issue" type="text" placeholder="3"
+              class="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-stone-400" />
+          </div>
+          <div>
+            <label class="block text-xs text-stone-600 mb-1" for="journal-pages">Pages</label>
+            <input id="journal-pages" type="text" placeholder="123-145"
+              class="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-stone-400" />
+          </div>
+        </div>
+        <div class="mt-2">
+          <label class="block text-xs text-stone-600 mb-1" for="journal-doi">DOI <span class="text-stone-400">(optional)</span></label>
+          <input id="journal-doi" type="text" placeholder="10.1000/xyz123"
+            class="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-stone-400" />
+        </div>
+      </div>
+
+      <!-- Action buttons -->
+      <div class="flex gap-2 mt-1">
+        <button id="btn-generate"
+          class="flex-1 px-4 py-2 bg-stone-700 hover:bg-stone-600 text-white rounded-lg text-sm font-medium transition"
+          onclick="generateAll()">
+          Generate Citation
+        </button>
+        <button id="btn-clear"
+          class="px-4 py-2 bg-stone-100 hover:bg-stone-200 text-stone-700 rounded-lg text-sm font-medium transition"
+          onclick="clearAll()">
+          Clear
+        </button>
+      </div>
+
+    </div>
+
+    <!-- RIGHT: citation output -->
+    <div class="flex flex-col gap-3">
+
+      <!-- APA -->
+      <div class="bg-white border border-stone-200 rounded-xl p-4">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-xs font-bold text-stone-500 uppercase tracking-wide">APA</span>
+          <button onclick="copyCitation('apa')"
+            class="text-xs px-3 py-1 bg-stone-100 hover:bg-stone-200 text-stone-700 rounded-md transition font-medium">
+            Copy
+          </button>
+        </div>
+        <div id="output-apa" class="text-sm leading-relaxed min-h-10 text-stone-400 italic">
+          Fill in the form and click Generate.
+        </div>
+      </div>
+
+      <!-- MLA -->
+      <div class="bg-white border border-stone-200 rounded-xl p-4">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-xs font-bold text-stone-500 uppercase tracking-wide">MLA</span>
+          <button onclick="copyCitation('mla')"
+            class="text-xs px-3 py-1 bg-stone-100 hover:bg-stone-200 text-stone-700 rounded-md transition font-medium">
+            Copy
+          </button>
+        </div>
+        <div id="output-mla" class="text-sm leading-relaxed min-h-10 text-stone-400 italic">
+          Fill in the form and click Generate.
+        </div>
+      </div>
+
+      <!-- Chicago -->
+      <div class="bg-white border border-stone-200 rounded-xl p-4">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-xs font-bold text-stone-500 uppercase tracking-wide">Chicago</span>
+          <button onclick="copyCitation('chicago')"
+            class="text-xs px-3 py-1 bg-stone-100 hover:bg-stone-200 text-stone-700 rounded-md transition font-medium">
+            Copy
+          </button>
+        </div>
+        <div id="output-chicago" class="text-sm leading-relaxed min-h-10 text-stone-400 italic">
+          Fill in the form and click Generate.
+        </div>
+      </div>
+
+      <!-- Status bar -->
+      <div id="status-bar" class="text-xs text-stone-500 text-center hidden">
+        <span id="status-msg"></span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SEO content block -->
+  <section class="mt-12 max-w-3xl mx-auto">
+    <h2 class="text-2xl font-bold text-stone-800 mb-4">APA, MLA, and Chicago Citation Styles</h2>
+    <p class="mb-4 text-stone-600">
+      Academic citations provide readers with the information needed to locate and verify sources.
+      Three citation styles dominate academic writing: APA, MLA, and Chicago. Each has distinct
+      formatting rules suited to different disciplines.
+    </p>
+
+    <h3 class="text-lg font-semibold text-stone-800 mt-6 mb-2">APA (American Psychological Association)</h3>
+    <p class="mb-4 text-stone-600">
+      APA style is standard in the social sciences, psychology, education, and nursing. It emphasizes
+      the publication date prominently — the year appears right after the author, reflecting the
+      importance of recency in scientific fields. The format for a book follows the pattern:
+      Last, F. (Year). <em>Title.</em> Publisher.
+    </p>
+
+    <h3 class="text-lg font-semibold text-stone-800 mt-6 mb-2">MLA (Modern Language Association)</h3>
+    <p class="mb-4 text-stone-600">
+      MLA style is used in the humanities — literature, language, film, and cultural studies.
+      It focuses on authorship and uses a Works Cited page. The format de-emphasizes the publication
+      year, placing it near the end: Last, First. <em>Title.</em> Publisher, Year.
+    </p>
+
+    <h3 class="text-lg font-semibold text-stone-800 mt-6 mb-2">Chicago (Turabian)</h3>
+    <p class="mb-4 text-stone-600">
+      Chicago style is widely used in history, the arts, and some social sciences. It has two
+      systems: Notes-Bibliography (used here) and Author-Date. The bibliography entry for a book is:
+      Last, First. <em>Title.</em> City: Publisher, Year. Chicago style is particularly detailed
+      about place of publication.
+    </p>
+
+    <h3 class="text-lg font-semibold text-stone-800 mt-6 mb-2">When to Use Each Style</h3>
+    <ul class="list-disc pl-5 space-y-1 text-stone-600 mb-4">
+      <li><strong>APA</strong> — psychology, education, social sciences, nursing, business</li>
+      <li><strong>MLA</strong> — literature, language, film studies, cultural studies, humanities</li>
+      <li><strong>Chicago</strong> — history, fine arts, some social sciences; also used in publishing</li>
+    </ul>
+
+    <p class="text-stone-600">
+      When in doubt, check your institution's or journal's style guide. Many instructors specify
+      which format to use; if not stated, APA is a safe default for science-adjacent fields
+      and MLA for humanities.
+    </p>
+  </section>
+
+  <script is:inline>
+    var currentTab = 'book';
+    var citationPlainText = { apa: '', mla: '', chicago: '' };
+
+    function switchTab(tab) {
+      currentTab = tab;
+      ['book', 'website', 'journal'].forEach(function(t) {
+        var form = document.getElementById('form-' + t);
+        var btn = document.getElementById('tab-' + t);
+        if (t === tab) {
+          form.classList.remove('hidden');
+          btn.className = 'px-4 py-2 rounded-lg text-sm font-medium transition bg-stone-700 text-white';
+        } else {
+          form.classList.add('hidden');
+          btn.className = 'px-4 py-2 rounded-lg text-sm font-medium transition bg-stone-100 text-stone-700 hover:bg-stone-200';
+        }
+      });
+      generateAll();
+    }
+
+    function val(id) {
+      var el = document.getElementById(id);
+      return el ? el.value.trim() : '';
+    }
+
+    function initial(firstName) {
+      if (!firstName) return '';
+      return firstName.charAt(0).toUpperCase() + '.';
+    }
+
+    function ordinalEdition(ed) {
+      if (!ed) return '';
+      var num = parseInt(ed, 10);
+      if (isNaN(num)) return ed + ' ed.';
+      var suffix = 'th';
+      if (num % 100 < 11 || num % 100 > 13) {
+        if (num % 10 === 1) suffix = 'st';
+        else if (num % 10 === 2) suffix = 'nd';
+        else if (num % 10 === 3) suffix = 'rd';
+      }
+      return num + suffix + ' ed.';
+    }
+
+    function sentenceCase(str) {
+      if (!str) return '';
+      return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+    }
+
+    function generateBook() {
+      var last = val('book-author-last');
+      var first = val('book-author-first');
+      var year = val('book-year');
+      var title = val('book-title');
+      var publisher = val('book-publisher');
+      var city = val('book-city');
+      var edition = val('book-edition');
+
+      if (!last && !title) { setPlaceholders(); return; }
+
+      var authorFull = last && first ? last + ', ' + first : (last || first || 'Author');
+      var authorAPA  = last && first ? last + ', ' + initial(first) : (last || first || 'Author');
+      var edStr = edition ? ordinalEdition(edition) : '';
+
+      // APA
+      var apaHtml = authorAPA;
+      if (year) apaHtml += ' (' + year + ').';
+      apaHtml += ' <em>' + (title || 'Title') + '</em>';
+      if (edStr) apaHtml += ' (' + edStr + ')';
+      apaHtml += '.';
+      if (publisher) apaHtml += ' ' + publisher + '.';
+
+      var apaPlain = authorAPA;
+      if (year) apaPlain += ' (' + year + ').';
+      apaPlain += ' ' + (title || 'Title');
+      if (edStr) apaPlain += ' (' + edStr + ')';
+      apaPlain += '.';
+      if (publisher) apaPlain += ' ' + publisher + '.';
+
+      // MLA
+      var mlaHtml = authorFull + '. <em>' + (title || 'Title') + '</em>.';
+      if (publisher) mlaHtml += ' ' + publisher + ',';
+      if (year) mlaHtml += ' ' + year + '.';
+
+      var mlaPlain = authorFull + '. ' + (title || 'Title') + '.';
+      if (publisher) mlaPlain += ' ' + publisher + ',';
+      if (year) mlaPlain += ' ' + year + '.';
+
+      // Chicago
+      var chicagoHtml = authorFull + '. <em>' + (title || 'Title') + '</em>.';
+      if (city && publisher) chicagoHtml += ' ' + city + ': ' + publisher + ',';
+      else if (publisher) chicagoHtml += ' ' + publisher + ',';
+      else if (city) chicagoHtml += ' ' + city + ':';
+      if (year) chicagoHtml += ' ' + year + '.';
+
+      var chicagoPlain = authorFull + '. ' + (title || 'Title') + '.';
+      if (city && publisher) chicagoPlain += ' ' + city + ': ' + publisher + ',';
+      else if (publisher) chicagoPlain += ' ' + publisher + ',';
+      else if (city) chicagoPlain += ' ' + city + ':';
+      if (year) chicagoPlain += ' ' + year + '.';
+
+      setOutputs(apaHtml, apaPlain, mlaHtml, mlaPlain, chicagoHtml, chicagoPlain);
+    }
+
+    function generateWebsite() {
+      var last      = val('web-author-last');
+      var first     = val('web-author-first');
+      var year      = val('web-year');
+      var month     = val('web-month');
+      var day       = val('web-day');
+      var pageTitle = val('web-page-title');
+      var siteName  = val('web-site-name');
+      var url       = val('web-url');
+      var accessed  = val('web-accessed');
+
+      if (!pageTitle && !siteName) { setPlaceholders(); return; }
+
+      var hasAuthor  = last || first;
+      var authorFull = last && first ? last + ', ' + first : (last || first || '');
+      var authorAPA  = last && first ? last + ', ' + initial(first) : (last || first || '');
+
+      var dateAPA = '';
+      if (year && month && day) dateAPA = year + ', ' + month + ' ' + day;
+      else if (year && month)   dateAPA = year + ', ' + month;
+      else if (year)            dateAPA = year;
+      else                      dateAPA = 'n.d.';
+
+      var monthAbbrevMap = {
+        'january':'Jan.','february':'Feb.','march':'Mar.','april':'Apr.',
+        'may':'May','june':'June','july':'July','august':'Aug.',
+        'september':'Sept.','october':'Oct.','november':'Nov.','december':'Dec.'
+      };
+      var monthAbbrev = month ? (monthAbbrevMap[month.toLowerCase()] || month) : '';
+      var dateMLA = '';
+      if (day && monthAbbrev && year)  dateMLA = day + ' ' + monthAbbrev + ' ' + year;
+      else if (monthAbbrev && year)    dateMLA = monthAbbrev + ' ' + year;
+      else if (year)                   dateMLA = year;
+
+      // APA
+      var apaHtml = '';
+      var apaPlain = '';
+      if (hasAuthor) { apaHtml += authorAPA + ' '; apaPlain += authorAPA + ' '; }
+      apaHtml  += '(' + dateAPA + ').';
+      apaPlain += '(' + dateAPA + ').';
+      if (pageTitle) { apaHtml += ' <em>' + pageTitle + '</em>.'; apaPlain += ' ' + pageTitle + '.'; }
+      if (siteName)  { apaHtml += ' ' + siteName + '.';           apaPlain += ' ' + siteName + '.'; }
+      if (url)       { apaHtml += ' ' + url;                      apaPlain += ' ' + url; }
+
+      // MLA
+      var mlaHtml = '';
+      var mlaPlain = '';
+      if (hasAuthor) { mlaHtml += authorFull + '. '; mlaPlain += authorFull + '. '; }
+      if (pageTitle) { mlaHtml += '&quot;' + pageTitle + '.&quot;'; mlaPlain += '"' + pageTitle + '."'; }
+      if (siteName)  { mlaHtml += ' <em>' + siteName + '</em>,'; mlaPlain += ' ' + siteName + ','; }
+      if (dateMLA)   { mlaHtml += ' ' + dateMLA + ','; mlaPlain += ' ' + dateMLA + ','; }
+      if (url)       { mlaHtml += ' ' + url + '.'; mlaPlain += ' ' + url + '.'; }
+
+      // Chicago
+      var chicagoHtml = '';
+      var chicagoPlain = '';
+      if (hasAuthor) { chicagoHtml += authorFull + '. '; chicagoPlain += authorFull + '. '; }
+      if (pageTitle) { chicagoHtml += '&quot;' + pageTitle + '.&quot;'; chicagoPlain += '"' + pageTitle + '."'; }
+      if (siteName)  { chicagoHtml += ' <em>' + siteName + '</em>.'; chicagoPlain += ' ' + siteName + '.'; }
+      if (accessed)  { chicagoHtml += ' Accessed ' + accessed + '.'; chicagoPlain += ' Accessed ' + accessed + '.'; }
+      if (url)       { chicagoHtml += ' ' + url + '.'; chicagoPlain += ' ' + url + '.'; }
+
+      setOutputs(apaHtml, apaPlain, mlaHtml, mlaPlain, chicagoHtml, chicagoPlain);
+    }
+
+    function generateJournal() {
+      var last         = val('journal-author-last');
+      var first        = val('journal-author-first');
+      var year         = val('journal-year');
+      var articleTitle = val('journal-article-title');
+      var journalName  = val('journal-name');
+      var volume       = val('journal-volume');
+      var issue        = val('journal-issue');
+      var pages        = val('journal-pages');
+      var doi          = val('journal-doi');
+
+      if (!last && !articleTitle) { setPlaceholders(); return; }
+
+      var authorFull = last && first ? last + ', ' + first : (last || first || 'Author');
+      var authorAPA  = last && first ? last + ', ' + initial(first) : (last || first || 'Author');
+
+      // APA
+      var apaHtml = authorAPA;
+      if (year) apaHtml += ' (' + year + ').';
+      if (articleTitle) apaHtml += ' ' + sentenceCase(articleTitle) + '.';
+      if (journalName) {
+        apaHtml += ' <em>' + journalName + '</em>';
+        if (volume) {
+          apaHtml += ', <em>' + volume + '</em>';
+          if (issue) apaHtml += '(' + issue + ')';
+        }
+        if (pages) apaHtml += ', ' + pages;
+        apaHtml += '.';
+      }
+      if (doi) apaHtml += ' https://doi.org/' + doi;
+
+      var apaPlain = authorAPA;
+      if (year) apaPlain += ' (' + year + ').';
+      if (articleTitle) apaPlain += ' ' + sentenceCase(articleTitle) + '.';
+      if (journalName) {
+        apaPlain += ' ' + journalName;
+        if (volume) {
+          apaPlain += ', ' + volume;
+          if (issue) apaPlain += '(' + issue + ')';
+        }
+        if (pages) apaPlain += ', ' + pages;
+        apaPlain += '.';
+      }
+      if (doi) apaPlain += ' https://doi.org/' + doi;
+
+      // MLA
+      var mlaHtml = authorFull + '.';
+      if (articleTitle) mlaHtml += ' &quot;' + articleTitle + '.&quot;';
+      if (journalName) mlaHtml += ' <em>' + journalName + '</em>,';
+      if (volume) mlaHtml += ' vol. ' + volume + ',';
+      if (issue)  mlaHtml += ' no. '  + issue  + ',';
+      if (year)   mlaHtml += ' ' + year + ',';
+      if (pages)  mlaHtml += ' pp. ' + pages + '.';
+
+      var mlaPlain = authorFull + '.';
+      if (articleTitle) mlaPlain += ' "' + articleTitle + '."';
+      if (journalName) mlaPlain += ' ' + journalName + ',';
+      if (volume) mlaPlain += ' vol. ' + volume + ',';
+      if (issue)  mlaPlain += ' no. '  + issue  + ',';
+      if (year)   mlaPlain += ' ' + year + ',';
+      if (pages)  mlaPlain += ' pp. ' + pages + '.';
+
+      // Chicago
+      var chicagoHtml = authorFull + '.';
+      if (articleTitle) chicagoHtml += ' &quot;' + articleTitle + '.&quot;';
+      if (journalName) chicagoHtml += ' <em>' + journalName + '</em>';
+      if (volume) chicagoHtml += ' ' + volume + ',';
+      if (issue)  chicagoHtml += ' no. ' + issue;
+      if (year)   chicagoHtml += ' (' + year + '):';
+      if (pages)  chicagoHtml += ' ' + pages + '.';
+      if (doi)    chicagoHtml += ' ' + doi + '.';
+
+      var chicagoPlain = authorFull + '.';
+      if (articleTitle) chicagoPlain += ' "' + articleTitle + '."';
+      if (journalName) chicagoPlain += ' ' + journalName;
+      if (volume) chicagoPlain += ' ' + volume + ',';
+      if (issue)  chicagoPlain += ' no. ' + issue;
+      if (year)   chicagoPlain += ' (' + year + '):';
+      if (pages)  chicagoPlain += ' ' + pages + '.';
+      if (doi)    chicagoPlain += ' ' + doi + '.';
+
+      setOutputs(apaHtml, apaPlain, mlaHtml, mlaPlain, chicagoHtml, chicagoPlain);
+    }
+
+    function setOutputs(apaHtml, apaPlain, mlaHtml, mlaPlain, chicagoHtml, chicagoPlain) {
+      document.getElementById('output-apa').innerHTML     = apaHtml;
+      document.getElementById('output-mla').innerHTML     = mlaHtml;
+      document.getElementById('output-chicago').innerHTML = chicagoHtml;
+
+      document.getElementById('output-apa').className     = 'text-sm text-stone-800 leading-relaxed min-h-10';
+      document.getElementById('output-mla').className     = 'text-sm text-stone-800 leading-relaxed min-h-10';
+      document.getElementById('output-chicago').className = 'text-sm text-stone-800 leading-relaxed min-h-10';
+
+      citationPlainText.apa     = apaPlain;
+      citationPlainText.mla     = mlaPlain;
+      citationPlainText.chicago = chicagoPlain;
+    }
+
+    function setPlaceholders() {
+      var ph = '<span class="text-stone-400 italic">Fill in the form and click Generate.</span>';
+      document.getElementById('output-apa').innerHTML     = ph;
+      document.getElementById('output-mla').innerHTML     = ph;
+      document.getElementById('output-chicago').innerHTML = ph;
+      document.getElementById('output-apa').className     = 'text-sm leading-relaxed min-h-10';
+      document.getElementById('output-mla').className     = 'text-sm leading-relaxed min-h-10';
+      document.getElementById('output-chicago').className = 'text-sm leading-relaxed min-h-10';
+      citationPlainText = { apa: '', mla: '', chicago: '' };
+    }
+
+    function generateAll() {
+      if (currentTab === 'book')         generateBook();
+      else if (currentTab === 'website') generateWebsite();
+      else                               generateJournal();
+    }
+
+    function clearAll() {
+      ['book', 'website', 'journal'].forEach(function(f) {
+        var container = document.getElementById('form-' + f);
+        if (container) {
+          container.querySelectorAll('input').forEach(function(input) { input.value = ''; });
+        }
+      });
+      setPlaceholders();
+    }
+
+    function copyCitation(style) {
+      var text = citationPlainText[style];
+      if (!text) { showStatus('Nothing to copy — generate a citation first.'); return; }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function() {
+          showStatus(style.toUpperCase() + ' citation copied!');
+        }).catch(function() { fallbackCopy(text, style); });
+      } else {
+        fallbackCopy(text, style);
+      }
+    }
+
+    function fallbackCopy(text, style) {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.top = '-9999px';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); showStatus(style.toUpperCase() + ' citation copied!'); }
+      catch(e) { showStatus('Copy failed — please select and copy manually.'); }
+      document.body.removeChild(ta);
+    }
+
+    function showStatus(msg) {
+      var bar  = document.getElementById('status-bar');
+      var span = document.getElementById('status-msg');
+      span.textContent = msg;
+      bar.classList.remove('hidden');
+      clearTimeout(window._statusTimer);
+      window._statusTimer = setTimeout(function() { bar.classList.add('hidden'); }, 2500);
+    }
+
+    // Auto-generate on any input change
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('input').forEach(function(input) {
+        input.addEventListener('input', generateAll);
+      });
+    });
+  </script>
+
+</BaseLayout>

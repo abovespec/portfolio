@@ -1,0 +1,621 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { siteConfig } from '~/config/site.config';
+import { getCollection } from 'astro:content';
+
+const recentPosts = siteConfig.features.hasBlog
+  ? (await getCollection('blog', ({ data }) => !data.draft))
+      .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
+      .slice(0, 3)
+  : [];
+---
+<BaseLayout
+  title="Cron Expression Explainer — Understand Cron Schedules Online"
+  description="Free online cron expression explainer. Parse any cron schedule, see next run times, and get plain-English field-by-field explanations. Runs in your browser."
+>
+
+  <!-- Compact header -->
+  <header class="pb-4 pt-2">
+    <h1 class="text-3xl font-bold tracking-tight text-slate-900">Cron Expression Explainer</h1>
+    <p class="mt-1.5 text-sm text-slate-500">Parse any cron schedule and see next run times — all client-side.</p>
+  </header>
+
+  <!-- Input toolbar -->
+  <div class="flex flex-wrap gap-2 mb-3 items-center">
+    <input
+      id="cron-input"
+      type="text"
+      class="flex-1 min-w-0 rounded-md border border-slate-300 bg-white px-3.5 py-1.5 font-mono text-sm focus:border-violet-500 focus:ring-1 focus:ring-violet-500 placeholder:text-slate-400"
+      placeholder="e.g. 0 9 * * 1-5"
+      spellcheck="false"
+      autocomplete="off"
+    />
+    <button id="btn-parse"  class="rounded-md bg-violet-600 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-violet-700 transition-colors">Parse</button>
+    <button id="btn-sample" class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Sample</button>
+    <button id="btn-clear"  class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Clear</button>
+  </div>
+
+  <!-- Error bar (hidden initially) -->
+  <div id="cron-error" class="mb-3 rounded-md bg-red-50 border border-red-200 px-3 py-1.5 text-sm font-medium text-red-700 hidden"></div>
+
+  <!-- Status bar -->
+  <div id="status" class="mb-3 rounded-md px-3 py-1.5 text-sm font-medium hidden"></div>
+
+  <!-- 5-field cards (hidden until parsed) -->
+  <div id="cards-section" class="hidden">
+    <div class="grid grid-cols-2 gap-3 md:grid-cols-5 mb-4">
+
+      <!-- Minute -->
+      <div id="card-min" class="rounded-xl border border-slate-200 bg-white p-4 border-t-4 border-t-violet-600">
+        <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Minute</p>
+        <p class="text-xs text-slate-400 mt-0.5">0 – 59</p>
+        <p id="val-min" class="mt-2 text-2xl font-mono font-bold text-violet-700">*</p>
+        <p id="exp-min" class="mt-1 text-xs text-slate-600 leading-snug">every minute</p>
+      </div>
+
+      <!-- Hour -->
+      <div id="card-hour" class="rounded-xl border border-slate-200 bg-white p-4 border-t-4 border-t-violet-600">
+        <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Hour</p>
+        <p class="text-xs text-slate-400 mt-0.5">0 – 23</p>
+        <p id="val-hour" class="mt-2 text-2xl font-mono font-bold text-violet-700">*</p>
+        <p id="exp-hour" class="mt-1 text-xs text-slate-600 leading-snug">every hour</p>
+      </div>
+
+      <!-- Day of Month -->
+      <div id="card-dom" class="rounded-xl border border-slate-200 bg-white p-4 border-t-4 border-t-violet-600">
+        <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Day</p>
+        <p class="text-xs text-slate-400 mt-0.5">1 – 31</p>
+        <p id="val-dom" class="mt-2 text-2xl font-mono font-bold text-violet-700">*</p>
+        <p id="exp-dom" class="mt-1 text-xs text-slate-600 leading-snug">every day</p>
+      </div>
+
+      <!-- Month -->
+      <div id="card-mon" class="rounded-xl border border-slate-200 bg-white p-4 border-t-4 border-t-violet-600">
+        <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Month</p>
+        <p class="text-xs text-slate-400 mt-0.5">1 – 12</p>
+        <p id="val-mon" class="mt-2 text-2xl font-mono font-bold text-violet-700">*</p>
+        <p id="exp-mon" class="mt-1 text-xs text-slate-600 leading-snug">every month</p>
+      </div>
+
+      <!-- Weekday -->
+      <div id="card-dow" class="rounded-xl border border-slate-200 bg-white p-4 border-t-4 border-t-violet-600">
+        <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Weekday</p>
+        <p class="text-xs text-slate-400 mt-0.5">0 – 6 (Sun – Sat)</p>
+        <p id="val-dow" class="mt-2 text-2xl font-mono font-bold text-violet-700">*</p>
+        <p id="exp-dow" class="mt-1 text-xs text-slate-600 leading-snug">every weekday</p>
+      </div>
+
+    </div>
+
+    <!-- Human-readable description -->
+    <div class="rounded-xl border border-violet-200 bg-violet-50 px-5 py-4 mb-4">
+      <p class="text-xs font-semibold uppercase tracking-wide text-violet-600 mb-1">Schedule</p>
+      <p id="cron-desc" class="text-base font-medium text-slate-800">—</p>
+    </div>
+
+    <!-- Next 5 runs -->
+    <div class="rounded-xl border border-slate-200 bg-white px-5 py-4">
+      <p class="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-3">Next 5 Scheduled Runs</p>
+      <ol id="next-runs" class="space-y-1.5 text-sm font-mono text-slate-700 list-decimal list-inside"></ol>
+    </div>
+  </div>
+
+  <!-- ── Below-fold: SEO content ── -->
+  <div class="mt-16 max-w-3xl space-y-10">
+
+    <section aria-labelledby="what-is-cron-heading">
+      <h2 id="what-is-cron-heading" class="text-2xl font-bold text-slate-900">What is a cron expression?</h2>
+      <div class="prose mt-4 max-w-none">
+        <p>
+          A cron expression is a compact string that defines a recurring schedule for automated tasks.
+          The name comes from the Unix <code>cron</code> daemon, which reads a <em>crontab</em> (cron table) file
+          and runs commands at the times each expression specifies.
+        </p>
+        <p>
+          A standard cron expression has five space-separated fields: <strong>minute</strong>, <strong>hour</strong>,
+          <strong>day-of-month</strong>, <strong>month</strong>, and <strong>day-of-week</strong>.
+          Each field accepts a number, a wildcard <code>*</code>, a range, a list, or a step value.
+        </p>
+        <p>
+          Cron is used in Linux/macOS system administration, CI/CD pipelines, cloud schedulers
+          (AWS EventBridge, GCP Cloud Scheduler, GitHub Actions), and application-level job queues
+          (Sidekiq, Celery, node-cron, and many others).
+        </p>
+      </div>
+    </section>
+
+    <section aria-labelledby="field-reference-heading">
+      <h2 id="field-reference-heading" class="text-2xl font-bold text-slate-900">Cron field reference</h2>
+      <div class="mt-4 overflow-x-auto">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-violet-50 text-violet-700">
+              <th class="text-left px-3 py-2 border border-violet-200 font-semibold">Field</th>
+              <th class="text-left px-3 py-2 border border-violet-200 font-semibold">Range</th>
+              <th class="text-left px-3 py-2 border border-violet-200 font-semibold">Special chars</th>
+              <th class="text-left px-3 py-2 border border-violet-200 font-semibold">Example</th>
+            </tr>
+          </thead>
+          <tbody class="text-slate-700">
+            <tr class="even:bg-slate-50">
+              <td class="px-3 py-2 border border-slate-200 font-medium">Minute</td>
+              <td class="px-3 py-2 border border-slate-200 font-mono">0 – 59</td>
+              <td class="px-3 py-2 border border-slate-200 font-mono">* , - /</td>
+              <td class="px-3 py-2 border border-slate-200"><code>*/15</code> — every 15 minutes</td>
+            </tr>
+            <tr class="even:bg-slate-50">
+              <td class="px-3 py-2 border border-slate-200 font-medium">Hour</td>
+              <td class="px-3 py-2 border border-slate-200 font-mono">0 – 23</td>
+              <td class="px-3 py-2 border border-slate-200 font-mono">* , - /</td>
+              <td class="px-3 py-2 border border-slate-200"><code>9-17</code> — 9 AM through 5 PM</td>
+            </tr>
+            <tr class="even:bg-slate-50">
+              <td class="px-3 py-2 border border-slate-200 font-medium">Day of month</td>
+              <td class="px-3 py-2 border border-slate-200 font-mono">1 – 31</td>
+              <td class="px-3 py-2 border border-slate-200 font-mono">* , - /</td>
+              <td class="px-3 py-2 border border-slate-200"><code>1,15</code> — 1st and 15th</td>
+            </tr>
+            <tr class="even:bg-slate-50">
+              <td class="px-3 py-2 border border-slate-200 font-medium">Month</td>
+              <td class="px-3 py-2 border border-slate-200 font-mono">1 – 12</td>
+              <td class="px-3 py-2 border border-slate-200 font-mono">* , - /</td>
+              <td class="px-3 py-2 border border-slate-200"><code>1-6</code> — January through June</td>
+            </tr>
+            <tr class="even:bg-slate-50">
+              <td class="px-3 py-2 border border-slate-200 font-medium">Day of week</td>
+              <td class="px-3 py-2 border border-slate-200 font-mono">0 – 6 (Sun=0)</td>
+              <td class="px-3 py-2 border border-slate-200 font-mono">* , - /</td>
+              <td class="px-3 py-2 border border-slate-200"><code>1-5</code> — Monday through Friday</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="prose mt-4 max-w-none">
+        <p>
+          <strong>Special characters:</strong>
+          <code>*</code> matches every value in the field.
+          <code>,</code> separates a list of values (e.g. <code>1,3,5</code>).
+          <code>-</code> defines an inclusive range (e.g. <code>9-17</code>).
+          <code>/</code> defines a step — <code>*/5</code> means every 5 units, <code>10/5</code> means every 5 units starting at 10.
+        </p>
+      </div>
+    </section>
+
+    <section aria-labelledby="common-patterns-heading">
+      <h2 id="common-patterns-heading" class="text-2xl font-bold text-slate-900">Common cron patterns</h2>
+      <div class="mt-4 overflow-x-auto">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-violet-50 text-violet-700">
+              <th class="text-left px-3 py-2 border border-violet-200 font-semibold">Pattern</th>
+              <th class="text-left px-3 py-2 border border-violet-200 font-semibold">Description</th>
+            </tr>
+          </thead>
+          <tbody class="text-slate-700">
+            <tr class="even:bg-slate-50">
+              <td class="px-3 py-2 border border-slate-200 font-mono">* * * * *</td>
+              <td class="px-3 py-2 border border-slate-200">Every minute</td>
+            </tr>
+            <tr class="even:bg-slate-50">
+              <td class="px-3 py-2 border border-slate-200 font-mono">0 * * * *</td>
+              <td class="px-3 py-2 border border-slate-200">Every hour, on the hour</td>
+            </tr>
+            <tr class="even:bg-slate-50">
+              <td class="px-3 py-2 border border-slate-200 font-mono">0 9 * * 1-5</td>
+              <td class="px-3 py-2 border border-slate-200">9:00 AM on weekdays (Mon – Fri)</td>
+            </tr>
+            <tr class="even:bg-slate-50">
+              <td class="px-3 py-2 border border-slate-200 font-mono">0 0 * * *</td>
+              <td class="px-3 py-2 border border-slate-200">Midnight every day</td>
+            </tr>
+            <tr class="even:bg-slate-50">
+              <td class="px-3 py-2 border border-slate-200 font-mono">0 0 1 * *</td>
+              <td class="px-3 py-2 border border-slate-200">Midnight on the 1st of every month</td>
+            </tr>
+            <tr class="even:bg-slate-50">
+              <td class="px-3 py-2 border border-slate-200 font-mono">*/15 * * * *</td>
+              <td class="px-3 py-2 border border-slate-200">Every 15 minutes</td>
+            </tr>
+            <tr class="even:bg-slate-50">
+              <td class="px-3 py-2 border border-slate-200 font-mono">0 */6 * * *</td>
+              <td class="px-3 py-2 border border-slate-200">Every 6 hours (00:00, 06:00, 12:00, 18:00)</td>
+            </tr>
+            <tr class="even:bg-slate-50">
+              <td class="px-3 py-2 border border-slate-200 font-mono">30 8 * * 1</td>
+              <td class="px-3 py-2 border border-slate-200">8:30 AM every Monday</td>
+            </tr>
+            <tr class="even:bg-slate-50">
+              <td class="px-3 py-2 border border-slate-200 font-mono">0 0 1 1 *</td>
+              <td class="px-3 py-2 border border-slate-200">Midnight on January 1st (yearly)</td>
+            </tr>
+            <tr class="even:bg-slate-50">
+              <td class="px-3 py-2 border border-slate-200 font-mono">0 12 * * 0</td>
+              <td class="px-3 py-2 border border-slate-200">Noon every Sunday</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="prose mt-4 max-w-none">
+        <p>
+          Many schedulers also support convenient <strong>aliases</strong>:
+          <code>@hourly</code> (every hour),
+          <code>@daily</code> or <code>@midnight</code> (once a day at midnight),
+          <code>@weekly</code> (Sunday midnight),
+          <code>@monthly</code> (1st of the month at midnight), and
+          <code>@yearly</code> or <code>@annually</code> (January 1st at midnight).
+          This explainer supports all of these aliases.
+        </p>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Recent blog posts -->
+  {recentPosts.length > 0 && (
+    <section class="mt-16" aria-labelledby="articles-heading">
+      <h2 id="articles-heading" class="text-2xl font-bold text-slate-900">Cron &amp; Scheduling Guides</h2>
+      <ul class="mt-6 grid gap-4 sm:grid-cols-3">
+        {recentPosts.map((post) => (
+          <li>
+            <a
+              href={`/blog/${post.slug}/`}
+              class="group block rounded-xl border border-slate-200 bg-white p-5 transition hover:border-violet-300 hover:shadow-sm"
+            >
+              <time
+                datetime={post.data.publishDate.toISOString()}
+                class="text-xs font-medium uppercase tracking-wide text-slate-400"
+              >
+                {post.data.publishDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+              </time>
+              <h3 class="mt-1 text-base font-semibold text-slate-900 group-hover:text-violet-700">{post.data.title}</h3>
+              <p class="mt-2 line-clamp-2 text-sm text-slate-600">{post.data.description}</p>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <div class="mt-6">
+        <a href="/blog/" class="text-sm font-medium text-violet-700 underline underline-offset-2 hover:text-violet-800">
+          View all guides →
+        </a>
+      </div>
+    </section>
+  )}
+
+  <script is:inline>
+    var ALIASES = {
+      '@yearly':    '0 0 1 1 *',
+      '@annually':  '0 0 1 1 *',
+      '@monthly':   '0 0 1 * *',
+      '@weekly':    '0 0 * * 0',
+      '@daily':     '0 0 * * *',
+      '@midnight':  '0 0 * * *',
+      '@hourly':    '0 * * * *'
+    };
+
+    var MONTH_NAMES = ['January','February','March','April','May','June',
+                       'July','August','September','October','November','December'];
+    var DOW_NAMES   = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+
+    var inputEl   = document.getElementById('cron-input');
+    var errorEl   = document.getElementById('cron-error');
+    var statusEl  = document.getElementById('status');
+    var cardsEl   = document.getElementById('cards-section');
+    var descEl    = document.getElementById('cron-desc');
+    var runsEl    = document.getElementById('next-runs');
+
+    function showStatus(msg, type) {
+      var clsMap = {
+        error:   'bg-red-50 text-red-700 border border-red-200',
+        success: 'bg-emerald-50 text-emerald-700 border border-emerald-200',
+        info:    'bg-violet-50 text-violet-700 border border-violet-200'
+      };
+      statusEl.className = 'mb-3 rounded-md px-3 py-1.5 text-sm font-medium ' + (clsMap[type] || 'bg-slate-100 text-slate-700');
+      statusEl.textContent = msg;
+      statusEl.classList.remove('hidden');
+    }
+
+    function showError(msg) {
+      errorEl.textContent = msg;
+      errorEl.classList.remove('hidden');
+    }
+
+    function clearError() {
+      errorEl.classList.add('hidden');
+      errorEl.textContent = '';
+    }
+
+    // Parse a cron expression into 5 parts, returns null if invalid
+    function parseCron(expr) {
+      expr = expr.trim();
+      if (ALIASES[expr]) { expr = ALIASES[expr]; }
+      var parts = expr.split(/\s+/);
+      if (parts.length !== 5) { return null; }
+      var ranges = [
+        [0,  59],  // minute
+        [0,  23],  // hour
+        [1,  31],  // dom
+        [1,  12],  // month
+        [0,   6]   // dow
+      ];
+      for (var i = 0; i < 5; i++) {
+        if (!isFieldValid(parts[i], ranges[i][0], ranges[i][1])) { return null; }
+      }
+      return parts;
+    }
+
+    // Validate a single cron field value against [min, max]
+    function isFieldValid(val, min, max) {
+      if (val === '*') { return true; }
+      // list
+      var items = val.split(',');
+      for (var i = 0; i < items.length; i++) {
+        if (!isItemValid(items[i], min, max)) { return false; }
+      }
+      return true;
+    }
+
+    function isItemValid(item, min, max) {
+      // */step or n/step
+      if (item.indexOf('/') !== -1) {
+        var sp = item.split('/');
+        if (sp.length !== 2) { return false; }
+        var step = parseInt(sp[1], 10);
+        if (isNaN(step) || step < 1) { return false; }
+        if (sp[0] === '*') { return true; }
+        var base = parseInt(sp[0], 10);
+        return !isNaN(base) && base >= min && base <= max;
+      }
+      // range n-m
+      if (item.indexOf('-') !== -1) {
+        var rp = item.split('-');
+        if (rp.length !== 2) { return false; }
+        var a = parseInt(rp[0], 10);
+        var b = parseInt(rp[1], 10);
+        return !isNaN(a) && !isNaN(b) && a >= min && b <= max && a <= b;
+      }
+      // plain number (allow 7 for Sunday in dow)
+      var n = parseInt(item, 10);
+      return !isNaN(n) && n >= min && n <= (max === 6 ? 7 : max);
+    }
+
+    // Returns true if a concrete value matches a cron field token
+    function fieldMatches(cronVal, concreteVal) {
+      if (cronVal === '*') { return true; }
+      var items = cronVal.split(',');
+      for (var i = 0; i < items.length; i++) {
+        if (itemMatches(items[i], concreteVal)) { return true; }
+      }
+      return false;
+    }
+
+    function itemMatches(item, val) {
+      if (item.indexOf('/') !== -1) {
+        var sp = item.split('/');
+        var step = parseInt(sp[1], 10);
+        var start = sp[0] === '*' ? 0 : parseInt(sp[0], 10);
+        return val >= start && (val - start) % step === 0;
+      }
+      if (item.indexOf('-') !== -1) {
+        var rp = item.split('-');
+        return val >= parseInt(rp[0], 10) && val <= parseInt(rp[1], 10);
+      }
+      var n = parseInt(item, 10);
+      // treat 7 as Sunday (0) in dow
+      if (n === 7 && val === 0) { return true; }
+      return val === n;
+    }
+
+    // Plain-English explanation for a single field value
+    function getFieldExplanation(val, type) {
+      if (val === '*') {
+        var allMap = { minute:'every minute', hour:'every hour', dom:'every day of month',
+                       month:'every month', dow:'every day of week' };
+        return allMap[type] || 'every value';
+      }
+
+      // list
+      if (val.indexOf(',') !== -1) {
+        var parts = val.split(',');
+        var labels = parts.map(function(p) { return getSingleLabel(p, type); });
+        return labels.join(', ');
+      }
+
+      return getSingleLabel(val, type);
+    }
+
+    function getSingleLabel(item, type) {
+      // step
+      if (item.indexOf('/') !== -1) {
+        var sp = item.split('/');
+        var step = parseInt(sp[1], 10);
+        if (sp[0] === '*') {
+          var unitMap = { minute:'minute', hour:'hour', dom:'day', month:'month', dow:'weekday' };
+          return 'every ' + step + ' ' + (unitMap[type] || 'unit') + (step > 1 ? 's' : '');
+        }
+        var base = parseInt(sp[0], 10);
+        return 'every ' + step + ' starting at ' + namedValue(base, type);
+      }
+      // range
+      if (item.indexOf('-') !== -1) {
+        var rp = item.split('-');
+        return namedValue(parseInt(rp[0], 10), type) + ' through ' + namedValue(parseInt(rp[1], 10), type);
+      }
+      // plain
+      return namedValue(parseInt(item, 10), type);
+    }
+
+    function namedValue(n, type) {
+      if (type === 'month') { return MONTH_NAMES[n - 1] || String(n); }
+      if (type === 'dow')   { return DOW_NAMES[n % 7] || String(n); }
+      if (type === 'hour') {
+        if (n === 0)  { return 'midnight (hour 0)'; }
+        if (n === 12) { return 'noon (hour 12)'; }
+        return String(n);
+      }
+      return String(n);
+    }
+
+    // Build a human-readable single-sentence schedule description
+    function describeSchedule(parts) {
+      var min = parts[0], hr = parts[1], dom = parts[2], mon = parts[3], dow = parts[4];
+
+      var timePart = '';
+      if (min === '0' && hr !== '*') {
+        // exact hour
+        var h = parseInt(hr, 10);
+        if (!isNaN(h)) {
+          var period = h < 12 ? 'AM' : 'PM';
+          var disp   = h === 0 ? 12 : (h > 12 ? h - 12 : h);
+          timePart = 'At ' + disp + ':00 ' + period;
+        } else {
+          timePart = 'At hour ' + hr + ', minute 0';
+        }
+      } else if (min !== '*' && hr !== '*') {
+        timePart = 'At minute ' + min + ' of hour ' + hr;
+      } else if (min === '*' && hr === '*') {
+        timePart = 'Every minute';
+      } else if (min !== '*' && hr === '*') {
+        timePart = 'At minute ' + min + ' of every hour';
+      } else {
+        timePart = 'Every minute of hour ' + hr;
+      }
+
+      var dayPart = '';
+      var domWild = dom === '*';
+      var dowWild = dow === '*';
+
+      if (!domWild && !dowWild) {
+        dayPart = ', on day ' + dom + ' of the month and on ' + getFieldExplanation(dow, 'dow');
+      } else if (!domWild) {
+        dayPart = ', on day ' + dom + ' of the month';
+      } else if (!dowWild) {
+        // friendly range
+        if (dow === '1-5') { dayPart = ', Monday through Friday'; }
+        else if (dow === '0' || dow === '7') { dayPart = ', on Sunday'; }
+        else if (dow === '6') { dayPart = ', on Saturday'; }
+        else { dayPart = ', on ' + getFieldExplanation(dow, 'dow'); }
+      }
+
+      var monPart = '';
+      if (mon !== '*') {
+        monPart = ', in ' + getFieldExplanation(mon, 'month');
+      }
+
+      return timePart + dayPart + monPart + '.';
+    }
+
+    // Compute next N run times via minute-by-minute forward scan (up to ~400 days)
+    function getNextRuns(parts, count) {
+      count = count || 5;
+      var results = [];
+      var now = new Date();
+      // start 1 minute ahead
+      var cur = new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours(), now.getMinutes() + 1, 0, 0);
+      var limit = new Date(now.getTime() + 400 * 24 * 60 * 60 * 1000);
+
+      while (results.length < count && cur < limit) {
+        var minute = cur.getMinutes();
+        var hour   = cur.getHours();
+        var dom    = cur.getDate();
+        var month  = cur.getMonth() + 1;   // 1-based
+        var dow    = cur.getDay();          // 0=Sunday
+
+        if (
+          fieldMatches(parts[0], minute) &&
+          fieldMatches(parts[1], hour)   &&
+          fieldMatches(parts[2], dom)    &&
+          fieldMatches(parts[3], month)  &&
+          (parts[4] === '*' || fieldMatches(parts[4], dow))
+        ) {
+          results.push(new Date(cur.getTime()));
+        }
+        cur = new Date(cur.getTime() + 60000);
+      }
+      return results;
+    }
+
+    // Format a Date for display
+    function formatDate(d) {
+      var opts = { weekday:'short', year:'numeric', month:'short', day:'numeric',
+                   hour:'2-digit', minute:'2-digit', timeZoneName:'short' };
+      return d.toLocaleString('en-US', opts);
+    }
+
+    function setCard(suffix, val, explanation) {
+      document.getElementById('val-' + suffix).textContent = val;
+      document.getElementById('exp-' + suffix).textContent = explanation;
+    }
+
+    function runExplain() {
+      clearError();
+      statusEl.classList.add('hidden');
+      var raw = inputEl.value.trim();
+      if (!raw) {
+        cardsEl.classList.add('hidden');
+        return;
+      }
+
+      var parts = parseCron(raw);
+      if (!parts) {
+        showError('Invalid cron expression. Expected 5 fields: minute hour day month weekday.');
+        cardsEl.classList.add('hidden');
+        return;
+      }
+
+      // Update cards
+      setCard('min',  parts[0], getFieldExplanation(parts[0], 'minute'));
+      setCard('hour', parts[1], getFieldExplanation(parts[1], 'hour'));
+      setCard('dom',  parts[2], getFieldExplanation(parts[2], 'dom'));
+      setCard('mon',  parts[3], getFieldExplanation(parts[3], 'month'));
+      setCard('dow',  parts[4], getFieldExplanation(parts[4], 'dow'));
+
+      // Human-readable description
+      descEl.textContent = describeSchedule(parts);
+
+      // Next runs
+      var runs = getNextRuns(parts, 5);
+      runsEl.innerHTML = '';
+      if (runs.length === 0) {
+        var li = document.createElement('li');
+        li.textContent = 'No runs found in the next 400 days.';
+        li.className = 'text-slate-400';
+        runsEl.appendChild(li);
+      } else {
+        runs.forEach(function(d) {
+          var li = document.createElement('li');
+          li.textContent = formatDate(d);
+          runsEl.appendChild(li);
+        });
+      }
+
+      cardsEl.classList.remove('hidden');
+      showStatus('Parsed successfully', 'success');
+    }
+
+    document.getElementById('btn-parse').addEventListener('click', runExplain);
+
+    document.getElementById('btn-sample').addEventListener('click', function() {
+      inputEl.value = '0 9 * * 1-5';
+      clearError();
+      statusEl.classList.add('hidden');
+      runExplain();
+      inputEl.focus();
+    });
+
+    document.getElementById('btn-clear').addEventListener('click', function() {
+      inputEl.value = '';
+      clearError();
+      statusEl.classList.add('hidden');
+      cardsEl.classList.add('hidden');
+      inputEl.focus();
+    });
+
+    inputEl.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        runExplain();
+      }
+    });
+  </script>
+
+</BaseLayout>

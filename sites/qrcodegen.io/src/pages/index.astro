@@ -1,0 +1,336 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="QR Code Generator — Free Online QR Code Maker"
+  description="Free online QR code generator. Create QR codes for URLs, text, phone numbers, and more. Download as PNG. Runs entirely in your browser."
+>
+
+  <!-- Compact header -->
+  <header class="pb-4 pt-2">
+    <h1 class="text-3xl font-bold tracking-tight text-slate-900">
+      QR Code Generator
+    </h1>
+    <p class="mt-1.5 text-sm text-slate-500">
+      Generate QR codes for URLs, text, Wi-Fi credentials, and more — download as PNG, no account needed.
+    </p>
+  </header>
+
+  <!-- Input -->
+  <div class="mb-3">
+    <label for="qr-input" class="block text-sm font-medium text-slate-700 mb-1">Text or URL</label>
+    <textarea
+      id="qr-input"
+      rows="3"
+      placeholder="https://example.com or any text..."
+      class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 resize-none"
+      spellcheck="false"
+    ></textarea>
+  </div>
+
+  <!-- Toolbar -->
+  <div class="flex flex-wrap gap-2 mb-3">
+    <button id="btn-generate" class="rounded-md bg-emerald-600 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-emerald-700 transition-colors">
+      Generate QR Code
+    </button>
+    <button id="btn-clear" class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">
+      Clear
+    </button>
+  </div>
+
+  <!-- Options row -->
+  <div class="flex flex-wrap gap-4 mt-3 items-center">
+    <label class="flex items-center gap-2 text-sm font-medium text-slate-700">
+      Error Correction:
+      <select id="qr-ecc" class="rounded-md border border-slate-300 bg-white px-2 py-1 text-sm focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500">
+        <option value="L">L — 7% recovery (smallest)</option>
+        <option value="M" selected>M — 15% recovery (default)</option>
+        <option value="Q">Q — 25% recovery (good for logos)</option>
+        <option value="H">H — 30% recovery (maximum)</option>
+      </select>
+    </label>
+    <label class="flex items-center gap-2 text-sm font-medium text-slate-700">
+      Size:
+      <select id="qr-size" class="rounded-md border border-slate-300 bg-white px-2 py-1 text-sm focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500">
+        <option value="small">Small</option>
+        <option value="medium" selected>Medium</option>
+        <option value="large">Large</option>
+      </select>
+    </label>
+    <label class="flex items-center gap-2 text-sm font-medium text-slate-700">
+      Margin:
+      <select id="qr-margin" class="rounded-md border border-slate-300 bg-white px-2 py-1 text-sm focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500">
+        <option value="0">None</option>
+        <option value="1">Small</option>
+        <option value="4" selected>Normal</option>
+      </select>
+    </label>
+  </div>
+
+  <!-- Status bar -->
+  <div id="status" class="mt-3 rounded-md px-3 py-1.5 text-sm font-medium hidden"></div>
+
+  <!-- Output area -->
+  <div id="qr-output" class="mt-4 flex justify-center items-center min-h-48 rounded-lg border border-slate-200 bg-white p-6 hidden">
+    <!-- SVG injected here -->
+  </div>
+
+  <!-- Download button (hidden until QR generated) -->
+  <div id="download-wrap" class="mt-3 hidden flex items-center gap-2">
+    <button id="btn-download" class="rounded-md bg-emerald-600 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-emerald-700 transition-colors">
+      Download PNG
+    </button>
+    <span class="text-xs text-slate-400">(right-click the QR to copy image)</span>
+  </div>
+
+  <!-- ── Below-fold: SEO content ── -->
+  <div class="mt-16 max-w-3xl space-y-10">
+
+    <section aria-labelledby="what-is-qr-heading">
+      <h2 id="what-is-qr-heading" class="text-2xl font-bold text-slate-900">What is a QR code?</h2>
+      <div class="prose mt-4 max-w-none">
+        <p>
+          A QR code (Quick Response code) is a two-dimensional barcode that stores information as a pattern of
+          black and white squares. Originally invented in 1994 by Denso Wave for tracking automotive parts,
+          QR codes are now used everywhere — from restaurant menus and payment apps to product packaging and
+          event tickets.
+        </p>
+        <p>
+          Unlike traditional barcodes that only store data horizontally, QR codes store data both horizontally
+          and vertically. This allows them to hold hundreds of times more information — up to 4,296 alphanumeric
+          characters — in a compact, scannable format.
+        </p>
+        <p>
+          Modern smartphones can scan QR codes natively with their camera app, making them an extremely
+          accessible way to share URLs, contact information, Wi-Fi passwords, payment details, and more.
+        </p>
+      </div>
+    </section>
+
+    <section aria-labelledby="error-correction-heading">
+      <h2 id="error-correction-heading" class="text-2xl font-bold text-slate-900">QR code error correction levels</h2>
+      <div class="prose mt-4 max-w-none">
+        <p>
+          QR codes include built-in error correction that allows them to be read even if part of the code is
+          damaged, dirty, or obscured. There are four error correction levels:
+        </p>
+        <ul>
+          <li>
+            <strong>L — Low (7% recovery):</strong> The smallest QR code. Use when the code will be printed
+            cleanly and you want to maximize data density. Best for digital displays.
+          </li>
+          <li>
+            <strong>M — Medium (15% recovery):</strong> The default and most commonly used level. Good balance
+            between size and resilience.
+          </li>
+          <li>
+            <strong>Q — Quartile (25% recovery):</strong> Recommended when you plan to overlay a logo or
+            image in the center of the QR code.
+          </li>
+          <li>
+            <strong>H — High (30% recovery):</strong> Maximum error correction. Creates the largest QR code
+            but can survive significant damage. Use for industrial or outdoor printing.
+          </li>
+        </ul>
+        <p>
+          Higher error correction levels result in larger, denser QR codes because more redundant data is
+          added. For most web and print uses, M level is the right choice.
+        </p>
+      </div>
+    </section>
+
+    <section aria-labelledby="common-uses-heading">
+      <h2 id="common-uses-heading" class="text-2xl font-bold text-slate-900">Common QR code uses</h2>
+      <div class="prose mt-4 max-w-none">
+        <p>QR codes are versatile and can encode many types of information:</p>
+        <ul>
+          <li>
+            <strong>Website URLs:</strong> The most common use. Link physical materials — business cards,
+            posters, packaging — directly to web pages without users having to type a URL.
+          </li>
+          <li>
+            <strong>Wi-Fi credentials:</strong> Share your Wi-Fi network name and password without typing.
+            Format: <code>WIFI:T:WPA;S:NetworkName;P:password;;</code>
+          </li>
+          <li>
+            <strong>Contact information (vCard):</strong> Share your name, phone, email, and address in one
+            scan. Format begins with <code>BEGIN:VCARD</code>.
+          </li>
+          <li>
+            <strong>Payment links:</strong> Link to PayPal, Venmo, or cryptocurrency wallet addresses for
+            easy payments.
+          </li>
+          <li>
+            <strong>App downloads:</strong> Direct users to your app on the App Store or Google Play.
+          </li>
+          <li>
+            <strong>Event tickets:</strong> Encode booking references or ticket IDs for fast check-in.
+          </li>
+          <li>
+            <strong>Plain text:</strong> Share a message, code, or any information that doesn't need to be
+            a URL.
+          </li>
+        </ul>
+        <p>
+          This generator runs entirely in your browser — no data is sent to any server. Your content stays
+          private.
+        </p>
+      </div>
+    </section>
+
+  </div>
+
+  <script is:inline>
+    var statusEl = document.getElementById('status');
+    var outputEl = document.getElementById('qr-output');
+    var downloadWrapEl = document.getElementById('download-wrap');
+    var debounceTimer = null;
+    var qrLibLoaded = false;
+    var qrLibLoading = false;
+    var pendingGenerate = false;
+
+    var SIZE_MAP = { small: { cellSize: 3, maxWidth: '200px' }, medium: { cellSize: 5, maxWidth: '300px' }, large: { cellSize: 8, maxWidth: '400px' } };
+
+    function showStatus(msg, type) {
+      var clsMap = {
+        error: 'bg-red-50 text-red-700 border border-red-200',
+        success: 'bg-emerald-50 text-emerald-700 border border-emerald-200',
+        info: 'bg-blue-50 text-blue-700 border border-blue-200'
+      };
+      statusEl.className = 'mt-3 rounded-md px-3 py-1.5 text-sm font-medium ' + (clsMap[type] || 'bg-slate-100 text-slate-700');
+      statusEl.textContent = msg;
+      statusEl.classList.remove('hidden');
+    }
+
+    function hideStatus() {
+      statusEl.classList.add('hidden');
+    }
+
+    function loadQrLib(cb) {
+      if (qrLibLoaded) { cb(); return; }
+      if (qrLibLoading) { pendingGenerate = true; return; }
+      qrLibLoading = true;
+      var s = document.createElement('script');
+      s.src = 'https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js';
+      s.onload = function() {
+        qrLibLoaded = true;
+        qrLibLoading = false;
+        cb();
+        if (pendingGenerate) { pendingGenerate = false; generate(); }
+      };
+      s.onerror = function() {
+        qrLibLoading = false;
+        showStatus('Failed to load QR library. Check your network connection.', 'error');
+      };
+      document.head.appendChild(s);
+    }
+
+    function generate() {
+      var text = document.getElementById('qr-input').value.trim();
+      if (!text) {
+        outputEl.classList.add('hidden');
+        downloadWrapEl.classList.add('hidden');
+        hideStatus();
+        return;
+      }
+
+      if (!qrLibLoaded) {
+        showStatus('Loading QR library…', 'info');
+        loadQrLib(function() { generate(); });
+        return;
+      }
+
+      var ecc = document.getElementById('qr-ecc').value;
+      var sizeKey = document.getElementById('qr-size').value;
+      var margin = parseInt(document.getElementById('qr-margin').value, 10);
+      var sizeConfig = SIZE_MAP[sizeKey] || SIZE_MAP['medium'];
+
+      try {
+        var qr = qrcode(0, ecc);
+        qr.addData(text);
+        qr.make();
+        var svgStr = qr.createSvgTag(sizeConfig.cellSize, margin, 'QR Code');
+
+        outputEl.innerHTML = svgStr;
+        var svgEl = outputEl.querySelector('svg');
+        if (svgEl) {
+          svgEl.style.cssText = 'width: 100%; max-width: ' + sizeConfig.maxWidth + '; height: auto; display: block;';
+          svgEl.removeAttribute('width');
+          svgEl.removeAttribute('height');
+        }
+
+        outputEl.classList.remove('hidden');
+        downloadWrapEl.classList.remove('hidden');
+        showStatus('QR code generated — ' + text.length + ' character' + (text.length !== 1 ? 's' : '') + ' encoded', 'success');
+      } catch (err) {
+        showStatus('Error generating QR code: ' + (err.message || err), 'error');
+        outputEl.classList.add('hidden');
+        downloadWrapEl.classList.add('hidden');
+      }
+    }
+
+    function downloadPng() {
+      var svgEl = document.querySelector('#qr-output svg');
+      if (!svgEl) { showStatus('No QR code to download', 'info'); return; }
+
+      var sizeKey = document.getElementById('qr-size').value;
+      var sizeConfig = SIZE_MAP[sizeKey] || SIZE_MAP['medium'];
+      var pxSize = parseInt(sizeConfig.maxWidth, 10);
+
+      var clone = svgEl.cloneNode(true);
+      clone.setAttribute('width', pxSize);
+      clone.setAttribute('height', pxSize);
+
+      var svgStr = new XMLSerializer().serializeToString(clone);
+      var img = new Image();
+      img.onload = function() {
+        var canvas = document.createElement('canvas');
+        canvas.width = pxSize;
+        canvas.height = pxSize;
+        var ctx = canvas.getContext('2d');
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, pxSize, pxSize);
+        ctx.drawImage(img, 0, 0, pxSize, pxSize);
+        var a = document.createElement('a');
+        a.href = canvas.toDataURL('image/png');
+        a.download = 'qrcode.png';
+        a.click();
+        showStatus('PNG downloaded', 'success');
+      };
+      img.onerror = function() {
+        showStatus('Failed to export PNG', 'error');
+      };
+      img.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svgStr)));
+    }
+
+    function scheduleGenerate() {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(function() { generate(); }, 300);
+    }
+
+    document.getElementById('qr-input').addEventListener('input', scheduleGenerate);
+    document.getElementById('qr-input').addEventListener('paste', scheduleGenerate);
+    document.getElementById('qr-ecc').addEventListener('change', generate);
+    document.getElementById('qr-size').addEventListener('change', generate);
+    document.getElementById('qr-margin').addEventListener('change', generate);
+
+    document.getElementById('btn-generate').addEventListener('click', function() {
+      clearTimeout(debounceTimer);
+      generate();
+    });
+
+    document.getElementById('btn-clear').addEventListener('click', function() {
+      document.getElementById('qr-input').value = '';
+      outputEl.classList.add('hidden');
+      downloadWrapEl.classList.add('hidden');
+      hideStatus();
+      document.getElementById('qr-input').focus();
+    });
+
+    document.getElementById('btn-download').addEventListener('click', downloadPng);
+
+    // Pre-load the library immediately so first generate is instant
+    loadQrLib(function() {});
+  </script>
+
+</BaseLayout>
