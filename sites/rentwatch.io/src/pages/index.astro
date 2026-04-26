@@ -37,15 +37,18 @@ import { siteConfig } from '~/config/site.config';
       </div>
 
       <!-- Table header -->
-      <div class="hidden sm:grid sm:grid-cols-[1fr_80px_80px_100px] gap-x-4 pb-2 mb-2 border-b border-slate-100 text-xs font-semibold uppercase tracking-wide text-slate-400">
+      <div class="hidden sm:grid sm:grid-cols-[1fr_80px_80px_100px_70px_70px_70px] gap-x-3 pb-2 mb-2 border-b border-slate-100 text-xs font-semibold uppercase tracking-wide text-slate-400">
         <span>City</span>
         <span class="text-right">Rent/mo</span>
         <span class="text-right">Rent/yr</span>
-        <span class="text-right">Salary months</span>
+        <span class="text-right">Salary mo</span>
+        <span class="text-right">Grocery</span>
+        <span class="text-right">Transit</span>
+        <span class="text-right">Restaurant</span>
       </div>
 
       <div id="city-list" class="space-y-3"></div>
-      <p class="mt-4 text-xs text-slate-400">Data based on market averages for 2024–2025. "Salary months" = months of median household income needed to cover one year of rent. Actual rents vary by neighborhood and building quality.</p>
+      <p class="mt-4 text-xs text-slate-400">Data based on market averages for 2024–2025. "Salary months" = months of median household income needed to cover one year of rent. Indexes: 100 = US national average. Actual rents vary by neighborhood and building quality.</p>
     </div>
 
     <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm mb-8">
@@ -82,6 +85,35 @@ import { siteConfig } from '~/config/site.config';
   <script is:inline>
     function $(id){ return document.getElementById(id); }
     function val(id){ return parseFloat($(id).value)||0; }
+
+    // Cost of living index (100 = US national average)
+    var CITY_COL = {
+      'New York':      { grocery: 120, transit: 127, restaurant: 140, overall: 187 },
+      'San Francisco': { grocery: 115, transit: 98,  restaurant: 135, overall: 192 },
+      'Los Angeles':   { grocery: 110, transit: 100, restaurant: 120, overall: 173 },
+      'Chicago':       { grocery: 98,  transit: 105, restaurant: 100, overall: 107 },
+      'Austin':        { grocery: 100, transit: 40,  restaurant: 105, overall: 118 },
+      'Seattle':       { grocery: 108, transit: 99,  restaurant: 120, overall: 147 },
+      'Miami':         { grocery: 105, transit: 112, restaurant: 110, overall: 123 },
+      'Denver':        { grocery: 103, transit: 114, restaurant: 108, overall: 121 },
+      'Phoenix':       { grocery: 98,  transit: 50,  restaurant: 100, overall: 109 },
+      'Boston':        { grocery: 112, transit: 90,  restaurant: 125, overall: 162 },
+      'San Diego':     { grocery: 112, transit: 82,  restaurant: 118, overall: 164 },
+      'Portland':      { grocery: 105, transit: 95,  restaurant: 112, overall: 138 },
+      'Nashville':     { grocery: 102, transit: 35,  restaurant: 105, overall: 114 },
+      'Minneapolis':   { grocery: 100, transit: 92,  restaurant: 102, overall: 108 },
+      'Atlanta':       { grocery: 100, transit: 70,  restaurant: 102, overall: 110 },
+      'Houston':       { grocery: 97,  transit: 38,  restaurant: 98,  overall: 100 },
+      'Dallas':        { grocery: 98,  transit: 40,  restaurant: 100, overall: 103 },
+      'Philadelphia':  { grocery: 102, transit: 98,  restaurant: 108, overall: 120 },
+      'Tampa':         { grocery: 100, transit: 55,  restaurant: 102, overall: 108 },
+      'Sacramento':    { grocery: 107, transit: 60,  restaurant: 112, overall: 141 },
+      'Charlotte':     { grocery: 99,  transit: 42,  restaurant: 100, overall: 105 },
+      'Raleigh':       { grocery: 100, transit: 38,  restaurant: 102, overall: 106 },
+      'Las Vegas':     { grocery: 101, transit: 60,  restaurant: 104, overall: 107 },
+      'Detroit':       { grocery: 93,  transit: 75,  restaurant: 90,  overall: 79  },
+      'Oklahoma City': { grocery: 95,  transit: 30,  restaurant: 92,  overall: 84  },
+    };
 
     // City data: [name, state, monthlyRent, medianHouseholdIncome]
     var CITIES = [
@@ -138,7 +170,11 @@ import { siteConfig } from '~/config/site.config';
         var mNum = parseFloat(months);
         var bColor = burdenColor(months);
         var burdenPct = Math.min(100, Math.round((mNum / 8) * 100));
-        return '<div class="grid sm:grid-cols-[1fr_80px_80px_100px] gap-x-4 gap-y-1 items-center">' +
+        var col = CITY_COL[name] || {};
+        var grocery = col.grocery || '--';
+        var transit = col.transit || '--';
+        var restaurant = col.restaurant || '--';
+        return '<div class="grid sm:grid-cols-[1fr_80px_80px_100px_70px_70px_70px] gap-x-3 gap-y-1 items-center">' +
           '<div>' +
             '<div class="flex items-baseline justify-between sm:justify-start gap-2 mb-1">' +
               '<span class="text-sm font-medium text-slate-700">' + name + ', ' + state + '</span>' +
@@ -159,6 +195,9 @@ import { siteConfig } from '~/config/site.config';
             '<span class="inline-flex h-5 w-5 items-center justify-center rounded-full ' + bColor + ' text-white text-xs font-bold">&nbsp;</span>' +
             '<span class="text-sm font-semibold text-slate-800">' + months + ' mo</span>' +
           '</div>' +
+          '<span class="hidden sm:block text-right text-xs text-slate-600">' + grocery + '</span>' +
+          '<span class="hidden sm:block text-right text-xs text-slate-600">' + transit + '</span>' +
+          '<span class="hidden sm:block text-right text-xs text-slate-600">' + restaurant + '</span>' +
           '</div>';
       }).join('');
     }
