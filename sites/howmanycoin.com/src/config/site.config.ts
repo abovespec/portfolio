@@ -120,6 +120,7 @@ export const siteConfig: SiteConfig = {
     primary: [
       { label: 'Convert', href: '/convert/' },
       { label: 'Supply', href: '/supply/' },
+      { label: 'Blog', href: '/blog/' },
       { label: 'Guides', href: '/guides/' },
       { label: 'Methodology', href: '/methodology/' },
       { label: 'About', href: '/about/' },
