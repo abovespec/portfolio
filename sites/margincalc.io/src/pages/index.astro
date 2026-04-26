@@ -7,7 +7,7 @@ import { getCollection } from 'astro:content';
 const recentPosts = siteConfig.features.hasBlog
   ? (await getCollection('blog', ({ data }) => !data.draft))
       .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
-      .slice(0, 3)
+      .slice(0, 6)
   : [];
 ---
 <BaseLayout
@@ -15,124 +15,132 @@ const recentPosts = siteConfig.features.hasBlog
   description="Free online profit margin calculator. Calculate gross profit margin, markup percentage, break-even analysis, and reverse margin pricing. Instant results."
 >
 
-  <header class="pb-8 pt-4">
-    <h1 class="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
-      Profit Margin Calculator
-    </h1>
-    <p class="mt-3 max-w-xl text-lg text-slate-600">
-      Calculate profit margins, markups, break-even points, and target pricing — four
-      essential business calculators in one place.
-    </p>
-  </header>
+  <!-- Hero section: calculator as the focal point -->
+  <section class="relative -mx-4 overflow-hidden px-4 py-14 sm:py-20">
+    <!-- Gradient mesh background -->
+    <div class="absolute inset-0 bg-gradient-to-br from-lime-50 via-green-50 to-emerald-50" aria-hidden="true" />
+    <!-- Radial glow decorations -->
+    <div class="absolute -top-32 left-1/2 h-80 w-80 -translate-x-1/2 rounded-full bg-lime-300/20 blur-3xl" aria-hidden="true" />
+    <div class="absolute bottom-0 right-0 h-64 w-64 rounded-full bg-emerald-300/15 blur-3xl" aria-hidden="true" />
 
-  <ul class="flex flex-wrap gap-x-6 gap-y-2 text-sm text-slate-600">
-    {[
-      'Margin, markup, break-even & reverse pricing',
-      'Instant results as you type',
-      'No data stored or shared',
-      'Free, no signup required',
-    ].map((badge) => (
-      <li class="flex items-center gap-1.5">
-        <svg class="h-4 w-4 shrink-0 text-brand" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.061 1.06l2.5 2.5a.75.75 0 001.137-.088l4-5.5z" clip-rule="evenodd" />
-        </svg>
-        {badge}
-      </li>
-    ))}
-  </ul>
+    <div class="relative">
+      <!-- Centered heading -->
+      <div class="mx-auto max-w-2xl text-center">
+        <h1 class="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+          Profit Margin Calculator
+        </h1>
+        <p class="mt-3 text-lg text-slate-600">
+          Calculate profit margins, markups, break-even points, and target pricing — four
+          essential business calculators in one place.
+        </p>
+      </div>
 
-  <div class="mt-8 grid items-start gap-8 md:grid-cols-[1fr_400px]">
+      <!-- Trust badges -->
+      <ul class="mt-6 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-slate-600">
+        {[
+          'Margin, markup, break-even & reverse pricing',
+          'Instant results as you type',
+          'No data stored or shared',
+          'Free, no signup required',
+        ].map((badge) => (
+          <li class="flex items-center gap-1.5">
+            <svg class="h-4 w-4 shrink-0 text-brand" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.061 1.06l2.5 2.5a.75.75 0 001.137-.088l4-5.5z" clip-rule="evenodd" />
+            </svg>
+            {badge}
+          </li>
+        ))}
+      </ul>
 
-    <div class="space-y-10">
+      <!-- Calculator card -->
+      <div class="mx-auto mt-8 w-full max-w-[640px]">
+        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <MarginCalculator client:load />
+        </div>
+      </div>
 
+      <!-- YMYL financial disclaimer -->
       <aside
         role="note"
-        class="rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900"
+        class="mx-auto mt-4 max-w-[640px] rounded-lg border border-amber-200 bg-amber-50/80 p-3 text-sm text-amber-900"
       >
         <strong class="font-semibold">Important:</strong> Results are for informational and
         planning purposes only. They do not constitute financial, accounting, or business advice.
         Consult a qualified financial professional for pricing and business decisions.
       </aside>
-
-      <section aria-labelledby="margin-vs-markup-heading">
-        <h2 id="margin-vs-markup-heading" class="text-2xl font-bold text-slate-900">
-          Profit Margin vs. Markup — What's the Difference?
-        </h2>
-        <div class="prose prose-slate mt-3 max-w-none">
-          <p>
-            These two numbers both describe the relationship between cost and price, but from
-            different perspectives:
-          </p>
-          <ul>
-            <li>
-              <strong>Profit margin</strong> — profit as a percentage of the <em>selling price</em>.
-              Formula: <code>(Price − Cost) / Price × 100</code>. A $50 item that cost $30 has
-              a 40% margin.
-            </li>
-            <li>
-              <strong>Markup</strong> — profit as a percentage of the <em>cost</em>.
-              Formula: <code>(Price − Cost) / Cost × 100</code>. The same item has a 66.7% markup.
-            </li>
-          </ul>
-          <p>
-            Retailers typically think in margins; manufacturers often think in markup. Using the
-            wrong one when pricing can lead to undercharging.
-          </p>
-        </div>
-      </section>
-
-      <section aria-labelledby="break-even-heading">
-        <h2 id="break-even-heading" class="text-2xl font-bold text-slate-900">
-          Break-Even Analysis
-        </h2>
-        <div class="prose prose-slate mt-3 max-w-none">
-          <p>
-            Break-even is the sales volume at which revenue equals total costs — zero profit, zero
-            loss. The formula is:
-          </p>
-          <p>
-            <strong>Break-Even Units = Fixed Costs / (Selling Price − Variable Cost per Unit)</strong>
-          </p>
-          <p>
-            Fixed costs are costs that don't change with production volume (rent, salaries, equipment).
-            Variable costs scale with volume (materials, packaging, sales commissions).
-          </p>
-        </div>
-      </section>
-
-      <section aria-labelledby="healthy-margin-heading">
-        <h2 id="healthy-margin-heading" class="text-2xl font-bold text-slate-900">
-          What Is a Healthy Profit Margin?
-        </h2>
-        <div class="prose prose-slate mt-3 max-w-none">
-          <p>
-            "Healthy" varies widely by industry. Gross margins tend to be higher in software (70–90%)
-            and lower in retail (20–40%) and grocery (1–5%). Net margins — after all operating costs —
-            are much lower in every category.
-          </p>
-          <p>
-            A useful benchmark is to know your industry average (available via NYU Stern's annual
-            margin databases) and track your own margins over time. A trend is often more informative
-            than a single snapshot.
-          </p>
-        </div>
-      </section>
-
     </div>
+  </section>
 
-    <div class="md:sticky md:top-8">
-      <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-        <h2 class="mb-4 text-lg font-semibold text-slate-900">Business Calculators</h2>
-        <MarginCalculator client:load />
-      </div>
+  <!-- Educational content -->
+  <section class="mt-16" aria-labelledby="margin-vs-markup-heading">
+    <h2 id="margin-vs-markup-heading" class="text-2xl font-bold text-slate-900">
+      Profit Margin vs. Markup — What's the Difference?
+    </h2>
+    <div class="prose prose-slate mt-3 max-w-none">
+      <p>
+        These two numbers both describe the relationship between cost and price, but from
+        different perspectives:
+      </p>
+      <ul>
+        <li>
+          <strong>Profit margin</strong> — profit as a percentage of the <em>selling price</em>.
+          Formula: <code>(Price − Cost) / Price × 100</code>. A $50 item that cost $30 has
+          a 40% margin.
+        </li>
+        <li>
+          <strong>Markup</strong> — profit as a percentage of the <em>cost</em>.
+          Formula: <code>(Price − Cost) / Cost × 100</code>. The same item has a 66.7% markup.
+        </li>
+      </ul>
+      <p>
+        Retailers typically think in margins; manufacturers often think in markup. Using the
+        wrong one when pricing can lead to undercharging.
+      </p>
     </div>
+  </section>
 
-  </div>
+  <section class="mt-12" aria-labelledby="break-even-heading">
+    <h2 id="break-even-heading" class="text-2xl font-bold text-slate-900">
+      Break-Even Analysis
+    </h2>
+    <div class="prose prose-slate mt-3 max-w-none">
+      <p>
+        Break-even is the sales volume at which revenue equals total costs — zero profit, zero
+        loss. The formula is:
+      </p>
+      <p>
+        <strong>Break-Even Units = Fixed Costs / (Selling Price − Variable Cost per Unit)</strong>
+      </p>
+      <p>
+        Fixed costs are costs that don't change with production volume (rent, salaries, equipment).
+        Variable costs scale with volume (materials, packaging, sales commissions).
+      </p>
+    </div>
+  </section>
 
+  <section class="mt-12" aria-labelledby="healthy-margin-heading">
+    <h2 id="healthy-margin-heading" class="text-2xl font-bold text-slate-900">
+      What Is a Healthy Profit Margin?
+    </h2>
+    <div class="prose prose-slate mt-3 max-w-none">
+      <p>
+        "Healthy" varies widely by industry. Gross margins tend to be higher in software (70–90%)
+        and lower in retail (20–40%) and grocery (1–5%). Net margins — after all operating costs —
+        are much lower in every category.
+      </p>
+      <p>
+        A useful benchmark is to know your industry average (available via NYU Stern's annual
+        margin databases) and track your own margins over time. A trend is often more informative
+        than a single snapshot.
+      </p>
+    </div>
+  </section>
+
+  <!-- Articles: 6-card grid -->
   {recentPosts.length > 0 && (
     <section class="mt-16" aria-labelledby="articles-heading">
       <h2 id="articles-heading" class="text-2xl font-bold text-slate-900">Latest Articles</h2>
-      <ul class="mt-6 grid gap-4 sm:grid-cols-3">
+      <ul class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {recentPosts.map((post) => (
           <li>
             <a
@@ -155,6 +163,11 @@ const recentPosts = siteConfig.features.hasBlog
           </li>
         ))}
       </ul>
+      <div class="mt-6">
+        <a href="/blog/" class="text-sm font-medium text-brand underline underline-offset-2 hover:opacity-80">
+          View all articles →
+        </a>
+      </div>
     </section>
   )}
 

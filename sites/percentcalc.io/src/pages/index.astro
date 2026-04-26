@@ -6,7 +6,7 @@ import { getCollection } from 'astro:content';
 const recentPosts = siteConfig.features.hasBlog
   ? (await getCollection('blog', ({ data }) => !data.draft))
       .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
-      .slice(0, 3)
+      .slice(0, 6)
   : [];
 
 const tools = siteConfig.features.hasTool
@@ -27,58 +27,70 @@ const TOOL_ICONS: Record<string, string> = {
   description="Free online percentage calculators: percent of a number, percent change, percent off (discounts), percent increase, and percent difference. Instant, no signup."
 >
 
-  <header class="pb-8 pt-4">
-    <h1 class="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
-      Percentage Calculators
-    </h1>
-    <p class="mt-3 max-w-xl text-lg text-slate-600">
-      Five free percentage calculators for every everyday math situation — discounts,
-      grade changes, price increases, and more.
-    </p>
-  </header>
+  <!-- Hero section: tool directory as the focal point -->
+  <section class="relative -mx-4 overflow-hidden px-4 py-14 sm:py-20">
+    <!-- Gradient mesh background -->
+    <div class="absolute inset-0 bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-50" aria-hidden="true" />
+    <!-- Radial glow decorations -->
+    <div class="absolute -top-32 left-1/2 h-80 w-80 -translate-x-1/2 rounded-full bg-amber-300/20 blur-3xl" aria-hidden="true" />
+    <div class="absolute bottom-0 right-0 h-64 w-64 rounded-full bg-orange-300/15 blur-3xl" aria-hidden="true" />
 
-  <ul class="flex flex-wrap gap-x-6 gap-y-2 text-sm text-slate-600">
-    {[
-      'Instant results as you type',
-      'No data stored or shared',
-      'Free, no signup required',
-      'Mobile & desktop friendly',
-    ].map((badge) => (
-      <li class="flex items-center gap-1.5">
-        <svg class="h-4 w-4 shrink-0 text-brand" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.061 1.06l2.5 2.5a.75.75 0 001.137-.088l4-5.5z" clip-rule="evenodd" />
-        </svg>
-        {badge}
-      </li>
-    ))}
-  </ul>
+    <div class="relative">
+      <!-- Centered heading -->
+      <div class="mx-auto max-w-2xl text-center">
+        <h1 class="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+          Percentage Calculators
+        </h1>
+        <p class="mt-3 text-lg text-slate-600">
+          Five free percentage calculators for every everyday math situation — discounts,
+          grade changes, price increases, and more.
+        </p>
+      </div>
 
-  {tools.length > 0 && (
-    <section class="mt-10" aria-labelledby="tools-heading">
-      <h2 id="tools-heading" class="text-2xl font-bold text-slate-900">Our Calculators</h2>
-      <ul class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {tools.map((tool) => (
-          <li>
-            <a
-              href={`/tools/${tool.data.urlSlug}/`}
-              class="group flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-5 transition hover:border-brand/40 hover:shadow-md"
-            >
-              <span class="text-3xl" aria-hidden="true">
-                {TOOL_ICONS[tool.data.urlSlug] ?? '🧮'}
-              </span>
-              <h3 class="mt-3 text-base font-semibold text-slate-900 group-hover:text-brand">
-                {tool.data.title}
-              </h3>
-              <p class="mt-1 flex-1 text-sm text-slate-600 line-clamp-2">{tool.data.description}</p>
-              <span class="mt-3 text-sm font-medium text-brand">Open Calculator →</span>
-            </a>
+      <!-- Trust badges -->
+      <ul class="mt-6 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-slate-600">
+        {[
+          'Instant results as you type',
+          'No data stored or shared',
+          'Free, no signup required',
+          'Mobile & desktop friendly',
+        ].map((badge) => (
+          <li class="flex items-center gap-1.5">
+            <svg class="h-4 w-4 shrink-0 text-brand" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.061 1.06l2.5 2.5a.75.75 0 001.137-.088l4-5.5z" clip-rule="evenodd" />
+            </svg>
+            {badge}
           </li>
         ))}
       </ul>
-    </section>
-  )}
 
-  <section class="prose prose-slate mt-10 max-w-none">
+      <!-- Tool cards grid — the visual focus -->
+      {tools.length > 0 && (
+        <ul class="mx-auto mt-10 grid max-w-4xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {tools.map((tool) => (
+            <li>
+              <a
+                href={`/tools/${tool.data.urlSlug}/`}
+                class="group flex h-full flex-col rounded-2xl border border-white/80 bg-white p-5 shadow-sm transition hover:border-brand/40 hover:shadow-md"
+              >
+                <span class="text-3xl" aria-hidden="true">
+                  {TOOL_ICONS[tool.data.urlSlug] ?? '🧮'}
+                </span>
+                <h2 class="mt-3 text-base font-semibold text-slate-900 group-hover:text-brand">
+                  {tool.data.title}
+                </h2>
+                <p class="mt-1 flex-1 text-sm text-slate-600 line-clamp-2">{tool.data.description}</p>
+                <span class="mt-3 text-sm font-medium text-brand">Open Calculator →</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  </section>
+
+  <!-- About section -->
+  <section class="prose prose-slate mt-16 max-w-none">
     <h2>About PercentCalc</h2>
     <p>
       PercentCalc offers five free percentage calculators covering the most common math
@@ -99,10 +111,11 @@ const TOOL_ICONS: Record<string, string> = {
     </ul>
   </section>
 
+  <!-- Articles: 6-card grid -->
   {recentPosts.length > 0 && (
     <section class="mt-16" aria-labelledby="articles-heading">
       <h2 id="articles-heading" class="text-2xl font-bold text-slate-900">Latest Articles</h2>
-      <ul class="mt-6 grid gap-4 sm:grid-cols-3">
+      <ul class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {recentPosts.map((post) => (
           <li>
             <a
@@ -123,6 +136,11 @@ const TOOL_ICONS: Record<string, string> = {
           </li>
         ))}
       </ul>
+      <div class="mt-6">
+        <a href="/blog/" class="text-sm font-medium text-brand underline underline-offset-2 hover:opacity-80">
+          View all articles →
+        </a>
+      </div>
     </section>
   )}
 
