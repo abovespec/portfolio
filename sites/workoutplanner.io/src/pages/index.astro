@@ -3,7 +3,7 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
 import { siteConfig } from '~/config/site.config';
 ---
 <BaseLayout title={siteConfig.identity.name} description={siteConfig.identity.description}>
-  <section class="relative -mx-4 overflow-hidden px-4 py-14 sm:py-20">
+  <section class="relative -mx-4 overflow-hidden px-4 py-14 sm:py-20 no-print">
     <div class="absolute inset-0 bg-gradient-to-br from-red-50 via-rose-50 to-pink-50" aria-hidden="true" />
     <div class="absolute -top-32 left-1/2 h-80 w-80 -translate-x-1/2 rounded-full bg-red-300/20 blur-3xl" aria-hidden="true" />
     <div class="absolute bottom-0 right-0 h-64 w-64 rounded-full bg-rose-300/15 blur-3xl" aria-hidden="true" />
@@ -38,12 +38,17 @@ import { siteConfig } from '~/config/site.config';
           <select id="wp-equip" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"><option selected>Gym</option><option>Dumbbells only</option><option>Bodyweight</option></select>
         </label>
       </div>
-      <button id="wp-gen" class="rounded-lg bg-red-600 px-5 py-2 text-white font-semibold hover:bg-red-700">Generate Workout Plan</button>
-      <div id="wp-result" class="mt-6 space-y-4"></div>
-      <p class="mt-3 text-xs text-slate-400">Click the swap button next to any exercise to see alternative exercises that work the same muscle groups.</p>
+      <button id="wp-gen" class="no-print rounded-lg bg-red-600 px-5 py-2 text-white font-semibold hover:bg-red-700">Generate Workout Plan</button>
+      <p id="wp-rest-note" class="hidden mt-4 text-xs font-medium text-slate-600 bg-slate-50 border border-slate-200 rounded-lg px-3 py-2"></p>
+      <div id="wp-result" class="mt-3 space-y-4 workout-plan"></div>
+      <div id="wp-actions" class="hidden mt-4 flex flex-wrap gap-2 no-print">
+        <button id="deload-btn" onclick="generateDeload()" class="rounded-lg bg-amber-100 border border-amber-300 px-4 py-2 text-sm font-medium text-amber-800 hover:bg-amber-200">Generate Deload Version</button>
+        <button onclick="printWorkout()" class="rounded-lg bg-slate-100 border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-200">Print Workout</button>
+      </div>
+      <p class="mt-3 text-xs text-slate-400 no-print">Click the swap button next to any exercise to see alternative exercises that work the same muscle groups.</p>
     </div>
 
-    <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm mb-8">
+    <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm mb-8 no-print">
       <h2 class="text-xl font-semibold mb-4 text-slate-800">Progressive Overload Calculator</h2>
       <div class="grid gap-4 sm:grid-cols-3">
         <label class="block"><span class="text-sm font-medium text-slate-700">Current weight (lbs)</span><input id="po-weight" type="number" value="185" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
@@ -57,7 +62,7 @@ import { siteConfig } from '~/config/site.config';
       </div>
     </div>
 
-    <section class="my-12">
+    <section class="my-12 no-print">
       <h2 class="text-2xl font-semibold mb-4 text-slate-800">Fitness Guides</h2>
       <div class="grid gap-4 sm:grid-cols-2">
         <a href="/blog/3-day-workout-split-for-beginners-full-body-strength-plan/" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-red-400"><h3 class="font-semibold text-slate-900">3 Day Workout Split for Beginners</h3><p class="mt-1 text-sm text-slate-600">Full body strength plan with exact exercises, sets, and reps for new lifters.</p></a>
@@ -69,6 +74,14 @@ import { siteConfig } from '~/config/site.config';
       </div>
     </section>
   </div>
+  <style>
+    @media print {
+      .no-print { display: none !important; }
+      body { font-size: 12pt; }
+      .workout-plan { break-inside: avoid; }
+    }
+  </style>
+
   <script is:inline>
     const SUBSTITUTIONS = {
       'Barbell Squat': ['Goblet Squat', 'Leg Press', 'Dumbbell Squat', 'Bulgarian Split Squat'],
@@ -163,7 +176,7 @@ import { siteConfig } from '~/config/site.config';
       return null;
     }
 
-    function renderPlan(plan) {
+    function renderPlan(plan, goal) {
       swapState = {};
       let html = '<div class="grid gap-3">';
       plan.forEach((day, dayIdx) => {
@@ -246,6 +259,31 @@ import { siteConfig } from '~/config/site.config';
       });
     }
 
+    function getRestPeriod(goal) {
+      const goalLower = (goal || '').toLowerCase();
+      if (goalLower.includes('strength') || goalLower.includes('power')) return '3–5 min rest between sets';
+      if (goalLower.includes('hypertrophy') || goalLower.includes('muscle') || goalLower.includes('size')) return '60–90 sec rest between sets';
+      if (goalLower.includes('endurance') || goalLower.includes('cardio')) return '30–45 sec rest between sets';
+      if (goalLower.includes('weight loss')) return '45–60 sec rest between sets';
+      return '60–120 sec rest between sets';
+    }
+
+    function printWorkout() {
+      window.print();
+    }
+
+    function generateDeload() {
+      const planEl = document.getElementById('wp-result');
+      if (!planEl) return;
+      const deloadNote = document.createElement('div');
+      deloadNote.className = 'rounded-lg bg-amber-50 border border-amber-200 p-3 mb-4 text-sm text-amber-800';
+      deloadNote.innerHTML = '<strong>Deload Week:</strong> Reduce all weights by 40–50% and cut volume to 50–60% of normal. Focus on form and active recovery. This follows your 4–6 week training block.';
+      planEl.prepend(deloadNote);
+      document.getElementById('deload-btn')?.classList.add('hidden');
+    }
+    window.generateDeload = generateDeload;
+    window.printWorkout = printWorkout;
+
     document.getElementById('wp-gen').addEventListener('click', () => {
       const d = document.getElementById('wp-days').value;
       const g = document.getElementById('wp-goal').value;
@@ -257,7 +295,13 @@ import { siteConfig } from '~/config/site.config';
         for (const fg of fallbackGoals) { key = d + '-' + fg + '-' + e; plan = splits[key]; if (plan) break; }
         if (!plan) { key = '3-Hypertrophy-Gym'; plan = splits[key]; }
       }
-      renderPlan(plan);
+      renderPlan(plan, g);
+      // Show rest period note and action buttons
+      const restNote = document.getElementById('wp-rest-note');
+      if (restNote) { restNote.textContent = 'Rest period: ' + getRestPeriod(g); restNote.classList.remove('hidden'); }
+      document.getElementById('wp-actions')?.classList.remove('hidden');
+      // Reset deload btn
+      document.getElementById('deload-btn')?.classList.remove('hidden');
     });
 
     function calcPO() {
