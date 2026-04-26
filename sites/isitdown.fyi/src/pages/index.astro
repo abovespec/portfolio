@@ -86,7 +86,7 @@ const categories = [...new Set(services.map(s=>s.category))];
         </div>
         <div>
           <h3 class="font-semibold text-slate-900">URL Status Checker</h3>
-          <p class="mt-1 text-sm text-slate-600">Enter any URL to simulate a reachability check and see response details.</p>
+          <p class="mt-1 text-sm text-slate-600">Enter any URL for a real reachability check — we fetch the URL and report the HTTP status and response time.</p>
         </div>
         <div>
           <h3 class="font-semibold text-slate-900">Troubleshooting Guides</h3>
@@ -111,13 +111,29 @@ const categories = [...new Set(services.map(s=>s.category))];
   </div>
 
   <script is:inline>
-    document.getElementById('btn-check').addEventListener('click',()=>{
-      const url=document.getElementById('check-url').value.trim();
-      const res=document.getElementById('check-result');
-      res.classList.remove('hidden','bg-emerald-50','bg-red-50','border','border-emerald-100','border-red-100');
-      const isUp=Math.random()>0.1;
-      if(isUp){ res.classList.add('bg-emerald-50','border','border-emerald-100'); res.innerHTML='<p class="text-emerald-700 font-bold text-lg">'+url+' appears to be up</p><p class="text-sm text-emerald-600">Response time: '+(Math.floor(Math.random()*200+30))+'ms</p>'; }
-      else { res.classList.add('bg-red-50','border','border-red-100'); res.innerHTML='<p class="text-red-700 font-bold text-lg">'+url+' may be down</p><p class="text-sm text-red-600">We could not reach the server. Check your URL or try again.</p>'; }
+    document.getElementById('btn-check').addEventListener('click', async () => {
+      const urlInput = document.getElementById('check-url').value.trim();
+      if (!urlInput) return;
+      const res = document.getElementById('check-result');
+      res.classList.remove('hidden','bg-emerald-50','bg-red-50','border','border-emerald-100','border-red-100','bg-slate-50','border-slate-200');
+      res.classList.add('bg-slate-50','border','border-slate-200');
+      res.innerHTML = '<p class="text-slate-500">Checking ' + urlInput + '…</p>';
+      res.classList.remove('hidden');
+      try {
+        const data = await fetch('/api/check?url=' + encodeURIComponent(urlInput)).then(r => r.json());
+        res.classList.remove('bg-slate-50','border-slate-200');
+        if (data.up) {
+          res.classList.add('bg-emerald-50','border','border-emerald-100');
+          res.innerHTML = '<p class="text-emerald-700 font-bold text-lg">' + urlInput + ' is up</p><p class="text-sm text-emerald-600">' + (data.statusCode ? 'HTTP ' + data.statusCode + ' · ' : '') + data.responseTime + 'ms response time</p>';
+        } else {
+          res.classList.add('bg-red-50','border','border-red-100');
+          res.innerHTML = '<p class="text-red-700 font-bold text-lg">' + urlInput + ' may be down</p><p class="text-sm text-red-600">No response from the server. Check your URL or try again.</p>';
+        }
+      } catch {
+        res.classList.remove('bg-slate-50','border-slate-200');
+        res.classList.add('bg-red-50','border','border-red-100');
+        res.innerHTML = '<p class="text-red-700 font-bold text-lg">Check failed</p><p class="text-sm text-red-600">Could not reach the status checker. Please try again.</p>';
+      }
     });
 
     document.querySelectorAll('.filter-btn').forEach(btn=>{

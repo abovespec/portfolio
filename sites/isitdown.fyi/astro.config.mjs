@@ -1,5 +1,6 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import cloudflare from '@astrojs/cloudflare';
 import mdx from '@astrojs/mdx';
 import preact from '@astrojs/preact';
 import sitemap from '@astrojs/sitemap';
@@ -13,6 +14,7 @@ const siteUrl = `https://${siteConfig.identity.domain}`;
 export default defineConfig({
   site: siteUrl,
   output: 'static',
+  adapter: cloudflare(),
   prefetch: {
     defaultStrategy: 'viewport',
   },
