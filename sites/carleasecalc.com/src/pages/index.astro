@@ -27,6 +27,7 @@ import { siteConfig } from '~/config/site.config';
   <div class="mx-auto max-w-5xl">
     <div class="flex flex-wrap gap-2 justify-center mb-8">
       <button id="tab-lease" class="tab-btn px-4 py-2 rounded-full font-semibold text-sm bg-sky-600 text-white">Lease vs Buy</button>
+      <button id="tab-compare" class="tab-btn px-4 py-2 rounded-full font-semibold text-sm bg-slate-200 text-slate-700">Compare Vehicles</button>
       <button id="tab-tco" class="tab-btn px-4 py-2 rounded-full font-semibold text-sm bg-slate-200 text-slate-700">Total Cost</button>
       <button id="tab-fuel" class="tab-btn px-4 py-2 rounded-full font-semibold text-sm bg-slate-200 text-slate-700">Fuel Cost</button>
       <button id="tab-dep" class="tab-btn px-4 py-2 rounded-full font-semibold text-sm bg-slate-200 text-slate-700">Depreciation</button>
@@ -39,7 +40,11 @@ import { siteConfig } from '~/config/site.config';
         <div class="grid gap-4 sm:grid-cols-2">
           <label class="block"><span class="text-sm font-medium text-slate-700">Vehicle MSRP ($)</span><input id="l-msrp" type="number" value="45000" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
           <label class="block"><span class="text-sm font-medium text-slate-700">Lease term (months)</span><input id="l-term" type="number" value="36" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
-          <label class="block"><span class="text-sm font-medium text-slate-700">Money factor</span><input id="l-mf" type="number" value="0.0025" step="0.0001" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+          <label class="block">
+            <span class="text-sm font-medium text-slate-700">Money factor</span>
+            <input id="l-mf" type="number" value="0.0025" step="0.0001" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2">
+            <span id="l-mf-apr" class="mt-0.5 text-xs text-slate-400"></span>
+          </label>
           <label class="block"><span class="text-sm font-medium text-slate-700">Residual value (%)</span><input id="l-res" type="number" value="58" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
           <label class="block"><span class="text-sm font-medium text-slate-700">Down payment / cap reduction ($)</span><input id="l-down" type="number" value="3000" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
           <label class="block"><span class="text-sm font-medium text-slate-700">Buy interest rate (% APR)</span><input id="l-apr" type="number" value="5.9" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
@@ -105,6 +110,51 @@ import { siteConfig } from '~/config/site.config';
 
         <!-- Verdict banner -->
         <div id="lva-verdict" class="rounded-xl p-4 text-center text-sm font-semibold"></div>
+      </div>
+    </div>
+
+    <!-- Vehicle Comparison Card -->
+    <div id="panel-compare" class="calc-panel hidden">
+      <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+        <h2 class="text-xl font-semibold mb-4 text-slate-800">Compare Two Vehicles</h2>
+        <div class="grid gap-6 sm:grid-cols-2">
+          <!-- Vehicle A -->
+          <div class="rounded-lg border border-sky-200 bg-sky-50/30 p-4">
+            <p class="text-xs font-semibold uppercase text-sky-600 mb-3">Vehicle A</p>
+            <div class="space-y-3">
+              <label class="block"><span class="text-xs font-medium text-slate-700">MSRP ($)</span><input type="number" id="cmp-a-msrp" value="45000" class="mt-0.5 w-full rounded border border-slate-300 px-2 py-1.5 text-sm"></label>
+              <label class="block"><span class="text-xs font-medium text-slate-700">Residual (%)</span><input type="number" id="cmp-a-res" value="58" class="mt-0.5 w-full rounded border border-slate-300 px-2 py-1.5 text-sm"></label>
+              <label class="block"><span class="text-xs font-medium text-slate-700">Money factor</span><input type="number" id="cmp-a-mf" value="0.0025" step="0.0001" class="mt-0.5 w-full rounded border border-slate-300 px-2 py-1.5 text-sm"></label>
+              <label class="block"><span class="text-xs font-medium text-slate-700">Term (months)</span><input type="number" id="cmp-a-term" value="36" class="mt-0.5 w-full rounded border border-slate-300 px-2 py-1.5 text-sm"></label>
+              <label class="block"><span class="text-xs font-medium text-slate-700">Down payment ($)</span><input type="number" id="cmp-a-down" value="3000" class="mt-0.5 w-full rounded border border-slate-300 px-2 py-1.5 text-sm"></label>
+            </div>
+          </div>
+          <!-- Vehicle B -->
+          <div class="rounded-lg border border-emerald-200 bg-emerald-50/30 p-4">
+            <p class="text-xs font-semibold uppercase text-emerald-600 mb-3">Vehicle B</p>
+            <div class="space-y-3">
+              <label class="block"><span class="text-xs font-medium text-slate-700">MSRP ($)</span><input type="number" id="cmp-b-msrp" value="38000" class="mt-0.5 w-full rounded border border-slate-300 px-2 py-1.5 text-sm"></label>
+              <label class="block"><span class="text-xs font-medium text-slate-700">Residual (%)</span><input type="number" id="cmp-b-res" value="55" class="mt-0.5 w-full rounded border border-slate-300 px-2 py-1.5 text-sm"></label>
+              <label class="block"><span class="text-xs font-medium text-slate-700">Money factor</span><input type="number" id="cmp-b-mf" value="0.0020" step="0.0001" class="mt-0.5 w-full rounded border border-slate-300 px-2 py-1.5 text-sm"></label>
+              <label class="block"><span class="text-xs font-medium text-slate-700">Term (months)</span><input type="number" id="cmp-b-term" value="36" class="mt-0.5 w-full rounded border border-slate-300 px-2 py-1.5 text-sm"></label>
+              <label class="block"><span class="text-xs font-medium text-slate-700">Down payment ($)</span><input type="number" id="cmp-b-down" value="2000" class="mt-0.5 w-full rounded border border-slate-300 px-2 py-1.5 text-sm"></label>
+            </div>
+          </div>
+        </div>
+        <!-- Comparison table -->
+        <div class="mt-6 overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="bg-slate-50 border-b border-slate-200">
+                <th class="text-left py-2 px-3 font-semibold text-slate-600">Metric</th>
+                <th class="text-right py-2 px-3 font-semibold text-sky-600">Vehicle A</th>
+                <th class="text-right py-2 px-3 font-semibold text-emerald-600">Vehicle B</th>
+              </tr>
+            </thead>
+            <tbody id="cmp-table" class="divide-y divide-slate-100">
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
 
@@ -188,7 +238,7 @@ import { siteConfig } from '~/config/site.config';
     function val(id){ return parseFloat($(id).value) || 0; }
     var fmt = function(n){ return '$' + Math.round(n).toLocaleString(); };
 
-    const tabs=['lease','tco','fuel','dep'];
+    const tabs=['lease','compare','tco','fuel','dep'];
     tabs.forEach(t=>{
       $('tab-'+t).addEventListener('click',()=>{
         tabs.forEach(x=>{ $('panel-'+x).classList.add('hidden'); $('tab-'+x).classList.remove('bg-sky-600','text-white'); $('tab-'+x).classList.add('bg-slate-200','text-slate-700'); });
@@ -266,6 +316,57 @@ import { siteConfig } from '~/config/site.config';
     function calcTco(){ const price=val('t-price'), ins=val('t-ins'), fuel=val('t-fuel'), maint=val('t-maint'), reg=val('t-reg'), resale=val('t-resale'); const spent=price+(ins+fuel+maint+reg)*5; const net=spent-resale; $('t-out-spent').textContent='$'+spent.toLocaleString(); $('t-out-resale').textContent='$'+resale.toLocaleString(); $('t-out-net').textContent='$'+net.toLocaleString(); }
     function calcFuel(){ const miles=val('fuel-miles'), mpg=val('fuel-mpg'), price=val('fuel-price'); $('fuel-out').textContent='$'+((miles/mpg)*price).toFixed(0); }
     function calcDep(){ const price=val('d-price'); const rates={avg:0.15,steep:0.20,gentle:0.10}; const rate=rates[$('d-method').value]; let tbody=''; let v=price; for(let y=1;y<=5;y++){ const lost=v*rate; v-=lost; tbody+='<tr class="border-b border-slate-100"><td class="py-2">Year '+y+'</td><td class="py-2 text-right font-medium">$'+v.toFixed(0)+'</td><td class="py-2 text-right text-red-600">-$'+lost.toFixed(0)+'</td></tr>'; } $('d-table').innerHTML=tbody; }
+
+    // Money factor APR converter
+    function updateMFApr() {
+      const mf = parseFloat($('l-mf').value) || 0;
+      const apr = (mf * 2400).toFixed(2);
+      $('l-mf-apr').textContent = mf > 0 ? '≈ ' + apr + '% APR' : '';
+    }
+    $('l-mf').addEventListener('input', updateMFApr);
+    updateMFApr();
+
+    // Vehicle comparison
+    function calcLeaseSimple(msrp, residualPct, mf, months, downPayment) {
+      const residual = msrp * residualPct / 100;
+      const netCapCost = msrp - downPayment;
+      const depFee = (netCapCost - residual) / months;
+      const finFee = (netCapCost + residual) * mf;
+      const monthly = depFee + finFee;
+      return { monthly, residual, totalCost: monthly * months + downPayment };
+    }
+
+    function calcCompare() {
+      const a = calcLeaseSimple(
+        parseFloat($('cmp-a-msrp').value)||0,
+        parseFloat($('cmp-a-res').value)||0,
+        parseFloat($('cmp-a-mf').value)||0,
+        parseFloat($('cmp-a-term').value)||1,
+        parseFloat($('cmp-a-down').value)||0
+      );
+      const b = calcLeaseSimple(
+        parseFloat($('cmp-b-msrp').value)||0,
+        parseFloat($('cmp-b-res').value)||0,
+        parseFloat($('cmp-b-mf').value)||0,
+        parseFloat($('cmp-b-term').value)||1,
+        parseFloat($('cmp-b-down').value)||0
+      );
+      const rows = [
+        ['Monthly payment', fmt(a.monthly), fmt(b.monthly)],
+        ['Total cost (payments + down)', fmt(a.totalCost), fmt(b.totalCost)],
+        ['Residual value', fmt(a.residual), fmt(b.residual)],
+      ];
+      $('cmp-table').innerHTML = rows.map(([label, aVal, bVal]) =>
+        '<tr class="hover:bg-slate-50">' +
+          '<td class="py-2 px-3 text-slate-700">' + label + '</td>' +
+          '<td class="py-2 px-3 text-right font-semibold text-sky-700">' + aVal + '</td>' +
+          '<td class="py-2 px-3 text-right font-semibold text-emerald-700">' + bVal + '</td>' +
+        '</tr>'
+      ).join('');
+    }
+
+    ['cmp-a-msrp','cmp-a-res','cmp-a-mf','cmp-a-term','cmp-a-down','cmp-b-msrp','cmp-b-res','cmp-b-mf','cmp-b-term','cmp-b-down'].forEach(id=>$(id)?.addEventListener('input',calcCompare));
+    calcCompare();
 
     ['l-msrp','l-term','l-mf','l-res','l-down','l-apr','l-loan'].forEach(id=>$(id)?.addEventListener('input',calcLease));
     ['lva-acq','lva-disp','lva-buydown','lva-dep'].forEach(id=>$(id)?.addEventListener('input',calcLease));
