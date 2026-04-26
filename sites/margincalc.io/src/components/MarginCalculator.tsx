@@ -95,38 +95,180 @@ function BreakEvenTab() {
   const [fixed, setFixed]    = useState('5000');
   const [variable, setVar]   = useState('20');
   const [sellPrice, setSell] = useState('50');
+
+  // P2: Scenario comparison — second product
+  const [fixed2, setFixed2]     = useState('5000');
+  const [variable2, setVariable2] = useState('25');
+  const [sellPrice2, setSell2]   = useState('60');
+
+  // P2: Break-even chart
+  const [showBepChart, setShowBepChart] = useState(false);
+
   const r = useMemo(() => {
     const f = parseFloat(fixed) || 0;
     const v = parseFloat(variable) || 0;
     const s = parseFloat(sellPrice) || 0;
     if (s <= v) return null;
     const units = f / (s - v);
-    return { units: Math.ceil(units), revenue: Math.ceil(units) * s };
+    return { units: Math.ceil(units), revenue: Math.ceil(units) * s, fixedCosts: f, variableCostPerUnit: v, pricePerUnit: s };
   }, [fixed, variable, sellPrice]);
+
+  const r2 = useMemo(() => {
+    const f = parseFloat(fixed2) || 0;
+    const v = parseFloat(variable2) || 0;
+    const s = parseFloat(sellPrice2) || 0;
+    if (s <= v) return null;
+    const units = f / (s - v);
+    return { units: Math.ceil(units), revenue: Math.ceil(units) * s };
+  }, [fixed2, variable2, sellPrice2]);
+
+  const bepChartPoints = useMemo(() => {
+    if (!showBepChart || !r) return { revenue: '', cost: '' };
+    const fixedCost = r.fixedCosts;
+    const varCost = r.variableCostPerUnit;
+    const price = r.pricePerUnit;
+    const bepUnits = r.units;
+    const maxUnits = Math.ceil(bepUnits * 2.2);
+    const steps = 8;
+    const W = 400, H = 140, PAD = 12;
+    const maxRevenue = maxUnits * price;
+    const revPoints = Array.from({length:steps+1}, (_,i) => {
+      const u = (i/steps)*maxUnits;
+      const x = PAD + (i/steps)*(W-PAD*2);
+      const y = (H-PAD) - (u*price/maxRevenue)*(H-PAD*2);
+      return `${x.toFixed(1)},${y.toFixed(1)}`;
+    }).join(' ');
+    const costPoints = Array.from({length:steps+1}, (_,i) => {
+      const u = (i/steps)*maxUnits;
+      const x = PAD + (i/steps)*(W-PAD*2);
+      const totalCost = fixedCost + u*varCost;
+      const y = (H-PAD) - (totalCost/maxRevenue)*(H-PAD*2);
+      return `${x.toFixed(1)},${y.toFixed(1)}`;
+    }).join(' ');
+    return { revenue: revPoints, cost: costPoints };
+  }, [showBepChart, r]);
+
   return (
     <div class="space-y-4">
-      {([
-        { id: 'fixed', label: 'Fixed Costs', val: fixed, set: setFixed },
-        { id: 'var',   label: 'Variable Cost / Unit', val: variable, set: setVar },
-        { id: 'sell',  label: 'Selling Price / Unit', val: sellPrice, set: setSell },
-      ] as { id: string; label: string; val: string; set: (v: string) => void }[]).map(({ id, label, val, set }) => (
-        <div key={id}>
-          <label class="mb-1 block text-sm font-medium text-slate-700">{label}</label>
-          <div class="relative">
-            <span class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-xs text-slate-400">$</span>
-            <input type="number" min="0" step="1" value={val}
-              onInput={(e) => set((e.target as HTMLInputElement).value)}
-              class={`${inputCls} pl-6`} aria-label={label} />
-          </div>
+      {/* Scenario comparison - 2-column layout */}
+      <div class="grid grid-cols-2 gap-3">
+        {/* Scenario A */}
+        <div class="space-y-3">
+          <div class="text-xs font-semibold text-slate-500 uppercase tracking-wide">Scenario A</div>
+          {([
+            { id: 'fixed-a', label: 'Fixed Costs', val: fixed, set: setFixed },
+            { id: 'var-a',   label: 'Var. Cost / Unit', val: variable, set: setVar },
+            { id: 'sell-a',  label: 'Price / Unit', val: sellPrice, set: setSell },
+          ] as { id: string; label: string; val: string; set: (v: string) => void }[]).map(({ id, label, val, set }) => (
+            <div key={id}>
+              <label class="mb-0.5 block text-xs font-medium text-slate-600">{label}</label>
+              <div class="relative">
+                <span class="pointer-events-none absolute left-2 top-1/2 -translate-y-1/2 text-xs text-slate-400">$</span>
+                <input type="number" min="0" step="1" value={val}
+                  onInput={(e) => set((e.target as HTMLInputElement).value)}
+                  class="w-full rounded-lg border border-slate-300 pl-5 pr-2 py-1.5 text-xs focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand"
+                  aria-label={label} />
+              </div>
+            </div>
+          ))}
         </div>
-      ))}
-      {r ? (
-        <div role="status" aria-live="polite" class={resultCls}>
-          <div class="flex justify-between text-sm"><span class="text-slate-600">Break-Even Units</span><span class="font-bold text-slate-900">{r.units.toLocaleString()}</span></div>
-          <div class="flex justify-between text-sm"><span class="text-slate-600">Break-Even Revenue</span><span class="font-bold text-brand">{fmtUsd(r.revenue)}</span></div>
+        {/* Scenario B */}
+        <div class="space-y-3">
+          <div class="text-xs font-semibold text-slate-500 uppercase tracking-wide">Scenario B</div>
+          {([
+            { id: 'fixed-b', label: 'Fixed Costs', val: fixed2, set: setFixed2 },
+            { id: 'var-b',   label: 'Var. Cost / Unit', val: variable2, set: setVariable2 },
+            { id: 'sell-b',  label: 'Price / Unit', val: sellPrice2, set: setSell2 },
+          ] as { id: string; label: string; val: string; set: (v: string) => void }[]).map(({ id, label, val, set }) => (
+            <div key={id}>
+              <label class="mb-0.5 block text-xs font-medium text-slate-600">{label}</label>
+              <div class="relative">
+                <span class="pointer-events-none absolute left-2 top-1/2 -translate-y-1/2 text-xs text-slate-400">$</span>
+                <input type="number" min="0" step="1" value={val}
+                  onInput={(e) => set((e.target as HTMLInputElement).value)}
+                  class="w-full rounded-lg border border-slate-300 pl-5 pr-2 py-1.5 text-xs focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand"
+                  aria-label={label} />
+              </div>
+            </div>
+          ))}
         </div>
-      ) : (
-        <p class="text-xs text-red-600">Selling price must be greater than variable cost.</p>
+      </div>
+
+      {/* Side-by-side results */}
+      <div class="grid grid-cols-2 gap-3">
+        <div>
+          {r ? (
+            <div role="status" aria-live="polite" class={resultCls}>
+              <div class="text-xs font-semibold text-slate-500 mb-1">Scenario A</div>
+              <div class="flex justify-between text-sm"><span class="text-slate-600">BEP Units</span><span class="font-bold text-slate-900">{r.units.toLocaleString()}</span></div>
+              <div class="flex justify-between text-sm"><span class="text-slate-600">BEP Revenue</span><span class="font-bold text-brand">{fmtUsd(r.revenue)}</span></div>
+            </div>
+          ) : (
+            <p class="text-xs text-red-600">Price must exceed variable cost.</p>
+          )}
+        </div>
+        <div>
+          {r2 ? (
+            <div role="status" aria-live="polite" class={resultCls}>
+              <div class="text-xs font-semibold text-slate-500 mb-1">Scenario B</div>
+              <div class="flex justify-between text-sm"><span class="text-slate-600">BEP Units</span><span class="font-bold text-slate-900">{r2.units.toLocaleString()}</span></div>
+              <div class="flex justify-between text-sm"><span class="text-slate-600">BEP Revenue</span><span class="font-bold text-brand">{fmtUsd(r2.revenue)}</span></div>
+            </div>
+          ) : (
+            <p class="text-xs text-red-600">Price must exceed variable cost.</p>
+          )}
+        </div>
+      </div>
+
+      {/* P2: Break-even chart toggle */}
+      {r && (
+        <>
+          <button
+            type="button"
+            onClick={() => setShowBepChart((v) => !v)}
+            class={`w-full rounded-lg border px-3 py-2 text-sm font-medium transition ${
+              showBepChart
+                ? 'border-green-300 bg-green-50 text-green-700'
+                : 'border-slate-200 bg-slate-50 text-slate-600 hover:bg-slate-100'
+            }`}
+          >
+            {showBepChart ? 'Hide' : 'Show'} Break-Even Chart (Scenario A)
+          </button>
+
+          {showBepChart && bepChartPoints.revenue && (
+            <div class="rounded-lg border border-slate-200 bg-white p-3">
+              <div class="flex gap-4 text-[11px] text-slate-500 mb-2">
+                <span class="flex items-center gap-1">
+                  <span class="inline-block w-5 h-0.5 bg-green-500"></span>Revenue
+                </span>
+                <span class="flex items-center gap-1">
+                  <span class="inline-block w-5 h-0.5 bg-red-500"></span>Total Cost
+                </span>
+              </div>
+              <svg viewBox="0 0 400 140" class="w-full" style={{ height: '140px' }} aria-label="Break-even chart">
+                <polyline
+                  points={bepChartPoints.revenue}
+                  fill="none"
+                  stroke="#22c55e"
+                  stroke-width="2"
+                  stroke-linejoin="round"
+                  stroke-linecap="round"
+                />
+                <polyline
+                  points={bepChartPoints.cost}
+                  fill="none"
+                  stroke="#ef4444"
+                  stroke-width="2"
+                  stroke-linejoin="round"
+                  stroke-linecap="round"
+                />
+              </svg>
+              <p class="text-xs text-slate-400 mt-1 text-center">
+                Break-even at {r.units.toLocaleString()} units ({fmtUsd(r.revenue)})
+              </p>
+            </div>
+          )}
+        </>
       )}
     </div>
   );
