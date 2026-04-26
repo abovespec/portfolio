@@ -29,8 +29,16 @@ export default function PercentIncreaseCalculator() {
       <div role="status" aria-live="polite" class="space-y-2 rounded-xl border border-green-200 bg-green-50 p-4">
         <div class="flex justify-between text-sm"><span class="text-slate-600">Increase Amount</span><span class="font-semibold text-green-700 tabular-nums">+{result.increase.toLocaleString('en-US', { maximumFractionDigits: 4 })}</span></div>
         <div class="flex justify-between text-sm"><span class="text-slate-600">New Value</span><span class="text-2xl font-bold tabular-nums text-brand">{result.final.toLocaleString('en-US', { maximumFractionDigits: 4 })}</span></div>
+
+        {/* P2: Step-by-step explanation */}
+        <div class="mt-3 rounded-lg bg-slate-50 border border-slate-200 p-3 text-sm">
+          <p class="font-medium text-slate-700 mb-1">How it's calculated:</p>
+          <p class="text-slate-600 font-mono text-xs">
+            Increase = {start} &#215; {pct}/100 = {result.increase.toLocaleString('en-US', { maximumFractionDigits: 4 })}; New = {start} + {result.increase.toLocaleString('en-US', { maximumFractionDigits: 4 })} = {result.final.toLocaleString('en-US', { maximumFractionDigits: 4 })}
+          </p>
+        </div>
       </div>
-      <p class="text-xs text-slate-500">Formula: New = Original × (1 + Increase% ÷ 100)</p>
+      <p class="text-xs text-slate-500">Formula: New = Original &#215; (1 + Increase% &#247; 100)</p>
     </div>
   );
 }

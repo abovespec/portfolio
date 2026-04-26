@@ -28,9 +28,17 @@ export default function PercentDifferenceCalculator() {
         <div role="status" aria-live="polite" class="space-y-2 rounded-xl border border-brand/30 bg-yellow-50 p-4">
           <div class="flex justify-between text-sm"><span class="text-slate-600">Percent Difference</span><span class="text-2xl font-bold tabular-nums text-brand">{result.diff.toFixed(2)}%</span></div>
           <div class="flex justify-between text-sm text-slate-500"><span>Absolute Difference</span><span class="tabular-nums">{result.absDiff.toLocaleString('en-US', { maximumFractionDigits: 4 })}</span></div>
+
+          {/* P2: Step-by-step explanation */}
+          <div class="mt-3 rounded-lg bg-slate-50 border border-slate-200 p-3 text-sm">
+            <p class="font-medium text-slate-700 mb-1">How it's calculated:</p>
+            <p class="text-slate-600 font-mono text-xs">
+              |{a} &#8722; {b}| / ((|{a}| + |{b}|) / 2) &#215; 100 = {result.diff.toFixed(2)}%
+            </p>
+          </div>
         </div>
       )}
-      <p class="text-xs text-slate-500">Formula: |A − B| / ((|A| + |B|) / 2) × 100</p>
+      <p class="text-xs text-slate-500">Formula: |A &#8722; B| / ((|A| + |B|) / 2) &#215; 100</p>
     </div>
   );
 }

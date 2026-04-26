@@ -32,9 +32,17 @@ export default function PercentOffCalculator() {
         <div role="status" aria-live="polite" class="space-y-2 rounded-xl border border-brand/30 bg-yellow-50 p-4">
           <div class="flex justify-between text-sm"><span class="text-slate-600">You Save</span><span class="text-xl font-bold tabular-nums text-green-700">{fmtN(result.savings)}</span></div>
           <div class="flex justify-between text-sm"><span class="text-slate-600">Final Price</span><span class="text-2xl font-bold tabular-nums text-brand">{fmtN(result.finalPrice)}</span></div>
+
+          {/* P2: Step-by-step explanation */}
+          <div class="mt-3 rounded-lg bg-slate-50 border border-slate-200 p-3 text-sm">
+            <p class="font-medium text-slate-700 mb-1">How it's calculated:</p>
+            <p class="text-slate-600 font-mono text-xs">
+              Savings = {price} &#215; {off}/100 = {fmtN(result.savings)}; Final = {price} - {fmtN(result.savings)} = {fmtN(result.finalPrice)}
+            </p>
+          </div>
         </div>
       )}
-      <p class="text-xs text-slate-500">Formula: Final = Price × (1 − Discount% ÷ 100)</p>
+      <p class="text-xs text-slate-500">Formula: Final = Price &#215; (1 &#8722; Discount% &#247; 100)</p>
     </div>
   );
 }

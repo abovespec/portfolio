@@ -36,6 +36,33 @@ export default function PercentOfCalculator() {
             <span>Remainder</span>
             <span class="tabular-nums">{result.remainder.toLocaleString('en-US', { maximumFractionDigits: 4 })}</span>
           </div>
+
+          {/* P2: Visual proportion bar */}
+          <div class="mt-3">
+            <div class="h-3 w-full rounded-full overflow-hidden bg-slate-200">
+              <div
+                class="h-full bg-brand rounded-full transition-all duration-300"
+                style={{ width: `${Math.min(Math.max(parseFloat(pct)||0, 0), 100)}%` }}
+              />
+            </div>
+            <p class="text-xs text-slate-500 mt-1">{pct}% of the total</p>
+          </div>
+
+          {/* P2: Step-by-step explanation */}
+          <div class="mt-3 rounded-lg bg-slate-50 border border-slate-200 p-3 text-sm">
+            <p class="font-medium text-slate-700 mb-1">How it's calculated:</p>
+            <p class="text-slate-600 font-mono text-xs">
+              {pct}% of {total} = {pct}/100 &#215; {total} = {result.value.toFixed(4)}
+            </p>
+          </div>
+
+          {/* P3: Reverse calculation prompt */}
+          {parseFloat(pct) > 0 && parseFloat(total) > 0 && (
+            <p class="mt-2 text-xs text-slate-500">
+              Flip it: {result.value.toFixed(2)} is {pct}% of {total} &#8594;&#160;
+              {result.value.toFixed(2)} is what % of {total}? &#8594; {pct}%
+            </p>
+          )}
         </div>
       )}
       <p class="text-xs text-slate-500">Formula: Result = (Percentage ÷ 100) × Number</p>

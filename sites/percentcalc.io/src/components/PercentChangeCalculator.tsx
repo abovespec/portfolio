@@ -33,11 +33,19 @@ export default function PercentChangeCalculator() {
             </span>
           </div>
           <p class="text-xs text-slate-500">
-            {result.isIncrease ? '↑ Increase' : '↓ Decrease'} of {Math.abs(result.change).toFixed(2)}%
+            {result.isIncrease ? '&#8593; Increase' : '&#8595; Decrease'} of {Math.abs(result.change).toFixed(2)}%
           </p>
+
+          {/* P2: Step-by-step explanation */}
+          <div class="mt-3 rounded-lg bg-slate-50 border border-slate-200 p-3 text-sm">
+            <p class="font-medium text-slate-700 mb-1">How it's calculated:</p>
+            <p class="text-slate-600 font-mono text-xs">
+              Change = (({to} - {from}) / |{from}|) &#215; 100 = {result.change.toFixed(2)}%
+            </p>
+          </div>
         </div>
       )}
-      <p class="text-xs text-slate-500">Formula: ((New − Original) / |Original|) × 100</p>
+      <p class="text-xs text-slate-500">Formula: ((New &#8722; Original) / |Original|) &#215; 100</p>
     </div>
   );
 }
