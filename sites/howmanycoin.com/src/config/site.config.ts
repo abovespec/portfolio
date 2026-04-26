@@ -103,7 +103,7 @@ export const siteConfig: SiteConfig = {
     twitterHandle: '',
   },
   features: {
-    hasBlog: false,
+    hasBlog: true,
     hasTool: false,
     hasGame: false,
     hasSponsoredIntake: true,
