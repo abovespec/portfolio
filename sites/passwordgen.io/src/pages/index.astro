@@ -31,7 +31,13 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
     <!-- Toolbar -->
     <div class="flex flex-wrap gap-2 mb-3">
       <button id="btn-generate" class="rounded-md bg-red-700 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-red-800 transition-colors">Generate</button>
+      <div class="flex items-center gap-1.5 rounded-md border border-slate-300 bg-white px-2 py-1">
+        <label class="text-xs font-medium text-slate-600">Mode:</label>
+        <button id="mode-random" onclick="setPasswordMode('random')" class="text-xs px-2 py-0.5 rounded bg-red-600 text-white font-medium">Random</button>
+        <button id="mode-pronounceable" onclick="setPasswordMode('pronounceable')" class="text-xs px-2 py-0.5 rounded text-slate-600 hover:bg-slate-100 font-medium">Pronounceable</button>
+      </div>
       <div class="flex-1"></div>
+      <button id="btn-copy-all" class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Copy All</button>
       <button id="btn-copy" class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Copy</button>
     </div>
 
@@ -288,6 +294,45 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
     var WORDS = ['apple', 'brave', 'cloud', 'dance', 'eagle', 'flame', 'grace', 'heart', 'island', 'jungle', 'kite', 'lemon', 'music', 'noble', 'ocean', 'pizza', 'quiet', 'river', 'storm', 'tiger', 'umbrella', 'violet', 'water', 'xray', 'yacht', 'zebra', 'amber', 'blaze', 'crisp', 'drift', 'ember', 'frost', 'globe', 'haven', 'ivory', 'jewel', 'karma', 'lunar', 'maple', 'night', 'orbit', 'pearl', 'quest', 'ridge', 'solar', 'tower', 'ultra', 'vista', 'winds', 'xenon', 'yield', 'zingy', 'angel', 'blade', 'cedar', 'daisy', 'earth', 'fairy', 'giant', 'honey', 'index', 'joker', 'kudos', 'laser', 'mango', 'nexus', 'ozone', 'pixel', 'quartz', 'raven', 'sigma', 'topaz', 'unity', 'vapor', 'waltz', 'xenon', 'young', 'zesty', 'arrow', 'beach', 'candy', 'delta', 'equal', 'fancy', 'gamma', 'happy', 'inner', 'jazzy', 'kings', 'light', 'magic', 'north', 'omega', 'plumb', 'queen', 'royal', 'swift', 'truth', 'upper', 'valid', 'whirl', 'extra', 'yards'];
 
     var currentTab = 'password';
+    var passwordMode = 'random';
+
+    var CONSONANTS = 'bcdfghjklmnprstvwxyz';
+    var VOWELS = 'aeiou';
+
+    function generatePronounceable(length) {
+      var pwd = '';
+      for (var i = 0; i < Math.max(length - 1, 4); i++) {
+        pwd += i % 2 === 0 ? CONSONANTS[Math.floor(Math.random() * CONSONANTS.length)]
+                           : VOWELS[Math.floor(Math.random() * VOWELS.length)];
+      }
+      pwd = pwd.charAt(0).toUpperCase() + pwd.slice(1);
+      pwd += Math.floor(Math.random() * 10);
+      return pwd.slice(0, length);
+    }
+
+    function setPasswordMode(mode) {
+      passwordMode = mode;
+      if (mode === 'random') {
+        document.getElementById('mode-random').className = 'text-xs px-2 py-0.5 rounded bg-red-600 text-white font-medium';
+        document.getElementById('mode-pronounceable').className = 'text-xs px-2 py-0.5 rounded text-slate-600 hover:bg-slate-100 font-medium';
+      } else {
+        document.getElementById('mode-pronounceable').className = 'text-xs px-2 py-0.5 rounded bg-red-600 text-white font-medium';
+        document.getElementById('mode-random').className = 'text-xs px-2 py-0.5 rounded text-slate-600 hover:bg-slate-100 font-medium';
+      }
+      generate();
+    }
+
+    function copyAllPasswords() {
+      var val = document.getElementById('pwd-output').value;
+      if (!val) { showStatus('Nothing to copy yet', 'info'); return; }
+      navigator.clipboard.writeText(val).then(function() {
+        showStatus('All passwords copied', 'success');
+      }, function() {
+        document.getElementById('pwd-output').select();
+        document.execCommand('copy');
+        showStatus('Copied', 'success');
+      });
+    }
 
     // Tab switching
     document.getElementById('tab-password').addEventListener('click', function() {
@@ -371,15 +416,22 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
     }
 
     function generate() {
-      var pool = getPool();
-      if (!pool) { showStatus('Select at least one character class', 'error'); return; }
       var length = parseInt(document.getElementById('length-range').value);
       var count = parseInt(document.getElementById('count-select').value);
       var lines = [];
-      for (var i = 0; i < count; i++) lines.push(generateOne(length, pool));
-      document.getElementById('pwd-output').value = lines.join('\n');
-      updateStrength(lines[0], pool.length);
-      showStatus('Generated ' + count + ' password' + (count > 1 ? 's' : ''), 'success');
+      if (passwordMode === 'pronounceable') {
+        for (var i = 0; i < count; i++) lines.push(generatePronounceable(length));
+        document.getElementById('pwd-output').value = lines.join('\n');
+        var bits = length * Math.log2(26);
+        applyStrength(bits, 'strength-bar', 'strength-label', 'strength-info');
+      } else {
+        var pool = getPool();
+        if (!pool) { showStatus('Select at least one character class', 'error'); return; }
+        for (var i = 0; i < count; i++) lines.push(generateOne(length, pool));
+        document.getElementById('pwd-output').value = lines.join('\n');
+        updateStrength(lines[0], pool.length);
+      }
+      showStatus('Generated ' + count + ' password' + (count > 1 ? 's' : '') + (passwordMode === 'pronounceable' ? ' (pronounceable)' : ''), 'success');
     }
 
     function generatePassphrase() {
@@ -424,6 +476,7 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
     });
 
     document.getElementById('btn-generate').addEventListener('click', generate);
+    document.getElementById('btn-copy-all').addEventListener('click', copyAllPasswords);
 
     document.getElementById('btn-copy').addEventListener('click', function() {
       var val = document.getElementById('pwd-output').value;
