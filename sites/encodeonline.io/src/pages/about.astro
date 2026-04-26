@@ -1,0 +1,12 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { siteConfig } from '~/config/site.config';
+---
+<BaseLayout title="About" description={`About ${siteConfig.identity.name}`}>
+  <h1 class="text-4xl font-bold">About {siteConfig.identity.name}</h1>
+  <p class="mt-4 text-slate-700">
+    Replace this placeholder with the site's editorial mission, team bios,
+    review methodology, and sourcing standards. Authoritative About pages
+    directly support E-E-A-T.
+  </p>
+</BaseLayout>

@@ -1,0 +1,43 @@
+---
+// Minimal first-party cookie consent banner.
+// - No external scripts / no third-party deps
+// - Stores decision in localStorage under `cookie-consent`
+// - Dispatches `cookie-consent-changed` on window after decision, so analytics
+//   plug-ins in BaseLayout can gate loading on consent.
+---
+<div
+  id="cookie-banner"
+  role="dialog"
+  aria-live="polite"
+  aria-label="Cookie consent"
+  hidden
+  class="fixed inset-x-4 bottom-4 z-50 mx-auto max-w-2xl rounded-lg border border-slate-200 bg-white p-4 shadow-lg"
+>
+  <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+    <p class="text-sm text-slate-700">
+      We use cookies to improve your experience and measure site usage. See our
+      <a href="/privacy/" class="underline">privacy policy</a>.
+    </p>
+    <div class="flex gap-2">
+      <button type="button" data-consent="declined" class="rounded border border-slate-300 px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-100">Decline</button>
+      <button type="button" data-consent="accepted" class="rounded bg-slate-900 px-3 py-1.5 text-sm font-medium text-white hover:bg-slate-800">Accept</button>
+    </div>
+  </div>
+</div>
+<script>
+  (() => {
+    const KEY = 'cookie-consent';
+    const banner = document.getElementById('cookie-banner');
+    if (!banner) return;
+    const existing = localStorage.getItem(KEY);
+    if (!existing) banner.hidden = false;
+    banner.querySelectorAll<HTMLButtonElement>('button[data-consent]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const value = btn.dataset.consent ?? 'declined';
+        localStorage.setItem(KEY, value);
+        banner.hidden = true;
+        window.dispatchEvent(new CustomEvent('cookie-consent-changed', { detail: value }));
+      });
+    });
+  })();
+</script>

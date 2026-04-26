@@ -1,0 +1,35 @@
+---
+import ToolLayout from '~/layouts/ToolLayout.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+import { siteConfig } from '~/config/site.config';
+
+export async function getStaticPaths() {
+  if (!siteConfig.features.hasTool) return [];
+  const tools = await getCollection('tools', ({ data }) => !data.draft);
+  return tools.map((tool) => ({
+    params: { slug: tool.data.urlSlug },
+    props: { tool },
+  }));
+}
+
+interface Props { tool: CollectionEntry<'tools'> }
+const { tool } = Astro.props;
+const { Content } = await tool.render();
+const s = tool.data.schema;
+---
+<ToolLayout
+  title={tool.data.title}
+  description={tool.data.description}
+  slug={tool.data.urlSlug}
+  applicationCategory={s.applicationCategory}
+  operatingSystem={s.operatingSystem}
+  price={s.price}
+  priceCurrency={s.priceCurrency}
+  ratingValue={s.ratingValue}
+  ratingCount={s.ratingCount}
+>
+  <div slot="tool" class="rounded border border-dashed border-slate-300 bg-white p-6 text-center text-sm text-slate-500">
+    Tool UI goes here. Mount a Preact island for the interactive component.
+  </div>
+  <Content />
+</ToolLayout>

@@ -1,0 +1,149 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { siteConfig } from '~/config/site.config';
+---
+<BaseLayout title="Best Time Tracking 2025 | PickTheStack" description="Compare time tracking apps for freelancers, agencies, and remote teams. Side-by-side comparisons, pricing, and an interactive quiz to find your perfect tool.">
+  <section class="py-10 text-center">
+    <h1 class="text-4xl font-bold tracking-tight" style="color:{siteConfig.branding.themeColor}">Best Time Tracking</h1>
+    <p class="mx-auto mt-3 max-w-2xl text-lg text-slate-600">Compare time tracking apps for freelancers, agencies, and remote teams. Compare features, pricing, and find your fit with our decision quiz.</p>
+  </section>
+
+  <div class="mx-auto max-w-6xl px-4">
+    <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm mb-8">
+      <h2 class="text-xl font-semibold mb-4 text-slate-800">Time Tracking Comparison Table</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-slate-200">
+              <th class="text-left py-2 px-3 font-semibold text-slate-700">Feature</th>
+              <th class="text-center py-2 px-3 font-semibold text-indigo-700">Toggl Track</th>
+              <th class="text-center py-2 px-3 font-semibold text-indigo-700">Clockify</th>
+              <th class="text-center py-2 px-3 font-semibold text-indigo-700">Harvest</th>
+              <th class="text-center py-2 px-3 font-semibold text-indigo-700">Hubstaff</th>
+              <th class="text-center py-2 px-3 font-semibold text-indigo-700">Time Doctor</th>
+            </tr>
+          </thead>
+          <tbody class="text-slate-600">
+            <tr class="border-b border-slate-100"><td class="py-2 px-3">Free plan</td><td class="text-center">Yes (5 users)</td><td class="text-center">Yes (unlimited)</td><td class="text-center">Yes (1 seat, 2 projects)</td><td class="text-center">Yes (1 user)</td><td class="text-center">14-day trial</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">Starting price</td><td class="text-center">$9/mo</td><td class="text-center">$3.99/mo</td><td class="text-center">$10.80/mo</td><td class="text-center">$7/mo</td><td class="text-center">$7/mo</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">Best for</td><td class="text-center">Simplicity</td><td class="text-center">Free unlimited</td><td class="text-center">Invoicing linked</td><td class="text-center">Employee monitoring</td><td class="text-center">Productivity insights</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">G2 score</td><td class="text-center">4.6</td><td class="text-center">4.7</td><td class="text-center">4.3</td><td class="text-center">4.3</td><td class="text-center">4.4</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">Timer</td><td class="text-center">Yes</td><td class="text-center">Yes</td><td class="text-center">Yes</td><td class="text-center">Yes</td><td class="text-center">Yes</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">Manual entry</td><td class="text-center">Yes</td><td class="text-center">Yes</td><td class="text-center">Yes</td><td class="text-center">Yes</td><td class="text-center">Yes</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">Reporting</td><td class="text-center">Good</td><td class="text-center">Good</td><td class="text-center">Excellent</td><td class="text-center">Good</td><td class="text-center">Good</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">Invoicing</td><td class="text-center">No</td><td class="text-center">Yes</td><td class="text-center">Built-in</td><td class="text-center">Yes</td><td class="text-center">Yes</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">Integrations</td><td class="text-center">100+</td><td class="text-center">80+</td><td class="text-center">50+</td><td class="text-center">30+</td><td class="text-center">60+</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">Offline</td><td class="text-center">Yes</td><td class="text-center">Yes</td><td class="text-center">Yes</td><td class="text-center">Partial</td><td class="text-center">No</td></tr>
+
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-3 text-xs text-slate-400">Prices and features updated 2025. Click tool names to visit their site (affiliate links where available).</p>
+    </div>
+
+    <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm mb-8">
+      <h2 class="text-xl font-semibold mb-4 text-slate-800">Decision Quiz: Find Your Time Tracking</h2>
+      <div id="quiz-container">
+        <div id="q1" class="quiz-step ">
+          <p class="font-medium text-slate-800 mb-3">1. Need completely free for unlimited users?</p>
+          <div class="flex flex-wrap gap-2">
+            <button class="quiz-btn px-4 py-2 rounded-lg bg-slate-100 hover:bg-indigo-100 text-slate-700" data-next="q2" data-score="clockify:3">Yes</button>
+            <button class="quiz-btn px-4 py-2 rounded-lg bg-slate-100 hover:bg-indigo-100 text-slate-700" data-next="q2" data-score="toggl:2,harvest:1,hubstaff:1,time doctor:1">No</button>
+          </div>
+        </div>
+        <div id="q2" class="quiz-step hidden">
+          <p class="font-medium text-slate-800 mb-3">2. Do you bill clients directly from tracked time?</p>
+          <div class="flex flex-wrap gap-2">
+            <button class="quiz-btn px-4 py-2 rounded-lg bg-slate-100 hover:bg-indigo-100 text-slate-700" data-next="q3" data-score="harvest:3,clockify:2">Yes</button>
+            <button class="quiz-btn px-4 py-2 rounded-lg bg-slate-100 hover:bg-indigo-100 text-slate-700" data-next="q3" data-score="toggl:2,hubstaff:1,time doctor:1">No</button>
+          </div>
+        </div>
+        <div id="q3" class="quiz-step hidden">
+          <p class="font-medium text-slate-800 mb-3">3. Need screenshots / activity monitoring?</p>
+          <div class="flex flex-wrap gap-2">
+            <button class="quiz-btn px-4 py-2 rounded-lg bg-slate-100 hover:bg-indigo-100 text-slate-700" data-next="q4" data-score="hubstaff:3,time doctor:3">Yes</button>
+            <button class="quiz-btn px-4 py-2 rounded-lg bg-slate-100 hover:bg-indigo-100 text-slate-700" data-next="q4" data-score="toggl:1,clockify:1,harvest:1">No</button>
+          </div>
+        </div>
+        <div id="q4" class="quiz-step hidden">
+          <p class="font-medium text-slate-800 mb-3">4. Want the simplest, most intuitive UI?</p>
+          <div class="flex flex-wrap gap-2">
+            <button class="quiz-btn px-4 py-2 rounded-lg bg-slate-100 hover:bg-indigo-100 text-slate-700" data-next="result" data-score="toggl:3">Yes</button>
+            <button class="quiz-btn px-4 py-2 rounded-lg bg-slate-100 hover:bg-indigo-100 text-slate-700" data-next="result" data-score="clockify:2,harvest:1,hubstaff:1,time doctor:1">No</button>
+          </div>
+        </div>
+        <div id="result" class="quiz-step hidden">
+          <h3 class="text-lg font-semibold text-slate-800 mb-2">Recommended for you:</h3>
+          <div id="result-card" class="rounded-lg bg-indigo-50 border border-indigo-100 p-4"></div>
+          <button id="quiz-restart" class="mt-4 px-4 py-2 rounded-lg bg-indigo-600 text-white text-sm">Start over</button>
+        </div>
+      </div>
+    </div>
+
+    <section class="my-12">
+      <h2 class="text-2xl font-semibold mb-4 text-slate-800">Top Picks by Use Case</h2>
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <a href="#" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-indigo-400 transition">
+          <h3 class="font-semibold text-slate-900">Toggl Track</h3>
+          <p class="mt-1 text-sm text-slate-600">Best for: Simplicity — Starting at $9/mo</p>
+          <p class="mt-2 text-xs text-slate-400">Yes (5 users) | G2: 4.6</p>
+        </a>
+        <a href="#" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-indigo-400 transition">
+          <h3 class="font-semibold text-slate-900">Clockify</h3>
+          <p class="mt-1 text-sm text-slate-600">Best for: Free unlimited — Starting at $3.99/mo</p>
+          <p class="mt-2 text-xs text-slate-400">Yes (unlimited) | G2: 4.7</p>
+        </a>
+        <a href="#" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-indigo-400 transition">
+          <h3 class="font-semibold text-slate-900">Harvest</h3>
+          <p class="mt-1 text-sm text-slate-600">Best for: Invoicing linked — Starting at $10.80/mo</p>
+          <p class="mt-2 text-xs text-slate-400">Yes (1 seat, 2 projects) | G2: 4.3</p>
+        </a>
+        <a href="#" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-indigo-400 transition">
+          <h3 class="font-semibold text-slate-900">Hubstaff</h3>
+          <p class="mt-1 text-sm text-slate-600">Best for: Employee monitoring — Starting at $7/mo</p>
+          <p class="mt-2 text-xs text-slate-400">Yes (1 user) | G2: 4.3</p>
+        </a>
+        <a href="#" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-indigo-400 transition">
+          <h3 class="font-semibold text-slate-900">Time Doctor</h3>
+          <p class="mt-1 text-sm text-slate-600">Best for: Productivity insights — Starting at $7/mo</p>
+          <p class="mt-2 text-xs text-slate-400">14-day trial | G2: 4.4</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="my-12">
+      <h2 class="text-2xl font-semibold mb-4 text-slate-800">Related Keywords</h2>
+      <div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-sm">best time tracking software</span><span class="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-sm">toggl vs clockify</span><span class="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-sm">free time tracking</span><span class="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-sm">time tracking for freelancers</span><span class="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-sm">employee time tracking</span>      </div>
+    </section>
+  </div>
+
+  <script is:inline>
+    const scores = { toggltrack:0, clockify:0, harvest:0, hubstaff:0, timedoctor:0 };
+    const names = { toggltrack:"Toggl Track", clockify:"Clockify", harvest:"Harvest", hubstaff:"Hubstaff", timedoctor:"Time Doctor" };
+    const reasons = { toggltrack:"Simplicity", clockify:"Free unlimited", harvest:"Invoicing linked", hubstaff:"Employee monitoring", timedoctor:"Productivity insights" };
+    document.querySelectorAll('.quiz-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const next = btn.dataset.next;
+        const delta = btn.dataset.score;
+        if (delta) {
+          delta.split(',').forEach(part => {
+            const [k,v] = part.split(':');
+            scores[k] += parseInt(v);
+          });
+        }
+        document.querySelectorAll('.quiz-step').forEach(s => s.classList.add('hidden'));
+        if (next === 'result') {
+          const winner = Object.entries(scores).sort((a,b) => b[1]-a[1])[0];
+          document.getElementById('result-card').innerHTML = '<p class="text-2xl font-bold text-indigo-700">' + names[winner[0]] + '</p><p class="mt-1 text-slate-700">Best for: ' + reasons[winner[0]] + '</p>';
+        }
+        document.getElementById(next).classList.remove('hidden');
+      });
+    });
+    document.getElementById('quiz-restart')?.addEventListener('click', () => {
+      Object.keys(scores).forEach(k => scores[k]=0);
+      document.querySelectorAll('.quiz-step').forEach(s => s.classList.add('hidden'));
+      document.getElementById('q1').classList.remove('hidden');
+    });
+  </script>
+</BaseLayout>

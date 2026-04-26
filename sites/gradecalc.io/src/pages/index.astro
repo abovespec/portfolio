@@ -1,0 +1,84 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { siteConfig } from '~/config/site.config';
+---
+<BaseLayout title={siteConfig.identity.name} description={siteConfig.identity.description}>
+  <section class="py-10 text-center">
+    <h1 class="text-4xl font-bold tracking-tight" style={`color:${siteConfig.branding.themeColor}`}>GradeCalc</h1>
+    <p class="mx-auto mt-3 max-w-2xl text-lg text-slate-600">GPA calculator, grade predictor, study schedule generator, and academic planning tools for students.</p>
+  </section>
+  <div class="mx-auto max-w-5xl">
+    <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm mb-8">
+      <h2 class="text-xl font-semibold mb-4 text-slate-800">GPA Calculator</h2>
+      <div class="grid gap-3 sm:grid-cols-4 mb-3 text-sm font-medium text-slate-500">
+        <div>Course name</div><div>Credits</div><div>Grade</div><div></div>
+      </div>
+      <div id="gpa-lines" class="space-y-2"></div>
+      <button id="gpa-add" class="mt-2 text-sm text-violet-600 hover:text-violet-800 font-medium">+ Add course</button>
+      <div class="mt-4 grid gap-4 sm:grid-cols-3">
+        <div class="rounded-lg bg-slate-50 p-4 text-center"><p class="text-xs uppercase text-slate-500">Total credits</p><p id="gpa-out-credits" class="text-xl font-bold text-slate-800">12</p></div>
+        <div class="rounded-lg bg-slate-50 p-4 text-center"><p class="text-xs uppercase text-slate-500">Grade points</p><p id="gpa-out-points" class="text-xl font-bold text-slate-800">36</p></div>
+        <div class="rounded-lg bg-violet-50 p-4 text-center border border-violet-100"><p class="text-xs uppercase text-violet-600">GPA</p><p id="gpa-out" class="text-xl font-bold text-violet-700">3.00</p></div>
+      </div>
+    </div>
+
+    <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm mb-8">
+      <h2 class="text-xl font-semibold mb-4 text-slate-800">Grade Predictor: What Do I Need?</h2>
+      <div class="grid gap-4 sm:grid-cols-3">
+        <label class="block"><span class="text-sm font-medium text-slate-700">Current grade (%)</span><input id="gp-cur" type="number" value="78" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+        <label class="block"><span class="text-sm font-medium text-slate-700">Final exam weight (%)</span><input id="gp-weight" type="number" value="30" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+        <label class="block"><span class="text-sm font-medium text-slate-700">Target grade (%)</span><input id="gp-target" type="number" value="85" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+      </div>
+      <div class="mt-4 rounded-lg bg-violet-50 p-4 text-center border border-violet-100">
+        <p class="text-xs uppercase text-violet-600">Score needed on final</p>
+        <p id="gp-out" class="text-2xl font-bold text-violet-700">101.3%</p>
+      </div>
+    </div>
+
+    <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm mb-8">
+      <h2 class="text-xl font-semibold mb-4 text-slate-800">Study Schedule Generator</h2>
+      <div class="flex flex-wrap gap-3 mb-4">
+        <label class="block"><span class="text-sm font-medium text-slate-700">Exam date</span><input id="ss-date" type="date" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+        <label class="block"><span class="text-sm font-medium text-slate-700">Topics to cover</span><input id="ss-topics" type="number" value="8" class="mt-1 w-24 rounded-lg border border-slate-300 px-3 py-2"></label>
+        <label class="block"><span class="text-sm font-medium text-slate-700">Hours per day</span><input id="ss-hours" type="number" value="3" class="mt-1 w-24 rounded-lg border border-slate-300 px-3 py-2"></label>
+      </div>
+      <button id="ss-gen" class="rounded-lg bg-violet-600 px-5 py-2 text-white font-semibold hover:bg-violet-700">Generate Schedule</button>
+      <div id="ss-result" class="mt-4 space-y-2"></div>
+    </div>
+
+    <section class="my-12">
+      <h2 class="text-2xl font-semibold mb-4 text-slate-800">Student Guides</h2>
+      <div class="grid gap-4 sm:grid-cols-2">
+        <a href="/blog/how-to-calculate-gpa/" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-violet-400"><h3 class="font-semibold text-slate-900">How to Calculate Your GPA</h3><p class="mt-1 text-sm text-slate-600">Weighted vs unweighted, plus/minus grades, and how AP/honors affects your GPA.</p></a>
+        <a href="/blog/final-exam-strategy/" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-violet-400"><h3 class="font-semibold text-slate-900">Final Exam Study Strategy</h3><p class="mt-1 text-sm text-slate-600">Spaced repetition, active recall, and how to schedule the last two weeks before exams.</p></a>
+        <a href="/blog/best-note-taking-apps/" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-violet-400"><h3 class="font-semibold text-slate-900">Best Note-Taking Apps for Students</h3><p class="mt-1 text-sm text-slate-600">Notion, Obsidian, OneNote, and GoodNotes compared for different learning styles.</p></a>
+        <a href="/blog/scholarship-search-tips/" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-violet-400"><h3 class="font-semibold text-slate-900">Scholarship Search Tips</h3><p class="mt-1 text-sm text-slate-600">Where to find unclaimed scholarships and how to write essays that win.</p></a>
+      </div>
+    </section>
+  </div>
+  <script is:inline>
+    function $(id){ return document.getElementById(id); }
+    function val(id){ return parseFloat($(id).value)||0; }
+    const gradeMap={'A+':4.0,'A':4.0,'A-':3.7,'B+':3.3,'B':3.0,'B-':2.7,'C+':2.3,'C':2.0,'C-':1.7,'D+':1.3,'D':1.0,'F':0};
+    let gpaCount=0;
+    function addGPA(name,credits,grade){ gpaCount++; const div=document.createElement('div'); div.className='grid gap-2 sm:grid-cols-4 items-center'; div.innerHTML='<input type="text" placeholder="Course" class="rounded-lg border border-slate-300 px-3 py-2 text-sm" value="'+(name||'')+'"><input type="number" placeholder="Credits" class="rounded-lg border border-slate-300 px-3 py-2 text-sm gpa-cred" value="'+(credits||'')+'"><select class="rounded-lg border border-slate-300 px-3 py-2 text-sm gpa-grade"><option>A</option><option>A-</option><option>B+</option><option selected>B</option><option>B-</option><option>C+</option><option>C</option><option>C-</option><option>D</option><option>F</option></select><button class="text-red-500 text-sm remove-gpa">&times;</button>'; $('gpa-lines').appendChild(div); div.querySelector('.remove-gpa').addEventListener('click',()=>{div.remove();calcGPA();}); div.querySelectorAll('input,select').forEach(i=>i.addEventListener('input',calcGPA)); if(grade){ div.querySelector('.gpa-grade').value=grade; } }
+    addGPA('Math',3,'B'); addGPA('English',3,'A-'); addGPA('History',3,'B+'); addGPA('Science',3,'B');
+    function calcGPA(){ let cred=0,pts=0; document.querySelectorAll('#gpa-lines > div').forEach(row=>{ const c=parseFloat(row.querySelector('.gpa-cred').value)||0; const g=row.querySelector('.gpa-grade').value; const p=(gradeMap[g]||0)*c; cred+=c; pts+=p; }); $('gpa-out-credits').textContent=cred; $('gpa-out-points').textContent=pts.toFixed(1); $('gpa-out').textContent=cred?(pts/cred).toFixed(2):'0.00'; }
+    $('gpa-add').addEventListener('click',()=>addGPA('',3,'B'));
+    calcGPA();
+    function calcGP(){ const cur=val('gp-cur'), w=val('gp-weight'), t=val('gp-target'); const need=(t-cur*(1-w/100))/(w/100); $('gp-out').textContent=need.toFixed(1)+'%'; }
+    ['gp-cur','gp-weight','gp-target'].forEach(id=>$(id)?.addEventListener('input',calcGP));
+    calcGP();
+    const today=new Date(); const twoWeeks=new Date(); twoWeeks.setDate(today.getDate()+14);
+    $('ss-date').value=twoWeeks.toISOString().split('T')[0];
+    $('ss-gen').addEventListener('click',()=>{
+      const topics=val('ss-topics'); const hours=val('ss-hours'); const dateStr=$('ss-date').value;
+      const days=Math.max(1,Math.ceil((new Date(dateStr)-new Date())/(1000*60*60*24)));
+      const perDay=Math.ceil(topics/days);
+      let html='<div class="grid gap-2">';
+      for(let d=0;d<days&&d<14;d++){ const t=Math.min(perDay,Math.max(0,topics-d*perDay)); const dayDate=new Date(); dayDate.setDate(dayDate.getDate()+d); html+='<div class="rounded-lg border border-slate-200 p-3"><p class="text-xs font-bold text-violet-600">'+dayDate.toLocaleDateString()+'</p><p class="text-sm text-slate-700">Study '+t+' topic(s) for '+hours+' hours</p></div>'; }
+      html+='</div>';
+      $('ss-result').innerHTML=html;
+    });
+  </script>
+</BaseLayout>

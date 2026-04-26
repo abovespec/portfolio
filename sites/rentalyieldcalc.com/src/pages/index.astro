@@ -1,0 +1,111 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { siteConfig } from '~/config/site.config';
+---
+<BaseLayout title={siteConfig.identity.name} description={siteConfig.identity.description}>
+  <section class="py-10 text-center">
+    <h1 class="text-4xl font-bold tracking-tight" style={`color:${siteConfig.branding.themeColor}`}>RentalYieldCalc</h1>
+    <p class="mx-auto mt-3 max-w-2xl text-lg text-slate-600">Rental yield, cap rate, cash-on-cash return, and fix-and-flip profit calculators for property investors.</p>
+  </section>
+  <div class="mx-auto max-w-5xl">
+    <div class="flex flex-wrap gap-2 justify-center mb-8">
+      <button id="tab-ry" class="tab-btn px-4 py-2 rounded-full font-semibold text-sm bg-amber-600 text-white">Rental Yield</button>
+      <button id="tab-cr" class="tab-btn px-4 py-2 rounded-full font-semibold text-sm bg-slate-200 text-slate-700">Cap Rate</button>
+      <button id="tab-coc" class="tab-btn px-4 py-2 rounded-full font-semibold text-sm bg-slate-200 text-slate-700">Cash-on-Cash</button>
+      <button id="tab-flip" class="tab-btn px-4 py-2 rounded-full font-semibold text-sm bg-slate-200 text-slate-700">Fix & Flip</button>
+    </div>
+
+    <div id="panel-ry" class="calc-panel">
+      <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+        <h2 class="text-xl font-semibold mb-4 text-slate-800">Rental Yield Calculator</h2>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <label class="block"><span class="text-sm font-medium text-slate-700">Monthly rent ($)</span><input id="ry-rent" type="number" value="2500" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+          <label class="block"><span class="text-sm font-medium text-slate-700">Property value ($)</span><input id="ry-value" type="number" value="450000" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+          <label class="block"><span class="text-sm font-medium text-slate-700">Monthly expenses ($)</span><input id="ry-exp" type="number" value="600" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+          <label class="block"><span class="text-sm font-medium text-slate-700">Vacancy rate (%)</span><input id="ry-vac" type="number" value="5" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+        </div>
+        <div class="mt-6 grid gap-4 sm:grid-cols-3">
+          <div class="rounded-lg bg-slate-50 p-4 text-center"><p class="text-xs uppercase text-slate-500">Gross yield</p><p id="ry-gross" class="text-xl font-bold text-slate-800">6.67%</p></div>
+          <div class="rounded-lg bg-slate-50 p-4 text-center"><p class="text-xs uppercase text-slate-500">Net yield</p><p id="ry-net" class="text-xl font-bold text-slate-800">5.07%</p></div>
+          <div class="rounded-lg bg-amber-50 p-4 text-center border border-amber-100"><p class="text-xs uppercase text-amber-600">Monthly cash flow</p><p id="ry-cf" class="text-xl font-bold text-amber-700">$1,775</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="panel-cr" class="calc-panel hidden">
+      <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+        <h2 class="text-xl font-semibold mb-4 text-slate-800">Cap Rate Calculator</h2>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <label class="block"><span class="text-sm font-medium text-slate-700">Net operating income ($/yr)</span><input id="cr-noi" type="number" value="22800" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+          <label class="block"><span class="text-sm font-medium text-slate-700">Property value ($)</span><input id="cr-value" type="number" value="450000" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+        </div>
+        <div class="mt-6 rounded-lg bg-amber-50 p-4 text-center border border-amber-100">
+          <p class="text-xs uppercase text-amber-600">Cap rate</p>
+          <p id="cr-out" class="text-3xl font-bold text-amber-700">5.07%</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="panel-coc" class="calc-panel hidden">
+      <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+        <h2 class="text-xl font-semibold mb-4 text-slate-800">Cash-on-Cash Return</h2>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <label class="block"><span class="text-sm font-medium text-slate-700">Annual pre-tax cash flow ($)</span><input id="coc-cf" type="number" value="8400" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+          <label class="block"><span class="text-sm font-medium text-slate-700">Total cash invested ($)</span><input id="coc-invest" type="number" value="100000" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+        </div>
+        <div class="mt-6 rounded-lg bg-amber-50 p-4 text-center border border-amber-100">
+          <p class="text-xs uppercase text-amber-600">Cash-on-cash return</p>
+          <p id="coc-out" class="text-3xl font-bold text-amber-700">8.40%</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="panel-flip" class="calc-panel hidden">
+      <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+        <h2 class="text-xl font-semibold mb-4 text-slate-800">Fix-and-Flip Profit Calculator</h2>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <label class="block"><span class="text-sm font-medium text-slate-700">After-repair value (ARV) ($)</span><input id="f-arv" type="number" value="550000" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+          <label class="block"><span class="text-sm font-medium text-slate-700">Purchase price ($)</span><input id="f-buy" type="number" value="380000" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+          <label class="block"><span class="text-sm font-medium text-slate-700">Repair costs ($)</span><input id="f-repair" type="number" value="45000" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+          <label class="block"><span class="text-sm font-medium text-slate-700">Holding costs ($)</span><input id="f-hold" type="number" value="8000" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+          <label class="block"><span class="text-sm font-medium text-slate-700">Selling costs (%)</span><input id="f-sell" type="number" value="6" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+        </div>
+        <div class="mt-6 grid gap-4 sm:grid-cols-3">
+          <div class="rounded-lg bg-slate-50 p-4 text-center"><p class="text-xs uppercase text-slate-500">Selling costs</p><p id="f-out-sell" class="text-xl font-bold text-slate-800">$33,000</p></div>
+          <div class="rounded-lg bg-slate-50 p-4 text-center"><p class="text-xs uppercase text-slate-500">Total investment</p><p id="f-out-invest" class="text-xl font-bold text-slate-800">$433,000</p></div>
+          <div class="rounded-lg bg-amber-50 p-4 text-center border border-amber-100"><p class="text-xs uppercase text-amber-600">Net profit</p><p id="f-out-profit" class="text-xl font-bold text-amber-700">$84,000</p></div>
+        </div>
+      </div>
+    </div>
+
+    <section class="my-12">
+      <h2 class="text-2xl font-semibold mb-4 text-slate-800">Real Estate Investing Guides</h2>
+      <div class="grid gap-4 sm:grid-cols-2">
+        <a href="/blog/rental-yield-explained/" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-amber-400"><h3 class="font-semibold text-slate-900">What Is a Good Rental Yield?</h3><p class="mt-1 text-sm text-slate-600">Benchmarks by city and property type. When gross yield is misleading.</p></a>
+        <a href="/blog/cap-rate-vs-cash-on-cash/" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-amber-400"><h3 class="font-semibold text-slate-900">Cap Rate vs Cash-on-Cash Return</h3><p class="mt-1 text-sm text-slate-600">Which metric matters for your strategy and how to use them together.</p></a>
+        <a href="/blog/fix-and-flip-profit/" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-amber-400"><h3 class="font-semibold text-slate-900">Fix-and-Flip Profit: The 70% Rule</h3><p class="mt-1 text-sm text-slate-600">How to estimate ARV, repair budgets, and holding costs before you buy.</p></a>
+        <a href="/blog/rental-property-analysis/" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-amber-400"><h3 class="font-semibold text-slate-900">Rental Property Analysis Spreadsheet</h3><p class="mt-1 text-sm text-slate-600">Free downloadable template and walkthrough of every line item.</p></a>
+      </div>
+    </section>
+  </div>
+  <script is:inline>
+    function $(id){ return document.getElementById(id); }
+    function val(id){ return parseFloat($(id).value) || 0; }
+    const tabs = ['ry','cr','coc','flip'];
+    tabs.forEach(t => {
+      $('tab-'+t).addEventListener('click', () => {
+        tabs.forEach(x => { $('panel-'+x).classList.add('hidden'); $('tab-'+x).classList.remove('bg-amber-600','text-white'); $('tab-'+x).classList.add('bg-slate-200','text-slate-700'); });
+        $('panel-'+t).classList.remove('hidden'); $('tab-'+t).classList.remove('bg-slate-200','text-slate-700'); $('tab-'+t).classList.add('bg-amber-600','text-white');
+      });
+    });
+    function calcRY(){ const rent=val('ry-rent'), value=val('ry-value'), exp=val('ry-exp'), vac=val('ry-vac'); const gross=(rent*12/value)*100; const net=((rent*12*(1-vac/100)-exp*12)/value)*100; const cf=rent*(1-vac/100)-exp; $('ry-gross').textContent=gross.toFixed(2)+'%'; $('ry-net').textContent=net.toFixed(2)+'%'; $('ry-cf').textContent='$'+cf.toFixed(0); }
+    function calcCR(){ const noi=val('cr-noi'), value=val('cr-value'); $('cr-out').textContent=((noi/value)*100).toFixed(2)+'%'; }
+    function calcCOC(){ const cf=val('coc-cf'), invest=val('coc-invest'); $('coc-out').textContent=((cf/invest)*100).toFixed(2)+'%'; }
+    function calcFlip(){ const arv=val('f-arv'), buy=val('f-buy'), repair=val('f-repair'), hold=val('f-hold'), sell=val('f-sell'); const sellCost=arv*(sell/100); const invest=buy+repair+hold; const profit=arv-sellCost-invest; $('f-out-sell').textContent='$'+sellCost.toFixed(0); $('f-out-invest').textContent='$'+invest.toFixed(0); $('f-out-profit').textContent='$'+profit.toFixed(0); }
+    ['ry-rent','ry-value','ry-exp','ry-vac'].forEach(id => $('ry-'+id.split('-')[1])?.addEventListener('input',calcRY));
+    ['cr-noi','cr-value'].forEach(id => $('cr-'+id.split('-')[1])?.addEventListener('input',calcCR));
+    ['coc-cf','coc-invest'].forEach(id => $('coc-'+id.split('-')[1])?.addEventListener('input',calcCOC));
+    ['f-arv','f-buy','f-repair','f-hold','f-sell'].forEach(id => $('f-'+id.split('-')[1])?.addEventListener('input',calcFlip));
+    calcRY(); calcCR(); calcCOC(); calcFlip();
+  </script>
+</BaseLayout>

@@ -1,0 +1,97 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { siteConfig } from '~/config/site.config';
+---
+<BaseLayout title={siteConfig.identity.name} description={siteConfig.identity.description}>
+  <section class="py-10 text-center">
+    <h1 class="text-4xl font-bold tracking-tight" style={`color:${siteConfig.branding.themeColor}`}>MyFreelanceRate</h1>
+    <p class="mx-auto mt-3 max-w-2xl text-lg text-slate-600">Hourly rate calculator, project estimator, and value-based pricing worksheets for freelancers and agencies.</p>
+  </section>
+  <div class="mx-auto max-w-5xl">
+    <div class="flex flex-wrap gap-2 justify-center mb-8">
+      <button id="tab-rate" class="tab-btn px-4 py-2 rounded-full font-semibold text-sm bg-cyan-600 text-white">Hourly Rate</button>
+      <button id="tab-project" class="tab-btn px-4 py-2 rounded-full font-semibold text-sm bg-slate-200 text-slate-700">Project Estimate</button>
+      <button id="tab-value" class="tab-btn px-4 py-2 rounded-full font-semibold text-sm bg-slate-200 text-slate-700">Value Pricing</button>
+    </div>
+
+    <div id="panel-rate" class="calc-panel">
+      <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+        <h2 class="text-xl font-semibold mb-4 text-slate-800">Freelance Hourly Rate Calculator</h2>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <label class="block"><span class="text-sm font-medium text-slate-700">Annual income goal ($)</span><input id="r-goal" type="number" value="100000" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+          <label class="block"><span class="text-sm font-medium text-slate-700">Billable hours / week</span><input id="r-hours" type="number" value="25" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+          <label class="block"><span class="text-sm font-medium text-slate-700">Weeks off / year</span><input id="r-weeks" type="number" value="4" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+          <label class="block"><span class="text-sm font-medium text-slate-700">Monthly business expenses ($)</span><input id="r-exp" type="number" value="500" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+          <label class="block"><span class="text-sm font-medium text-slate-700">Tax estimate (%)</span><input id="r-tax" type="number" value="25" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+        </div>
+        <div class="mt-6 grid gap-4 sm:grid-cols-3">
+          <div class="rounded-lg bg-slate-50 p-4 text-center"><p class="text-xs uppercase text-slate-500">Billable hours / year</p><p id="r-out-hours" class="text-xl font-bold text-slate-800">1,200</p></div>
+          <div class="rounded-lg bg-cyan-50 p-4 text-center border border-cyan-100"><p class="text-xs uppercase text-cyan-600">Minimum hourly rate</p><p id="r-out-rate" class="text-xl font-bold text-cyan-700">$116.67</p></div>
+          <div class="rounded-lg bg-cyan-50 p-4 text-center border border-cyan-100"><p class="text-xs uppercase text-cyan-600">Rate with tax buffer</p><p id="r-out-buffer" class="text-xl font-bold text-cyan-700">$155.56</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="panel-project" class="calc-panel hidden">
+      <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+        <h2 class="text-xl font-semibold mb-4 text-slate-800">Project Estimate Calculator</h2>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <label class="block"><span class="text-sm font-medium text-slate-700">Estimated hours</span><input id="p-hours" type="number" value="40" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+          <label class="block"><span class="text-sm font-medium text-slate-700">Your hourly rate ($)</span><input id="p-rate" type="number" value="120" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+          <label class="block"><span class="text-sm font-medium text-slate-700">Material / tool costs ($)</span><input id="p-mat" type="number" value="200" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+          <label class="block"><span class="text-sm font-medium text-slate-700">Buffer / contingency (%)</span><input id="p-buffer" type="number" value="15" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+        </div>
+        <div class="mt-6 grid gap-4 sm:grid-cols-3">
+          <div class="rounded-lg bg-slate-50 p-4 text-center"><p class="text-xs uppercase text-slate-500">Labor cost</p><p id="p-out-labor" class="text-xl font-bold text-slate-800">$4,800</p></div>
+          <div class="rounded-lg bg-slate-50 p-4 text-center"><p class="text-xs uppercase text-slate-500">With buffer</p><p id="p-out-buffer" class="text-xl font-bold text-slate-800">$5,750</p></div>
+          <div class="rounded-lg bg-cyan-50 p-4 text-center border border-cyan-100"><p class="text-xs uppercase text-cyan-600">Project quote</p><p id="p-out-quote" class="text-xl font-bold text-cyan-700">$5,950</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="panel-value" class="calc-panel hidden">
+      <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+        <h2 class="text-xl font-semibold mb-4 text-slate-800">Value-Based Pricing Worksheet</h2>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <label class="block"><span class="text-sm font-medium text-slate-700">Client's annual revenue ($)</span><input id="v-rev" type="number" value="500000" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+          <label class="block"><span class="text-sm font-medium text-slate-700">Estimated revenue impact (%)</span><input id="v-impact" type="number" value="10" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+          <label class="block"><span class="text-sm font-medium text-slate-700">Cost savings you deliver ($/yr)</span><input id="v-save" type="number" value="15000" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+          <label class="block"><span class="text-sm font-medium text-slate-700">Your fee as % of value</span><input id="v-pct" type="number" value="20" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+        </div>
+        <div class="mt-6 grid gap-4 sm:grid-cols-3">
+          <div class="rounded-lg bg-slate-50 p-4 text-center"><p class="text-xs uppercase text-slate-500">Revenue impact</p><p id="v-out-rev" class="text-xl font-bold text-slate-800">$50,000</p></div>
+          <div class="rounded-lg bg-slate-50 p-4 text-center"><p class="text-xs uppercase text-slate-500">Total value created</p><p id="v-out-total" class="text-xl font-bold text-slate-800">$65,000</p></div>
+          <div class="rounded-lg bg-cyan-50 p-4 text-center border border-cyan-100"><p class="text-xs uppercase text-cyan-600">Suggested project fee</p><p id="v-out-fee" class="text-xl font-bold text-cyan-700">$13,000</p></div>
+        </div>
+      </div>
+    </div>
+
+    <section class="my-12">
+      <h2 class="text-2xl font-semibold mb-4 text-slate-800">Freelancer Guides</h2>
+      <div class="grid gap-4 sm:grid-cols-2">
+        <a href="/blog/how-to-set-freelance-rates/" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-cyan-400"><h3 class="font-semibold text-slate-900">How to Set Freelance Rates</h3><p class="mt-1 text-sm text-slate-600">From cost-plus to value-based pricing. Which model fits your niche?</p></a>
+        <a href="/blog/project-estimation-methods/" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-cyan-400"><h3 class="font-semibold text-slate-900">Project Estimation Methods</h3><p class="mt-1 text-sm text-slate-600">Fixed price vs time-and-materials vs retainers. Pros, cons, and when to use each.</p></a>
+        <a href="/blog/value-based-pricing/" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-cyan-400"><h3 class="font-semibold text-slate-900">Value-Based Pricing for Freelancers</h3><p class="mt-1 text-sm text-slate-600">How to price based on client outcomes instead of hours worked.</p></a>
+        <a href="/blog/freelance-contracts/" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-cyan-400"><h3 class="font-semibold text-slate-900">Freelance Contract Essentials</h3><p class="mt-1 text-sm text-slate-600">Scope, payment terms, kill fees, and IP clauses every contract needs.</p></a>
+      </div>
+    </section>
+  </div>
+  <script is:inline>
+    function $(id){ return document.getElementById(id); }
+    function val(id){ return parseFloat($(id).value) || 0; }
+    const tabs=['rate','project','value'];
+    tabs.forEach(t=>{
+      $('tab-'+t).addEventListener('click',()=>{
+        tabs.forEach(x=>{ $('panel-'+x).classList.add('hidden'); $('tab-'+x).classList.remove('bg-cyan-600','text-white'); $('tab-'+x).classList.add('bg-slate-200','text-slate-700'); });
+        $('panel-'+t).classList.remove('hidden'); $('tab-'+t).classList.remove('bg-slate-200','text-slate-700'); $('tab-'+t).classList.add('bg-cyan-600','text-white');
+      });
+    });
+    function calcRate(){ const goal=val('r-goal'), hours=val('r-hours'), weeks=val('r-weeks'), exp=val('r-exp'), tax=val('r-tax'); const annualHours=hours*(52-weeks); const preTax=(goal+exp*12)/annualHours; const buffer=preTax/(1-tax/100); $('r-out-hours').textContent=annualHours.toLocaleString(); $('r-out-rate').textContent='$'+preTax.toFixed(2); $('r-out-buffer').textContent='$'+buffer.toFixed(2); }
+    function calcProject(){ const h=val('p-hours'), r=val('p-rate'), m=val('p-mat'), b=val('p-buffer'); const labor=h*r; const withBuffer=labor*(1+b/100)+m; $('p-out-labor').textContent='$'+labor.toFixed(0); $('p-out-buffer').textContent='$'+withBuffer.toFixed(0); $('p-out-quote').textContent='$'+withBuffer.toFixed(0); }
+    function calcValue(){ const rev=val('v-rev'), impact=val('v-impact'), save=val('v-save'), pct=val('v-pct'); const revImpact=rev*(impact/100); const total=revImpact+save; const fee=total*(pct/100); $('v-out-rev').textContent='$'+revImpact.toFixed(0); $('v-out-total').textContent='$'+total.toFixed(0); $('v-out-fee').textContent='$'+fee.toFixed(0); }
+    ['r-goal','r-hours','r-weeks','r-exp','r-tax'].forEach(id=>$(id)?.addEventListener('input',calcRate));
+    ['p-hours','p-rate','p-mat','p-buffer'].forEach(id=>$(id)?.addEventListener('input',calcProject));
+    ['v-rev','v-impact','v-save','v-pct'].forEach(id=>$(id)?.addEventListener('input',calcValue));
+    calcRate(); calcProject(); calcValue();
+  </script>
+</BaseLayout>

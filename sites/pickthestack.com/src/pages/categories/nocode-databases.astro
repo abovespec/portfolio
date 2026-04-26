@@ -1,0 +1,149 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { siteConfig } from '~/config/site.config';
+---
+<BaseLayout title="Best No-Code Databases 2025 | PickTheStack" description="Compare no-code database and spreadsheet tools for apps, workflows, and ops. Side-by-side comparisons, pricing, and an interactive quiz to find your perfect tool.">
+  <section class="py-10 text-center">
+    <h1 class="text-4xl font-bold tracking-tight" style="color:{siteConfig.branding.themeColor}">Best No-Code Databases</h1>
+    <p class="mx-auto mt-3 max-w-2xl text-lg text-slate-600">Compare no-code database and spreadsheet tools for apps, workflows, and ops. Compare features, pricing, and find your fit with our decision quiz.</p>
+  </section>
+
+  <div class="mx-auto max-w-6xl px-4">
+    <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm mb-8">
+      <h2 class="text-xl font-semibold mb-4 text-slate-800">No-Code Databases Comparison Table</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-slate-200">
+              <th class="text-left py-2 px-3 font-semibold text-slate-700">Feature</th>
+              <th class="text-center py-2 px-3 font-semibold text-indigo-700">Airtable</th>
+              <th class="text-center py-2 px-3 font-semibold text-indigo-700">Notion</th>
+              <th class="text-center py-2 px-3 font-semibold text-indigo-700">Coda</th>
+              <th class="text-center py-2 px-3 font-semibold text-indigo-700">Baserow</th>
+              <th class="text-center py-2 px-3 font-semibold text-indigo-700">NocoDB</th>
+            </tr>
+          </thead>
+          <tbody class="text-slate-600">
+            <tr class="border-b border-slate-100"><td class="py-2 px-3">Free plan</td><td class="text-center">Yes</td><td class="text-center">Yes</td><td class="text-center">Yes</td><td class="text-center">Yes (self-host)</td><td class="text-center">Yes (self-host)</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">Starting price</td><td class="text-center">$20/mo</td><td class="text-center">$8/mo</td><td class="text-center">$10/mo</td><td class="text-center">$5/mo</td><td class="text-center">$0</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">Best for</td><td class="text-center">Relational DBs</td><td class="text-center">Docs + light DB</td><td class="text-center">Doc-driven apps</td><td class="text-center">Open source</td><td class="text-center">Airtable alternative</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">G2 score</td><td class="text-center">4.6</td><td class="text-center">4.7</td><td class="text-center">4.7</td><td class="text-center">4.5</td><td class="text-center">4.4</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">Views</td><td class="text-center">Grid/Kanban/Gallery/Form</td><td class="text-center">Table/Board/Timeline/Form</td><td class="text-center">Table/Chart/Form</td><td class="text-center">Grid/Gallery/Form</td><td class="text-center">Grid/Gallery/Form</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">Automations</td><td class="text-center">Yes</td><td class="text-center">Partial</td><td class="text-center">Yes</td><td class="text-center">Yes</td><td class="text-center">No</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">API</td><td class="text-center">Yes</td><td class="text-center">Yes</td><td class="text-center">Yes</td><td class="text-center">Yes</td><td class="text-center">Auto</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">Templates</td><td class="text-center">500+</td><td class="text-center">10,000+</td><td class="text-center">1,000+</td><td class="text-center">100+</td><td class="text-center">Basic</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">Collaboration</td><td class="text-center">Yes</td><td class="text-center">Yes</td><td class="text-center">Yes</td><td class="text-center">Yes</td><td class="text-center">Yes</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">Apps</td><td class="text-center">Interface Designer</td><td class="text-center">No</td><td class="text-center">Packs</td><td class="text-center">No</td><td class="text-center">No</td></tr>
+
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-3 text-xs text-slate-400">Prices and features updated 2025. Click tool names to visit their site (affiliate links where available).</p>
+    </div>
+
+    <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm mb-8">
+      <h2 class="text-xl font-semibold mb-4 text-slate-800">Decision Quiz: Find Your No-Code Databases</h2>
+      <div id="quiz-container">
+        <div id="q1" class="quiz-step ">
+          <p class="font-medium text-slate-800 mb-3">1. Need self-hosted / open-source option?</p>
+          <div class="flex flex-wrap gap-2">
+            <button class="quiz-btn px-4 py-2 rounded-lg bg-slate-100 hover:bg-indigo-100 text-slate-700" data-next="q2" data-score="baserow:3,nocodb:3">Yes</button>
+            <button class="quiz-btn px-4 py-2 rounded-lg bg-slate-100 hover:bg-indigo-100 text-slate-700" data-next="q2" data-score="airtable:2,notion:2,coda:1">No</button>
+          </div>
+        </div>
+        <div id="q2" class="quiz-step hidden">
+          <p class="font-medium text-slate-800 mb-3">2. Want doc-style editing alongside data?</p>
+          <div class="flex flex-wrap gap-2">
+            <button class="quiz-btn px-4 py-2 rounded-lg bg-slate-100 hover:bg-indigo-100 text-slate-700" data-next="q3" data-score="coda:3,notion:2">Yes</button>
+            <button class="quiz-btn px-4 py-2 rounded-lg bg-slate-100 hover:bg-indigo-100 text-slate-700" data-next="q3" data-score="airtable:2,baserow:1,nocodb:1">No</button>
+          </div>
+        </div>
+        <div id="q3" class="quiz-step hidden">
+          <p class="font-medium text-slate-800 mb-3">3. Need advanced relational linking?</p>
+          <div class="flex flex-wrap gap-2">
+            <button class="quiz-btn px-4 py-2 rounded-lg bg-slate-100 hover:bg-indigo-100 text-slate-700" data-next="q4" data-score="airtable:3">Yes</button>
+            <button class="quiz-btn px-4 py-2 rounded-lg bg-slate-100 hover:bg-indigo-100 text-slate-700" data-next="q4" data-score="notion:2,coda:2,baserow:1,nocodb:1">No</button>
+          </div>
+        </div>
+        <div id="q4" class="quiz-step hidden">
+          <p class="font-medium text-slate-800 mb-3">4. Cheapest paid plan under $10?</p>
+          <div class="flex flex-wrap gap-2">
+            <button class="quiz-btn px-4 py-2 rounded-lg bg-slate-100 hover:bg-indigo-100 text-slate-700" data-next="result" data-score="nocodb:3,baserow:2,notion:2">Yes</button>
+            <button class="quiz-btn px-4 py-2 rounded-lg bg-slate-100 hover:bg-indigo-100 text-slate-700" data-next="result" data-score="airtable:1,coda:1">No</button>
+          </div>
+        </div>
+        <div id="result" class="quiz-step hidden">
+          <h3 class="text-lg font-semibold text-slate-800 mb-2">Recommended for you:</h3>
+          <div id="result-card" class="rounded-lg bg-indigo-50 border border-indigo-100 p-4"></div>
+          <button id="quiz-restart" class="mt-4 px-4 py-2 rounded-lg bg-indigo-600 text-white text-sm">Start over</button>
+        </div>
+      </div>
+    </div>
+
+    <section class="my-12">
+      <h2 class="text-2xl font-semibold mb-4 text-slate-800">Top Picks by Use Case</h2>
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <a href="#" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-indigo-400 transition">
+          <h3 class="font-semibold text-slate-900">Airtable</h3>
+          <p class="mt-1 text-sm text-slate-600">Best for: Relational DBs — Starting at $20/mo</p>
+          <p class="mt-2 text-xs text-slate-400">Yes | G2: 4.6</p>
+        </a>
+        <a href="#" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-indigo-400 transition">
+          <h3 class="font-semibold text-slate-900">Notion</h3>
+          <p class="mt-1 text-sm text-slate-600">Best for: Docs + light DB — Starting at $8/mo</p>
+          <p class="mt-2 text-xs text-slate-400">Yes | G2: 4.7</p>
+        </a>
+        <a href="#" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-indigo-400 transition">
+          <h3 class="font-semibold text-slate-900">Coda</h3>
+          <p class="mt-1 text-sm text-slate-600">Best for: Doc-driven apps — Starting at $10/mo</p>
+          <p class="mt-2 text-xs text-slate-400">Yes | G2: 4.7</p>
+        </a>
+        <a href="#" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-indigo-400 transition">
+          <h3 class="font-semibold text-slate-900">Baserow</h3>
+          <p class="mt-1 text-sm text-slate-600">Best for: Open source — Starting at $5/mo</p>
+          <p class="mt-2 text-xs text-slate-400">Yes (self-host) | G2: 4.5</p>
+        </a>
+        <a href="#" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-indigo-400 transition">
+          <h3 class="font-semibold text-slate-900">NocoDB</h3>
+          <p class="mt-1 text-sm text-slate-600">Best for: Airtable alternative — Starting at $0</p>
+          <p class="mt-2 text-xs text-slate-400">Yes (self-host) | G2: 4.4</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="my-12">
+      <h2 class="text-2xl font-semibold mb-4 text-slate-800">Related Keywords</h2>
+      <div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-sm">best no code database</span><span class="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-sm">airtable alternatives</span><span class="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-sm">notion vs airtable</span><span class="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-sm">open source airtable alternative</span><span class="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-sm">nocodb vs baserow</span>      </div>
+    </section>
+  </div>
+
+  <script is:inline>
+    const scores = { airtable:0, notion:0, coda:0, baserow:0, nocodb:0 };
+    const names = { airtable:"Airtable", notion:"Notion", coda:"Coda", baserow:"Baserow", nocodb:"NocoDB" };
+    const reasons = { airtable:"Relational DBs", notion:"Docs + light DB", coda:"Doc-driven apps", baserow:"Open source", nocodb:"Airtable alternative" };
+    document.querySelectorAll('.quiz-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const next = btn.dataset.next;
+        const delta = btn.dataset.score;
+        if (delta) {
+          delta.split(',').forEach(part => {
+            const [k,v] = part.split(':');
+            scores[k] += parseInt(v);
+          });
+        }
+        document.querySelectorAll('.quiz-step').forEach(s => s.classList.add('hidden'));
+        if (next === 'result') {
+          const winner = Object.entries(scores).sort((a,b) => b[1]-a[1])[0];
+          document.getElementById('result-card').innerHTML = '<p class="text-2xl font-bold text-indigo-700">' + names[winner[0]] + '</p><p class="mt-1 text-slate-700">Best for: ' + reasons[winner[0]] + '</p>';
+        }
+        document.getElementById(next).classList.remove('hidden');
+      });
+    });
+    document.getElementById('quiz-restart')?.addEventListener('click', () => {
+      Object.keys(scores).forEach(k => scores[k]=0);
+      document.querySelectorAll('.quiz-step').forEach(s => s.classList.add('hidden'));
+      document.getElementById('q1').classList.remove('hidden');
+    });
+  </script>
+</BaseLayout>

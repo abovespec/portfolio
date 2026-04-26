@@ -1,0 +1,17 @@
+{
+  "title": "Ai 1",
+  "description": "Seamless 4K AI-generated concrete texture. Photorealistic PBR material.",
+  "category": "concrete",
+  "seed": 3088442155,
+  "seedName": "ai-1",
+  "prompt": "seamless photorealistic texture of concrete surface, detailed concrete finish, realistic cement texture, tileable, 4K PBR material",
+  "params": {
+    "roughness": 0.6,
+    "metallic": 0.0
+  },
+  "shape": [
+    4096,
+    4096
+  ],
+  "generatedDate": "2026-04-24"
+}

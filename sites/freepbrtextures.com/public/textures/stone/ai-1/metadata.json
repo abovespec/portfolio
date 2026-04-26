@@ -1,0 +1,17 @@
+{
+  "title": "Ai 1",
+  "description": "Seamless 4K AI-generated stone texture. Photorealistic PBR material.",
+  "category": "stone",
+  "seed": 3088442155,
+  "seedName": "ai-1",
+  "prompt": "seamless photorealistic texture of stone surface, detailed rock texture, natural stone colors, tileable, 4K PBR material",
+  "params": {
+    "roughness": 0.6,
+    "metallic": 0.0
+  },
+  "shape": [
+    4096,
+    4096
+  ],
+  "generatedDate": "2026-04-24"
+}

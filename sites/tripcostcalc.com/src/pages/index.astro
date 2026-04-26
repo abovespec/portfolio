@@ -1,0 +1,83 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { siteConfig } from '~/config/site.config';
+---
+<BaseLayout title={siteConfig.identity.name} description={siteConfig.identity.description}>
+  <section class="py-10 text-center">
+    <h1 class="text-4xl font-bold tracking-tight" style={`color:${siteConfig.branding.themeColor}`}>TripCostCalc</h1>
+    <p class="mx-auto mt-3 max-w-2xl text-lg text-slate-600">Trip cost estimator by destination, packing list generator, visa requirement checker, and jet lag calculator.</p>
+  </section>
+  <div class="mx-auto max-w-5xl">
+    <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm mb-8">
+      <h2 class="text-xl font-semibold mb-4 text-slate-800">Trip Cost Estimator</h2>
+      <div class="grid gap-4 sm:grid-cols-2">
+        <label class="block"><span class="text-sm font-medium text-slate-700">Destination</span>
+          <select id="tc-dest" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2">
+            <option value="tokyo">Tokyo, Japan</option>
+            <option value="paris">Paris, France</option>
+            <option value="nyc">New York, USA</option>
+            <option value="bangkok">Bangkok, Thailand</option>
+            <option value="london">London, UK</option>
+            <option value="custom" selected>Custom</option>
+          </select>
+        </label>
+        <label class="block"><span class="text-sm font-medium text-slate-700">Number of travelers</span><input id="tc-ppl" type="number" value="2" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+        <label class="block"><span class="text-sm font-medium text-slate-700">Nights</span><input id="tc-nights" type="number" value="5" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+        <label class="block"><span class="text-sm font-medium text-slate-700">Hotel per night ($)</span><input id="tc-hotel" type="number" value="150" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+        <label class="block"><span class="text-sm font-medium text-slate-700">Food per day ($)</span><input id="tc-food" type="number" value="80" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+        <label class="block"><span class="text-sm font-medium text-slate-700">Activities per day ($)</span><input id="tc-act" type="number" value="50" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+        <label class="block"><span class="text-sm font-medium text-slate-700">Local transport per day ($)</span><input id="tc-trans" type="number" value="20" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+        <label class="block"><span class="text-sm font-medium text-slate-700">Flight cost total ($)</span><input id="tc-flight" type="number" value="800" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+      </div>
+      <div class="mt-6 grid gap-4 sm:grid-cols-3">
+        <div class="rounded-lg bg-slate-50 p-4 text-center"><p class="text-xs uppercase text-slate-500">Hotel total</p><p id="tc-out-hotel" class="text-xl font-bold text-slate-800">$1,500</p></div>
+        <div class="rounded-lg bg-slate-50 p-4 text-center"><p class="text-xs uppercase text-slate-500">Daily spend total</p><p id="tc-out-daily" class="text-xl font-bold text-slate-800">$750</p></div>
+        <div class="rounded-lg bg-sky-50 p-4 text-center border border-sky-100"><p class="text-xs uppercase text-sky-600">Trip total</p><p id="tc-out-total" class="text-xl font-bold text-sky-700">$3,050</p></div>
+      </div>
+    </div>
+
+    <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm mb-8">
+      <h2 class="text-xl font-semibold mb-4 text-slate-800">Packing List Generator</h2>
+      <div class="flex flex-wrap gap-3 mb-4">
+        <label class="block"><span class="text-sm font-medium text-slate-700">Climate</span>
+          <select id="pk-climate" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"><option>Tropical</option><option selected>Temperate</option><option>Cold</option><option>Desert</option></select>
+        </label>
+        <label class="block"><span class="text-sm font-medium text-slate-700">Activities</span>
+          <select id="pk-act" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"><option selected>City / sightseeing</option><option>Beach</option><option>Hiking</option><option>Business</option></select>
+        </label>
+        <label class="block"><span class="text-sm font-medium text-slate-700">Nights</span><input id="pk-nights" type="number" value="5" class="mt-1 w-24 rounded-lg border border-slate-300 px-3 py-2"></label>
+      </div>
+      <button id="pk-gen" class="rounded-lg bg-sky-600 px-5 py-2 text-white font-semibold hover:bg-sky-700">Generate List</button>
+      <ul id="pk-result" class="mt-4 grid gap-2 sm:grid-cols-2"></ul>
+    </div>
+
+    <section class="my-12">
+      <h2 class="text-2xl font-semibold mb-4 text-slate-800">Travel Guides</h2>
+      <div class="grid gap-4 sm:grid-cols-2">
+        <a href="/blog/tokyo-trip-budget/" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-sky-400"><h3 class="font-semibold text-slate-900">Tokyo Trip Budget Breakdown</h3><p class="mt-1 text-sm text-slate-600">5-day itinerary with real costs for hotels, food, transit, and attractions.</p></a>
+        <a href="/blog/best-travel-insurance/" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-sky-400"><h3 class="font-semibold text-slate-900">Best Travel Insurance Compared</h3><p class="mt-1 text-sm text-slate-600">Coverage limits, medical evacuation, and trip cancellation by provider.</p></a>
+        <a href="/blog/packing-light-guide/" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-sky-400"><h3 class="font-semibold text-slate-900">Packing Light: Carry-On Only</h3><p class="mt-1 text-sm text-slate-600">Capsule wardrobe strategy and TSA liquid rules for one-bag travel.</p></a>
+        <a href="/blog/jet-lag-tips/" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-sky-400"><h3 class="font-semibold text-slate-900">How to Beat Jet Lag</h3><p class="mt-1 text-sm text-slate-600">Science-backed strategies for eastward vs westward travel.</p></a>
+      </div>
+    </section>
+  </div>
+  <script is:inline>
+    function $(id){ return document.getElementById(id); }
+    function val(id){ return parseFloat($(id).value)||0; }
+    const presets={tokyo:{hotel:180,food:90,act:60,trans:15},paris:{hotel:200,food:100,act:50,trans:10},nyc:{hotel:220,food:110,act:70,trans:15},bangkok:{hotel:60,food:40,act:30,trans:10},london:{hotel:190,food:95,act:55,trans:12}};
+    $('tc-dest').addEventListener('change',()=>{ const p=presets[$('tc-dest').value]; if(p){ $('tc-hotel').value=p.hotel; $('tc-food').value=p.food; $('tc-act').value=p.act; $('tc-trans').value=p.trans; calcTrip(); } });
+    function calcTrip(){ const ppl=val('tc-ppl'), nights=val('tc-nights'), hotel=val('tc-hotel'), food=val('tc-food'), act=val('tc-act'), trans=val('tc-trans'), flight=val('tc-flight'); const hotelTot=hotel*nights; const daily=(food+act+trans)*nights; const total=hotelTot+daily+flight; $('tc-out-hotel').textContent='$'+hotelTot.toFixed(0); $('tc-out-daily').textContent='$'+daily.toFixed(0); $('tc-out-total').textContent='$'+total.toFixed(0); }
+    ['tc-ppl','tc-nights','tc-hotel','tc-food','tc-act','tc-trans','tc-flight'].forEach(id=>$(id)?.addEventListener('input',calcTrip));
+    calcTrip();
+    const packLists={
+      'Tropical-City / sightseeing':['Lightweight shirts x nights','Shorts x 2','Comfortable walking shoes','Sunglasses','Sunscreen','Portable charger','Umbrella (compact)','Daypack'],
+      'Temperate-City / sightseeing':['T-shirts x nights','Light jacket','Jeans x 2','Comfortable walking shoes','Umbrella','Portable charger','Daypack','Layers'],
+      'Cold-City / sightseeing':['Thermal base layer','Wool sweater','Insulated jacket','Warm boots','Hat / gloves / scarf','Jeans x 2','Portable charger'],
+      'Temperate-Hiking':['Moisture-wicking shirts','Hiking pants','Boots','Rain jacket','First aid kit','Headlamp','Water bottle','Snacks']
+    };
+    $('pk-gen').addEventListener('click',()=>{
+      const c=$('pk-climate').value, a=$('pk-act').value; let key=c+'-'+a; let items=packLists[key]||packLists['Temperate-City / sightseeing'];
+      $('pk-result').innerHTML=items.map(i=>'<li class="flex items-center gap-2"><span class="w-4 h-4 rounded border border-slate-300 inline-block"></span><span class="text-slate-700">'+i+'</span></li>').join('');
+    });
+  </script>
+</BaseLayout>

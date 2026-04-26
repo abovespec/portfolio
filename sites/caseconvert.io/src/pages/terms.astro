@@ -1,0 +1,19 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { siteConfig } from '~/config/site.config';
+---
+<BaseLayout title="Terms of Service" description="Terms of service">
+  <h1 class="text-4xl font-bold">Terms of Service</h1>
+  <p class="mt-2 text-sm text-slate-500">Last updated: {new Date().toLocaleDateString('en-US')}</p>
+  <div class="prose prose-slate mt-6 max-w-none">
+    <p>Template terms of service. Customize per site and consult legal counsel.</p>
+    <h2>Acceptance of terms</h2>
+    <p>By using {siteConfig.identity.name} you agree to these terms.</p>
+    <h2>Use of content</h2>
+    <p>Describe permitted use, copyright, and attribution requirements.</p>
+    <h2>Disclaimers</h2>
+    <p>Content is informational and not professional advice.</p>
+    <h2>Limitation of liability</h2>
+    <p>Standard limitation-of-liability clause — replace with counsel-approved text.</p>
+  </div>
+</BaseLayout>

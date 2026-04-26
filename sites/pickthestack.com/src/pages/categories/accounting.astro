@@ -1,0 +1,149 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { siteConfig } from '~/config/site.config';
+---
+<BaseLayout title="Best Accounting Software 2025 | PickTheStack" description="Compare accounting and bookkeeping software for freelancers, SMBs, and accountants. Side-by-side comparisons, pricing, and an interactive quiz to find your perfect tool.">
+  <section class="py-10 text-center">
+    <h1 class="text-4xl font-bold tracking-tight" style="color:{siteConfig.branding.themeColor}">Best Accounting Software</h1>
+    <p class="mx-auto mt-3 max-w-2xl text-lg text-slate-600">Compare accounting and bookkeeping software for freelancers, SMBs, and accountants. Compare features, pricing, and find your fit with our decision quiz.</p>
+  </section>
+
+  <div class="mx-auto max-w-6xl px-4">
+    <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm mb-8">
+      <h2 class="text-xl font-semibold mb-4 text-slate-800">Accounting Software Comparison Table</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-slate-200">
+              <th class="text-left py-2 px-3 font-semibold text-slate-700">Feature</th>
+              <th class="text-center py-2 px-3 font-semibold text-indigo-700">QuickBooks</th>
+              <th class="text-center py-2 px-3 font-semibold text-indigo-700">FreshBooks</th>
+              <th class="text-center py-2 px-3 font-semibold text-indigo-700">Xero</th>
+              <th class="text-center py-2 px-3 font-semibold text-indigo-700">Wave</th>
+              <th class="text-center py-2 px-3 font-semibold text-indigo-700">Zoho Books</th>
+            </tr>
+          </thead>
+          <tbody class="text-slate-600">
+            <tr class="border-b border-slate-100"><td class="py-2 px-3">Free plan</td><td class="text-center">30-day trial</td><td class="text-center">30-day trial</td><td class="text-center">No</td><td class="text-center">Yes</td><td class="text-center">Yes</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">Starting price</td><td class="text-center">$15/mo</td><td class="text-center">$8.50/mo</td><td class="text-center">$13/mo</td><td class="text-center">$0</td><td class="text-center">$15/mo</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">Best for</td><td class="text-center">SMB standard</td><td class="text-center">Freelancers</td><td class="text-center">Growing businesses</td><td class="text-center">Free accounting</td><td class="text-center">Zoho ecosystem</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">G2 score</td><td class="text-center">4.0</td><td class="text-center">4.5</td><td class="text-center">4.3</td><td class="text-center">4.4</td><td class="text-center">4.5</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">Invoicing</td><td class="text-center">Yes</td><td class="text-center">Excellent</td><td class="text-center">Yes</td><td class="text-center">Yes</td><td class="text-center">Yes</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">Expense tracking</td><td class="text-center">Yes</td><td class="text-center">Yes</td><td class="text-center">Yes</td><td class="text-center">Yes</td><td class="text-center">Yes</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">Payroll</td><td class="text-center">Add-on</td><td class="text-center">Partner</td><td class="text-center">Add-on</td><td class="text-center">Paid add-on</td><td class="text-center">Partner</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">Tax prep</td><td class="text-center">Yes</td><td class="text-center">Basic</td><td class="text-center">Yes</td><td class="text-center">Basic</td><td class="text-center">Yes</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">Multi-currency</td><td class="text-center">Plus+</td><td class="text-center">Yes</td><td class="text-center">Yes</td><td class="text-center">No</td><td class="text-center">Yes</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">Accountant access</td><td class="text-center">Yes</td><td class="text-center">Yes</td><td class="text-center">Yes</td><td class="text-center">Yes</td><td class="text-center">Yes</td></tr>
+
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-3 text-xs text-slate-400">Prices and features updated 2025. Click tool names to visit their site (affiliate links where available).</p>
+    </div>
+
+    <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm mb-8">
+      <h2 class="text-xl font-semibold mb-4 text-slate-800">Decision Quiz: Find Your Accounting Software</h2>
+      <div id="quiz-container">
+        <div id="q1" class="quiz-step ">
+          <p class="font-medium text-slate-800 mb-3">1. Need completely free bookkeeping?</p>
+          <div class="flex flex-wrap gap-2">
+            <button class="quiz-btn px-4 py-2 rounded-lg bg-slate-100 hover:bg-indigo-100 text-slate-700" data-next="q2" data-score="wave:3">Yes</button>
+            <button class="quiz-btn px-4 py-2 rounded-lg bg-slate-100 hover:bg-indigo-100 text-slate-700" data-next="q2" data-score="quickbooks:2,freshbooks:2,xero:1,zoho:1">No</button>
+          </div>
+        </div>
+        <div id="q2" class="quiz-step hidden">
+          <p class="font-medium text-slate-800 mb-3">2. Are you a freelancer billing by the hour?</p>
+          <div class="flex flex-wrap gap-2">
+            <button class="quiz-btn px-4 py-2 rounded-lg bg-slate-100 hover:bg-indigo-100 text-slate-700" data-next="q3" data-score="freshbooks:3">Yes</button>
+            <button class="quiz-btn px-4 py-2 rounded-lg bg-slate-100 hover:bg-indigo-100 text-slate-700" data-next="q3" data-score="quickbooks:2,xero:2,zoho:1,wave:1">No</button>
+          </div>
+        </div>
+        <div id="q3" class="quiz-step hidden">
+          <p class="font-medium text-slate-800 mb-3">3. Already using other Zoho apps?</p>
+          <div class="flex flex-wrap gap-2">
+            <button class="quiz-btn px-4 py-2 rounded-lg bg-slate-100 hover:bg-indigo-100 text-slate-700" data-next="q4" data-score="zoho:3">Yes</button>
+            <button class="quiz-btn px-4 py-2 rounded-lg bg-slate-100 hover:bg-indigo-100 text-slate-700" data-next="q4" data-score="quickbooks:1,freshbooks:1,xero:1,wave:1">No</button>
+          </div>
+        </div>
+        <div id="q4" class="quiz-step hidden">
+          <p class="font-medium text-slate-800 mb-3">4. Need integrated payroll in the same tool?</p>
+          <div class="flex flex-wrap gap-2">
+            <button class="quiz-btn px-4 py-2 rounded-lg bg-slate-100 hover:bg-indigo-100 text-slate-700" data-next="result" data-score="quickbooks:3,xero:2">Yes</button>
+            <button class="quiz-btn px-4 py-2 rounded-lg bg-slate-100 hover:bg-indigo-100 text-slate-700" data-next="result" data-score="freshbooks:1,zoho:1,wave:1">No</button>
+          </div>
+        </div>
+        <div id="result" class="quiz-step hidden">
+          <h3 class="text-lg font-semibold text-slate-800 mb-2">Recommended for you:</h3>
+          <div id="result-card" class="rounded-lg bg-indigo-50 border border-indigo-100 p-4"></div>
+          <button id="quiz-restart" class="mt-4 px-4 py-2 rounded-lg bg-indigo-600 text-white text-sm">Start over</button>
+        </div>
+      </div>
+    </div>
+
+    <section class="my-12">
+      <h2 class="text-2xl font-semibold mb-4 text-slate-800">Top Picks by Use Case</h2>
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <a href="#" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-indigo-400 transition">
+          <h3 class="font-semibold text-slate-900">QuickBooks</h3>
+          <p class="mt-1 text-sm text-slate-600">Best for: SMB standard — Starting at $15/mo</p>
+          <p class="mt-2 text-xs text-slate-400">30-day trial | G2: 4.0</p>
+        </a>
+        <a href="#" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-indigo-400 transition">
+          <h3 class="font-semibold text-slate-900">FreshBooks</h3>
+          <p class="mt-1 text-sm text-slate-600">Best for: Freelancers — Starting at $8.50/mo</p>
+          <p class="mt-2 text-xs text-slate-400">30-day trial | G2: 4.5</p>
+        </a>
+        <a href="#" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-indigo-400 transition">
+          <h3 class="font-semibold text-slate-900">Xero</h3>
+          <p class="mt-1 text-sm text-slate-600">Best for: Growing businesses — Starting at $13/mo</p>
+          <p class="mt-2 text-xs text-slate-400">No | G2: 4.3</p>
+        </a>
+        <a href="#" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-indigo-400 transition">
+          <h3 class="font-semibold text-slate-900">Wave</h3>
+          <p class="mt-1 text-sm text-slate-600">Best for: Free accounting — Starting at $0</p>
+          <p class="mt-2 text-xs text-slate-400">Yes | G2: 4.4</p>
+        </a>
+        <a href="#" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-indigo-400 transition">
+          <h3 class="font-semibold text-slate-900">Zoho Books</h3>
+          <p class="mt-1 text-sm text-slate-600">Best for: Zoho ecosystem — Starting at $15/mo</p>
+          <p class="mt-2 text-xs text-slate-400">Yes | G2: 4.5</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="my-12">
+      <h2 class="text-2xl font-semibold mb-4 text-slate-800">Related Keywords</h2>
+      <div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-sm">best accounting software</span><span class="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-sm">quickbooks vs freshbooks</span><span class="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-sm">free accounting software</span><span class="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-sm">accounting software for small business</span><span class="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-sm">wave accounting review</span>      </div>
+    </section>
+  </div>
+
+  <script is:inline>
+    const scores = { quickbooks:0, freshbooks:0, xero:0, wave:0, zohobooks:0 };
+    const names = { quickbooks:"QuickBooks", freshbooks:"FreshBooks", xero:"Xero", wave:"Wave", zohobooks:"Zoho Books" };
+    const reasons = { quickbooks:"SMB standard", freshbooks:"Freelancers", xero:"Growing businesses", wave:"Free accounting", zohobooks:"Zoho ecosystem" };
+    document.querySelectorAll('.quiz-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const next = btn.dataset.next;
+        const delta = btn.dataset.score;
+        if (delta) {
+          delta.split(',').forEach(part => {
+            const [k,v] = part.split(':');
+            scores[k] += parseInt(v);
+          });
+        }
+        document.querySelectorAll('.quiz-step').forEach(s => s.classList.add('hidden'));
+        if (next === 'result') {
+          const winner = Object.entries(scores).sort((a,b) => b[1]-a[1])[0];
+          document.getElementById('result-card').innerHTML = '<p class="text-2xl font-bold text-indigo-700">' + names[winner[0]] + '</p><p class="mt-1 text-slate-700">Best for: ' + reasons[winner[0]] + '</p>';
+        }
+        document.getElementById(next).classList.remove('hidden');
+      });
+    });
+    document.getElementById('quiz-restart')?.addEventListener('click', () => {
+      Object.keys(scores).forEach(k => scores[k]=0);
+      document.querySelectorAll('.quiz-step').forEach(s => s.classList.add('hidden'));
+      document.getElementById('q1').classList.remove('hidden');
+    });
+  </script>
+</BaseLayout>

@@ -1,0 +1,395 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { siteConfig } from '~/config/site.config';
+---
+<BaseLayout title={siteConfig.identity.name} description={siteConfig.identity.description}>
+  <section class="py-10 text-center">
+    <h1 class="text-4xl font-bold tracking-tight" style={`color:${siteConfig.branding.themeColor}`}>WorkoutPlanner</h1>
+    <p class="mx-auto mt-3 max-w-2xl text-lg text-slate-600">Custom workout split generator, progressive overload planner, and bodyweight routine builder.</p>
+  </section>
+  <div class="mx-auto max-w-5xl">
+    <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm mb-8">
+      <h2 class="text-xl font-semibold mb-4 text-slate-800">Workout Split Generator</h2>
+      <div class="grid gap-4 sm:grid-cols-3 mb-4">
+        <label class="block"><span class="text-sm font-medium text-slate-700">Days per week</span>
+          <select id="wp-days" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"><option>3</option><option>4</option><option selected>5</option><option>6</option></select>
+        </label>
+        <label class="block"><span class="text-sm font-medium text-slate-700">Goal</span>
+          <select id="wp-goal" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"><option>Strength</option><option selected>Hypertrophy</option><option>Endurance</option><option>Weight loss</option></select>
+        </label>
+        <label class="block"><span class="text-sm font-medium text-slate-700">Equipment</span>
+          <select id="wp-equip" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"><option selected>Gym</option><option>Dumbbells only</option><option>Bodyweight</option></select>
+        </label>
+      </div>
+      <button id="wp-gen" class="rounded-lg bg-red-600 px-5 py-2 text-white font-semibold hover:bg-red-700">Generate Workout Plan</button>
+      <div id="wp-result" class="mt-6 space-y-4"></div>
+    </div>
+
+    <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm mb-8">
+      <h2 class="text-xl font-semibold mb-4 text-slate-800">Progressive Overload Calculator</h2>
+      <div class="grid gap-4 sm:grid-cols-3">
+        <label class="block"><span class="text-sm font-medium text-slate-700">Current weight (lbs)</span><input id="po-weight" type="number" value="185" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+        <label class="block"><span class="text-sm font-medium text-slate-700">Current reps</span><input id="po-reps" type="number" value="8" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+        <label class="block"><span class="text-sm font-medium text-slate-700">Target reps</span><input id="po-target" type="number" value="10" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+      </div>
+      <div class="mt-4 rounded-lg bg-lime-50 p-4 text-center border border-lime-100">
+        <p class="text-xs uppercase text-lime-600">Suggested next weight</p>
+        <p id="po-out" class="text-2xl font-bold text-lime-700">195 lbs</p>
+        <p id="po-sub" class="text-sm text-lime-600 mt-1">to hit 10 reps at similar intensity</p>
+      </div>
+    </div>
+
+    <section class="my-12">
+      <h2 class="text-2xl font-semibold mb-4 text-slate-800">Fitness Guides</h2>
+      <div class="grid gap-4 sm:grid-cols-2">
+        <a href="/blog/3-day-workout-split-for-beginners-full-body-strength-plan/" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-red-400"><h3 class="font-semibold text-slate-900">3 Day Workout Split for Beginners</h3><p class="mt-1 text-sm text-slate-600">Full body strength plan with exact exercises, sets, and reps for new lifters.</p></a>
+        <a href="/blog/progressive-overload-calculator-track-weight-increases-over-time/" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-red-400"><h3 class="font-semibold text-slate-900">Progressive Overload Calculator</h3><p class="mt-1 text-sm text-slate-600">How to track weight increases over time for strength and muscle growth.</p></a>
+        <a href="/blog/bodyweight-workout-plan-no-equipment-build-muscle-at-home/" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-red-400"><h3 class="font-semibold text-slate-900">Bodyweight Workout Plan (No Equipment)</h3><p class="mt-1 text-sm text-slate-600">Build muscle at home with push-ups, rows, squats, and core progressions.</p></a>
+        <a href="/blog/how-to-progressive-overload-at-home-no-gym-required/" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-red-400"><h3 class="font-semibold text-slate-900">How to Progressive Overload at Home</h3><p class="mt-1 text-sm text-slate-600">Five methods to get stronger without a gym using bands, tempo, and bodyweight.</p></a>
+        <a href="/blog/workout-split-for-busy-professionals-minimal-time-maximum-results/" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-red-400"><h3 class="font-semibold text-slate-900">Workout Split for Busy Professionals</h3><p class="mt-1 text-sm text-slate-600">Minimal time, maximum results with 30-45 minute sessions 3-4 times per week.</p></a>
+        <a href="/blog/full-body-workout-3-times-a-week-the-science-and-the-routine/" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-red-400"><h3 class="font-semibold text-slate-900">Full Body Workout 3 Times a Week</h3><p class="mt-1 text-sm text-slate-600">The science behind full body training and a complete routine for all levels.</p></a>
+      </div>
+    </section>
+  </div>
+  <script is:inline>
+    const splits={
+      // === 3 DAY ===
+      '3-Strength-Gym':[
+        'Squat: 5x5 | Bench Press: 5x5 | Bent-Over Row: 5x5 | Plank: 3x45s',
+        'Deadlift: 3x5 | Overhead Press: 5x5 | Pull-Ups: 3xmax | Hanging Leg Raise: 3x10',
+        'Front Squat: 3x5 | Incline Bench: 5x5 | Barbell Row: 5x5 | Face Pulls: 3x15'
+      ],
+      '3-Hypertrophy-Gym':[
+        'Bench Press: 4x8 | Incline Dumbbell Press: 3x10 | Cable Flye: 3x12 | Tricep Pushdown: 3x12 | Dips: 3x10',
+        'Barbell Row: 4x8 | Lat Pulldown: 3x10 | Face Pulls: 3x15 | Barbell Curl: 3x12 | Hammer Curl: 3x12',
+        'Squat: 4x8 | Romanian Deadlift: 3x10 | Leg Press: 3x12 | Leg Curl: 3x12 | Lateral Raise: 3x15 | Calf Raise: 4x15'
+      ],
+      '3-Endurance-Gym':[
+        'Circuit x4: Goblet Squat 15 reps, Push-Ups 15 reps, KB Swing 20 reps, Rowing 250m, Rest 90s',
+        'Steady-State Cardio: Treadmill incline walk 30 min | Core: Dead Bug 3x12, Plank 3x60s, Russian Twist 3x20',
+        'HIIT x6 rounds: Battle Ropes 30s, Box Jumps 30s, Burpees 30s, Rest 60s | Finish with 10 min rowing'
+      ],
+      '3-Weight loss-Gym':[
+        'Goblet Squat: 3x12 | Dumbbell Bench: 3x12 | Lat Pulldown: 3x12 | Walking Lunge: 3x10/leg | 15 min incline walk',
+        'Kettlebell Swing: 4x15 | Push Press: 3x10 | Row: 3x12 | Farmer Carry: 3x40m | 20 min bike intervals',
+        'Trap Bar Deadlift: 3x10 | Incline Press: 3x10 | Cable Row: 3x12 | Step-Ups: 3x10/leg | 15 min stairmaster'
+      ],
+      '3-Strength-Dumbbells only':[
+        'Goblet Squat: 5x6 | Floor Press: 5x6 | One-Arm Dumbbell Row: 5x8/side | Farmer Carry: 3x40m',
+        'Romanian Deadlift: 4x6 | Seated Overhead Press: 5x6 | Renegade Row: 3x8/side | Weighted Sit-Up: 3x12',
+        'Split Squat: 4x6/leg | Incline Floor Press: 5x6 | Chest-Supported Row: 5x8 | Lateral Raise: 3x15'
+      ],
+      '3-Hypertrophy-Dumbbells only':[
+        'Flat Dumbbell Press: 4x8 | Incline Dumbbell Press: 3x10 | Floor Flye: 3x12 | Overhead Tricep Extension: 3x12',
+        'One-Arm Row: 4x8 | Chest-Supported Row: 3x10 | Rear Delt Flye: 3x15 | Incline Curl: 3x12 | Hammer Curl: 3x12',
+        'Goblet Squat: 4x8 | Romanian Deadlift: 3x10 | Bulgarian Split Squat: 3x10/leg | Lateral Raise: 3x15 | Standing Calf Raise: 4x15'
+      ],
+      '3-Endurance-Dumbbells only':[
+        'AMRAP 20 min: 10 DB Thrusters, 10 Renegade Rows, 10 DB Swings, 10 Goblet Squats',
+        'EMOM 16 min: Min 1 = 12 DB Push Press, Min 2 = 12 Goblet Squats, Min 3 = 12 Renegade Rows, Min 4 = Rest',
+        'Chipper for time: 50 DB Swings, 40 Goblet Squats, 30 Floor Press, 20 Renegade Rows, 10 Burpees'
+      ],
+      '3-Weight loss-Dumbbells only':[
+        'DB Thruster: 3x12 | Floor Press: 3x12 | Renegade Row: 3x10/side | Walking Lunge: 3x10/leg | 15 min jump rope',
+        'DB Swing: 4x15 | Goblet Squat: 3x12 | Push Press: 3x10 | Romanian Deadlift: 3x10 | 20 min brisk walk',
+        'Split Squat: 3x10/leg | Incline Floor Press: 3x10 | One-Arm Row: 3x10/side | Farmer Carry: 3x40m | 15 min bike'
+      ],
+      '3-Strength-Bodyweight':[
+        'Push-Up Progression: 5xmax | Pike Push-Up: 4x8 | Dips (chair): 4x10 | Plank: 3x45s',
+        'Pull-Up or Inverted Row: 5xmax | Superman Hold: 3x20s | Reverse Lunge: 4x10/leg | Glute Bridge: 4x15',
+        'Pistol Squat Progression: 4x6/leg | Bulgarian Split Squat: 4x8/leg | Nordic Curl (eccentric): 3x5 | Hanging Knee Raise: 3x12'
+      ],
+      '3-Hypertrophy-Bodyweight':[
+        'Standard Push-Up: 4x15-20 | Diamond Push-Up: 3x10-12 | Pike Push-Up: 3x10 | Tricep Dip: 3x15 | Push-Up Hold: 2x30s',
+        'Pull-Up or Inverted Row: 4xmax | Australian Row: 3x12 | Doorframe Row: 3x15 | Chin-Up Grip Hold: 2x20s',
+        'Bulgarian Split Squat: 4x10/leg | Glute Bridge: 4x15 | Single-Leg RDL (bodyweight): 3x10 | Calf Raise: 5x20 | L-Sit Progression: 3x15s'
+      ],
+      '3-Endurance-Bodyweight':[
+        'AMRAP 20 min: 10 Burpees, 20 Push-Ups, 30 Squats, 40 Mountain Climbers',
+        'EMOM 15 min: Min 1 = 15 Squats, Min 2 = 10 Push-Ups, Min 3 = 5 Burpees',
+        'Chipper for time: 100 Squats, 75 Push-Ups, 50 Lunges, 25 Burpees, 50 Sit-Ups'
+      ],
+      '3-Weight loss-Bodyweight':[
+        'Burpee: 4x10 | Push-Up: 3x12 | Squat Jump: 3x15 | Mountain Climber: 3x30s | 15 min brisk walk',
+        'High Knees: 4x30s | Jump Squat: 3x12 | Push-Up to T: 3x8/side | Bicycle Crunch: 3x20 | 20 min jog',
+        'Walking Lunge: 3x12/leg | Incline Push-Up: 3x12 | Glute Bridge March: 3x10/leg | Plank Jack: 3x20 | 15 min jump rope'
+      ],
+      // === 4 DAY ===
+      '4-Strength-Gym':[
+        'Bench Press: 5x5 | Overhead Press: 5x5 | Bent-Over Row: 5x5 | Weighted Dip: 3x6 | Barbell Curl: 3x8',
+        'Squat: 5x5 | Romanian Deadlift: 4x6 | Leg Press: 3x8 | Hanging Leg Raise: 3x10 | Calf Raise: 4x8',
+        'Incline Bench: 5x5 | Pull-Up (weighted): 5x5 | Cable Row: 4x6 | Lateral Raise: 3x10 | Face Pulls: 3x12',
+        'Front Squat: 4x6 | Deadlift: 3x5 | Walking Lunge: 3x8/leg | Leg Curl: 3x10 | Plank: 3x60s'
+      ],
+      '4-Hypertrophy-Gym':[
+        'Chest: Bench Press 4x8, Incline Dumbbell Press 3x10, Cable Flye 3x12, Tricep Pushdown 3x12 | Shoulders: Lateral Raise 3x15',
+        'Back: Barbell Row 4x8, Lat Pulldown 3x10, Chest-Supported Row 3x10, Face Pulls 3x15 | Biceps: Barbell Curl 3x12, Hammer Curl 3x12',
+        'Legs: Squat 4x8, Romanian Deadlift 3x10, Leg Press 3x12, Leg Curl 3x12, Leg Extension 3x12, Calf Raise 4x15',
+        'Arms/Shoulders: Overhead Press 4x8, Close-Grip Bench 3x10, Incline Curl 3x12, Skullcrusher 3x12, Rear Delt Flye 3x15'
+      ],
+      '4-Endurance-Gym':[
+        'Upper Body Circuit x4: Bench Press 12 reps, Row 12 reps, Overhead Press 12 reps, Pull-Up max, Rest 60s',
+        'Lower Body Circuit x4: Squat 15 reps, Romanian Deadlift 12 reps, Lunges 10/leg, Calf Raise 15, Rest 60s',
+        'Cardio + Core: 25 min treadmill intervals | Plank 3x60s, Dead Bug 3x12, Pallof Press 3x10/side',
+        'Full Body Chipper: 40 KB Swings, 30 Goblet Squats, 20 Push Press, 10 Burpees, 250m Row x3'
+      ],
+      '4-Weight loss-Gym':[
+        'Bench Press: 4x8 | Row: 4x8 | Overhead Press: 3x10 | Face Pulls: 3x15 | 15 min stairmaster',
+        'Squat: 4x8 | Romanian Deadlift: 3x10 | Leg Press: 3x12 | Calf Raise: 3x15 | 15 min incline walk',
+        'Incline Press: 4x8 | Lat Pulldown: 4x8 | Lateral Raise: 3x15 | Barbell Curl: 3x12 | 15 min bike',
+        'Trap Bar Deadlift: 4x6 | Walking Lunge: 3x10/leg | Leg Curl: 3x12 | Plank: 3x45s | 15 min rowing'
+      ],
+      '4-Strength-Dumbbells only':[
+        'Floor Press: 5x5 | Seated Overhead Press: 5x5 | One-Arm Row: 5x8/side | Weighted Dip (backpack): 3x8',
+        'Goblet Squat: 5x6 | Romanian Deadlift: 4x6 | Bulgarian Split Squat: 3x8/leg | Weighted Sit-Up: 3x10',
+        'Incline Floor Press: 5x5 | Chest-Supported Row: 5x6 | Renegade Row: 3x8/side | Lateral Raise: 3x15',
+        'Split Squat: 4x6/leg | Single-Leg RDL: 4x8/leg | Farmer Carry: 3x40m | Hanging Knee Raise: 3x12'
+      ],
+      '4-Hypertrophy-Dumbbells only':[
+        'Chest/Triceps: Flat DB Press 4x8, Incline DB Press 3x10, Floor Flye 3x12, Overhead Extension 3x12',
+        'Back/Biceps: One-Arm Row 4x8, Chest-Supported Row 3x10, Rear Delt Flye 3x15, Incline Curl 3x12',
+        'Legs: Goblet Squat 4x8, Romanian Deadlift 3x10, Bulgarian Split Squat 3x10/leg, Standing Calf Raise 4x15',
+        'Shoulders/Arms: Seated Overhead Press 4x8, Lateral Raise 3x15, Hammer Curl 3x12, Tricep Kickback 3x12'
+      ],
+      '4-Endurance-Dumbbells only':[
+        'Upper EMOM 16 min: Min 1 = 12 Floor Press, Min 2 = 12 Renegade Rows, Min 3 = 12 Push Press, Min 4 = Rest',
+        'Lower EMOM 16 min: Min 1 = 12 Goblet Squats, Min 2 = 12 Romanian Deadlifts, Min 3 = 12 Lunges, Min 4 = Rest',
+        'AMRAP 20 min: 10 DB Thrusters, 10 Renegade Rows, 10 Goblet Squats, 10 DB Swings',
+        'Chipper: 50 DB Swings, 40 Goblet Squats, 30 Floor Press, 20 Lunges/leg, 10 Burpees'
+      ],
+      '4-Weight loss-Dumbbells only':[
+        'DB Thruster: 4x10 | Floor Press: 3x10 | Renegade Row: 3x8/side | 15 min jump rope',
+        'Goblet Squat: 4x10 | Romanian Deadlift: 3x10 | Bulgarian Split Squat: 3x8/leg | 15 min bike',
+        'Push Press: 4x8 | One-Arm Row: 3x10/side | Lateral Raise: 3x15 | 15 min brisk walk',
+        'DB Swing: 4x15 | Walking Lunge: 3x10/leg | Farmer Carry: 3x40m | 15 min stairmaster'
+      ],
+      '4-Strength-Bodyweight':[
+        'Push-Up: 5xmax | Pike Push-Up: 4x6 | Dips (chair): 4x8 | Plank: 3x45s',
+        'Pull-Up/Inverted Row: 5xmax | Superman Hold: 3x20s | Reverse Lunge: 4x10/leg | Glute Bridge: 4x15',
+        'Pistol Squat Progression: 4x5/leg | Bulgarian Split Squat: 4x8/leg | Nordic Curl (eccentric): 3x5 | Hanging Knee Raise: 3x12',
+        'Diamond Push-Up: 4x8 | Archer Push-Up: 3x5/side | Doorframe Row: 4x12 | L-Sit Progression: 3x15s'
+      ],
+      '4-Hypertrophy-Bodyweight':[
+        'Push: Standard Push-Up 4x15, Diamond Push-Up 3x10, Pike Push-Up 3x10, Tricep Dip 3x15',
+        'Pull: Pull-Up 4xmax, Australian Row 3x12, Doorframe Row 3x15, Chin-Up Grip Hold 2x20s',
+        'Legs: Bulgarian Split Squat 4x10/leg, Glute Bridge 4x15, Single-Leg RDL 3x10, Calf Raise 5x20',
+        'Core/Skill: L-Sit 3x15s, Hanging Knee Raise 3x12, Ab Wheel (or rollout) 3x10, Plank 3x60s'
+      ],
+      '4-Endurance-Bodyweight':[
+        'Upper EMOM 15 min: Min 1 = 15 Push-Ups, Min 2 = 10 Pike Push-Ups, Min 3 = 5 Pull-Ups',
+        'Lower EMOM 15 min: Min 1 = 20 Squats, Min 2 = 10 Lunges/leg, Min 3 = 15 Glute Bridges',
+        'AMRAP 20 min: 10 Burpees, 20 Push-Ups, 30 Squats, 40 Mountain Climbers',
+        'Chipper for time: 100 Squats, 75 Push-Ups, 50 Lunges, 25 Burpees, 50 Sit-Ups'
+      ],
+      '4-Weight loss-Bodyweight':[
+        'Burpee: 4x10 | Push-Up: 3x12 | Dips: 3x12 | Mountain Climber: 3x30s | 15 min jog',
+        'Jump Squat: 4x12 | Walking Lunge: 3x10/leg | Glute Bridge March: 3x10/leg | 15 min jump rope',
+        'High Knees: 4x30s | Push-Up to T: 3x8/side | Bicycle Crunch: 3x20 | 15 min brisk walk',
+        'Broad Jump: 4x8 | Incline Push-Up: 3x12 | Reverse Lunge: 3x10/leg | Plank Jack: 3x20 | 15 min bike'
+      ],
+      // === 5 DAY ===
+      '5-Strength-Gym':[
+        'Squat: 5x5 | Romanian Deadlift: 3x6 | Leg Curl: 3x8 | Calf Raise: 4x8',
+        'Bench Press: 5x5 | Overhead Press: 5x5 | Weighted Dip: 3x6 | Tricep Pushdown: 3x10',
+        'Rest or light cardio: 20 min walk + mobility',
+        'Deadlift: 3x5 | Front Squat: 4x5 | Lunges: 3x8/leg | Hanging Leg Raise: 3x10',
+        'Overhead Press: 5x5 | Incline Bench: 4x5 | Pull-Up (weighted): 5x5 | Barbell Curl: 3x8',
+        'Accessory: Face Pulls 4x15, Lateral Raise 4x15, Plank 3x60s, Farmer Carry 3x40m'
+      ],
+      '5-Hypertrophy-Gym':[
+        'Chest: Bench Press 4x8, Incline Dumbbell Press 3x10, Cable Flye 3x12, Tricep Pushdown 3x12',
+        'Back: Barbell Row 4x8, Lat Pulldown 3x10, Chest-Supported Row 3x10, Barbell Curl 3x12',
+        'Shoulders/Arms: Overhead Press 4x8, Lateral Raise 4x15, Rear Delt Flye 3x15, Hammer Curl 3x12, Skullcrusher 3x12',
+        'Legs: Squat 4x8, Romanian Deadlift 3x10, Leg Press 3x12, Leg Curl 3x12, Leg Extension 3x12, Calf Raise 4x15',
+        'Full Body Pump: Lat Pulldown 3x12, Dumbbell Bench 3x12, Goblet Squat 3x12, Face Pulls 3x15, Plank 3x60s'
+      ],
+      '5-Endurance-Gym':[
+        'Circuit x5: Goblet Squat 15, Push Press 12, Row 12, Box Jump 10, Rest 60s',
+        'Steady state: Treadmill incline walk 35 min | Core: Dead Bug 3x12, Plank 3x60s',
+        'Active recovery: Yoga or light swim 30 min',
+        'HIIT x8 rounds: Assault Bike 30s sprint / 30s rest | Finish with 10 min rowing',
+        'Full Body Chipper: 50 KB Swings, 40 Goblet Squats, 30 Push Press, 20 Burpees, 250m Row x4'
+      ],
+      '5-Weight loss-Gym':[
+        'Bench Press: 4x8 | Row: 4x8 | Overhead Press: 3x10 | 15 min stairmaster',
+        'Squat: 4x8 | Romanian Deadlift: 3x10 | Leg Press: 3x12 | 15 min bike intervals',
+        'Active recovery: 30 min brisk walk + stretching',
+        'Incline Press: 4x8 | Lat Pulldown: 4x8 | Lateral Raise: 3x15 | 15 min rowing',
+        'Trap Bar Deadlift: 4x6 | Walking Lunge: 3x10/leg | Leg Curl: 3x12 | 15 min elliptical'
+      ],
+      '5-Strength-Dumbbells only':[
+        'Goblet Squat: 5x6 | Romanian Deadlift: 4x6 | Split Squat: 3x8/leg | Weighted Sit-Up: 3x10',
+        'Floor Press: 5x5 | Seated Overhead Press: 5x5 | One-Arm Row: 5x8/side | Farmer Carry: 3x40m',
+        'Rest or light cardio: 20 min walk + mobility',
+        'Bulgarian Split Squat: 4x6/leg | Single-Leg RDL: 4x8/leg | Glute Bridge: 4x12 | Hanging Knee Raise: 3x12',
+        'Incline Floor Press: 5x5 | Chest-Supported Row: 5x6 | Renegade Row: 3x8/side | Lateral Raise: 3x15',
+        'Accessory: Weighted Plank 3x45s, DB Shrug 3x12, Calf Raise 4x15'
+      ],
+      '5-Hypertrophy-Dumbbells only':[
+        'Chest/Triceps: Flat DB Press 4x8, Incline DB Press 3x10, Floor Flye 3x12, Overhead Extension 3x12',
+        'Back/Biceps: One-Arm Row 4x8, Chest-Supported Row 3x10, Rear Delt Flye 3x15, Incline Curl 3x12',
+        'Shoulders: Seated Overhead Press 4x8, Lateral Raise 4x15, Upright Row 3x12, Face Pulls 3x15',
+        'Legs: Goblet Squat 4x8, Romanian Deadlift 3x10, Bulgarian Split Squat 3x10/leg, Standing Calf Raise 4x15',
+        'Arms/Abs: Hammer Curl 3x12, Tricep Kickback 3x12, Weighted Sit-Up 3x15, Russian Twist 3x20'
+      ],
+      '5-Endurance-Dumbbells only':[
+        'AMRAP 25 min: 10 DB Thrusters, 10 Renegade Rows, 10 Goblet Squats, 10 DB Swings',
+        'EMOM 20 min: Min 1 = 12 Floor Press, Min 2 = 12 Goblet Squats, Min 3 = 12 Renegade Rows, Min 4 = Rest',
+        'Active recovery: 30 min walk + foam rolling',
+        'Chipper: 60 DB Swings, 50 Goblet Squats, 40 Floor Press, 30 Lunges/leg, 20 Burpees',
+        'Interval: 40s work / 20s rest x 8 rounds of DB Push Press, Goblet Squat, Renegade Row, DB Swing'
+      ],
+      '5-Weight loss-Dumbbells only':[
+        'DB Thruster: 4x10 | Floor Press: 3x10 | Renegade Row: 3x8/side | 15 min jump rope',
+        'Goblet Squat: 4x10 | Romanian Deadlift: 3x10 | Bulgarian Split Squat: 3x8/leg | 15 min bike',
+        'Active recovery: 30 min brisk walk',
+        'Push Press: 4x8 | One-Arm Row: 3x10/side | Lateral Raise: 3x15 | 15 min stairmaster',
+        'DB Swing: 4x15 | Walking Lunge: 3x10/leg | Farmer Carry: 3x40m | 15 min rowing'
+      ],
+      '5-Strength-Bodyweight':[
+        'Push-Up Progression: 5xmax | Pike Push-Up: 4x6 | Dips: 4x8 | Plank: 3x45s',
+        'Pull-Up/Inverted Row: 5xmax | Superman Hold: 3x20s | Reverse Lunge: 4x10/leg | Glute Bridge: 4x15',
+        'Rest or mobility: 20 min yoga flow',
+        'Pistol Squat Progression: 4x5/leg | Bulgarian Split Squat: 4x8/leg | Nordic Curl (eccentric): 3x5 | Hanging Knee Raise: 3x12',
+        'Diamond Push-Up: 4x8 | Archer Push-Up: 3x5/side | Doorframe Row: 4x12 | L-Sit Progression: 3x15s',
+        'Core/Skill: Plank 3x60s, Side Plank 3x30s/side, Hollow Hold 3x20s, Handstand Hold (wall) 3x20s'
+      ],
+      '5-Hypertrophy-Bodyweight':[
+        'Push: Standard Push-Up 4x15, Diamond Push-Up 3x10, Pike Push-Up 3x10, Tricep Dip 3x15',
+        'Pull: Pull-Up 4xmax, Australian Row 3x12, Doorframe Row 3x15, Chin-Up Grip Hold 2x20s',
+        'Legs: Bulgarian Split Squat 4x10/leg, Glute Bridge 4x15, Single-Leg RDL 3x10, Calf Raise 5x20',
+        'Core/Skill: L-Sit 3x15s, Hanging Knee Raise 3x12, Ab Wheel 3x10, Plank 3x60s',
+        'Full Body: Burpee 3x10, Push-Up 3x12, Squat 3x15, Inverted Row 3x12, Mountain Climber 3x30s'
+      ],
+      '5-Endurance-Bodyweight':[
+        'AMRAP 25 min: 10 Burpees, 20 Push-Ups, 30 Squats, 40 Mountain Climbers',
+        'EMOM 20 min: Min 1 = 15 Squats, Min 2 = 10 Push-Ups, Min 3 = 5 Pull-Ups, Min 4 = Rest',
+        'Active recovery: 30 min walk + stretching',
+        'Chipper for time: 100 Squats, 75 Push-Ups, 50 Lunges, 25 Burpees, 50 Sit-Ups',
+        'Interval: 40s work / 20s rest x 10 rounds of Jump Squat, Push-Up, High Knees, Mountain Climber'
+      ],
+      '5-Weight loss-Bodyweight':[
+        'Burpee: 4x10 | Push-Up: 3x12 | Dips: 3x12 | Mountain Climber: 3x30s | 15 min jog',
+        'Jump Squat: 4x12 | Walking Lunge: 3x10/leg | Glute Bridge March: 3x10/leg | 15 min jump rope',
+        'Active recovery: 30 min brisk walk',
+        'High Knees: 4x30s | Push-Up to T: 3x8/side | Bicycle Crunch: 3x20 | 15 min bike',
+        'Broad Jump: 4x8 | Incline Push-Up: 3x12 | Reverse Lunge: 3x10/leg | Plank Jack: 3x20 | 15 min stairmaster'
+      ],
+      // === 6 DAY ===
+      '6-Strength-Gym':[
+        'Squat: 5x5 | Leg Press: 3x8 | Leg Curl: 3x8 | Calf Raise: 4x8',
+        'Bench Press: 5x5 | Incline Bench: 4x5 | Weighted Dip: 3x6 | Tricep Pushdown: 3x10',
+        'Deadlift: 3x5 | Barbell Row: 5x5 | Pull-Up (weighted): 5x5 | Barbell Curl: 3x8',
+        'Front Squat: 4x5 | Romanian Deadlift: 3x6 | Walking Lunge: 3x8/leg | Hanging Leg Raise: 3x10',
+        'Overhead Press: 5x5 | Close-Grip Bench: 4x5 | Cable Row: 4x6 | Face Pulls: 3x12',
+        'Accessory: Lateral Raise 4x15, Rear Delt Flye 3x15, Plank 3x60s, Farmer Carry 3x40m'
+      ],
+      '6-Hypertrophy-Gym':[
+        'Push A: Bench Press 4x8, Incline Dumbbell Press 3x10, Cable Flye 3x12, Tricep Pushdown 3x12, Overhead Extension 3x12',
+        'Pull A: Barbell Row 4x8, Lat Pulldown 3x10, Chest-Supported Row 3x10, Barbell Curl 3x12, Hammer Curl 3x12',
+        'Legs A: Squat 4x8, Romanian Deadlift 3x10, Leg Press 3x12, Leg Curl 3x12, Calf Raise 4x15',
+        'Push B: Overhead Press 4x8, Flat Dumbbell Press 3x10, Lateral Raise 4x15, Close-Grip Bench 3x10, Tricep Dip 3xmax',
+        'Pull B: Weighted Pull-Up 4x8, Cable Row 3x10, Face Pulls 4x15, Incline Curl 3x12, Concentration Curl 3x12',
+        'Legs B: Front Squat 4x8, Leg Extension 3x12, Walking Lunge 3x10/leg, Leg Curl 3x12, Seated Calf Raise 4x15'
+      ],
+      '6-Endurance-Gym':[
+        'Circuit x5: Goblet Squat 15, Push Press 12, Row 12, Box Jump 10',
+        'Steady state: Incline walk 30 min | Core: Dead Bug 3x12, Plank 3x60s',
+        'HIIT: Assault Bike 30s/30s x 10 | Finish with 10 min rowing',
+        'Circuit x5: Kettlebell Swing 20, Walking Lunge 10/leg, Push-Up 15, Pull-Up max',
+        'Steady state: Elliptical 30 min | Core: Hanging Knee Raise 3x12, Pallof Press 3x10/side',
+        'Chipper: 50 KB Swings, 40 Goblet Squats, 30 Push Press, 20 Burpees, 250m Row x5'
+      ],
+      '6-Weight loss-Gym':[
+        'Bench Press: 4x8 | Row: 4x8 | Overhead Press: 3x10 | 15 min stairmaster',
+        'Squat: 4x8 | Romanian Deadlift: 3x10 | Leg Press: 3x12 | 15 min bike',
+        'Incline Press: 4x8 | Lat Pulldown: 4x8 | Lateral Raise: 3x15 | 15 min rowing',
+        'Deadlift: 4x5 | Walking Lunge: 3x10/leg | Leg Curl: 3x12 | 15 min elliptical',
+        'Close-Grip Bench: 4x8 | Cable Row: 4x8 | Barbell Curl: 3x12 | 15 min incline walk',
+        'Trap Bar Deadlift: 4x6 | Front Squat: 3x8 | Calf Raise: 4x15 | 15 min jump rope'
+      ],
+      '6-Strength-Dumbbells only':[
+        'Goblet Squat: 5x6 | Romanian Deadlift: 4x6 | Split Squat: 3x8/leg | Calf Raise: 4x8',
+        'Floor Press: 5x5 | Seated Overhead Press: 5x5 | One-Arm Row: 5x8/side | Farmer Carry: 3x40m',
+        'Bulgarian Split Squat: 4x6/leg | Single-Leg RDL: 4x8/leg | Glute Bridge: 4x12 | Hanging Knee Raise: 3x12',
+        'Incline Floor Press: 5x5 | Chest-Supported Row: 5x6 | Renegade Row: 3x8/side | Lateral Raise: 3x15',
+        'Split Squat: 4x6/leg | Romanian Deadlift: 3x6 | Weighted Sit-Up: 3x10 | Plank: 3x60s',
+        'Accessory: DB Shrug 3x12, Hammer Curl 3x12, Tricep Kickback 3x12, Face Pulls 3x15 (band or towel)'
+      ],
+      '6-Hypertrophy-Dumbbells only':[
+        'Chest/Triceps: Flat DB Press 4x8, Incline DB Press 3x10, Floor Flye 3x12, Overhead Extension 3x12',
+        'Back/Biceps: One-Arm Row 4x8, Chest-Supported Row 3x10, Rear Delt Flye 3x15, Incline Curl 3x12',
+        'Legs: Goblet Squat 4x8, Romanian Deadlift 3x10, Bulgarian Split Squat 3x10/leg, Standing Calf Raise 4x15',
+        'Shoulders: Seated Overhead Press 4x8, Lateral Raise 4x15, Upright Row 3x12, Face Pulls 3x15',
+        'Arms: Hammer Curl 3x12, Tricep Kickback 3x12, Concentration Curl 3x12, Close-Grip Floor Press 3x10',
+        'Core/Legs: Weighted Sit-Up 3x15, Russian Twist 3x20, Glute Bridge 4x15, Single-Leg Calf Raise 3x15/leg'
+      ],
+      '6-Endurance-Dumbbells only':[
+        'AMRAP 25 min: 10 DB Thrusters, 10 Renegade Rows, 10 Goblet Squats, 10 DB Swings',
+        'EMOM 20 min: Min 1 = 12 Floor Press, Min 2 = 12 Goblet Squats, Min 3 = 12 Renegade Rows, Min 4 = Rest',
+        'Chipper: 60 DB Swings, 50 Goblet Squats, 40 Floor Press, 30 Lunges/leg, 20 Burpees',
+        'Interval: 40s work / 20s rest x 10 rounds of DB Push Press, Goblet Squat, Renegade Row, DB Swing',
+        'Steady state: 30 min brisk walk with light DB farmer carry | Core: Weighted Plank 3x45s',
+        'Circuit x6: DB Thruster 12, Romanian Deadlift 12, Push Press 12, Goblet Squat 12, Renegade Row 12'
+      ],
+      '6-Weight loss-Dumbbells only':[
+        'DB Thruster: 4x10 | Floor Press: 3x10 | Renegade Row: 3x8/side | 15 min jump rope',
+        'Goblet Squat: 4x10 | Romanian Deadlift: 3x10 | Bulgarian Split Squat: 3x8/leg | 15 min bike',
+        'Push Press: 4x8 | One-Arm Row: 3x10/side | Lateral Raise: 3x15 | 15 min stairmaster',
+        'DB Swing: 4x15 | Walking Lunge: 3x10/leg | Farmer Carry: 3x40m | 15 min rowing',
+        'Incline Floor Press: 4x8 | Chest-Supported Row: 3x10 | Hammer Curl: 3x12 | 15 min brisk walk',
+        'Split Squat: 3x10/leg | DB Thruster: 3x10 | Weighted Sit-Up: 3x15 | 15 min elliptical'
+      ],
+      '6-Strength-Bodyweight':[
+        'Push-Up: 5xmax | Pike Push-Up: 4x6 | Dips: 4x8 | Plank: 3x45s',
+        'Pull-Up/Inverted Row: 5xmax | Superman Hold: 3x20s | Reverse Lunge: 4x10/leg | Glute Bridge: 4x15',
+        'Pistol Squat Progression: 4x5/leg | Bulgarian Split Squat: 4x8/leg | Nordic Curl (eccentric): 3x5 | Hanging Knee Raise: 3x12',
+        'Diamond Push-Up: 4x8 | Archer Push-Up: 3x5/side | Doorframe Row: 4x12 | L-Sit Progression: 3x15s',
+        'Squat Jump: 4x10 | Single-Leg Glute Bridge: 4x12/leg | Calf Raise: 5x20 | Side Plank: 3x30s/side',
+        'Skill/Core: Handstand Hold (wall) 3x20s, Hollow Hold 3x20s, Push-Up Hold 2x30s, L-Sit 3x15s'
+      ],
+      '6-Hypertrophy-Bodyweight':[
+        'Push A: Standard Push-Up 4x15, Diamond Push-Up 3x10, Pike Push-Up 3x10, Tricep Dip 3x15',
+        'Pull A: Pull-Up 4xmax, Australian Row 3x12, Doorframe Row 3x15, Chin-Up Grip Hold 2x20s',
+        'Legs A: Bulgarian Split Squat 4x10/leg, Glute Bridge 4x15, Single-Leg RDL 3x10, Calf Raise 5x20',
+        'Push B: Decline Push-Up 4x10, Wide Push-Up 3x12, Pike Push-Up 3x8, Tricep Dip 3x12',
+        'Pull B: Inverted Row 4x12, Doorframe Row 3x15, Superman Hold 3x20s, Pull-Up 3xmax',
+        'Legs B: Pistol Squat Progression 4x5/leg, Shrimp Squat 3x6/leg, Glute Bridge 4x15, Nordic Curl 3x5, Calf Raise 4x20'
+      ],
+      '6-Endurance-Bodyweight':[
+        'AMRAP 25 min: 10 Burpees, 20 Push-Ups, 30 Squats, 40 Mountain Climbers',
+        'EMOM 20 min: Min 1 = 15 Squats, Min 2 = 10 Push-Ups, Min 3 = 5 Pull-Ups, Min 4 = Rest',
+        'Chipper for time: 100 Squats, 75 Push-Ups, 50 Lunges, 25 Burpees, 50 Sit-Ups',
+        'Interval: 40s work / 20s rest x 10 rounds of Jump Squat, Push-Up, High Knees, Mountain Climber',
+        'Steady state: 30 min jog | Core: Plank 3x60s, Hanging Knee Raise 3x12, L-Sit 3x15s',
+        'Circuit x6: 15 Squats, 10 Push-Ups, 5 Pull-Ups, 20 Mountain Climbers, 10 Burpees'
+      ],
+      '6-Weight loss-Bodyweight':[
+        'Burpee: 4x10 | Push-Up: 3x12 | Dips: 3x12 | Mountain Climber: 3x30s | 15 min jog',
+        'Jump Squat: 4x12 | Walking Lunge: 3x10/leg | Glute Bridge March: 3x10/leg | 15 min jump rope',
+        'High Knees: 4x30s | Push-Up to T: 3x8/side | Bicycle Crunch: 3x20 | 15 min bike',
+        'Broad Jump: 4x8 | Incline Push-Up: 3x12 | Reverse Lunge: 3x10/leg | Plank Jack: 3x20 | 15 min stairmaster',
+        'Squat Jump: 4x10 | Push-Up: 3x12 | Sit-Up: 3x15 | High Knees: 3x30s | 15 min brisk walk',
+        'Burpee: 3x10 | Mountain Climber: 3x30s | Jumping Jack: 3x30s | Push-Up: 3x12 | 15 min elliptical'
+      ]
+    };
+    document.getElementById('wp-gen').addEventListener('click',()=>{
+      const d=document.getElementById('wp-days').value; const g=document.getElementById('wp-goal').value; const e=document.getElementById('wp-equip').value;
+      let key=d+'-'+g+'-'+e; let plan=splits[key];
+      if(!plan){
+        const fallbackGoals=['Hypertrophy','Strength','Weight loss','Endurance'];
+        for(const fg of fallbackGoals){ key=d+'-'+fg+'-'+e; plan=splits[key]; if(plan) break; }
+        if(!plan){ key='3-Hypertrophy-Gym'; plan=splits[key]; }
+      }
+      let html='<div class="grid gap-3">';
+      plan.forEach((day,i)=>{
+        html+='<div class="rounded-lg border border-slate-200 p-4"><p class="text-xs font-bold uppercase text-red-600 mb-1">Day '+(i+1)+'</p><p class="text-slate-800 text-sm leading-relaxed">'+day+'</p></div>';
+      });
+      html+='</div>';
+      document.getElementById('wp-result').innerHTML=html;
+    });
+    function calcPO(){ const w=parseFloat(document.getElementById('po-weight').value)||0; const r=parseFloat(document.getElementById('po-reps').value)||1; const t=parseFloat(document.getElementById('po-target').value)||1; const estMax=w*(1+r/30); const next=estMax/(1+t/30); document.getElementById('po-out').textContent=Math.round(next)+' lbs'; }
+    ['po-weight','po-reps','po-target'].forEach(id=>document.getElementById(id)?.addEventListener('input',calcPO));
+    calcPO();
+  </script>
+</BaseLayout>

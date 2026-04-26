@@ -1,0 +1,149 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { siteConfig } from '~/config/site.config';
+---
+<BaseLayout title="Best Social Media Management 2025 | PickTheStack" description="Compare social media management tools for scheduling, analytics, and engagement. Side-by-side comparisons, pricing, and an interactive quiz to find your perfect tool.">
+  <section class="py-10 text-center">
+    <h1 class="text-4xl font-bold tracking-tight" style="color:{siteConfig.branding.themeColor}">Best Social Media Management</h1>
+    <p class="mx-auto mt-3 max-w-2xl text-lg text-slate-600">Compare social media management tools for scheduling, analytics, and engagement. Compare features, pricing, and find your fit with our decision quiz.</p>
+  </section>
+
+  <div class="mx-auto max-w-6xl px-4">
+    <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm mb-8">
+      <h2 class="text-xl font-semibold mb-4 text-slate-800">Social Media Management Comparison Table</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-slate-200">
+              <th class="text-left py-2 px-3 font-semibold text-slate-700">Feature</th>
+              <th class="text-center py-2 px-3 font-semibold text-indigo-700">Buffer</th>
+              <th class="text-center py-2 px-3 font-semibold text-indigo-700">Hootsuite</th>
+              <th class="text-center py-2 px-3 font-semibold text-indigo-700">Later</th>
+              <th class="text-center py-2 px-3 font-semibold text-indigo-700">Sprout Social</th>
+              <th class="text-center py-2 px-3 font-semibold text-indigo-700">SocialBee</th>
+            </tr>
+          </thead>
+          <tbody class="text-slate-600">
+            <tr class="border-b border-slate-100"><td class="py-2 px-3">Free plan</td><td class="text-center">Yes (3 channels)</td><td class="text-center">No</td><td class="text-center">Yes (1 set)</td><td class="text-center">30-day trial</td><td class="text-center">14-day trial</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">Starting price</td><td class="text-center">$5/mo</td><td class="text-center">$99/mo</td><td class="text-center">$16.67/mo</td><td class="text-center">$199/mo</td><td class="text-center">$19/mo</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">Best for</td><td class="text-center">Simple scheduling</td><td class="text-center">Enterprise</td><td class="text-center">Visual planners</td><td class="text-center">Analytics depth</td><td class="text-center">Content recycling</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">G2 score</td><td class="text-center">4.3</td><td class="text-center">4.1</td><td class="text-center">4.5</td><td class="text-center">4.4</td><td class="text-center">4.6</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">Platforms</td><td class="text-center">7+</td><td class="text-center">10+</td><td class="text-center">6</td><td class="text-center">7+</td><td class="text-center">5</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">Scheduling</td><td class="text-center">Yes</td><td class="text-center">Yes</td><td class="text-center">Yes</td><td class="text-center">Yes</td><td class="text-center">Yes</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">Analytics</td><td class="text-center">Good</td><td class="text-center">Excellent</td><td class="text-center">Good</td><td class="text-center">Excellent</td><td class="text-center">Basic</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">Inbox</td><td class="text-center">No</td><td class="text-center">Yes</td><td class="text-center">Partial</td><td class="text-center">Yes</td><td class="text-center">No</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">AI assistant</td><td class="text-center">Yes</td><td class="text-center">Yes</td><td class="text-center">Yes</td><td class="text-center">Yes</td><td class="text-center">Yes</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">Team collab</td><td class="text-center">Yes</td><td class="text-center">Yes</td><td class="text-center">Yes</td><td class="text-center">Yes</td><td class="text-center">Yes</td></tr>
+
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-3 text-xs text-slate-400">Prices and features updated 2025. Click tool names to visit their site (affiliate links where available).</p>
+    </div>
+
+    <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm mb-8">
+      <h2 class="text-xl font-semibold mb-4 text-slate-800">Decision Quiz: Find Your Social Media Management</h2>
+      <div id="quiz-container">
+        <div id="q1" class="quiz-step ">
+          <p class="font-medium text-slate-800 mb-3">1. Need unified social inbox / engagement?</p>
+          <div class="flex flex-wrap gap-2">
+            <button class="quiz-btn px-4 py-2 rounded-lg bg-slate-100 hover:bg-indigo-100 text-slate-700" data-next="q2" data-score="hootsuite:3,sprout:3">Yes</button>
+            <button class="quiz-btn px-4 py-2 rounded-lg bg-slate-100 hover:bg-indigo-100 text-slate-700" data-next="q2" data-score="buffer:2,later:2,socialbee:1">No</button>
+          </div>
+        </div>
+        <div id="q2" class="quiz-step hidden">
+          <p class="font-medium text-slate-800 mb-3">2. Is Instagram/TikTok visual planning key?</p>
+          <div class="flex flex-wrap gap-2">
+            <button class="quiz-btn px-4 py-2 rounded-lg bg-slate-100 hover:bg-indigo-100 text-slate-700" data-next="q3" data-score="later:3">Yes</button>
+            <button class="quiz-btn px-4 py-2 rounded-lg bg-slate-100 hover:bg-indigo-100 text-slate-700" data-next="q3" data-score="buffer:2,hootsuite:2,sprout:1,socialbee:1">No</button>
+          </div>
+        </div>
+        <div id="q3" class="quiz-step hidden">
+          <p class="font-medium text-slate-800 mb-3">3. Want evergreen content recycling?</p>
+          <div class="flex flex-wrap gap-2">
+            <button class="quiz-btn px-4 py-2 rounded-lg bg-slate-100 hover:bg-indigo-100 text-slate-700" data-next="q4" data-score="socialbee:3">Yes</button>
+            <button class="quiz-btn px-4 py-2 rounded-lg bg-slate-100 hover:bg-indigo-100 text-slate-700" data-next="q4" data-score="buffer:1,hootsuite:1,later:1,sprout:1">No</button>
+          </div>
+        </div>
+        <div id="q4" class="quiz-step hidden">
+          <p class="font-medium text-slate-800 mb-3">4. Budget under $25/mo?</p>
+          <div class="flex flex-wrap gap-2">
+            <button class="quiz-btn px-4 py-2 rounded-lg bg-slate-100 hover:bg-indigo-100 text-slate-700" data-next="result" data-score="buffer:3,socialbee:2">Yes</button>
+            <button class="quiz-btn px-4 py-2 rounded-lg bg-slate-100 hover:bg-indigo-100 text-slate-700" data-next="result" data-score="later:1,hootsuite:1,sprout:1">No</button>
+          </div>
+        </div>
+        <div id="result" class="quiz-step hidden">
+          <h3 class="text-lg font-semibold text-slate-800 mb-2">Recommended for you:</h3>
+          <div id="result-card" class="rounded-lg bg-indigo-50 border border-indigo-100 p-4"></div>
+          <button id="quiz-restart" class="mt-4 px-4 py-2 rounded-lg bg-indigo-600 text-white text-sm">Start over</button>
+        </div>
+      </div>
+    </div>
+
+    <section class="my-12">
+      <h2 class="text-2xl font-semibold mb-4 text-slate-800">Top Picks by Use Case</h2>
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <a href="#" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-indigo-400 transition">
+          <h3 class="font-semibold text-slate-900">Buffer</h3>
+          <p class="mt-1 text-sm text-slate-600">Best for: Simple scheduling — Starting at $5/mo</p>
+          <p class="mt-2 text-xs text-slate-400">Yes (3 channels) | G2: 4.3</p>
+        </a>
+        <a href="#" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-indigo-400 transition">
+          <h3 class="font-semibold text-slate-900">Hootsuite</h3>
+          <p class="mt-1 text-sm text-slate-600">Best for: Enterprise — Starting at $99/mo</p>
+          <p class="mt-2 text-xs text-slate-400">No | G2: 4.1</p>
+        </a>
+        <a href="#" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-indigo-400 transition">
+          <h3 class="font-semibold text-slate-900">Later</h3>
+          <p class="mt-1 text-sm text-slate-600">Best for: Visual planners — Starting at $16.67/mo</p>
+          <p class="mt-2 text-xs text-slate-400">Yes (1 set) | G2: 4.5</p>
+        </a>
+        <a href="#" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-indigo-400 transition">
+          <h3 class="font-semibold text-slate-900">Sprout Social</h3>
+          <p class="mt-1 text-sm text-slate-600">Best for: Analytics depth — Starting at $199/mo</p>
+          <p class="mt-2 text-xs text-slate-400">30-day trial | G2: 4.4</p>
+        </a>
+        <a href="#" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-indigo-400 transition">
+          <h3 class="font-semibold text-slate-900">SocialBee</h3>
+          <p class="mt-1 text-sm text-slate-600">Best for: Content recycling — Starting at $19/mo</p>
+          <p class="mt-2 text-xs text-slate-400">14-day trial | G2: 4.6</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="my-12">
+      <h2 class="text-2xl font-semibold mb-4 text-slate-800">Related Keywords</h2>
+      <div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-sm">best social media management tool</span><span class="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-sm">buffer vs hootsuite</span><span class="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-sm">later app review</span><span class="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-sm">social media scheduler</span><span class="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-sm">best instagram scheduler</span>      </div>
+    </section>
+  </div>
+
+  <script is:inline>
+    const scores = { buffer:0, hootsuite:0, later:0, sproutsocial:0, socialbee:0 };
+    const names = { buffer:"Buffer", hootsuite:"Hootsuite", later:"Later", sproutsocial:"Sprout Social", socialbee:"SocialBee" };
+    const reasons = { buffer:"Simple scheduling", hootsuite:"Enterprise", later:"Visual planners", sproutsocial:"Analytics depth", socialbee:"Content recycling" };
+    document.querySelectorAll('.quiz-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const next = btn.dataset.next;
+        const delta = btn.dataset.score;
+        if (delta) {
+          delta.split(',').forEach(part => {
+            const [k,v] = part.split(':');
+            scores[k] += parseInt(v);
+          });
+        }
+        document.querySelectorAll('.quiz-step').forEach(s => s.classList.add('hidden'));
+        if (next === 'result') {
+          const winner = Object.entries(scores).sort((a,b) => b[1]-a[1])[0];
+          document.getElementById('result-card').innerHTML = '<p class="text-2xl font-bold text-indigo-700">' + names[winner[0]] + '</p><p class="mt-1 text-slate-700">Best for: ' + reasons[winner[0]] + '</p>';
+        }
+        document.getElementById(next).classList.remove('hidden');
+      });
+    });
+    document.getElementById('quiz-restart')?.addEventListener('click', () => {
+      Object.keys(scores).forEach(k => scores[k]=0);
+      document.querySelectorAll('.quiz-step').forEach(s => s.classList.add('hidden'));
+      document.getElementById('q1').classList.remove('hidden');
+    });
+  </script>
+</BaseLayout>

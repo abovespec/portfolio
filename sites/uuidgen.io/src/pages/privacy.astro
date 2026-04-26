@@ -1,0 +1,24 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { siteConfig } from '~/config/site.config';
+---
+<BaseLayout title="Privacy Policy" description="Privacy policy">
+  <h1 class="text-4xl font-bold">Privacy Policy</h1>
+  <p class="mt-2 text-sm text-slate-500">Last updated: {new Date().toLocaleDateString('en-US')}</p>
+  <div class="prose prose-slate mt-6 max-w-none">
+    <p>
+      This is a template privacy policy. Each site MUST customize this page
+      before launch to reflect the specific data it collects, the tools it
+      uses (analytics, affiliate networks, ad networks), and the legal
+      jurisdictions it serves.
+    </p>
+    <h2>Information we collect</h2>
+    <p>Describe analytics, cookies, form submissions, and server logs.</p>
+    <h2>Third-party services</h2>
+    <p>List Plausible/GA4, Cloudflare, affiliate networks, ad networks.</p>
+    <h2>Your rights</h2>
+    <p>GDPR / CCPA / UK GDPR rights and the contact for data requests.</p>
+    <h2>Contact</h2>
+    <p>Email: {siteConfig.org.contactEmail}</p>
+  </div>
+</BaseLayout>

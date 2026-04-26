@@ -1,0 +1,148 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { siteConfig } from '~/config/site.config';
+---
+<BaseLayout title="Best Scheduling Software 2025 | PickTheStack" description="Compare appointment scheduling tools for sales, services, and team meetings. Side-by-side comparisons, pricing, and an interactive quiz to find your perfect tool.">
+  <section class="py-10 text-center">
+    <h1 class="text-4xl font-bold tracking-tight" style="color:{siteConfig.branding.themeColor}">Best Scheduling Software</h1>
+    <p class="mx-auto mt-3 max-w-2xl text-lg text-slate-600">Compare appointment scheduling tools for sales, services, and team meetings. Compare features, pricing, and find your fit with our decision quiz.</p>
+  </section>
+
+  <div class="mx-auto max-w-6xl px-4">
+    <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm mb-8">
+      <h2 class="text-xl font-semibold mb-4 text-slate-800">Scheduling Software Comparison Table</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-slate-200">
+              <th class="text-left py-2 px-3 font-semibold text-slate-700">Feature</th>
+              <th class="text-center py-2 px-3 font-semibold text-indigo-700">Calendly</th>
+              <th class="text-center py-2 px-3 font-semibold text-indigo-700">Cal.com</th>
+              <th class="text-center py-2 px-3 font-semibold text-indigo-700">SavvyCal</th>
+              <th class="text-center py-2 px-3 font-semibold text-indigo-700">When2meet</th>
+              <th class="text-center py-2 px-3 font-semibold text-indigo-700">Microsoft Bookings</th>
+            </tr>
+          </thead>
+          <tbody class="text-slate-600">
+            <tr class="border-b border-slate-100"><td class="py-2 px-3">Free plan</td><td class="text-center">Yes</td><td class="text-center">Yes</td><td class="text-center">7-day trial</td><td class="text-center">Yes</td><td class="text-center">Yes (M365)</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">Starting price</td><td class="text-center">$10/mo</td><td class="text-center">$0 (self-host)</td><td class="text-center">$12/mo</td><td class="text-center">$0</td><td class="text-center">$6/mo</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">Best for</td><td class="text-center">Individuals</td><td class="text-center">Tech teams</td><td class="text-center">Solopreneurs</td><td class="text-center">Group polls</td><td class="text-center">M365 shops</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">G2 score</td><td class="text-center">4.7</td><td class="text-center">4.6</td><td class="text-center">4.8</td><td class="text-center">N/A</td><td class="text-center">4.3</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">Custom branding</td><td class="text-center">Paid</td><td class="text-center">Paid</td><td class="text-center">Yes</td><td class="text-center">No</td><td class="text-center">Yes</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">Team scheduling</td><td class="text-center">Yes</td><td class="text-center">Yes</td><td class="text-center">Yes</td><td class="text-center">No</td><td class="text-center">Yes</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">Payments</td><td class="text-center">Stripe/PayPal</td><td class="text-center">Stripe</td><td class="text-center">Stripe</td><td class="text-center">No</td><td class="text-center">No</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">Integrations</td><td class="text-center">100+</td><td class="text-center">50+</td><td class="text-center">20+</td><td class="text-center">None</td><td class="text-center">M365</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">Open source</td><td class="text-center">No</td><td class="text-center">Yes</td><td class="text-center">No</td><td class="text-center">No</td><td class="text-center">No</td></tr>
+
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-3 text-xs text-slate-400">Prices and features updated 2025. Click tool names to visit their site (affiliate links where available).</p>
+    </div>
+
+    <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm mb-8">
+      <h2 class="text-xl font-semibold mb-4 text-slate-800">Decision Quiz: Find Your Scheduling Software</h2>
+      <div id="quiz-container">
+        <div id="q1" class="quiz-step ">
+          <p class="font-medium text-slate-800 mb-3">1. Do you want to self-host for data control?</p>
+          <div class="flex flex-wrap gap-2">
+            <button class="quiz-btn px-4 py-2 rounded-lg bg-slate-100 hover:bg-indigo-100 text-slate-700" data-next="q2" data-score="cal.com:3">Yes</button>
+            <button class="quiz-btn px-4 py-2 rounded-lg bg-slate-100 hover:bg-indigo-100 text-slate-700" data-next="q2" data-score="calendly:2,savvycal:2,bookings:1,when2meet:1">No</button>
+          </div>
+        </div>
+        <div id="q2" class="quiz-step hidden">
+          <p class="font-medium text-slate-800 mb-3">2. Need to collect payments at booking time?</p>
+          <div class="flex flex-wrap gap-2">
+            <button class="quiz-btn px-4 py-2 rounded-lg bg-slate-100 hover:bg-indigo-100 text-slate-700" data-next="q3" data-score="calendly:2,savvycal:2,cal.com:1">Yes</button>
+            <button class="quiz-btn px-4 py-2 rounded-lg bg-slate-100 hover:bg-indigo-100 text-slate-700" data-next="q3" data-score="when2meet:2,bookings:1">No</button>
+          </div>
+        </div>
+        <div id="q3" class="quiz-step hidden">
+          <p class="font-medium text-slate-800 mb-3">3. Already deep in Microsoft 365?</p>
+          <div class="flex flex-wrap gap-2">
+            <button class="quiz-btn px-4 py-2 rounded-lg bg-slate-100 hover:bg-indigo-100 text-slate-700" data-next="q4" data-score="bookings:3">Yes</button>
+            <button class="quiz-btn px-4 py-2 rounded-lg bg-slate-100 hover:bg-indigo-100 text-slate-700" data-next="q4" data-score="calendly:1,cal.com:1,savvycal:1,when2meet:1">No</button>
+          </div>
+        </div>
+        <div id="q4" class="quiz-step hidden">
+          <p class="font-medium text-slate-800 mb-3">4. Just need free group availability polls?</p>
+          <div class="flex flex-wrap gap-2">
+            <button class="quiz-btn px-4 py-2 rounded-lg bg-slate-100 hover:bg-indigo-100 text-slate-700" data-next="result" data-score="when2meet:3">Yes</button>
+            <button class="quiz-btn px-4 py-2 rounded-lg bg-slate-100 hover:bg-indigo-100 text-slate-700" data-next="result" data-score="calendly:1,cal.com:1,savvycal:1,bookings:1">No</button>
+          </div>
+        </div>
+        <div id="result" class="quiz-step hidden">
+          <h3 class="text-lg font-semibold text-slate-800 mb-2">Recommended for you:</h3>
+          <div id="result-card" class="rounded-lg bg-indigo-50 border border-indigo-100 p-4"></div>
+          <button id="quiz-restart" class="mt-4 px-4 py-2 rounded-lg bg-indigo-600 text-white text-sm">Start over</button>
+        </div>
+      </div>
+    </div>
+
+    <section class="my-12">
+      <h2 class="text-2xl font-semibold mb-4 text-slate-800">Top Picks by Use Case</h2>
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <a href="#" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-indigo-400 transition">
+          <h3 class="font-semibold text-slate-900">Calendly</h3>
+          <p class="mt-1 text-sm text-slate-600">Best for: Individuals — Starting at $10/mo</p>
+          <p class="mt-2 text-xs text-slate-400">Yes | G2: 4.7</p>
+        </a>
+        <a href="#" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-indigo-400 transition">
+          <h3 class="font-semibold text-slate-900">Cal.com</h3>
+          <p class="mt-1 text-sm text-slate-600">Best for: Tech teams — Starting at $0 (self-host)</p>
+          <p class="mt-2 text-xs text-slate-400">Yes | G2: 4.6</p>
+        </a>
+        <a href="#" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-indigo-400 transition">
+          <h3 class="font-semibold text-slate-900">SavvyCal</h3>
+          <p class="mt-1 text-sm text-slate-600">Best for: Solopreneurs — Starting at $12/mo</p>
+          <p class="mt-2 text-xs text-slate-400">7-day trial | G2: 4.8</p>
+        </a>
+        <a href="#" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-indigo-400 transition">
+          <h3 class="font-semibold text-slate-900">When2meet</h3>
+          <p class="mt-1 text-sm text-slate-600">Best for: Group polls — Starting at $0</p>
+          <p class="mt-2 text-xs text-slate-400">Yes | G2: N/A</p>
+        </a>
+        <a href="#" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-indigo-400 transition">
+          <h3 class="font-semibold text-slate-900">Microsoft Bookings</h3>
+          <p class="mt-1 text-sm text-slate-600">Best for: M365 shops — Starting at $6/mo</p>
+          <p class="mt-2 text-xs text-slate-400">Yes (M365) | G2: 4.3</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="my-12">
+      <h2 class="text-2xl font-semibold mb-4 text-slate-800">Related Keywords</h2>
+      <div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-sm">best scheduling software</span><span class="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-sm">calendly alternatives</span><span class="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-sm">cal.com review</span><span class="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-sm">free appointment scheduler</span><span class="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-sm">scheduling software for teams</span>      </div>
+    </section>
+  </div>
+
+  <script is:inline>
+    const scores = { calendly:0, calcom:0, savvycal:0, when2meet:0, microsoftbookings:0 };
+    const names = { calendly:"Calendly", calcom:"Cal.com", savvycal:"SavvyCal", when2meet:"When2meet", microsoftbookings:"Microsoft Bookings" };
+    const reasons = { calendly:"Individuals", calcom:"Tech teams", savvycal:"Solopreneurs", when2meet:"Group polls", microsoftbookings:"M365 shops" };
+    document.querySelectorAll('.quiz-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const next = btn.dataset.next;
+        const delta = btn.dataset.score;
+        if (delta) {
+          delta.split(',').forEach(part => {
+            const [k,v] = part.split(':');
+            scores[k] += parseInt(v);
+          });
+        }
+        document.querySelectorAll('.quiz-step').forEach(s => s.classList.add('hidden'));
+        if (next === 'result') {
+          const winner = Object.entries(scores).sort((a,b) => b[1]-a[1])[0];
+          document.getElementById('result-card').innerHTML = '<p class="text-2xl font-bold text-indigo-700">' + names[winner[0]] + '</p><p class="mt-1 text-slate-700">Best for: ' + reasons[winner[0]] + '</p>';
+        }
+        document.getElementById(next).classList.remove('hidden');
+      });
+    });
+    document.getElementById('quiz-restart')?.addEventListener('click', () => {
+      Object.keys(scores).forEach(k => scores[k]=0);
+      document.querySelectorAll('.quiz-step').forEach(s => s.classList.add('hidden'));
+      document.getElementById('q1').classList.remove('hidden');
+    });
+  </script>
+</BaseLayout>

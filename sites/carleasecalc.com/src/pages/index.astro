@@ -1,0 +1,123 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { siteConfig } from '~/config/site.config';
+---
+<BaseLayout title={siteConfig.identity.name} description={siteConfig.identity.description}>
+  <section class="py-10 text-center">
+    <h1 class="text-4xl font-bold tracking-tight" style={`color:${siteConfig.branding.themeColor}`}>CarLeaseCalc</h1>
+    <p class="mx-auto mt-3 max-w-2xl text-lg text-slate-600">Lease vs buy calculator, total cost of ownership, fuel cost estimator, and depreciation tracker.</p>
+  </section>
+  <div class="mx-auto max-w-5xl">
+    <div class="flex flex-wrap gap-2 justify-center mb-8">
+      <button id="tab-lease" class="tab-btn px-4 py-2 rounded-full font-semibold text-sm bg-sky-600 text-white">Lease vs Buy</button>
+      <button id="tab-tco" class="tab-btn px-4 py-2 rounded-full font-semibold text-sm bg-slate-200 text-slate-700">Total Cost</button>
+      <button id="tab-fuel" class="tab-btn px-4 py-2 rounded-full font-semibold text-sm bg-slate-200 text-slate-700">Fuel Cost</button>
+      <button id="tab-dep" class="tab-btn px-4 py-2 rounded-full font-semibold text-sm bg-slate-200 text-slate-700">Depreciation</button>
+    </div>
+
+    <div id="panel-lease" class="calc-panel">
+      <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+        <h2 class="text-xl font-semibold mb-4 text-slate-800">Lease vs Buy Calculator</h2>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <label class="block"><span class="text-sm font-medium text-slate-700">Vehicle MSRP ($)</span><input id="l-msrp" type="number" value="45000" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+          <label class="block"><span class="text-sm font-medium text-slate-700">Lease term (months)</span><input id="l-term" type="number" value="36" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+          <label class="block"><span class="text-sm font-medium text-slate-700">Money factor</span><input id="l-mf" type="number" value="0.0025" step="0.0001" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+          <label class="block"><span class="text-sm font-medium text-slate-700">Residual value (%)</span><input id="l-res" type="number" value="58" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+          <label class="block"><span class="text-sm font-medium text-slate-700">Down payment / cap reduction ($)</span><input id="l-down" type="number" value="3000" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+          <label class="block"><span class="text-sm font-medium text-slate-700">Buy interest rate (% APR)</span><input id="l-apr" type="number" value="5.9" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+          <label class="block"><span class="text-sm font-medium text-slate-700">Loan term (months) if buying</span><input id="l-loan" type="number" value="60" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+        </div>
+        <div class="mt-6 grid gap-4 sm:grid-cols-2">
+          <div class="rounded-lg bg-sky-50 p-4 text-center border border-sky-100"><p class="text-xs uppercase text-sky-600">Est. monthly lease</p><p id="l-out-lease" class="text-2xl font-bold text-sky-700">$552</p></div>
+          <div class="rounded-lg bg-slate-50 p-4 text-center"><p class="text-xs uppercase text-slate-500">Monthly loan payment</p><p id="l-out-loan" class="text-2xl font-bold text-slate-800">$805</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="panel-tco" class="calc-panel hidden">
+      <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+        <h2 class="text-xl font-semibold mb-4 text-slate-800">Total Cost of Ownership (5 Years)</h2>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <label class="block"><span class="text-sm font-medium text-slate-700">Purchase price ($)</span><input id="t-price" type="number" value="45000" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+          <label class="block"><span class="text-sm font-medium text-slate-700">Annual insurance ($)</span><input id="t-ins" type="number" value="1800" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+          <label class="block"><span class="text-sm font-medium text-slate-700">Annual fuel cost ($)</span><input id="t-fuel" type="number" value="2400" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+          <label class="block"><span class="text-sm font-medium text-slate-700">Annual maintenance ($)</span><input id="t-maint" type="number" value="800" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+          <label class="block"><span class="text-sm font-medium text-slate-700">Annual registration ($)</span><input id="t-reg" type="number" value="200" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+          <label class="block"><span class="text-sm font-medium text-slate-700">Resale value after 5 yrs ($)</span><input id="t-resale" type="number" value="22000" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+        </div>
+        <div class="mt-6 grid gap-4 sm:grid-cols-3">
+          <div class="rounded-lg bg-slate-50 p-4 text-center"><p class="text-xs uppercase text-slate-500">Total spent</p><p id="t-out-spent" class="text-xl font-bold text-slate-800">$65,000</p></div>
+          <div class="rounded-lg bg-slate-50 p-4 text-center"><p class="text-xs uppercase text-slate-500">Less resale</p><p id="t-out-resale" class="text-xl font-bold text-slate-800">$22,000</p></div>
+          <div class="rounded-lg bg-sky-50 p-4 text-center border border-sky-100"><p class="text-xs uppercase text-sky-600">Net 5-year cost</p><p id="t-out-net" class="text-xl font-bold text-sky-700">$43,000</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="panel-fuel" class="calc-panel hidden">
+      <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+        <h2 class="text-xl font-semibold mb-4 text-slate-800">Annual Fuel Cost Estimator</h2>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <label class="block"><span class="text-sm font-medium text-slate-700">Miles driven / year</span><input id="fuel-miles" type="number" value="12000" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+          <label class="block"><span class="text-sm font-medium text-slate-700">MPG (combined)</span><input id="fuel-mpg" type="number" value="28" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+          <label class="block"><span class="text-sm font-medium text-slate-700">Price per gallon ($)</span><input id="fuel-price" type="number" value="3.60" step="0.01" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+        </div>
+        <div class="mt-6 rounded-lg bg-sky-50 p-4 text-center border border-sky-100">
+          <p class="text-xs uppercase text-sky-600">Annual fuel cost</p>
+          <p id="fuel-out" class="text-3xl font-bold text-sky-700">$1,543</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="panel-dep" class="calc-panel hidden">
+      <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+        <h2 class="text-xl font-semibold mb-4 text-slate-800">Vehicle Depreciation Tracker</h2>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <label class="block"><span class="text-sm font-medium text-slate-700">Purchase price ($)</span><input id="d-price" type="number" value="45000" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+          <label class="block"><span class="text-sm font-medium text-slate-700">Depreciation method</span>
+            <select id="d-method" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2">
+              <option value="avg">Average car (15%/yr)</option>
+              <option value="steep">Steep (20%/yr)</option>
+              <option value="gentle">Gentle (10%/yr)</option>
+            </select>
+          </label>
+        </div>
+        <div class="mt-6">
+          <table class="w-full text-sm">
+            <thead><tr class="border-b border-slate-200"><th class="text-left py-2">Year</th><th class="text-right py-2">Value</th><th class="text-right py-2">Lost</th></tr></thead>
+            <tbody id="d-table"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <section class="my-12">
+      <h2 class="text-2xl font-semibold mb-4 text-slate-800">Car Buying Guides</h2>
+      <div class="grid gap-4 sm:grid-cols-2">
+        <a href="/blog/lease-vs-buy-guide/" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-sky-400"><h3 class="font-semibold text-slate-900">Lease vs Buy: Complete Guide</h3><p class="mt-1 text-sm text-slate-600">When leasing makes sense and when buying wins. Math, myths, and negotiation tips.</p></a>
+        <a href="/blog/total-cost-of-ownership/" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-sky-400"><h3 class="font-semibold text-slate-900">True Cost of Car Ownership</h3><p class="mt-1 text-sm text-slate-600">Insurance, fuel, maintenance, and depreciation add up. Compare by vehicle class.</p></a>
+        <a href="/blog/car-depreciation-by-brand/" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-sky-400"><h3 class="font-semibold text-slate-900">Car Depreciation by Brand</h3><p class="mt-1 text-sm text-slate-600">Which brands hold value best? 5-year resale data for sedans, SUVs, and trucks.</p></a>
+        <a href="/blog/negotiate-car-lease/" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-sky-400"><h3 class="font-semibold text-slate-900">How to Negotiate a Car Lease</h3><p class="mt-1 text-sm text-slate-600">Money factor, residual value, and cap cost: what to push on at the dealership.</p></a>
+      </div>
+    </section>
+  </div>
+  <script is:inline>
+    function $(id){ return document.getElementById(id); }
+    function val(id){ return parseFloat($(id).value) || 0; }
+    const tabs=['lease','tco','fuel','dep'];
+    tabs.forEach(t=>{
+      $('tab-'+t).addEventListener('click',()=>{
+        tabs.forEach(x=>{ $('panel-'+x).classList.add('hidden'); $('tab-'+x).classList.remove('bg-sky-600','text-white'); $('tab-'+x).classList.add('bg-slate-200','text-slate-700'); });
+        $('panel-'+t).classList.remove('hidden'); $('tab-'+t).classList.remove('bg-slate-200','text-slate-700'); $('tab-'+t).classList.add('bg-sky-600','text-white');
+      });
+    });
+    function calcLease(){ const msrp=val('l-msrp'), term=val('l-term'), mf=val('l-mf'), res=val('l-res'), down=val('l-down'), apr=val('l-apr'), loanM=val('l-loan'); const dep=(msrp*(1-res/100)-down)/term; const rent=(msrp+msrp*(res/100)-down)*mf; const leaseMo=dep+rent; const r=apr/1200; const loanMo=(msrp-down)*r/(1-Math.pow(1+r,-loanM)); $('l-out-lease').textContent='$'+leaseMo.toFixed(0); $('l-out-loan').textContent='$'+loanMo.toFixed(0); }
+    function calcTco(){ const price=val('t-price'), ins=val('t-ins'), fuel=val('t-fuel'), maint=val('t-maint'), reg=val('t-reg'), resale=val('t-resale'); const spent=price+(ins+fuel+maint+reg)*5; const net=spent-resale; $('t-out-spent').textContent='$'+spent.toLocaleString(); $('t-out-resale').textContent='$'+resale.toLocaleString(); $('t-out-net').textContent='$'+net.toLocaleString(); }
+    function calcFuel(){ const miles=val('fuel-miles'), mpg=val('fuel-mpg'), price=val('fuel-price'); $('fuel-out').textContent='$'+((miles/mpg)*price).toFixed(0); }
+    function calcDep(){ const price=val('d-price'); const rates={avg:0.15,steep:0.20,gentle:0.10}; const rate=rates[$('d-method').value]; let tbody=''; let v=price; for(let y=1;y<=5;y++){ const lost=v*rate; v-=lost; tbody+='<tr class="border-b border-slate-100"><td class="py-2">Year '+y+'</td><td class="py-2 text-right font-medium">$'+v.toFixed(0)+'</td><td class="py-2 text-right text-red-600">-$'+lost.toFixed(0)+'</td></tr>'; } $('d-table').innerHTML=tbody; }
+    ['l-msrp','l-term','l-mf','l-res','l-down','l-apr','l-loan'].forEach(id=>$(id)?.addEventListener('input',calcLease));
+    ['t-price','t-ins','t-fuel','t-maint','t-reg','t-resale'].forEach(id=>$(id)?.addEventListener('input',calcTco));
+    ['fuel-miles','fuel-mpg','fuel-price'].forEach(id=>$(id)?.addEventListener('input',calcFuel));
+    ['d-price','d-method'].forEach(id=>$(id)?.addEventListener('input',calcDep));
+    calcLease(); calcTco(); calcFuel(); calcDep();
+  </script>
+</BaseLayout>

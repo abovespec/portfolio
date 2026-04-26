@@ -1,0 +1,17 @@
+{
+  "title": "Ai Fabric 1",
+  "description": "Seamless 4K AI-generated fabric texture. Photorealistic PBR material.",
+  "category": "fabric",
+  "seed": 230373267,
+  "seedName": "ai-fabric-1",
+  "prompt": "seamless photorealistic texture of fabric material, detailed textile weave, cloth texture, tileable, 4K PBR material",
+  "params": {
+    "roughness": 0.6,
+    "metallic": 0.0
+  },
+  "shape": [
+    4096,
+    4096
+  ],
+  "generatedDate": "2026-04-24"
+}

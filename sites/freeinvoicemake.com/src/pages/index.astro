@@ -1,0 +1,161 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { siteConfig } from '~/config/site.config';
+---
+<BaseLayout title={siteConfig.identity.name} description={siteConfig.identity.description}>
+  <section class="py-10 text-center">
+    <h1 class="text-4xl font-bold tracking-tight" style={`color:${siteConfig.branding.themeColor}`}>FreeInvoiceMake</h1>
+    <p class="mx-auto mt-3 max-w-2xl text-lg text-slate-600">Create professional invoices in seconds. Free, no signup, instant download-ready print view.</p>
+  </section>
+
+  <div class="mx-auto max-w-5xl grid gap-8 lg:grid-cols-2">
+    <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+      <h2 class="text-lg font-semibold mb-4 text-slate-800">Invoice Details</h2>
+      <div class="grid gap-3 sm:grid-cols-2">
+        <label class="block"><span class="text-sm font-medium text-slate-700">Your business name</span><input id="inv-from-name" type="text" value="Acme Design Co." class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm"></label>
+        <label class="block"><span class="text-sm font-medium text-slate-700">Your email</span><input id="inv-from-email" type="text" value="hello@acme.design" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm"></label>
+        <label class="block"><span class="text-sm font-medium text-slate-700">Client name</span><input id="inv-to-name" type="text" value="Client Corp" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm"></label>
+        <label class="block"><span class="text-sm font-medium text-slate-700">Client email</span><input id="inv-to-email" type="text" value="billing@client.com" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm"></label>
+        <label class="block"><span class="text-sm font-medium text-slate-700">Invoice #</span><input id="inv-num" type="text" value="INV-001" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm"></label>
+        <label class="block"><span class="text-sm font-medium text-slate-700">Invoice date</span><input id="inv-date" type="date" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm"></label>
+        <label class="block"><span class="text-sm font-medium text-slate-700">Due date</span><input id="inv-due" type="date" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm"></label>
+        <label class="block"><span class="text-sm font-medium text-slate-700">Tax rate (%)</span><input id="inv-tax" type="number" value="0" step="0.01" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm"></label>
+      </div>
+
+      <h3 class="text-sm font-semibold mt-5 mb-2 text-slate-800">Line Items</h3>
+      <div id="line-items" class="space-y-2"></div>
+      <button id="add-line" class="mt-2 text-sm text-blue-600 hover:text-blue-800 font-medium">+ Add line item</button>
+
+      <div class="mt-5 flex gap-2">
+        <button id="btn-print" class="flex-1 rounded-lg bg-blue-600 px-4 py-2 text-white font-semibold hover:bg-blue-700">Print / Save PDF</button>
+        <button id="btn-reset" class="rounded-lg bg-slate-100 px-4 py-2 text-slate-700 font-medium hover:bg-slate-200">Reset</button>
+      </div>
+    </div>
+
+    <div id="invoice-preview" class="rounded-xl border border-slate-200 bg-white p-8 shadow-sm min-h-[600px]">
+      <div class="flex justify-between items-start mb-6">
+        <div>
+          <h2 id="prev-from-name" class="text-xl font-bold text-slate-900">Acme Design Co.</h2>
+          <p id="prev-from-email" class="text-sm text-slate-500">hello@acme.design</p>
+        </div>
+        <div class="text-right">
+          <p class="text-xs uppercase text-slate-400">Invoice</p>
+          <p id="prev-num" class="text-lg font-bold text-slate-800">INV-001</p>
+        </div>
+      </div>
+      <div class="flex justify-between mb-6 text-sm">
+        <div><p class="text-slate-400 text-xs uppercase">Bill to</p><p id="prev-to-name" class="font-medium text-slate-800">Client Corp</p><p id="prev-to-email" class="text-slate-500">billing@client.com</p></div>
+        <div class="text-right">
+          <p class="text-slate-400 text-xs uppercase">Date</p><p id="prev-date" class="text-slate-700">--</p>
+          <p class="text-slate-400 text-xs uppercase mt-1">Due</p><p id="prev-due" class="text-slate-700">--</p>
+        </div>
+      </div>
+      <table class="w-full text-sm mb-6">
+        <thead><tr class="border-b border-slate-200"><th class="text-left py-2 font-medium text-slate-500">Description</th><th class="text-right py-2 font-medium text-slate-500">Qty</th><th class="text-right py-2 font-medium text-slate-500">Rate</th><th class="text-right py-2 font-medium text-slate-500">Amount</th></tr></thead>
+        <tbody id="prev-lines"></tbody>
+      </table>
+      <div class="border-t border-slate-200 pt-4 flex justify-end">
+        <div class="w-48 text-sm">
+          <div class="flex justify-between py-1"><span class="text-slate-500">Subtotal</span><span id="prev-subtotal" class="font-medium text-slate-800">$0.00</span></div>
+          <div class="flex justify-between py-1"><span class="text-slate-500">Tax</span><span id="prev-tax" class="font-medium text-slate-800">$0.00</span></div>
+          <div class="flex justify-between py-1 text-base font-bold"><span class="text-slate-800">Total</span><span id="prev-total" class="text-blue-700">$0.00</span></div>
+        </div>
+      </div>
+      <p class="mt-8 text-xs text-slate-400 text-center">Generated by FreeInvoiceMake.com</p>
+    </div>
+  </div>
+
+  <section class="my-12 mx-auto max-w-5xl">
+    <h2 class="text-2xl font-semibold mb-4 text-slate-800">Freelancer & Small Business Guides</h2>
+    <div class="grid gap-4 sm:grid-cols-2">
+      <a href="/blog/how-to-write-an-invoice/" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-blue-400">
+        <h3 class="font-semibold text-slate-900">How to Write a Professional Invoice</h3>
+        <p class="mt-1 text-sm text-slate-600">Required elements, payment terms, and layout tips that get you paid faster.</p>
+      </a>
+      <a href="/blog/best-invoicing-software/" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-blue-400">
+        <h3 class="font-semibold text-slate-900">Best Invoicing Software for Freelancers</h3>
+        <p class="mt-1 text-sm text-slate-600">QuickBooks, FreshBooks, Wave, and Stripe Invoicing compared.</p>
+      </a>
+      <a href="/blog/invoice-payment-terms/" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-blue-400">
+        <h3 class="font-semibold text-slate-900">Invoice Payment Terms Explained</h3>
+        <p class="mt-1 text-sm text-slate-600">Net 30 vs Net 15 vs due on receipt. Which terms should you use?</p>
+      </a>
+      <a href="/blog/late-payment-strategies/" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-blue-400">
+        <h3 class="font-semibold text-slate-900">How to Handle Late Invoice Payments</h3>
+        <p class="mt-1 text-sm text-slate-600">Polite follow-up templates, late fees, and when to escalate.</p>
+      </a>
+    </div>
+  </section>
+
+  <script is:inline>
+    let lineCount = 0;
+    function $(id){ return document.getElementById(id); }
+    function fmt(n){ return '$' + (n || 0).toFixed(2); }
+    function todayStr(){ const d=new Date(); return d.toISOString().split('T')[0]; }
+
+    $('inv-date').value = todayStr();
+    const due = new Date(); due.setDate(due.getDate()+14);
+    $('inv-due').value = due.toISOString().split('T')[0];
+
+    function addLine(desc,qty,rate){
+      lineCount++;
+      const div = document.createElement('div');
+      div.className = 'flex gap-2 items-center';
+      div.innerHTML = '<input type="text" placeholder="Description" class="flex-1 rounded-lg border border-slate-300 px-3 py-2 text-sm line-desc" value="'+(desc||'')+'">' +
+        '<input type="number" placeholder="Qty" class="w-16 rounded-lg border border-slate-300 px-2 py-2 text-sm line-qty" value="'+(qty||1)+'">' +
+        '<input type="number" placeholder="Rate" class="w-24 rounded-lg border border-slate-300 px-2 py-2 text-sm line-rate" value="'+(rate||0)+'">' +
+        '<button class="text-red-500 text-sm remove-line" title="Remove">&times;</button>';
+      $('line-items').appendChild(div);
+      div.querySelector('.remove-line').addEventListener('click', () => { div.remove(); updatePreview(); });
+      div.querySelectorAll('input').forEach(inp => inp.addEventListener('input', updatePreview));
+    }
+    addLine('Website Design', 1, 1500);
+    addLine('Logo Design', 2, 350);
+
+    $('add-line').addEventListener('click', () => addLine('',1,0));
+
+    function updatePreview(){
+      $('prev-from-name').textContent = $('inv-from-name').value || 'Your Business';
+      $('prev-from-email').textContent = $('inv-from-email').value || '';
+      $('prev-to-name').textContent = $('inv-to-name').value || 'Client';
+      $('prev-to-email').textContent = $('inv-to-email').value || '';
+      $('prev-num').textContent = $('inv-num').value || 'INV-001';
+      $('prev-date').textContent = $('inv-date').value || '--';
+      $('prev-due').textContent = $('inv-due').value || '--';
+
+      const tbody = $('prev-lines');
+      tbody.innerHTML = '';
+      let subtotal = 0;
+      document.querySelectorAll('#line-items > div').forEach(row => {
+        const d = row.querySelector('.line-desc').value;
+        const q = parseFloat(row.querySelector('.line-qty').value) || 0;
+        const r = parseFloat(row.querySelector('.line-rate').value) || 0;
+        const amt = q * r;
+        subtotal += amt;
+        const tr = document.createElement('tr');
+        tr.className = 'border-b border-slate-100';
+        tr.innerHTML = '<td class="py-2 text-slate-800">'+d+'</td><td class="py-2 text-right text-slate-600">'+q+'</td><td class="py-2 text-right text-slate-600">'+fmt(r)+'</td><td class="py-2 text-right font-medium text-slate-800">'+fmt(amt)+'</td>';
+        tbody.appendChild(tr);
+      });
+      const taxRate = parseFloat($('inv-tax').value) || 0;
+      const tax = subtotal * (taxRate/100);
+      const total = subtotal + tax;
+      $('prev-subtotal').textContent = fmt(subtotal);
+      $('prev-tax').textContent = fmt(tax);
+      $('prev-total').textContent = fmt(total);
+    }
+
+    ['inv-from-name','inv-from-email','inv-to-name','inv-to-email','inv-num','inv-date','inv-due','inv-tax'].forEach(id => {
+      $(id).addEventListener('input', updatePreview);
+    });
+
+    $('btn-print').addEventListener('click', () => { window.print(); });
+    $('btn-reset').addEventListener('click', () => {
+      $('line-items').innerHTML = '';
+      addLine('Website Design',1,1500); addLine('Logo Design',2,350);
+      updatePreview();
+    });
+
+    updatePreview();
+  </script>
+</BaseLayout>

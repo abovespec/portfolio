@@ -1,0 +1,47 @@
+---
+interface Props {
+  name: string;
+  description: string;
+  url: string;
+  applicationCategory?: string;
+  operatingSystem?: string;
+  price?: string;
+  priceCurrency?: string;
+  ratingValue?: number;
+  ratingCount?: number;
+}
+const {
+  name,
+  description,
+  url,
+  applicationCategory = 'UtilitiesApplication',
+  operatingSystem = 'Web',
+  price = '0',
+  priceCurrency = 'USD',
+  ratingValue,
+  ratingCount,
+} = Astro.props;
+
+const data: Record<string, unknown> = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name,
+  description,
+  url,
+  applicationCategory,
+  operatingSystem,
+  offers: {
+    '@type': 'Offer',
+    price,
+    priceCurrency,
+  },
+};
+if (ratingValue && ratingCount) {
+  data.aggregateRating = {
+    '@type': 'AggregateRating',
+    ratingValue,
+    ratingCount,
+  };
+}
+---
+<script is:inline type="application/ld+json" set:html={JSON.stringify(data)} />

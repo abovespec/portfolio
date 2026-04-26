@@ -1,0 +1,34 @@
+---
+import GameLayout from '~/layouts/GameLayout.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+import { siteConfig } from '~/config/site.config';
+
+export async function getStaticPaths() {
+  if (!siteConfig.features.hasGame) return [];
+  const games = await getCollection('games', ({ data }) => !data.draft);
+  return games.map((game) => ({
+    params: { slug: game.data.urlSlug },
+    props: { game },
+  }));
+}
+
+interface Props { game: CollectionEntry<'games'> }
+const { game } = Astro.props;
+const { Content } = await game.render();
+const s = game.data.schema;
+---
+<GameLayout
+  title={game.data.title}
+  description={game.data.description}
+  slug={game.data.urlSlug}
+  genre={s.genre}
+  gamePlatform={s.gamePlatform}
+  applicationCategory={s.applicationCategory}
+  ratingValue={s.ratingValue}
+  ratingCount={s.ratingCount}
+>
+  <div slot="game" class="rounded border border-dashed border-slate-300 bg-white p-6 text-center text-sm text-slate-500">
+    Game canvas / iframe goes here.
+  </div>
+  <Content />
+</GameLayout>

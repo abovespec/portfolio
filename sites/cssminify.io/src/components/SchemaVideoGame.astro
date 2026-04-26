@@ -1,0 +1,41 @@
+---
+interface Props {
+  name: string;
+  description: string;
+  url: string;
+  genre?: string;
+  gamePlatform?: string[];
+  applicationCategory?: string;
+  ratingValue?: number;
+  ratingCount?: number;
+}
+const {
+  name,
+  description,
+  url,
+  genre = 'Casual',
+  gamePlatform = ['Web'],
+  applicationCategory = 'GameApplication',
+  ratingValue,
+  ratingCount,
+} = Astro.props;
+
+const data: Record<string, unknown> = {
+  '@context': 'https://schema.org',
+  '@type': 'VideoGame',
+  name,
+  description,
+  url,
+  genre,
+  gamePlatform,
+  applicationCategory,
+};
+if (ratingValue && ratingCount) {
+  data.aggregateRating = {
+    '@type': 'AggregateRating',
+    ratingValue,
+    ratingCount,
+  };
+}
+---
+<script is:inline type="application/ld+json" set:html={JSON.stringify(data)} />

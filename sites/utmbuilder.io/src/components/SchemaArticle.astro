@@ -1,0 +1,40 @@
+---
+import { siteConfig, siteUrl } from '~/config/site.config';
+
+interface Props {
+  headline: string;
+  description: string;
+  url: string;
+  image?: string;
+  datePublished: Date | string;
+  dateModified?: Date | string;
+  author?: string;
+}
+
+const { headline, description, url, image, datePublished, dateModified, author } = Astro.props;
+
+const toISO = (d: Date | string) => (typeof d === 'string' ? new Date(d) : d).toISOString();
+
+const data = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline,
+  description,
+  mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+  url,
+  image: image ? [image] : [siteUrl + siteConfig.seo.defaultOgImage],
+  datePublished: toISO(datePublished),
+  dateModified: toISO(dateModified ?? datePublished),
+  author: {
+    '@type': 'Person',
+    name: author ?? 'Editorial Team',
+  },
+  publisher: {
+    '@type': siteConfig.schemaDefaults.organizationType,
+    name: siteConfig.org.organizationName,
+    url: siteUrl,
+  },
+  inLanguage: siteConfig.identity.language,
+};
+---
+<script is:inline type="application/ld+json" set:html={JSON.stringify(data)} />

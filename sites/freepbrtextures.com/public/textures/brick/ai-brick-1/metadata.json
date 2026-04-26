@@ -1,0 +1,17 @@
+{
+  "title": "Ai Brick 1",
+  "description": "Seamless 4K AI-generated brick texture. Photorealistic PBR material.",
+  "category": "brick",
+  "seed": 771567670,
+  "seedName": "ai-brick-1",
+  "prompt": "seamless photorealistic texture of rough brick wall, detailed brick pattern with mortar lines, realistic masonry, tileable, 4K PBR material",
+  "params": {
+    "roughness": 0.6,
+    "metallic": 0.0
+  },
+  "shape": [
+    4096,
+    4096
+  ],
+  "generatedDate": "2026-04-24"
+}

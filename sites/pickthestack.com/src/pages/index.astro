@@ -1,0 +1,97 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { siteConfig } from '~/config/site.config';
+
+const categories = [
+  { slug: 'project-management', name: 'Project Management', desc: 'Asana, Monday.com, ClickUp, Notion, Trello', icon: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01' },
+  { slug: 'email-marketing', name: 'Email Marketing', desc: 'Mailchimp, ConvertKit, ActiveCampaign, Brevo, MailerLite', icon: 'M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z' },
+  { slug: 'crm', name: 'CRM Software', desc: 'HubSpot, Salesforce, Pipedrive, Zoho, Freshsales', icon: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z' },
+  { slug: 'website-builders', name: 'Website Builders', desc: 'Wix, Squarespace, Webflow, WordPress.com, Weebly', icon: 'M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9' },
+  { slug: 'analytics', name: 'Analytics & Web Analytics', desc: 'GA4, Mixpanel, Amplitude, Plausible, Fathom', icon: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6m10-6a2 2 0 012 2v6m-4-6v6m6-10V7a2 2 0 00-2-2h-2a2 2 0 00-2 2v6m-6 0V7a2 2 0 012-2h2a2 2 0 012 2v6' },
+  { slug: 'password-managers', name: 'Password Managers', desc: '1Password, Bitwarden, LastPass, Dashlane, NordPass', icon: 'M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z' },
+  { slug: 'cloud-storage', name: 'Cloud Storage', desc: 'Dropbox, Google Drive, pCloud, Sync.com, Icedrive', icon: 'M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z' },
+  { slug: 'vpn', name: 'VPN Services', desc: 'NordVPN, ExpressVPN, Surfshark, Mullvad, Proton VPN', icon: 'M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z' },
+  { slug: 'accounting', name: 'Accounting Software', desc: 'QuickBooks, FreshBooks, Xero, Wave, Zoho Books', icon: 'M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z' },
+  { slug: 'video-conferencing', name: 'Video Conferencing', desc: 'Zoom, Google Meet, Teams, Webex, Jitsi', icon: 'M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z' },
+  { slug: 'team-chat', name: 'Team Chat & Collaboration', desc: 'Slack, Teams, Discord, Mattermost, Rocket.Chat', icon: 'M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z' },
+  { slug: 'time-tracking', name: 'Time Tracking', desc: 'Toggl, Clockify, Harvest, Hubstaff, Time Doctor', icon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z' },
+  { slug: 'note-taking', name: 'Note Taking & Knowledge Bases', desc: 'Notion, Obsidian, Evernote, OneNote, Bear', icon: 'M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z' },
+  { slug: 'form-builders', name: 'Form Builders', desc: 'Typeform, Jotform, Google Forms, Wufoo, Paperform', icon: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2' },
+  { slug: 'landing-pages', name: 'Landing Page Builders', desc: 'Unbounce, Leadpages, Instapage, Swipe Pages, Landingi', icon: 'M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10' },
+  { slug: 'social-media', name: 'Social Media Management', desc: 'Buffer, Hootsuite, Later, Sprout Social, SocialBee', icon: 'M7 20l4-16m2 16l4-16M6 9h14M4 15h14' },
+  { slug: 'seo-tools', name: 'SEO Tools', desc: 'Ahrefs, SEMrush, Moz, Ubersuggest, Serpstat', icon: 'M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z' },
+  { slug: 'graphic-design', name: 'Graphic Design Tools', desc: 'Canva, Adobe Express, Figma, Sketch, VistaCreate', icon: 'M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01' },
+  { slug: 'customer-support', name: 'Customer Support Software', desc: 'Zendesk, Intercom, Freshdesk, Help Scout, LiveAgent', icon: 'M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z' },
+  { slug: 'ai-writing', name: 'AI Writing Assistants', desc: 'Jasper, Copy.ai, Writesonic, Rytr, Anyword', icon: 'M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z' },
+  { slug: 'scheduling', name: 'Scheduling Software', desc: 'Calendly, Cal.com, SavvyCal, When2meet, Bookings', icon: 'M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z' },
+  { slug: 'invoicing', name: 'Invoicing Software', desc: 'QuickBooks, FreshBooks, Wave, Zoho Invoice, Invoice2go', icon: 'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z' },
+  { slug: 'nocode-databases', name: 'No-Code Databases', desc: 'Airtable, Notion, Coda, Baserow, NocoDB', icon: 'M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4' },
+];
+---
+<BaseLayout title={siteConfig.identity.name} description="Compare 115+ software tools across 23 categories. Side-by-side tables, pricing, and interactive quizzes to find your perfect stack.">
+  <section class="py-12 text-center">
+    <h1 class="text-5xl font-bold tracking-tight" style={`color:${siteConfig.branding.themeColor}`}>PickTheStack</h1>
+    <p class="mx-auto mt-4 max-w-2xl text-lg text-slate-600">Compare 115+ software tools across 23 categories. Side-by-side tables, real pricing, and interactive decision quizzes to find your perfect stack.</p>
+  </section>
+
+  <div class="mx-auto max-w-6xl px-4">
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold mb-6 text-slate-800">Browse Software Categories</h2>
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {categories.map(c => (
+          <a href={`/categories/${c.slug}/`} class="group rounded-xl border border-slate-200 bg-white p-5 hover:border-indigo-400 hover:shadow-sm transition">
+            <div class="flex items-start gap-3">
+              <div class="rounded-lg bg-indigo-50 p-2 text-indigo-600">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d={c.icon} /></svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-slate-900 group-hover:text-indigo-700">{c.name}</h3>
+                <p class="mt-1 text-sm text-slate-500">{c.desc}</p>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section class="my-12 rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+      <h2 class="text-xl font-semibold mb-4 text-slate-800">Why Compare With PickTheStack?</h2>
+      <div class="grid gap-6 sm:grid-cols-3">
+        <div>
+          <h3 class="font-semibold text-slate-900">Real Pricing</h3>
+          <p class="mt-1 text-sm text-slate-600">We pull actual starting prices, not enterprise quotes. Know what you will pay before you sign up.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-slate-900">Interactive Quizzes</h3>
+          <p class="mt-1 text-sm text-slate-600">Answer 4 quick questions and get a personalized recommendation based on your workflow.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-slate-900">115+ Tools Compared</h3>
+          <p class="mt-1 text-sm text-slate-600">From CRMs to VPNs, we cover the tools that actually move the needle for teams and solo operators.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="my-12">
+      <h2 class="text-2xl font-semibold mb-4 text-slate-800">Latest Software Guides</h2>
+      <div class="grid gap-4 sm:grid-cols-2">
+        <a href="/blog/best-free-scheduling-software-for-small-business-in-2025/" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-indigo-400">
+          <h3 class="font-semibold text-slate-900">Best Free Scheduling Software for Small Business in 2025</h3>
+          <p class="mt-1 text-sm text-slate-600">Free plans that actually work for real businesses, not just hobbyists.</p>
+        </a>
+        <a href="/blog/calendly-vs-cal-com-pricing-2025-which-scheduling-tool-wins/" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-indigo-400">
+          <h3 class="font-semibold text-slate-900">Calendly vs Cal.com Pricing 2025</h3>
+          <p class="mt-1 text-sm text-slate-600">Which scheduling tool wins on price, features, and open-source cred?</p>
+        </a>
+        <a href="/blog/best-saas-alternatives-to-popular-tools-the-2025-replacement-guide/" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-indigo-400">
+          <h3 class="font-semibold text-slate-900">Best SaaS Alternatives to Popular Tools</h3>
+          <p class="mt-1 text-sm text-slate-600">The 2025 replacement guide for cutting software costs without losing capability.</p>
+        </a>
+        <a href="/blog/software-buying-guide-for-startups-build-your-stack-without-overspending/" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-indigo-400">
+          <h3 class="font-semibold text-slate-900">Software Buying Guide for Startups</h3>
+          <p class="mt-1 text-sm text-slate-600">Build your entire stack without overspending in the first 12 months.</p>
+        </a>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

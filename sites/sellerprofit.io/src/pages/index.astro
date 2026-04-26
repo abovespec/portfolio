@@ -1,0 +1,240 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { siteConfig } from '~/config/site.config';
+---
+<BaseLayout title={siteConfig.identity.name} description={siteConfig.identity.description}>
+  <section class="py-10 text-center">
+    <h1 class="text-4xl font-bold tracking-tight" style={`color:${siteConfig.branding.themeColor}`}>SellerProfit</h1>
+    <p class="mx-auto mt-3 max-w-2xl text-lg text-slate-600">Amazon FBA, eBay, Etsy, and dropshipping profit calculators for online sellers.</p>
+  </section>
+
+  <div class="mx-auto max-w-5xl">
+    <div class="flex flex-wrap gap-2 justify-center mb-8">
+      <button id="tab-fba" class="tab-btn px-4 py-2 rounded-full font-semibold text-sm bg-emerald-600 text-white">Amazon FBA</button>
+      <button id="tab-ebay" class="tab-btn px-4 py-2 rounded-full font-semibold text-sm bg-slate-200 text-slate-700">eBay</button>
+      <button id="tab-etsy" class="tab-btn px-4 py-2 rounded-full font-semibold text-sm bg-slate-200 text-slate-700">Etsy</button>
+      <button id="tab-dropship" class="tab-btn px-4 py-2 rounded-full font-semibold text-sm bg-slate-200 text-slate-700">Dropshipping</button>
+    </div>
+
+    <div id="panel-fba" class="calc-panel">
+      <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+        <h2 class="text-xl font-semibold mb-4 text-slate-800">Amazon FBA Fee Calculator</h2>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <label class="block"><span class="text-sm font-medium text-slate-700">Product price ($)</span><input id="fba-price" type="number" value="29.99" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+          <label class="block"><span class="text-sm font-medium text-slate-700">Cost of goods ($)</span><input id="fba-cogs" type="number" value="8.00" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+          <label class="block"><span class="text-sm font-medium text-slate-700">Shipping to Amazon ($)</span><input id="fba-inbound" type="number" value="1.50" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+          <label class="block"><span class="text-sm font-medium text-slate-700">Product weight (lb)</span><input id="fba-weight" type="number" value="1.2" step="0.1" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+          <label class="block"><span class="text-sm font-medium text-slate-700">Category</span>
+            <select id="fba-category" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2">
+              <option value="15">Most categories (15%)</option>
+              <option value="8">Consumer electronics (8%)</option>
+              <option value="45">Amazon device accessories (45%)</option>
+              <option value="12">Books / Music / Video (12%)</option>
+            </select>
+          </label>
+          <label class="block"><span class="text-sm font-medium text-slate-700">Monthly units sold</span><input id="fba-units" type="number" value="100" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+        </div>
+        <div class="mt-6 grid gap-4 sm:grid-cols-3">
+          <div class="rounded-lg bg-slate-50 p-4 text-center"><p class="text-xs uppercase text-slate-500">Referral fee</p><p id="fba-out-referral" class="text-xl font-bold text-slate-800">$4.50</p></div>
+          <div class="rounded-lg bg-slate-50 p-4 text-center"><p class="text-xs uppercase text-slate-500">FBA fee (est.)</p><p id="fba-out-fba" class="text-xl font-bold text-slate-800">$3.86</p></div>
+          <div class="rounded-lg bg-emerald-50 p-4 text-center border border-emerald-100"><p class="text-xs uppercase text-emerald-600">Net profit / unit</p><p id="fba-out-profit" class="text-xl font-bold text-emerald-700">$12.13</p></div>
+        </div>
+        <div class="mt-4 rounded-lg bg-slate-50 p-4 text-center">
+          <p class="text-xs uppercase text-slate-500">Monthly net profit</p>
+          <p id="fba-out-monthly" class="text-2xl font-bold text-emerald-700">$1,213.00</p>
+        </div>
+        <p class="mt-3 text-xs text-slate-400">FBA fulfillment fee estimate based on standard-size non-apparel. Actual fees may vary.</p>
+      </div>
+    </div>
+
+    <div id="panel-ebay" class="calc-panel hidden">
+      <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+        <h2 class="text-xl font-semibold mb-4 text-slate-800">eBay Fee Calculator</h2>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <label class="block"><span class="text-sm font-medium text-slate-700">Sale price ($)</span><input id="ebay-price" type="number" value="50.00" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+          <label class="block"><span class="text-sm font-medium text-slate-700">Shipping charged to buyer ($)</span><input id="ebay-ship-charged" type="number" value="10.00" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+          <label class="block"><span class="text-sm font-medium text-slate-700">Actual shipping cost ($)</span><input id="ebay-ship-cost" type="number" value="8.50" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+          <label class="block"><span class="text-sm font-medium text-slate-700">Item cost ($)</span><input id="ebay-cogs" type="number" value="20.00" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+          <label class="block"><span class="text-sm font-medium text-slate-700">Store subscription</span>
+            <select id="ebay-store" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2">
+              <option value="0">No store (13.25% final value)</option>
+              <option value="1">Starter (13.25% up to $7500)</option>
+              <option value="2">Basic+ (12.9% up to $7500)</option>
+            </select>
+          </label>
+          <label class="block"><span class="text-sm font-medium text-slate-700">Category</span>
+            <select id="ebay-category" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2">
+              <option value="13.25">Most categories (13.25%)</option>
+              <option value="12.9">Books / Music / Video (12.9%)</option>
+              <option value="15">Clothing / Shoes (15%)</option>
+              <option value="9">Electronics (9%)</option>
+            </select>
+          </label>
+        </div>
+        <div class="mt-6 grid gap-4 sm:grid-cols-3">
+          <div class="rounded-lg bg-slate-50 p-4 text-center"><p class="text-xs uppercase text-slate-500">Final value fee</p><p id="ebay-out-fvf" class="text-xl font-bold text-slate-800">$7.95</p></div>
+          <div class="rounded-lg bg-slate-50 p-4 text-center"><p class="text-xs uppercase text-slate-500">Insertion fee</p><p id="ebay-out-insertion" class="text-xl font-bold text-slate-800">$0.00</p></div>
+          <div class="rounded-lg bg-emerald-50 p-4 text-center border border-emerald-100"><p class="text-xs uppercase text-emerald-600">Net profit</p><p id="ebay-out-profit" class="text-xl font-bold text-emerald-700">$23.55</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="panel-etsy" class="calc-panel hidden">
+      <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+        <h2 class="text-xl font-semibold mb-4 text-slate-800">Etsy Profit Calculator</h2>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <label class="block"><span class="text-sm font-medium text-slate-700">Listing price ($)</span><input id="etsy-price" type="number" value="35.00" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+          <label class="block"><span class="text-sm font-medium text-slate-700">Shipping charged to buyer ($)</span><input id="etsy-ship-charged" type="number" value="5.00" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+          <label class="block"><span class="text-sm font-medium text-slate-700">Shipping cost ($)</span><input id="etsy-ship-cost" type="number" value="4.00" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+          <label class="block"><span class="text-sm font-medium text-slate-700">Material / product cost ($)</span><input id="etsy-cogs" type="number" value="10.00" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+          <label class="block"><span class="text-sm font-medium text-slate-700">Number of listings sold</span><input id="etsy-qty" type="number" value="1" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+          <label class="block"><span class="text-sm font-medium text-slate-700">Offsite ads ( Etsy pays )</span>
+            <select id="etsy-offsite" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2">
+              <option value="0">No offsite ads sale</option>
+              <option value="15">Offsite ads (15%)</option>
+            </select>
+          </label>
+        </div>
+        <div class="mt-6 grid gap-4 sm:grid-cols-3">
+          <div class="rounded-lg bg-slate-50 p-4 text-center"><p class="text-xs uppercase text-slate-500">Transaction fee (6.5%)</p><p id="etsy-out-tx" class="text-xl font-bold text-slate-800">$2.60</p></div>
+          <div class="rounded-lg bg-slate-50 p-4 text-center"><p class="text-xs uppercase text-slate-500">Payment processing (3% + $0.25)</p><p id="etsy-out-payment" class="text-xl font-bold text-slate-800">$1.45</p></div>
+          <div class="rounded-lg bg-emerald-50 p-4 text-center border border-emerald-100"><p class="text-xs uppercase text-emerald-600">Net profit</p><p id="etsy-out-profit" class="text-xl font-bold text-emerald-700">$16.95</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="panel-dropship" class="calc-panel hidden">
+      <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+        <h2 class="text-xl font-semibold mb-4 text-slate-800">Dropshipping Margin Calculator</h2>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <label class="block"><span class="text-sm font-medium text-slate-700">Selling price ($)</span><input id="ds-price" type="number" value="49.99" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+          <label class="block"><span class="text-sm font-medium text-slate-700">Product cost from supplier ($)</span><input id="ds-cost" type="number" value="18.00" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+          <label class="block"><span class="text-sm font-medium text-slate-700">Shipping to customer ($)</span><input id="ds-shipping" type="number" value="5.00" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+          <label class="block"><span class="text-sm font-medium text-slate-700">Payment processing (%)</span><input id="ds-processing" type="number" value="2.9" step="0.1" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+          <label class="block"><span class="text-sm font-medium text-slate-700">Ad spend per sale ($)</span><input id="ds-ads" type="number" value="8.00" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+          <label class="block"><span class="text-sm font-medium text-slate-700">Platform / app fees ($)</span><input id="ds-fees" type="number" value="0.00" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+        </div>
+        <div class="mt-6 grid gap-4 sm:grid-cols-4">
+          <div class="rounded-lg bg-slate-50 p-4 text-center"><p class="text-xs uppercase text-slate-500">Gross margin</p><p id="ds-out-margin" class="text-xl font-bold text-slate-800">$26.99</p></div>
+          <div class="rounded-lg bg-slate-50 p-4 text-center"><p class="text-xs uppercase text-slate-500">Net profit</p><p id="ds-out-profit" class="text-xl font-bold text-slate-800">$17.30</p></div>
+          <div class="rounded-lg bg-slate-50 p-4 text-center"><p class="text-xs uppercase text-slate-500">Profit margin</p><p id="ds-out-pct" class="text-xl font-bold text-slate-800">34.6%</p></div>
+          <div class="rounded-lg bg-emerald-50 p-4 text-center border border-emerald-100"><p class="text-xs uppercase text-emerald-600">ROI</p><p id="ds-out-roi" class="text-xl font-bold text-emerald-700">96.1%</p></div>
+        </div>
+      </div>
+    </div>
+
+    <section class="my-12">
+      <h2 class="text-2xl font-semibold mb-4 text-slate-800">Guides for Online Sellers</h2>
+      <div class="grid gap-4 sm:grid-cols-2">
+        <a href="/blog/amazon-fba-fees-explained/" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-emerald-400">
+          <h3 class="font-semibold text-slate-900">Amazon FBA Fees Explained (2025)</h3>
+          <p class="mt-1 text-sm text-slate-600">Breakdown of referral fees, fulfillment fees, storage fees, and long-term storage charges.</p>
+        </a>
+        <a href="/blog/ebay-vs-amazon-selling/" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-emerald-400">
+          <h3 class="font-semibold text-slate-900">eBay vs Amazon: Where to Sell?</h3>
+          <p class="mt-1 text-sm text-slate-600">Fee comparison, audience differences, and which platform fits your product type.</p>
+        </a>
+        <a href="/blog/etsy-pricing-strategy/" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-emerald-400">
+          <h3 class="font-semibold text-slate-900">Etsy Pricing Strategy for Profit</h3>
+          <p class="mt-1 text-sm text-slate-600">How to price handmade and print-on-demand items to cover all Etsy fees and still earn.</p>
+        </a>
+        <a href="/blog/dropshipping-margins/" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-emerald-400">
+          <h3 class="font-semibold text-slate-900">Dropshipping Margins That Actually Work</h3>
+          <p class="mt-1 text-sm text-slate-600">Realistic margin targets, hidden costs, and how to calculate true profit per sale.</p>
+        </a>
+      </div>
+    </section>
+  </div>
+
+  <script is:inline>
+    function $(id){ return document.getElementById(id); }
+    function val(id){ return parseFloat($(id).value) || 0; }
+
+    // Tabs
+    const tabs = ['fba','ebay','etsy','dropship'];
+    tabs.forEach(t => {
+      $('tab-'+t).addEventListener('click', () => {
+        tabs.forEach(x => {
+          $('panel-'+x).classList.add('hidden');
+          $('tab-'+x).classList.remove('bg-emerald-600','text-white');
+          $('tab-'+x).classList.add('bg-slate-200','text-slate-700');
+        });
+        $('panel-'+t).classList.remove('hidden');
+        $('tab-'+t).classList.remove('bg-slate-200','text-slate-700');
+        $('tab-'+t).classList.add('bg-emerald-600','text-white');
+      });
+    });
+
+    function calcFBA(){
+      const price = val('fba-price');
+      const cogs = val('fba-cogs');
+      const inbound = val('fba-inbound');
+      const weight = val('fba-weight');
+      const rate = val('fba-category')/100;
+      const units = val('fba-units');
+      const referral = price * rate;
+      // FBA fulfillment estimate: base $3.22 + $0.38/lb over 0.75 for standard non-apparel
+      const fbaFee = Math.max(3.22, 3.22 + Math.max(0, weight - 0.75) * 0.38);
+      const profit = price - cogs - inbound - referral - fbaFee;
+      $('fba-out-referral').textContent = '$' + referral.toFixed(2);
+      $('fba-out-fba').textContent = '$' + fbaFee.toFixed(2);
+      $('fba-out-profit').textContent = '$' + profit.toFixed(2);
+      $('fba-out-monthly').textContent = '$' + (profit * units).toFixed(2);
+    }
+    function calcEbay(){
+      const price = val('ebay-price');
+      const shipCharged = val('ebay-ship-charged');
+      const shipCost = val('ebay-ship-cost');
+      const cogs = val('ebay-cogs');
+      const catRate = val('ebay-category')/100;
+      const total = price + shipCharged;
+      const fvf = total * catRate;
+      const insertion = 0; // assume free listings used
+      const profit = price + shipCharged - shipCost - cogs - fvf - insertion;
+      $('ebay-out-fvf').textContent = '$' + fvf.toFixed(2);
+      $('ebay-out-insertion').textContent = '$' + insertion.toFixed(2);
+      $('ebay-out-profit').textContent = '$' + profit.toFixed(2);
+    }
+    function calcEtsy(){
+      const price = val('etsy-price');
+      const shipCharged = val('etsy-ship-charged');
+      const shipCost = val('etsy-ship-cost');
+      const cogs = val('etsy-cogs');
+      const qty = val('etsy-qty');
+      const offsite = val('etsy-offsite')/100;
+      const total = price + shipCharged;
+      const txFee = total * 0.065;
+      const paymentFee = total * 0.03 + 0.25;
+      const listingFee = 0.20 * qty;
+      const offsiteFee = total * offsite;
+      const profit = total - shipCost - cogs - txFee - paymentFee - listingFee - offsiteFee;
+      $('etsy-out-tx').textContent = '$' + txFee.toFixed(2);
+      $('etsy-out-payment').textContent = '$' + paymentFee.toFixed(2);
+      $('etsy-out-profit').textContent = '$' + profit.toFixed(2);
+    }
+    function calcDS(){
+      const price = val('ds-price');
+      const cost = val('ds-cost');
+      const ship = val('ds-shipping');
+      const proc = val('ds-processing')/100;
+      const ads = val('ds-ads');
+      const fees = val('ds-fees');
+      const gross = price - cost - ship;
+      const procFee = price * proc + 0.30;
+      const net = gross - procFee - ads - fees;
+      const margin = price ? (net / price * 100) : 0;
+      const roi = cost ? (net / cost * 100) : 0;
+      $('ds-out-margin').textContent = '$' + gross.toFixed(2);
+      $('ds-out-profit').textContent = '$' + net.toFixed(2);
+      $('ds-out-pct').textContent = margin.toFixed(1) + '%';
+      $('ds-out-roi').textContent = roi.toFixed(1) + '%';
+    }
+
+    ['fba-price','fba-cogs','fba-inbound','fba-weight','fba-category','fba-units'].forEach(id => $('fba-'+id.split('-')[1])?.addEventListener('input', calcFBA));
+    ['ebay-price','ebay-ship-charged','ebay-ship-cost','ebay-cogs','ebay-category'].forEach(id => $('ebay-'+id.split('-')[1])?.addEventListener('input', calcEbay));
+    ['etsy-price','etsy-ship-charged','etsy-ship-cost','etsy-cogs','etsy-qty','etsy-offsite'].forEach(id => $('etsy-'+id.split('-')[1])?.addEventListener('input', calcEtsy));
+    ['ds-price','ds-cost','ds-shipping','ds-processing','ds-ads','ds-fees'].forEach(id => $('ds-'+id.split('-')[1])?.addEventListener('input', calcDS));
+
+    calcFBA(); calcEbay(); calcEtsy(); calcDS();
+  </script>
+</BaseLayout>

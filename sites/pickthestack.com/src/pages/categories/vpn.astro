@@ -1,0 +1,149 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { siteConfig } from '~/config/site.config';
+---
+<BaseLayout title="Best VPN Services 2025 | PickTheStack" description="Compare the best VPNs for privacy, streaming, torrenting, and bypassing censorship. Side-by-side comparisons, pricing, and an interactive quiz to find your perfect tool.">
+  <section class="py-10 text-center">
+    <h1 class="text-4xl font-bold tracking-tight" style="color:{siteConfig.branding.themeColor}">Best VPN Services</h1>
+    <p class="mx-auto mt-3 max-w-2xl text-lg text-slate-600">Compare the best VPNs for privacy, streaming, torrenting, and bypassing censorship. Compare features, pricing, and find your fit with our decision quiz.</p>
+  </section>
+
+  <div class="mx-auto max-w-6xl px-4">
+    <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm mb-8">
+      <h2 class="text-xl font-semibold mb-4 text-slate-800">VPN Services Comparison Table</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-slate-200">
+              <th class="text-left py-2 px-3 font-semibold text-slate-700">Feature</th>
+              <th class="text-center py-2 px-3 font-semibold text-indigo-700">NordVPN</th>
+              <th class="text-center py-2 px-3 font-semibold text-indigo-700">ExpressVPN</th>
+              <th class="text-center py-2 px-3 font-semibold text-indigo-700">Surfshark</th>
+              <th class="text-center py-2 px-3 font-semibold text-indigo-700">Mullvad</th>
+              <th class="text-center py-2 px-3 font-semibold text-indigo-700">Proton VPN</th>
+            </tr>
+          </thead>
+          <tbody class="text-slate-600">
+            <tr class="border-b border-slate-100"><td class="py-2 px-3">Free plan</td><td class="text-center">No</td><td class="text-center">No</td><td class="text-center">No</td><td class="text-center">No</td><td class="text-center">Yes</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">Starting price</td><td class="text-center">$3.39/mo</td><td class="text-center">$6.67/mo</td><td class="text-center">$2.19/mo</td><td class="text-center">$5.50/mo</td><td class="text-center">$4.99/mo</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">Best for</td><td class="text-center">All-rounder</td><td class="text-center">Premium ease</td><td class="text-center">Budget unlimited</td><td class="text-center">Anonymity</td><td class="text-center">Privacy advocates</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">G2 score</td><td class="text-center">4.5</td><td class="text-center">4.3</td><td class="text-center">4.5</td><td class="text-center">4.6</td><td class="text-center">4.5</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">Servers</td><td class="text-center">6,400+</td><td class="text-center">3,000+</td><td class="text-center">3,200+</td><td class="text-center">800+</td><td class="text-center">8,600+</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">No-logs policy</td><td class="text-center">-</td><td class="text-center">-</td><td class="text-center">-</td><td class="text-center">-</td><td class="text-center">-</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">Streaming</td><td class="text-center">Excellent</td><td class="text-center">Excellent</td><td class="text-center">Good</td><td class="text-center">Poor</td><td class="text-center">Good</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">Torrenting</td><td class="text-center">Yes</td><td class="text-center">Yes</td><td class="text-center">Yes</td><td class="text-center">Yes</td><td class="text-center">Yes</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">Speed</td><td class="text-center">Fast</td><td class="text-center">Very fast</td><td class="text-center">Fast</td><td class="text-center">Good</td><td class="text-center">Good</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">Devices</td><td class="text-center">10</td><td class="text-center">8</td><td class="text-center">Unlimited</td><td class="text-center">5</td><td class="text-center">10</td></tr>
+
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-3 text-xs text-slate-400">Prices and features updated 2025. Click tool names to visit their site (affiliate links where available).</p>
+    </div>
+
+    <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm mb-8">
+      <h2 class="text-xl font-semibold mb-4 text-slate-800">Decision Quiz: Find Your VPN Services</h2>
+      <div id="quiz-container">
+        <div id="q1" class="quiz-step ">
+          <p class="font-medium text-slate-800 mb-3">1. Is maximum anonymity the top priority?</p>
+          <div class="flex flex-wrap gap-2">
+            <button class="quiz-btn px-4 py-2 rounded-lg bg-slate-100 hover:bg-indigo-100 text-slate-700" data-next="q2" data-score="mullvad:3,proton:2">Yes</button>
+            <button class="quiz-btn px-4 py-2 rounded-lg bg-slate-100 hover:bg-indigo-100 text-slate-700" data-next="q2" data-score="nordvpn:2,expressvpn:2,surfshark:1">No</button>
+          </div>
+        </div>
+        <div id="q2" class="quiz-step hidden">
+          <p class="font-medium text-slate-800 mb-3">2. Do you need to unblock Netflix / streaming?</p>
+          <div class="flex flex-wrap gap-2">
+            <button class="quiz-btn px-4 py-2 rounded-lg bg-slate-100 hover:bg-indigo-100 text-slate-700" data-next="q3" data-score="expressvpn:3,nordvpn:3">Yes</button>
+            <button class="quiz-btn px-4 py-2 rounded-lg bg-slate-100 hover:bg-indigo-100 text-slate-700" data-next="q3" data-score="mullvad:1,proton:1,surfshark:1">No</button>
+          </div>
+        </div>
+        <div id="q3" class="quiz-step hidden">
+          <p class="font-medium text-slate-800 mb-3">3. Many devices / family sharing?</p>
+          <div class="flex flex-wrap gap-2">
+            <button class="quiz-btn px-4 py-2 rounded-lg bg-slate-100 hover:bg-indigo-100 text-slate-700" data-next="q4" data-score="surfshark:3,proton:2,nordvpn:1">Yes</button>
+            <button class="quiz-btn px-4 py-2 rounded-lg bg-slate-100 hover:bg-indigo-100 text-slate-700" data-next="q4" data-score="expressvpn:1,mullvad:1">No</button>
+          </div>
+        </div>
+        <div id="q4" class="quiz-step hidden">
+          <p class="font-medium text-slate-800 mb-3">4. Tightest budget but still reliable?</p>
+          <div class="flex flex-wrap gap-2">
+            <button class="quiz-btn px-4 py-2 rounded-lg bg-slate-100 hover:bg-indigo-100 text-slate-700" data-next="result" data-score="surfshark:3,nordvpn:2">Yes</button>
+            <button class="quiz-btn px-4 py-2 rounded-lg bg-slate-100 hover:bg-indigo-100 text-slate-700" data-next="result" data-score="expressvpn:1,mullvad:1,proton:1">No</button>
+          </div>
+        </div>
+        <div id="result" class="quiz-step hidden">
+          <h3 class="text-lg font-semibold text-slate-800 mb-2">Recommended for you:</h3>
+          <div id="result-card" class="rounded-lg bg-indigo-50 border border-indigo-100 p-4"></div>
+          <button id="quiz-restart" class="mt-4 px-4 py-2 rounded-lg bg-indigo-600 text-white text-sm">Start over</button>
+        </div>
+      </div>
+    </div>
+
+    <section class="my-12">
+      <h2 class="text-2xl font-semibold mb-4 text-slate-800">Top Picks by Use Case</h2>
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <a href="#" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-indigo-400 transition">
+          <h3 class="font-semibold text-slate-900">NordVPN</h3>
+          <p class="mt-1 text-sm text-slate-600">Best for: All-rounder — Starting at $3.39/mo</p>
+          <p class="mt-2 text-xs text-slate-400">No | G2: 4.5</p>
+        </a>
+        <a href="#" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-indigo-400 transition">
+          <h3 class="font-semibold text-slate-900">ExpressVPN</h3>
+          <p class="mt-1 text-sm text-slate-600">Best for: Premium ease — Starting at $6.67/mo</p>
+          <p class="mt-2 text-xs text-slate-400">No | G2: 4.3</p>
+        </a>
+        <a href="#" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-indigo-400 transition">
+          <h3 class="font-semibold text-slate-900">Surfshark</h3>
+          <p class="mt-1 text-sm text-slate-600">Best for: Budget unlimited — Starting at $2.19/mo</p>
+          <p class="mt-2 text-xs text-slate-400">No | G2: 4.5</p>
+        </a>
+        <a href="#" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-indigo-400 transition">
+          <h3 class="font-semibold text-slate-900">Mullvad</h3>
+          <p class="mt-1 text-sm text-slate-600">Best for: Anonymity — Starting at $5.50/mo</p>
+          <p class="mt-2 text-xs text-slate-400">No | G2: 4.6</p>
+        </a>
+        <a href="#" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-indigo-400 transition">
+          <h3 class="font-semibold text-slate-900">Proton VPN</h3>
+          <p class="mt-1 text-sm text-slate-600">Best for: Privacy advocates — Starting at $4.99/mo</p>
+          <p class="mt-2 text-xs text-slate-400">Yes | G2: 4.5</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="my-12">
+      <h2 class="text-2xl font-semibold mb-4 text-slate-800">Related Keywords</h2>
+      <div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-sm">best vpn 2025</span><span class="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-sm">nordvpn vs expressvpn</span><span class="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-sm">best vpn for streaming</span><span class="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-sm">free vpn</span><span class="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-sm">vpn for privacy</span>      </div>
+    </section>
+  </div>
+
+  <script is:inline>
+    const scores = { nordvpn:0, expressvpn:0, surfshark:0, mullvad:0, protonvpn:0 };
+    const names = { nordvpn:"NordVPN", expressvpn:"ExpressVPN", surfshark:"Surfshark", mullvad:"Mullvad", protonvpn:"Proton VPN" };
+    const reasons = { nordvpn:"All-rounder", expressvpn:"Premium ease", surfshark:"Budget unlimited", mullvad:"Anonymity", protonvpn:"Privacy advocates" };
+    document.querySelectorAll('.quiz-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const next = btn.dataset.next;
+        const delta = btn.dataset.score;
+        if (delta) {
+          delta.split(',').forEach(part => {
+            const [k,v] = part.split(':');
+            scores[k] += parseInt(v);
+          });
+        }
+        document.querySelectorAll('.quiz-step').forEach(s => s.classList.add('hidden'));
+        if (next === 'result') {
+          const winner = Object.entries(scores).sort((a,b) => b[1]-a[1])[0];
+          document.getElementById('result-card').innerHTML = '<p class="text-2xl font-bold text-indigo-700">' + names[winner[0]] + '</p><p class="mt-1 text-slate-700">Best for: ' + reasons[winner[0]] + '</p>';
+        }
+        document.getElementById(next).classList.remove('hidden');
+      });
+    });
+    document.getElementById('quiz-restart')?.addEventListener('click', () => {
+      Object.keys(scores).forEach(k => scores[k]=0);
+      document.querySelectorAll('.quiz-step').forEach(s => s.classList.add('hidden'));
+      document.getElementById('q1').classList.remove('hidden');
+    });
+  </script>
+</BaseLayout>

@@ -1,0 +1,17 @@
+{
+  "title": "Birch 1",
+  "description": "Seamless 4K AI-generated wood texture. Photorealistic PBR material.",
+  "category": "wood",
+  "seed": 589221060,
+  "seedName": "birch-1",
+  "prompt": "seamless photorealistic texture of light wood planks, high detail wood grain, natural colors, tileable, 4K PBR material",
+  "params": {
+    "roughness": 0.6,
+    "metallic": 0.0
+  },
+  "shape": [
+    4096,
+    4096
+  ],
+  "generatedDate": "2026-04-24"
+}

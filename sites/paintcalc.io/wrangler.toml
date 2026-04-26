@@ -1,0 +1,6 @@
+# Cloudflare Pages project configuration.
+# Replace `paintcalc-io` with the Cloudflare Pages project slug for this
+# site. One project per site; the account is shared across the network.
+name = "paintcalc-io"
+pages_build_output_dir = "dist"
+compatibility_date = "2025-06-01"

@@ -1,0 +1,17 @@
+{
+  "title": "Ai Metal 1",
+  "description": "Seamless 4K AI-generated metal texture. Photorealistic PBR material.",
+  "category": "metal",
+  "seed": 1988688498,
+  "seedName": "ai-metal-1",
+  "prompt": "seamless photorealistic texture of metal surface, detailed metallic finish, brushed metal look, tileable, 4K PBR material",
+  "params": {
+    "roughness": 0.6,
+    "metallic": 0.0
+  },
+  "shape": [
+    4096,
+    4096
+  ],
+  "generatedDate": "2026-04-24"
+}

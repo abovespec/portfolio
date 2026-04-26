@@ -1,0 +1,149 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { siteConfig } from '~/config/site.config';
+---
+<BaseLayout title="Best Analytics & Web Analytics 2025 | PickTheStack" description="Compare website analytics tools for privacy, product analytics, and marketing attribution. Side-by-side comparisons, pricing, and an interactive quiz to find your perfect tool.">
+  <section class="py-10 text-center">
+    <h1 class="text-4xl font-bold tracking-tight" style="color:{siteConfig.branding.themeColor}">Best Analytics & Web Analytics</h1>
+    <p class="mx-auto mt-3 max-w-2xl text-lg text-slate-600">Compare website analytics tools for privacy, product analytics, and marketing attribution. Compare features, pricing, and find your fit with our decision quiz.</p>
+  </section>
+
+  <div class="mx-auto max-w-6xl px-4">
+    <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm mb-8">
+      <h2 class="text-xl font-semibold mb-4 text-slate-800">Analytics & Web Analytics Comparison Table</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-slate-200">
+              <th class="text-left py-2 px-3 font-semibold text-slate-700">Feature</th>
+              <th class="text-center py-2 px-3 font-semibold text-indigo-700">Google Analytics 4</th>
+              <th class="text-center py-2 px-3 font-semibold text-indigo-700">Mixpanel</th>
+              <th class="text-center py-2 px-3 font-semibold text-indigo-700">Amplitude</th>
+              <th class="text-center py-2 px-3 font-semibold text-indigo-700">Plausible</th>
+              <th class="text-center py-2 px-3 font-semibold text-indigo-700">Fathom</th>
+            </tr>
+          </thead>
+          <tbody class="text-slate-600">
+            <tr class="border-b border-slate-100"><td class="py-2 px-3">Free plan</td><td class="text-center">Yes</td><td class="text-center">Yes (20M events)</td><td class="text-center">Yes (10M events)</td><td class="text-center">No</td><td class="text-center">No</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">Starting price</td><td class="text-center">$0</td><td class="text-center">$20/mo</td><td class="text-center">Custom</td><td class="text-center">$9/mo</td><td class="text-center">$14/mo</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">Best for</td><td class="text-center">General web</td><td class="text-center">Product teams</td><td class="text-center">Growth teams</td><td class="text-center">Privacy-first</td><td class="text-center">Simple privacy</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">G2 score</td><td class="text-center">4.1</td><td class="text-center">4.5</td><td class="text-center">4.5</td><td class="text-center">4.7</td><td class="text-center">4.8</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">Real-time</td><td class="text-center">Yes</td><td class="text-center">Yes</td><td class="text-center">Yes</td><td class="text-center">Yes</td><td class="text-center">Yes</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">Privacy friendly</td><td class="text-center">No</td><td class="text-center">Partial</td><td class="text-center">Partial</td><td class="text-center">Yes</td><td class="text-center">Yes</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">Product analytics</td><td class="text-center">Basic</td><td class="text-center">Advanced</td><td class="text-center">Advanced</td><td class="text-center">No</td><td class="text-center">No</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">Funnels</td><td class="text-center">Yes</td><td class="text-center">Yes</td><td class="text-center">Yes</td><td class="text-center">Yes</td><td class="text-center">Yes</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">Custom reports</td><td class="text-center">Yes</td><td class="text-center">Yes</td><td class="text-center">Yes</td><td class="text-center">Limited</td><td class="text-center">Limited</td></tr>
+<tr class="border-b border-slate-100"><td class="py-2 px-3">Data retention</td><td class="text-center">14 mo</td><td class="text-center">5+ years</td><td class="text-center">Unlimited</td><td class="text-center">Unlimited</td><td class="text-center">Unlimited</td></tr>
+
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-3 text-xs text-slate-400">Prices and features updated 2025. Click tool names to visit their site (affiliate links where available).</p>
+    </div>
+
+    <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm mb-8">
+      <h2 class="text-xl font-semibold mb-4 text-slate-800">Decision Quiz: Find Your Analytics & Web Analytics</h2>
+      <div id="quiz-container">
+        <div id="q1" class="quiz-step ">
+          <p class="font-medium text-slate-800 mb-3">1. Is user privacy / GDPR compliance critical?</p>
+          <div class="flex flex-wrap gap-2">
+            <button class="quiz-btn px-4 py-2 rounded-lg bg-slate-100 hover:bg-indigo-100 text-slate-700" data-next="q2" data-score="plausible:3,fathom:3">Yes</button>
+            <button class="quiz-btn px-4 py-2 rounded-lg bg-slate-100 hover:bg-indigo-100 text-slate-700" data-next="q2" data-score="mixpanel:2,amplitude:2,ga4:1">No</button>
+          </div>
+        </div>
+        <div id="q2" class="quiz-step hidden">
+          <p class="font-medium text-slate-800 mb-3">2. Do you need deep product/feature analytics?</p>
+          <div class="flex flex-wrap gap-2">
+            <button class="quiz-btn px-4 py-2 rounded-lg bg-slate-100 hover:bg-indigo-100 text-slate-700" data-next="q3" data-score="mixpanel:3,amplitude:3">Yes</button>
+            <button class="quiz-btn px-4 py-2 rounded-lg bg-slate-100 hover:bg-indigo-100 text-slate-700" data-next="q3" data-score="plausible:1,fathom:1,ga4:1">No</button>
+          </div>
+        </div>
+        <div id="q3" class="quiz-step hidden">
+          <p class="font-medium text-slate-800 mb-3">3. Need completely free, unlimited usage?</p>
+          <div class="flex flex-wrap gap-2">
+            <button class="quiz-btn px-4 py-2 rounded-lg bg-slate-100 hover:bg-indigo-100 text-slate-700" data-next="q4" data-score="ga4:3">Yes</button>
+            <button class="quiz-btn px-4 py-2 rounded-lg bg-slate-100 hover:bg-indigo-100 text-slate-700" data-next="q4" data-score="mixpanel:1,amplitude:1,plausible:1,fathom:1">No</button>
+          </div>
+        </div>
+        <div id="q4" class="quiz-step hidden">
+          <p class="font-medium text-slate-800 mb-3">4. Are you a SaaS/growth team?</p>
+          <div class="flex flex-wrap gap-2">
+            <button class="quiz-btn px-4 py-2 rounded-lg bg-slate-100 hover:bg-indigo-100 text-slate-700" data-next="result" data-score="amplitude:3,mixpanel:2">Yes</button>
+            <button class="quiz-btn px-4 py-2 rounded-lg bg-slate-100 hover:bg-indigo-100 text-slate-700" data-next="result" data-score="plausible:1,fathom:1,ga4:1">No</button>
+          </div>
+        </div>
+        <div id="result" class="quiz-step hidden">
+          <h3 class="text-lg font-semibold text-slate-800 mb-2">Recommended for you:</h3>
+          <div id="result-card" class="rounded-lg bg-indigo-50 border border-indigo-100 p-4"></div>
+          <button id="quiz-restart" class="mt-4 px-4 py-2 rounded-lg bg-indigo-600 text-white text-sm">Start over</button>
+        </div>
+      </div>
+    </div>
+
+    <section class="my-12">
+      <h2 class="text-2xl font-semibold mb-4 text-slate-800">Top Picks by Use Case</h2>
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <a href="#" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-indigo-400 transition">
+          <h3 class="font-semibold text-slate-900">Google Analytics 4</h3>
+          <p class="mt-1 text-sm text-slate-600">Best for: General web — Starting at $0</p>
+          <p class="mt-2 text-xs text-slate-400">Yes | G2: 4.1</p>
+        </a>
+        <a href="#" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-indigo-400 transition">
+          <h3 class="font-semibold text-slate-900">Mixpanel</h3>
+          <p class="mt-1 text-sm text-slate-600">Best for: Product teams — Starting at $20/mo</p>
+          <p class="mt-2 text-xs text-slate-400">Yes (20M events) | G2: 4.5</p>
+        </a>
+        <a href="#" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-indigo-400 transition">
+          <h3 class="font-semibold text-slate-900">Amplitude</h3>
+          <p class="mt-1 text-sm text-slate-600">Best for: Growth teams — Starting at Custom</p>
+          <p class="mt-2 text-xs text-slate-400">Yes (10M events) | G2: 4.5</p>
+        </a>
+        <a href="#" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-indigo-400 transition">
+          <h3 class="font-semibold text-slate-900">Plausible</h3>
+          <p class="mt-1 text-sm text-slate-600">Best for: Privacy-first — Starting at $9/mo</p>
+          <p class="mt-2 text-xs text-slate-400">No | G2: 4.7</p>
+        </a>
+        <a href="#" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-indigo-400 transition">
+          <h3 class="font-semibold text-slate-900">Fathom</h3>
+          <p class="mt-1 text-sm text-slate-600">Best for: Simple privacy — Starting at $14/mo</p>
+          <p class="mt-2 text-xs text-slate-400">No | G2: 4.8</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="my-12">
+      <h2 class="text-2xl font-semibold mb-4 text-slate-800">Related Keywords</h2>
+      <div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-sm">best web analytics tools</span><span class="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-sm">google analytics 4 alternatives</span><span class="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-sm">privacy friendly analytics</span><span class="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-sm">mixpanel vs amplitude</span><span class="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-sm">best analytics for saas</span>      </div>
+    </section>
+  </div>
+
+  <script is:inline>
+    const scores = { googleanalytics4:0, mixpanel:0, amplitude:0, plausible:0, fathom:0 };
+    const names = { googleanalytics4:"Google Analytics 4", mixpanel:"Mixpanel", amplitude:"Amplitude", plausible:"Plausible", fathom:"Fathom" };
+    const reasons = { googleanalytics4:"General web", mixpanel:"Product teams", amplitude:"Growth teams", plausible:"Privacy-first", fathom:"Simple privacy" };
+    document.querySelectorAll('.quiz-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const next = btn.dataset.next;
+        const delta = btn.dataset.score;
+        if (delta) {
+          delta.split(',').forEach(part => {
+            const [k,v] = part.split(':');
+            scores[k] += parseInt(v);
+          });
+        }
+        document.querySelectorAll('.quiz-step').forEach(s => s.classList.add('hidden'));
+        if (next === 'result') {
+          const winner = Object.entries(scores).sort((a,b) => b[1]-a[1])[0];
+          document.getElementById('result-card').innerHTML = '<p class="text-2xl font-bold text-indigo-700">' + names[winner[0]] + '</p><p class="mt-1 text-slate-700">Best for: ' + reasons[winner[0]] + '</p>';
+        }
+        document.getElementById(next).classList.remove('hidden');
+      });
+    });
+    document.getElementById('quiz-restart')?.addEventListener('click', () => {
+      Object.keys(scores).forEach(k => scores[k]=0);
+      document.querySelectorAll('.quiz-step').forEach(s => s.classList.add('hidden'));
+      document.getElementById('q1').classList.remove('hidden');
+    });
+  </script>
+</BaseLayout>

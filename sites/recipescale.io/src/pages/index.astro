@@ -1,0 +1,60 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { siteConfig } from '~/config/site.config';
+---
+<BaseLayout title={siteConfig.identity.name} description={siteConfig.identity.description}>
+  <section class="py-10 text-center">
+    <h1 class="text-4xl font-bold tracking-tight" style={`color:${siteConfig.branding.themeColor}`}>RecipeScale</h1>
+    <p class="mx-auto mt-3 max-w-2xl text-lg text-slate-600">Recipe scaler, nutrition calculator by ingredient, meal plan generator by calorie target, and leftover ingredient finder.</p>
+  </section>
+  <div class="mx-auto max-w-5xl">
+    <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm mb-8">
+      <h2 class="text-xl font-semibold mb-4 text-slate-800">Recipe Scaler</h2>
+      <div class="flex flex-wrap gap-3 mb-4">
+        <label class="block"><span class="text-sm font-medium text-slate-700">Original servings</span><input id="rs-orig" type="number" value="4" class="mt-1 w-24 rounded-lg border border-slate-300 px-3 py-2"></label>
+        <label class="block"><span class="text-sm font-medium text-slate-700">Desired servings</span><input id="rs-new" type="number" value="6" class="mt-1 w-24 rounded-lg border border-slate-300 px-3 py-2"></label>
+      </div>
+      <div id="rs-lines" class="space-y-2"></div>
+      <button id="rs-add" class="mt-2 text-sm text-orange-600 hover:text-orange-800 font-medium">+ Add ingredient</button>
+      <div class="mt-4 rounded-lg bg-yellow-50 p-3 text-center border border-yellow-100"><p class="text-sm text-orange-700 font-medium">Scale factor: <span id="rs-factor">1.5</span>x</p></div>
+    </div>
+
+    <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm mb-8">
+      <h2 class="text-xl font-semibold mb-4 text-slate-800">Meal Plan by Calorie Target</h2>
+      <div class="grid gap-4 sm:grid-cols-3 mb-4">
+        <label class="block"><span class="text-sm font-medium text-slate-700">Daily calories</span><input id="mp-cals" type="number" value="2000" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+        <label class="block"><span class="text-sm font-medium text-slate-700">Protein target (%)</span><input id="mp-prot" type="number" value="30" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+        <label class="block"><span class="text-sm font-medium text-slate-700">Meals per day</span><input id="mp-meals" type="number" value="3" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"></label>
+      </div>
+      <div class="mt-4 grid gap-4 sm:grid-cols-3">
+        <div class="rounded-lg bg-slate-50 p-4 text-center"><p class="text-xs uppercase text-slate-500">Protein / day</p><p id="mp-out-prot" class="text-xl font-bold text-slate-800">150g</p></div>
+        <div class="rounded-lg bg-slate-50 p-4 text-center"><p class="text-xs uppercase text-slate-500">Carbs / day</p><p id="mp-out-carb" class="text-xl font-bold text-slate-800">200g</p></div>
+        <div class="rounded-lg bg-slate-50 p-4 text-center"><p class="text-xs uppercase text-slate-500">Fat / day</p><p id="mp-out-fat" class="text-xl font-bold text-slate-800">67g</p></div>
+      </div>
+    </div>
+
+    <section class="my-12">
+      <h2 class="text-2xl font-semibold mb-4 text-slate-800">Cooking & Meal Prep Guides</h2>
+      <div class="grid gap-4 sm:grid-cols-2">
+        <a href="/blog/how-to-scale-recipes/" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-orange-400"><h3 class="font-semibold text-slate-900">How to Scale Recipes Accurately</h3><p class="mt-1 text-sm text-slate-600">Baking ratios, pan sizes, and when volume scaling breaks down.</p></a>
+        <a href="/blog/macro-meal-prep/" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-orange-400"><h3 class="font-semibold text-slate-900">Macro-Based Meal Prep for Beginners</h3><p class="mt-1 text-sm text-slate-600">Hit protein, carbs, and fat targets with simple batch-cooking strategies.</p></a>
+        <a href="/blog/leftover-ingredient-recipes/" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-orange-400"><h3 class="font-semibold text-slate-900">Leftover Ingredient Recipe Finder</h3><p class="mt-1 text-sm text-slate-600">What to cook when you have random ingredients left in the fridge.</p></a>
+        <a href="/blog/best-meal-kit-services/" class="rounded-lg border border-slate-200 bg-white p-5 hover:border-orange-400"><h3 class="font-semibold text-slate-900">Best Meal Kit Services Compared</h3><p class="mt-1 text-sm text-slate-600">HelloFresh, Factor, Blue Apron: price per serving, dietary options, and waste.</p></a>
+      </div>
+    </section>
+  </div>
+  <script is:inline>
+    function $(id){ return document.getElementById(id); }
+    function val(id){ return parseFloat($(id).value)||0; }
+    let rsCount=0;
+    function addRS(name,qty,unit){ rsCount++; const div=document.createElement('div'); div.className='flex gap-2 items-center'; div.innerHTML='<input type="text" placeholder="Ingredient" class="flex-1 rounded-lg border border-slate-300 px-3 py-2 text-sm" value="'+(name||'')+'"><input type="number" placeholder="Qty" class="w-20 rounded-lg border border-slate-300 px-2 py-2 text-sm rs-qty" value="'+(qty||'')+'"><input type="text" placeholder="Unit" class="w-24 rounded-lg border border-slate-300 px-2 py-2 text-sm" value="'+(unit||'')+'"><span class="rs-out text-sm font-medium text-orange-700 w-24 text-right"></span>'; $('rs-lines').appendChild(div); div.querySelectorAll('input').forEach(i=>i.addEventListener('input',calcRS)); }
+    addRS('Flour',2,'cups'); addRS('Sugar',0.5,'cups'); addRS('Butter',4,'tbsp');
+    function calcRS(){ const factor=val('rs-new')/Math.max(1,val('rs-orig')); $('rs-factor').textContent=factor.toFixed(2); document.querySelectorAll('#rs-lines > div').forEach(row=>{ const q=parseFloat(row.querySelector('.rs-qty').value)||0; row.querySelector('.rs-out').textContent=(q*factor).toFixed(2); }); }
+    $('rs-add').addEventListener('click',()=>addRS('',1,''));
+    ['rs-orig','rs-new'].forEach(id=>$(id)?.addEventListener('input',calcRS));
+    calcRS();
+    function calcMP(){ const cals=val('mp-cals'), protPct=val('mp-prot'), meals=val('mp-meals'); const fatPct=Math.max(15,35-protPct/2); const carbPct=100-protPct-fatPct; const protG=(cals*(protPct/100))/4; const carbG=(cals*(carbPct/100))/4; const fatG=(cals*(fatPct/100))/9; $('mp-out-prot').textContent=protG.toFixed(0)+'g'; $('mp-out-carb').textContent=carbG.toFixed(0)+'g'; $('mp-out-fat').textContent=fatG.toFixed(0)+'g'; }
+    ['mp-cals','mp-prot','mp-meals'].forEach(id=>$(id)?.addEventListener('input',calcMP));
+    calcMP();
+  </script>
+</BaseLayout>
