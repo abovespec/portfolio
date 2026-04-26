@@ -24,6 +24,12 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
     <button id="tab-validate" class="tab-btn px-4 py-2 text-sm font-medium border-b-2 border-transparent text-slate-500 hover:text-slate-700 -mb-px transition-colors">
       Validate &amp; Parse
     </button>
+    <button id="tab-ulid" class="tab-btn px-4 py-2 text-sm font-medium border-b-2 border-transparent text-slate-500 hover:text-slate-700 -mb-px transition-colors">
+      ULID
+    </button>
+    <button id="tab-v5" class="tab-btn px-4 py-2 text-sm font-medium border-b-2 border-transparent text-slate-500 hover:text-slate-700 -mb-px transition-colors">
+      v5 (Namespace)
+    </button>
   </div>
 
   <!-- ── GENERATE PANEL ── -->
@@ -102,6 +108,52 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
       <div id="parse-timestamp-row" class="hidden grid grid-cols-2 gap-x-4 gap-y-2 text-sm pt-2 border-t border-slate-100">
         <span class="text-slate-500">Embedded timestamp</span>
         <span id="parse-timestamp" class="font-mono font-medium text-slate-900"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── ULID PANEL ── -->
+  <div id="panel-ulid" class="hidden">
+    <div class="flex flex-wrap gap-2 mb-3">
+      <button id="btn-ulid-generate" class="rounded-md bg-cyan-600 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-cyan-700 transition-colors">Generate ULID</button>
+      <div class="flex-1"></div>
+      <button id="btn-ulid-copy" class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Copy</button>
+    </div>
+    <div class="rounded-lg border border-slate-200 bg-white p-5 space-y-3">
+      <div>
+        <div class="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-2">Generated ULID</div>
+        <div id="ulid-output" class="font-mono text-xl font-bold text-cyan-700 break-all">—</div>
+      </div>
+      <div class="rounded-lg bg-cyan-50 border border-cyan-200 px-4 py-3 text-sm text-slate-700">
+        Sortable &bull; URL-safe &bull; Encodes creation timestamp
+      </div>
+      <div id="ulid-ts-info" class="text-xs text-slate-500 hidden">
+        Timestamp: <span id="ulid-ts-decoded" class="font-mono"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── UUID v5 NAMESPACE PANEL ── -->
+  <div id="panel-v5" class="hidden">
+    <div class="rounded-lg border border-slate-200 bg-white p-5 space-y-4">
+      <div>
+        <label for="v5-namespace" class="block text-sm font-medium text-slate-700 mb-1">Namespace</label>
+        <select id="v5-namespace" class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500">
+          <option value="6ba7b811-9dad-11d1-80b4-00c04fd430c8">URL (6ba7b811...)</option>
+          <option value="6ba7b810-9dad-11d1-80b4-00c04fd430c8">DNS (6ba7b810...)</option>
+          <option value="6ba7b812-9dad-11d1-80b4-00c04fd430c8">OID (6ba7b812...)</option>
+          <option value="6ba7b814-9dad-11d1-80b4-00c04fd430c8">X500 (6ba7b814...)</option>
+        </select>
+      </div>
+      <div>
+        <label for="v5-name" class="block text-sm font-medium text-slate-700 mb-1">Name</label>
+        <input type="text" id="v5-name" placeholder="e.g. https://example.com" class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 font-mono text-sm focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500" />
+      </div>
+      <button id="btn-v5-generate" class="rounded-md bg-cyan-600 px-3.5 py-1.5 text-sm font-medium text-white hover:bg-cyan-700 transition-colors">Generate v5</button>
+      <div id="v5-result" class="hidden">
+        <div class="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-2">UUID v5 Result</div>
+        <div id="v5-output" class="font-mono text-lg font-bold text-cyan-700 break-all mb-2">—</div>
+        <button id="btn-v5-copy" class="rounded-md border border-slate-300 px-3.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">Copy</button>
       </div>
     </div>
   </div>
@@ -258,19 +310,8 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
     }
 
     // ── Tab switching ──
-    document.getElementById('tab-generate').addEventListener('click', function() {
-      document.getElementById('panel-generate').classList.remove('hidden');
-      document.getElementById('panel-validate').classList.add('hidden');
-      document.getElementById('tab-generate').className = 'tab-btn px-4 py-2 text-sm font-medium border-b-2 border-cyan-500 text-cyan-600 -mb-px';
-      document.getElementById('tab-validate').className = 'tab-btn px-4 py-2 text-sm font-medium border-b-2 border-transparent text-slate-500 hover:text-slate-700 -mb-px transition-colors';
-    });
-
-    document.getElementById('tab-validate').addEventListener('click', function() {
-      document.getElementById('panel-generate').classList.add('hidden');
-      document.getElementById('panel-validate').classList.remove('hidden');
-      document.getElementById('tab-validate').className = 'tab-btn px-4 py-2 text-sm font-medium border-b-2 border-cyan-500 text-cyan-600 -mb-px';
-      document.getElementById('tab-generate').className = 'tab-btn px-4 py-2 text-sm font-medium border-b-2 border-transparent text-slate-500 hover:text-slate-700 -mb-px transition-colors';
-    });
+    document.getElementById('tab-generate').addEventListener('click', function() { setActiveTab('generate'); });
+    document.getElementById('tab-validate').addEventListener('click', function() { setActiveTab('validate'); });
 
     // ── UUID Validator / Parser ──
     var UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
@@ -363,6 +404,100 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
 
     document.getElementById('uuid-validate-input').addEventListener('input', function() {
       parseUuid(this.value);
+    });
+
+    // ── Tab switching helpers ──
+    function setActiveTab(active) {
+      var tabs = ['generate','validate','ulid','v5'];
+      tabs.forEach(function(t) {
+        var btn = document.getElementById('tab-' + t);
+        var panel = document.getElementById('panel-' + t);
+        if (t === active) {
+          btn.className = 'tab-btn px-4 py-2 text-sm font-medium border-b-2 border-cyan-500 text-cyan-600 -mb-px';
+          if (panel) panel.classList.remove('hidden');
+        } else {
+          btn.className = 'tab-btn px-4 py-2 text-sm font-medium border-b-2 border-transparent text-slate-500 hover:text-slate-700 -mb-px transition-colors';
+          if (panel) panel.classList.add('hidden');
+        }
+      });
+    }
+
+    document.getElementById('tab-ulid').addEventListener('click', function() { setActiveTab('ulid'); generateULIDAndShow(); });
+    document.getElementById('tab-v5').addEventListener('click', function() { setActiveTab('v5'); });
+
+    // ── ULID ──
+    function generateULID() {
+      var CHARS = '0123456789ABCDEFGHJKMNPQRSTVWXYZ';
+      var now = Date.now();
+      var time = '';
+      for (var i = 9; i >= 0; i--) { time = CHARS[now % 32] + time; now = Math.floor(now / 32); }
+      var arr = new Uint8Array(10);
+      crypto.getRandomValues(arr);
+      var rand = Array.from(arr).map(function(b) { return CHARS[b % 32]; }).join('');
+      return time + rand;
+    }
+
+    function decodeULIDTimestamp(ulid) {
+      var CHARS = '0123456789ABCDEFGHJKMNPQRSTVWXYZ';
+      var ts = 0;
+      for (var i = 0; i < 10; i++) {
+        ts = ts * 32 + CHARS.indexOf(ulid[i]);
+      }
+      return ts;
+    }
+
+    function generateULIDAndShow() {
+      var ulid = generateULID();
+      document.getElementById('ulid-output').textContent = ulid;
+      var ts = decodeULIDTimestamp(ulid);
+      var d = new Date(ts);
+      document.getElementById('ulid-ts-decoded').textContent = d.toISOString();
+      document.getElementById('ulid-ts-info').classList.remove('hidden');
+    }
+
+    document.getElementById('btn-ulid-generate').addEventListener('click', generateULIDAndShow);
+
+    document.getElementById('btn-ulid-copy').addEventListener('click', function() {
+      var val = document.getElementById('ulid-output').textContent;
+      if (!val || val === '—') { showStatus('Generate a ULID first', 'info'); return; }
+      navigator.clipboard.writeText(val).then(function() { showStatus('ULID copied', 'success'); });
+    });
+
+    // ── UUID v5 ──
+    async function generateUUIDv5(namespace, name) {
+      try {
+        var nsHex = namespace.replace(/-/g,'');
+        var nsBytes = new Uint8Array(nsHex.match(/../g).map(function(h) { return parseInt(h,16); }));
+        var nameBytes = new TextEncoder().encode(name);
+        var combined = new Uint8Array(nsBytes.length + nameBytes.length);
+        combined.set(nsBytes); combined.set(nameBytes, nsBytes.length);
+        var hash = await crypto.subtle.digest('SHA-1', combined);
+        var h = new Uint8Array(hash);
+        h[6] = (h[6] & 0x0f) | 0x50;
+        h[8] = (h[8] & 0x3f) | 0x80;
+        var hex = Array.from(h).map(function(b) { return b.toString(16).padStart(2,'0'); }).join('');
+        return hex.slice(0,8) + '-' + hex.slice(8,12) + '-' + hex.slice(12,16) + '-' + hex.slice(16,20) + '-' + hex.slice(20,32);
+      } catch { return null; }
+    }
+
+    document.getElementById('btn-v5-generate').addEventListener('click', async function() {
+      var ns = document.getElementById('v5-namespace').value;
+      var name = document.getElementById('v5-name').value.trim();
+      if (!name) { showStatus('Enter a name for the v5 UUID', 'info'); return; }
+      var uuid = await generateUUIDv5(ns, name);
+      if (uuid) {
+        document.getElementById('v5-output').textContent = uuid;
+        document.getElementById('v5-result').classList.remove('hidden');
+        showStatus('UUID v5 generated', 'success');
+      } else {
+        showStatus('Failed to generate UUID v5', 'error');
+      }
+    });
+
+    document.getElementById('btn-v5-copy').addEventListener('click', function() {
+      var val = document.getElementById('v5-output').textContent;
+      if (!val || val === '—') return;
+      navigator.clipboard.writeText(val).then(function() { showStatus('UUID v5 copied', 'success'); });
     });
 
     document.getElementById('btn-generate').addEventListener('click', generate);
