@@ -1,0 +1,99 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import ImageCard from '~/components/ImageCard.astro';
+import { NICHE_LIST } from '~/data/niches';
+import images from '~/data/images.json';
+---
+<BaseLayout
+  title="Browse Free Stock Photos"
+  description="Browse all 980 free AI-generated stock photos. Filter by category. Free download, no signup."
+>
+  <div class="flex flex-col lg:flex-row gap-8">
+    <!-- Sidebar -->
+    <aside class="lg:w-52 flex-shrink-0">
+      <div class="rounded-lg border border-slate-700 bg-slate-800 p-5 sticky top-20">
+        <h2 class="text-white font-semibold mb-4 text-sm uppercase tracking-wide">Filter</h2>
+        <ul class="space-y-1">
+          <li>
+            <a href="/browse/" class="text-sm text-indigo-400 font-medium block py-1 hover:text-indigo-300">
+              All ({images.length})
+            </a>
+          </li>
+          {NICHE_LIST.map(n => (
+            <li>
+              <a
+                href={`/browse/?niche=${n.slug}`}
+                data-niche={n.slug}
+                class="text-sm text-slate-300 hover:text-indigo-400 block py-1"
+              >
+                {n.display} ({images.filter(img => img.nicheSlug === n.slug).length})
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </aside>
+
+    <!-- Grid -->
+    <div class="flex-1 min-w-0">
+      <div class="flex items-center justify-between mb-6">
+        <h1 id="grid-title" class="text-2xl font-bold text-white">All Photos</h1>
+        <span id="grid-count" class="text-slate-400 text-sm">{images.length} photos</span>
+      </div>
+      <div id="photo-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+        {images.map(img => (
+          <div class="photo-item" data-niche={img.nicheSlug}>
+            <ImageCard
+              title={img.title}
+              imagePath={img.imagePath}
+              altText={img.altText}
+              href={`/${img.nicheSlug}/${img.clusterSlug}/${img.slug}/`}
+              style={img.styleLabel}
+            />
+          </div>
+        ))}
+      </div>
+      <div id="no-results" class="text-center text-slate-400 py-12 hidden">
+        No photos in this category yet.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const active = params.get('niche');
+
+    function applyFilter(cat: string | null) {
+      const items = document.querySelectorAll<HTMLElement>('.photo-item');
+      let visible = 0;
+      items.forEach(item => {
+        const show = !cat || item.dataset.niche === cat;
+        item.style.display = show ? '' : 'none';
+        if (show) visible++;
+      });
+      const title = document.getElementById('grid-title');
+      const count = document.getElementById('grid-count');
+      const noResults = document.getElementById('no-results');
+      if (title) title.textContent = cat
+        ? cat.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase()) + ' Photos'
+        : 'All Photos';
+      if (count) count.textContent = `${visible} photos`;
+      if (noResults) noResults.classList.toggle('hidden', visible > 0);
+
+      document.querySelectorAll<HTMLAnchorElement>('aside a[data-niche]').forEach(link => {
+        const isActive = link.dataset.niche === cat;
+        link.classList.toggle('text-indigo-400', isActive);
+        link.classList.toggle('font-medium', isActive);
+        link.classList.toggle('text-slate-300', !isActive);
+      });
+      const allLink = document.querySelector<HTMLAnchorElement>('aside a:not([data-niche])');
+      if (allLink) {
+        allLink.classList.toggle('text-indigo-400', !cat);
+        allLink.classList.toggle('font-medium', !cat);
+        allLink.classList.toggle('text-slate-300', !!cat);
+      }
+    }
+
+    applyFilter(active);
+  </script>
+</BaseLayout>

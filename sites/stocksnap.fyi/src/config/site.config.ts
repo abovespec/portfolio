@@ -80,13 +80,13 @@ export const siteConfig: SiteConfig = {
   identity: {
     name: 'StockSnap',
     domain: 'stocksnap.fyi',
-    description: 'Free AI-generated stock photos. 980 high-quality WebP images across 7 niches. Download free, no signup.',
+    description: 'Free AI-generated stock photos. 980 high-quality WebP images across 7 niches — abstract backgrounds, bokeh, food flatlay, workspace, interiors, nature macro, and sci-tech. Download free, no signup.',
     language: 'en',
     timezone: 'UTC',
   },
   branding: {
     themeColor: '#0f172a',
-    accentColor: '#2563eb',
+    accentColor: '#6366f1',
     logoText: 'StockSnap',
     ogImageStrategy: 'static',
   },
@@ -102,25 +102,25 @@ export const siteConfig: SiteConfig = {
     twitterHandle: '',
   },
   features: {
-    hasBlog: true,
-    hasTool: true,
+    hasBlog: false,
+    hasTool: false,
     hasGame: false,
-    hasSponsoredIntake: true,
+    hasSponsoredIntake: false,
   },
   monetization: {
-    affiliateDisclosure:
-      'This page may contain affiliate links. If you click one and make a purchase we may earn a small commission at no extra cost to you. Our editorial opinions are our own.',
+    affiliateDisclosure: '',
   },
   schemaDefaults: {
     organizationType: 'Organization',
-    foundingYear: new Date().getFullYear(),
+    foundingYear: 2026,
   },
   nav: {
     primary: [
-      { label: 'Home', href: '/' },
-      { label: 'Blog', href: '/blog/' },
+      { label: 'Browse', href: '/browse/' },
+      { label: 'Abstract', href: '/abstract-backgrounds/' },
+      { label: 'Nature', href: '/nature-macro/' },
+      { label: 'Workspace', href: '/minimalist-workspace/' },
       { label: 'About', href: '/about/' },
-      { label: 'Contact', href: '/contact/' },
     ],
   },
 };

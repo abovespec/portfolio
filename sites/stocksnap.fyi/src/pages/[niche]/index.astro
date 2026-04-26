@@ -1,0 +1,72 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import ImageCard from '~/components/ImageCard.astro';
+import { NICHE_LIST } from '~/data/niches';
+import images from '~/data/images.json';
+
+export function getStaticPaths() {
+  return NICHE_LIST.map(niche => ({
+    params: { niche: niche.slug },
+    props: { niche },
+  }));
+}
+
+const { niche } = Astro.props;
+const nicheImages = images.filter(img => img.nicheSlug === niche.slug);
+---
+<BaseLayout
+  title={`${niche.display} Free Stock Photos`}
+  description={niche.description}
+>
+  <div class="mb-8">
+    <nav class="text-sm text-slate-400 mb-4">
+      <a href="/" class="hover:text-indigo-400">Home</a>
+      <span class="mx-2">/</span>
+      <span class="text-white">{niche.display}</span>
+    </nav>
+    <h1 class="text-3xl font-bold text-white mb-2">{niche.display} Stock Photos</h1>
+    <p class="text-slate-400 max-w-2xl">{niche.description}</p>
+    <p class="text-slate-500 text-sm mt-2">{nicheImages.length} free photos</p>
+  </div>
+
+  <!-- Cluster cards -->
+  <section class="mb-12">
+    <h2 class="text-xl font-semibold text-white mb-4">Browse by Topic</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      {niche.clusterList.map(cluster => {
+        const sample = nicheImages.find(img => img.cluster === cluster.key);
+        const clusterCount = nicheImages.filter(img => img.cluster === cluster.key).length;
+        return (
+          <a href={`/${niche.slug}/${cluster.slug}/`} class="group rounded-lg border border-slate-700 bg-slate-800 hover:border-indigo-400 transition-colors overflow-hidden block">
+            <div class="aspect-video overflow-hidden bg-slate-900">
+              {sample && (
+                <img src={sample.imagePath} alt={cluster.display} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" decoding="async" />
+              )}
+            </div>
+            <div class="p-3">
+              <h3 class="text-white font-medium text-sm group-hover:text-indigo-400 transition-colors">{cluster.display}</h3>
+              <p class="text-slate-400 text-xs mt-1">{clusterCount} photos</p>
+            </div>
+          </a>
+        );
+      })}
+    </div>
+  </section>
+
+  <!-- All images in niche -->
+  <section>
+    <h2 class="text-xl font-semibold text-white mb-4">All {niche.display} Photos</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+      {nicheImages.map(img => (
+        <ImageCard
+          title={img.title}
+          imagePath={img.imagePath}
+          altText={img.altText}
+          href={`/${img.nicheSlug}/${img.clusterSlug}/${img.slug}/`}
+          style={img.styleLabel}
+          cluster={img.clusterDisplay}
+        />
+      ))}
+    </div>
+  </section>
+</BaseLayout>

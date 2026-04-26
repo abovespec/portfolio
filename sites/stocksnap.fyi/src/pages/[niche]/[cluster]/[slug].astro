@@ -1,0 +1,134 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import ImageCard from '~/components/ImageCard.astro';
+import { NICHE_LIST } from '~/data/niches';
+import images from '~/data/images.json';
+
+export function getStaticPaths() {
+  return images.map(img => ({
+    params: { niche: img.nicheSlug, cluster: img.clusterSlug, slug: img.slug },
+    props: { img },
+  }));
+}
+
+const { img } = Astro.props;
+const niche = NICHE_LIST.find(n => n.slug === img.nicheSlug)!;
+const cluster = niche.clusterList.find(c => c.slug === img.clusterSlug)!;
+
+const related = images
+  .filter(i => i.clusterSlug === img.clusterSlug && i.slug !== img.slug)
+  .slice(0, 6);
+
+const schemaJson = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'ImageObject',
+  name: img.title,
+  description: img.description,
+  contentUrl: `https://stocksnap.fyi${img.imagePath}`,
+  license: 'https://creativecommons.org/publicdomain/zero/1.0/',
+  acquireLicensePage: `https://stocksnap.fyi/${img.nicheSlug}/${img.clusterSlug}/${img.slug}/`,
+  keywords: img.tags.join(', '),
+});
+---
+<BaseLayout title={img.title} description={img.description} image={img.imagePath}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={schemaJson} />
+  </Fragment>
+
+  <!-- Breadcrumb -->
+  <nav class="text-sm text-slate-400 mb-6">
+    <a href="/" class="hover:text-indigo-400">Home</a>
+    <span class="mx-2">/</span>
+    <a href={`/${niche.slug}/`} class="hover:text-indigo-400">{niche.display}</a>
+    <span class="mx-2">/</span>
+    <a href={`/${niche.slug}/${cluster.slug}/`} class="hover:text-indigo-400">{cluster.display}</a>
+    <span class="mx-2">/</span>
+    <span class="text-white">{img.styleLabel}</span>
+  </nav>
+
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <!-- Image preview -->
+    <div class="lg:col-span-2">
+      <div class="rounded-xl border border-slate-700 bg-slate-800 p-4 mb-6">
+        <h1 class="text-2xl font-bold text-white mb-4">{img.title}</h1>
+        <div class="rounded-lg overflow-hidden bg-slate-900">
+          <img
+            src={img.imagePath}
+            alt={img.altText}
+            class="w-full h-auto object-contain"
+          />
+        </div>
+        <p class="text-slate-500 text-xs mt-2">AI-generated · WebP · Free to use</p>
+      </div>
+
+      {related.length > 0 && (
+        <div class="rounded-xl border border-slate-700 bg-slate-800 p-6">
+          <h2 class="text-lg font-semibold text-white mb-4">More {cluster.display}</h2>
+          <div class="grid grid-cols-3 gap-3">
+            {related.map(r => (
+              <ImageCard
+                title={r.title}
+                imagePath={r.imagePath}
+                altText={r.altText}
+                href={`/${r.nicheSlug}/${r.clusterSlug}/${r.slug}/`}
+              />
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+
+    <!-- Sidebar: download + metadata -->
+    <div class="lg:col-span-1">
+      <div class="rounded-xl border border-slate-700 bg-slate-800 p-6 sticky top-20">
+        <h2 class="text-lg font-semibold text-white mb-4">Download</h2>
+        <a
+          href={img.imagePath}
+          download
+          class="w-full py-3 bg-indigo-500 hover:bg-indigo-400 text-white font-semibold text-center rounded-lg transition-colors block mb-6"
+        >
+          Download Free (WebP)
+        </a>
+
+        <div class="border-t border-slate-700 pt-4 mb-4">
+          <h3 class="text-slate-400 text-xs font-medium mb-3 uppercase tracking-wide">Details</h3>
+          <dl class="space-y-2 text-sm">
+            <div class="flex justify-between">
+              <dt class="text-slate-500">Category</dt>
+              <dd class="text-slate-300">
+                <a href={`/${niche.slug}/`} class="hover:text-indigo-400">{niche.display}</a>
+              </dd>
+            </div>
+            <div class="flex justify-between">
+              <dt class="text-slate-500">Topic</dt>
+              <dd class="text-slate-300">
+                <a href={`/${niche.slug}/${cluster.slug}/`} class="hover:text-indigo-400">{cluster.display}</a>
+              </dd>
+            </div>
+            <div class="flex justify-between">
+              <dt class="text-slate-500">Style</dt>
+              <dd class="text-slate-300 capitalize">{img.styleLabel}</dd>
+            </div>
+            <div class="flex justify-between">
+              <dt class="text-slate-500">Format</dt>
+              <dd class="text-slate-300">WebP</dd>
+            </div>
+            <div class="flex justify-between">
+              <dt class="text-slate-500">License</dt>
+              <dd class="text-indigo-400 font-medium">Free</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="border-t border-slate-700 pt-4">
+          <h3 class="text-slate-400 text-xs font-medium mb-2 uppercase tracking-wide">Tags</h3>
+          <div class="flex flex-wrap gap-2">
+            {img.tags.map(tag => (
+              <span class="px-2 py-1 bg-slate-700 text-slate-400 text-xs rounded">{tag}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

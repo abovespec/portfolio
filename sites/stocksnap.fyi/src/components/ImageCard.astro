@@ -1,0 +1,31 @@
+---
+interface Props {
+  title: string;
+  imagePath: string;
+  altText: string;
+  href: string;
+  style?: string;
+  cluster?: string;
+}
+const { title, imagePath, altText, href, style, cluster } = Astro.props;
+---
+<a href={href} class="group rounded-lg border border-slate-700 bg-slate-800 hover:border-indigo-400 transition-colors overflow-hidden block">
+  <div class="aspect-square overflow-hidden bg-slate-900">
+    <img
+      src={imagePath}
+      alt={altText}
+      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <div class="p-3">
+    <h3 class="text-white font-medium text-sm truncate">{title}</h3>
+    {cluster && (
+      <p class="text-slate-400 text-xs mt-1 truncate">{cluster}</p>
+    )}
+    {style && (
+      <span class="inline-block mt-1 px-2 py-0.5 bg-slate-700 text-slate-400 text-xs rounded capitalize">{style}</span>
+    )}
+  </div>
+</a>

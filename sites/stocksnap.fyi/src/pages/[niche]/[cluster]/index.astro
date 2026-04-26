@@ -1,0 +1,56 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import ImageCard from '~/components/ImageCard.astro';
+import { NICHE_LIST } from '~/data/niches';
+import images from '~/data/images.json';
+
+export function getStaticPaths() {
+  return NICHE_LIST.flatMap(niche =>
+    niche.clusterList.map(cluster => ({
+      params: { niche: niche.slug, cluster: cluster.slug },
+      props: { niche, cluster },
+    }))
+  );
+}
+
+const { niche, cluster } = Astro.props;
+const clusterImages = images.filter(
+  img => img.nicheSlug === niche.slug && img.clusterSlug === cluster.slug
+);
+---
+<BaseLayout
+  title={`${cluster.display} - Free Stock Photos`}
+  description={cluster.description}
+>
+  <div class="mb-8">
+    <nav class="text-sm text-slate-400 mb-4">
+      <a href="/" class="hover:text-indigo-400">Home</a>
+      <span class="mx-2">/</span>
+      <a href={`/${niche.slug}/`} class="hover:text-indigo-400">{niche.display}</a>
+      <span class="mx-2">/</span>
+      <span class="text-white">{cluster.display}</span>
+    </nav>
+    <h1 class="text-3xl font-bold text-white mb-2">{cluster.display} Free Stock Photos</h1>
+    <p class="text-slate-400 max-w-2xl">{cluster.description}</p>
+    <p class="text-slate-500 text-sm mt-2">{clusterImages.length} free photos</p>
+  </div>
+
+  <!-- SEO keyword tags -->
+  <div class="flex flex-wrap gap-2 mb-8">
+    {cluster.keywords.map(kw => (
+      <span class="px-3 py-1 bg-slate-800 border border-slate-700 text-slate-400 text-xs rounded-full">{kw}</span>
+    ))}
+  </div>
+
+  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+    {clusterImages.map(img => (
+      <ImageCard
+        title={img.title}
+        imagePath={img.imagePath}
+        altText={img.altText}
+        href={`/${img.nicheSlug}/${img.clusterSlug}/${img.slug}/`}
+        style={img.styleLabel}
+      />
+    ))}
+  </div>
+</BaseLayout>

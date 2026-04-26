@@ -1,0 +1,31 @@
+---
+interface Props {
+  display: string;
+  slug: string;
+  description: string;
+  sampleImagePath: string;
+  count: number;
+}
+const { display, slug, description, sampleImagePath, count } = Astro.props;
+---
+<a href={`/${slug}/`} class="group rounded-xl border border-slate-700 bg-slate-800 hover:border-indigo-400 transition-all overflow-hidden block">
+  <div class="aspect-video overflow-hidden bg-slate-900 relative">
+    {sampleImagePath && (
+      <img
+        src={sampleImagePath}
+        alt={`${display} stock photos`}
+        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+        loading="lazy"
+        decoding="async"
+      />
+    )}
+    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
+    <div class="absolute bottom-3 left-3">
+      <span class="px-2 py-1 bg-indigo-500/80 text-white text-xs rounded font-medium">{count} photos</span>
+    </div>
+  </div>
+  <div class="p-4">
+    <h3 class="text-white font-semibold text-base group-hover:text-indigo-400 transition-colors">{display}</h3>
+    <p class="text-slate-400 text-sm mt-1 line-clamp-2">{description}</p>
+  </div>
+</a>
