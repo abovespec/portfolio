@@ -15,6 +15,15 @@ function fmtUsd(n: number) {
 
 const QUICK_TIPS = [10, 15, 18, 20, 25];
 
+// P3: Venue type suggestions
+const VENUE_TIPS = [
+  {label:'Restaurant', pct:18},
+  {label:'Delivery',   pct:15},
+  {label:'Bar',        pct:20},
+  {label:'Taxi',       pct:15},
+  {label:'Hotel',      pct:10},
+];
+
 const inputCls =
   'w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand';
 
@@ -296,13 +305,36 @@ export default function TipCalculator() {
   const [tipPct, setTipPct] = useState('18');
   const [people, setPeople] = useState('1');
 
+  // P2: Round mode
+  const [roundMode, setRoundMode] = useState<'none'|'up'|'down'>('none');
+
+  // P2: Pre-tax vs post-tax
+  const [tipBase, setTipBase] = useState<'pretax'|'posttax'>('posttax');
+  const [taxRate, setTaxRate] = useState('0');
+
   // Shared tip pct for itemized tab
   const [itemTipPct, setItemTipPct] = useState('18');
 
+  // Effective bill for tip calculation
+  const effectiveBillForTip = useMemo(() => {
+    const b = parseFloat(bill) || 0;
+    if (tipBase === 'pretax') {
+      return b / (1 + (parseFloat(taxRate)||0)/100);
+    }
+    return b;
+  }, [bill, tipBase, taxRate]);
+
   const result = useMemo(
-    () => calcTip(parseFloat(bill) || 0, parseFloat(tipPct) || 0, parseInt(people) || 1),
-    [bill, tipPct, people],
+    () => calcTip(effectiveBillForTip, parseFloat(tipPct) || 0, parseInt(people) || 1),
+    [effectiveBillForTip, tipPct, people],
   );
+
+  const perPersonDisplay = useMemo(() => {
+    if (!result) return null;
+    if (roundMode === 'up') return Math.ceil(result.perPerson);
+    if (roundMode === 'down') return Math.floor(result.perPerson);
+    return result.perPerson;
+  }, [result, roundMode]);
 
   return (
     <div class="space-y-4">
@@ -345,6 +377,70 @@ export default function TipCalculator() {
                 class={`${inputCls} pl-6`}
                 aria-label="Bill amount in dollars"
               />
+            </div>
+          </div>
+
+          {/* P2: Pre-tax / Post-tax toggle */}
+          <div class="space-y-2">
+            <div class="flex items-center gap-2">
+              <span class="text-sm font-medium text-slate-700">Tip on:</span>
+              <div class="flex gap-1 rounded-lg border border-slate-200 bg-slate-50 p-0.5">
+                {(['posttax', 'pretax'] as const).map((mode) => (
+                  <button
+                    key={mode}
+                    type="button"
+                    onClick={() => setTipBase(mode)}
+                    class={`rounded-md px-3 py-1 text-xs font-medium transition ${
+                      tipBase === mode
+                        ? 'bg-white text-slate-900 shadow-sm'
+                        : 'text-slate-500 hover:text-slate-700'
+                    }`}
+                  >
+                    {mode === 'posttax' ? 'Post-tax' : 'Pre-tax'}
+                  </button>
+                ))}
+              </div>
+            </div>
+            {tipBase === 'pretax' && (
+              <div class="flex items-center gap-2">
+                <label class="text-xs text-slate-600 shrink-0">Tax rate:</label>
+                <div class="relative w-28">
+                  <input
+                    type="number" min="0" max="30" step="0.1" placeholder="8.5"
+                    value={taxRate}
+                    onInput={(e) => setTaxRate((e.target as HTMLInputElement).value)}
+                    class="w-full rounded-lg border border-slate-300 px-3 py-1.5 pr-8 text-xs focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand"
+                    aria-label="Tax rate percentage"
+                  />
+                  <span class="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-xs text-slate-400">%</span>
+                </div>
+                {(parseFloat(taxRate)||0) > 0 && (
+                  <span class="text-xs text-slate-500">
+                    Pre-tax: {fmtUsd(effectiveBillForTip)}
+                  </span>
+                )}
+              </div>
+            )}
+          </div>
+
+          {/* P3: Venue type suggestions */}
+          <div>
+            <label class="mb-1 block text-xs font-medium text-slate-500 uppercase tracking-wide">Quick venue tip</label>
+            <div class="flex flex-wrap gap-1.5">
+              {VENUE_TIPS.map((v) => (
+                <button
+                  key={v.label}
+                  type="button"
+                  onClick={() => setTipPct(String(v.pct))}
+                  class={`rounded-lg border px-2.5 py-1 text-xs font-medium transition ${
+                    tipPct === String(v.pct)
+                      ? 'border-brand bg-brand text-white'
+                      : 'border-slate-200 bg-white text-slate-600 hover:border-brand/50'
+                  }`}
+                >
+                  {v.label} {v.pct}%
+                </button>
+              ))}
             </div>
           </div>
 
@@ -405,11 +501,33 @@ export default function TipCalculator() {
                   <div class="grid grid-cols-2 gap-2 text-sm">
                     <div>
                       <div class="text-slate-500">Per Person (total)</div>
-                      <div class="font-semibold tabular-nums text-slate-900">{fmtUsd(result.perPerson)}</div>
+                      <div class="font-semibold tabular-nums text-slate-900">
+                        {fmtUsd(perPersonDisplay!)}
+                      </div>
                     </div>
                     <div>
                       <div class="text-slate-500">Tip per Person</div>
                       <div class="font-semibold tabular-nums text-slate-900">{fmtUsd(result.tipPerPerson)}</div>
+                    </div>
+                  </div>
+                  {/* P2: Round mode toggle */}
+                  <div class="flex items-center gap-2 pt-1">
+                    <span class="text-xs text-slate-500 shrink-0">Per person:</span>
+                    <div class="flex gap-1 rounded-lg border border-slate-200 bg-slate-50 p-0.5">
+                      {(['none', 'up', 'down'] as const).map((mode) => (
+                        <button
+                          key={mode}
+                          type="button"
+                          onClick={() => setRoundMode(mode)}
+                          class={`rounded-md px-2.5 py-1 text-xs font-medium transition ${
+                            roundMode === mode
+                              ? 'bg-white text-slate-900 shadow-sm'
+                              : 'text-slate-500 hover:text-slate-700'
+                          }`}
+                        >
+                          {mode === 'none' ? 'Exact' : mode === 'up' ? 'Round Up' : 'Round Down'}
+                        </button>
+                      ))}
                     </div>
                   </div>
                 </>
