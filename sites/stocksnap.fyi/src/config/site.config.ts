@@ -102,7 +102,7 @@ export const siteConfig: SiteConfig = {
     twitterHandle: '',
   },
   features: {
-    hasBlog: false,
+    hasBlog: true,
     hasTool: false,
     hasGame: false,
     hasSponsoredIntake: false,
@@ -120,6 +120,7 @@ export const siteConfig: SiteConfig = {
       { label: 'Abstract', href: '/abstract-backgrounds/' },
       { label: 'Nature', href: '/nature-macro/' },
       { label: 'Workspace', href: '/minimalist-workspace/' },
+      { label: 'Blog', href: '/blog/' },
       { label: 'About', href: '/about/' },
     ],
   },
