@@ -1,24 +1,84 @@
 ---
 import { siteConfig } from '~/config/site.config';
-import AffiliateDisclosure from './AffiliateDisclosure.astro';
 
 const year = new Date().getFullYear();
 const { organizationName } = siteConfig.org;
-const showDisclosure = siteConfig.features.hasBlog || siteConfig.features.hasTool;
+const { logoText } = siteConfig.branding;
+const { hasBlog, hasTool, hasGame } = siteConfig.features;
+const { primary } = siteConfig.nav;
+
+const featureGate: Record<string, boolean> = {
+  '/blog/': hasBlog,
+  '/tools/': hasTool,
+  '/games/': hasGame,
+};
+const navItems = primary.filter((l) => !(l.href in featureGate) || featureGate[l.href]);
+
+const legalLinks = [
+  { label: 'Privacy', href: '/privacy/' },
+  { label: 'Terms', href: '/terms/' },
+  { label: 'Contact', href: '/contact/' },
+];
 ---
-<footer class="mt-16 border-t border-slate-200 bg-slate-50">
-  <div class="mx-auto max-w-5xl px-4 py-8 text-sm text-slate-600">
-    {showDisclosure && <AffiliateDisclosure />}
-    <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-      <p>&copy; {year} {organizationName}. All rights reserved.</p>
-      <nav aria-label="Legal">
-        <ul class="flex gap-4">
-          <li><a href="/about/" class="hover:text-slate-900">About</a></li>
-          <li><a href="/contact/" class="hover:text-slate-900">Contact</a></li>
-          <li><a href="/privacy/" class="hover:text-slate-900">Privacy</a></li>
-          <li><a href="/terms/" class="hover:text-slate-900">Terms</a></li>
+<footer class="mt-16 border-t border-slate-200 bg-slate-50/80">
+  <div class="mx-auto max-w-5xl px-4 py-10">
+
+    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+
+      <!-- Brand column -->
+      <div class="col-span-full sm:col-span-1">
+        <a href="/" class="text-base font-bold text-slate-900 hover:opacity-80 transition-opacity">
+          {logoText}
+        </a>
+        <p class="mt-2 max-w-xs text-sm text-slate-500 leading-relaxed">
+          {siteConfig.identity.description}
+        </p>
+      </div>
+
+      <!-- Navigation -->
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-wider text-slate-400">Navigation</p>
+        <ul class="mt-3 space-y-2">
+          {navItems.map((l) => (
+            <li>
+              <a href={l.href} class="text-sm text-slate-600 hover:text-slate-900 transition-colors">
+                {l.label}
+              </a>
+            </li>
+          ))}
         </ul>
-      </nav>
+      </div>
+
+      <!-- Legal -->
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-wider text-slate-400">Legal</p>
+        <ul class="mt-3 space-y-2">
+          {legalLinks.map((l) => (
+            <li>
+              <a href={l.href} class="text-sm text-slate-600 hover:text-slate-900 transition-colors">
+                {l.label}
+              </a>
+            </li>
+          ))}
+          <li>
+            <a href="/about/" class="text-sm text-slate-600 hover:text-slate-900 transition-colors">
+              About
+            </a>
+          </li>
+        </ul>
+      </div>
+
     </div>
+
+    <!-- Bottom bar -->
+    <div class="mt-8 border-t border-slate-200 pt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+      <p class="text-xs text-slate-400">
+        &copy; {year} {organizationName}. All rights reserved.
+      </p>
+      <p class="text-xs text-slate-400">
+        Free tools — no signup required.
+      </p>
+    </div>
+
   </div>
 </footer>

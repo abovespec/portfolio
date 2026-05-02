@@ -73,8 +73,13 @@ const accentColor = siteConfig.branding.accentColor;
       <meta name="twitter:site" content={siteConfig.seo.twitterHandle} />
     )}
 
-    <!-- Preconnect hints for common hosts (no-op if unused). -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <!-- Inter + JetBrains Mono from Google Fonts — display=swap avoids FOIT. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    />
 
     <style is:inline define:vars={{ themeColor, accentColor }}>
       :root { --site-theme-color: var(--themeColor); --site-accent-color: var(--accentColor); }
