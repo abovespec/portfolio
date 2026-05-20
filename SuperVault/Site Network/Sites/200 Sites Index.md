@@ -4,71 +4,84 @@ tags: [sites, moc]
 
 # 200 Sites Index
 
-> Last audited: 2026-04-25. 34 site folders total in `sites/`. Classified by real implementation state.
+> Last audited: 2026-05-20. 47 real sites + 1 test artifact. All sites are Astro static builds with full tool implementations. **Wrangler + CI** = deployable with one push. **Local only** = real tool exists, no deploy config yet.
 
-## Cohort 1 — Live
+---
 
-| # | Site | Niche | Domain | Real Status | Tool | Launched | DR | MRR |
-| - | ---- | ----- | ------ | ----------- | ---- | -------- | -- | --- |
-| 1 | [[202 Site 1 - Image Compression]] | Dev tools / imagery | makepicsmall.com | **LIVE MVP v0.1.0** | Image compression (WASM) | 2026-04-22 | — | — |
-| 2 | [[203 Site 2 - Crypto Conversion Hub]] | Crypto | howmanycoin.com | **LIVE placeholder** | Token pair rate estimators | 2026-04-21 | — | — |
-| 3 | [[204 Site 3 - AI Seamless Textures]] | AI stock imagery | freepbrtextures.com | **LIVE placeholder** | AI-generated texture library | 2026-04-21 | — | — |
+## All Sites
 
-## Scaffold + Deploy Config (activation candidates)
+| # | Domain | Niche / Tool | Status | Wrangler | CI | Notes |
+|---|--------|-------------|--------|----------|----|-------|
+| 1 | makepicsmall.com | Image compression (WASM) | **Live** | yes | yes | |
+| 2 | howmanycoin.com | Crypto token conversion hub | **Live** | yes | yes | |
+| 3 | freepbrtextures.com | AI-generated PBR seamless textures | **Live** | yes | yes | |
+| 4 | carleasecalc.com | Car lease calculator | MVP · deploy-ready | yes | yes | YMYL |
+| 5 | colorpalette.io | Color palette generator | MVP · deploy-ready | yes | yes | |
+| 6 | encodeonline.io | Base64, URL, HTML encoding utilities | MVP · deploy-ready | yes | yes | |
+| 7 | financalc.io | Financial calculators suite | MVP · deploy-ready | yes | yes | |
+| 8 | flexplay.io | CSS Flexbox & Grid live playground | MVP · deploy-ready | yes | yes | |
+| 9 | freeinvoicemake.com | Free invoice maker & PDF export | MVP · deploy-ready | yes | yes | YMYL |
+| 10 | gradecalc.io | Grade & GPA calculator | MVP · deploy-ready | yes | yes | |
+| 11 | gradientcss.io | CSS gradient generator | MVP · deploy-ready | yes | yes | |
+| 12 | isitdown.fyi | Is It Down? service status checker | MVP · deploy-ready | yes | yes | |
+| 13 | jsonformat.io | JSON formatter, validator & viewer | MVP · deploy-ready | yes | yes | |
+| 14 | jwtinspect.io | JWT inspector & decoder | MVP · deploy-ready | yes | yes | |
+| 15 | margincalc.io | Profit margin & markup calculator | MVP · deploy-ready | yes | yes | |
+| 16 | myfreelancerate.com | Freelance hourly rate calculator | MVP · deploy-ready | yes | yes | YMYL |
+| 17 | paintcalc.io | Paint coverage calculator | MVP · deploy-ready | yes | yes | |
+| 18 | pickthestack.com | Tech stack picker | MVP · deploy-ready | yes | yes | |
+| 19 | recipescale.io | Recipe scaler & unit converter | MVP · deploy-ready | yes | yes | |
+| 20 | rentalyieldcalc.com | Rental yield calculator | MVP · deploy-ready | yes | yes | YMYL |
+| 21 | rentwatch.io | Rent prices & cost-of-living tracker | MVP · deploy-ready | yes | yes | YMYL |
+| 22 | sellerprofit.io | Amazon FBA / eBay / Etsy profit calc | MVP · deploy-ready | yes | yes | |
+| 23 | stocksnap.fyi | Free stock photo library (1,043 pages) | MVP · deploy-ready | yes | yes | |
+| 24 | tripcostcalc.com | Trip cost estimator & travel tools | MVP · deploy-ready | yes | yes | |
+| 25 | utmbuilder.io | UTM link builder | MVP · deploy-ready | yes | yes | |
+| 26 | wordcounttools.com | Word count & text analysis tools | MVP · deploy-ready | yes | yes | |
+| 27 | workoutplanner.io | Workout split & progressive overload planner | MVP · deploy-ready | yes | yes | |
+| 28 | agecalc.io | Age calculator | MVP · deploy-ready | yes | yes | |
+| 29 | amortcalc.io | Amortization calculator | MVP · deploy-ready | yes | yes | |
+| 30 | bmicalc.io | BMI calculator | MVP · deploy-ready | yes | yes | |
+| 31 | caseconvert.io | Text case converter (camelCase, snake_case…) | MVP · deploy-ready | yes | yes | |
+| 32 | citefast.io | Citation generator (APA, MLA, Chicago) | MVP · deploy-ready | yes | yes | |
+| 33 | crontab.io | Cron expression builder & explainer | MVP · deploy-ready | yes | yes | |
+| 34 | cssminify.io | CSS minifier & beautifier | MVP · deploy-ready | yes | yes | |
+| 35 | favicongen.io | Favicon generator | MVP · deploy-ready | yes | yes | |
+| 36 | htmlformat.io | HTML formatter & minifier | MVP · deploy-ready | yes | yes | |
+| 37 | passwordgen.io | Password generator | MVP · deploy-ready | yes | yes | |
+| 38 | percentcalc.io | Percentage calculator | MVP · deploy-ready | yes | yes | |
+| 39 | pomotimer.io | Pomodoro timer | MVP · deploy-ready | yes | yes | |
+| 40 | qrcodegen.io | QR code generator | MVP · deploy-ready | yes | yes | |
+| 41 | quickcurrency.io | Currency converter | MVP · deploy-ready | yes | yes | |
+| 42 | regexbuilder.io | Regex builder & tester | MVP · deploy-ready | yes | yes | |
+| 43 | sqlformat.io | SQL formatter & beautifier | MVP · deploy-ready | yes | yes | |
+| 44 | textdiff.pro | Text diff & comparison tool | MVP · deploy-ready | yes | yes | |
+| 45 | tipcalc.io | Tip calculator | MVP · deploy-ready | yes | yes | |
+| 46 | uuidgen.io | UUID / ULID generator | MVP · deploy-ready | yes | yes | |
+| 47 | worldclock.io | World clock & time zone converter | MVP · deploy-ready | yes | yes | |
+| 48 | testsite.com | Scaffolding test artifact | ⚠ test artifact | yes | yes | do not use |
 
-Wrangler + GitHub Actions wired; zero blog/tool content. One git-push away from deploying a blank template. Needs tool implementation to become real.
-
-| Site | Niche / Tool Idea | Wrangler | CI | Real Status |
-| ---- | ----------------- | -------- | -- | ----------- |
-| colorpalette.io | Color tools | yes | yes | scaffold only |
-| encodeonline.io | Encoding utilities | yes | yes | scaffold only |
-| financalc.io | Financial calculators | yes | yes | scaffold only |
-| flexplay.io | (TBD) | yes | yes | scaffold only |
-| gradientcss.io | CSS gradient generator | yes | yes | scaffold only |
-| jsonformat.io | JSON formatter | yes | yes | scaffold only |
-| jwtinspect.io | JWT inspector / decoder | yes | yes | scaffold only |
-| margincalc.io | Margin / markup calculator | yes | yes | scaffold only |
-| utmbuilder.io | UTM link builder | yes | yes | scaffold only |
-| wordcounttools.com | Word count / text analysis | yes | yes | scaffold only |
-
-> `testsite.com` — scaffolding test artifact (src=40, wrangler+CI). Not a real site.
-
-## Local Scaffold Only (no deploy config)
-
-No wrangler.toml, no CI. Local directory only; easiest to prune or promote.
-
-| Site | Niche / Tool Idea | Real Status |
-| ---- | ----------------- | ----------- |
-| agecalc.io | Age calculator | local scaffold |
-| amortcalc.io | Amortization calculator | local scaffold |
-| bmicalc.io | BMI calculator | local scaffold |
-| caseconvert.io | Text case converter | local scaffold |
-| citefast.io | Citation generator | local scaffold |
-| crontab.io | Cron expression builder | local scaffold |
-| cssminify.io | CSS minifier | local scaffold |
-| favicongen.io | Favicon generator | local scaffold |
-| htmlformat.io | HTML formatter | local scaffold |
-| passwordgen.io | Password generator | local scaffold |
-| percentcalc.io | Percentage calculator | local scaffold |
-| pomotimer.io | Pomodoro timer | local scaffold |
-| qrcodegen.io | QR code generator | local scaffold |
-| quickcurrency.io | Currency converter | local scaffold |
-| regexbuilder.io | Regex builder / tester | local scaffold |
-| sqlformat.io | SQL formatter | local scaffold |
-| textdiff.pro | Text diff tool | local scaffold |
-| tipcalc.io | Tip calculator | local scaffold |
-| uuidgen.io | UUID generator | local scaffold |
-| worldclock.io | World clock / time zones | local scaffold |
+---
 
 ## Portfolio Totals
 
 | State | Count |
-| ----- | ----- |
-| Live (real implementation) | 3 |
-| Deploy-ready scaffold | 10 |
-| Local scaffold only | 20 |
-| Test artifact (testsite.com) | 1 |
-| **Total** | **34** |
+|-------|-------|
+| Live (confirmed deployed) | 3 |
+| MVP · deploy-ready (wrangler + CI + real tool) | 44 |
+| MVP · local only (real tool, no deploy config) | 0 |
+| Test artifact | 1 |
+| **Total** | **48** |
+
+---
+
+## To-Do
+
+- All non-live sites need domains purchased and Cloudflare DNS configured
+- DR and MRR tracking not yet applicable (sites not live)
+- Hosting distribution strategy: see [INF-54](/INF/issues/INF-54) link-building plan
+
+---
 
 ## Links
 - [[000 Site Network MOC]]
