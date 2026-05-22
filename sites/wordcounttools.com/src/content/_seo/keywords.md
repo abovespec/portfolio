@@ -124,3 +124,16 @@
 | 98 | json string length limit | Informational | API/JSON limits |
 | 99 | sql varchar length | Informational | DB column sizing |
 | 100 | excel cell character limit | Informational | Spreadsheet limits |
+
+---
+
+## Tier 2 — Published (2026-05-22)
+
+| Article | Published |
+|---------|-----------|
+| character-count-for-social-media.md | 2026-05-22 |
+| average-words-per-minute-reading.md | 2026-05-22 |
+| how-long-to-read-1000-words.md | 2026-05-22 |
+| how-long-should-a-blog-post-be.md | 2026-05-22 |
+| what-is-flesch-kincaid-readability.md | 2026-05-22 |
+| word-count-for-a-resume.md | 2026-05-22 |

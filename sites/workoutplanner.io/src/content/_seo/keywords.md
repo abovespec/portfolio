@@ -124,3 +124,16 @@
 | 98 | how to stay consistent with working out | How-to | Motivation and habit content; evergreen and high-share |
 | 99 | workout plateau how to break through | How-to | Intermediate problem; drives progressive overload calculator |
 | 100 | free workout plan PDF for beginners | Transactional | Lead magnet intent; high conversion for email capture |
+
+---
+
+## Tier 2 — Published (2026-05-22)
+
+| Article | Published |
+|---------|-----------|
+| beginner-workout-plan-for-the-gym.md | 2026-05-22 |
+| ppl-workout-split-for-beginners.md | 2026-05-22 |
+| upper-lower-split-workout-program.md | 2026-05-22 |
+| 4-day-workout-split-muscle-growth.md | 2026-05-22 |
+| 5-day-workout-split-intermediate.md | 2026-05-22 |
+| how-to-create-your-own-workout-plan.md | 2026-05-22 |

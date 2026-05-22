@@ -124,3 +124,16 @@
 | 98 | shopify qr code | How-to | E-commerce QR |
 | 99 | woocommerce qr code | How-to | WooCommerce QR |
 | 100 | qr code menu restaurant | How-to | Digital menu |
+
+---
+
+## Tier 2 — Published (2026-05-22)
+
+| Article | Published |
+|---------|-----------|
+| how-to-create-qr-code-for-wifi.md | 2026-05-22 |
+| qr-code-for-restaurant-menu.md | 2026-05-22 |
+| qr-code-for-business-card.md | 2026-05-22 |
+| how-to-add-logo-to-qr-code.md | 2026-05-22 |
+| qr-code-size-guide-for-printing.md | 2026-05-22 |
+| qr-code-vs-barcode.md | 2026-05-22 |

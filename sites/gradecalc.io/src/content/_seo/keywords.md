@@ -124,3 +124,16 @@
 | 98 | percentage to GPA converter | Transactional | 90% = 4.0 etc.; international students |
 | 99 | British degree classification equivalent GPA | Informational | First class honours to 4.0 conversion |
 | 100 | GPA calculator for high school students | Transactional | High school-specific version of the main calculator |
+
+---
+
+## Tier 2 — Published (2026-05-22)
+
+| Article | Published |
+|---------|-----------|
+| gpa-scale-4-0-explained.md | 2026-05-22 |
+| letter-grade-to-gpa-conversion-chart.md | 2026-05-22 |
+| cumulative-gpa-calculator-guide.md | 2026-05-22 |
+| how-to-raise-your-gpa-fast.md | 2026-05-22 |
+| semester-gpa-vs-cumulative-gpa.md | 2026-05-22 |
+| what-is-a-good-gpa-in-college.md | 2026-05-22 |

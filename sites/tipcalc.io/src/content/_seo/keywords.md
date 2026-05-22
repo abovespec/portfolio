@@ -137,3 +137,16 @@
 98. service included vs tip
 99. tip pooling rules
 100. how tips are taxed for servers
+
+---
+
+## Tier 2 — Published (2026-05-22)
+
+| Article | Published |
+|---------|-----------|
+| how-much-to-tip-a-delivery-driver.md | 2026-05-22 |
+| how-much-to-tip-a-bartender.md | 2026-05-22 |
+| should-you-tip-at-fast-food.md | 2026-05-22 |
+| tipping-at-a-buffet.md | 2026-05-22 |
+| hotel-tipping-etiquette.md | 2026-05-22 |
+| how-to-tip-on-a-credit-card.md | 2026-05-22 |

@@ -152,3 +152,16 @@
 98. debt avalanche calculator
 99. how long to pay off debt
 100. debt to income ratio calculator
+
+---
+
+## Tier 2 — Published (2026-05-22)
+
+| Article | Published |
+|---------|-----------|
+| compound-interest-formula-explained.md | 2026-05-22 |
+| rule-of-72-explained.md | 2026-05-22 |
+| simple-interest-vs-compound-interest.md | 2026-05-22 |
+| how-to-use-a-loan-calculator.md | 2026-05-22 |
+| apr-vs-apy-difference.md | 2026-05-22 |
+| how-to-calculate-return-on-investment.md | 2026-05-22 |

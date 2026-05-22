@@ -173,3 +173,16 @@
 4. average life expectancy United States
 5. full retirement age social security
 6. leap year birthday — how old am I really?
+
+---
+
+## Tier 2 — Published (2026-05-22)
+
+| Article | Published |
+|---------|-----------|
+| how-to-calculate-age-in-excel.md | 2026-05-22 |
+| age-difference-calculator-guide.md | 2026-05-22 |
+| how-old-am-i-in-months.md | 2026-05-22 |
+| how-many-weeks-old-am-i.md | 2026-05-22 |
+| how-many-hours-old-am-i.md | 2026-05-22 |
+| how-to-calculate-exact-age-years-months-days.md | 2026-05-22 |

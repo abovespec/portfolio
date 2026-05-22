@@ -136,3 +136,16 @@ These six were chosen for their combination of high search intent, clear relevan
 98. early car loan payoff savings
 99. auto loan principal vs interest breakdown
 100. amortization formula for car loan
+
+---
+
+## Tier 2 — Published (2026-05-22)
+
+| Article | Published |
+|---------|-----------|
+| how-to-read-an-amortization-schedule.md | 2026-05-22 |
+| biweekly-mortgage-payments-vs-monthly.md | 2026-05-22 |
+| what-is-a-balloon-payment-mortgage.md | 2026-05-22 |
+| home-equity-loan-vs-heloc.md | 2026-05-22 |
+| should-you-buy-mortgage-points.md | 2026-05-22 |
+| how-to-pay-off-30-year-mortgage-early.md | 2026-05-22 |

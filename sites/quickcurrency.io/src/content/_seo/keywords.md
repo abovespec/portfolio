@@ -155,3 +155,16 @@
 - Keyword 69 ("usd to eur forecast") should only be covered with responsible framing — explain that rate forecasting is unreliable, do not provide predictions.
 - Tool-intent keywords (currency converter, exchange rate today, pair queries) are primarily captured by the tool UI itself, not blog articles; articles support informational intent and build topical authority.
 - YMYL handling: all articles touching financial rates must carry the required disclaimer per site editorial policy.
+
+---
+
+## Tier 2 — Published (2026-05-22)
+
+| Article | Published |
+|---------|-----------|
+| how-to-convert-currency-manually.md | 2026-05-22 |
+| currency-exchange-fees-explained.md | 2026-05-22 |
+| best-apps-for-currency-conversion.md | 2026-05-22 |
+| how-to-get-best-exchange-rate-traveling.md | 2026-05-22 |
+| what-is-the-mid-market-rate.md | 2026-05-22 |
+| when-to-buy-foreign-currency.md | 2026-05-22 |

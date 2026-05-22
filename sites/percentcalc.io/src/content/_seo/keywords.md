@@ -130,3 +130,16 @@
 ## Priority summary
 
 The 6 Tier-1 picks target the highest-volume informational queries that map directly to percentcalc.io's tool features. Together they cover the full percentage-math journey: basic formula → change formula → part-of-whole → discounts → clarifying differences → mental math shortcuts. Each article provides a clear CTA back to the calculator tool.
+
+---
+
+## Tier 2 — Published (2026-05-22)
+
+| Article | Published |
+|---------|-----------|
+| how-to-calculate-percentage-increase.md | 2026-05-22 |
+| how-to-calculate-percentage-decrease.md | 2026-05-22 |
+| percentage-of-a-number.md | 2026-05-22 |
+| markup-vs-margin-percentage.md | 2026-05-22 |
+| percentage-error-formula.md | 2026-05-22 |
+| how-to-calculate-sales-tax-percentage.md | 2026-05-22 |
