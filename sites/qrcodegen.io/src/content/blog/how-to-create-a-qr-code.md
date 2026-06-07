@@ -16,6 +16,8 @@ You need:
 1. The content to encode (URL, text, WiFi credentials, contact info)
 2. A QR code generator (online tool or library)
 
+For more on this topic, see [*QR Code for Website: Link Any Page to a Scannable Code*](/blog/qr-code-for-website).
+
 No account is required for a basic static QR code.
 
 ## Step 1: Choose what to encode
@@ -69,6 +71,8 @@ Go to [qrcodegen.io](/), enter your content, and download the result. Choose SVG
 - **Size:** Download at the largest available size; you can always scale down
 - **Quiet zone:** Keep at least 4 module widths of white space around the code
 
+For more on this topic, see [*QR Code Best Practices: Design, Size, Placement, and Testing*](/blog/qr-code-best-practices).
+
 ## Step 3: Size for your use case
 
 | Use case | Minimum size | Scan distance |
@@ -78,6 +82,8 @@ Go to [qrcodegen.io](/), enter your content, and download the result. Choose SVG
 | Poster | 5 × 5 cm (2 in) | < 50 cm |
 | Storefront sign | 10 × 10 cm (4 in) | 1 m |
 | Billboard | 30 × 30 cm (12 in) | 3 m |
+
+For more on this topic, see [*QR Code Size Guide for Printing: Minimum Sizes, DPI, and Scan Distance*](/blog/qr-code-size-guide-for-printing).
 
 The rule of thumb: the scan distance is roughly 10× the code's physical size.
 

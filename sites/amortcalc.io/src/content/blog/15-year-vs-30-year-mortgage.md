@@ -55,6 +55,8 @@ The difference in total interest is not simply a function of making payments for
 
 **2. Faster principal reduction.** Because the same loan amount amortizes over half the time, the principal balance decreases much more rapidly. A lower balance each month means less interest each month.
 
+For more on this topic, see [*Interest vs. Principal: Why You Pay So Much Interest at the Start of a Mortgage*](/blog/interest-vs-principal).
+
 **3. Fewer months of accrual.** There are 180 fewer payment periods over which interest can accumulate. Even at the same rate, 180 fewer months would produce roughly half the total interest — the lower rate compounds that benefit further.
 
 ## Amortization Schedule Comparison: Early Months
@@ -102,6 +104,8 @@ The CFPB notes that choosing a longer loan term in exchange for a lower payment 
 
 A common approach is to take a 30-year mortgage — securing the lower required payment — but voluntarily make extra principal payments to accelerate payoff.
 
+For more on this topic, see [*How Extra Mortgage Payments Reduce Your Loan: The Math Explained*](/blog/extra-mortgage-payments).
+
 **Advantages:**
 - Lower required payment preserves cash flow flexibility
 - You can slow or stop extra payments during financial difficulty without default risk
@@ -142,6 +146,8 @@ There is no universal answer — it depends on:
 - **Career stage:** Borrowers early in high-growth careers may benefit from 30-year flexibility; those with peak earning and low remaining debt may prefer 15-year acceleration
 - **How long you plan to stay:** If you plan to sell in 5–7 years, the total interest comparison is less important — the equity buildup rate matters more
 - **Lender qualification:** Your debt-to-income ratio may determine which option is available to you
+
+For more on this topic, see [*How to Pay Off a 30-Year Mortgage in 15 Years*](/blog/how-to-pay-off-30-year-mortgage-early).
 
 HUD-approved housing counselors can help you analyze which mortgage structure aligns with your financial position. Their services are often free or low-cost. ([HUD](https://www.hud.gov/topics/buying_a_home/let_fha_loans_help_you))
 

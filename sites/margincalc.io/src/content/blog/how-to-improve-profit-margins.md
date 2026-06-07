@@ -33,6 +33,8 @@ Before implementing any of these strategies, calculate your current gross margin
 
 For most small businesses, pricing is the single highest-leverage margin lever. A 1% price increase on a $1,000,000 revenue business is $10,000 of additional gross profit — with zero additional COGS.
 
+For more on this topic, see [*What Is Profit Margin? Definition, Formula, and Why It Matters*](/blog/what-is-profit-margin).
+
 The reluctance to raise prices is understandable but often overestimated. According to research covered by Harvard Business Review, the majority of customers who leave a business do so due to service quality or a better competitive offering — not a modest price increase.
 
 **How to approach it:**
@@ -79,6 +81,8 @@ A shift of 10% of revenue from 20%-margin products to 50%-margin products on a $
 ## Strategy 4: Reduce Overhead and Operating Expenses
 
 If your gross margin is healthy but your net margin is thin, the problem is in operating expenses. This is a different diagnosis than a COGS problem and requires a different fix.
+
+For more on this topic, see [*Gross Margin vs Net Margin: Key Differences Explained*](/blog/gross-margin-vs-net-margin).
 
 **Fixed vs. variable overhead:**
 - **Fixed costs** (rent, salaried staff, software subscriptions, loan payments) do not change with revenue. They are reduced by renegotiation, elimination, or — ideally — being outgrown as revenue scales.

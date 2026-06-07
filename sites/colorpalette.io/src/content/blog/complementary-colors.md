@@ -26,6 +26,8 @@ In the RGB model that governs screen-based design, the pairs shift slightly:
 
 Most design tools and color palette generators work in HSL or HSB color spaces, where "complementary" means rotating exactly 180 degrees around the hue circle. The principle is the same regardless of which model you're working in: maximum hue distance, maximum contrast.
 
+For more on this topic, see [*How to Check Color Contrast (and Why Your Eyes Can Lie to You)*](/blog/color-contrast-checker).
+
 ## Why Complementary Colors Work (and Why They Can Fail)
 
 The effect that makes complementary pairs striking is called **simultaneous contrast** — a perceptual phenomenon described by the 19th-century chemist Michel-Eugène Chevreul. When you place two complementary colors next to each other, each one makes the other appear more saturated and vivid than it would look in isolation. Your eye amplifies the difference because the colors share no common hue.
@@ -48,6 +50,8 @@ The solution isn't to abandon complementary colors — it's to manage saturation
 
 A color palette generator makes this immediate. Enter or select any color, choose a complementary scheme, and the tool returns the opposite hue on the wheel. The useful part comes next: the tool lets you explore tints, shades, and saturation adjustments of both colors, so you can find a version of the complementary pair that works in context rather than just in theory.
 
+For more on this topic, see [*What Is Color Theory? A Practical Guide for Designers and Developers*](/blog/what-is-color-theory).
+
 If you're working with a brand color, start there. Pick a blue that matches your brand hex, generate its complement (which will land somewhere in the orange-amber range), then adjust the complement's saturation down until it reads as an accent rather than a competitor. That adjusted complement often makes a far better call-to-action button color than anything you'd have picked intuitively.
 
 ## Dos and Don'ts
@@ -63,6 +67,8 @@ If you're working with a brand color, start there. Pick a blue that matches your
 - Use red and green as your only signal of status or outcome without providing a secondary cue (icon, label, pattern).
 - Assume the complement you get from a tool will work straight out of the box. Use it as a starting point, not a finished answer.
 - Overload an interface with complementary contrast. Reserve it for the moments you actually need to command attention.
+
+For more on this topic, see [*How to Choose Brand Colors That Actually Work*](/blog/how-to-choose-brand-colors).
 
 ## Complementary Colors vs Other Harmony Types
 

@@ -24,6 +24,8 @@ There is no single correct blog post length for SEO. The right length depends on
 | Comprehensive guide / pillar | 2,500–5,000+ | Only justified by topic scope |
 | Local landing page | 400–800 | Over-long local pages rarely rank better |
 
+For more on this topic, see [*Word Count for a Resume: How Long Is Too Long?*](/blog/word-count-for-a-resume).
+
 ## What the data shows
 
 Studies from SEMrush, Backlinko, and Ahrefs consistently find that **longer content ranks better on average** — but the relationship is complicated.
@@ -31,6 +33,8 @@ Studies from SEMrush, Backlinko, and Ahrefs consistently find that **longer cont
 **The correlation:** Pages ranking in Google's top 10 average 1,400–2,000 words for most competitive queries. For highly competitive head keywords, top-ranking content often exceeds 3,000 words.
 
 **The caveat:** Correlation is not causation. High-ranking long content tends to be comprehensive AND authoritative. Low-quality long content doesn't rank just by being long. Google has repeatedly stated that word count alone is not a ranking factor.
+
+For more on this topic, see [*How to Check Word Count in Google Docs (Every Method)*](/blog/word-count-google-docs).
 
 **The real driver:** Search intent. A query like "what is a spreadsheet" is fully answered in 400 words. A query like "best project management software for remote teams" requires comparing 8–12 tools with criteria, pricing, and use cases — which might take 3,000+ words to do properly. The length emerges from the topic, not from an SEO formula.
 
@@ -72,6 +76,8 @@ Signs of thin content:
 - "Also related" sections that pad word count without relevance
 
 **Padding hurts.** Users bounce when they realize they're reading filler. High bounce rates and low dwell time signal to Google that the content didn't satisfy the query.
+
+For more on this topic, see [*Reading Time Calculator: How Long Will Readers Spend on Your Content?*](/blog/reading-time-calculator).
 
 ## Optimal structure for SEO content
 

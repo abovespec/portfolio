@@ -16,6 +16,8 @@ By the end you will understand the core formula, know how to flip it for differe
 
 A percentage is just a fraction with a denominator of 100. "Per cent" literally means "per hundred." The foundational formula is:
 
+For more on this topic, see [*Percentage of a Number: What It Means and How to Calculate It*](/blog/percentage-of-a-number).
+
 ```
 Percentage = (Part / Whole) × 100
 ```
@@ -31,6 +33,8 @@ That is it. Every other percentage calculation is a rearrangement of this single
 ## The three percentage problems (and how to solve each)
 
 There are really only three types of percentage questions. Once you recognise which type you are looking at, you know exactly which version of the formula to use.
+
+For more on this topic, see [*What Percentage Is X of Y? The Simple Formula Explained*](/blog/what-percentage-is-x-of-y).
 
 | Problem type | What you know | What you find | Formula |
 |---|---|---|---|
@@ -122,6 +126,8 @@ This is a common source of confusion. Suppose an interest rate rises from 4% to 
 
 - The **percentage point** increase is 2 (you just subtract: 6 − 4 = 2 percentage points).
 - The **percentage change** in the rate itself is 50% (`(2 / 4) × 100 = 50%`).
+
+For more on this topic, see [*Percentage Difference vs. Percentage Change: What's the Difference?*](/blog/percentage-difference-vs-change).
 
 Journalists and politicians routinely mix these up. When someone says "rates rose by 2%," they almost always mean 2 *percentage points*, not a 2% increase in the rate. Always check which one is being used.
 

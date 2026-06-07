@@ -22,6 +22,8 @@ In other words, **glossiness = 1 - roughness**.
 
 The roughness workflow is the modern standard, used by Unity, Unreal Engine 4 and 5, Blender, Substance Painter, and most contemporary tools. The glossiness workflow was used in older engines and software like 3ds Max and early versions of Marmoset.
 
+For more on this topic, see [*How to Use PBR Textures in Unity: A Practical Guide*](/blog/pbr-textures-in-unity).
+
 The reason roughness won is that it maps more naturally to how we think about surfaces. A rough surface has high roughness, which is intuitive.
 
 ## Practical Tips

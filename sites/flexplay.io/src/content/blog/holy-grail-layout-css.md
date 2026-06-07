@@ -23,6 +23,8 @@ The classic implementation requirements made it deceptively difficult:
 
 Pre-Flexbox, achieving all four of those simultaneously required float hacks, negative margins, padding tricks, and often JavaScript polyfills. Multiple competing solutions existed, each with different trade-offs. The fact that there was no clean CSS-only answer is what made it "holy."
 
+For more on this topic, see [*What Is CSS Flexbox? A Plain-English Introduction*](/blog/what-is-flexbox).
+
 ## Implementing It with Flexbox
 
 Flexbox makes this substantially easier. Here is the HTML structure:
@@ -40,6 +42,8 @@ Flexbox makes this substantially easier. Here is the HTML structure:
 ```
 
 Note: the `main` element appears first in the HTML for source order reasons, even though it renders in the center. Flexbox's `order` property handles the visual rearrangement.
+
+For more on this topic, see [*CSS Flexbox Cheat Sheet: Every Property Explained*](/blog/flexbox-cheat-sheet).
 
 ### The CSS
 
@@ -135,6 +139,8 @@ With Grid, the HTML order no longer matters for visual placement. The main conte
 | HTML order flexibility | Requires `order` | Unrestricted |
 | Cross-browser support | Excellent | Excellent (IE 11 with `-ms-` prefix) |
 | Readability | Moderate | High |
+
+For more on this topic, see [*Flexbox vs CSS Grid: When to Use Each*](/blog/flexbox-vs-grid).
 
 The honest assessment: CSS Grid wins for this layout. The holy grail is a classic two-dimensional problem — rows and columns simultaneously — and that's Grid's native domain.
 

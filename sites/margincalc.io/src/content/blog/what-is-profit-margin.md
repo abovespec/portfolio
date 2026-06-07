@@ -98,6 +98,8 @@ Net Profit Margin = (Net Income ÷ Revenue) × 100
 
 **What it tells you:** Net margin is the total measure of profitability. It reflects not just operating decisions but also the cost of the company's capital structure and tax situation. Two businesses with identical gross margins can have very different net margins based on their debt load and tax strategies.
 
+For more on this topic, see [*Gross Margin vs Net Margin: Key Differences Explained*](/blog/gross-margin-vs-net-margin).
+
 ---
 
 ## How the Three Margins Relate

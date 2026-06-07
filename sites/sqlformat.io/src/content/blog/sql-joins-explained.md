@@ -59,6 +59,8 @@ Charlie (no orders) is excluded. Order 104 (user_id 4, no matching user) is excl
 
 Returns **all rows from the left table** and matching rows from the right table. When there's no match on the right, NULLs fill in.
 
+For more on this topic, see [*SQL vs NoSQL: How to Choose the Right Database*](/blog/sql-vs-nosql).
+
 ```sql
 SELECT
     u.name,
@@ -120,6 +122,8 @@ NULL  | 104      | 200.00
 Order 104 appears with a NULL user — it's in the right table (orders) but has no matching user.
 
 **When to use:** Rarely needed — you can always rewrite a RIGHT JOIN as a LEFT JOIN by switching the table order. Most style guides prefer LEFT JOINs for consistency.
+
+For more on this topic, see [*SQL Style Guide: Conventions Every Team Should Follow*](/blog/sql-style-guide).
 
 ```sql
 -- Equivalent to the RIGHT JOIN above
@@ -206,6 +210,8 @@ LEFT JOIN employees AS m ON e.manager_id = m.employee_id;
 **Always JOIN on indexed columns.** Primary key joins are fast; unindexed column joins require full-table scans.
 
 **Join order matters for the query planner.** Most modern databases (PostgreSQL, MySQL 8+) reorder JOINs automatically, but complex queries with many tables benefit from explicit ordering.
+
+For more on this topic, see [*SQL Query Optimization: Practical Techniques That Actually Work*](/blog/sql-query-optimization).
 
 **Avoid functions on JOIN columns:**
 

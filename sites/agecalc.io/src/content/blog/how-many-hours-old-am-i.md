@@ -16,6 +16,8 @@ Stated in hours, a human lifetime is both vast and concrete. Unlike years, which
 
 The calculation goes through days first:
 
+For more on this topic, see [*How Many Days Have I Been Alive?*](/blog/how-many-days-have-i-been-alive).
+
 1. Find the total calendar days from your date of birth to today
 2. Multiply by 24
 
@@ -30,6 +32,8 @@ This counts every hour since the moment of your birth date—including hours you
 For a more precise count that accounts for the specific time of day you were born, add the hours elapsed today:
 
 If you were born at 3:00 AM and the current time is 9:00 AM, you'd add approximately 6 hours to the count. Most age calculators use midnight-to-midnight day counts and don't factor in birth time, which introduces an uncertainty of up to 24 hours. For a birth-to-current-moment count, you'd need the exact time of birth.
+
+For more on this topic, see [*How to Calculate Your Exact Age from Date of Birth*](/blog/how-to-calculate-age-from-date-of-birth).
 
 Use the [age calculator](/) for a fast, accurate day count that you can multiply by 24.
 
@@ -46,6 +50,8 @@ To put a large hour count in context:
 - **613,200 hours** — 70 years
 
 The "10,000 hours to mastery" figure from deliberate practice research says something more interesting in this context: 10,000 hours is less than 14 months of continuous effort. A 30-year-old who has lived 260,000+ hours has, in principle, had time for 26 complete mastery-level pursuits—if every hour had been spent on deliberate practice in one domain. Of course, sleep, work, and ordinary life account for the bulk of it.
+
+For more on this topic, see [*How Old Am I If I Was Born in [Year]? A Quick Guide*](/blog/how-old-am-i-born-in-year).
 
 ## Sleeping Hours vs. Waking Hours
 

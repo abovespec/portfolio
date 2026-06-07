@@ -24,6 +24,8 @@ Housing usually represents 25-35% of expenses — the largest single category tr
 | Phoenix | $1,400 | $450,000 |
 | Cleveland | $1,000 | $200,000 |
 
+For more on this topic, see [*Rent vs Buy Calculator by City: Where Ownership Pays Off*](/blog/rent-vs-buy-calculator-by-city-where-ownership-pays-off).
+
 ### Groceries
 
 Grocery costs vary 10-20% by city. Urban centers with high commercial rents pass costs to consumers.
@@ -69,6 +71,8 @@ Our [cost of living calculator](/) compares two cities side by side. Input your 
 - Purchasing power comparison
 - Rent affordability in the new city
 
+For more on this topic, see [*Salary Comparison by City: What Your Pay Is Really Worth*](/blog/salary-comparison-by-city-what-your-pay-is-really-worth).
+
 ## Remote Work Implications
 
 Many remote workers relocate to lower-cost cities while keeping high salaries. This creates arbitrage opportunities. However, some employers adjust pay based on location. Factor this into your decision.
@@ -80,6 +84,8 @@ Many remote workers relocate to lower-cost cities while keeping high salaries. T
 - Selling/buying home costs
 - Higher state income taxes
 - Loss of local professional network
+
+For more on this topic, see [*How Much Rent Can I Afford? Calculator and Rule of Thumb*](/blog/how-much-rent-can-i-afford-calculator-and-rule-of-thumb).
 
 ## The Bottom Line
 

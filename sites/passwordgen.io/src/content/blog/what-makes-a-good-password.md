@@ -36,6 +36,8 @@ Humans are bad at picking random passwords. We gravitate toward:
 
 Attackers know all of this. Modern cracking tools use wordlists of millions of passwords and rules that generate variations:
 
+For more on this topic, see [*Password Generator: How to Generate Strong Passwords Online and in Code*](/blog/password-generator-guide).
+
 ```
 password, P@ssword, P@ssw0rd, Passw0rd!, p4$$w0rd, Password1!
 ```
@@ -49,6 +51,10 @@ All of these would be cracked in seconds with a modern GPU.
 Reusing passwords across sites means a breach of one site compromises all of them. In credential stuffing attacks, attackers buy breach databases and automatically test the credentials on every major service.
 
 If you reuse your email + password from a small breached site, attackers will test it on your bank, Google account, and everything else.
+
+For more on this topic, see [*How to Create a Strong Password: A Practical Security Guide*](/blog/how-to-create-a-strong-password).
+
+For more on this topic, see [*Passphrase vs Password: Which Is More Secure?*](/blog/passphrase-vs-password).
 
 The solution: a unique password for every account, managed by a password manager.
 

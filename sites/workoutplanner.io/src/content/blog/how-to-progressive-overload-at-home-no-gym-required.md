@@ -39,6 +39,8 @@ Increasing time under tension makes lighter weights feel heavier.
 
 Shorter rest increases workout density and cardiovascular demand.
 
+For more on this topic, see [*Beginner Workout Plan for the Gym: Your First Month, Mapped Out*](/blog/beginner-workout-plan-for-the-gym).
+
 - Week 1: 90 seconds rest between sets
 - Week 2: 75 seconds
 - Week 3: 60 seconds
@@ -55,6 +57,8 @@ Deeper squats, deficit push-ups, and full pull-up range of motion all increase m
 ## Using Our Calculator
 
 Our [progressive overload calculator](/) works for home workouts. Input bodyweight exercises and track reps, tempo, or added weight. It suggests progression targets for your next session.
+
+For more on this topic, see [*Progressive Overload Calculator: Track Weight Increases Over Time*](/blog/progressive-overload-calculator-track-weight-increases-over-time).
 
 ## Minimal Equipment Recommendations
 
@@ -77,5 +81,7 @@ This trio supports virtually every exercise progression for years.
 ## The Bottom Line
 
 You do not need a squat rack to get stronger. You need consistent effort and a plan to make exercises harder over time. Use our calculator and planner to structure your home training.
+
+For more on this topic, see [*How to Create Your Own Workout Plan: Step-by-Step Guide*](/blog/how-to-create-your-own-workout-plan).
 
 Progressive overload at home requires more creativity than gym training, but the results are just as real.

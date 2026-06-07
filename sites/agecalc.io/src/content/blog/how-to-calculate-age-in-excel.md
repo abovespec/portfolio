@@ -20,6 +20,8 @@ Excel can calculate age automatically once you know which functions to reach for
 
 The unit codes relevant to age calculation:
 
+For more on this topic, see [*How Old Am I in Months? Converting Your Age to Months*](/blog/how-old-am-i-in-months).
+
 | Unit | Returns |
 |------|---------|
 | `"Y"` | Complete years between the two dates |
@@ -28,6 +30,8 @@ The unit codes relevant to age calculation:
 | `"YM"` | Remaining months after subtracting complete years |
 | `"YD"` | Remaining days after subtracting complete years |
 | `"MD"` | Remaining days after subtracting complete months |
+
+For more on this topic, see [*How to Calculate Your Exact Age in Years, Months, and Days*](/blog/how-to-calculate-exact-age-years-months-days).
 
 **Basic age in years:**
 
@@ -129,6 +133,8 @@ This is useful for survey analysis, insurance groupings, or any report where raw
 ## When a Calculator Is Faster
 
 For one-off lookups—checking your own age, verifying someone's age quickly—the formulas above are more setup than they're worth. The [age calculator](/) gives you an instant breakdown in years, months, and days without opening a spreadsheet.
+
+For more on this topic, see [*How to Calculate Age in Years, Months, and Days*](/blog/age-in-years-months-days).
 
 Excel's DATEDIF shines when you need to process a column of dates in bulk, automate a report, or embed age logic inside a larger formula. For everything else, the manual method or an online tool is quicker.
 

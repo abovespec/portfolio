@@ -41,6 +41,8 @@ User_ID       ← mixed case
 
 **Python** — [PEP 8](https://peps.python.org/pep-0008/), the official Python style guide, mandates snake_case for all function names, method names, and variables:
 
+For more on this topic, see [*Naming Conventions in Programming: The Complete Guide*](/blog/naming-conventions-programming).
+
 ```python
 def get_user_by_id(user_id: int) -> User:
     ...
@@ -100,6 +102,8 @@ MAX_CONNECTIONS=20
 - **CSS** — kebab-case for class names and custom properties
 - **URL paths** — kebab-case (`/user-settings`) is preferred over snake_case
 
+For more on this topic, see [*camelCase vs snake_case: Which Should You Use?*](/blog/camelcase-vs-snake-case).
+
 ## snake_case vs camelCase vs kebab-case
 
 | Style | Example | Standard use |
@@ -109,6 +113,8 @@ MAX_CONNECTIONS=20
 | PascalCase | `UserId` | Classes in most languages |
 | UPPER_SNAKE | `USER_ID` | Constants, environment variables |
 | kebab-case | `user-id` | CSS, HTML, URLs |
+
+For more on this topic, see [*camelCase to snake_case in Python: Four Approaches*](/blog/camelcase-to-snake-case-python).
 
 The distinction matters at API boundaries. A Python backend that exposes `user_id` and a JavaScript frontend that expects `userId` need explicit conversion — either in the serializer or the client. Libraries like `humps` (Python) or `change-case` (JavaScript) handle this.
 

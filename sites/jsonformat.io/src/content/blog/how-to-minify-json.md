@@ -36,6 +36,8 @@ The content is identical. The minified version is 59 bytes; the pretty-printed v
 
 Paste your JSON into our [JSON formatter](/) above and click **Minify**. The result is a single-line JSON string ready to copy.
 
+For more on this topic, see [*Unexpected Token in JSON: What It Means and How to Fix It*](/blog/unexpected-token-json-error).
+
 ## Command line
 
 ### Python (no install required)
@@ -186,6 +188,8 @@ Conclusion: if your server gzips responses (it should), minification is a micro-
 
 Both bundlers minify JSON assets automatically in production builds when you import them as modules. No manual step needed.
 
+For more on this topic, see [*How to Validate JSON: Common Errors and How to Fix Them*](/blog/how-to-validate-json).
+
 ### npm scripts
 
 ```json
@@ -227,6 +231,8 @@ Or paste into our [JSON formatter](/) and click **Format**.
 | JavaScript | `JSON.stringify(JSON.parse(str))` |
 | Python code | `json.dumps(json.loads(s), separators=(',',':'))` |
 | Online | Paste above → Minify button |
+
+For more on this topic, see [*Pretty-Printing JSON in JavaScript: JSON.stringify, DevTools, and Node.js*](/blog/pretty-print-json-javascript).
 
 ## References
 

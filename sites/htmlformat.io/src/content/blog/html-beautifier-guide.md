@@ -18,6 +18,8 @@ HTML beautifiers take minified, generated, or poorly indented HTML and produce c
 - Copy-pasted code without indentation
 - Inspecting HTML from a web scraper or API response
 
+For more on this topic, see [*HTML Indentation Best Practices*](/blog/html-indentation-best-practices).
+
 ## Online beautifier
 
 The fastest way: paste into [htmlformat.io](/) and click Format. Configurable indentation (2 or 4 spaces, tabs), no installation needed.
@@ -166,3 +168,6 @@ Email HTML uses deprecated layout tables and inline styles — a beautifier make
 ## Format HTML online
 
 [htmlformat.io](/) — paste, format, copy. Works for any HTML: web pages, emails, templates, API responses.
+
+
+For more on this topic, see [*HTML Minification: How It Works and When It's Worth It*](/blog/html-minification).

@@ -16,6 +16,8 @@ Cap rate = Net Operating Income / Property Value
 
 Net Operating Income (NOI) is all rental income minus operating expenses, excluding mortgage payments. Cap rate tells you the unleveraged return on a property.
 
+For more on this topic, see [*Rental Property ROI Calculator: Total Return on Investment*](/blog/rental-property-roi-calculator-total-return-on-investment).
+
 ## Why Use Cap Rate?
 
 Cap rate strips out financing differences. Two investors with different mortgages can compare the same property objectively using cap rate. It also standardizes comparison across markets.
@@ -27,6 +29,8 @@ Cap rate strips out financing differences. Two investors with different mortgage
 3. **Find median property prices** from recent sales.
 4. **Calculate NOI** and divide by property value.
 
+For more on this topic, see [*Rental Yield Calculator by Postcode: Find High-Yield Areas*](/blog/rental-yield-calculator-by-postcode-find-high-yield-areas).
+
 ## Cap Rate Benchmarks
 
 According to [NAREIT](https://www.reit.com/), cap rate benchmarks vary substantially by property type and geography, but the following ranges are commonly used by investors:
@@ -37,6 +41,8 @@ According to [NAREIT](https://www.reit.com/), cap rate benchmarks vary substanti
 | 4-6% | Balanced market |
 | 6-8% | Cash-flow focused market |
 | Above 8% | High yield, possibly higher risk |
+
+For more on this topic, see [*Cash Flow Positive Rental Property: How to Find and Verify One*](/blog/cash-flow-positive-rental-property-how-to-find-and-verify-one).
 
 ## Using Our Calculator
 

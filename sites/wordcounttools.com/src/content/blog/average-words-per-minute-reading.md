@@ -22,6 +22,8 @@ The average adult reads between 200 and 250 words per minute for general, everyd
 | ESL / second-language reader | 150–220 |
 | Slow adult reader | 100–150 |
 
+For more on this topic, see [*What Is Flesch-Kincaid Readability? A Plain-Language Guide*](/blog/what-is-flesch-kincaid-readability).
+
 The 200–250 WPM figure is the one most reading-time calculators use because it represents the median for the broadest audience. Medium uses 265 WPM. Some tools use 200 WPM to be conservative.
 
 A key 2016 study by Rayner et al. (*Psychological Science in the Public Interest*) found that college students average around 300 WPM for silent reading of standard prose — somewhat faster than the commonly cited 200 figure. The gap exists because many studies measure "functional reading" (reading for comprehension and retention), which is slower than rapid skimming.
@@ -55,6 +57,8 @@ WPM = (Word count ÷ Time in seconds) × 60
 
 **Example:** You read 450 words in 2 minutes and 10 seconds (130 seconds).
 
+For more on this topic, see [*How Long Does It Take to Read 1,000 Words?*](/blog/how-long-to-read-1000-words).
+
 ```
 WPM = (450 ÷ 130) × 60 = 207 WPM
 ```
@@ -78,6 +82,8 @@ For most practical purposes:
 ## Why WPM matters for content creators
 
 Knowing your audience's reading speed (or a reasonable proxy for it) lets you estimate reading time — which has real implications for content planning.
+
+For more on this topic, see [*Reading Time Calculator: How Long Will Readers Spend on Your Content?*](/blog/reading-time-calculator).
 
 **Estimating reading time:**
 

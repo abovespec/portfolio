@@ -23,7 +23,11 @@ sources:
 
 The United States has one of the most extensive tipping cultures in the world — and one of the most confusing. Touch-screen payment terminals now present tip prompts at coffee counters, self-checkout kiosks, and food trucks. What was once a clear social contract has gotten murkier.
 
+For more on this topic, see [*How to Tip on a Credit Card: Pre-Auth, Final Charges, and What Actually Happens*](/blog/how-to-tip-on-a-credit-card).
+
 This guide cuts through the noise with clear, current norms for every common service category. Use our [tip calculator](/) to calculate amounts instantly for any bill.
+
+For more on this topic, see [*How Much to Tip a Server: The Complete Guide*](/blog/how-much-to-tip-a-server).
 
 ---
 
@@ -76,6 +80,8 @@ Hotels have multiple tipped roles, and guests often underestimate the expected a
 | Housekeeping | $2–5 per night | Leave daily, not just at checkout; different staff clean daily |
 | Room service | 18–20% if not included | Check the bill — many hotels add a service charge; tip further only if service was exceptional |
 | Valet | $2–5 when car is retrieved | Not when dropping off |
+
+For more on this topic, see [*Hotel Tipping Etiquette: Housekeeping, Bellhop, Concierge, and Valet*](/blog/hotel-tipping-etiquette).
 
 **Housekeeping is chronically under-tipped.** Condé Nast Traveler and Emily Post Institute both recommend tipping per night (not a lump sum at checkout) because housekeeping shifts rotate and the person cleaning your room on Tuesday may not be there on Thursday. Leave cash with a note that says "Housekeeping — Thank You."
 

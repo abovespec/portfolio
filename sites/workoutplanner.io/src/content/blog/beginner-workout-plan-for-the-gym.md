@@ -101,6 +101,8 @@ Track your weights every session. Use our [workout planner](/) to log each exerc
 - **Do not max out.** Going to complete failure every set produces more soreness than adaptation.
 - **Do not change the program every two weeks.** Consistency with one plan beats constantly switching.
 
+For more on this topic, see [*4 Day Workout Split for Muscle Growth: Hypertrophy Program*](/blog/4-day-workout-split-muscle-growth).
+
 ## Nutrition Basics
 
 Protein is the only macro that requires deliberate attention early on. Aim for 0.7–1 gram per pound of body weight daily. Chicken, eggs, Greek yogurt, cottage cheese, and protein shakes are straightforward sources. Without enough protein, your muscles cannot repair and grow between sessions.
@@ -108,5 +110,9 @@ Protein is the only macro that requires deliberate attention early on. Aim for 0
 ## What Comes After Month One
 
 After four weeks you will be familiar with the movements and ready for more volume. A 4-day upper/lower split or a push/pull/legs program is the natural next step. By then you will also have a clear sense of which movements feel strong and which need more work — that information is valuable when building your next program.
+
+For more on this topic, see [*5 Day Workout Split for Intermediate Lifters: Full Program*](/blog/5-day-workout-split-intermediate).
+
+For more on this topic, see [*3 Day Workout Split for Beginners: Full Body Strength Plan*](/blog/3-day-workout-split-for-beginners-full-body-strength-plan).
 
 The gym rewards consistency above everything else. Show up three times a week, add a little weight each session, eat enough protein, and you will make more progress in three months than most people make in a year of random training.

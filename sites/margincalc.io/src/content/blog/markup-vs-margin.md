@@ -23,6 +23,8 @@ sources:
 
 Few pricing mistakes are as costly — or as common — as confusing markup with margin. They measure the same profit dollar but express it as a percentage of different bases. Use the wrong one when setting prices and you will either leave significant money on the table or price yourself out of the market without realizing why.
 
+For more on this topic, see [*What Is a Good Profit Margin? Benchmarks by Industry*](/blog/what-is-a-good-profit-margin).
+
 ---
 
 ## The Core Distinction
@@ -33,6 +35,8 @@ Few pricing mistakes are as costly — or as common — as confusing markup with
 | **Formula** | (Profit ÷ Cost) × 100 | (Profit ÷ Selling Price) × 100 |
 | **Also called** | Cost-plus percentage | Gross profit margin |
 | **Used by** | Buyers, purchasing, wholesale | Finance, accounting, investors |
+
+For more on this topic, see [*What Is Profit Margin? Definition, Formula, and Why It Matters*](/blog/what-is-profit-margin).
 
 Both describe the same profit in dollars — only the denominator differs. That difference has enormous practical consequences.
 
@@ -78,6 +82,8 @@ The markup was 75%. The margin is 42.9%. The profit dollar is identical ($30) �
 Here is where businesses make costly errors:
 
 **Scenario:** Your target gross margin is 50%. You tell your purchasing manager to apply a 50% markup. What actually happens?
+
+For more on this topic, see [*Gross Margin vs Net Margin: Key Differences Explained*](/blog/gross-margin-vs-net-margin).
 
 - Cost: $100
 - Selling Price with 50% markup = $100 × 1.50 = $150

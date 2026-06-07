@@ -14,6 +14,8 @@ MLA (Modern Language Association) style is used in literature, humanities, and l
 
 MLA uses a parenthetical author-page format at the end of the sentence, before the period.
 
+For more on this topic, see [*How to Cite a Book in APA, MLA, and Chicago Format*](/blog/how-to-cite-a-book).
+
 **One author:**
 ```
 (Smith 42)
@@ -46,6 +48,8 @@ MLA uses a parenthetical author-page format at the end of the sentence, before t
 (Smith, "Neural" 12)
 ```
 
+For more on this topic, see [*Bibliography vs Works Cited: What's the Difference?*](/blog/bibliography-vs-works-cited).
+
 **Narrative citation** — author as part of the sentence:
 ```
 Smith argues that "direct quotes need page numbers" (42).
@@ -63,6 +67,8 @@ The Works Cited page goes at the end of your paper, titled **Works Cited** (cent
 ## MLA 9 core template (the "container" model)
 
 MLA 9 uses a universal template based on **containers** — the idea that a source exists inside a larger container (a journal, a website, a streaming platform):
+
+For more on this topic, see [*How to Cite a Website: APA, MLA, and Chicago Formats*](/blog/how-to-cite-a-website).
 
 ```
 Author. "Title of Source." Container Title, other contributors, version, number, publisher, date, location.

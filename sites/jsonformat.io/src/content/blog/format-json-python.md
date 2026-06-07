@@ -14,6 +14,8 @@ Python ships with a full-featured JSON module in its standard library. You rarel
 
 Python's `json` module ([docs](https://docs.python.org/3/library/json.html)) handles both serialisation (`dumps` / `dump`) and deserialisation (`loads` / `load`).
 
+For more on this topic, see [*How to Minify JSON: Tools, Commands, and Code Examples*](/blog/how-to-minify-json).
+
 ## Pretty-printing a Python dict
 
 ```python
@@ -24,6 +26,8 @@ data = {"name": "Alice", "age": 30, "skills": ["Python", "SQL"]}
 pretty = json.dumps(data, indent=2)
 print(pretty)
 ```
+
+For more on this topic, see [*Pretty-Printing JSON in JavaScript: JSON.stringify, DevTools, and Node.js*](/blog/pretty-print-json-javascript).
 
 Output:
 
@@ -54,6 +58,8 @@ json.dumps(data, indent=2, sort_keys=True)
 ```
 
 Sorted output is useful for diffing JSON files or producing canonical representations.
+
+For more on this topic, see [*How to Validate JSON: Common Errors and How to Fix Them*](/blog/how-to-validate-json).
 
 ### Non-ASCII characters
 

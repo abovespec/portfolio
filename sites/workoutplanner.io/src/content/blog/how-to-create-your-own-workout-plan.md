@@ -38,6 +38,8 @@ Use this framework:
 - **5 days/week:** PPL or modified PPL with a dedicated specialty day. For intermediates with time and solid recovery.
 - **6 days/week:** PPL twice per week. High volume for experienced lifters with excellent recovery.
 
+For more on this topic, see [*Upper Lower Split Workout Program: 4-Day Plan for Strength and Size*](/blog/upper-lower-split-workout-program).
+
 Choose the frequency you have confidently done before, or one step above your current level. Do not jump from 2 days to 6 days.
 
 ## Step 3: Pick a Split Structure
@@ -48,6 +50,8 @@ A split determines which muscles you train on which days. Your frequency drives 
 - **4 days:** Upper/lower (Upper A, Lower A, Upper B, Lower B)
 - **5 days:** Push, Pull, Legs, Upper, Arms — or any structure that fits
 - **6 days:** Push, Pull, Legs repeated twice
+
+For more on this topic, see [*PPL Workout Split for Beginners: 6-Day Push Pull Legs Plan*](/blog/ppl-workout-split-for-beginners).
 
 For most people building muscle, the upper/lower split at 4 days is the most efficient structure available. It hits everything twice per week without daily training.
 
@@ -103,6 +107,8 @@ A typical session for hypertrophy looks like:
 - Accessory 3: 2-3 sets x 15 reps
 
 That is 15–16 working sets in one session — appropriate for a 4-day upper/lower split.
+
+For more on this topic, see [*3 Day Workout Split for Beginners: Full Body Strength Plan*](/blog/3-day-workout-split-for-beginners-full-body-strength-plan).
 
 ## Step 6: Build In Progressive Overload
 

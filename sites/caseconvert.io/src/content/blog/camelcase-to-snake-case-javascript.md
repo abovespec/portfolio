@@ -14,6 +14,8 @@ JavaScript uses camelCase by convention, but working with Python backends, Postg
 
 A single-pass regex inserts underscores before uppercase letters. The tricky part is handling consecutive capitals like `HTTP` or `JSON`:
 
+For more on this topic, see [*Naming Conventions in Programming: The Complete Guide*](/blog/naming-conventions-programming).
+
 ```js
 function camelToSnake(str) {
   return str
@@ -89,6 +91,8 @@ deepCamelKeysToSnake(apiResponse);
 
 The [`change-case`](https://github.com/blakeembrey/change-case) package is well-maintained and handles a wide range of edge cases:
 
+For more on this topic, see [*What Is snake_case? A Practical Guide for Developers*](/blog/what-is-snake-case).
+
 ```bash
 npm install change-case
 ```
@@ -103,6 +107,8 @@ snakeCase('myJSONKey');          // "my_json_key"
 ```
 
 `change-case` also exports `camelCase`, `pascalCase`, `kebabCase`, and others, so it's useful when you need bidirectional conversion in the same project.
+
+For more on this topic, see [*camelCase to snake_case in Python: Four Approaches*](/blog/camelcase-to-snake-case-python).
 
 For projects that want zero dependencies and handle only the common case, the regex function above is the right call. For projects already using a utility library (lodash, for example), check for a built-in before adding `change-case`.
 

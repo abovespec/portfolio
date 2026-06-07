@@ -14,6 +14,8 @@ The question every freelancer asks eventually is "how much should I charge?" The
 
 Your floor is the minimum rate that keeps you in business. Calculate it with our formula: annual goal plus expenses, divided by billable hours, adjusted for taxes. If a client offers below this number, you are losing money.
 
+For more on this topic, see [*How to Negotiate Freelance Rates Without Losing the Client*](/blog/how-to-negotiate-freelance-rates-without-losing-the-client).
+
 ## Step 2: Research Market Rates
 
 Look at job boards, competitor websites, and industry reports. [Glassdoor salary data](https://www.glassdoor.com/Salaries/index.htm) and freelance platforms publish rate data. Your rate should fall within the market range unless you have a clear differentiator.
@@ -21,6 +23,8 @@ Look at job boards, competitor websites, and industry reports. [Glassdoor salary
 ## Step 3: Factor in Value
 
 What outcome do you deliver? A web developer who builds a $50,000 revenue-generating site should charge more than one who builds a basic brochure site. Value-based pricing means charging a fraction of the value you create.
+
+For more on this topic, see [*Value-Based Pricing for Freelancers: Charge for Outcomes, Not Hours*](/blog/value-based-pricing-for-freelancers-charge-for-outcomes-not-hours).
 
 ## Step 4: Test Your Rate
 
@@ -40,6 +44,8 @@ Start at the midpoint of your research range. If 70% of prospects say yes immedi
 ## Using Our Tools
 
 Our [hourly rate calculator](/) finds your minimum viable rate. Our [project estimator](/) helps quote fixed-price work. Our [value pricing worksheet](/) shows how to price based on client outcomes.
+
+For more on this topic, see [*Project-Based Pricing Formula: How to Quote Fixed-Price Work*](/blog/project-based-pricing-formula-how-to-quote-fixed-price-work).
 
 ## The Bottom Line
 

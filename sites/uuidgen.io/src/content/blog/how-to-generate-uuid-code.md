@@ -14,6 +14,8 @@ Every major language has built-in or first-party UUID generation. Here's the can
 
 Python's standard library `uuid` module covers all UUID versions:
 
+For more on this topic, see [*UUID v4 vs v7: Which Should You Use?*](/blog/uuid-v4-vs-v7).
+
 ```python
 import uuid
 
@@ -62,6 +64,8 @@ const uid = randomUUID();
 // npm: uuid package — supports v1/v3/v4/v5/v7
 // npm install uuid
 import { v4 as uuidv4, v7 as uuidv7, validate, version } from 'uuid';
+
+For more on this topic, see [*UUID in Databases: Primary Keys, Storage, and Performance*](/blog/uuid-in-database).
 
 const uid_v4 = uuidv4();  // random
 const uid_v7 = uuidv7();  // time-ordered (UUID v7)
@@ -155,6 +159,8 @@ Console.WriteLine(guid.ToString());          // 550e8400-e29b-41d4-a716-44665544
 Console.WriteLine(guid.ToString("N"));       // without hyphens
 Console.WriteLine(guid.ToString("B"));       // with braces
 Console.WriteLine(guid.ToByteArray().Length); // 16
+
+For more on this topic, see [*UUID vs GUID: Are They the Same Thing?*](/blog/uuid-vs-guid).
 
 // Parse
 Guid parsed = Guid.Parse("550e8400-e29b-41d4-a716-446655440000");

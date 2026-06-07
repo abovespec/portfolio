@@ -21,6 +21,8 @@ A UTM builder helps you create properly formatted tracking URLs without manually
 5. **Campaign content** (optional) — for A/B testing
 6. **Campaign term** (optional) — for paid search keywords
 
+For more on this topic, see [*UTM Parameters Explained: Source, Medium, Campaign, Content, Term*](/blog/utm-parameters).
+
 The builder automatically:
 - Encodes special characters
 - Combines fields into a valid URL
@@ -39,6 +41,8 @@ Input:
 Output:
   https://example.com/sale?utm_source=newsletter&utm_medium=email&utm_campaign=spring-sale-2026&utm_content=hero-button
 ```
+
+For more on this topic, see [*utm_source, utm_medium, utm_campaign: A Complete Guide*](/blog/utm-source-medium-campaign).
 
 ## Google Sheets UTM builder
 
@@ -109,6 +113,8 @@ for source, medium, campaign, content in campaigns:
     url = build_utm_url(base, source, medium, campaign, content)
     print(url)
 ```
+
+For more on this topic, see [*UTM Tracking: How to Set Up and Measure Marketing Campaigns*](/blog/utm-tracking).
 
 Output:
 ```

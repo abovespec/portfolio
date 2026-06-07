@@ -16,6 +16,8 @@ Bodyweight exercises are closed-chain movements, meaning your hands or feet rema
 
 Progressive overload is still possible. You increase difficulty by changing leverage, adding reps, slowing tempo, or reducing rest periods.
 
+For more on this topic, see [*How to Progressive Overload at Home: No Gym Required*](/blog/how-to-progressive-overload-at-home-no-gym-required).
+
 ## The Beginner Routine (3 days/week)
 
 **Day 1 - Push Focus:**
@@ -37,6 +39,8 @@ Progressive overload is still possible. You increase difficulty by changing leve
 - Bear crawls: 3 sets x 30 seconds
 - Dead bug: 3 sets x 10 per side
 - Wall sit: 3 sets x 30-45 seconds
+
+For more on this topic, see [*3 Day Workout Split for Beginners: Full Body Strength Plan*](/blog/3-day-workout-split-for-beginners-full-body-strength-plan).
 
 ## Progressions for Each Movement
 
@@ -66,6 +70,8 @@ Our [workout planner](/) includes bodyweight templates. Select the no-equipment 
 ## Nutrition Without a Gym
 
 Bodyweight training builds muscle if you eat enough protein. Target 0.7-1 gram per pound of body weight. A slight calorie surplus supports growth. Sleep 7-9 hours for recovery.
+
+For more on this topic, see [*4 Day Workout Split for Muscle Growth: Hypertrophy Program*](/blog/4-day-workout-split-muscle-growth).
 
 ## Common Mistakes
 

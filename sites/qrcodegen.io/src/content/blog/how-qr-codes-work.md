@@ -14,6 +14,8 @@ QR codes (Quick Response codes) were invented by Denso Wave in 1994 for tracking
 
 A QR code is a 2D matrix barcode — a grid of black (dark) and white (light) modules (squares) arranged in a specific pattern. Each module encodes one bit of data. The modules together encode text, URLs, or binary data using a specific encoding scheme.
 
+For more on this topic, see [*QR Code vs Barcode: Differences, Use Cases, and When to Use Each*](/blog/qr-code-vs-barcode).
+
 ## The structure of a QR code
 
 ```
@@ -90,6 +92,8 @@ QR codes use Reed-Solomon error correction, which allows the scanner to recover 
 
 "30% recovery" means up to 30% of the code's codewords can be lost or wrong and the scanner can still reconstruct the original data. This is why you can put a logo in the center of a QR code — the logo obscures some modules, but they're recovered by error correction.
 
+For more on this topic, see [*How to Add a Logo to a QR Code: Error Correction and Best Practices*](/blog/how-to-add-logo-to-qr-code).
+
 The trade-off: higher error correction → more modules → more data needed → larger code.
 
 ## The scanning process
@@ -115,5 +119,7 @@ To prevent large uniform regions (which cause sampling problems), QR codes apply
 - **Physical damage** — exceeds the error correction capacity
 - **Reflective surface** — metallic or glossy backgrounds cause camera glare
 - **Wrong colors** — light-on-dark can confuse some scanners
+
+For more on this topic, see [*QR Code Best Practices: Design, Size, Placement, and Testing*](/blog/qr-code-best-practices).
 
 Generate QR codes at [qrcodegen.io](/).

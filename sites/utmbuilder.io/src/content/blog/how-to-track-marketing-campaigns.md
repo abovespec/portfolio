@@ -18,6 +18,8 @@ A complete campaign tracking setup has three layers:
 2. **Analytics platform** — Google Analytics 4 reads UTM values and stores them
 3. **Conversion tracking** — mark which events (purchase, signup, lead form) count as conversions
 
+For more on this topic, see [*UTM Tracking: How to Set Up and Measure Marketing Campaigns*](/blog/utm-tracking).
+
 When someone clicks a UTM-tagged link and converts, you can trace that conversion back to the specific campaign, ad, or email that drove it.
 
 ## Step 1: Set up GA4
@@ -53,6 +55,8 @@ For each marketing asset that links to your site:
 https://example.com/offer?utm_source=newsletter&utm_medium=email&utm_campaign=spring-sale-q2-2026&utm_content=hero-button
 ```
 
+For more on this topic, see [*UTM Parameters Explained: Source, Medium, Campaign, Content, Term*](/blog/utm-parameters).
+
 **Paid search ad:**
 ```
 https://example.com/product?utm_source=google&utm_medium=cpc&utm_campaign=brand-keywords-q2-2026&utm_term={keyword}
@@ -80,6 +84,8 @@ Toggle "Mark as conversion" for each relevant event.
 ## Step 5: Use UTM link tracking spreadsheet
 
 Maintain a running log of all UTM links you create:
+
+For more on this topic, see [*UTM Builder Guide: How to Create and Manage UTM Links*](/blog/utm-builder-guide).
 
 | Date | Campaign | Channel | utm_source | utm_medium | utm_campaign | Full URL |
 |------|---------|---------|-----------|-----------|-------------|---------|

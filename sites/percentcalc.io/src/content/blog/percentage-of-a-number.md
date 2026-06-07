@@ -14,6 +14,8 @@ draft: false
 
 When you find a percentage of a number, you are extracting a portion of that number. "20% of 85" means "20 parts out of every 100 parts of 85." It is a way of scaling the number down to a fraction.
 
+For more on this topic, see [*How to Calculate Percentage Increase: Formula and Step-by-Step Guide*](/blog/how-to-calculate-percentage-increase).
+
 A percent is just another way of writing a fraction with denominator 100:
 
 ```
@@ -121,6 +123,10 @@ You do not always need a calculator. Common percentages have shortcuts that let 
 | Find the Part | What is 30% of 80? | `(30/100) × 80 = 24` |
 | Find the Percentage | 24 is what % of 80? | `(24/80) × 100 = 30%` |
 | Find the Whole | 24 is 30% of what? | `24 / 0.30 = 80` |
+
+For more on this topic, see [*What Percentage Is X of Y? The Simple Formula Explained*](/blog/what-percentage-is-x-of-y).
+
+For more on this topic, see [*How to Calculate Percentage Decrease: Formula, Examples, and Use Cases*](/blog/how-to-calculate-percentage-decrease).
 
 Once you know any two of the three values, you can always find the third.
 

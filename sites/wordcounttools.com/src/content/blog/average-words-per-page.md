@@ -30,6 +30,8 @@ Under these conditions: **approximately 250–275 words per page.**
 | 10 | 2,500–2,750 |
 | 20 | 5,000–5,500 |
 
+For more on this topic, see [*How to Check Word Count in Google Docs (Every Method)*](/blog/word-count-google-docs).
+
 These are approximations. The actual count varies based on how many paragraphs end mid-page, heading placement, and dialogue formatting (which leaves more white space).
 
 ## Single-spaced pages
@@ -76,6 +78,8 @@ A finished published novel is typeset differently. A typical trade paperback has
 | Novel (literary) | 80,000–100,000 words | 320–400 |
 | Epic fantasy | 100,000–200,000+ words | 400–800+ |
 
+For more on this topic, see [*How Many Words Is a Novel? Genre-by-Genre Word Count Guide*](/blog/how-many-words-in-a-novel).
+
 *These are industry norms, not hard limits. First novels are typically held to tighter ranges.*
 
 ## College essays and applications
@@ -112,3 +116,6 @@ Quick formula:
 - Published book page: pages × 300
 
 Online word count tools like [wordcounttools.com](/) show live word count alongside page count estimates, so you can target either metric.
+
+
+For more on this topic, see [*Word Count for a Resume: How Long Is Too Long?*](/blog/word-count-for-a-resume).

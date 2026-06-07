@@ -14,9 +14,13 @@ Printing a QR code too small is the most common reason they fail to scan. This g
 
 The most reliable sizing rule is that **the minimum scan distance is roughly 10 times the physical size of the QR code**. 
 
+For more on this topic, see [*QR Code vs Barcode: Differences, Use Cases, and When to Use Each*](/blog/qr-code-vs-barcode).
+
 - A 2.5 cm code scans from up to 25 cm away
 - A 5 cm code scans from up to 50 cm away  
 - A 10 cm code scans from up to 1 m away
+
+For more on this topic, see [*Dynamic QR Code vs Static QR Code: What's the Difference?*](/blog/dynamic-vs-static-qr-code).
 
 This is a floor, not a ceiling. Larger is always better. When in doubt, size up.
 
@@ -35,6 +39,8 @@ This is a floor, not a ceiling. Larger is always better. When in doubt, size up.
 | Billboard | 40 × 40 cm (16 in) | 60 × 60 cm (24 in) | 4–6 m |
 
 These measurements assume standard data density (a short URL). Codes encoding more data have more modules and may need to be larger to remain scannable.
+
+For more on this topic, see [*How QR Codes Work: Encoding, Structure, and Error Correction*](/blog/how-qr-codes-work).
 
 ## DPI requirements
 

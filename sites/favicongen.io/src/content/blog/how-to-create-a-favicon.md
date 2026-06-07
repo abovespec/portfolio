@@ -25,6 +25,8 @@ Look at your logo and ask: what element makes it distinctive? For most brands, t
 
 That element is what your favicon should show. A favicon is not a shrunk-down version of your full logo — it is a representative glyph that stands in for your brand at a tiny scale.
 
+For more on this topic, see [*What Is a Favicon? The Tiny Icon That Does a Big Job*](/blog/what-is-a-favicon).
+
 ### Creating Something New
 
 If you do not have an existing logo, or if your logo does not translate well to square-and-small, you can design a favicon directly. You do not need sophisticated software — a simple design in any vector tool, or even a carefully chosen emoji converted to an image, can produce an effective favicon.
@@ -72,6 +74,8 @@ Avoid using a JPEG as your source. JPEG compression introduces artifacts that lo
 
 A favicon generator takes your source image and produces all the files you need: a multi-resolution ICO, PNG files at standard sizes, and apple-touch-icon variants. Using a generator is the right approach here — manually resizing and saving individual files, and then packaging an ICO container, is tedious and error-prone.
 
+For more on this topic, see [*Favicon ICO vs PNG: Which Format Should You Use?*](/blog/favicon-ico-vs-png).
+
 Upload your prepared source image, let the generator process it, and download the resulting package. You should expect to get:
 
 - `favicon.ico` — a multi-resolution file containing 16×16, 32×32, and 48×48 layers
@@ -115,6 +119,8 @@ After deploying, verify that your favicon appears correctly:
 **Incognito/Private mode:** Testing in a private window bypasses any cached favicon, so if you recently changed your favicon, this is the fastest way to see the new version.
 
 If your favicon is not appearing, the most common causes are a browser cache issue, a wrong file path, or a missing `<link>` tag in your HTML. The troubleshooting guide on this site covers all of those scenarios in detail.
+
+For more on this topic, see [*Favicon Sizes: The Complete Size Guide for Every Browser and Device*](/blog/favicon-sizes).
 
 ## The Short Version
 

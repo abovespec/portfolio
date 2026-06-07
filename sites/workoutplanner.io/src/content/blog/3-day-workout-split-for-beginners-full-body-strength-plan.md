@@ -14,6 +14,8 @@ A 3 day workout split is the perfect starting point for beginners. It provides e
 
 Beginners do not need high volume to grow. Their bodies respond to almost any structured resistance training. Three full-body sessions per week hit each muscle group three times, which research shows is optimal for novice hypertrophy.
 
+For more on this topic, see [*4 Day Workout Split for Muscle Growth: Hypertrophy Program*](/blog/4-day-workout-split-muscle-growth).
+
 Recovery is where growth happens. Beginners also need to learn movement patterns. Three sessions provide enough practice without overwhelming the nervous system.
 
 ## The Routine
@@ -65,5 +67,9 @@ Eat roughly 0.7-1 gram of protein per pound of body weight. Maintain a slight ca
 ## How Long to Run This Split
 
 Follow this routine for 3-6 months. Once progress stalls and you can no longer add weight weekly, consider moving to a 4 or 5 day split with more volume per session.
+
+For more on this topic, see [*5 Day Workout Split for Intermediate Lifters: Full Program*](/blog/5-day-workout-split-intermediate).
+
+For more on this topic, see [*Upper Lower Split Workout Program: 4-Day Plan for Strength and Size*](/blog/upper-lower-split-workout-program).
 
 Start with our planner today. The best workout program is the one you actually follow.

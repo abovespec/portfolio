@@ -25,6 +25,8 @@ Research by Schoenfeld and others consistently shows that higher training freque
 - Overhead press: 3x8
 - Leg raises: 3x12
 
+For more on this topic, see [*How to Create Your Own Workout Plan: Step-by-Step Guide*](/blog/how-to-create-your-own-workout-plan).
+
 **Workout B:**
 - Deadlifts: 3x5
 - Incline dumbbell press: 3x10
@@ -59,6 +61,10 @@ Add 2.5-5 lbs to compound lifts weekly. Add reps to accessory work. When you sta
 ## Using Our Planner
 
 Our [workout planner](/) structures full body routines automatically. Log your lifts, track progression, and schedule rest days.
+
+For more on this topic, see [*3 Day Workout Split for Beginners: Full Body Strength Plan*](/blog/3-day-workout-split-for-beginners-full-body-strength-plan).
+
+For more on this topic, see [*Upper Lower Split Workout Program: 4-Day Plan for Strength and Size*](/blog/upper-lower-split-workout-program).
 
 ## Who Should Use This Split?
 

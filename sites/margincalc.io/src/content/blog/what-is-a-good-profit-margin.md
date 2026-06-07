@@ -25,6 +25,8 @@ sources:
 
 "Is my profit margin good?" is one of the most common questions business owners ask — and one of the most context-dependent to answer. A 5% net margin is excellent in grocery retail but dismal in software. A 60% gross margin is expected in pharmaceuticals and impressive in manufacturing. The only honest answer requires an industry benchmark.
 
+For more on this topic, see [*How to Calculate Gross Profit Margin: Step-by-Step with Examples*](/blog/how-to-calculate-gross-profit-margin).
+
 This article provides margin benchmarks for 15+ industries, explains why they differ so dramatically, and gives you a framework for evaluating where your own business stands.
 
 ---
@@ -114,6 +116,8 @@ A margin below your industry average is not a crisis — it is a diagnosis. Comm
 
 **Too-low prices.** Many small businesses underprice because they fear losing customers, not realizing competitors operate at higher margins profitably. A thorough competitive pricing analysis often reveals room to raise prices.
 
+For more on this topic, see [*How to Improve Profit Margins: 8 Proven Strategies for Small Businesses*](/blog/how-to-improve-profit-margins).
+
 **Too-high COGS.** If your gross margin is below industry average, your supply chain or production process costs more than your peers'. This points toward renegotiating supplier contracts, reducing waste, or improving production efficiency.
 
 **Overhead out of proportion to revenue.** A company that hasn't grown into its cost structure will have operating margins that compress its net margin significantly. The question becomes: is the overhead investment expected to generate revenue growth that will eventually normalize margins?
@@ -140,5 +144,7 @@ The U.S. Small Business Administration notes that small businesses often operate
 - Benchmark against companies in your specific industry and stage, not against a generic target.
 - Focus as much on margin trends as on absolute margin levels — direction of travel matters.
 - Below-average margin is a diagnostic signal, not necessarily a crisis: find the root cause in pricing, COGS, overhead, or capital structure.
+
+For more on this topic, see [*What Is Profit Margin? Definition, Formula, and Why It Matters*](/blog/what-is-profit-margin).
 
 Use our [profit margin calculator](/tools/profit-margin-calculator/) to compute your gross and net margins, then compare them against the benchmarks in this article.

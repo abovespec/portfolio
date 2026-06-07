@@ -19,6 +19,8 @@ sources:
 
 Delivery drivers are independent contractors on most major platforms, which means their pay structures differ significantly from restaurant servers — and the tip math changes accordingly.
 
+For more on this topic, see [*How Much to Tip a Server: The Complete Guide*](/blog/how-much-to-tip-a-server).
+
 Use our [tip calculator](/) to work out exact amounts before you confirm your order.
 
 ## What the Platforms Actually Pay
@@ -50,6 +52,8 @@ The commonly cited minimum is **$3–5 for a standard order under 5 miles in nor
 
 The flat minimum matters because a 15% tip on a $15 order is only $2.25 — not enough to cover a driver who traveled several miles and waited at a restaurant. When the percentage produces less than $3, use the flat floor instead.
 
+For more on this topic, see [*What Is the Average Tip Percentage at US Restaurants?*](/blog/average-tip-percentage).
+
 **For grocery delivery (Instacart, Shipt):**
 
 Grocery shoppers invest more time per order — they're navigating a full store, selecting produce, handling substitutions, and loading heavy bags. The Instacart default tip is 5%, but that undersells the work. **10–20% is a more appropriate range**, with a $5 minimum on small orders.
@@ -70,6 +74,8 @@ Certain conditions justify going above the baseline:
 ## Pre-Tip vs. Adjusting After Delivery
 
 Most apps require a tip at checkout, before delivery. You can adjust the tip after the fact on DoorDash (within 30 days) and Uber Eats (within a short window after delivery). If service was clearly exceptional — or if something went wrong that was the driver's fault — it's reasonable to adjust after the fact.
+
+For more on this topic, see [*Tipping Etiquette in the United States: A Service-by-Service Guide*](/blog/tipping-etiquette-united-states).
 
 Reducing a tip punitively for restaurant errors (wrong items, slow kitchen) isn't fair to the driver, who had no control over the order contents. If a restaurant packed your bag wrong, that's not a tipping offense against the driver.
 

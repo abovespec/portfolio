@@ -14,6 +14,8 @@ Formatted HTML is easier to read, review, and debug. Unformatted HTML — especi
 
 Paste minified or unindented HTML into [htmlformat.io](/) and click Format — no install needed.
 
+For more on this topic, see [*HTML Beautifier: Making Minified or Messy HTML Readable*](/blog/html-beautifier-guide).
+
 ## VS Code
 
 VS Code includes an HTML formatter out of the box. Three ways to trigger it:
@@ -53,6 +55,8 @@ The built-in formatter handles basic cases well. For more control over attribute
 ## Prettier
 
 [Prettier](https://prettier.io/) is the de-facto standard formatter for web projects. It formats HTML consistently with zero configuration:
+
+For more on this topic, see [*Prettier HTML Formatting: Configuration and Common Issues*](/blog/prettier-html-formatting).
 
 ```bash
 npm install --save-dev prettier
@@ -159,6 +163,8 @@ Prettier normalizes these to the bare attribute form.
 Class and ID first, type and name second, content attributes, then states (required, disabled), then ARIA.
 
 **Indentation depth:** Standard is 2 spaces. Deeply nested HTML becomes hard to read; if you're at 5+ levels of indentation, consider component extraction.
+
+For more on this topic, see [*HTML Indentation Best Practices*](/blog/html-indentation-best-practices).
 
 ## Formatting HTML templates
 

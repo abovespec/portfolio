@@ -24,11 +24,15 @@ That is the theoretical value of your holding at that moment. Tools like howmany
 
 The word "theoretical" matters. The price displayed on an aggregator site is a reference price — typically a volume-weighted average across multiple exchanges. The price you actually receive when converting will differ based on which platform you use, when you execute the transaction, and the size of your trade.
 
+For more on this topic, see [*What Is Market Cap in Crypto? The Metric That Matters Most*](/blog/what-is-crypto-market-cap).
+
 ## Why the Price Varies by Exchange
 
 Bitcoin does not trade at a single global price. It trades simultaneously on hundreds of exchanges worldwide, and each exchange discovers its own price through its own order book — the live list of buy and sell orders placed by participants on that platform.
 
 The "bid price" is the highest price a buyer is currently willing to pay. The "ask price" is the lowest price a seller is willing to accept. The difference between them is called the **bid-ask spread**. When you sell Bitcoin, you receive approximately the current bid price, not the midpoint you see quoted on a data aggregator.
+
+For more on this topic, see [*How Many Cryptocurrencies Exist? (And How to Think About Them)*](/blog/how-many-cryptocurrencies-exist).
 
 For major exchanges with high trading volume (Coinbase, Binance, Kraken), this spread is usually very tight — often a fraction of a percent. For smaller exchanges or during periods of market stress, spreads can widen significantly.
 
@@ -87,6 +91,8 @@ When you sell Bitcoin, you realize a capital gain or loss equal to the differenc
 The IRS has published guidance on this at their official [Virtual Currency FAQ](https://www.irs.gov/businesses/small-businesses-self-employed/virtual-currencies). This page is the authoritative reference for US taxpayers and is updated periodically.
 
 Failure to report crypto gains is not a legal gray area — the IRS explicitly requires reporting. Starting with the 2019 tax year, Form 1040 has included a direct question asking whether you received, sold, or exchanged any virtual currency during the year.
+
+For more on this topic, see [*Circulating Supply in Crypto: What It Is and Why It Changes*](/blog/what-is-circulating-supply).
 
 If you have significant Bitcoin holdings or complex transaction history, consulting a tax professional with cryptocurrency experience is worth the cost.
 

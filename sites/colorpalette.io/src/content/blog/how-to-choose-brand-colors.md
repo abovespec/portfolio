@@ -44,7 +44,11 @@ A coherent brand palette typically uses one of two underlying color relationship
 
 **Complementary accents** — a dominant color plus an accent from the opposite side of the wheel — create visual energy and hierarchy. The dominant color establishes the brand mood; the complement draws attention to the most important actions and moments. This structure works well when your brand needs to guide users toward a specific action — a sign-up, a purchase, a decision.
 
+For more on this topic, see [*What Is Color Theory? A Practical Guide for Designers and Developers*](/blog/what-is-color-theory).
+
 Most successful brand palettes don't commit entirely to either approach. They have a dominant hue, one or two supporting hues in a broadly analogous relationship, and a single accent color that provides contrast energy. The accent might come from near-complementary territory, or it might simply be a higher-saturation version of the primary.
+
+For more on this topic, see [*WCAG Color Contrast Requirements Explained: AA vs AAA*](/blog/wcag-color-contrast-requirements).
 
 ## Limit Your Palette
 
@@ -85,6 +89,8 @@ A color that looks great in a Figma mock on a well-calibrated monitor can look v
 6. **Check every combination for contrast.** Any text color against any background color it will appear on. Verify against WCAG AA at minimum.
 7. **Apply to real examples.** Mock up your homepage header, a business card, an email template, a social media post. See how it actually looks in context.
 8. **Sit with it.** Give it a day before finalizing. First impressions and settled impressions of a color palette are often different.
+
+For more on this topic, see [*How to Check Color Contrast (and Why Your Eyes Can Lie to You)*](/blog/color-contrast-checker).
 
 ## A Note on Flexibility vs Consistency
 

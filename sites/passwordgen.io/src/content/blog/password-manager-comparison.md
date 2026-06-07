@@ -22,6 +22,8 @@ With a manager:
 - You memorize one strong master password
 - Autofill works across devices and browsers
 
+For more on this topic, see [*How to Create a Strong Password: A Practical Security Guide*](/blog/how-to-create-a-strong-password).
+
 ## Bitwarden
 
 **Open source | Free tier available | Self-hostable**
@@ -34,11 +36,15 @@ Bitwarden is the most transparent option — the entire codebase is open source 
 - Master password + optional PBKDF2 / Argon2 key derivation
 - Vault can be self-hosted (Vaultwarden)
 
+For more on this topic, see [*What Makes a Good Password? Length, Entropy, and Randomness*](/blog/what-makes-a-good-password).
+
 **Pricing:**
 - Free: unlimited passwords, unlimited devices
 - Premium: $10/year — TOTP authenticator, encrypted file storage, security reports
 - Families: $40/year — 6 users
 - Teams/Enterprise: $4-6/user/month
+
+For more on this topic, see [*How Are Passwords Hashed? bcrypt, Argon2, and PBKDF2 Explained*](/blog/how-are-passwords-hashed).
 
 **Strengths:** Open source, free, cross-platform, excellent browser extensions, CLI tool, self-hosting option.
 

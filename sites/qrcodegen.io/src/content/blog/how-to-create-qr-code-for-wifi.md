@@ -14,6 +14,8 @@ A WiFi QR code lets anyone join your network by scanning with their phone camera
 
 When a smartphone camera (iOS 11+ or Android 10+) scans a WiFi QR code, the operating system automatically prompts the user to join the encoded network. No app required. The QR code contains a short text string that follows the WiFi provisioning format.
 
+For more on this topic, see [*QR Code Best Practices: Design, Size, Placement, and Testing*](/blog/qr-code-best-practices).
+
 ## The WiFi QR code format
 
 The encoded string follows this structure:
@@ -84,12 +86,16 @@ If your SSID or password contains spaces, no escaping is needed — spaces are f
 
 **Include the password as plain text too.** Older devices and some security-conscious users may prefer to type it. Place the plain text below the QR code so the printed card serves both.
 
+For more on this topic, see [*QR Code for Business Card: vCard Setup and Best Practices*](/blog/qr-code-for-business-card).
+
 ## Security considerations
 
 **Do not use a QR code for your primary network.** Create a separate guest network on your router and encode those credentials. This way:
 - Guests get internet access
 - Your main devices and NAS stay on a separate, private network
 - You can change the guest password without updating every device on your network
+
+For more on this topic, see [*How to Create a QR Code: A Complete Beginner's Guide*](/blog/how-to-create-a-qr-code).
 
 **WEP is insecure.** If your router only supports WEP, upgrade the firmware or replace the router. WEP can be cracked in minutes. Most modern routers support WPA2 or WPA3.
 

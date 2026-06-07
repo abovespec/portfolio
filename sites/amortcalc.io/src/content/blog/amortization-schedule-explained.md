@@ -25,7 +25,11 @@ sources:
 
 An amortization schedule is a complete table of every loan payment from the first month to the last. It shows how each dollar is allocated, how the balance declines, and — if you know how to read it — exactly how much of your loan you have paid off at any point in time.
 
+For more on this topic, see [*How to Read an Amortization Schedule: A Column-by-Column Guide*](/blog/how-to-read-an-amortization-schedule).
+
 Most borrowers never look at their amortization schedule. Those who do are far better positioned to make informed decisions about extra payments, refinancing, and the real cost of their loan.
+
+For more on this topic, see [*What Is Amortization? How Loan Payments Are Structured*](/blog/what-is-amortization).
 
 ## The Five Standard Columns
 
@@ -120,6 +124,8 @@ In the last year, almost every dollar is principal. The loan terminates at exact
 ### Verify Your Loan Servicer's Statements
 
 Each month your mortgage servicer sends a statement showing how your payment was applied. Cross-reference the interest and principal figures against your amortization schedule. Discrepancies could indicate calculation errors or misapplied payments.
+
+For more on this topic, see [*How Mortgage Amortization Works: Principal, Interest, and Your Monthly Payment*](/blog/how-amortization-works).
 
 The CFPB recommends borrowers review their mortgage statements regularly and contact their servicer in writing if they believe payments are not being applied correctly. ([CFPB — Mortgage Closing](https://www.consumerfinance.gov/owning-a-home/closing-disclosure/))
 

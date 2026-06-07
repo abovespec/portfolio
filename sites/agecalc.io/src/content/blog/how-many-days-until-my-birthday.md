@@ -12,6 +12,8 @@ There's something universally satisfying about a birthday countdown. Whether you
 
 Use our [age calculator](/) to find your countdown in seconds. Or read on for the math behind it and a look at the milestones worth watching for.
 
+For more on this topic, see [*How to Calculate Your Exact Age in Years, Months, and Days*](/blog/how-to-calculate-exact-age-years-months-days).
+
 ## How the Calculation Works
 
 The number of days until your next birthday is the number of calendar days between today and your upcoming birthday date.
@@ -22,6 +24,8 @@ The number of days until your next birthday is the number of calendar days betwe
 2. Count the days from today through that date.
 
 The complication: months have different lengths, so "count the days" isn't as simple as it sounds across month boundaries.
+
+For more on this topic, see [*How to Calculate Age in Years, Months, and Days*](/blog/age-in-years-months-days).
 
 **Example:**  
 Today is April 25, 2026. Your birthday is September 14.
@@ -81,5 +85,7 @@ A number of days until a birthday is most useful as a planning frame. Some ways 
 Use our [age calculator](/) — enter your birthdate and it shows you the days remaining until your next birthday, automatically updated each day. No recalculating, no month-length arithmetic.
 
 If you want to track a specific future birthday age (like "how many days until I turn 65 on June 10, 2031?"), use the date-difference feature to count from today to that exact date.
+
+For more on this topic, see [*How to Calculate Your Exact Age from Date of Birth*](/blog/how-to-calculate-age-from-date-of-birth).
 
 The number will be larger than you expect. Use it.

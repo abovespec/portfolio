@@ -14,6 +14,8 @@ UUID and GUID are both 128-bit unique identifiers with the same structure. The t
 
 **UUID** (Universally Unique Identifier) is the standard term from RFC 4122 (IETF). **GUID** (Globally Unique Identifier) is Microsoft's term for the same concept. They're the same format — 128 bits, 32 hex digits, displayed in 8-4-4-4-12 format.
 
+For more on this topic, see [*How to Generate a UUID: Online, CLI, Python, JavaScript, and SQL*](/blog/generate-uuid).
+
 ```
 550e8400-e29b-41d4-a716-446655440000
 ```
@@ -23,6 +25,8 @@ When developers say "GUID," they're usually in a .NET/Windows context. "UUID" is
 ## Where GUID comes from
 
 Microsoft adopted the UUID format from the Open Software Foundation (OSF) DCE standard in the early 1990s for COM (Component Object Model). They called it GUID. The same format was later standardized as UUID in RFC 4122 (2005).
+
+For more on this topic, see [*What Is a UUID? Format, Versions, and How They Work*](/blog/what-is-a-uuid).
 
 In .NET, you generate a GUID with:
 
@@ -44,6 +48,8 @@ guid.ToString("P");  // (550e8400-e29b-41d4-a716-446655440000)
 **Generation:** Historically, Windows GUIDs were generated using a variant of UUID v1 with a different algorithm. Modern `Guid.NewGuid()` in .NET uses UUID v4 (random).
 
 **Variant bits:** Standard RFC 4122 UUIDs have variant bits `10xx`, giving values 8, 9, a, or b for the first character of the 4th group. Old-style Microsoft GUIDs used variant bits `110x` (values c or d). You can see the difference in the 17th character:
+
+For more on this topic, see [*How to Generate UUIDs in Python, JavaScript, Go, and SQL*](/blog/how-to-generate-uuid-code).
 
 ```
 RFC 4122 UUID: 550e8400-e29b-41d4-a716-...  ← 'a' = variant 10xx

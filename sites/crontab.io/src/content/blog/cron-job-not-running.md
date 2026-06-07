@@ -31,6 +31,8 @@ sudo systemctl enable cron   # start on boot
 
 Cron logs every execution. If your job isn't even appearing in the log, the schedule or daemon is the problem.
 
+For more on this topic, see [*How to Schedule a Cron Job on Linux: Step-by-Step*](/blog/how-to-schedule-a-cron-job).
+
 ```bash
 # Ubuntu/Debian
 grep CRON /var/log/syslog | tail -30
@@ -70,6 +72,8 @@ Common mistakes:
 - Using `%` unescaped (see below)
 
 Use [crontab.io](/) to validate the expression and see the next scheduled run times.
+
+For more on this topic, see [*Linux Crontab Tutorial: From Basics to Real Automation*](/blog/linux-crontab-tutorial).
 
 ## Step 4: The PATH problem
 
@@ -224,3 +228,6 @@ crontab -e
 Wait 1 minute, then check `/tmp/cron-test-output.log`. If it exists, cron is working.
 
 Build valid cron expressions at [crontab.io](/).
+
+
+For more on this topic, see [*Crontab Syntax: A Complete Reference for Cron Expressions*](/blog/crontab-syntax).

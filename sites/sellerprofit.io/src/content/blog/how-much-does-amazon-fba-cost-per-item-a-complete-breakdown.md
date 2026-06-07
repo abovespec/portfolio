@@ -27,12 +27,16 @@ Before you send inventory to Amazon warehouses, you need a clear per-unit cost m
 - Fulfillment: $3.86
 - Net profit: ~$13.48
 
+For more on this topic, see [*How to Calculate Net Profit in Ecommerce: A Sellers Guide*](/blog/how-to-calculate-net-profit-in-ecommerce-a-sellers-guide).
+
 **Example B: $49.99 kitchen appliance**
 - COGS: $12.00
 - Inbound: $1.20
 - Referral (15%): $7.50
 - Fulfillment: $5.77
 - Net profit: ~$23.52
+
+For more on this topic, see [*Dropshipping Profit Margin Calculator: Find Your True Net Profit*](/blog/dropshipping-profit-margin-calculator-find-your-true-net-profit).
 
 ## Storage Impact on Slow Sellers
 
@@ -41,6 +45,8 @@ If your item takes six months to sell, storage adds roughly $0.30 to $1.50 per u
 ## Using Our Calculator
 
 Instead of spreadsheets, use our [FBA profit calculator](/) to model per-item costs instantly. Enter price, COGS, weight, and category. The tool breaks down every fee line by line so you know exactly what you keep after each sale.
+
+For more on this topic, see [*eBay Fee Calculator 2025: Final Value, Insertion, and Store Costs*](/blog/ebay-fee-calculator-2025-final-value-insertion-and-store-costs).
 
 ## Final Thoughts
 

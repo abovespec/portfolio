@@ -14,6 +14,8 @@ Consistent SQL style reduces review friction, speeds up debugging, and makes que
 
 Write SQL keywords in **UPPERCASE**. Write identifiers (table names, column names, aliases) in **lowercase**.
 
+For more on this topic, see [*SQL vs NoSQL: How to Choose the Right Database*](/blog/sql-vs-nosql).
+
 ```sql
 -- Correct
 SELECT
@@ -32,6 +34,8 @@ from Users u left join Orders o on u.UserId = o.UserId;
 ```
 
 The visual contrast between uppercase keywords and lowercase identifiers lets your eye scan to the structure of the query instantly.
+
+For more on this topic, see [*SQL Query Optimization: Practical Techniques That Actually Work*](/blog/sql-query-optimization).
 
 ## One clause per line
 
@@ -262,5 +266,7 @@ Comment the *why*, not the *what*. `-- filter active users` is noise; `-- exclud
 - **SQLFluff** — linter and autoformatter; enforce this guide in CI
 - **Prettier** — SQL plugin for JS/TS projects
 - **sqlformat.io** — paste a query for instant formatting
+
+For more on this topic, see [*How to Format SQL: Rules, Tools, and Style Guides*](/blog/how-to-format-sql).
 
 Format your queries at [sqlformat.io](/) before code review.

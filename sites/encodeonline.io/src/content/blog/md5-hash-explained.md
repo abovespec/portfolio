@@ -20,7 +20,11 @@ Input:  "Hello, World." (period instead of exclamation)
 MD5:    d9e7d8bdb98a89a15fac6e6de5e58a10
 ```
 
+For more on this topic, see [*URL Encoding (Percent-Encoding): The Complete Guide*](/blog/url-encoding-guide).
+
 A single character change produces a completely different hash (the **avalanche effect**). The output is always exactly 32 hex characters (128 bits), regardless of input length.
+
+For more on this topic, see [*HTML Entities: The Complete Reference for Special Characters*](/blog/html-entities-guide).
 
 ## How MD5 works (overview)
 
@@ -97,6 +101,8 @@ MD5 has two serious cryptographic weaknesses:
 **Practical consequence:** An attacker can craft a malicious file that has the same MD5 hash as a legitimate file. MD5 cannot reliably verify that a file hasn't been tampered with when the attacker controls the file content.
 
 **2. Preimage resistance is weakened:** Finding a message that hashes to a given MD5 value is harder than a collision, but MD5's margin has eroded significantly compared to modern hash functions.
+
+For more on this topic, see [*Hash Functions Explained: MD5, SHA-1, SHA-256, and Beyond*](/blog/hash-functions-explained).
 
 **Rainbow table attacks on passwords:** MD5 without salting is trivially reversed for common passwords. Tools like hashcat can crack unsalted MD5 passwords in milliseconds using precomputed rainbow tables.
 

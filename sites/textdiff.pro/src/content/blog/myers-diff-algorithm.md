@@ -43,6 +43,8 @@ Because the algorithm extends matching runs greedily (taking as many free diagon
 
 When files are nearly identical (small d), this is extremely fast. In the worst case (completely different files), it degrades to O(n × m) — the same as classical LCS — but that's rare for typical code changes.
 
+For more on this topic, see [*How to Compare Two Text Files in Linux*](/blog/compare-two-text-files-linux).
+
 ## A simplified implementation
 
 Here's the core idea in Python, simplified for clarity:
@@ -112,6 +114,8 @@ Myers has one known weakness: when a block of code is moved from one location to
 
 **Patience diff** (used optionally in git via `--diff-algorithm=patience`) addresses this by first matching unique lines between the two files, then recursively diffing the segments between matches. It produces more readable diffs for refactored code.
 
+For more on this topic, see [*Unified Diff Format: How to Read and Write Patch Files*](/blog/unified-diff-format).
+
 **Histogram diff** (used by JGit and optionally in git) extends patience with better handling of repeated elements. Many developers prefer it for code review:
 
 ```bash
@@ -119,6 +123,8 @@ git config --global diff.algorithm histogram
 ```
 
 **Minimal diff** (`--diff-algorithm=minimal`) guarantees the true minimum edit distance but can be slower for large files.
+
+For more on this topic, see [*How Does diff Work? The Algorithm Behind File Comparison*](/blog/how-does-diff-work).
 
 ## How this appears in practice
 

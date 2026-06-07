@@ -14,6 +14,8 @@ URL encoding (formally called **percent-encoding**, defined in [RFC 3986](https:
 
 URLs are ASCII text, but they can represent resources with names containing spaces, non-ASCII characters, or characters that have reserved meaning in URL syntax (like `?`, `#`, `&`).
 
+For more on this topic, see [*MD5 Hash: What It Is, How It Works, and When Not to Use It*](/blog/md5-hash-explained).
+
 ```
 # Invalid URL — space not allowed
 https://example.com/search?q=hello world
@@ -23,6 +25,8 @@ https://example.com/search?q=hello%20world
 ```
 
 Without encoding, a space in a query string would be ambiguous or invalid, and special characters like `#` would be interpreted as URL fragment separators.
+
+For more on this topic, see [*Base64 vs Hex Encoding: Which Should You Use?*](/blog/base64-vs-hex).
 
 ## Unreserved characters (never encoded)
 
@@ -185,6 +189,8 @@ Always decode before re-encoding, or check if the input is already encoded.
 **Not encoding `+` in query values:** Some decoders interpret `+` as a space (form encoding). If a value might contain `+`, encode it as `%2B`.
 
 **Encoding the whole URL with encodeURIComponent:** This breaks the structural characters (`/`, `:`, etc.) in the base URL.
+
+For more on this topic, see [*Base64 Encoding Explained: How It Works and When to Use It*](/blog/base64-encoding-explained).
 
 ## Online URL encoder
 

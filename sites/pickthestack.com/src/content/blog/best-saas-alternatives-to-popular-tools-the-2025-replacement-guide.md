@@ -22,6 +22,8 @@ Software subscriptions add up. A typical small business stack can easily exceed 
 - **Rocket.Chat** - Feature-rich, extensive integrations.
 - **Discord** - Free, but less professional for client communication.
 
+For more on this topic, see [*Open Source Calendly Alternative: Self-Hosted Scheduling in 2025*](/blog/open-source-calendly-alternative-self-hosted-scheduling-in-2025).
+
 ## Project Management: Notion & Trello Alternatives
 
 - **AppFlowy** - Open source Notion alternative.
@@ -40,6 +42,8 @@ Software subscriptions add up. A typical small business stack can easily exceed 
 - **MailerLite** - Cheaper paid plans, excellent deliverability.
 - **Listmonk** - Self-hosted, high-volume, developer-friendly.
 
+For more on this topic, see [*Best Free Scheduling Software for Small Business in 2025*](/blog/best-free-scheduling-software-for-small-business-in-2025).
+
 ## Design: Canva Alternatives
 
 - **Penpot** - Open source design and prototyping.
@@ -57,3 +61,5 @@ Switching tools costs time and retraining. The best approach is to audit your su
 4. Will your team actually adopt the new tool?
 
 Use our [scheduling software comparison](/) as a starting point for your stack audit. The right tool at the right price makes your business more profitable.
+
+For more on this topic, see [*Software Buying Guide for Startups: Build Your Stack Without Overspending*](/blog/software-buying-guide-for-startups-build-your-stack-without-overspending).

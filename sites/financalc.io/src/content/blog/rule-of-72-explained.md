@@ -53,6 +53,8 @@ The rule is remarkably accurate between roughly 2% and 15%. At higher rates the 
 
 Someone tells you their investment doubles every 5 years. What return does that imply? Flip the formula: **Rate ≈ 72 ÷ years**. So 72 ÷ 5 = 14.4%. That's a high return for any conventional investment. If someone promises a consistent 14%+ return with little risk, that's worth scrutinizing carefully.
 
+For more on this topic, see [*What Is ROI in Investing? A Plain-English Guide to Return on Investment*](/blog/what-is-roi-in-investing).
+
 ### Understanding debt cost
 
 The Rule of 72 applies to debt too. A credit card charging 24% interest will double the amount owed — if you make no payments — in 72 ÷ 24 = **3 years**. A $5,000 balance becomes $10,000 in three years purely from interest. This framing makes the cost of high-interest debt viscerally clear.
@@ -75,6 +77,8 @@ No additional contributions. Just the original $10,000 compounding. This makes t
 ## Why 72? The Math Behind the Rule
 
 The exact formula for doubling time using compound interest is:
+
+For more on this topic, see [*The Compound Interest Formula Explained: Variables, Examples, and How to Use It*](/blog/compound-interest-formula-explained).
 
 **t = ln(2) / ln(1 + r)**
 
@@ -127,3 +131,6 @@ This is why financial advisors emphasize investing in assets that outpace inflat
 The Rule of 72 gives you a powerful shortcut for thinking about compound growth without a calculator. At 6% your money doubles in 12 years. At 8% it doubles in 9. At 24% debt, what you owe doubles in 3. These numbers are easy to remember and hard to dismiss.
 
 The rule works best as a gut-check and a conversation tool. For serious planning — retirement projections, loan comparisons, investment analysis — use a [compound interest calculator](/) to model exact figures with your actual rate, time horizon, and contribution schedule. But for building quick financial intuition, the Rule of 72 is one of the best tools you have.
+
+
+For more on this topic, see [*Simple Interest vs. Compound Interest: Key Differences with Real Examples*](/blog/simple-interest-vs-compound-interest).

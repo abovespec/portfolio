@@ -27,6 +27,8 @@ sources:
 
 Most homeowners making their first few mortgage payments experience a jarring realization: after months of payments, their outstanding balance has barely moved. On a $400,000 mortgage, you might pay $2,500 a month and find your balance only dropped by $350. Where did the rest go?
 
+For more on this topic, see [*Biweekly Mortgage Payments vs Monthly: How Much Do You Really Save?*](/blog/biweekly-mortgage-payments-vs-monthly).
+
 The answer is interest — and understanding exactly why this happens, and when it changes, is one of the most important things you can learn about your mortgage.
 
 ## The Mechanism: Interest Accrues on the Outstanding Balance
@@ -127,8 +129,12 @@ In the first five years of a 30-year mortgage, you typically pay down only about
 **3. Refinancing resets the clock.**
 When you refinance, you take out a new loan. The amortization schedule starts fresh. If you are 10 years into a 30-year mortgage and refinance into a new 30-year mortgage, you begin again with front-loaded interest — which can mean paying more total interest even if your rate is lower. This trade-off must be carefully evaluated.
 
+For more on this topic, see [*Amortization Schedule Explained: What Every Row Means*](/blog/amortization-schedule-explained).
+
 **4. Understand your real paydown rate before selling.**
 If you need to know how much equity you have, look at your current outstanding balance from your amortization schedule or servicer statement — not the original loan amount minus your down payment. After 5 years of regular payments, you have repaid far less principal than most borrowers expect.
+
+For more on this topic, see [*What Is Amortization? How Loan Payments Are Structured*](/blog/what-is-amortization).
 
 ## Seeing Your Own Numbers
 

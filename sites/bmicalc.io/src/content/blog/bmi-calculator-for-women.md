@@ -23,7 +23,11 @@ sources:
 
 Body mass index (BMI) is calculated the same way for women as it is for men — using your height and weight — but its interpretation comes with important female-specific considerations. Women naturally carry higher percentages of body fat than men at the same BMI, and hormonal factors such as pregnancy, menopause, and menstrual cycle can influence both weight and body composition.
 
+For more on this topic, see [*BMI Chart for Women: Understanding Your Results by Age and Height*](/blog/bmi-chart-for-women).
+
 This guide explains how BMI works for women, what the standard ranges mean, and when you may need to look beyond the number for a fuller picture of your health.
+
+For more on this topic, see [*What Is a Healthy BMI? Ranges, Categories, and What They Mean*](/blog/what-is-a-healthy-bmi).
 
 ## How to Calculate Your BMI
 

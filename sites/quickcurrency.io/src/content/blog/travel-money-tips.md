@@ -16,13 +16,19 @@ Here are eight practical tips that travel-experienced people consistently use to
 
 This is the single highest-impact change most travelers can make. Standard credit cards often charge a foreign transaction fee of 1% to 3% on every purchase made in a foreign currency. Over a two-week trip with moderate spending, that fee compounds.
 
+For more on this topic, see [*When to Buy Foreign Currency Before a Trip*](/blog/when-to-buy-foreign-currency).
+
 Credit cards that waive the foreign transaction fee give you the Visa or Mastercard network exchange rate — which tracks very close to the mid-market rate — with no additional markup. For day-to-day purchases in shops, restaurants, and hotels, this is typically the most cost-efficient way to spend.
+
+For more on this topic, see [*Bank Exchange Rate vs Market Rate: Why They're Different*](/blog/bank-exchange-rate-vs-market-rate).
 
 Before your trip, check whether your existing card charges a foreign transaction fee (it will be listed in the card's terms and fee schedule). If it does, and you travel regularly, it may be worth opening a card specifically for travel use.
 
 ## 2. Withdraw Local Currency from ATMs at Your Destination
 
 For cash, ATMs at your destination generally offer better rates than exchanging cash before you leave. When you withdraw from an ATM abroad, the exchange happens through the card network (Visa or Mastercard) at a rate close to the interbank rate. Your home bank may charge an international ATM fee — typically $3 to $5 per withdrawal — but this is usually still better than the 5–12% markup at a currency exchange desk.
+
+For more on this topic, see [*Best Time to Exchange Currency: What Actually Matters*](/blog/best-time-to-exchange-currency).
 
 The key is to take out larger amounts less frequently rather than small amounts multiple times. Each withdrawal incurs the flat fee; spreading your ATM visits minimizes how much that fee costs relative to what you withdraw.
 

@@ -15,6 +15,8 @@ A QR code on a business card lets recipients save your contact details with a si
 **Embedded vCard (no internet required)**
 The QR code encodes your contact information directly. When scanned, the phone offers to add you to contacts immediately — even offline. Best for events, conferences, and situations where phone data is unreliable.
 
+For more on this topic, see [*QR Code Best Practices: Design, Size, Placement, and Testing*](/blog/qr-code-best-practices).
+
 **URL to an online profile**
 The QR code links to a LinkedIn profile, personal website, or digital business card service. The contact info lives online, so you can update it without reprinting cards. Requires an internet connection to scan.
 
@@ -87,6 +89,8 @@ Standard business card dimensions are 85 × 54 mm (3.5 × 2.1 in) in the US, or 
 
 This is the practical minimum at typical business card scanning distance (10–20 cm). Smaller than 15 mm (0.6 in) risks scan failures on older phones.
 
+For more on this topic, see [*QR Code Size Guide for Printing: Minimum Sizes, DPI, and Scan Distance*](/blog/qr-code-size-guide-for-printing).
+
 **Quiet zone:** Maintain at least 3–4 mm of white space around the code. No design elements should touch or overlap the code.
 
 **File format:** Always supply the QR code as SVG or high-resolution PNG (at least 600 × 600 px) to your print designer or print shop. Never use JPEG — compression artifacts corrupt the code.
@@ -120,3 +124,6 @@ Before sending cards to print, test the QR code:
 Print one test card and scan it from a physical copy, not just from your screen. Print quality and lamination can affect scan reliability.
 
 Create your business card QR code at [qrcodegen.io](/).
+
+
+For more on this topic, see [*How to Create a QR Code: A Complete Beginner's Guide*](/blog/how-to-create-a-qr-code).

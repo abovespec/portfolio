@@ -14,6 +14,8 @@ SQL and NoSQL databases solve different problems. The choice depends on your dat
 
 SQL databases (relational databases) store data in tables with rows and columns. They enforce a fixed schema and use SQL as the query language. Relationships between tables are expressed through foreign keys and enforced by the database.
 
+For more on this topic, see [*SQL EXPLAIN and Execution Plans: A Complete Guide*](/blog/explain-plan-sql).
+
 Examples: PostgreSQL, MySQL, SQLite, SQL Server, Oracle.
 
 ```sql
@@ -92,6 +94,8 @@ db.users.update_one(
 ### Query flexibility
 
 **SQL:** Ad-hoc queries across any combination of tables and columns. JOINs, aggregations, window functions, CTEs — all built in.
+
+For more on this topic, see [*SQL Joins Explained: INNER, LEFT, RIGHT, FULL, and CROSS*](/blog/sql-joins-explained).
 
 **NoSQL:** Query patterns are often determined at design time. MongoDB has an aggregation pipeline; key-value stores like Redis have almost no query capability beyond key lookup.
 
@@ -211,3 +215,6 @@ This is normal. Start with PostgreSQL. Add specialized stores only when you have
 | Don't know yet | PostgreSQL |
 
 Format your SQL queries at [sqlformat.io](/).
+
+
+For more on this topic, see [*How to Format SQL: Rules, Tools, and Style Guides*](/blog/how-to-format-sql).

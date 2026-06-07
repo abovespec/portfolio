@@ -20,6 +20,8 @@ Rental yield is the foundation of property investment returns. But "good" depend
 | Student housing | 9-12% | 14%+ |
 | Vacation rental | 10-15% | 18%+ |
 
+For more on this topic, see [*Rental Yield Calculator by Postcode: Find High-Yield Areas*](/blog/rental-yield-calculator-by-postcode-find-high-yield-areas).
+
 ## Yield Benchmarks by Location
 
 According to [Zillow Research](https://www.zillow.com/research/) and [Redfin's data center](https://www.redfin.com/news/data-center/), rental yield expectations vary significantly by region due to differences in home prices, local rent levels, and market demand.
@@ -59,6 +61,8 @@ High-yield markets often appreciate slowly. Low-yield markets may see strong pri
 
 Input your specific numbers into our [rental yield calculator](/). It handles gross yield, net yield, and monthly cash flow automatically. Adjust expense ratios to match your market.
 
+For more on this topic, see [*Fix and Flip Profit Calculator: Estimate Your Next Deal Accurately*](/blog/fix-and-flip-profit-calculator-estimate-your-next-deal-accurately).
+
 ## 2025 Market Outlook
 
 Interest rates remain elevated compared to 2021, compressing yields in leveraged purchases. All-cash buyers have an advantage. Markets with job growth and limited housing supply continue to perform well despite higher rates.
@@ -68,3 +72,5 @@ Target net yields above 4% for single-family and above 6% for multifamily. Anyth
 ---
 
 *Disclaimer: The information on this page is for general informational purposes only and does not constitute financial, investment, or real estate advice. Rental yields, cap rates, and property returns vary by location, property type, and market conditions. Past performance does not guarantee future results. Always consult a licensed real estate professional or financial advisor before making investment decisions.*
+
+For more on this topic, see [*Cap Rate Calculator by Zip Code: Measure Property Performance*](/blog/cap-rate-calculator-by-zip-code-measure-property-performance).

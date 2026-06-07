@@ -14,6 +14,8 @@ AP classes boost your weighted GPA, but they also add academic pressure. Underst
 
 All classes count equally. An A is 4.0 regardless of difficulty. Colleges use unweighted GPA to compare students across different high schools with different weighting policies.
 
+For more on this topic, see [*Cumulative GPA Calculator Guide: What It Is and How to Calculate It*](/blog/cumulative-gpa-calculator-guide).
+
 ## Weighted GPA With AP Classes
 
 AP classes typically add 1.0 to the grade point. An A in AP becomes 5.0. This rewards students who take challenging courses.
@@ -29,6 +31,8 @@ AP classes typically add 1.0 to the grade point. An A in AP becomes 5.0. This re
 
 Colleges see your school's weighting policy on your transcript, but they often recalculate using their own formula. They want to see that you challenged yourself (high weighted GPA) and performed well (solid unweighted GPA).
 
+For more on this topic, see [*How to Calculate Weighted GPA: Honors, AP, and IB Explained*](/blog/how-to-calculate-weighted-gpa-honors-ap-and-ib-explained).
+
 ## Using Our Calculator
 
 Our [GPA calculator](/) computes both simultaneously.
@@ -43,6 +47,8 @@ Our [GPA calculator](/) computes both simultaneously.
 - Unweighted GPA
 - Weighted GPA
 - Cumulative totals
+
+For more on this topic, see [*GPA Scale 4.0 Explained: Letter Grades, Plus/Minus, and Weighted vs Unweighted*](/blog/gpa-scale-4-0-explained).
 
 ## Example Student
 

@@ -12,6 +12,8 @@ The fastest way to get comfortable with Flexbox is to build real things with it.
 
 This tutorial builds three layouts you'll encounter constantly in real projects: a navigation bar, a responsive card grid, and a vertically-centered hero section. Each one introduces a few new Flexbox properties with an explanation of exactly what they're doing.
 
+For more on this topic, see [*Flexbox vs CSS Grid: When to Use Each*](/blog/flexbox-vs-grid).
+
 ## Prerequisites
 
 You need a basic HTML file. The structure we'll work with looks like this:
@@ -32,6 +34,8 @@ You need a basic HTML file. The structure we'll work with looks like this:
 ```
 
 All CSS goes in `style.css`. Paste each layout's HTML and CSS as you work through it.
+
+For more on this topic, see [*What Is CSS Flexbox? A Plain-English Introduction*](/blog/what-is-flexbox).
 
 ---
 
@@ -205,6 +209,8 @@ A row of cards where each card has an image, title, and description. Cards shoul
 `flex: 1 1 280px` on each card means: grow to fill space, shrink if needed, start with a base width of 280px. Combined with `flex-wrap: wrap` on the container, cards will sit in a row when there's room and break onto new lines when there isn't — no media queries needed for the column count.
 
 The deeper technique is the vertical Flexbox layout inside each card. By making `.card` a column-direction flex container and setting `flex: 1` on `.card__body`, the body expands to fill the available space. That forces `.card__link` to sit at the bottom of every card regardless of how much text each card contains — a common design requirement that Flexbox solves cleanly.
+
+For more on this topic, see [*The Holy Grail Layout with Flexbox (and Why It's No Longer Holy)*](/blog/holy-grail-layout-css).
 
 ---
 

@@ -23,6 +23,8 @@ sources:
 
 If your BMI is above the normal range (18.5–24.9) and you want to lower it, the goal is not just to lose weight — it is to reduce excess body fat in a way that is sustainable, healthy, and preserves lean muscle mass. Crash diets and extreme exercise programs produce short-term results that almost always reverse.
 
+For more on this topic, see [*BMI Chart for Women: Understanding Your Results by Age and Height*](/blog/bmi-chart-for-women).
+
 Here is what the science actually says about lowering your BMI safely and keeping it down.
 
 ## What "Lowering Your BMI" Really Requires
@@ -113,6 +115,8 @@ Sleep also plays a critical role. Seven to nine hours per night helps regulate g
 
 Use our [free BMI calculator](/) to track your BMI weekly. The number will fluctuate day to day from water weight, so focus on the trend over a month.
 
+For more on this topic, see [*BMI Calculator for Women: What Your Number Means and Why It Matters*](/blog/bmi-calculator-for-women).
+
 ## How Long Does It Take to Lower Your BMI?
 
 | Starting BMI | Goal BMI | Approximate Weight Loss | Typical Timeline |
@@ -129,3 +133,6 @@ Timelines are estimates based on a 0.5–1 lb per week loss rate, which the CDC 
 Lowering your BMI is achievable through moderate calorie restriction, increased protein, resistance training, and cardiovascular exercise — all done consistently. The most effective program is one you can stick with: a moderate 300–500 calorie deficit, 150+ minutes of cardio per week, 2–3 strength sessions, and 7–9 hours of sleep.
 
 Start by calculating your current BMI with our [free BMI calculator](/), then set a target for where you want to be. A loss of 1 BMI point per month is a healthy, sustainable pace.
+
+
+For more on this topic, see [*What Is a Healthy BMI? Ranges, Categories, and What They Mean*](/blog/what-is-a-healthy-bmi).

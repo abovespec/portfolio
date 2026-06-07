@@ -31,6 +31,8 @@ At a typical buffet, the server assigned to your section:
 
 They are generally not bringing you food from the kitchen or taking a food order — those are the main labor tasks at a traditional restaurant. But they're still providing real tableside service, and in most states they are paid the tipped sub-minimum wage with the expectation that tips fill the gap.
 
+For more on this topic, see [*Tipping Etiquette in the United States: A Service-by-Service Guide*](/blog/tipping-etiquette-united-states).
+
 ## How Much to Tip at a Buffet
 
 Because servers provide a subset of full-service labor, the standard tip is lower:
@@ -57,6 +59,8 @@ The basic $1–2/person is a floor, not a ceiling. Reasons to tip more:
 - **Children at the table.** Kids at buffets create extra cleanup. A larger tip acknowledges this.
 - **You had many special requests.** Extra plates, allergy questions, multiple rounds of dessert containers — all real labor.
 - **Exceptional cleanliness.** A server who proactively cleared plates after every trip and kept your table spotless did more work than average.
+
+For more on this topic, see [*How Much to Tip a Server: The Complete Guide*](/blog/how-much-to-tip-a-server).
 
 ## Premium and Upscale Buffets
 
@@ -92,3 +96,6 @@ Rather than mental math, use our [tip calculator](/) to figure out 10% of your b
 ## The Bottom Line
 
 **$1–2 per person is the standard for casual buffet dining.** Ten percent works as a percentage approach, especially when you received attentive drink service. Tip at the higher end if service was genuinely attentive, if you stayed long, or if your table required more than average cleanup. Tipping zero is poor form regardless of the self-serve format — your server was still working your table on a tipped wage.
+
+
+For more on this topic, see [*What Is the Average Tip Percentage at US Restaurants?*](/blog/average-tip-percentage).

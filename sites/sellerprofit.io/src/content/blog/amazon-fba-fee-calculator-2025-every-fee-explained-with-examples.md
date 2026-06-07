@@ -14,6 +14,8 @@ Selling on Amazon through FBA sounds simple until you see the fee breakdown. Bet
 
 **Referral fees** are category-based commissions Amazon charges on every sale. Most categories sit at 15%, but electronics drop to 8% and accessories can hit 45%. This fee applies to the total selling price including shipping — see the [Amazon referral fee schedule](https://sell.amazon.com/pricing) for current category rates.
 
+For more on this topic, see [*eBay vs Amazon: Where Should You Sell in 2025?*](/blog/ebay-vs-amazon-selling).
+
 **Fulfillment fees** cover picking, packing, shipping, and customer service. These depend on your product's size tier and weight. A small standard non-apparel item under 12 oz costs around $3.22 to fulfill, while large oversize items can exceed $90 — consult the [FBA fee schedule](https://sell.amazon.com/fulfillment-by-amazon/fees) for the latest size-tier rates.
 
 ## Hidden Fees That Eat Margin
@@ -24,6 +26,8 @@ Monthly inventory storage runs $0.87 per cubic foot January through September, t
 
 Our [Amazon FBA fee calculator](/) lets you input product price, cost of goods, shipping to Amazon, weight, and category. It instantly shows referral fee, estimated fulfillment fee, and net profit per unit. Adjust your monthly units sold to see projected monthly profit.
 
+For more on this topic, see [*How Much Does Amazon FBA Cost Per Item? A Complete Breakdown*](/blog/how-much-does-amazon-fba-cost-per-item-a-complete-breakdown).
+
 **Example:** A $29.99 kitchen gadget in a 15% category, weighing 1.2 lb, with $8 COGS and $1.50 inbound shipping nets roughly $12.13 per unit after all FBA fees.
 
 ## Tips to Reduce FBA Costs
@@ -32,6 +36,8 @@ Our [Amazon FBA fee calculator](/) lets you input product price, cost of goods, 
 - Ship inventory in steady cadences to reduce storage spikes.
 - Remove slow sellers before the 365-day aged inventory threshold.
 - Bundle small items to spread fulfillment costs across multiple units.
+
+For more on this topic, see [*How to Calculate Net Profit in Ecommerce: A Sellers Guide*](/blog/how-to-calculate-net-profit-in-ecommerce-a-sellers-guide).
 
 ## Bottom Line
 

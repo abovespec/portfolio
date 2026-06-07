@@ -23,10 +23,14 @@ Counting macros (protein, carbohydrates, and fat) is more flexible than counting
 - Carbs: 30-40%
 - Fat: 25-35%
 
+For more on this topic, see [*Meal Plan Generator for Weight Loss: Create a Calorie Deficit Menu*](/blog/meal-plan-generator-for-weight-loss-create-a-calorie-deficit-menu).
+
 **For muscle gain (slight surplus):**
 - Protein: 25-30%
 - Carbs: 40-50%
 - Fat: 20-30%
+
+For more on this topic, see [*Nutrition Calculator by Ingredient: Build Recipes with Confidence*](/blog/nutrition-calculator-by-ingredient-build-recipes-with-confidence).
 
 **For maintenance:**
 - Protein: 25-30%
@@ -77,6 +81,8 @@ Macro planning allows flexibility. If you want pizza, fit it into your macros by
 - Log meals before you eat them
 - Pre-plan your day in the morning
 - Do not stress about hitting exact grams. Within 5-10g is fine.
+
+For more on this topic, see [*Food Substitution Chart for Baking: Swaps That Actually Work*](/blog/food-substitution-chart-for-baking-swaps-that-actually-work).
 
 ## The Bottom Line
 

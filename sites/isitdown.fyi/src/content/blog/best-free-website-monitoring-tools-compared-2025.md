@@ -95,6 +95,10 @@ For a typical website:
 3. **SSL Labs** quarterly for certificates
 4. **Our status checker** for manual diagnostics
 
+For more on this topic, see [*Free Website Downtime Checker: Monitor Uptime Without Paying*](/blog/free-website-downtime-checker-monitor-uptime-without-paying).
+
+For more on this topic, see [*How to Check If a Website Is Down: 5 Methods That Work*](/blog/how-to-check-if-a-website-is-down-5-methods-that-work).
+
 This combination costs nothing and catches most issues.
 
 ## When to Upgrade
@@ -109,3 +113,5 @@ Consider paid monitoring when:
 ## The Bottom Line
 
 Free monitoring is surprisingly capable. Start with the tools above. Upgrade only when your requirements genuinely exceed their limits. Use our [status checker](/) as your first line of defense.
+
+For more on this topic, see [*Website Status Page Best Practices: Build Trust During Outages*](/blog/website-status-page-best-practices-build-trust-during-outages).

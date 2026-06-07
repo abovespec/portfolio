@@ -23,6 +23,8 @@ sources:
 
 When you take out a 30-year mortgage, you make 12 payments a year — one per month — for a total of 360 payments. A biweekly payment plan sounds similar, but the math works out differently: you make a payment every two weeks instead of every month. The result is **26 half-payments per year**, which equals **13 full monthly payments** rather than 12.
 
+For more on this topic, see [*15-Year vs. 30-Year Mortgage: Amortization Differences and Trade-offs*](/blog/15-year-vs-30-year-mortgage).
+
 That one extra payment per year, applied entirely to principal, is enough to cut several years off a typical mortgage and save tens of thousands of dollars in interest.
 
 ## Why Biweekly Produces an Extra Payment
@@ -32,6 +34,8 @@ There are 52 weeks in a year. Divide by two and you get 26 biweekly periods. Eac
 > 26 half-payments = 13 full monthly payments
 
 Since your loan is structured around 12 monthly payments, that 13th payment is pure bonus — it goes directly to principal every year. No negotiation required, no lump sum needed; the extra payment emerges automatically from the calendar math.
+
+For more on this topic, see [*How Extra Mortgage Payments Reduce Your Loan: The Math Explained*](/blog/extra-mortgage-payments).
 
 ## The Numbers: A $350,000 Loan at 6.5%
 
@@ -101,6 +105,8 @@ Biweekly is not always the right choice:
 - **If you have high-interest debt**, such as credit card balances, the extra mortgage principal payment may produce less financial benefit than eliminating that debt first.
 - **If your emergency fund is thin**, locking in higher effective monthly payments reduces liquidity. Some financial planners suggest fully funding an emergency reserve before accelerating mortgage payoff.
 - **If you plan to move or refinance within a few years**, the savings from accelerated payoff may not materialize.
+
+For more on this topic, see [*How Mortgage Amortization Works: Principal, Interest, and Your Monthly Payment*](/blog/how-amortization-works).
 
 ## Calculating Your Own Savings
 

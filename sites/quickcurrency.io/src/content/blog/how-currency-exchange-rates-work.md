@@ -31,6 +31,8 @@ Countries do not all manage their currencies the same way. There are three broad
 
 Most major currencies — the US dollar, euro, British pound, Japanese yen — operate under a floating (or "free-floating") system. Their rates are determined by supply and demand in the global foreign exchange market, which the Bank for International Settlements (BIS) estimates trades over $7 trillion per day. No single authority sets the rate; it emerges from millions of transactions.
 
+For more on this topic, see [*Bank Exchange Rate vs Market Rate: Why They're Different*](/blog/bank-exchange-rate-vs-market-rate).
+
 ### Fixed (Pegged) Exchange Rates
 
 Some countries peg their currency to another, usually the US dollar or a basket of currencies. The Emirati dirham, for example, has been pegged to the US dollar since 1997 at approximately 3.67 AED per USD. The central bank maintains this rate by buying or selling its own currency and foreign reserves as needed.
@@ -58,6 +60,8 @@ If one country has higher inflation than another, its currency tends to weaken o
 ### Interest Rates
 
 Interest rates are one of the most powerful short-term drivers. When a central bank raises rates, it offers higher returns on deposits and bonds denominated in that currency. Global investors move capital toward higher-yielding currencies, increasing demand and pushing the exchange rate up. This is why Federal Reserve rate decisions and ECB rate decisions move the EUR/USD pair immediately.
+
+For more on this topic, see [*What Affects Currency Exchange Rates? 6 Key Factors*](/blog/what-affects-currency-exchange-rates).
 
 ### Market Sentiment
 
@@ -90,6 +94,8 @@ When you see a quoted exchange rate on a general news site or financial app, you
 Exchange rates are the result of a continuous, global auction. Supply and demand interact in real time, shaped by trade, investment, inflation, interest rate differentials, geopolitical events, and the expectations of millions of market participants. Central banks like the Federal Reserve and the ECB play an important role — not by dictating rates, but by setting the conditions that influence where rates move.
 
 When you use a currency converter, the rate you see reflects the mid-market rate at that moment. The rate you actually transact at will depend on where you exchange — and that difference, the spread plus any fees, is worth understanding before you hand over your money.
+
+For more on this topic, see [*What Is the Mid-Market Rate? Definition, Spread, and Why It Matters*](/blog/what-is-the-mid-market-rate).
 
 ---
 

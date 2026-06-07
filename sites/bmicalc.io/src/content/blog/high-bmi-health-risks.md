@@ -27,6 +27,8 @@ sources:
 
 A large and consistent body of epidemiological research links elevated BMI — particularly BMI at or above 30 — to higher rates of a range of chronic conditions. This is not a statement about any individual: a BMI over 30 does not guarantee disease, and a normal BMI does not guarantee health. But the associations are robust enough that major health organisations including the CDC, NIH, and WHO treat elevated BMI as an independent risk marker for preventive care.
 
+For more on this topic, see [*The Limitations of BMI: What It Doesn't Measure and When It Misleads*](/blog/limitations-of-bmi).
+
 ## How Elevated BMI Is Defined
 
 The standard obesity threshold is BMI ≥ 30, with three severity classes:
@@ -93,6 +95,8 @@ Three key points temper these risk associations:
 
 1. **Association is not certainty.** These are population-level probabilities. Many people with obesity live long, healthy lives; many people with normal BMI develop these conditions. Individual risk depends on genetics, diet quality, physical activity, sleep, and other factors.
 
+For more on this topic, see [*What Is a Healthy BMI? Ranges, Categories, and What They Mean*](/blog/what-is-a-healthy-bmi).
+
 2. **Physical fitness modifies risk substantially.** Several large studies have found that cardiometabolic fitness — measured by a treadmill test or VO₂ max — is as important a predictor of mortality as BMI. A "fit and overweight" person may have a better cardiovascular prognosis than an "unfit and normal weight" person. ([Blair SN et al., 1989, JAMA](https://doi.org/10.1001/jama.1989.03430020098038))
 
 3. **BMI is a proxy.** The risks described above are primarily driven by excess body fat, particularly visceral fat. BMI is a proxy for fat mass, and an imperfect one. Someone with high muscle mass and a BMI of 28 does not carry the same risks as someone with high fat mass and the same BMI.
@@ -109,6 +113,8 @@ The interventions with the strongest evidence for reducing obesity-related healt
 - **In some cases, medication or bariatric surgery** — for Class III obesity or Class II obesity with complications, evidence-based medical interventions significantly reduce risk
 
 Use our [BMI calculator](/) to find your current BMI, and bring the number — along with your waist measurement — to your next clinical visit.
+
+For more on this topic, see [*BMI Calculator for Women: What Your Number Means and Why It Matters*](/blog/bmi-calculator-for-women).
 
 ---
 

@@ -43,6 +43,8 @@ According to [Lonely Planet's Europe rail travel guidance](https://www.lonelypla
 - Taking long-distance trains regularly
 - Preferring comfort over budget airlines
 
+For more on this topic, see [*Travel Budget Calculator by Destination: Estimate Any Trip*](/blog/travel-budget-calculator-by-destination-estimate-any-trip).
+
 ## When Point-to-Point Wins
 
 - Visiting 2-3 countries with few train trips
@@ -63,6 +65,8 @@ Our [trip cost calculator](/) includes a rail pass mode. Enter your European cit
 - Individual ticket prices
 - Budget flight alternatives
 - Total travel time for each option
+
+For more on this topic, see [*How Much Does a Trip to Japan Cost? 2025 Budget Breakdown*](/blog/how-much-does-a-trip-to-japan-cost-2025-budget-breakdown).
 
 ## Example Itinerary: Paris-Amsterdam-Berlin-Prague-Vienna
 
@@ -87,6 +91,8 @@ If booked last-minute, individual tickets jump to $550. Then Eurail saves $140.
 ## The Bottom Line
 
 Eurail is a convenience product, not always a money-saver. Use our calculator with your actual itinerary to find the cheapest and most comfortable option for your trip.
+
+For more on this topic, see [*Japan Trip Budget Calculator 2025: Plan Your Perfect Visit*](/blog/japan-trip-budget-calculator-2025-plan-your-perfect-visit).
 
 ---
 

@@ -20,6 +20,8 @@ Weeks are calculated from the total number of days lived, divided by 7.
 
 Count calendar days from your date of birth to today. For the born-on date itself, the count starts at 0 (the day you were born is day 0; the next day is day 1).
 
+For more on this topic, see [*How to Calculate Your Exact Age from Date of Birth*](/blog/how-to-calculate-age-from-date-of-birth).
+
 **Step 2: Divide by 7.**
 
 Total weeks = total days ÷ 7 (drop the remainder for complete weeks)
@@ -34,6 +36,8 @@ Days from September 14, 1992 to May 22, 2026:
 - September 14, 2025 to May 22, 2026 = 249 days
 - **Total: 12,302 days**
 
+For more on this topic, see [*How to Calculate Age in Years, Months, and Days*](/blog/age-in-years-months-days).
+
 12,302 ÷ 7 = **1,757 complete weeks** (remainder 3 days)
 
 For precise calculation without doing this arithmetic manually, use the [age calculator](/).
@@ -46,6 +50,8 @@ Some week counts carry a particular weight:
 - **2,000 weeks** — roughly 38 years, 5 months. A mid-life marker that can prompt useful reflection.
 - **3,000 weeks** — roughly 57 years, 8 months. Many people find this more visceral than turning 60.
 - **4,000 weeks** — roughly 76 years, 11 months. The title of Oliver Burkeman's book on time, chosen because it represents a typical human lifespan.
+
+For more on this topic, see [*How Old Am I in Months? Converting Your Age to Months*](/blog/how-old-am-i-in-months).
 
 That 4,000-week figure—about 77 years—is approximately the life expectancy in many developed countries. Thinking of life as 4,000 weeks rather than 77 years makes the finiteness more immediate. Burkeman's point was that recognizing this isn't morbid; it helps prioritize.
 

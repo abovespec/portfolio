@@ -16,7 +16,11 @@ The idea of adjusting clocks to make better use of daylight has been attributed 
 
 The first practical implementation of daylight saving time came during World War I. Germany and its allies moved clocks forward in April 1916 to reduce coal consumption by shortening the period of evening artificial lighting. Britain followed weeks later. The wartime practice spread across several countries, then was largely abandoned when the war ended.
 
+For more on this topic, see [*How to Schedule Meetings Across Time Zones Without the Confusion*](/blog/how-to-schedule-meetings-across-time-zones).
+
 A second wave came during World War II, again for energy conservation reasons. After the war, practices diverged wildly — in the US, states and even cities could individually choose whether to observe DST and when to switch, creating a patchwork of local times that made interstate scheduling chaotic. The US Uniform Time Act of 1966 standardized the transition dates nationally, though it still allowed states to opt out entirely.
+
+For more on this topic, see [*US Time Zones Explained: All 6 and What States They Cover*](/blog/us-time-zones).
 
 ## How It Works: Spring Forward, Fall Back
 
@@ -49,6 +53,8 @@ The original justification for DST — energy savings — has been scrutinized m
 Health researchers have also documented that the spring transition in particular is associated with short-term increases in heart attacks, traffic accidents, and workplace injuries in the days after the clock change — effects attributed to disrupted sleep.
 
 The argument for keeping DST often comes down to evening recreation: longer daylit evenings in summer are genuinely valued by many people, particularly in higher latitudes where the difference in daylight hours between seasons is more dramatic. This doesn't require clock changes, though — it could be achieved just as well by permanently adopting summer time (i.e., year-round UTC-4 for Eastern states rather than switching between UTC-5 and UTC-4).
+
+For more on this topic, see [*EST vs EDT: What's the Difference and When Does Each Apply?*](/blog/est-vs-edt).
 
 ## The Software Engineering Nightmare
 

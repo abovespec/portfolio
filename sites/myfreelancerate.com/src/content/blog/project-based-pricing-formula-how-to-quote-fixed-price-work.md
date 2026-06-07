@@ -14,6 +14,8 @@ Project-based pricing gives clients cost certainty and gives you profit upside i
 
 **Project Price = (Estimated Hours x Hourly Rate x Buffer) + Material Costs + Contingency**
 
+For more on this topic, see [*Value-Based Pricing for Freelancers: Charge for Outcomes, Not Hours*](/blog/value-based-pricing-for-freelancers-charge-for-outcomes-not-hours).
+
 ### Estimated Hours
 
 Break the project into tasks. Estimate each task separately. Add them up. Then add 20% because humans underestimate complexity.
@@ -21,6 +23,8 @@ Break the project into tasks. Estimate each task separately. Add them up. Then a
 ### Hourly Rate
 
 Use your calculated minimum rate or your standard rate, whichever is higher. Do not discount for fixed-price work. You are taking on risk; the price should reflect that. [PayScale](https://www.payscale.com/) and [Glassdoor](https://www.glassdoor.com/Salaries/index.htm) provide market benchmarks you can use to validate your rate against industry norms.
+
+For more on this topic, see [*Freelance Hourly Rate Calculator by Industry: What to Charge in 2025*](/blog/freelance-hourly-rate-calculator-by-industry-what-to-charge-in-2025).
 
 ### Buffer
 
@@ -72,6 +76,8 @@ Avoid fixed-price work when:
 In these cases, hourly or weekly billing reduces your risk.
 
 Project pricing rewards efficiency. Use our calculator, define scope clearly, and build in buffers. Done right, fixed-price projects are your most profitable work.
+
+For more on this topic, see [*How Much Should I Charge as a Freelancer? A Pricing Framework*](/blog/how-much-should-i-charge-as-a-freelancer-a-pricing-framework).
 
 ---
 

@@ -36,10 +36,14 @@ Before:
 }
 ```
 
+For more on this topic, see [*How to Remove Unused CSS: PurgeCSS, UnCSS, and Tree-Shaking*](/blog/remove-unused-css).
+
 After:
 ```css
 .button{display:inline-block;padding:12px 24px;background-color:#06f;color:#fff;border-radius:4px;font-size:16px;font-weight:600;cursor:pointer}
 ```
+
+For more on this topic, see [*CSS File Too Large? How to Diagnose and Fix It*](/blog/css-file-size-too-large).
 
 ## Method 1: Online minifier
 
@@ -74,6 +78,8 @@ npx postcss styles.css --output styles.min.css
 ## Method 3: Webpack (MiniCssExtractPlugin + CssMinimizerPlugin)
 
 For webpack projects, add the CSS minimizer plugin:
+
+For more on this topic, see [*Minify CSS in webpack, Vite, and Rollup*](/blog/minify-css-webpack).
 
 ```bash
 npm install --save-dev css-minimizer-webpack-plugin mini-css-extract-plugin

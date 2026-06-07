@@ -23,7 +23,11 @@ sources:
 
 If you tip as generously abroad as you do in the United States, you may insult your waiter. If you follow Japanese etiquette in Mexico City, you'll leave your server short. Tipping customs are deeply cultural — what is polite in one country is rude or confusing in another.
 
+For more on this topic, see [*Tipping Etiquette in the United States: A Service-by-Service Guide*](/blog/tipping-etiquette-united-states).
+
 This guide covers 20+ countries with clear guidance on whether to tip, how much, and any local nuances to know. When you return home, use our [tip calculator](/) for US restaurant tipping.
+
+For more on this topic, see [*How Much to Tip a Server: The Complete Guide*](/blog/how-much-to-tip-a-server).
 
 ---
 
@@ -61,6 +65,8 @@ Most countries fall into one of four buckets:
 | **Spain** | Round up; 5–10% appreciated | Tipping is less ingrained than in Northern Europe; a few coins to 5% is typical |
 | **Netherlands** | Round up; 5–10% | Not as ingrained as the UK; rounding up is appreciated |
 | **Switzerland** | Service charge usually included; leave 5% if exceptional | Swiss service staff earn high wages; tips are genuinely optional |
+
+For more on this topic, see [*What Is the Average Tip Percentage at US Restaurants?*](/blog/average-tip-percentage).
 
 ---
 

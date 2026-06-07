@@ -25,6 +25,8 @@ High rent prices in coastal cities push renters to explore more affordable marke
 | Indianapolis, IN | $1,100 | $61,000 | 21.6% |
 | Kansas City, MO | $1,100 | $63,000 | 20.9% |
 
+For more on this topic, see [*Salary Comparison by City: What Your Pay Is Really Worth*](/blog/salary-comparison-by-city-what-your-pay-is-really-worth).
+
 ## Why These Cities Are Cheap
 
 - **Midwest and South:** Lower land costs, less restrictive zoning
@@ -58,6 +60,8 @@ Trade-offs exist. Lower rent often means car-dependent living and fewer amenitie
 
 Remote workers earning coastal salaries in these cities enjoy exceptional purchasing power. A $90,000 remote salary in Wichita (rent $850) leaves enormous disposable income. The [MIT Living Wage calculator](https://livingwage.mit.edu/) can confirm what a genuinely livable income looks like in each of these markets.
 
+For more on this topic, see [*How Much Rent Can I Afford? Calculator and Rule of Thumb*](/blog/how-much-rent-can-i-afford-calculator-and-rule-of-thumb).
+
 ## Up-and-Coming Affordable Cities
 
 These cities remain affordable but are growing:
@@ -77,3 +81,5 @@ You do not need to pay $3,000 for a one-bedroom. Excellent cities offer rents un
 ---
 
 *Disclaimer: The information on this page is for general informational purposes only and does not constitute financial or real estate advice. Rent prices, cost of living data, and salary comparisons change frequently and vary by neighborhood and individual circumstances. Consult a financial advisor or housing counselor for advice specific to your situation.*
+
+For more on this topic, see [*Cost of Living Comparison by City: Salary vs Expenses*](/blog/cost-of-living-comparison-by-city-salary-vs-expenses).

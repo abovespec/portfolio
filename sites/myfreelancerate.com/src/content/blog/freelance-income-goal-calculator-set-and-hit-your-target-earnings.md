@@ -39,6 +39,8 @@ This falls short of the $115,714 target. Solutions:
 
 Our [freelance rate calculator](/) connects these variables. Input your income goal, desired hours, and expenses. It tells you exactly what rate to charge.
 
+For more on this topic, see [*How Much Should I Charge as a Freelancer? A Pricing Framework*](/blog/how-much-should-i-charge-as-a-freelancer-a-pricing-framework).
+
 ## The Reality of Billable Hours
 
 Most freelancers can only bill 50-60% of their working hours, a pattern consistent with findings from the [Freelancers Union](https://www.freelancersunion.org/). The rest goes to:
@@ -49,6 +51,8 @@ Most freelancers can only bill 50-60% of their working hours, a pattern consiste
 - Invoicing and accounting
 
 If you work 40 hours weekly, expect 20-24 billable hours. Plan accordingly.
+
+For more on this topic, see [*Project-Based Pricing Formula: How to Quote Fixed-Price Work*](/blog/project-based-pricing-formula-how-to-quote-fixed-price-work).
 
 ## Building a Buffer
 
@@ -74,3 +78,5 @@ Use our calculator to set your goal now. Then work backward to the daily actions
 ---
 
 *Disclaimer: The information on this page is for general informational purposes only and does not constitute financial, tax, or legal advice. Freelance rates vary significantly by industry, experience, and geography. Consult a qualified financial advisor or accountant for advice tailored to your situation.*
+
+For more on this topic, see [*How to Negotiate Freelance Rates Without Losing the Client*](/blog/how-to-negotiate-freelance-rates-without-losing-the-client).

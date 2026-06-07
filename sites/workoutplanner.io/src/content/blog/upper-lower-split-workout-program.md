@@ -28,6 +28,8 @@ This hits each muscle twice per week. Research consistently shows that training 
 
 This split works well across a wide range of experience levels:
 
+For more on this topic, see [*Workout Split for Busy Professionals: Minimal Time, Maximum Results*](/blog/workout-split-for-busy-professionals-minimal-time-maximum-results).
+
 **Late beginners** who have 3–6 months of full body training and want more volume without jumping to a 5 or 6 day program.
 
 **Intermediates** who want reliable strength and size gains without the recovery demands of a 5-day split.
@@ -85,6 +87,8 @@ On your A days (strength focus), aim to add weight to the main compound lifts ev
 
 On your B days (hypertrophy focus), progress by adding reps first. Work through the full rep range, then add weight.
 
+For more on this topic, see [*Beginner Workout Plan for the Gym: Your First Month, Mapped Out*](/blog/beginner-workout-plan-for-the-gym).
+
 Log every session using our [workout planner](/) so you always know the exact weights and reps from your last session.
 
 ## Rest and Recovery
@@ -94,6 +98,8 @@ With four days of training, recovery is rarely a problem for most people. Focus 
 - **Sleep:** 7–9 hours. Growth hormone release peaks during deep sleep.
 - **Protein:** 0.8–1 gram per pound of body weight per day.
 - **Active rest:** Light walking on off days accelerates recovery without adding stress.
+
+For more on this topic, see [*Progressive Overload Calculator: Track Weight Increases Over Time*](/blog/progressive-overload-calculator-track-weight-increases-over-time).
 
 If you find the lower body days particularly draining, space them out. Training Monday, Tuesday, Thursday, Friday means back-to-back days. If recovery suffers, shift to Monday/Wednesday for upper and Tuesday/Friday for lower.
 

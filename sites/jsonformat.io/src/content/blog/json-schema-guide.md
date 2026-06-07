@@ -14,6 +14,8 @@ The current stable specification is **Draft 2020-12**, though Draft 7 is still w
 
 Every JSON Schema document is a JSON object. The simplest valid schema accepts any value:
 
+For more on this topic, see [*Unexpected Token in JSON: What It Means and How to Fix It*](/blog/unexpected-token-json-error).
+
 ```json
 {}
 ```
@@ -172,6 +174,10 @@ Use `$defs` to define reusable sub-schemas, and `$ref` to reference them:
 - **Java** — `everit-org/json-schema`
 - **VS Code** — built-in JSON schema support for `settings.json`, `tsconfig.json`, and any file you associate via `json.schemas`
 - **Postman / Insomnia** — can validate API responses against a JSON Schema
+
+For more on this topic, see [*How to Format JSON in VS Code: Shortcuts, Settings, and Extensions*](/blog/format-json-vscode).
+
+For more on this topic, see [*What Is JSON? A Plain-English Introduction*](/blog/what-is-json).
 
 ## Generating schemas from data
 

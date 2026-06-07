@@ -25,6 +25,8 @@ sources:
 
 Every month, millions of American homeowners make a mortgage payment — but most cannot tell you exactly what happens to that money. How much goes to interest? How much pays down principal? Why does the balance seem to barely move in the first few years?
 
+For more on this topic, see [*Interest vs. Principal: Why You Pay So Much Interest at the Start of a Mortgage*](/blog/interest-vs-principal).
+
 The answers lie in amortization, and understanding the mechanics can change how you think about your mortgage, extra payments, and the true cost of borrowing.
 
 ## What Is Happening Inside Each Payment
@@ -118,11 +120,15 @@ The compounding logic works in reverse against you when you owe money: high bala
 
 Use our [amortization calculator](/) to see exactly how extra payments affect your specific loan — including total interest saved and months removed from your term.
 
+For more on this topic, see [*What Is Amortization? How Loan Payments Are Structured*](/blog/what-is-amortization).
+
 ## The CFPB's Perspective on Mortgage Payment Structures
 
 The Consumer Financial Protection Bureau recommends that borrowers understand how their monthly payment breaks down between principal and interest before taking on a mortgage. For fixed-rate mortgages, the CFPB notes that the monthly payment remains constant throughout the loan term, but the proportion allocated to interest decreases each month. ([CFPB — How does a fixed-rate mortgage loan work?](https://www.consumerfinance.gov/ask-cfpb/how-does-a-fixed-rate-mortgage-loan-work-en-99/))
 
 For adjustable-rate mortgages (ARMs), the monthly payment itself can change when the rate adjusts, which also recalculates the amortization schedule for the remaining term.
+
+For more on this topic, see [*How to Read an Amortization Schedule: A Column-by-Column Guide*](/blog/how-to-read-an-amortization-schedule).
 
 ## Interest-Only Periods and Their Consequences
 

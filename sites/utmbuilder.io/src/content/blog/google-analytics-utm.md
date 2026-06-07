@@ -23,7 +23,11 @@ When a visitor lands on a page with UTM parameters in the URL, the GA4 tag reads
 | utm_term | Session term |
 | utm_id | Campaign ID |
 
+For more on this topic, see [*utm_source, utm_medium, utm_campaign: A Complete Guide*](/blog/utm-source-medium-campaign).
+
 GA4 stores these on the **session** level. The first UTM-tagged hit in a session sets the session's source/medium/campaign — subsequent pageviews in the same session don't override it.
+
+For more on this topic, see [*UTM Parameters Explained: Source, Medium, Campaign, Content, Term*](/blog/utm-parameters).
 
 ## Auto-tagging vs. manual UTM tagging
 
@@ -113,6 +117,8 @@ This affects how your UTM campaign data appears in reports. A campaign that assi
 - The page load fires before the UTM is processed (rare)
 - The landing page redirects and strips the UTM
 - The GA4 tag only fires on some pages
+
+For more on this topic, see [*UTM Tracking: How to Set Up and Measure Marketing Campaigns*](/blog/utm-tracking).
 
 **"(direct) / (none)" instead of UTM values:**
 - The link doesn't have UTMs

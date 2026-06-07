@@ -14,6 +14,8 @@ Hourly billing penalizes efficiency. The faster you work, the less you earn. Val
 
 Value-based pricing means setting your fee as a percentage of the value you create for the client. Instead of "I charge $100 per hour," you say "My fee is based on the revenue impact of this project." According to [Upwork's freelancer research](https://www.upwork.com/research/), top-earning independent professionals are significantly more likely to price based on project outcomes than on time alone.
 
+For more on this topic, see [*Freelance Income Goal Calculator: Set and Hit Your Target Earnings*](/blog/freelance-income-goal-calculator-set-and-hit-your-target-earnings).
+
 ## When Value Pricing Works
 
 Value pricing works best when:
@@ -21,6 +23,8 @@ Value pricing works best when:
 - You have a track record of delivering results
 - The project has clear business impact
 - The client cares more about outcomes than process
+
+For more on this topic, see [*How Much Should I Charge as a Freelancer? A Pricing Framework*](/blog/how-much-should-i-charge-as-a-freelancer-a-pricing-framework).
 
 It does not work well for maintenance, support, or creative work where outcomes are subjective.
 
@@ -68,3 +72,5 @@ Our worksheet gives you the framework. Your results give you the confidence.
 ---
 
 *Disclaimer: The information on this page is for general informational purposes only and does not constitute financial, tax, or legal advice. Freelance rates vary significantly by industry, experience, and geography. Consult a qualified financial advisor or accountant for advice tailored to your situation.*
+
+For more on this topic, see [*Freelance Hourly Rate Calculator by Industry: What to Charge in 2025*](/blog/freelance-hourly-rate-calculator-by-industry-what-to-charge-in-2025).

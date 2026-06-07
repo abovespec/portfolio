@@ -14,6 +14,8 @@ You landed a client, finished the work, and now you need an invoice. The last th
 
 Privacy, speed, and simplicity. When you use a tool without an account, your client data never sits on someone else's server. You enter details, generate the invoice, and print or save as PDF. No data retention, no marketing emails, no upsell prompts.
 
+For more on this topic, see [*How to Write an Invoice for Freelance Work: A Step-by-Step Guide*](/blog/how-to-write-an-invoice-for-freelance-work-a-step-by-step-guide).
+
 ## What a Good Invoice Needs
 
 Every professional invoice contains:
@@ -24,6 +26,8 @@ Every professional invoice contains:
 - Line items with descriptions, quantities, and rates
 - Subtotal, tax, and total
 - Payment terms and methods
+
+For more on this topic, see [*Invoice Template for Small Business: Free and Professional*](/blog/invoice-template-for-small-business-free-and-professional).
 
 Missing any of these invites payment delays and disputes.
 
@@ -55,6 +59,8 @@ A simple generator works for freelancers with occasional invoices. Consider dedi
 - Send invoices within 48 hours of project completion.
 
 According to [Intuit's invoicing guide](https://quickbooks.intuit.com/r/invoicing/), consistent invoicing habits — including prompt delivery and clear payment instructions — are among the most effective ways to reduce average days to payment. The [U.S. Small Business Administration](https://www.sba.gov/) also recommends establishing clear billing procedures from day one to support healthy cash flow.
+
+For more on this topic, see [*How to Start Invoicing as a Freelancer: From First Client to Payment*](/blog/how-to-start-invoicing-as-a-freelancer-from-first-client-to-payment).
 
 Use our generator for your next invoice and skip the account creation hassle entirely.
 

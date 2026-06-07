@@ -26,6 +26,8 @@ JWT and sessions both authenticate users, but they store state in different plac
 4. Server verifies the JWT's signature and reads claims from the token
 5. No server-side storage; all state is in the token
 
+For more on this topic, see [*JWT Claims Explained: iss, sub, aud, exp, iat, nbf, and jti*](/blog/jwt-claims-explained).
+
 ## Comparison
 
 | Property | Sessions | JWT |
@@ -39,6 +41,8 @@ JWT and sessions both authenticate users, but they store state in different plac
 | Logout | Immediate (delete session) | Delayed (until token expires) |
 | Security (XSS) | Cookie is HttpOnly — safe from JS | Token in localStorage is accessible to JS |
 | Security (CSRF) | Cookie needs CSRF protection | Bearer header — no CSRF risk |
+
+For more on this topic, see [*How JWT Authentication Works: The Complete Flow*](/blog/how-jwt-authentication-works).
 
 ## When sessions win
 
@@ -88,6 +92,8 @@ The refresh token is stored in an HttpOnly cookie and is validated against the d
 - **API for mobile/external clients:** JWT with short access tokens and refresh token rotation.
 - **Microservices:** JWT with RS256 so services verify without calling the auth service.
 - **Need immediate revocation:** Sessions, or JWT + refresh token blocklist.
+
+For more on this topic, see [*What Is a JWT Token? JSON Web Tokens Explained*](/blog/what-is-a-jwt-token).
 
 ## Inspect JWTs
 

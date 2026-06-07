@@ -18,6 +18,8 @@ Reading time = Word count ÷ Average reading speed (WPM)
 
 **Average adult reading speed: 200–250 words per minute** for general online content.
 
+For more on this topic, see [*Average Words Per Page: Every Format Explained*](/blog/average-words-per-page).
+
 Medium uses 265 WPM. Most content tools use 200–250 WPM. Some research-backed estimates put typical adult silent reading at 200–400 WPM depending on reading difficulty and content type.
 
 | Word count | Reading time (at 230 WPM) |
@@ -29,6 +31,8 @@ Medium uses 265 WPM. Most content tools use 200–250 WPM. Some research-backed 
 | 2,000 | ~9 min |
 | 3,000 | ~13 min |
 | 5,000 | ~22 min |
+
+For more on this topic, see [*How to Check Word Count in Google Docs (Every Method)*](/blog/word-count-google-docs).
 
 ## Reading speed varies by content type
 
@@ -79,6 +83,8 @@ Audience considerations:
 - **General audience, dense content:** 150–200 WPM
 
 For international audiences or technical content, consider aiming for shorter average sentence length (15–20 words) and plain language, which improves both reading speed and comprehension.
+
+For more on this topic, see [*What Is Flesch-Kincaid Readability? A Plain-Language Guide*](/blog/what-is-flesch-kincaid-readability).
 
 ## Displaying reading time
 

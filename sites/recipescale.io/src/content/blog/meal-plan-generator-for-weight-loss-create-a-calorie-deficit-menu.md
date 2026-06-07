@@ -14,6 +14,8 @@ Weight loss happens in the kitchen more than the gym. A structured meal plan rem
 
 One pound of fat contains approximately 3,500 calories. To lose one pound per week, you need a daily deficit of 500 calories. A 750-calorie daily deficit produces 1.5 pounds per week.
 
+For more on this topic, see [*Recipe Scaler Calculator: Convert Any Recipe to Any Serving Size*](/blog/recipe-scaler-calculator-convert-any-recipe-to-any-serving-size).
+
 **Calculate your target:**
 - Find your maintenance calories (body weight x 14-16 for most people)
 - Subtract 500-750 for your target
@@ -48,6 +50,8 @@ It outputs a shopping list and prep instructions.
 
 Cook proteins in bulk on Sunday. Pre-chop vegetables. Portion snacks into containers. When healthy food is ready to eat, you are less likely to grab convenience food.
 
+For more on this topic, see [*Food Substitution Chart for Baking: Swaps That Actually Work*](/blog/food-substitution-chart-for-baking-swaps-that-actually-work).
+
 ## Common Weight Loss Meal Plan Mistakes
 
 - **Too little protein:** Causes muscle loss and hunger.
@@ -58,3 +62,5 @@ Cook proteins in bulk on Sunday. Pre-chop vegetables. Portion snacks into contai
 ## The Bottom Line
 
 Consistency beats perfection. A meal plan you follow 80% of the time works better than a perfect plan you abandon after three days. Use our generator to build a sustainable plan and adjust weekly based on results.
+
+For more on this topic, see [*Nutrition Calculator by Ingredient: Build Recipes with Confidence*](/blog/nutrition-calculator-by-ingredient-build-recipes-with-confidence).

@@ -14,6 +14,8 @@ The most common financial mistake renters make is signing a lease they cannot co
 
 The 30% rule states that rent should not exceed 30% of gross monthly income.
 
+For more on this topic, see [*Average Rent by City 2025: Top Markets Ranked*](/blog/average-rent-by-city-2025-top-markets-ranked).
+
 **Example:** $60,000 annual income = $5,000 monthly gross
 Maximum rent: $5,000 x 0.30 = **$1,500**
 
@@ -39,6 +41,8 @@ Our [rent affordability calculator](/) factors in:
 - Monthly debt payments (student loans, car, credit cards)
 - Other fixed expenses
 - Desired savings rate
+
+For more on this topic, see [*Rent vs Buy Calculator by City: Where Ownership Pays Off*](/blog/rent-vs-buy-calculator-by-city-where-ownership-pays-off).
 
 It outputs a recommended maximum rent and shows what percentage of income rent consumes.
 
@@ -84,3 +88,5 @@ Affordable rent depends on your complete financial picture, not just income. Use
 ---
 
 *Disclaimer: The information on this page is for general informational purposes only and does not constitute financial or real estate advice. Rent prices, cost of living data, and salary comparisons change frequently and vary by neighborhood and individual circumstances. Consult a financial advisor or housing counselor for advice specific to your situation.*
+
+For more on this topic, see [*Salary Comparison by City: What Your Pay Is Really Worth*](/blog/salary-comparison-by-city-what-your-pay-is-really-worth).

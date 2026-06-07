@@ -14,6 +14,8 @@ When a website will not load, your first question should be: "Is it down for eve
 
 Our [website status checker](/) pings the site from multiple servers worldwide. If the site responds from London but not from your city, the problem is likely your ISP or DNS.
 
+For more on this topic, see [*DNS_PROBE_FINISHED_NXDOMAIN Fix: Step-by-Step Solutions*](/blog/dns-probe-finished-nxdomain-fix-step-by-step-solutions).
+
 ## Method 2: Try a Different Network
 
 Switch from WiFi to mobile data. If the site loads on mobile but not WiFi, your home network or ISP is blocking it. Restart your router and try again.
@@ -36,6 +38,8 @@ If you see replies, the server is online. If you see "Request timed out," the se
 
 Twitter/X and Reddit often report outages faster than official status pages. Search "[website] down" to see real-time user reports.
 
+For more on this topic, see [*Website Status Page Best Practices: Build Trust During Outages*](/blog/website-status-page-best-practices-build-trust-during-outages).
+
 ## Interpreting Results
 
 | Result | Meaning | Action |
@@ -44,6 +48,8 @@ Twitter/X and Reddit often report outages faster than official status pages. Sea
 | Down only for you | Local issue | Check DNS, VPN, firewall |
 | Slow for everyone | Partial outage | Try again later |
 | Slow only for you | ISP throttling | Contact ISP or use VPN |
+
+For more on this topic, see [*Is GitHub Down Right Now? How to Check and Verify*](/blog/is-github-down-right-now-how-to-check-and-verify).
 
 ## Common Local Issues
 

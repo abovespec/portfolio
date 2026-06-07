@@ -27,6 +27,8 @@ utm_source=linkedin
 utm_source=partner-site
 ```
 
+For more on this topic, see [*UTM Tracking: How to Set Up and Measure Marketing Campaigns*](/blog/utm-tracking).
+
 Think of it as the referring website or platform.
 
 ### utm_medium
@@ -107,12 +109,16 @@ With UTMs:
 https://example.com/landing-page?utm_source=newsletter&utm_medium=email&utm_campaign=spring-sale-2026
 ```
 
+For more on this topic, see [*utm_source, utm_medium, utm_campaign: A Complete Guide*](/blog/utm-source-medium-campaign).
+
 **Special characters must be URL-encoded:**
 - Spaces → `%20` or `+`
 - Ampersand → `%26`
 - Equals → `%3D`
 
 Use a UTM builder at [utmbuilder.io](/) to handle encoding automatically.
+
+For more on this topic, see [*UTM Builder Guide: How to Create and Manage UTM Links*](/blog/utm-builder-guide).
 
 ## Complete example URL
 

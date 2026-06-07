@@ -23,9 +23,13 @@ sources:
 
 The "normal BMI range" — defined by the World Health Organization and the CDC as **18.5 to 24.9** — is the most widely used benchmark for healthy body weight in adults. But what exactly does this range represent, and how much should you worry about exactly where your number falls within it?
 
+For more on this topic, see [*What Is a Healthy BMI? Ranges, Categories, and What They Mean*](/blog/what-is-a-healthy-bmi).
+
 ## The Standard BMI Categories
 
 The four official BMI categories are based on extensive population-level research linking BMI to health outcomes:
+
+For more on this topic, see [*How Is BMI Calculated? The Formula, Step-by-Step Examples, and Limits*](/blog/how-is-bmi-calculated).
 
 | Category | BMI Range | Population Prevalence (U.S. adults) |
 |---|---|---|
@@ -78,5 +82,7 @@ This is one of the most important nuances. The WHO has acknowledged that standar
 2. **Don't obsess over the number within the range.** A BMI of 21.5 is not meaningfully different from 23.0 for most people.
 3. **Combine with waist circumference.** If you are in the normal BMI range but your waist is ≥ 35 inches (women) or ≥ 40 inches (men), ask your doctor about metabolic screening.
 4. **Monitor trends, not snapshots.** A slow, steady increase over several years is worth a conversation with your healthcare provider even if you remain within the normal range.
+
+For more on this topic, see [*BMI Calculator for Women: What Your Number Means and Why It Matters*](/blog/bmi-calculator-for-women).
 
 The normal BMI range is a helpful benchmark — but it is a starting point, not a verdict. What matters most is the broader picture of your activity level, diet, metabolic health, and family history.

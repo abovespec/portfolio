@@ -29,6 +29,8 @@ Every social media platform has a different character limit, and hitting the wro
 
 Use a [character counter](/) to check your text before posting — paste once and see the count update live.
 
+For more on this topic, see [*Character Count: Limits for Every Platform and Use Case*](/blog/character-count-guide).
+
 ## Twitter / X: 280 characters
 
 Twitter doubled its limit from 140 to 280 in 2017. The practical sweet spot for engagement is shorter: tweets under 100 characters tend to get more retweets. The 280 limit is a ceiling, not a target.
@@ -45,6 +47,8 @@ Twitter doubled its limit from 140 to 280 in 2017. The practical sweet spot for 
 So a tweet with a 120-character URL only uses 23 of your 280 characters.
 
 **X Premium (paid):** Long-form posts up to 25,000 characters. These display as articles rather than standard tweets.
+
+For more on this topic, see [*How Long Should a Blog Post Be for SEO in 2026?*](/blog/how-long-should-a-blog-post-be).
 
 ## Instagram: 2,200 characters for captions
 
@@ -118,6 +122,8 @@ YouTube descriptions allow 5,000 characters. Only the first 157 characters appea
 **Twitter/X:** Use the URL compression (t.co = 23 chars) to your advantage — long URLs don't penalize your count.
 
 **Instagram:** Write captions in Apple Notes or Google Docs where you can see the character count before copying to the app.
+
+For more on this topic, see [*How to Check Word Count in Google Docs (Every Method)*](/blog/word-count-google-docs).
 
 **LinkedIn:** The "see more" break point is ~210 characters. End the visible preview on a hook or question — give people a reason to expand.
 

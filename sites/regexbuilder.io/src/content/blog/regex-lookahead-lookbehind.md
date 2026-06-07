@@ -19,6 +19,8 @@ Lookaheads and lookbehinds are **zero-width assertions** — they check for a pa
 | `(?<=X)` | Positive lookbehind | X precedes the current position |
 | `(?<!X)` | Negative lookbehind | X does NOT precede |
 
+For more on this topic, see [*Regex Cheatsheet: Quick Reference for Regular Expressions*](/blog/regex-cheatsheet).
+
 ## Positive lookahead `(?=...)`
 
 Match text only if followed by a specific pattern:
@@ -28,6 +30,8 @@ Match text only if followed by a specific pattern:
 ```
 
 This matches the number before "dollar" or "dollars", but the word isn't included in the match:
+
+For more on this topic, see [*Regex Groups and Capturing: How to Extract Data with Parentheses*](/blog/regex-groups-capturing).
 
 ```python
 import re
@@ -176,6 +180,8 @@ console.log(matches);  // ['100', '200']
 ## Lookbehind limitations
 
 **Fixed-length lookbehinds:** Standard regex engines require lookbehinds to be fixed-width (known length at compile time). Python 3.6+ and PCRE support variable-length lookbehinds; older engines don't.
+
+For more on this topic, see [*Regex Tutorial: Learn Regular Expressions from Scratch*](/blog/regex-tutorial).
 
 ```python
 # Python 3.6+: variable-length lookbehind works

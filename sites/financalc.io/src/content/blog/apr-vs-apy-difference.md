@@ -21,9 +21,13 @@ sources:
 
 When you open a savings account, the bank advertises APY. When you apply for a credit card, the lender shows APR. Both say "annual" and both involve interest rates, so it's easy to assume they're interchangeable. They aren't — and the difference explains why the same nominal interest rate produces different real-world results depending on how often it compounds.
 
+For more on this topic, see [*APR vs. Interest Rate: What's the Difference and Why It Matters*](/blog/apr-vs-interest-rate).
+
 ## APR: Annual Percentage Rate
 
 **APR** is the annual cost of borrowing money, expressed as a percentage. It includes the interest rate on the loan and, for most consumer loans under federal law, certain mandatory fees — but it does not account for compounding.
+
+For more on this topic, see [*Simple Interest vs. Compound Interest: Key Differences with Real Examples*](/blog/simple-interest-vs-compound-interest).
 
 APR is primarily a **debt metric**. You'll see it on:
 - Credit cards
@@ -37,6 +41,8 @@ A credit card with a 20% APR charges 20% per year on your balance. But if you ca
 ## APY: Annual Percentage Yield
 
 **APY** is the actual return you earn on a deposit account after accounting for compounding. It takes the nominal interest rate and adjusts upward to reflect the effect of interest compounding on itself throughout the year.
+
+For more on this topic, see [*The Compound Interest Formula Explained: Variables, Examples, and How to Use It*](/blog/compound-interest-formula-explained).
 
 APY is primarily a **savings metric**. You'll see it on:
 - Savings accounts

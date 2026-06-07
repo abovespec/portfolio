@@ -38,6 +38,8 @@ Note: Percentage cutoffs vary by institution. Some schools set the A threshold a
 
 If your school uses weighted grading, AP and honors courses earn additional GPA points.
 
+For more on this topic, see [*GPA Calculator With AP Classes: Weighted and Unweighted*](/blog/gpa-calculator-with-ap-classes-weighted-and-unweighted).
+
 | Letter Grade | Regular | Honors (+0.5) | AP / IB (+1.0) |
 |---|---|---|---|
 | A+ / A | 4.0 | 4.5 | 5.0 |
@@ -80,6 +82,8 @@ When colleges evaluate transfer students or international applicants, they conve
 
 **Graduate school applications.** Graduate programs almost always request a cumulative GPA on the 4.0 scale. They calculate it from your official transcript, not your school's weighted version. A 4.3 weighted high school GPA becomes a 4.0 in their system.
 
+For more on this topic, see [*Cumulative GPA Calculator Guide: What It Is and How to Calculate It*](/blog/cumulative-gpa-calculator-guide).
+
 **International transcript conversion.** Grades from other countries (percentage marks, letter grades on different scales) are converted by credential evaluation services like WES. They produce a U.S.-equivalent GPA on the 4.0 scale.
 
 ## Schools That Use A+ = 4.3
@@ -119,3 +123,6 @@ Some grades appear on transcripts but do not enter GPA calculations:
 ## The Bottom Line
 
 The standard 4.0 scale is consistent across most U.S. institutions. An A earns 4.0, a B earns 3.0, and so on down the chart. Plus and minus grades add precision in steps of 0.3–0.7. Weighted scales add 0.5 to 1.0 for honors and AP work. Use the [grade calculator](/) to apply the chart to your own courses and see your exact GPA.
+
+
+For more on this topic, see [*How to Raise Your GPA Fast: Practical Strategies That Actually Work*](/blog/how-to-raise-your-gpa-fast).

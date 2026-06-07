@@ -14,9 +14,13 @@ A job offer in a new city means nothing without context. $80,000 in Houston buys
 
 Nominal salary ignores cost of living. A 20% raise that requires moving to a city with 30% higher costs is actually a pay cut in real terms.
 
+For more on this topic, see [*Average Rent by City 2025: Top Markets Ranked*](/blog/average-rent-by-city-2025-top-markets-ranked).
+
 ## Cost-of-Living Adjusted Salaries
 
 To compare apples to apples, adjust for living costs. [Numbeo's cost of living index](https://www.numbeo.com/cost-of-living/) and the [BLS Consumer Expenditure Survey](https://www.bls.gov/cex/) both provide the underlying data used to build city cost indexes.
+
+For more on this topic, see [*Cost of Living Comparison by City: Salary vs Expenses*](/blog/cost-of-living-comparison-by-city-salary-vs-expenses).
 
 **Equivalent Salary = Offered Salary / (Target City Index / 100)**
 
@@ -84,3 +88,5 @@ Always compare salaries in real terms. Use our calculator to cut through nominal
 ---
 
 *Disclaimer: The information on this page is for general informational purposes only and does not constitute financial or real estate advice. Rent prices, cost of living data, and salary comparisons change frequently and vary by neighborhood and individual circumstances. Consult a financial advisor or housing counselor for advice specific to your situation.*
+
+For more on this topic, see [*Cheapest Cities to Rent in 2025: Affordable Housing Markets*](/blog/cheapest-cities-to-rent-in-2025-affordable-housing-markets).

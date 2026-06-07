@@ -29,6 +29,8 @@ background: linear-gradient(#e66465, #9198e5);
 /* Left to right */
 background: linear-gradient(to right, #e66465, #9198e5);
 
+For more on this topic, see [*CSS linear-gradient: Syntax, Direction, Color Stops, and Examples*](/blog/linear-gradient-css).
+
 /* Diagonal: top-left to bottom-right */
 background: linear-gradient(to bottom right, #e66465, #9198e5);
 
@@ -67,6 +69,8 @@ background: radial-gradient(#e66465, #9198e5);
 
 /* Circle */
 background: radial-gradient(circle, #e66465, #9198e5);
+
+For more on this topic, see [*CSS radial-gradient: Circles, Ellipses, and Spotlight Effects*](/blog/radial-gradient-css).
 
 /* Ellipse with size */
 background: radial-gradient(ellipse 80% 50% at center, #e66465, #9198e5);
@@ -158,6 +162,8 @@ background: repeating-radial-gradient(
 ## Multiple gradients (layers)
 
 CSS backgrounds support multiple layers separated by commas. Layers are painted front-to-back:
+
+For more on this topic, see [*CSS Gradient Animation: Moving and Shifting Gradient Backgrounds*](/blog/css-gradient-animation).
 
 ```css
 background:

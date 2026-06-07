@@ -22,7 +22,11 @@ The current widely-adopted version is WCAG 2.1, with 2.2 adding refinements (mos
 
 Every WCAG contrast requirement is expressed as a ratio — a single number that represents how much difference in luminance exists between two colors.
 
+For more on this topic, see [*Complementary Colors: What They Are and How to Use Them*](/blog/complementary-colors).
+
 WCAG defines contrast using **relative luminance**: a measure of how much light a color appears to emit relative to pure white (which has a luminance of 1.0) and pure black (which has a luminance of 0.0). The formula maps the raw RGB values through a linearization step that accounts for how human vision perceives brightness.
+
+For more on this topic, see [*How to Build a Color Palette for Your Website (Step by Step)*](/blog/color-palette-for-website).
 
 The contrast ratio between a lighter color (L1) and a darker color (L2) is:
 
@@ -105,6 +109,8 @@ Don't forget non-text contrast. After checking your text pairings, go through yo
 ### Document Your Findings
 
 Once you've established a compliant palette, document which color combinations have been tested and what their ratios are. This creates an audit trail and prevents future designers or developers from inadvertently introducing combinations that haven't been verified.
+
+For more on this topic, see [*What Is Color Theory? A Practical Guide for Designers and Developers*](/blog/what-is-color-theory).
 
 ## Common Failure Patterns
 

@@ -25,6 +25,8 @@ Two savings accounts, same balance, same interest rate, same bank. One uses simp
 
 Simple interest is calculated only on the original principal. No matter how much time passes, the interest earned each period is based on the starting amount alone.
 
+For more on this topic, see [*How Much House Can I Afford? A Practical Buyer's Guide*](/blog/how-much-house-can-i-afford).
+
 **Formula: I = P × r × t**
 
 Where:
@@ -99,6 +101,8 @@ Compound interest is the standard for most financial products:
 - **Most mortgages** — structured as amortizing loans but the interest calculation is compound
 - **Student loans** — typically compound daily
 
+For more on this topic, see [*What Is ROI in Investing? A Plain-English Guide to Return on Investment*](/blog/what-is-roi-in-investing).
+
 ## When Simple Interest Is Better for You
 
 The answer depends on which side of the transaction you're on.
@@ -147,6 +151,8 @@ Use a [financial calculator](/) to model either scenario with your specific numb
 ## The Bottom Line
 
 Simple interest is straightforward: you earn (or pay) a fixed amount based on the original principal each period. Compound interest snowballs: you earn (or owe) more each period because past interest joins the principal.
+
+For more on this topic, see [*How Long Does It Take to Pay Off Debt? A Calculator-Based Guide*](/blog/how-long-to-pay-off-debt).
 
 For savers and investors, compound interest is the goal. For borrowers, it's the cost to manage. The math is the same; what changes is which side of it you're on.
 

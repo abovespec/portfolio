@@ -92,6 +92,8 @@ In many PBR workflows, the height map comes first. You can derive a normal map f
 
 At [FreePBRTextures](/textures/), our PBR texture sets use normal maps for surface detail (they're more widely compatible with game engines). We include height maps on many of our textures — look for sets tagged with "height: true" in the map listing.
 
+For more on this topic, see [*How to Use PBR Textures in Unity: A Practical Guide*](/blog/pbr-textures-in-unity).
+
 ## Practical Examples
 
 ### Example 1: Brick Wall

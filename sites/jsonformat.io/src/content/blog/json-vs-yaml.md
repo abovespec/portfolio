@@ -127,6 +127,8 @@ This avoids repetition in large config files. JSON has no equivalent — you hav
 
 JSON parsers are faster than YAML parsers. JSON's grammar is simpler; most languages have a native, optimised JSON parser. YAML's spec is significantly more complex (the 1.2 spec runs to hundreds of pages), which means parsers are larger and slower.
 
+For more on this topic, see [*Unexpected Token in JSON: What It Means and How to Fix It*](/blog/unexpected-token-json-error).
+
 For high-throughput scenarios (millions of API responses per second), JSON's parsing performance matters. For config files read once at startup, it doesn't.
 
 ### Tooling and ecosystem
@@ -160,6 +162,8 @@ hash: 0x1A          # integer 26 or string?
 
 The [Norway Problem](https://hitchdev.com/strictyaml/why/implicit-typing-is-wrong/) (country code `NO` parsing as `false`) caused real bugs in production systems. JSON avoids this entirely: types are explicit (`true`, `false`, `null`, numbers, and quoted strings).
 
+For more on this topic, see [*How to Minify JSON: Tools, Commands, and Code Examples*](/blog/how-to-minify-json).
+
 ## When to use JSON
 
 - **REST APIs and HTTP responses** — universal support, fast parsing, compact
@@ -179,6 +183,8 @@ The [Norway Problem](https://hitchdev.com/strictyaml/why/implicit-typing-is-wron
 ## When it doesn't matter
 
 If you're building a small project and the tooling supports both, pick whichever your team finds easier to read. The conversion is trivial — our [JSON formatter](/) can format JSON, and many tools (like `yq` or Python's `pyyaml`) can convert between them:
+
+For more on this topic, see [*How to Validate JSON: Common Errors and How to Fix Them*](/blog/how-to-validate-json).
 
 ```python
 import json, yaml

@@ -14,6 +14,8 @@ You do not need to pay for invoicing when you are starting out. Several excellen
 
 Wave offers unlimited invoicing, accounting, and receipt scanning at no cost. It makes money through optional payment processing and payroll. The interface is clean and designed for small business owners, not accountants. According to [Intuit's invoicing resource center](https://quickbooks.intuit.com/r/invoicing/), selecting software that integrates bookkeeping with invoicing reduces year-end tax preparation time substantially.
 
+For more on this topic, see [*Invoice Template for Small Business: Free and Professional*](/blog/invoice-template-for-small-business-free-and-professional).
+
 **Best for:** Freelancers and small businesses in the US and Canada.
 **Limitation:** No multi-currency support on the free plan.
 
@@ -21,12 +23,16 @@ Wave offers unlimited invoicing, accounting, and receipt scanning at no cost. It
 
 Zoho Invoice is free forever for up to 1,000 customers. It includes time tracking, expense logging, and multiple currencies. If you outgrow it, upgrading to Zoho Books is seamless.
 
+For more on this topic, see [*Free Invoice Generator No Signup: Create and Print in Seconds*](/blog/free-invoice-generator-no-signup-create-and-print-in-seconds).
+
 **Best for:** International freelancers and growing agencies.
 **Limitation:** 1,000 customer cap.
 
 ## 3. Stripe Invoicing (Free to Send)
 
 Stripe Invoicing charges no fee to create and send invoices. You only pay Stripe's standard payment processing fee when you get paid. It is simple, fast, and integrates with any Stripe-connected business. The [IRS guidance for self-employed individuals](https://www.irs.gov/businesses/small-businesses-self-employed) notes that freelancers should track all payment processor receipts as part of their income records regardless of which platform they use.
+
+For more on this topic, see [*How to Start Invoicing as a Freelancer: From First Client to Payment*](/blog/how-to-start-invoicing-as-a-freelancer-from-first-client-to-payment).
 
 **Best for:** Businesses already using Stripe.
 **Limitation:** Basic feature set compared to full accounting tools.

@@ -21,6 +21,8 @@ Generating UUIDs is a one-liner in every major language and on the command line.
 # UUID v4 (random)
 uuidgen
 
+For more on this topic, see [*UUID v4 vs v7: Which Should You Use?*](/blog/uuid-v4-vs-v7).
+
 # Lowercase (macOS default is uppercase)
 uuidgen | tr '[:upper:]' '[:lower:]'
 
@@ -169,6 +171,8 @@ CREATE TABLE users (
 -- SQLite doesn't have a built-in UUID function.
 -- Generate in application code and insert as TEXT.
 
+For more on this topic, see [*How to Generate UUIDs in Python, JavaScript, Go, and SQL*](/blog/how-to-generate-uuid-code).
+
 CREATE TABLE users (
     id TEXT PRIMARY KEY NOT NULL,
     email TEXT NOT NULL UNIQUE
@@ -179,6 +183,8 @@ CREATE TABLE users (
 ## UUID v7 (time-ordered) in code
 
 UUID v7 is the recommended version for database primary keys — it sorts chronologically and avoids B-tree index fragmentation:
+
+For more on this topic, see [*UUID in Databases: Primary Keys, Storage, and Performance*](/blog/uuid-in-database).
 
 ```python
 # Python: using uuid7 package

@@ -35,6 +35,8 @@ In-text citations are parenthetical and include the author's last name and the y
 Second reference: (APA, 2020)
 ```
 
+For more on this topic, see [*How to Cite a Website: APA, MLA, and Chicago Formats*](/blog/how-to-cite-a-website).
+
 **No author** — use the title (shorten if long, in italics for books/reports, in quotes for articles):
 ```
 ("Study Finds," 2024)
@@ -56,6 +58,8 @@ Second reference: (APA, 2020)
 Smith (2024) found that...
 According to Smith et al. (2024)...
 ```
+
+For more on this topic, see [*MLA Citation Format: Complete Guide to MLA 9th Edition*](/blog/mla-citation-format).
 
 ## Reference list basics
 
@@ -149,6 +153,8 @@ Baxter, P., & Jack, S. (2023). Qualitative case study methodology. Brock Univers
 | Publisher location | Required (City, State) | Omitted |
 | Running head | Required for all papers | Only for manuscripts for publication |
 | et al. threshold | 6+ authors | 3+ authors |
+
+For more on this topic, see [*How to Cite a Book in APA, MLA, and Chicago Format*](/blog/how-to-cite-a-book).
 
 ## Reference page example
 

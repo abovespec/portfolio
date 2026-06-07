@@ -25,6 +25,8 @@ If you are an athlete — or someone who trains seriously — you have probably 
 
 BMI was never designed for individuals with high muscle mass, and its blind spot for athletes is one of its most widely acknowledged limitations. Here is why the standard formula falls short, and what athletes should use instead.
 
+For more on this topic, see [*The Limitations of BMI: What It Doesn't Measure and When It Misleads*](/blog/limitations-of-bmi).
+
 ## Why BMI Misclassifies Athletes
 
 BMI has only two inputs: height and weight. It has no way of knowing what that weight consists of. Muscle is approximately **18% denser than fat** — a pound of muscle takes up less space than a pound of fat, but it weighs the same on the scale.
@@ -107,3 +109,6 @@ The International Society for the Advancement of Kinanthropometry (ISAK) recomme
 ## Calculate Your Body Composition
 
 Start with our [free BMI calculator](/) to see where you land — but if you train seriously, take that result with a grain of salt and consider getting a proper body composition assessment. Your BMI number was not designed for people with your fitness level.
+
+
+For more on this topic, see [*BMI Calculator for Women: What Your Number Means and Why It Matters*](/blog/bmi-calculator-for-women).

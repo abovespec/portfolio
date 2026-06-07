@@ -20,11 +20,15 @@ Use [Rome2rio](https://www.rome2rio.com/) to estimate driving distances and tota
 - Gallons: 71.4
 - Cost: $250
 
+For more on this topic, see [*Europe Rail Pass Cost Calculator: Is Eurail Worth It?*](/blog/europe-rail-pass-cost-calculator-is-eurail-worth-it).
+
 Add 15% for city driving, detours, and idling.
 
 ## Accommodation
 
 Nightly rates below are typical U.S. ranges; verify current prices on booking platforms. Per [Budget Your Trip data](https://www.budgetyourtrip.com/), costs shift significantly by region and season.
+
+For more on this topic, see [*Backpacking Budget by Country 2025: Daily Costs Ranked*](/blog/backpacking-budget-by-country-2025-daily-costs-ranked).
 
 | Option | Price/Night | Best For |
 |---|---|---|
@@ -66,6 +70,8 @@ Our [trip cost calculator](/) has a dedicated road trip mode. Input:
 - Accommodation type
 - Food budget per day
 - Planned stops and attractions
+
+For more on this topic, see [*Travel Budget Calculator by Destination: Estimate Any Trip*](/blog/travel-budget-calculator-by-destination-estimate-any-trip).
 
 It outputs total estimated cost and cost per mile.
 

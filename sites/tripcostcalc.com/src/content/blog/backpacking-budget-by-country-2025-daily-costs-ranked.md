@@ -21,6 +21,8 @@ Our daily estimates include:
 
 They do not include intercity transport or alcohol, which vary by itinerary and personal choice. Daily cost ranges are cross-referenced with [Budget Your Trip](https://www.budgetyourtrip.com/) and [Numbeo cost of living data](https://www.numbeo.com/cost-of-living/).
 
+For more on this topic, see [*How Much Does a Trip to Japan Cost? 2025 Budget Breakdown*](/blog/how-much-does-a-trip-to-japan-cost-2025-budget-breakdown).
+
 ## Cheapest Countries ($15-30/day)
 
 | Country | Daily Budget |
@@ -87,6 +89,10 @@ They do not include intercity transport or alcohol, which vary by itinerary and 
 ## Using Our Calculator
 
 Our [trip cost calculator](/) includes a backpacking mode. Select countries, duration, and travel style. It outputs total budget, broken down by category.
+
+For more on this topic, see [*Travel Budget Calculator by Destination: Estimate Any Trip*](/blog/travel-budget-calculator-by-destination-estimate-any-trip).
+
+For more on this topic, see [*Japan Trip Budget Calculator 2025: Plan Your Perfect Visit*](/blog/japan-trip-budget-calculator-2025-plan-your-perfect-visit).
 
 ## Stretching Your Budget
 

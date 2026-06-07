@@ -16,6 +16,8 @@ This reference covers every Flexbox property — the ones on containers and the 
 
 These properties are applied to the **flex container** — the parent element that has `display: flex`.
 
+For more on this topic, see [*CSS Flexbox Interview Questions and Answers (2026 Edition)*](/blog/flexbox-interview-questions).
+
 ---
 
 ### `display`
@@ -30,6 +32,8 @@ Establishes the element as a flex container.
 ```
 
 `inline-flex` makes the container itself behave like an inline element while its children still use flex layout internally.
+
+For more on this topic, see [*What Is CSS Flexbox? A Plain-English Introduction*](/blog/what-is-flexbox).
 
 ---
 
@@ -47,6 +51,8 @@ Sets the direction of the main axis — the direction flex items flow.
 ```
 
 Changing `flex-direction` rotates both axes. In `column` mode, `justify-content` distributes along the vertical axis and `align-items` works horizontally.
+
+For more on this topic, see [*Flexbox vs CSS Grid: When to Use Each*](/blog/flexbox-vs-grid).
 
 ---
 

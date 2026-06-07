@@ -14,7 +14,11 @@ CSS performance has two dimensions: **delivery** (how fast the file arrives) and
 
 **Minify:** Remove whitespace, comments, and redundant syntax. A typical stylesheet shrinks 20–60%.
 
+For more on this topic, see [*How to Minify CSS: Every Method Explained*](/blog/how-to-minify-css).
+
 **Remove unused CSS:** Frameworks like Bootstrap ship 190 KB; a site commonly uses 5–15% of that. Use PurgeCSS, Tailwind's built-in content scanning, or the Coverage tab in Chrome DevTools to identify unused rules.
+
+For more on this topic, see [*How to Remove Unused CSS: PurgeCSS, UnCSS, and Tree-Shaking*](/blog/remove-unused-css).
 
 **Combine files:** Reduce HTTP requests by bundling multiple CSS files. Modern HTTP/2 reduces the penalty of multiple small files, but bundling still reduces round trips on HTTP/1.1 connections.
 
@@ -50,6 +54,8 @@ With minification + Brotli, a 100 KB CSS file may be served as 8–15 KB.
 `rel="preload"` starts the download earlier (before the parser reaches the `<link>`) without changing render-blocking behavior.
 
 **Split CSS by route:** Load only the CSS needed for the current page. In webpack/Vite with code splitting, CSS is automatically split per chunk.
+
+For more on this topic, see [*Minify CSS in webpack, Vite, and Rollup*](/blog/minify-css-webpack).
 
 **Long-term caching:** Use content-hashed filenames (`styles.a1b2c3d4.css`) and serve with `Cache-Control: max-age=31536000, immutable`. Static CSS files can be cached for a year — breaking cache only on content change.
 

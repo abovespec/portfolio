@@ -42,6 +42,8 @@ If the property appreciates 3% annually on a $250,000 value:
 - Total annual return: $15,300
 - Total ROI: $15,300 / $60,000 = 25.5%
 
+For more on this topic, see [*Cash Flow Positive Rental Property: How to Find and Verify One*](/blog/cash-flow-positive-rental-property-how-to-find-and-verify-one).
+
 This is why real estate investors talk about "total return" rather than just cash flow.
 
 ## Tax Considerations
@@ -51,6 +53,8 @@ Depreciation lets you deduct a portion of the property value annually. For resid
 ## Using Our Calculators
 
 Start with our [rental yield calculator](/) for cash flow. Then use our [cap rate calculator](/) for property performance independent of financing. Together they build a complete ROI picture.
+
+For more on this topic, see [*Rental Yield Calculator by Postcode: Find High-Yield Areas*](/blog/rental-yield-calculator-by-postcode-find-high-yield-areas).
 
 ## What Is a Good Total ROI?
 
@@ -69,6 +73,8 @@ Start with our [rental yield calculator](/) for cash flow. Then use our [cap rat
 ## Conclusion
 
 Rental property ROI is multidimensional. A property with thin cash flow but strong appreciation can outperform a high-cash-flow property in a stagnant market. Calculate all four components before you judge a deal.
+
+For more on this topic, see [*What Is a Good Rental Yield in 2025? Benchmarks by Market*](/blog/what-is-a-good-rental-yield-in-2025-benchmarks-by-market).
 
 Use our suite of [real estate calculators](/) to model every scenario. The investor who runs the numbers first wins.
 

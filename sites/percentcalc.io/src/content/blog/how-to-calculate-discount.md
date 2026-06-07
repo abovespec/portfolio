@@ -19,6 +19,8 @@ There are two questions shoppers most often need to answer:
 
 Both start with the same two inputs: the original price and the discount percentage.
 
+For more on this topic, see [*How to Calculate Percentage Decrease: Formula, Examples, and Use Cases*](/blog/how-to-calculate-percentage-decrease).
+
 ## Calculating the discount amount
 
 ```
@@ -53,9 +55,13 @@ Final Price = 75 × (1 − 0.20) = 75 × 0.80 = $60
 
 Method 2 is one step faster and less prone to arithmetic errors. It works because "20% off" means you pay **80%** of the original price.
 
+For more on this topic, see [*Percentage of a Number: What It Means and How to Calculate It*](/blog/percentage-of-a-number).
+
 ## Finding the discount percentage from prices
 
 Sometimes you see a crossed-out original price and a sale price, and you want to know what percentage discount that represents.
+
+For more on this topic, see [*How to Calculate Percentage Increase: Formula and Step-by-Step Guide*](/blog/how-to-calculate-percentage-increase).
 
 ```
 Discount % = ((Original Price − Sale Price) / Original Price) × 100

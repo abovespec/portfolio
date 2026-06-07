@@ -18,6 +18,8 @@ UTM tracking tells you which marketing efforts drive traffic and conversions. Se
 4. Google Analytics reads those parameters and stores them with the session
 5. You can query those values in reports
 
+For more on this topic, see [*Google Analytics UTM: Campaign Tracking in GA4*](/blog/google-analytics-utm).
+
 The tracking happens client-side — GA4's JavaScript snippet reads `document.location.search` on page load and extracts UTM values.
 
 ## Setting up tracking for each channel
@@ -51,6 +53,8 @@ utm_campaign=product-launch-2026
 ```
 utm_source=facebook&utm_medium=cpc&utm_campaign={{campaign.name}}&utm_content={{ad.name}}
 ```
+
+For more on this topic, see [*UTM Parameters Explained: Source, Medium, Campaign, Content, Term*](/blog/utm-parameters).
 
 Facebook substitutes `{{campaign.name}}` with the actual campaign name automatically.
 
@@ -133,6 +137,8 @@ Create a shared doc or spreadsheet with your UTM naming conventions. Everyone on
 | Facebook Ads | facebook | cpc | [campaign-name] |
 | Organic Facebook | facebook | social | [campaign-name] |
 | LinkedIn organic | linkedin | social | [campaign-name] |
+
+For more on this topic, see [*utm_source, utm_medium, utm_campaign: A Complete Guide*](/blog/utm-source-medium-campaign).
 
 **3. Use campaign names that are time-bound and descriptive**
 

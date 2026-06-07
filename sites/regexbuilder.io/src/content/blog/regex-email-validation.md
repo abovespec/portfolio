@@ -14,6 +14,8 @@ Email validation with regex is one of the most common regex tasks — and one of
 
 Use a simple regex to catch obvious non-emails, then verify with a real email send (or use a validation API). No regex fully implements RFC 5322, and you don't need it to.
 
+For more on this topic, see [*Regex Lookahead and Lookbehind: Zero-Width Assertions Explained*](/blog/regex-lookahead-lookbehind).
+
 ## Simple validation patterns
 
 **Most practical pattern (covers 99.9% of real email addresses):**
@@ -96,10 +98,14 @@ For form validation with a custom pattern:
 
 Regex can verify *format* but not *existence*. These all pass the pattern above but are invalid for sending:
 
+For more on this topic, see [*Regex Groups and Capturing: How to Extract Data with Parentheses*](/blog/regex-groups-capturing).
+
 - `user@example.com` — valid format, but does this mailbox exist?
 - `test@thisdoesnotexist.com` — valid format, domain may not exist
 - `a@b.c` — valid format, but `.c` TLD doesn't exist
 - `user@localhost` — valid for local use but no regex for public email
+
+For more on this topic, see [*How to Use Regex: Practical Guide to Regular Expressions*](/blog/how-to-use-regex).
 
 **What regex catches:**
 - Missing @ symbol

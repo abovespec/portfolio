@@ -16,6 +16,8 @@ The good news: the causes are well understood and the fixes are straightforward 
 
 The most common reason a favicon does not show up — by a wide margin — is browser cache. Browsers aggressively cache favicons because they are fetched on every page load and change infrequently. Once a browser has seen your site's favicon (or decided there is no favicon at your URL), it holds onto that information for a long time.
 
+For more on this topic, see [*How to Create a Favicon for Your Website (Quick and Easy)*](/blog/how-to-create-a-favicon).
+
 **Hard refresh the page:**
 - Windows/Linux: `Ctrl + Shift + R`
 - macOS: `Cmd + Shift + R`
@@ -36,6 +38,8 @@ Alternatively, go to Chrome's address bar and type `chrome://favicon/` followed 
 
 A private browsing window starts with a fresh cache every time. Open your site in an incognito tab (Chrome: `Ctrl + Shift + N`, Firefox: `Ctrl + Shift + P`). If your favicon appears there but not in a regular tab, the issue is definitely cache — continue clearing it in your main browser.
 
+For more on this topic, see [*Favicon Sizes: The Complete Size Guide for Every Browser and Device*](/blog/favicon-sizes).
+
 ## Step 2: Verify the File Is Actually There
 
 A missing or misplaced file is the second most common cause. Open your browser and navigate directly to the favicon URL:
@@ -55,6 +59,8 @@ If you see your icon, the file is being served correctly. If you get a 404 error
 If the file exists at the correct URL, the next thing to check is whether your HTML is correctly declaring it.
 
 Open your page's source code (right-click anywhere on the page, click "View Page Source") and search for `favicon` or `rel="icon"`.
+
+For more on this topic, see [*What Is a Favicon? The Tiny Icon That Does a Big Job*](/blog/what-is-a-favicon).
 
 The correct tag looks like this:
 

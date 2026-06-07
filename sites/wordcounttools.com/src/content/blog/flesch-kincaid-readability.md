@@ -23,6 +23,8 @@ ASL = Average Sentence Length (words per sentence)
 ASW = Average Syllables per Word
 ```
 
+For more on this topic, see [*Average Words Per Minute for Reading: What the Research Says*](/blog/average-words-per-minute-reading).
+
 **Score interpretation:**
 
 | Score | Difficulty | Notes |
@@ -77,6 +79,8 @@ The "right" score depends on your audience:
 | Legal/medical | 20–40 | 14+ |
 
 **Plain language guidelines** (used by US federal agencies under the [Plain Writing Act of 2010](https://www.plainlanguage.gov/)) target grade 8 or below for public-facing content — Flesch Reading Ease 60+.
+
+For more on this topic, see [*What Is Flesch-Kincaid Readability? A Plain-Language Guide*](/blog/what-is-flesch-kincaid-readability).
 
 ## What drives the score
 
@@ -142,6 +146,8 @@ Paragraph breaks give readers a rest point. Three to five sentences per paragrap
 **Hemingway App:** Paste text at hemingwayapp.com for grade level and highlighted problem sentences.
 
 **Online:** Paste into [wordcounttools.com](/) to see Flesch Reading Ease, Flesch-Kincaid Grade Level, and other readability metrics alongside word count and reading time.
+
+For more on this topic, see [*Reading Time Calculator: How Long Will Readers Spend on Your Content?*](/blog/reading-time-calculator).
 
 **Python:**
 

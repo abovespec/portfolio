@@ -12,9 +12,13 @@ Exchange rates move constantly. On any given day, the euro might strengthen agai
 
 Currency values are the result of supply and demand in global foreign exchange markets, but that just pushes the question back one level: what drives supply and demand for a currency? The answer comes down to six core factors. Institutions like the Federal Reserve, the European Central Bank (ECB), and the International Monetary Fund (IMF) all publish research grounded in these same fundamentals.
 
+For more on this topic, see [*Best Time to Exchange Currency: What Actually Matters*](/blog/best-time-to-exchange-currency).
+
 ## 1. Interest Rates
 
 Interest rates are the most powerful and closely watched driver of exchange rate movements in the short to medium term. When a central bank raises its benchmark interest rate, it makes deposits and bonds denominated in that currency more attractive to investors worldwide. Higher yields draw capital inflows — global investors move money into that currency to earn better returns. Increased demand for the currency pushes its value up.
+
+For more on this topic, see [*Bank Exchange Rate vs Market Rate: Why They're Different*](/blog/bank-exchange-rate-vs-market-rate).
 
 The reverse also holds: when interest rates fall, or when markets expect them to fall, investors may shift capital toward higher-yielding currencies elsewhere, reducing demand and weakening the rate.
 
@@ -63,6 +67,8 @@ Japan's historically large trade surplus has been cited as one factor supporting
 Not all exchange rate movement reflects underlying economic fundamentals. In the short term, currency markets are also moved by sentiment, positioning, and speculation.
 
 The foreign exchange market includes a large proportion of participants who are not converting currency for trade or investment purposes — they are speculating on rate movements. These participants react to news, adjust positions based on technical analysis, and sometimes drive rates away from levels that economic fundamentals would suggest are appropriate.
+
+For more on this topic, see [*What Is the Mid-Market Rate? Definition, Spread, and Why It Matters*](/blog/what-is-the-mid-market-rate).
 
 Periods of "risk-off" sentiment — when global investors become fearful and seek safety — tend to strengthen traditional safe-haven currencies like the US dollar and the Swiss franc regardless of those countries' underlying economic conditions. Periods of "risk-on" sentiment, when investors are confident and seeking returns, can support higher-yielding or growth-linked currencies.
 

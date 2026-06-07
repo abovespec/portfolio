@@ -29,6 +29,8 @@ The name comes from the humps formed by the capital letters in the middle of wor
 
 snake_case writes multi-word identifiers entirely in lowercase, separated by underscores:
 
+For more on this topic, see [*What Is snake_case? A Practical Guide for Developers*](/blog/what-is-snake-case).
+
 ```
 first_name
 get_user_by_id
@@ -54,6 +56,8 @@ Convention varies by language, and deviation from the norm reads as unidiomatic 
 | PHP | camelCase or snake_case (mixed ecosystem) | PascalCase | UPPER_SNAKE |
 | Swift | camelCase | PascalCase | camelCase |
 | Kotlin | camelCase | PascalCase | UPPER_SNAKE |
+
+For more on this topic, see [*camelCase to snake_case in JavaScript: Three Clean Solutions*](/blog/camelcase-to-snake-case-javascript).
 
 **Rule of thumb:** Follow the convention of the language and its dominant frameworks. Consistency within a codebase matters more than cross-language uniformity.
 
@@ -107,6 +111,8 @@ Some contexts — JSON API keys, configuration files, database schemas — don't
 - **Who consumes the output?** If your API is consumed by JavaScript clients, camelCase keys save them a transformation step. If consumed by Python or Ruby, snake_case is more natural.
 - **Are there existing conventions?** Extending an existing API or schema usually means matching it, even if you'd choose differently from scratch.
 - **Tooling support?** ORM libraries, serializers, and linters often have default conventions. Going with the grain reduces configuration.
+
+For more on this topic, see [*Naming Conventions in Programming: The Complete Guide*](/blog/naming-conventions-programming).
 
 ## Quick reference
 

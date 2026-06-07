@@ -14,7 +14,11 @@ Colleges look at GPA, but not all GPAs are calculated equally. Weighted GPA acco
 
 **Unweighted GPA** uses a standard 4.0 scale regardless of course difficulty. An A is always 4.0.
 
+For more on this topic, see [*Semester GPA vs Cumulative GPA: What's the Difference and Which One Matters?*](/blog/semester-gpa-vs-cumulative-gpa).
+
 **Weighted GPA** adds extra points for advanced courses. An A in an AP class might be worth 5.0 instead of 4.0.
+
+For more on this topic, see [*Letter Grade to GPA Conversion Chart: The Complete Reference*](/blog/letter-grade-to-gpa-conversion-chart).
 
 ## Common Weighting Scales
 
@@ -54,6 +58,8 @@ Colleges typically recalculate GPA using their own formulas, but your school's w
 ## Using Our Calculator
 
 Our [GPA calculator](/) supports weighted calculations. Enter your classes, grades, and course types (regular, honors, AP, IB). It computes both unweighted and weighted GPA automatically.
+
+For more on this topic, see [*Cumulative GPA Calculator Guide: What It Is and How to Calculate It*](/blog/cumulative-gpa-calculator-guide).
 
 ## Common Mistakes
 

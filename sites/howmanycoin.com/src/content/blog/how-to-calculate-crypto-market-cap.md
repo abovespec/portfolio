@@ -16,6 +16,8 @@ Cryptocurrency market cap sounds like a complicated metric, but the underlying m
 
 That is the entire calculation. Two inputs, one output. The result is denominated in fiat currency (typically USD) and tells you the total market value of all coins currently in active circulation.
 
+For more on this topic, see [*How to Convert Bitcoin to USD: The Math and the Methods*](/blog/how-to-convert-bitcoin-to-usd).
+
 Every major data aggregator — [CoinGecko](https://www.coingecko.com), [CoinMarketCap](https://coinmarketcap.com) — computes and displays this figure automatically. But knowing how to derive it yourself means you can sanity-check reported figures and understand why market cap moves even when you haven't traded anything.
 
 ## A Worked Example: Bitcoin
@@ -30,11 +32,15 @@ To illustrate the formula without tying it to a live price:
 
 Now suppose the price drops to $50,000 but the circulating supply stays the same (mining adds coins slowly, so supply barely changes day to day):
 
+For more on this topic, see [*Circulating Supply in Crypto: What It Is and Why It Changes*](/blog/what-is-circulating-supply).
+
 - **Market cap:** $50,000 × 19,800,000 = **$990,000,000,000** (~$990 billion).
 
 The same number of coins now represents $198 billion less in total market value. Market cap moves in real time because the price input is constantly changing. Supply changes too, but far more slowly.
 
 This is why market cap can fall sharply even if "nothing happened" to the underlying network — it is a price-sensitive metric.
+
+For more on this topic, see [*What Is Market Cap in Crypto? The Metric That Matters Most*](/blog/what-is-crypto-market-cap).
 
 ## Circulating Supply vs. Total Supply vs. Max Supply
 

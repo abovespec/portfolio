@@ -21,9 +21,13 @@ sources:
 
 Hotels involve more tipping touchpoints than almost any other service context. Most travelers tip at checkout but miss the staff who provided the most labor. Here's a complete breakdown by role.
 
+For more on this topic, see [*Tipping Etiquette in the United States: A Service-by-Service Guide*](/blog/tipping-etiquette-united-states).
+
 ## Housekeeping: The Most Commonly Skipped Tip
 
 Housekeeping is the role most frequently undertipped because the workers are rarely seen and most guests don't think to leave cash. Housekeeping staff at most US hotels earn low hourly wages with variable tip income. The standard guidance:
+
+For more on this topic, see [*How Much to Tip a Server: The Complete Guide*](/blog/how-much-to-tip-a-server).
 
 **$2–5 per night, left each morning.**
 
@@ -61,6 +65,8 @@ Valet parking involves two interactions: drop-off and pickup. You do not need to
 ## Concierge
 
 Tipping the concierge depends on what they do for you. For standard questions (directions, restaurant recommendations, general information), no tip is expected — this is part of their job. For real effort:
+
+For more on this topic, see [*Tipping Around the World: What's Expected in 20+ Countries*](/blog/tipping-by-country).
 
 | Service | Suggested Tip |
 |---|---|

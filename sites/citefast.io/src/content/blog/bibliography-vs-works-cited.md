@@ -14,6 +14,8 @@ draft: false
 
 **Works Cited** is the term used in **MLA style** (Modern Language Association). It lists only the sources you actually cited in your paper — every source that appears in an in-text parenthetical citation must also appear in the Works Cited, and nothing extra.
 
+For more on this topic, see [*MLA Citation Format: Complete Guide to MLA 9th Edition*](/blog/mla-citation-format).
+
 **When to use:** Any MLA-formatted paper. This is always the correct term when writing in MLA style.
 
 ```
@@ -73,6 +75,8 @@ For most student papers: use the term your style guide specifies.
 - APA → References
 - Chicago → Bibliography (Notes-Bibliography system) or References (Author-Date system)
 
+For more on this topic, see [*Chicago Citation Style: Notes, Bibliography, and Author-Date*](/blog/chicago-citation-style).
+
 ## Annotated bibliography
 
 An **annotated bibliography** adds a brief summary or evaluation paragraph after each citation entry. It's assigned to help you engage with your sources before writing.
@@ -114,6 +118,8 @@ A **selected bibliography** (common in book publishing and journalism) lists onl
 **Wrong term for the style:** Calling an APA reference list a "bibliography" isn't technically wrong, but using the style-specific term shows you know the conventions.
 
 **Including uncited sources in Works Cited / References:** In MLA and APA, every entry must correspond to an in-text citation. Sources you read but didn't cite belong in a bibliography (if at all).
+
+For more on this topic, see [*How to Cite a Book in APA, MLA, and Chicago Format*](/blog/how-to-cite-a-book).
 
 **Forgetting the bibliography in Chicago:** Chicago papers use footnotes for citations — students sometimes forget the bibliography page entirely, thinking the footnotes are sufficient.
 

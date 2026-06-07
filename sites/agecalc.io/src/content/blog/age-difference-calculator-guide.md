@@ -35,17 +35,23 @@ Count from March 5, 1988 to November 19, 1995:
 
 **Age difference: 7 years, 8 months, 14 days.**
 
+For more on this topic, see [*How to Calculate Age in Years, Months, and Days*](/blog/age-in-years-months-days).
+
 The year-subtraction shortcut said "7 years." The actual gap is closer to 7 years and 8 months—almost 8 years.
 
 ## Using the Age Calculator for Two People
 
 The [age calculator](/) calculates each person's age in years, months, and days from their birth date. To find the gap, run the calculator for each person on the same reference date and compare, or simply find the span between the two birth dates directly.
 
+For more on this topic, see [*How to Calculate Your Exact Age from Date of Birth*](/blog/how-to-calculate-age-from-date-of-birth).
+
 ## Why the Gap Changes Over Time
 
 The age difference in years stays the same. But the gap expressed in "who is closer to what birthday" shifts constantly.
 
 **Example:** A is 35 years and 2 months old; B is 28 years and 10 months old. The year-gap is 7, but in terms of where they are in their respective years, A is near the start of their year while B is near the end. They'll both have a birthday within the next few months, and after B's birthday, the gap in "years old" will be 6 for a few weeks until A's birthday makes it 7 again.
+
+For more on this topic, see [*How Old Am I in Months? Converting Your Age to Months*](/blog/how-old-am-i-in-months).
 
 This is why stating an age gap as "about 7 years" is more honest than insisting it's exactly 7.
 

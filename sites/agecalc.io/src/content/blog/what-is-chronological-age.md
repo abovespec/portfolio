@@ -16,6 +16,8 @@ But chronological age is also the bluntest instrument in the toolkit. It tells y
 
 **Chronological age** is the time elapsed since birth, expressed in years, months, days, or any other calendar unit. It advances at a constant rate—exactly one year every 365 or 366 days, regardless of health, lifestyle, or circumstance.
 
+For more on this topic, see [*How Old Am I in Months? Converting Your Age to Months*](/blog/how-old-am-i-in-months).
+
 Every person born on the same date shares the same chronological age at any given moment. What differs between them is everything else.
 
 ## How Chronological Age Is Calculated
@@ -72,10 +74,14 @@ The case against treating chronological age as the whole story is well-establish
 2. **It can entrench ageism.** When "old" is defined purely by a number on the calendar, it encourages assumptions about ability that may not reflect reality.
 3. **It conflates when with how.** Knowing someone was born in 1955 says nothing about their current health, cognitive capacity, or potential.
 
+For more on this topic, see [*How Old Am I If I Was Born in [Year]? A Quick Guide*](/blog/how-old-am-i-born-in-year).
+
 Researchers in gerontology and longevity medicine are actively working on biomarker panels (like the Horvath epigenetic clock) that could eventually give biological age the same standardized, measurable status that chronological age enjoys today.
 
 ## How to Find Your Chronological Age
 
 Your chronological age is the simplest of all age measures to calculate—enter your date of birth into our [age calculator](/) and you'll have it in seconds: years, months, days, and even hours if you want to get granular.
+
+For more on this topic, see [*How to Calculate Age in Years, Months, and Days*](/blog/age-in-years-months-days).
 
 Understanding the concept matters more than the number itself. Chronological age tells you where you are on the calendar. What you do with the time it measures is a different question entirely.

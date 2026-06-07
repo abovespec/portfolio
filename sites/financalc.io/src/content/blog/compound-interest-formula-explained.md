@@ -21,6 +21,8 @@ sources:
 
 Compound interest is the mechanism behind both wealth building in savings accounts and debt spiraling on credit cards. The formula itself is not complicated, but the variables inside it matter enormously. Once you understand how to read the formula and work with its inputs, you can model almost any savings or investment scenario with confidence.
 
+For more on this topic, see [*How Does Compound Interest Work? A Plain-English Guide*](/blog/how-does-compound-interest-work).
+
 ## The Formula
 
 **A = P(1 + r/n)^(nt)**
@@ -101,6 +103,8 @@ The annual-to-daily difference is about $630 on $10,000 over 15 years. On a larg
 
 The standard compound interest formula assumes a single lump-sum deposit. Real-world saving usually involves regular contributions. The formula for that is the **future value of an annuity**:
 
+For more on this topic, see [*Simple Interest vs. Compound Interest: Key Differences with Real Examples*](/blog/simple-interest-vs-compound-interest).
+
 **FV = PMT × [((1 + r/n)^(nt) − 1) / (r/n)]**
 
 Where PMT is the regular payment per period. For example, $200/month at 6% annual rate over 20 years:
@@ -131,6 +135,8 @@ You contributed $48,000 total ($200 × 240 months). The remaining $44,408 is pur
 ## Using the Formula vs. Using a Calculator
 
 Working through the formula manually is valuable for understanding the mechanics. For planning purposes, a [financial calculator](/) lets you vary any input — rate, time, contributions, compounding frequency — and immediately see the result. This is especially useful for comparing scenarios: "what if I increase my monthly contribution by $50?" or "how much does an extra year matter?"
+
+For more on this topic, see [*How to Use a Loan Calculator: Inputs, Outputs, and What the Numbers Mean*](/blog/how-to-use-a-loan-calculator).
 
 ## The Bottom Line
 

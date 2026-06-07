@@ -16,9 +16,13 @@ Three days per week is excellent for beginners building their base. Five or six 
 
 With four sessions, you can dedicate more sets per muscle group than a 3-day full body program allows, while still having three full rest days per week for recovery. Research supports 10–20 weekly sets per muscle group as the primary hypertrophy range for most people. A 4-day split makes that achievable without every session running 90 minutes.
 
+For more on this topic, see [*5 Day Workout Split for Intermediate Lifters: Full Program*](/blog/5-day-workout-split-intermediate).
+
 ## The Split Structure
 
 This program uses an upper/lower structure with an A/B variation for each day. The emphasis across all four days is muscle hypertrophy: moderate to heavy loads in the 8–15 rep range, controlled tempos, and sufficient rest between sets.
+
+For more on this topic, see [*Upper Lower Split Workout Program: 4-Day Plan for Strength and Size*](/blog/upper-lower-split-workout-program).
 
 **Recommended Schedule:**
 - Monday: Upper A
@@ -87,6 +91,8 @@ Lower B shifts emphasis from quad-dominant (squat) to hip-dominant (RDL and hip 
 ## Progressive Overload Strategy
 
 Track every session. Use our [workout planner](/) to log your weights and reps so you can see your exact previous performance.
+
+For more on this topic, see [*How to Create Your Own Workout Plan: Step-by-Step Guide*](/blog/how-to-create-your-own-workout-plan).
 
 Apply double progression: stay in the rep range until you hit the top of it on all sets, then add weight at the next session. For example, if your target is 3 sets x 10-12 reps on incline press and you hit 12, 11, 10, stay at that weight next session and try for 12, 12, 12. Once you hit 12 on all three sets cleanly, add 5 lbs.
 

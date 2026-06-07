@@ -27,6 +27,8 @@ The unified diff format is the standard representation for code changes — the 
 
 A unified diff has three types of sections:
 
+For more on this topic, see [*How to Compare Strings in Python*](/blog/compare-strings-python).
+
 **1. File headers:**
 ```
 --- a/src/utils.js
@@ -149,6 +151,8 @@ index a1b2c3d..e4f5g6h 100644
 - `index` shows the blob hashes and file mode
 - `100644` is the file permissions (regular file)
 
+For more on this topic, see [*git diff Explained: Every Common Usage with Examples*](/blog/git-diff-explained).
+
 For binary files, git outputs:
 ```
 Binary files a/image.png and b/image.png differ
@@ -178,3 +182,6 @@ Pull request diffs on GitHub/GitLab are unified diffs rendered in HTML. The key 
 ## Visualize your own diffs
 
 Paste any two text blocks into [textdiff.pro](/) to see a unified diff view in the browser — useful for comparing config files, API responses, or any text without setting up a local diff tool.
+
+
+For more on this topic, see [*How to Compare Two Text Files in Linux*](/blog/compare-two-text-files-linux).

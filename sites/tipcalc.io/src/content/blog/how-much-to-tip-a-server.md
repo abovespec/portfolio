@@ -24,6 +24,8 @@ sources:
 
 Tipping a restaurant server is one of the most frequent financial micro-decisions most Americans make. Yet surprisingly few people know the reasoning behind the percentages, what factors legitimately change the math, or why tips represent a meaningful share of server income. This guide covers all three.
 
+For more on this topic, see [*Tipping Etiquette in the United States: A Service-by-Service Guide*](/blog/tipping-etiquette-united-states).
+
 Use our [tip calculator](/) to run the numbers for any bill in seconds.
 
 ## The Standard Percentages
@@ -111,8 +113,13 @@ The Emily Post Institute's guidance: **tipping at counter service is appreciated
 - Was it strictly over-the-counter service with no tableside attention? A small tip ($1–2 or rounding up) is courteous but not obligatory.
 - For delivery orders, $3–5 is a common minimum tip, especially in poor weather or for larger orders.
 
+For more on this topic, see [*Should You Tip at Fast Food Restaurants?*](/blog/should-you-tip-at-fast-food).
+
 ## The Bottom Line
 
 For a sit-down restaurant in the United States, **18–20% is the widely accepted standard for competent, attentive service**. Poor service warrants less; genuinely excellent service warrants more. The vast majority of servers in most states depend heavily on tips to reach a livable wage — a context worth keeping in mind when you're deciding whether to leave 15% or 20% on a $60 dinner.
 
 Use our [tip calculator](/) to calculate the exact tip and total, split between multiple people, or find the right percentage for any bill.
+
+
+For more on this topic, see [*How to Calculate a Tip Without a Calculator*](/blog/how-to-calculate-a-tip).

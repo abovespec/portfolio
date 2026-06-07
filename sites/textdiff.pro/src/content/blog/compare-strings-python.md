@@ -120,6 +120,8 @@ similarity("hello", "world")              # 0.2
 
 The ratio ranges from 0.0 (no match) to 1.0 (identical). Under the hood, `SequenceMatcher` uses a variant of the Myers diff algorithm.
 
+For more on this topic, see [*How Does diff Work? The Algorithm Behind File Comparison*](/blog/how-does-diff-work).
+
 `get_close_matches` is useful for fuzzy search:
 
 ```python
@@ -142,6 +144,8 @@ line two
 old line three
 line four
 """.splitlines(keepends=True)
+
+For more on this topic, see [*How to Compare Two Text Files in Linux*](/blog/compare-two-text-files-linux).
 
 text2 = """line one
 line two
@@ -166,6 +170,8 @@ Output:
 +new line three
 +line five
 ```
+
+For more on this topic, see [*Myers Diff Algorithm: How git diff Finds Changes*](/blog/myers-diff-algorithm).
 
 For an HTML-formatted diff:
 

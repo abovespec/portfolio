@@ -22,6 +22,8 @@ Where:
 
 That is the complete formula. Everything else in this guide is just applying it to different real-world scenarios.
 
+For more on this topic, see [*How to Calculate Percentage Increase: Formula and Step-by-Step Guide*](/blog/how-to-calculate-percentage-increase).
+
 ## How to use it — step by step
 
 1. Write down X (the part) and Y (the whole).
@@ -30,6 +32,8 @@ That is the complete formula. Everything else in this guide is just applying it 
 4. Add the % symbol.
 
 **Example:** What percentage is 30 of 120?
+
+For more on this topic, see [*Percentage Change Formula: How to Calculate Increase and Decrease*](/blog/percentage-change-formula).
 
 ```
 Step 1: X = 30, Y = 120
@@ -165,3 +169,6 @@ All three problems are the same triangle of numbers: X, Y, and the percentage. K
 ## Try it yourself
 
 The formula is simple, but entering the wrong number in the wrong slot is easy when you are working quickly. Our [percentage calculator](/) lets you type in X and Y and get the answer instantly — it also works backwards if you need to find the part or the whole.
+
+
+For more on this topic, see [*How to Calculate Percentage Decrease: Formula, Examples, and Use Cases*](/blog/how-to-calculate-percentage-decrease).

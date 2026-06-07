@@ -14,12 +14,16 @@ Pretty-printing JSON in JavaScript takes one function call. But there are a hand
 
 `JSON.stringify(value, replacer, space)` has three parameters. Most developers only use the first one. The third — `space` — controls indentation.
 
+For more on this topic, see [*Unexpected Token in JSON: What It Means and How to Fix It*](/blog/unexpected-token-json-error).
+
 ```js
 const data = { name: "Alice", age: 30, skills: ["JS", "Python"] };
 
 // Compact (default)
 JSON.stringify(data);
 // '{"name":"Alice","age":30,"skills":["JS","Python"]}'
+
+For more on this topic, see [*What Is JSON? A Plain-English Introduction*](/blog/what-is-json).
 
 // Pretty-printed with 2-space indent
 JSON.stringify(data, null, 2);
@@ -144,6 +148,8 @@ console.log(JSON.stringify(data, null, 2));
 ## Pretty-printing a fetch response
 
 A common pattern: fetch JSON from an API and log it cleanly:
+
+For more on this topic, see [*8 Common JSON Errors and How to Fix Them*](/blog/common-json-errors).
 
 ```js
 const res = await fetch('https://api.example.com/users/1');

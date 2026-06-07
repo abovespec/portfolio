@@ -23,6 +23,8 @@ Check this first. It is the authoritative source.
 
 Our [website status checker](/) queries GitHub from multiple global locations. If GitHub responds from Seattle but not from Frankfurt, the issue is likely regional rather than global.
 
+For more on this topic, see [*Best Free Website Monitoring Tools Compared (2025)*](/blog/best-free-website-monitoring-tools-compared-2025).
+
 ## Is It Just You?
 
 If GitHub loads for others but not for you:
@@ -33,6 +35,8 @@ If GitHub loads for others but not for you:
 4. **Change DNS servers** to 8.8.8.8 or 1.1.1.1
 5. **Check your firewall or corporate proxy.** Many workplaces block GitHub.
 6. **Disable VPN temporarily.** Some VPN endpoints trigger GitHub's security.
+
+For more on this topic, see [*How to Check If a Website Is Down: 5 Methods That Work*](/blog/how-to-check-if-a-website-is-down-5-methods-that-work).
 
 ## Common GitHub Error Messages
 
@@ -47,6 +51,8 @@ If GitHub loads for others but not for you:
 - Work locally. Git is distributed. Commit locally and push later.
 - Check the GitHub status page for updates.
 - Communicate with your team via Slack or email instead of GitHub Issues.
+
+For more on this topic, see [*Website Status Page Best Practices: Build Trust During Outages*](/blog/website-status-page-best-practices-build-trust-during-outages).
 
 ## Historical Outage Patterns
 

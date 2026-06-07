@@ -44,6 +44,8 @@ If you buy at $230,000, spend $50,000 on repairs, and hold for 6 months:
 
 Our [fix-and-flip calculator](/) handles the entire formula. Input ARV, purchase price, repair estimate, holding costs, and selling cost percentage. It outputs total investment, net profit, and ROI.
 
+For more on this topic, see [*Rental Property ROI Calculator: Total Return on Investment*](/blog/rental-property-roi-calculator-total-return-on-investment).
+
 ## Common Mistakes
 
 - **Underestimating repairs:** Always get contractor bids, not guesses.
@@ -55,8 +57,12 @@ Our [fix-and-flip calculator](/) handles the entire formula. Input ARV, purchase
 
 If the calculator shows less than 15% ROI, the deal is probably not worth the risk. Your time, capital, and credit are better deployed elsewhere. The [Urban Land Institute](https://uli.org/) publishes annual market outlooks that help investors assess whether local conditions support fix-and-flip returns.
 
+For more on this topic, see [*Rental Yield Calculator by Postcode: Find High-Yield Areas*](/blog/rental-yield-calculator-by-postcode-find-high-yield-areas).
+
 Use our calculator before you make an offer. The numbers should excite you, not scare you.
 
 ---
 
 *Disclaimer: The information on this page is for general informational purposes only and does not constitute financial, investment, or real estate advice. Rental yields, cap rates, and property returns vary by location, property type, and market conditions. Past performance does not guarantee future results. Always consult a licensed real estate professional or financial advisor before making investment decisions.*
+
+For more on this topic, see [*Cash Flow Positive Rental Property: How to Find and Verify One*](/blog/cash-flow-positive-rental-property-how-to-find-and-verify-one).

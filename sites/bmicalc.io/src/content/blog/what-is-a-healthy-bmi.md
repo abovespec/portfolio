@@ -21,9 +21,13 @@ sources:
 
 Body mass index — BMI — is a number calculated from your height and weight. It was designed in the 19th century as a population-level statistic, and health agencies worldwide still use it today as a quick, inexpensive screening tool. Understanding what your BMI number means — and what it doesn't — is the first step toward having a useful conversation with your doctor about your weight.
 
+For more on this topic, see [*How Is BMI Calculated? The Formula, Step-by-Step Examples, and Limits*](/blog/how-is-bmi-calculated).
+
 ## The Four Official BMI Categories
 
 The World Health Organization and the U.S. Centers for Disease Control and Prevention define four standard BMI categories for adults 20 and older:
+
+For more on this topic, see [*BMI for Athletes: Why the Standard Formula Misses the Mark*](/blog/bmi-for-athletes).
 
 | Category | BMI Range |
 |---|---|

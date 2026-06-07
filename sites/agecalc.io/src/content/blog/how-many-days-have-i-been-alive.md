@@ -43,6 +43,8 @@ Running the numbers for a few ages reveals some satisfying milestones:
 | 25,000 | 68 years, 5 months |
 | 30,000 | 82 years, 1 month |
 
+For more on this topic, see [*How to Calculate Age in Years, Months, and Days*](/blog/age-in-years-months-days).
+
 Many people make a small celebration of their 10,000th day—it's an oddly round number that lands in your late twenties and feels earned. Others note their 5,000th (early teens) or look forward to 20,000 (mid-fifties).
 
 ## Why Does Counting Days Feel Different from Counting Years?
@@ -74,8 +76,12 @@ If you were born on February 29, you technically only have a "real" birthday eve
 
 Our calculator handles this correctly: it uses your exact birth date and today's date, so leap year babies get an accurate day count like everyone else.
 
+For more on this topic, see [*How to Calculate Your Exact Age from Date of Birth*](/blog/how-to-calculate-age-from-date-of-birth).
+
 ## Find Your Count
 
 The fastest way is to enter your birthdate into our [age calculator](/) at the top of this page. You'll get your age in years, months, days, hours, minutes, and seconds—all at once.
+
+For more on this topic, see [*How to Calculate Your Exact Age in Years, Months, and Days*](/blog/how-to-calculate-exact-age-years-months-days).
 
 Once you have your number, it's worth sitting with it for a moment. However many days you've lived, each one is a unit of your actual experience—not a rounding error.

@@ -23,6 +23,8 @@ That's it for basic use. The sections below cover making it work better.
 
 Longer URLs produce denser QR codes with more modules. Dense codes are harder to scan at small sizes.
 
+For more on this topic, see [*QR Code Size Guide for Printing: Minimum Sizes, DPI, and Scan Distance*](/blog/qr-code-size-guide-for-printing).
+
 **Before:** `https://example.com/products/summer-collection-2026?utm_source=qr&utm_medium=print&utm_campaign=june-flyer&utm_content=back-panel`
 
 **After:** `https://example.com/s/june-flyer`
@@ -31,6 +33,8 @@ Options:
 - **Custom path** on your own domain: `example.com/qr-menu` (best — no third-party dependency)
 - **Bit.ly or similar**: `bit.ly/abc123` (easy, but you depend on their service)
 - **UTM parameters as a redirect**: redirect a short URL to a long tracked URL
+
+For more on this topic, see [*How to Add a Logo to a QR Code: Error Correction and Best Practices*](/blog/how-to-add-logo-to-qr-code).
 
 ## Add UTM tracking
 
@@ -107,6 +111,8 @@ For digital contexts where QR codes make sense (digital signage, websites shown 
 | A4 flyer | 4 cm | 5 cm |
 | A3 poster | 5 cm | 7 cm |
 | Roll-up banner | 8 cm | 12 cm |
+
+For more on this topic, see [*QR Code for Business Card: vCard Setup and Best Practices*](/blog/qr-code-for-business-card).
 
 Always export as SVG or PDF for print. Never use JPEG.
 

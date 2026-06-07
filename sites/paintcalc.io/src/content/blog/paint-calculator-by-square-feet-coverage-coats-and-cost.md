@@ -29,6 +29,8 @@ Professional painters estimate by square footage because it is the most reliable
 3. Multiply by number of coats.
 4. Round up to the nearest quart or gallon.
 
+For more on this topic, see [*Roofing Square Footage Calculator: Shingles, Bundles, and Cost*](/blog/roofing-square-footage-calculator-shingles-bundles-and-cost).
+
 **Example:** 500 sq ft of smooth walls, two coats.
 - 500 / 375 = 1.33 gallons per coat
 - 1.33 x 2 = 2.66 gallons
@@ -49,6 +51,8 @@ Always round up. It is better to have a quart left over than to run out mid-wall
 
 Our [paint calculator](/) does the math automatically. Input your room dimensions, surface type, and number of coats. It tells you gallons needed and estimated cost.
 
+For more on this topic, see [*Roof Replacement Cost Estimator: 2025 Pricing by Material and Size*](/blog/roof-replacement-cost-estimator-2025-pricing-by-material-and-size).
+
 ## Cost Per Square Foot
 
 - Economy paint: $0.08-0.12 per sq ft per coat
@@ -58,5 +62,7 @@ Our [paint calculator](/) does the math automatically. Input your room dimension
 For a 12x12 room with two coats using mid-grade paint:
 - 384 sq ft walls x 2 coats = 768 sq ft
 - At $0.15/sq ft: $115 in paint
+
+For more on this topic, see [*How Much Paint Do I Need for a 12x12 Room? Exact Calculation*](/blog/how-much-paint-do-i-need-for-a-12x12-room-exact-calculation).
 
 Use our calculator to budget your next painting project accurately.

@@ -14,6 +14,8 @@ HTML entities are special text sequences that represent characters with special 
 
 HTML uses `<`, `>`, and `&` as part of its syntax. If you write literal `<b>` in text content, the browser parses it as an HTML tag. HTML entities let you include these characters as display text:
 
+For more on this topic, see [*Base64 vs Hex Encoding: Which Should You Use?*](/blog/base64-vs-hex).
+
 ```html
 <!-- This renders as a tag, not text: -->
 <b>bold</b>
@@ -107,6 +109,8 @@ For characters outside ASCII, you don't *need* entities if your HTML file is UTF
 
 HTML entity encoding is a primary defense against **reflected XSS** attacks. If you render user input in HTML without escaping it, an attacker can inject script tags:
 
+For more on this topic, see [*Base64 Encoding Explained: How It Works and When to Use It*](/blog/base64-encoding-explained).
+
 ```html
 <!-- User input: <script>alert(1)</script> -->
 
@@ -122,6 +126,8 @@ HTML entity encoding is a primary defense against **reflected XSS** attacks. If 
 - In HTML attributes: additionally escape `"` (or `'` for single-quoted attributes)
 - In JavaScript: use JSON encoding or template systems, not HTML entity encoding
 - In URLs: use percent-encoding, not HTML entities
+
+For more on this topic, see [*URL Encoding (Percent-Encoding): The Complete Guide*](/blog/url-encoding-guide).
 
 Modern frameworks (React, Vue, Angular) escape HTML by default when rendering variables. Don't use raw HTML injection (e.g., `innerHTML`, `dangerouslySetInnerHTML`) unless you've explicitly sanitized the content.
 

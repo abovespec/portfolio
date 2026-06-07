@@ -14,6 +14,8 @@ Calendly owns the scheduling market, but Cal.com has emerged as a powerful open-
 
 **Calendly Free** gives you one event type, one calendar connection, and basic scheduling. It works for individuals but limits branding and team features.
 
+For more on this topic, see [*Best SaaS Alternatives to Popular Tools: The 2025 Replacement Guide*](/blog/best-saas-alternatives-to-popular-tools-the-2025-replacement-guide).
+
 **Cal.com Free** offers unlimited event types, one calendar, and basic integrations. The headline advantage is unlimited event types, which Calendly restricts.
 
 ## Paid Plans
@@ -40,6 +42,8 @@ Cal.com's biggest differentiator is self-hosting. You can run Cal.com on your ow
 | Custom branding | Paid | Pro+ |
 | HIPAA compliance | Enterprise | Enterprise |
 
+For more on this topic, see [*Open Source Calendly Alternative: Self-Hosted Scheduling in 2025*](/blog/open-source-calendly-alternative-self-hosted-scheduling-in-2025).
+
 ## Which Should You Choose?
 
 Choose **Calendly** if you want a polished product that just works, with minimal setup. Choose **Cal.com** if you value open source, want to self-host, or need unlimited event types on the free plan.
@@ -47,3 +51,5 @@ Choose **Calendly** if you want a polished product that just works, with minimal
 ## Try Our Decision Quiz
 
 Not sure yet? Take our [scheduling software decision quiz](/) to find the best tool for your specific needs.
+
+For more on this topic, see [*How to Choose Scheduling Software: A Buyers Checklist*](/blog/how-to-choose-scheduling-software-a-buyers-checklist).

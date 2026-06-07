@@ -14,6 +14,8 @@ Most SQL performance problems fall into a small set of categories. This guide co
 
 Before optimizing anything, look at the execution plan. `EXPLAIN ANALYZE` runs the query and shows the actual time spent at each step:
 
+For more on this topic, see [*SQL EXPLAIN and Execution Plans: A Complete Guide*](/blog/explain-plan-sql).
+
 ```sql
 EXPLAIN ANALYZE
 SELECT u.email, COUNT(o.order_id) AS order_count
@@ -92,6 +94,8 @@ ORDER BY schemaname, tablename;
 ## 3. Avoid SELECT *
 
 `SELECT *` fetches every column — including large text and JSONB columns you may not need. It also prevents covering index optimization.
+
+For more on this topic, see [*SQL Style Guide: Conventions Every Team Should Follow*](/blog/sql-style-guide).
 
 ```sql
 -- Slow: fetches 30 columns including a 10 KB bio field
@@ -182,6 +186,8 @@ JOIN recent_orders AS ro ON u.user_id = ro.user_id;
 ## 8. Paginate with keyset pagination
 
 OFFSET/LIMIT pagination gets slower as the offset increases — the database must scan and discard the skipped rows:
+
+For more on this topic, see [*SQL vs NoSQL: How to Choose the Right Database*](/blog/sql-vs-nosql).
 
 ```sql
 -- Slow for large offsets

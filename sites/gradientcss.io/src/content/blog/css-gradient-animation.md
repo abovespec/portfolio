@@ -34,6 +34,8 @@ Create a gradient wider than the element, then shift the position:
 }
 ```
 
+For more on this topic, see [*CSS Gradient Background: Full-Page, Section, and Hero Techniques*](/blog/css-gradient-background).
+
 **How it works:** The gradient is 300% wide. `background-position` shifts from left to right and back, creating a looping color transition.
 
 ## Aurora / mesh gradient effect
@@ -113,6 +115,10 @@ Instead of animating continuously, trigger on hover using `transition`. Because 
 ## Animate with CSS custom properties (+ JS)
 
 CSS custom properties are animatable. Define color stops as variables and tween them with JavaScript:
+
+For more on this topic, see [*CSS linear-gradient: Syntax, Direction, Color Stops, and Examples*](/blog/linear-gradient-css).
+
+For more on this topic, see [*CSS radial-gradient: Circles, Ellipses, and Spotlight Effects*](/blog/radial-gradient-css).
 
 ```css
 .dynamic-gradient {

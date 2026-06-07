@@ -20,11 +20,15 @@ The vertical bars indicate absolute value — you take the magnitude of the diff
 
 Some fields use a signed version (without absolute values) when the direction of the error matters — but the standard formula gives unsigned percentage error.
 
+For more on this topic, see [*Percentage Change Formula: How to Calculate Increase and Decrease*](/blog/percentage-change-formula).
+
 ## Step-by-step worked examples
 
 ### Example 1 — Lab measurement
 
 A student measures the boiling point of ethanol in a lab and records 77.2 °C. The accepted value is 78.4 °C. What is the percentage error?
+
+For more on this topic, see [*How to Calculate Percentage Decrease: Formula, Examples, and Use Cases*](/blog/how-to-calculate-percentage-decrease).
 
 1. Find the absolute difference: |77.2 − 78.4| = 1.2
 2. Divide by the true value: 1.2 / 78.4 = 0.01531
@@ -95,6 +99,8 @@ These two concepts are often confused:
 
 - **Percentage error** compares a measurement to a *known true value*. There is a reference point.
 - **Percentage difference** compares two values when neither is considered the definitive "true" value — for example, comparing two suppliers' prices or two experimental readings. See the formula: `|Value 1 − Value 2| / ((Value 1 + Value 2) / 2) × 100`.
+
+For more on this topic, see [*How to Calculate Percentage Increase: Formula and Step-by-Step Guide*](/blog/how-to-calculate-percentage-increase).
 
 Use percentage error when you have a standard or accepted value to measure against. Use percentage difference when you are comparing two measurements of equal standing.
 

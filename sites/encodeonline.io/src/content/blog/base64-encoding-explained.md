@@ -14,7 +14,11 @@ Base64 encoding converts arbitrary binary data into a string of printable ASCII 
 
 Many protocols were designed for text. Email (SMTP), HTTP headers, and JSON don't safely carry raw binary bytes — some byte values have special meaning (null terminators, line breaks, control characters) or aren't printable at all.
 
+For more on this topic, see [*MD5 Hash: What It Is, How It Works, and When Not to Use It*](/blog/md5-hash-explained).
+
 Base64 solves this by representing every possible byte value using only 64 safe characters: uppercase A–Z, lowercase a–z, digits 0–9, `+`, and `/` (plus `=` for padding). These 64 characters have consistent, well-defined representations across every text encoding.
+
+For more on this topic, see [*Base64 vs Hex Encoding: Which Should You Use?*](/blog/base64-vs-hex).
 
 ## The 64-character alphabet
 
@@ -82,6 +86,8 @@ The `=` padding makes the output length always a multiple of 4.
 ## Size overhead
 
 Base64 encoding increases size by approximately **33%**. Three input bytes become four output characters. A 3 MB image becomes a 4 MB Base64 string.
+
+For more on this topic, see [*URL Encoding (Percent-Encoding): The Complete Guide*](/blog/url-encoding-guide).
 
 ```
 Output size = ⌈input_bytes / 3⌉ × 4

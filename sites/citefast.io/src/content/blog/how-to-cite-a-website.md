@@ -20,6 +20,8 @@ Before formatting the citation, collect:
 5. **URL** — the full URL of the specific page
 6. **Access date** — required by some styles for web sources
 
+For more on this topic, see [*Chicago Citation Style: Notes, Bibliography, and Author-Date*](/blog/chicago-citation-style).
+
 ## APA 7th edition format
 
 **Template:**
@@ -87,9 +89,13 @@ MLA uses author-page format. For websites (no page numbers):
 ("Global Chip Shortage")  ← no author: shortened title in quotes
 ```
 
+For more on this topic, see [*MLA Citation Format: Complete Guide to MLA 9th Edition*](/blog/mla-citation-format).
+
 ## Chicago style
 
 Chicago has two systems: **Notes-Bibliography** (humanities) and **Author-Date** (sciences). Most Chicago citations for websites use Notes-Bibliography.
+
+For more on this topic, see [*Bibliography vs Works Cited: What's the Difference?*](/blog/bibliography-vs-works-cited).
 
 **Notes-Bibliography — footnote:**
 ```

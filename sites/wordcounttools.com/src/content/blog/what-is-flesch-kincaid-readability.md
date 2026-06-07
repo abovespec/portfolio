@@ -78,6 +78,8 @@ A score of 8 means an 8th-grader can read it. A score of 13 means college-level 
 | Legal documents | 16–20+ |
 | US plain-language target | ≤ 8 |
 
+For more on this topic, see [*How Long Should a Blog Post Be for SEO in 2026?*](/blog/how-long-should-a-blog-post-be).
+
 The US Plain Writing Act of 2010 requires federal agencies to write public-facing documents at a grade 8 level or below.
 
 ## What drives the score — and what it ignores
@@ -85,6 +87,8 @@ The US Plain Writing Act of 2010 requires federal agencies to write public-facin
 **Only two variables matter:**
 - Sentence length: longer sentences = lower readability score
 - Syllable count per word: longer/more complex words = lower score
+
+For more on this topic, see [*How to Check Word Count in Google Docs (Every Method)*](/blog/word-count-google-docs).
 
 **What the formula completely ignores:**
 - Whether words are familiar or unfamiliar to the reader
@@ -134,6 +138,8 @@ Active constructions tend to be shorter and simpler, which improves both the sco
 ### Break up dense paragraphs
 
 The formulas don't count paragraphs, but readers do. Long unbroken paragraphs slow reading regardless of the sentence lengths within them. Three to five sentences per paragraph is a reasonable target for web content.
+
+For more on this topic, see [*Word Count for a Resume: How Long Is Too Long?*](/blog/word-count-for-a-resume).
 
 ## Checking your score
 

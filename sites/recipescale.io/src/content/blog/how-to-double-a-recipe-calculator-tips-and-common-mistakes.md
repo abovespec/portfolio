@@ -18,9 +18,13 @@ For most savory cooking, doubling works linearly. Two times the ingredients, two
 
 **Leavening agents:** Baking powder and soda do not always need a full double. For doubled recipes, use 1.75x the leavening to prevent collapse.
 
+For more on this topic, see [*Nutrition Calculator by Ingredient: Build Recipes with Confidence*](/blog/nutrition-calculator-by-ingredient-build-recipes-with-confidence).
+
 **Salt and spices:** Double them, but taste test. Sometimes 1.5x is enough.
 
 **Liquids:** Double them, but watch consistency. Some batters become too thin when doubled.
+
+For more on this topic, see [*Meal Plan Generator for Weight Loss: Create a Calorie Deficit Menu*](/blog/meal-plan-generator-for-weight-loss-create-a-calorie-deficit-menu).
 
 **Eggs:** Always double exactly. Eggs provide structure and cannot be rounded casually.
 
@@ -44,6 +48,8 @@ Doubled volume does not mean doubled time. A doubled soup might only need 20% mo
 ## Using Our Calculator
 
 Our [recipe doubling calculator](/) handles the adjustments automatically. Enter your original recipe and select "double." It applies leavening reductions, suggests pan arrangements, and estimates adjusted cooking time.
+
+For more on this topic, see [*Recipe Scaler Calculator: Convert Any Recipe to Any Serving Size*](/blog/recipe-scaler-calculator-convert-any-recipe-to-any-serving-size).
 
 ## Example: Doubling Chocolate Chip Cookies
 

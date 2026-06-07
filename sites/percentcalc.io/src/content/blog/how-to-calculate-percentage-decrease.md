@@ -18,6 +18,8 @@ Percentage Decrease = ((Original Value − New Value) / Original Value) × 100
 
 Notice the subtraction order is flipped compared to percentage increase: here you subtract the new (lower) value from the original. The result is always expressed as a positive number representing how much the value dropped.
 
+For more on this topic, see [*Percentage Difference vs. Percentage Change: What's the Difference?*](/blog/percentage-difference-vs-change).
+
 ## Step-by-step worked examples
 
 ### Example 1 — Sale price discount
@@ -82,6 +84,8 @@ The original price was $80.
 
 Percentage decrease is just a negative percentage change. The same formula handles both increase and decrease:
 
+For more on this topic, see [*Percentage Change Formula: How to Calculate Increase and Decrease*](/blog/percentage-change-formula).
+
 ```
 Percentage Change = ((New Value − Original Value) / Original Value) × 100
 ```
@@ -102,6 +106,8 @@ Using this version, you never need to worry about which order to subtract — th
 ## Practical use cases
 
 **Retail discounts:** Stores advertise percentage-off sales. Knowing the formula lets you verify the marked discount and calculate the final price mentally.
+
+For more on this topic, see [*How to Calculate Percentage Increase: Formula and Step-by-Step Guide*](/blog/how-to-calculate-percentage-increase).
 
 **Depreciation:** Assets like cars, computers, and machinery lose value over time. Accountants express this as a percentage decrease per year.
 

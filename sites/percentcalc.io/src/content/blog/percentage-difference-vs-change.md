@@ -19,6 +19,8 @@ Understanding the distinction prevents genuine errors in analysis, reporting, an
 | **Percentage change** | How much did this value change relative to a starting point? | Yes (increase or decrease) | `((New − Old) / Old) × 100` |
 | **Percentage difference** | How different are these two values relative to their average? | No | `(\|V1 − V2\| / ((V1 + V2) / 2)) × 100` |
 
+For more on this topic, see [*What Percentage Is X of Y? The Simple Formula Explained*](/blog/what-percentage-is-x-of-y).
+
 The key insight:
 
 - **Percentage change** has a clear "before" and "after" — a time sequence, or a reference and a comparison. The old value is the denominator.
@@ -99,6 +101,8 @@ Suppose you compare $45 and $55 using percentage change:
 
 The same price gap gives you completely different percentages depending on which number you put in the denominator. That asymmetry is fine when one value is a true baseline (that is percentage change), but it is a problem when both values are equally valid.
 
+For more on this topic, see [*Percentage of a Number: What It Means and How to Calculate It*](/blog/percentage-of-a-number).
+
 Using the average as the denominator gives a single, symmetric answer: 20%.
 
 ## Side-by-side comparison with the same numbers
@@ -126,6 +130,8 @@ Three different numbers from the same pair of values — because each formula as
 - Neither value is the "original" or "reference"
 - You want a symmetric comparison (the order of V1 and V2 should not matter)
 - You are reporting measurement error or variability between two instruments or observers
+
+For more on this topic, see [*Percentage Error Formula: How to Calculate It in Science and Math*](/blog/percentage-error-formula).
 
 ## A note on percentage points
 

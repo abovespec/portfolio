@@ -24,6 +24,8 @@ The cleanest workaround for time zone confusion is to anchor every cross-zone me
 
 This doesn't mean you communicate the meeting to teammates in UTC. It means you verify the converted times by checking against UTC first, then communicate local times. A world clock tool that shows multiple cities simultaneously makes this trivial: set New York, London, Tokyo, and UTC side by side, and you can see immediately whether your proposed time puts anyone in the middle of the night.
 
+For more on this topic, see [*Why You Need an Online World Clock (and How to Use One)*](/blog/world-clock-online).
+
 ## Include Both Time Zones in Every Invitation
 
 A simple habit that eliminates most scheduling confusion: when you share a meeting time, always include both the sender's local time and the recipient's local time. Instead of writing "Let's meet at 3 PM my time," write "Let's meet Thursday at 3 PM ET / 8 PM GMT."
@@ -43,6 +45,8 @@ Similarly, not all regions in the US observe DST. Arizona (except the Navajo Nat
 ## Find the Overlap Window for Global Teams
 
 If your team spans more than two continents, you may not have a single time that works comfortably for everyone during business hours. Before giving up, map the "overlap window" — the set of hours when all zones simultaneously fall within a reasonable working period (typically 8 AM to 7 PM).
+
+For more on this topic, see [*US Time Zones Explained: All 6 and What States They Cover*](/blog/us-time-zones).
 
 A few example overlap windows:
 
@@ -77,5 +81,7 @@ Before sending any cross-zone meeting invitation:
 3. Check whether any transitions (DST changes) fall between now and the meeting date
 4. Include both your local time and each recipient's local time in the invite or message
 5. Add a world clock or time zone conversion link if participants may be unfamiliar with the math
+
+For more on this topic, see [*What Is UTC? The Time Standard That Keeps the World in Sync*](/blog/what-is-utc).
 
 Time zone scheduling is one of those problems that seems trivial until it costs you a meeting. A small amount of deliberate process eliminates almost all of the friction.

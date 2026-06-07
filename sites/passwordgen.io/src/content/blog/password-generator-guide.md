@@ -17,11 +17,15 @@ A secure generator:
 2. Draws from a specified character set
 3. Produces a password of the specified length
 
+For more on this topic, see [*What Makes a Good Password? Length, Entropy, and Randomness*](/blog/what-makes-a-good-password).
+
 The key distinction is **cryptographic security**. Standard pseudo-random number generators (PRNGs) have predictable output if the seed is known. CSPRNGs are designed to be unpredictable even to an attacker who knows previous outputs.
 
 ## Generate passwords online
 
 [passwordgen.io](/) generates passwords in your browser using the Web Crypto API (`crypto.getRandomValues()`), which is a CSPRNG. The password is never sent to any server.
+
+For more on this topic, see [*Password Manager Comparison: Bitwarden, 1Password, Dashlane, KeePass*](/blog/password-manager-comparison).
 
 Options typically include:
 - **Length** — 16, 20, 32 characters (or custom)
@@ -65,6 +69,8 @@ print(password)  # e.g., "a3f2b8c91d4e5f607182"
 ```
 
 **Never use `random` for security purposes:**
+
+For more on this topic, see [*How to Create a Strong Password: A Practical Security Guide*](/blog/how-to-create-a-strong-password).
 
 ```python
 import random  # Wrong — not cryptographically secure

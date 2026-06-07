@@ -31,6 +31,8 @@ Wait, that seems high. That is because this rough method is for whole-house sizi
 
 **Square footage x 20-25 BTU per sq ft**
 
+For more on this topic, see [*Paint Calculator by Square Feet: Coverage, Coats, and Cost*](/blog/paint-calculator-by-square-feet-coverage-coats-and-cost).
+
 Same room: 300 sq ft x 25 = **7,500 BTU** for a window unit or mini-split.
 
 ## Adjustments
@@ -44,6 +46,8 @@ Same room: 300 sq ft x 25 = **7,500 BTU** for a window unit or mini-split.
 ## Furnace BTU Sizing
 
 For heating in cold climates: **Square footage x 30-60 BTU per sq ft**
+
+For more on this topic, see [*Roofing Square Footage Calculator: Shingles, Bundles, and Cost*](/blog/roofing-square-footage-calculator-shingles-bundles-and-cost).
 
 - Well-insulated modern home: 30-40 BTU/sq ft
 - Average home: 40-50 BTU/sq ft
@@ -74,5 +78,7 @@ Manual J is more accurate than rules of thumb. Use our calculator for estimates,
 - **Oversizing:** Causes short cycling, humidity issues, and premature wear.
 - **Ignoring climate:** A Florida home needs more cooling capacity per square foot than a Minnesota home.
 - **Forgetting occupancy:** A home office with three people and two computers needs more cooling.
+
+For more on this topic, see [*Flooring Cost Calculator by Square Foot: Material and Installation*](/blog/flooring-cost-calculator-by-square-foot-material-and-installation).
 
 Use our calculator as a starting point. Then consult a licensed HVAC contractor for the final specification.

@@ -14,6 +14,8 @@ SQL formatting has no single enforced standard, but most teams converge on simil
 
 **Uppercase keywords:** SQL keywords (`SELECT`, `FROM`, `WHERE`, `JOIN`, `GROUP BY`) are conventionally uppercase, while table names, column names, and aliases are lowercase.
 
+For more on this topic, see [*SQL Joins Explained: INNER, LEFT, RIGHT, FULL, and CROSS*](/blog/sql-joins-explained).
+
 ```sql
 -- Conventional
 SELECT
@@ -109,6 +111,8 @@ ORDER BY order_count DESC;
 
 Paste any SQL query into [sqlformat.io](/) for instant formatting — adjustable indentation, keyword casing, and output dialect.
 
+For more on this topic, see [*SQL Query Optimization: Practical Techniques That Actually Work*](/blog/sql-query-optimization).
+
 ## SQLFluff (linter + formatter)
 
 [SQLFluff](https://sqlfluff.com/) is the most powerful SQL linter and formatter. It supports PostgreSQL, MySQL, BigQuery, Snowflake, dbt, and more.
@@ -146,6 +150,8 @@ capitalisation_policy = lower
 ```
 
 SQLFluff can be integrated into CI to enforce SQL style:
+
+For more on this topic, see [*SQL Style Guide: Conventions Every Team Should Follow*](/blog/sql-style-guide).
 
 ```yaml
 # .github/workflows/lint.yml

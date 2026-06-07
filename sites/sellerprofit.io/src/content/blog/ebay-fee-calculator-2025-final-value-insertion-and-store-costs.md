@@ -14,6 +14,8 @@ eBay changed its fee structure when it moved to managed payments, and many selle
 
 eBay charges a final value fee on the total amount of the sale, including item price, shipping, and handling. For most categories, the rate is 13.25% on the first $7,500, plus $0.30 per order. Some categories differ: books and music sit at 12.9%, while clothing and shoes are 15%. Always check the [official eBay selling fees page](https://www.ebay.com/help/selling/fees-credits-invoices/selling-fees?id=4364) for current rates as these change periodically.
 
+For more on this topic, see [*eBay vs Amazon: Where Should You Sell in 2025?*](/blog/ebay-vs-amazon-selling).
+
 ## Insertion Fees
 
 Every month, you get up to 250 free listings if you do not have an eBay Store. Beyond that, insertion fees run $0.35 per listing. Store subscriptions raise your free listing limits and reduce final value fees in some tiers.
@@ -34,6 +36,8 @@ eBay offers promoted listing standard at a variable ad rate you set, typically 2
 
 Our [eBay fee calculator](/) lets you enter sale price, shipping charged, actual shipping cost, item cost, and store tier. It outputs final value fee, insertion fee, and net profit in seconds.
 
+For more on this topic, see [*How to Calculate Net Profit in Ecommerce: A Sellers Guide*](/blog/how-to-calculate-net-profit-in-ecommerce-a-sellers-guide).
+
 **Example:** Selling a $50 item with $10 shipping charged, $8.50 actual shipping, $20 COGS, and no store:
 - Final value fee: $7.95
 - Insertion fee: $0
@@ -47,6 +51,8 @@ Our [eBay fee calculator](/) lets you enter sale price, shipping charged, actual
 - Avoid categories with higher rates unless margins support it.
 
 Understanding eBay's fee stack helps you price competitively while protecting margin. Use our calculator before every listing to know your real profit.
+
+For more on this topic, see [*Amazon FBA Fee Calculator 2025: Every Fee Explained With Examples*](/blog/amazon-fba-fee-calculator-2025-every-fee-explained-with-examples).
 
 ---
 

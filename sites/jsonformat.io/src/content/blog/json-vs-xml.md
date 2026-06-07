@@ -46,11 +46,15 @@ Here is a simple data structure in both formats to make the comparison concrete.
 
 The JSON version is about 30% shorter. The gap grows as nesting deepens.
 
+For more on this topic, see [*What Is JSON? A Plain-English Introduction*](/blog/what-is-json).
+
 ## Key differences
 
 ### Type system
 
 JSON has a native type system: strings, numbers, booleans, null, arrays, and objects. An XML element is always text — the type lives outside the document, in a schema (XSD) or application code.
+
+For more on this topic, see [*How to Validate JSON: Common Errors and How to Fix Them*](/blog/how-to-validate-json).
 
 ```json
 { "active": true, "count": 42, "ratio": 3.14 }
@@ -64,6 +68,8 @@ JSON has a native type system: strings, numbers, booleans, null, arrays, and obj
 ```
 
 Parsers that read XML must explicitly convert strings to the right type. JSON parsers do this automatically.
+
+For more on this topic, see [*Unexpected Token in JSON: What It Means and How to Fix It*](/blog/unexpected-token-json-error).
 
 ### Attributes vs child elements
 

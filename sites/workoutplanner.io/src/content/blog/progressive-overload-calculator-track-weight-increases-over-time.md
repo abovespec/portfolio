@@ -21,6 +21,8 @@ Progressive overload means gradually increasing stress on muscles over time. You
 
 The most reliable method for beginners and intermediates is adding weight while maintaining rep ranges.
 
+For more on this topic, see [*3 Day Workout Split for Beginners: Full Body Strength Plan*](/blog/3-day-workout-split-for-beginners-full-body-strength-plan).
+
 ## The Calculator Method
 
 Our [progressive overload calculator](/) helps you plan weekly targets.
@@ -59,6 +61,8 @@ This method automatically adjusts for good days and bad days. Some weeks you add
 **Linear:** Add weight every session. Works for beginners for 3-12 months.
 **Non-linear:** Weekly or biweekly increases. Necessary for intermediate and advanced lifters.
 
+For more on this topic, see [*5 Day Workout Split for Intermediate Lifters: Full Program*](/blog/5-day-workout-split-intermediate).
+
 Our calculator supports both approaches. Input your training age and it suggests appropriate progression rates.
 
 ## Tracking Is Essential
@@ -76,5 +80,7 @@ After 6-12 months, linear progression stops. At this point:
 ## Using Our Planner
 
 Our [workout planner](/) integrates with the progressive overload calculator. Plan your mesocycles, track your lifts, and visualize your progress over time.
+
+For more on this topic, see [*4 Day Workout Split for Muscle Growth: Hypertrophy Program*](/blog/4-day-workout-split-muscle-growth).
 
 Progressive overload is simple but not easy. Lift slightly more than last time. Do this consistently for years. The results accumulate beyond what most people imagine possible.

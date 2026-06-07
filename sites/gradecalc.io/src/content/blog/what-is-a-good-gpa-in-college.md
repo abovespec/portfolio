@@ -25,6 +25,8 @@ Before context, here is what the raw numbers mean on a 4.0 scale:
 | 2.0–2.49 | Mostly Cs | Below average |
 | Below 2.0 | D range | Academic risk |
 
+For more on this topic, see [*GPA Scale 4.0 Explained: Letter Grades, Plus/Minus, and Weighted vs Unweighted*](/blog/gpa-scale-4-0-explained).
+
 Most colleges require a 2.0 minimum to remain enrolled. Many require 2.0 in your major courses as well.
 
 ## GPA by Major: Grade Distributions Are Not Equal
@@ -53,6 +55,8 @@ Some fields have more generous grading norms, which means higher GPAs are more c
 | Humanities (English, History) | 3.4–3.8 | Subjective grading, generally generous |
 | Business | 3.3–3.7 | Grade inflation common at many schools |
 | Social Work | 3.4–3.8 | Practice-focused, less curve pressure |
+
+For more on this topic, see [*How to Raise Your GPA Fast: Practical Strategies That Actually Work*](/blog/how-to-raise-your-gpa-fast).
 
 The point is not that humanities students work less hard — it is that your GPA should be interpreted relative to what is typical in your field.
 
@@ -128,6 +132,8 @@ When your GPA is below 3.0, many career advisors recommend simply omitting it fr
 ## Calculating Where You Stand
 
 Use the [GPA calculator](/) to compute your current cumulative GPA and model what grades you need this semester to reach a specific target.
+
+For more on this topic, see [*Cumulative GPA Calculator Guide: What It Is and How to Calculate It*](/blog/cumulative-gpa-calculator-guide).
 
 Knowing your number precisely is the starting point. Whether you are aiming for medical school at 3.7, a consulting job at 3.5, or just staying off academic probation at 2.0, the math does not lie — and planning around it gives you the best chance of hitting your goal.
 

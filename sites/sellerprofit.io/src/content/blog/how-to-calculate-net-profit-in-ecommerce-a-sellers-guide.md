@@ -24,7 +24,11 @@ Most sellers stop at revenue minus COGS. That is gross profit, not net profit. N
 - **Shopify:** Monthly plan + 2.9% payment + app fees — see [Shopify pricing](https://www.shopify.com/pricing).
 - **Your own site:** Payment processing + hosting + no platform fee
 
+For more on this topic, see [*Etsy Fee Calculator 2025: Transaction, Payment, and Offsite Ad Costs*](/blog/etsy-fee-calculator-2025-transaction-payment-and-offsite-ad-costs).
+
 Each platform has a different fee fingerprint. A product profitable on Shopify might lose money on Amazon if fulfillment costs are high.
+
+For more on this topic, see [*Amazon FBA Fee Calculator 2025: Every Fee Explained With Examples*](/blog/amazon-fba-fee-calculator-2025-every-fee-explained-with-examples).
 
 ## Hidden Costs Sellers Forget
 
@@ -37,6 +41,8 @@ Each platform has a different fee fingerprint. A product profitable on Shopify m
 ## Using the Calculators
 
 Our suite of [seller profit calculators](/) covers Amazon FBA, eBay, Etsy, and dropshipping. Each tool breaks down platform-specific fees so you see net profit per unit instantly.
+
+For more on this topic, see [*Dropshipping Profit Margin Calculator: Find Your True Net Profit*](/blog/dropshipping-profit-margin-calculator-find-your-true-net-profit).
 
 ## Monthly Profit and Loss Template
 

@@ -37,6 +37,8 @@ Research shows that shorter, more intense sessions can produce similar results t
 - Bulgarian split squat: 2x10 per leg
 - Plank: 3x45 seconds
 
+For more on this topic, see [*3 Day Workout Split for Beginners: Full Body Strength Plan*](/blog/3-day-workout-split-for-beginners-full-body-strength-plan).
+
 ## Option 2: The Lunch-Hour 4-Day Split
 
 20-minute sessions, 4 days per week. Requires supersetting to maintain volume.
@@ -45,6 +47,8 @@ Research shows that shorter, more intense sessions can produce similar results t
 **Day 2:** Pull (rows + pull-ups + bicep curls)
 **Day 3:** Legs (squats + leg press + calf raises)
 **Day 4:** Full body circuit (compound movements back-to-back)
+
+For more on this topic, see [*PPL Workout Split for Beginners: 6-Day Push Pull Legs Plan*](/blog/ppl-workout-split-for-beginners).
 
 ## Superset Strategy
 
@@ -58,6 +62,8 @@ This maintains intensity while cutting rest time in half.
 ## Using Our Planner
 
 Our [workout planner](/) has a "busy professional" template. Select your available days and time per session. It auto-generates a routine that fits your schedule.
+
+For more on this topic, see [*How to Create Your Own Workout Plan: Step-by-Step Guide*](/blog/how-to-create-your-own-workout-plan).
 
 ## The 2-Day Backup Plan
 

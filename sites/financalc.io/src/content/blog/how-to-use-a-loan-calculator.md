@@ -21,6 +21,8 @@ sources:
 
 Whether you're shopping for a mortgage, comparing personal loans, or figuring out what car payment you can afford, a loan calculator is the right starting point. The calculation is specific math — not estimation — and a calculator runs it in seconds. This guide walks through exactly what you're entering, what the calculator is doing with it, and how to read the output to make informed decisions.
 
+For more on this topic, see [*The Rule of 72 Explained: How to Estimate Doubling Time in Seconds*](/blog/rule-of-72-explained).
+
 ## The Three Core Inputs
 
 Every loan calculator, regardless of loan type, asks for three things:
@@ -36,6 +38,8 @@ Be precise here. Including fees, taxes, or dealer add-ons in the financed amount
 ### 2. Interest Rate
 
 Enter the **annual interest rate**, also called the APR (Annual Percentage Rate) for most consumer loans. This is expressed as a percentage. If your lender quotes you 7.5%, enter 7.5.
+
+For more on this topic, see [*APR vs. APY: What's the Difference and Why It Matters*](/blog/apr-vs-apy-difference).
 
 **Annual vs. monthly:** The calculator converts the annual rate to a monthly rate internally by dividing by 12. You don't need to do that math.
 
@@ -123,6 +127,8 @@ Before applying for any loan, run the calculator in reverse: decide on the maxim
 ## What Loan Calculators Don't Include
 
 A standard loan calculator models principal and interest only. Most real loans carry additional costs:
+
+For more on this topic, see [*Simple Interest vs. Compound Interest: Key Differences with Real Examples*](/blog/simple-interest-vs-compound-interest).
 
 **Mortgages:** Property taxes, homeowner's insurance, and PMI (private mortgage insurance if your down payment is under 20%) are often collected monthly alongside principal and interest. Your true monthly housing cost is higher than the P&I payment alone.
 

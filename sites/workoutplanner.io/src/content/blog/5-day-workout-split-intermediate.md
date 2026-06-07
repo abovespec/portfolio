@@ -12,6 +12,8 @@ Intermediate lifters have a specific problem: the beginner gains are slowing dow
 
 This guide is for lifters who have at least 6–12 months of consistent training history, can no longer add weight to the bar weekly, and want a program that reflects their actual level.
 
+For more on this topic, see [*How to Create Your Own Workout Plan: Step-by-Step Guide*](/blog/how-to-create-your-own-workout-plan).
+
 ## Who This Is For
 
 You are an intermediate lifter if:
@@ -35,7 +37,11 @@ This program uses a modified PPL structure with a dedicated arm day — a layout
 | Friday | Arms + Weak Points |
 | Saturday–Sunday | Rest |
 
+For more on this topic, see [*Upper Lower Split Workout Program: 4-Day Plan for Strength and Size*](/blog/upper-lower-split-workout-program).
+
 The Thursday upper session functions as a second frequency hit for the chest, back, and shoulders at lower volume and heavier loads — shifting the training stimulus to complement rather than duplicate the earlier push and pull days.
+
+For more on this topic, see [*PPL Workout Split for Beginners: 6-Day Push Pull Legs Plan*](/blog/ppl-workout-split-for-beginners).
 
 ## Monday: Push
 

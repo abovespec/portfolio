@@ -23,7 +23,11 @@ sources:
 
 A 30-year mortgage and a 15-year mortgage on the same loan amount at the same rate have the same principal — but radically different total interest costs. The 30-year borrower pays for the flexibility of lower required payments with a much larger lifetime interest bill.
 
+For more on this topic, see [*How Mortgage Amortization Works: Principal, Interest, and Your Monthly Payment*](/blog/how-amortization-works).
+
 The good news: you do not have to choose between a 30-year mortgage's low required payment and a 15-year mortgage's fast payoff. If you take a 30-year loan and apply extra principal payments consistently, you can pay it off in 15 years (or close to it) while retaining the flexibility of the lower required payment if your finances ever tighten.
+
+For more on this topic, see [*Interest vs. Principal: Why You Pay So Much Interest at the Start of a Mortgage*](/blog/interest-vs-principal).
 
 This article walks through the specific strategies and the math behind each one.
 

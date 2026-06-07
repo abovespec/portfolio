@@ -132,11 +132,15 @@ Roberts, James. 2025. "How Neural Networks Learn." Towards Data Science. Novembe
 
 Turabian (*A Manual for Writers of Research Papers, Theses, and Dissertations*) is based on Chicago and follows the same two systems. The main differences are minor formatting adjustments for student papers (running head, page numbers, etc.). For citation format, Turabian and Chicago are interchangeable.
 
+For more on this topic, see [*How to Cite a Book in APA, MLA, and Chicago Format*](/blog/how-to-cite-a-book).
+
 ## Footnote vs. endnote
 
 Both use superscript numbers and follow the same citation format. The difference is placement:
 - **Footnote** — at the bottom of the page where the citation appears
 - **Endnote** — collected at the end of the paper or chapter
+
+For more on this topic, see [*MLA Citation Format: Complete Guide to MLA 9th Edition*](/blog/mla-citation-format).
 
 Most word processors (Word, Google Docs) handle footnote numbering automatically. Check your assignment requirements — some instructors prefer one over the other.
 
@@ -147,6 +151,8 @@ Most word processors (Word, Google Docs) handle footnote numbering automatically
 **Forgetting *ibid.* rules:** Chicago 17 recommends shortened forms over *ibid.* — check your instructor's preference.
 
 **Omitting the city for books:** Chicago (unlike APA 7) still requires the publisher's city for books.
+
+For more on this topic, see [*How to Cite a Website: APA, MLA, and Chicago Formats*](/blog/how-to-cite-a-website).
 
 **Wrong system for the discipline:** History uses N-B; sociology uses Author-Date. Check which system your instructor or journal requires.
 

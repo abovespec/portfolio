@@ -16,6 +16,8 @@ Your eyes are adaptive. A contrast checker is not. That's exactly why you need o
 
 Readable contrast isn't just an aesthetic consideration — it's a functional one. When the foreground color (usually text) doesn't have sufficient luminance difference from the background, people have to strain to read. For users with low vision, cataracts, or color vision deficiencies, insufficient contrast doesn't cause mild discomfort; it makes content genuinely inaccessible.
 
+For more on this topic, see [*What Is Color Theory? A Practical Guide for Designers and Developers*](/blog/what-is-color-theory).
+
 The Web Content Accessibility Guidelines (WCAG) exist to set a minimum standard that serves a broad range of users. Meeting those standards is also a legal baseline in many jurisdictions for public-facing websites.
 
 Beyond legal compliance, readable contrast is just better design. Text that reads clearly in any lighting condition, on any display, without effort is text that people actually read.
@@ -37,6 +39,8 @@ A contrast checker strips away all of this subjectivity. It computes a ratio bas
 ## How Contrast Ratio Is Calculated
 
 WCAG defines contrast ratio using a formula based on relative luminance — essentially, how much light a color reflects or emits relative to pure white.
+
+For more on this topic, see [*WCAG Color Contrast Requirements Explained: AA vs AAA*](/blog/wcag-color-contrast-requirements).
 
 Pure white has a relative luminance of 1.0. Pure black has a relative luminance of 0.0. The contrast ratio between them is 21:1, which is the maximum possible.
 
@@ -85,5 +89,7 @@ A color palette generator with contrast checking built in is particularly useful
 ## A Sustainable Approach
 
 Rather than checking contrast as an afterthought at the end of a project, build it into your process at the palette stage. Designate your text colors, background colors, and surface colors, then verify every intended combination before you start applying them. If your primary text color passes 4.5:1 against your background color from the start, you're designing with confidence rather than hoping it works out.
+
+For more on this topic, see [*How to Build a Color Palette for Your Website (Step by Step)*](/blog/color-palette-for-website).
 
 Your eyes will tell you something looks readable. A contrast checker tells you whether it actually is.

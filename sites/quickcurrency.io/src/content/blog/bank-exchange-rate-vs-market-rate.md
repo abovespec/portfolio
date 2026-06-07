@@ -16,7 +16,11 @@ Understanding why the bank rate and the market rate differ — and by how much, 
 
 The rate you see on financial data platforms and currency converter tools is usually the **mid-market rate**, also called the interbank rate or spot rate. This is the rate at which large financial institutions — banks, hedge funds, central banks — trade currencies with each other in the global wholesale market.
 
+For more on this topic, see [*What Is the Mid-Market Rate? Definition, Spread, and Why It Matters*](/blog/what-is-the-mid-market-rate).
+
 The interbank market is enormous. According to the Bank for International Settlements (BIS), foreign exchange markets see average daily trading volumes exceeding $7 trillion. At this scale, the spreads between buy and sell prices are razor thin — sometimes a fraction of a basis point on major currency pairs like EUR/USD.
+
+For more on this topic, see [*Best Time to Exchange Currency: What Actually Matters*](/blog/best-time-to-exchange-currency).
 
 This is the rate the ECB publishes as its daily euro foreign exchange reference rates. It is also the rate the Federal Reserve reports in its H.10 statistical release. It is a real rate, but it is a wholesale rate — not available to individual consumers or small businesses directly.
 
@@ -27,6 +31,8 @@ When a bank or foreign exchange provider offers currency to a retail customer, t
 - **Risk**: They buy currency in advance without knowing exactly when it will be sold.
 - **Operational costs**: Handling physical cash, staff, compliance.
 - **Profit**: Foreign exchange is a revenue line for banks and exchange services.
+
+For more on this topic, see [*Currency Exchange Fees Explained: Banks, ATMs, and Credit Cards*](/blog/currency-exchange-fees-explained).
 
 The margin is usually expressed implicitly in a worse exchange rate rather than as an explicit line-item fee — though fees may also exist on top of the rate markup. This combination is sometimes called the "all-in cost" of an exchange.
 

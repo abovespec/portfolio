@@ -59,6 +59,8 @@ Most [currency converter](/)-style lookups do this chain internally. Manually, y
 
 The formula only works if you have the rate. Before a trip, look up the mid-market rate — the "true" exchange rate before any fees or markups — using a [currency converter](/). Write the rate down or take a screenshot. You don't need precision to the sixth decimal; two or three significant figures is enough for mental math.
 
+For more on this topic, see [*What Is the Mid-Market Rate? Definition, Spread, and Why It Matters*](/blog/what-is-the-mid-market-rate).
+
 For example: "roughly 0.92 EUR per dollar" or "about 155 yen per dollar."
 
 ## Mental Math Shortcuts
@@ -91,6 +93,8 @@ These aren't exact, but for a traveler deciding whether a restaurant looks reaso
 
 The rate you calculate manually is the mid-market rate — what the market says a currency is worth. The rate you actually get at a bank, exchange bureau, or ATM will be worse than this by some margin. That margin pays for the service.
 
+For more on this topic, see [*Bank Exchange Rate vs Market Rate: Why They're Different*](/blog/bank-exchange-rate-vs-market-rate).
+
 A practical rule: assume you'll get 2–5% less than the mid-market rate at a decent bank or ATM, and potentially 8–12% less at an airport kiosk or hotel desk. When doing mental math, build in a buffer:
 
 - If you calculated $150 worth of euros at the mid-market rate, expect to actually receive somewhere between $138 and $147 worth, depending on where you exchange.
@@ -104,6 +108,8 @@ Two common mistakes:
 **Multiplying when you should divide (or vice versa).** Remember: if you're converting to a currency with a rate greater than 1 (like USD to JPY at 150), you multiply and get a bigger number. If you're converting back, you divide. When in doubt, ask yourself: "Should I end up with more units or fewer?" Yen are small units; you'll always have more yen than dollars.
 
 **Using a stale rate.** Exchange rates move constantly. A rate from yesterday may be off by a meaningful amount for large transactions, less so for a dinner bill. For anything over a few hundred dollars, always check a current rate via a [currency converter](/).
+
+For more on this topic, see [*How Currency Exchange Rates Work: A Plain-English Guide*](/blog/how-currency-exchange-rates-work).
 
 ## Practicing Before You Travel
 

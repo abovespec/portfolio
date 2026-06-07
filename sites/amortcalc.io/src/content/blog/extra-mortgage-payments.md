@@ -25,11 +25,15 @@ sources:
 
 Every dollar you pay toward your mortgage principal is a dollar that will never generate another interest charge. Because mortgage amortization is front-loaded with interest, extra payments made in the early years of a loan are among the most leveraged financial moves available to a homeowner.
 
+For more on this topic, see [*How to Pay Off a 30-Year Mortgage in 15 Years*](/blog/how-to-pay-off-30-year-mortgage-early).
+
 This article walks through the math behind three common extra-payment strategies: one extra payment per year, bi-weekly payments, and lump-sum prepayments. All figures are illustrative examples and not a representation of current market rates.
 
 ## Why Extra Payments Are So Powerful
 
 Recall the fundamental rule of mortgage interest:
+
+For more on this topic, see [*Interest vs. Principal: Why You Pay So Much Interest at the Start of a Mortgage*](/blog/interest-vs-principal).
 
 > **Monthly Interest = Outstanding Balance × (Annual Rate ÷ 12)**
 
@@ -54,6 +58,8 @@ The simplest extra-payment strategy is making one additional full payment each y
 - **Interest saved: approximately $55,000+**
 
 The math works because each extra payment is applied entirely to principal, causing every subsequent payment to carry a slightly smaller interest charge. The effect compounds over decades.
+
+For more on this topic, see [*How Mortgage Amortization Works: Principal, Interest, and Your Monthly Payment*](/blog/how-amortization-works).
 
 ## Strategy 2: Bi-Weekly Payments
 

@@ -94,6 +94,8 @@ const match = text.match(/\$[\d.]+/);
 // ["$42.99", index: 13, input: ..., groups: undefined]
 ```
 
+For more on this topic, see [*Regex Groups and Capturing: How to Extract Data with Parentheses*](/blog/regex-groups-capturing).
+
 **Match all:**
 ```javascript
 const allPrices = text.match(/\$[\d.]+/g);
@@ -174,10 +176,14 @@ Search with regex in VS Code:
 2. Click the `.*` button to enable regex mode
 3. Type your regex pattern
 
+For more on this topic, see [*Regex Tutorial: Learn Regular Expressions from Scratch*](/blog/regex-tutorial).
+
 For Find and Replace:
 1. Open Replace: `Ctrl+H` (or `Cmd+H`)
 2. Enable regex with the `.*` button
 3. Use `$1`, `$2` for group references in the replace field
+
+For more on this topic, see [*Regex Lookahead and Lookbehind: Zero-Width Assertions Explained*](/blog/regex-lookahead-lookbehind).
 
 Example: convert snake_case to camelCase:
 - Find: `_(\w)`

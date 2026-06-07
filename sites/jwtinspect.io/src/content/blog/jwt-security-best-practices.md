@@ -14,6 +14,8 @@ JWT authentication is straightforward to get right — and surprisingly easy to 
 
 **The attack:** The JWT header specifies the signing algorithm. An attacker can modify a valid token, change `alg` to `"none"`, and strip the signature — leaving a token with no cryptographic protection. Early JWT libraries accepted this as "unsigned" and treated the token as valid.
 
+For more on this topic, see [*What Is a JWT Token? JSON Web Tokens Explained*](/blog/what-is-a-jwt-token).
+
 ```json
 // Attacker-modified header
 { "alg": "none", "typ": "JWT" }
@@ -38,6 +40,8 @@ jwt.verify(token, secret, { algorithms: ['HS256'] });
 ```
 
 Modern JWT libraries disable `none` by default. Ensure you're using a maintained library version and check your configuration.
+
+For more on this topic, see [*JWT vs Session Authentication: Which Should You Use?*](/blog/jwt-vs-session).
 
 ## 2. Use strong, unique secrets for HS256
 
@@ -182,6 +186,8 @@ If you need to encrypt the payload, use JWE (JSON Web Encryption) — a separate
 - [ ] Refresh token rotation enabled
 - [ ] All traffic over HTTPS
 - [ ] No secrets or unnecessary PII in payload
+
+For more on this topic, see [*JWT Token Expiration: Access Tokens, Refresh Tokens, and Rotation*](/blog/jwt-token-expiration).
 
 ## Debug your JWT
 

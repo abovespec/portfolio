@@ -16,6 +16,8 @@ It hasn't. The 25-minute interval came from a student experimenting with a kitch
 
 Francesco Cirillo developed the Pomodoro Technique in the late 1980s while studying at Bocconi University in Milan. By his account, he was struggling to focus and made a bet with himself: work for one defined interval without distraction. He grabbed a tomato-shaped kitchen timer from his kitchen and set it for 10 minutes.
 
+For more on this topic, see [*What Is the Pomodoro Technique? The Focus Method Millions Use*](/blog/what-is-the-pomodoro-technique).
+
 That initial experiment worked well enough that he kept refining it. Through trial and error, he settled on 25 minutes as the interval that felt productive without being exhausting. He later described this as a balance between urgency and depth — short enough to feel achievable, long enough to actually get into the work.
 
 The number 25 was not derived from a study. It was a judgment call, refined through practice. This is worth emphasizing because productivity advice often dresses up pragmatic heuristics in scientific language they don't deserve.
@@ -28,6 +30,8 @@ What attention research does support is the idea that sustained concentration on
 
 This isn't an argument for 25-minute intervals specifically, but it does explain why a system that builds breaks into work sessions would tend to work better than one that doesn't.
 
+For more on this topic, see [*The 52/17 Rule: Is It Better Than Pomodoro?*](/blog/52-17-rule).
+
 ## Why 25 Minutes Works for Most Tasks
 
 Even if 25 minutes isn't a magic cognitive threshold, it's a sensible default for several practical reasons.
@@ -35,6 +39,8 @@ Even if 25 minutes isn't a magic cognitive threshold, it's a sensible default fo
 **It's long enough to do real work.** For most focused tasks — writing a section, completing a coding problem, reviewing a document, studying a chapter — 25 minutes allows time to warm up and make meaningful progress. Compare this to 10- or 15-minute blocks, which often end just as you're getting started.
 
 **It's short enough to feel achievable.** Starting a 90-minute block requires a greater initial commitment. Starting a 25-minute block doesn't. The lower barrier to beginning is one of the main reasons the Pomodoro Technique is frequently recommended for procrastination — the question isn't "can I finish this?" but "can I work on it for 25 minutes?" Most people can answer yes to that even when they're struggling.
+
+For more on this topic, see [*Pomodoro Technique Benefits: What Changes When You Work This Way*](/blog/pomodoro-technique-benefits).
 
 **It pairs well with a 5-minute break.** The 25/5 ratio keeps you working roughly 83% of the time. That's sustainable over a full workday in a way that, say, a 50/5 ratio (91% work) might not be.
 

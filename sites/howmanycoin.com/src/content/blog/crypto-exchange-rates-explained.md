@@ -18,9 +18,13 @@ Cryptocurrency prices have no equivalent authority. There is no central bank for
 
 This is a fundamental difference — not necessarily a flaw, but a structural reality that shapes everything about how crypto prices behave.
 
+For more on this topic, see [*What Is Market Cap in Crypto? The Metric That Matters Most*](/blog/what-is-crypto-market-cap).
+
 ## Order Books and Price Discovery
 
 At the core of every centralized crypto exchange is an **order book**: a real-time ledger of pending buy orders and pending sell orders.
+
+For more on this topic, see [*How to Calculate Crypto Market Cap (Step by Step)*](/blog/how-to-calculate-crypto-market-cap).
 
 - A **bid** is an offer to buy at a specified price. If you place a bid for Bitcoin at $58,000, you're saying you'll buy if someone agrees to sell at that level.
 - An **ask** (or offer) is a willingness to sell at a specified price. If someone places an ask at $58,050, they'll sell to whoever meets that price.
@@ -77,6 +81,8 @@ Stablecoins like USDC and USDT are designed to maintain a fixed exchange rate wi
 **Algorithmic stablecoins** attempt to maintain parity through programmatic supply adjustments — minting new coins when the price rises above $1 and burning them when it falls. Several high-profile algorithmic stablecoins have failed to maintain their peg under market stress. The collapse of TerraUSD (UST) in May 2022 is the most prominent example.
 
 Because stablecoins are designed to hold a fixed rate, they appear relatively flat on price charts. Their exchange rate against other cryptocurrencies fluctuates normally — 1 USDC buys more BTC when Bitcoin's price is lower and less when Bitcoin's price is higher. Their rate against USD, by design, stays near 1:1.
+
+For more on this topic, see [*How to Convert Bitcoin to USD: The Math and the Methods*](/blog/how-to-convert-bitcoin-to-usd).
 
 Understanding stablecoins is useful when using a conversion calculator: if you're converting between two volatile assets, every calculation is a moving target. If one side of the pair is a stablecoin, the math is anchored.
 

@@ -14,6 +14,8 @@ UUID v4 has been the default choice for years. UUID v7, standardized in RFC 9562
 
 UUID v4 is 122 bits of cryptographically random data. The remaining 6 bits are fixed version and variant bits.
 
+For more on this topic, see [*What Is a UUID? Format, Versions, and How They Work*](/blog/what-is-a-uuid).
+
 ```
 Structure:
 xxxxxxxx-xxxx-4xxx-[89ab]xxx-xxxxxxxxxxxx
@@ -28,6 +30,8 @@ Example:
 import uuid
 uid = uuid.uuid4()  # fully random
 ```
+
+For more on this topic, see [*UUID vs GUID: Are They the Same Thing?*](/blog/uuid-vs-guid).
 
 **Properties:**
 - Completely random — no pattern, no time information
@@ -56,6 +60,8 @@ Example:
 import uuid7
 uid = uuid7.uuid7()
 ```
+
+For more on this topic, see [*How to Generate a UUID: Online, CLI, Python, JavaScript, and SQL*](/blog/generate-uuid).
 
 ```javascript
 import { v7 as uuidv7 } from 'uuid';

@@ -14,6 +14,8 @@ When you run `diff file1.txt file2.txt` or look at a git pull request, you're se
 
 "Finding differences" sounds simple — just compare the files line by line. But that naive approach breaks down the moment lines are rearranged or a block is inserted. If you insert a line near the top of a 500-line file, a line-by-line comparison would report that every remaining line "changed," which is useless.
 
+For more on this topic, see [*How to Compare Two Text Files in Linux*](/blog/compare-two-text-files-linux).
+
 The real goal is to identify a *minimal edit script* — the fewest insertions and deletions that transform file A into file B. This is known as the **edit distance problem**, and the lines being compared are treated as elements of a sequence.
 
 ## Longest Common Subsequence (LCS)
@@ -93,6 +95,8 @@ Read as: "lines 2-3 of file 1 changed to line 2 of file 2."
 ```
 Lines starting with `-` are from file A (deleted); `+` from file B (added); space means unchanged context. This is the format used by `git diff` and pull requests.
 
+For more on this topic, see [*Unified Diff Format: How to Read and Write Patch Files*](/blog/unified-diff-format).
+
 **Side-by-side format** (`diff --side-by-side`):
 ```
 A               A
@@ -106,6 +110,8 @@ E               E
 ## How git diff extends this
 
 `git diff` uses the Myers algorithm by default, but exposes several alternative algorithms via `--diff-algorithm`:
+
+For more on this topic, see [*Myers Diff Algorithm: How git diff Finds Changes*](/blog/myers-diff-algorithm).
 
 - `myers` (default) — Eugene Myers' algorithm
 - `patience` — better at handling moved blocks; used by Bazaar, now optional in git

@@ -31,6 +31,8 @@ This guide puts them side by side: same formulas, same examples, and a clear exp
 
 **Gross margin** measures how much profit remains after subtracting the direct cost of producing your product or service. **Net margin** measures how much profit remains after subtracting *every* cost the business incurs — production, overhead, debt, and taxes.
 
+For more on this topic, see [*What Is Profit Margin? Definition, Formula, and Why It Matters*](/blog/what-is-profit-margin).
+
 ---
 
 ## Gross Profit Margin
@@ -49,6 +51,8 @@ A clothing brand sells $1,000,000 in merchandise. The fabric, manufacturing, and
 
 - Gross Profit = $1,000,000 − $420,000 = $580,000
 - **Gross Margin = 58%**
+
+For more on this topic, see [*How to Calculate Gross Profit Margin: Step-by-Step with Examples*](/blog/how-to-calculate-gross-profit-margin).
 
 That 58 cents from every sales dollar is available to cover all other business expenses — and ideally leave a profit after doing so.
 
@@ -166,5 +170,7 @@ The only meaningful benchmark is your own industry's historical range — not a 
 - Both metrics are necessary — gross margin diagnoses unit economics; net margin judges the whole business.
 - A high gross margin is necessary but not sufficient for a healthy net margin.
 - Always benchmark against your specific industry, not a generic "good margin" target.
+
+For more on this topic, see [*What Is a Good Profit Margin? Benchmarks by Industry*](/blog/what-is-a-good-profit-margin).
 
 Use our [profit margin calculator](/tools/profit-margin-calculator/) to compute both margins from your revenue and cost figures instantly.

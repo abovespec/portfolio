@@ -14,9 +14,13 @@ When people compare cryptocurrencies, they often fixate on price per coin. A coi
 
 Market cap in crypto is calculated with a single formula:
 
+For more on this topic, see [*How to Calculate Crypto Market Cap (Step by Step)*](/blog/how-to-calculate-crypto-market-cap).
+
 **Market Cap = Current Price × Circulating Supply**
 
 Circulating supply is the number of coins or tokens that are currently out in the market — not locked, not reserved, not yet mined. Multiply that count by the current trading price and you get the market cap: a rough measure of the total market value of that asset.
+
+For more on this topic, see [*Circulating Supply in Crypto: What It Is and Why It Changes*](/blog/what-is-circulating-supply).
 
 Data aggregators like [CoinGecko](https://www.coingecko.com) and [CoinMarketCap](https://coinmarketcap.com) display this figure in real time for thousands of cryptocurrencies.
 
@@ -40,6 +44,8 @@ The crypto industry generally sorts assets into three tiers based on market cap,
 **Mid-cap** — Roughly $1 billion to $10 billion. These assets have gained meaningful adoption but carry more risk than large-caps. Liquidity can thin out during market stress, making large trades more difficult to execute without moving the price.
 
 **Small-cap** — Below $1 billion, and in many cases far below. This tier contains thousands of projects ranging from genuine early-stage protocols to outright scams. Small-cap assets can move dramatically on low trading volume, making them both higher-risk and capable of rapid price swings in either direction.
+
+For more on this topic, see [*How Many Cryptocurrencies Exist? (And How to Think About Them)*](/blog/how-many-cryptocurrencies-exist).
 
 Categorizing a coin by market cap is not a substitute for due diligence. A large market cap does not guarantee legitimacy or long-term survival, and a small market cap does not mean a project is worthless. It is a starting point for comparison, not a verdict.
 

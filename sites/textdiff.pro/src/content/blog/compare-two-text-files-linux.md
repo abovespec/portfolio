@@ -14,6 +14,8 @@ Linux includes several tools for comparing text files, from the classic `diff` c
 
 `diff` is the foundational tool — installed on every Linux system, available in scripts, and the basis for most other comparison tools.
 
+For more on this topic, see [*How Does diff Work? The Algorithm Behind File Comparison*](/blog/how-does-diff-work).
+
 ```bash
 diff file1.txt file2.txt
 ```
@@ -50,6 +52,8 @@ fi
 ## Unified format (`diff -u`)
 
 The unified format is much more readable and is what git uses:
+
+For more on this topic, see [*git diff Explained: Every Common Usage with Examples*](/blog/git-diff-explained).
 
 ```bash
 diff -u file1.txt file2.txt
@@ -94,6 +98,8 @@ patch original.txt < changes.patch
 | `-r` | Recursive (compare directories) |
 | `--color` | Colorized output (GNU diff 3.4+) |
 | `-U N` | Show N lines of context (default 3) |
+
+For more on this topic, see [*Unified Diff Format: How to Read and Write Patch Files*](/blog/unified-diff-format).
 
 Examples:
 

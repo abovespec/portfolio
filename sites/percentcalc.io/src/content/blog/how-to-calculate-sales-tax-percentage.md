@@ -14,6 +14,8 @@ Sales tax is a percentage of the purchase price added at the point of sale. Know
 
 Sales tax is calculated as a percentage of the item's price. The rate is set by local government — it varies by state, county, and sometimes city. The tax is added on top of the listed price, so the total you pay is:
 
+For more on this topic, see [*Percentage of a Number: What It Means and How to Calculate It*](/blog/percentage-of-a-number).
+
 ```
 Total = Price × (1 + Tax Rate / 100)
 ```
@@ -56,6 +58,8 @@ You buy three items: $12.50, $34.00, and $7.75. The tax rate is 7%.
 ## Finding the tax rate from a receipt
 
 If your receipt shows the pre-tax price and the tax amount, you can calculate the rate that was applied:
+
+For more on this topic, see [*How to Calculate a Discount Percentage (and the Final Price)*](/blog/how-to-calculate-discount).
 
 ```
 Tax Rate % = (Tax Amount / Pre-Tax Price) × 100
@@ -107,6 +111,8 @@ In the United States, sales tax rates are not uniform — the rate you pay is ty
 - **Combined rate: 7.75%**
 
 The formula remains identical regardless of how the combined rate is made up. You use the single total percentage in the calculation.
+
+For more on this topic, see [*How to Calculate Percentage: Formula, Examples, and Shortcuts*](/blog/how-to-calculate-percentage).
 
 ## Tax on tax-exempt items
 

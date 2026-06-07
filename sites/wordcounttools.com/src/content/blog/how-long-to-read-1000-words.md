@@ -29,6 +29,8 @@ That's the short answer. The real answer depends on the content type, the reader
 | 5,000 | 25 min | 21.7 min | 16.7 min |
 | 10,000 | 50 min | 43.5 min | 33 min |
 
+For more on this topic, see [*How to Check Word Count in Google Docs (Every Method)*](/blog/word-count-google-docs).
+
 Use a [word count tool](/) to find the word count of any piece of text, then divide by your reading speed.
 
 ## Why the number varies
@@ -43,6 +45,8 @@ Use a [word count tool](/) to find the word count of any piece of text, then div
 | Technical documentation with code | ~7–10 min (at 100–150 WPM) |
 | Academic paper / dense research | ~6–10 min (at 100–160 WPM) |
 
+For more on this topic, see [*Reading Time Calculator: How Long Will Readers Spend on Your Content?*](/blog/reading-time-calculator).
+
 A 1,000-word technical tutorial with five code blocks will take far longer than a 1,000-word lifestyle article.
 
 **Reader skill varies.** College students average closer to 300 WPM; non-native speakers typically read 15–30% slower than native speakers. A 1,000-word article for an international audience may take 6–7 minutes instead of 4.
@@ -54,6 +58,8 @@ A 1,000-word technical tutorial with five code blocks will take far longer than 
 ### Blog posts
 
 A "5-minute read" is typically 1,000–1,200 words at standard reading speed. This is a comfortable length for a standalone blog post — substantial enough to be useful, short enough not to intimidate.
+
+For more on this topic, see [*How Long Should a Blog Post Be for SEO in 2026?*](/blog/how-long-should-a-blog-post-be).
 
 Common blog post lengths and their reading times:
 

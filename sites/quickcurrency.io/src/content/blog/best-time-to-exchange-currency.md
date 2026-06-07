@@ -12,9 +12,13 @@ People searching for the best time to exchange currency are often hoping for a p
 
 That said, there are real, practical decisions around currency exchange timing and venue that do make a material difference. Here is what actually matters.
 
+For more on this topic, see [*When to Buy Foreign Currency Before a Trip*](/blog/when-to-buy-foreign-currency).
+
 ## What You Cannot Control: Market Movements
 
 The EUR/USD rate, the USD/GBP rate, or any other floating currency pair moves continuously in response to economic data releases, central bank decisions, geopolitical events, trade flows, and the collective expectations of millions of market participants. The Federal Reserve's rate decisions, ECB statements, inflation reports, and employment figures all move exchange rates — often within seconds of publication.
+
+For more on this topic, see [*How to Get the Best Exchange Rate When Traveling*](/blog/how-to-get-best-exchange-rate-traveling).
 
 No one knows which direction rates will move next week. Currency forecasting is genuinely difficult; even IMF and major bank economists publish forecasts with wide ranges and significant uncertainty. If a reliable method existed to predict short-term FX movements, arbitrage would eliminate the opportunity almost instantly.
 
@@ -27,6 +31,8 @@ While you cannot reliably control the rate you get by timing the market, you can
 ### Avoid Airport Exchanges
 
 This is the most consistently actionable piece of advice in currency exchange. Airport kiosks and hotel desks operate with markups that routinely run 5% to 12% above the mid-market rate. On a $1,000 exchange, that is $50 to $120 in lost value. Planning ahead so you do not need to use an airport exchange desk is one of the few currency timing decisions with a reliable payoff.
+
+For more on this topic, see [*What Is the Mid-Market Rate? Definition, Spread, and Why It Matters*](/blog/what-is-the-mid-market-rate).
 
 ### Avoid Weekends If You Are Exchanging Through a Bank
 

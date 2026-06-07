@@ -18,6 +18,8 @@ Etsy charges $0.20 per listing. Each listing lasts four months or until sold. If
 
 The transaction fee is 6.5% of the total sale price including shipping and gift wrapping. This applies to every transaction regardless of payment method — see [Etsy's official fees page](https://www.etsy.com/legal/fees/) for current rates.
 
+For more on this topic, see [*Amazon FBA Fee Calculator 2025: Every Fee Explained With Examples*](/blog/amazon-fba-fee-calculator-2025-every-fee-explained-with-examples).
+
 ## Payment Processing Fees
 
 For Etsy Payments, the processing fee is 3% of the total sale price plus $0.25 per transaction. Rates vary slightly by country. If you use PayPal, [PayPal's merchant fee schedule](https://www.paypal.com/us/webapps/mpp/merchant-fees) applies.
@@ -36,6 +38,8 @@ Our [Etsy profit calculator](/) factors in every fee automatically. Input your l
 - Listing fee: $0.20
 - Net profit: $21.75
 
+For more on this topic, see [*How to Calculate Net Profit in Ecommerce: A Sellers Guide*](/blog/how-to-calculate-net-profit-in-ecommerce-a-sellers-guide).
+
 If the same sale comes from an offsite ad, subtract another 15% ($6.00), dropping profit to $15.75.
 
 ## Pricing Strategy
@@ -47,6 +51,8 @@ Many Etsy sellers underprice because they forget offsite ads. Price as if every 
 - Encourage direct traffic through social media to avoid offsite ad fees.
 - Bundle items to spread listing fees across higher basket values.
 - Use calculated shipping so buyers pay exact costs, reducing your transaction fee base.
+
+For more on this topic, see [*eBay Fee Calculator 2025: Final Value, Insertion, and Store Costs*](/blog/ebay-fee-calculator-2025-final-value-insertion-and-store-costs).
 
 Use our calculator to model every product before listing. Knowing your numbers is the difference between a hobby and a profitable shop.
 

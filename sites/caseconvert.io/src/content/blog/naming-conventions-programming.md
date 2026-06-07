@@ -22,6 +22,8 @@ This guide covers the five main styles, where each is standard, and the edge cas
 | UPPER_SNAKE | `FIRST_NAME` | All uppercase, underscore separator |
 | kebab-case | `first-name` | All lowercase, hyphen separator |
 
+For more on this topic, see [*What Is snake_case? A Practical Guide for Developers*](/blog/what-is-snake-case).
+
 ## camelCase
 
 camelCase is the dominant style in JavaScript, TypeScript, Java, Swift, and Kotlin for variable and function names.
@@ -169,6 +171,8 @@ kebab-case cannot be used as an identifier in most programming languages (the hy
 | CSS | kebab-case | — | — | kebab-case |
 | SQL | snake_case | — | — | snake_case |
 
+For more on this topic, see [*String to camelCase in JavaScript: The Right Approach*](/blog/string-to-camelcase-javascript).
+
 ## Cross-boundary conversions
 
 The most common source of bugs from naming conventions is at **serialization boundaries** — where your backend language meets your frontend, or where your app meets a database.
@@ -177,6 +181,8 @@ The most common source of bugs from naming conventions is at **serialization bou
 - Python produces `user_id`, `first_name` (snake_case)
 - JavaScript expects `userId`, `firstName` (camelCase)
 - Solution: use a serializer alias (Pydantic's `alias_generator`, Django REST Framework's `CamelCaseJSONParser`) or transform in the client
+
+For more on this topic, see [*camelCase vs snake_case: Which Should You Use?*](/blog/camelcase-vs-snake-case).
 
 **JavaScript API + PostgreSQL:**
 - Postgres uses snake_case columns (`user_id`)

@@ -14,6 +14,8 @@ Cron is Linux's built-in task scheduler. It runs commands at scheduled times —
 
 The `cron` daemon is a background process that wakes up every minute, checks for scheduled jobs, and runs any that are due. Each user (including root) has their own crontab file that lists their jobs.
 
+For more on this topic, see [*Crontab Syntax: A Complete Reference for Cron Expressions*](/blog/crontab-syntax).
+
 The crontab (cron table) is a configuration file with lines in the format:
 
 ```
@@ -31,6 +33,8 @@ crontab -e
 ```
 
 **Step 2:** Add a job. This runs a script every day at 2am:
+
+For more on this topic, see [*How to Schedule a Cron Job on Linux: Step-by-Step*](/blog/how-to-schedule-a-cron-job).
 
 ```bash
 0 2 * * * /home/ubuntu/backup.sh >> /var/log/backup.log 2>&1
@@ -222,6 +226,8 @@ journalctl -u cron --since "2026-04-25 02:00" | head -20
 ```
 
 For important jobs, add monitoring. Services like Healthchecks.io let you ping a URL from cron to confirm the job ran:
+
+For more on this topic, see [*Cron Job Not Running? How to Diagnose and Fix It*](/blog/cron-job-not-running).
 
 ```bash
 0 2 * * * /home/ubuntu/backup.sh && curl -fsS https://hc-ping.com/YOUR-UUID > /dev/null 2>&1

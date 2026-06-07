@@ -29,6 +29,8 @@ A logo placed in the center of a QR code obscures some modules. As long as the l
 
 The safe maximum logo size is **30% of the QR code's total area** when using H-level error correction. In practice, keeping the logo to **20–25%** provides a safety margin.
 
+For more on this topic, see [*QR Code Best Practices: Design, Size, Placement, and Testing*](/blog/qr-code-best-practices).
+
 For a QR code that is 100 × 100 mm, the logo should be no larger than 25 × 25 mm (625 sq mm = 25% of 10,000 sq mm total area). For most use cases, a logo of 20–22% of the code area scans reliably.
 
 **Square logos are easier to size.** If your logo is wide and short (landscape), you may need to add white padding to make it square before inserting it — this reduces the effective obscured area.
@@ -65,6 +67,8 @@ For a QR code that is 100 × 100 mm, the logo should be no larger than 25 × 25 
 - Test on both iOS and Android before finalizing
 - Keep the logo simple — complex, detailed logos at small sizes become noise
 
+For more on this topic, see [*How to Create a QR Code: A Complete Beginner's Guide*](/blog/how-to-create-a-qr-code).
+
 **Don't:**
 - Obscure the three square finder patterns in the corners — these are essential for decoding and must not be covered
 - Use a semi-transparent logo — transparency over the modules creates ambiguous contrast
@@ -88,6 +92,8 @@ A QR code with a logo needs to be somewhat larger than a plain QR code of equiva
 - For business cards: 20 mm minimum (compared to 15 mm for a plain code)
 - For flyers and posters: 40 mm minimum for logo codes
 - At very small print sizes (under 20 mm), skip the logo — it will hurt scan reliability
+
+For more on this topic, see [*QR Code Size Guide for Printing: Minimum Sizes, DPI, and Scan Distance*](/blog/qr-code-size-guide-for-printing).
 
 ## Testing: the critical final step
 

@@ -25,6 +25,8 @@ Flooring is one of the highest-impact home improvements. It is also one of the e
 | Bamboo | $3-6 | $6-10 |
 | Cork | $3-6 | $6-10 |
 
+For more on this topic, see [*Roof Replacement Cost Estimator: 2025 Pricing by Material and Size*](/blog/roof-replacement-cost-estimator-2025-pricing-by-material-and-size).
+
 ## Hidden Costs
 
 - **Underlayment:** $0.30-1.00 per sq ft
@@ -34,6 +36,8 @@ Flooring is one of the highest-impact home improvements. It is also one of the e
 - **Floor prep / leveling:** $1-3 per sq ft
 - **Removal of old flooring:** $1-4 per sq ft
 - **Waste factor:** Add 10% to square footage
+
+For more on this topic, see [*Roofing Square Footage Calculator: Shingles, Bundles, and Cost*](/blog/roofing-square-footage-calculator-shingles-bundles-and-cost).
 
 ## Example: 200 Sq Ft Bedroom, LVP
 
@@ -52,6 +56,8 @@ DIY saves 30-50% on labor but requires tools, time, and skill. Floating floors (
 ## Using Our Calculator
 
 Our [flooring calculator](/) estimates total cost from room dimensions. Input length, width, material price, waste factor, and installation rate. It outputs material needed and total project cost.
+
+For more on this topic, see [*Paint Calculator by Square Feet: Coverage, Coats, and Cost*](/blog/paint-calculator-by-square-feet-coverage-coats-and-cost).
 
 ## Tips to Save Money
 

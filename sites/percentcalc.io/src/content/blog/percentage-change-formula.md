@@ -30,6 +30,8 @@ Use this when the new value is greater than the old value.
 Percentage Increase = ((New − Old) / Old) × 100
 ```
 
+For more on this topic, see [*How to Calculate Percentage: Formula, Examples, and Shortcuts*](/blog/how-to-calculate-percentage).
+
 ### Example: Price increase
 
 A coffee shop raised the price of a latte from $4.00 to $4.80.
@@ -64,6 +66,8 @@ Use this when the new value is less than the old value.
 ```
 Percentage Decrease = ((Old − New) / Old) × 100
 ```
+
+For more on this topic, see [*Percentage of a Number: What It Means and How to Calculate It*](/blog/percentage-of-a-number).
 
 This version gives a positive number representing the magnitude of the drop. Alternatively, you can use the general formula — you will just get a negative number, which also communicates the decrease.
 
@@ -115,6 +119,8 @@ Traffic **decreased by 20%**.
 ## What if the old value is zero?
 
 The formula breaks down when the old value is zero because you cannot divide by zero. In practice this situation means you are starting from nothing and adding something — a 0-to-something change has no meaningful percentage representation. You would typically describe this as "went from zero to X" rather than as a percentage change.
+
+For more on this topic, see [*Percentage Difference vs. Percentage Change: What's the Difference?*](/blog/percentage-difference-vs-change).
 
 If the old value is *negative* (for example, a company that went from a loss of $10,000 to a profit of $5,000), the formula still works mathematically, but the result is difficult to interpret intuitively. In those cases, many analysts simply note the change in absolute terms alongside the direction (e.g., "swung from a $10K loss to a $5K profit").
 

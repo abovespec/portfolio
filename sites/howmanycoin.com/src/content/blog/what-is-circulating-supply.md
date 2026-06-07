@@ -12,6 +12,8 @@ Supply is one of the most fundamental drivers of value in any market. In cryptoc
 
 Circulating supply is the figure that matters most for day-to-day market analysis. Here is what it means, why it is never fully static, and how it connects to the price of any given coin.
 
+For more on this topic, see [*What Is Market Cap in Crypto? The Metric That Matters Most*](/blog/what-is-crypto-market-cap).
+
 ## What Circulating Supply Actually Means
 
 Circulating supply is the number of coins or tokens that are currently accessible and active in the market — available to be bought, sold, or transferred between wallets.
@@ -23,6 +25,8 @@ It explicitly excludes:
 - **Reserved/unmined supply** — for proof-of-work networks like Bitcoin, coins that have not yet been issued as mining rewards.
 
 The formula for market cap uses circulating supply specifically because it represents the coins that are actively being priced by the market. Total supply or max supply would produce a number that includes value that isn't actually tradeable.
+
+For more on this topic, see [*How to Calculate Crypto Market Cap (Step by Step)*](/blog/how-to-calculate-crypto-market-cap).
 
 ## Why Circulating Supply Changes Over Time
 
@@ -67,6 +71,8 @@ A coin with no hard cap — like Ethereum — can theoretically issue coins inde
 Bitcoin's supply is among the most transparent of any cryptocurrency. The protocol enforces a hard cap of 21 million BTC. New coins enter circulation via mining, but the issuance rate is cut in half approximately every four years in an event called the halving. As of 2024 (the most recent halving), the reward per block dropped to 3.125 BTC. Eventually, around 2140, the last satoshi will be mined and issuance drops to zero.
 
 Ethereum has no hard cap on total supply. After the Merge in 2022 — Ethereum's transition from proof-of-work to proof-of-stake — daily issuance dropped by roughly 90% compared to the mining era. Simultaneously, EIP-1559's burn mechanism destroys ETH with each transaction. During periods of high network activity, burns can outpace new issuance, causing net supply contraction. The Ethereum Foundation publishes data on issuance and burn rates; [ultrasound.money](https://ultrasound.money) tracks this in real time.
+
+For more on this topic, see [*How Crypto Exchange Rates Work (and Why They Vary)*](/blog/crypto-exchange-rates-explained).
 
 These design differences mean that analyzing circulating supply for Bitcoin and Ethereum requires different frameworks. Bitcoin's supply path is fully known in advance. Ethereum's supply path depends on network usage and governance decisions.
 

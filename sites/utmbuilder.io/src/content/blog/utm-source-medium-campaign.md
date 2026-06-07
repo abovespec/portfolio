@@ -50,6 +50,8 @@ utm_source=conference       ← booth or event
 
 Medium identifies **how** the traffic arrived — the marketing channel type.
 
+For more on this topic, see [*How to Track Marketing Campaigns: A Complete Guide with UTMs*](/blog/how-to-track-marketing-campaigns).
+
 **Rules:**
 - Lowercase
 - Standardize across all channels — GA4 uses medium values to define channel groups
@@ -70,6 +72,8 @@ Medium identifies **how** the traffic arrived — the marketing channel type.
 | Push notification | `push` |
 | SMS marketing | `sms` |
 | In-app notification | `in-app` |
+
+For more on this topic, see [*UTM Tracking: How to Set Up and Measure Marketing Campaigns*](/blog/utm-tracking).
 
 **GA4 channel grouping — how medium maps to channels:**
 
@@ -155,6 +159,8 @@ utm_source=facebook&utm_medium=paid-social&utm_campaign=retargeting-q2
 ```
 utm_source=linkedin&utm_medium=social&utm_campaign=thought-leadership-2026
 ```
+
+For more on this topic, see [*UTM Parameters Explained: Source, Medium, Campaign, Content, Term*](/blog/utm-parameters).
 
 **QR code on packaging:**
 ```

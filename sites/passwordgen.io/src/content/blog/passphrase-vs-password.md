@@ -26,6 +26,8 @@ The key word is *random*. Phrases that come from your head — "ilovemy dog" or 
 
 Security is measured in bits of entropy — how many guesses an attacker needs to brute-force the password.
 
+For more on this topic, see [*What Makes a Good Password? Length, Entropy, and Randomness*](/blog/what-makes-a-good-password).
+
 **Random character password (full ASCII charset, 95 options per character):**
 - 12 characters: ~79 bits
 - 16 characters: ~105 bits
@@ -54,6 +56,8 @@ A 6-word Diceware passphrase (~77 bits) is roughly equivalent to a 12-character 
 - API keys
 - Database passwords
 
+For more on this topic, see [*Password Generator: How to Generate Strong Passwords Online and in Code*](/blog/password-generator-guide).
+
 The advantage of passphrases is memorability — four random words are much easier to remember than `Xk9#mQ2!pLr7vN`. The advantage of random character passwords is compactness — they pack more entropy per character.
 
 ## How Diceware works
@@ -76,6 +80,8 @@ Diceware uses physical dice to ensure randomness:
 Result: **mouse candy pine dry rock smart**
 
 You can also use an offline Diceware tool or a password manager's passphrase generator. The key is that the words are selected randomly, not by you.
+
+For more on this topic, see [*Password Manager Comparison: Bitwarden, 1Password, Dashlane, KeePass*](/blog/password-manager-comparison).
 
 ## Diceware wordlist size
 

@@ -12,6 +12,8 @@ A **JWT (JSON Web Token)** is a compact, URL-safe token format for transmitting 
 
 The JWT specification is defined in [RFC 7519](https://www.rfc-editor.org/rfc/rfc7519).
 
+For more on this topic, see [*JWT Security Best Practices: What to Do (and What to Avoid)*](/blog/jwt-security-best-practices).
+
 ## What a JWT looks like
 
 A JWT is three Base64URL-encoded strings joined by dots:
@@ -73,6 +75,8 @@ The payload contains **claims** — key-value pairs about the subject. Standard 
 | `iat` | Issued at — Unix timestamp when the token was created |
 | `nbf` | Not before — Unix timestamp before which the token is invalid |
 | `jti` | JWT ID — unique identifier, used for revocation |
+
+For more on this topic, see [*JWT Claims Explained: iss, sub, aud, exp, iat, nbf, and jti*](/blog/jwt-claims-explained).
 
 Custom claims can be added for application-specific data:
 
@@ -141,3 +145,6 @@ decode_jwt_payload("eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyXzEyMyJ9.abc")
 ## Inspect JWTs online
 
 Paste any JWT into [jwtinspect.io](/) to decode the header and payload and verify the structure — useful for debugging authentication issues without setting up local tooling.
+
+
+For more on this topic, see [*How JWT Authentication Works: The Complete Flow*](/blog/how-jwt-authentication-works).

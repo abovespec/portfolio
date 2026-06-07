@@ -14,6 +14,8 @@ The SQL execution plan shows exactly how the database will process your query â€
 
 `EXPLAIN` estimates the cost without running the query. `EXPLAIN ANALYZE` runs the query and shows actual timings:
 
+For more on this topic, see [*SQL Query Optimization: Practical Techniques That Actually Work*](/blog/sql-query-optimization).
+
 ```sql
 -- Estimate only (no actual execution)
 EXPLAIN
@@ -63,6 +65,8 @@ Reads every row in the table. This is expected for small tables or when a large 
 - The table is large
 - You expected an index to be used
 - `rows` is much smaller than the table size
+
+For more on this topic, see [*SQL Style Guide: Conventions Every Team Should Follow*](/blog/sql-style-guide).
 
 ```
 Seq Scan on orders  (cost=0.00..14000.00 rows=4 width=8)
@@ -118,6 +122,8 @@ Hash Join  (cost=25.00..1500.00 rows=5000 width=32)
 ### Nested Loop
 
 For each row in the outer table, scans (or seeks via index) the inner table. Good when the outer relation is small and the inner has an index:
+
+For more on this topic, see [*SQL Joins Explained: INNER, LEFT, RIGHT, FULL, and CROSS*](/blog/sql-joins-explained).
 
 ```
 Nested Loop  (cost=0.42..50.00 rows=10 width=32)

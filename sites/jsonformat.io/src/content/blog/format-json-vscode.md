@@ -14,6 +14,8 @@ VS Code has built-in JSON formatting that works without any extensions. Add Pret
 
 Open any `.json` file in VS Code and press:
 
+For more on this topic, see [*Pretty-Printing JSON in JavaScript: JSON.stringify, DevTools, and Node.js*](/blog/pretty-print-json-javascript).
+
 - **Windows / Linux:** `Shift+Alt+F`
 - **Mac:** `Shift+Option+F`
 
@@ -128,6 +130,8 @@ Note: Prettier enforces 2-space indentation for JSON and removes trailing commas
 
 VS Code can validate your JSON against a schema and show inline errors for missing required fields, wrong types, or unknown keys. This is powered by the built-in JSON language server.
 
+For more on this topic, see [*How to Validate JSON: Common Errors and How to Fix Them*](/blog/how-to-validate-json).
+
 ### Built-in schema associations
 
 VS Code automatically associates schemas for many well-known config files:
@@ -194,6 +198,8 @@ If you're editing a `.js` or `.ts` file and want to format a JSON string literal
 3. Copy back
 
 Alternatively, use the **Prettify JSON** or **JSON Tools** VS Code extensions, which add commands to format JSON within string literals.
+
+For more on this topic, see [*How to Minify JSON: Tools, Commands, and Code Examples*](/blog/how-to-minify-json).
 
 ## 8. Validate JSON from the terminal
 

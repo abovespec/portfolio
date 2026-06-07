@@ -14,7 +14,11 @@ When you set up a favicon, you quickly realize there is not just one file format
 
 ICO is the original favicon format. Microsoft created it for use in Windows, and Internet Explorer adopted it when it introduced favicons in 1999. The `.ico` extension stands for "icon," and the format has a distinctive feature that other image formats lack: it is a container file that can hold multiple images at different resolutions inside a single file.
 
+For more on this topic, see [*Favicon Not Showing? Here's How to Fix It*](/blog/favicon-not-showing).
+
 A single `favicon.ico` can contain a 16×16 image, a 32×32 image, a 48×48 image, and more — all bundled together. When a browser requests the file, it picks the size that best fits its context. This multi-resolution capability was designed for Windows, where icons need to look correct at many different sizes depending on the UI context.
+
+For more on this topic, see [*Favicon Sizes: The Complete Size Guide for Every Browser and Device*](/blog/favicon-sizes).
 
 ### Why ICO Is Still Essential
 
@@ -75,6 +79,8 @@ No other favicon format can do this.
 The critical limitation of SVG favicons is Safari. As of mid-2026, Safari does not support SVG favicons. This means that any user on Safari — which includes all browsers on iOS due to Apple's browser engine policy — will not see your SVG favicon. This is why SVG cannot be your only favicon format.
 
 SVG also requires that your icon is actually defined as vector data. If your logo exists only as a raster image (a JPG or PNG), you cannot create an SVG favicon without redrawing the artwork as vectors. For icons based on simple geometric shapes or text, this is easy. For complex illustrations, it can require significant effort.
+
+For more on this topic, see [*How to Create a Favicon for Your Website (Quick and Easy)*](/blog/how-to-create-a-favicon).
 
 ## The Best Practice: Serve All Three
 

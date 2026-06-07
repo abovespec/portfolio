@@ -25,6 +25,8 @@ body {
   background: linear-gradient(to bottom right, #f8fafc, #e2e8f0);
 }
 
+For more on this topic, see [*CSS Gradients: Complete Guide to linear, radial, and conic*](/blog/css-gradient).
+
 /* Dark mode gradient */
 body {
   min-height: 100vh;
@@ -61,6 +63,8 @@ body {
   );
 }
 ```
+
+For more on this topic, see [*CSS linear-gradient: Syntax, Direction, Color Stops, and Examples*](/blog/linear-gradient-css).
 
 ## Image + gradient overlay
 
@@ -203,3 +207,6 @@ body {
 ```
 
 Generate gradient CSS at [gradientcss.io](/).
+
+
+For more on this topic, see [*CSS radial-gradient: Circles, Ellipses, and Spotlight Effects*](/blog/radial-gradient-css).

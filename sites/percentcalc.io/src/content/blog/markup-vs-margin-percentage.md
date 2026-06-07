@@ -15,6 +15,8 @@ Markup and margin are both ways of expressing profit as a percentage. They are o
 - **Markup** expresses profit as a percentage of *cost*.
 - **Margin** expresses profit as a percentage of *revenue* (selling price).
 
+For more on this topic, see [*How to Calculate a Discount Percentage (and the Final Price)*](/blog/how-to-calculate-discount).
+
 Because the denominator is different, the same profit produces two different percentages. A product that costs $60 and sells for $100 has a $40 profit. That $40 is 66.7% of the cost, but only 40% of the selling price.
 
 ## Markup formula
@@ -115,6 +117,8 @@ Retailers often quote margins while manufacturers quote markups. If you do not k
 | Formula | `(Profit / Cost) × 100` | `(Profit / Revenue) × 100` |
 | Always less than | No upper limit | 100% |
 
+For more on this topic, see [*How to Calculate Percentage Decrease: Formula, Examples, and Use Cases*](/blog/how-to-calculate-percentage-decrease).
+
 Markup can exceed 100% (e.g., an item that costs $10 and sells for $25 has a 150% markup). Margin can never exceed 100% because profit cannot exceed the selling price.
 
 ## Gross margin vs. net margin
@@ -145,3 +149,6 @@ Both are correct — they just answer different questions. The markup says: "We 
 **Use margin** when you are analysing profitability against revenue, comparing performance across products or periods, or communicating with accountants and investors. Most financial reporting uses margin.
 
 For quick calculations — converting between the two, finding the right selling price for a target margin, or checking your numbers — the [percentage calculator](/) can compute both in seconds.
+
+
+For more on this topic, see [*Percentage Difference vs. Percentage Change: What's the Difference?*](/blog/percentage-difference-vs-change).

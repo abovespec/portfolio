@@ -47,6 +47,8 @@ The `-webkit-` prefix is required for Safari. Modern Chrome, Firefox, and Edge s
   background-clip: text;
 }
 
+For more on this topic, see [*CSS linear-gradient: Syntax, Direction, Color Stops, and Examples*](/blog/linear-gradient-css).
+
 /* Rainbow gradient */
 .gradient-text {
   background: linear-gradient(to right, #f00, #ff0, #0f0, #0ff, #00f, #f0f);
@@ -86,6 +88,8 @@ The `-webkit-` prefix is required for Safari. Modern Chrome, Firefox, and Edge s
   background-clip: text;
 }
 ```
+
+For more on this topic, see [*CSS Gradient Background: Full-Page, Section, and Hero Techniques*](/blog/css-gradient-background).
 
 ## Combining with animation
 
@@ -172,3 +176,6 @@ Use a contrast checker (WebAIM Contrast Checker) for both end stops.
 Always include both `-webkit-background-clip: text` and `background-clip: text`.
 
 Generate gradient CSS at [gradientcss.io](/).
+
+
+For more on this topic, see [*CSS Gradient Animation: Moving and Shifting Gradient Backgrounds*](/blog/css-gradient-animation).

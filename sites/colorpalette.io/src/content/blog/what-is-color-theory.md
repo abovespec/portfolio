@@ -30,9 +30,13 @@ The most useful thing the color wheel gives you is a map of relationships. Diffe
 
 Colors directly opposite each other on the wheel are called complementary colors. Red and green. Blue and orange. Yellow and violet. When you place them next to each other, they create maximum contrast — each one makes the other appear more vivid. This is called simultaneous contrast. It's powerful, but needs to be handled carefully in sustained reading environments, where it can produce visual vibration that fatigues the eye.
 
+For more on this topic, see [*Complementary Colors: What They Are and How to Use Them*](/blog/complementary-colors).
+
 ### Analogous Colors
 
 Colors adjacent to each other on the wheel — three to five in a row — form an analogous scheme. These naturally harmonize because they share underlying hues. Analogous palettes feel cohesive and are a safe starting point for most interfaces and brand identities.
+
+For more on this topic, see [*How to Choose Brand Colors That Actually Work*](/blog/how-to-choose-brand-colors).
 
 ### Triadic Colors
 
@@ -81,5 +85,7 @@ Color theory doesn't give you a formula that produces a beautiful result every t
 - **Limit your palette.** Three to five colors are almost always enough. More than that creates visual noise.
 - **Check your contrast.** Aesthetically pleasing combinations sometimes fail accessibility standards. A lighter tint of your brand color may not have sufficient contrast against white for body text.
 - **Test in grayscale.** If your design still communicates clearly without color, your hierarchy is solid. Color should enhance it, not carry it.
+
+For more on this topic, see [*How to Build a Color Palette for Your Website (Step by Step)*](/blog/color-palette-for-website).
 
 Color theory is the difference between choosing colors and understanding colors. You don't need to memorize every rule — but knowing why the color wheel is arranged the way it is, and what different positions on it mean for visual dynamics, makes every design decision faster and more confident.

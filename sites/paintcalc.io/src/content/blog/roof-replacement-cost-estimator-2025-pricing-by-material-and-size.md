@@ -24,6 +24,8 @@ Roof replacement is one of the largest home maintenance expenses. Prices vary by
 | Wood shakes | $600-1,100 | 25-35 years |
 | Synthetic slate | $700-1,200 | 40-60 years |
 
+For more on this topic, see [*How Much Paint Do I Need for a 12x12 Room? Exact Calculation*](/blog/how-much-paint-do-i-need-for-a-12x12-room-exact-calculation).
+
 ## Additional Costs
 
 - **Tear-off and disposal:** $100-200 per square
@@ -55,6 +57,10 @@ Roof replacement is one of the largest home maintenance expenses. Prices vary by
 ## Using Our Calculator
 
 Our [roofing cost calculator](/) combines square footage, pitch, material choice, and location factors. Input your specifics for a tailored estimate.
+
+For more on this topic, see [*Roofing Square Footage Calculator: Shingles, Bundles, and Cost*](/blog/roofing-square-footage-calculator-shingles-bundles-and-cost).
+
+For more on this topic, see [*HVAC BTU Calculator by Room Size: Sizing Guide for AC and Heat*](/blog/hvac-btu-calculator-by-room-size-sizing-guide-for-ac-and-heat).
 
 ## Insurance vs Out-of-Pocket
 

@@ -18,6 +18,8 @@ Road trips are great until you realize gas consumed half your budget. This guide
 - Gallons needed: 500 / 28 = 17.86
 - Cost: 17.86 x $3.50 = **$62.50**
 
+For more on this topic, see [*Lease vs Buy Car Calculator 2025: Total Cost Comparison*](/blog/lease-vs-buy-car-calculator-2025-total-cost-comparison).
+
 ## Round-Trip Calculation
 
 Always calculate round trip unless you are flying back.
@@ -47,6 +49,10 @@ For trips with multiple legs, calculate each segment separately if gas prices or
 ## Using Our Calculator
 
 Our [fuel cost calculator](/) handles one-way, round-trip, and multi-stop routes. Input your vehicle's EPA rating or your actual MPG, trip distance, and gas price. It outputs gallons needed and total fuel cost.
+
+For more on this topic, see [*Total Cost of Car Ownership Calculator: The Real Monthly Number*](/blog/total-cost-of-car-ownership-calculator-the-real-monthly-number).
+
+For more on this topic, see [*Is It Better to Lease or Buy a Car? Decision Framework*](/blog/is-it-better-to-lease-or-buy-a-car-decision-framework).
 
 ## Budgeting Tips
 

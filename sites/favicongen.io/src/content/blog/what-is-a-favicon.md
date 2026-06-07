@@ -14,6 +14,8 @@ You have seen them thousands of times without thinking about them. Open any brow
 
 A favicon (short for "favorites icon") is a small image file associated with a website. Browsers display it in several places to help users visually identify your site at a glance. The standard format has always been ICO, though modern browsers also support PNG and SVG.
 
+For more on this topic, see [*Favicon ICO vs PNG: Which Format Should You Use?*](/blog/favicon-ico-vs-png).
+
 The name comes from its original purpose: Internet Explorer 5 introduced the concept in 1999 specifically for the browser's Favorites panel. When you bookmarked a site, a 16×16 pixel icon would appear next to the site's name. The idea caught on immediately because it made long lists of bookmarks scannable in a way that text alone never could.
 
 ## A Brief History
@@ -27,6 +29,8 @@ Over the following years, the humble 16×16 ICO grew into a family of assets. Th
 ## Where Does Your Favicon Appear?
 
 Understanding every place your favicon shows up helps you appreciate why the file needs to hold up at multiple sizes.
+
+For more on this topic, see [*Favicon Sizes: The Complete Size Guide for Every Browser and Device*](/blog/favicon-sizes).
 
 ### Browser Tab
 
@@ -43,6 +47,8 @@ Your favicon appears in the browser history panel next to every URL from your do
 ### Address Bar
 
 Some browsers display the favicon in the address bar while you are on a page, giving users a quick trust signal that they are on the right site.
+
+For more on this topic, see [*How to Create a Favicon for Your Website (Quick and Easy)*](/blog/how-to-create-a-favicon).
 
 ### Home Screen Shortcuts
 

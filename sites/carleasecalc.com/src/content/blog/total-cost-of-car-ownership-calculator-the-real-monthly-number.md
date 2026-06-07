@@ -16,6 +16,8 @@ The sticker price is not the real cost. A $35,000 car can easily cost $700-900 p
 
 Cars lose 15-25% of value in year one, then 10-15% annually. A $35,000 car loses roughly $5,000-7,500 in the first year alone. Over five years, depreciation often exceeds all other costs combined. [Edmunds' ownership cost data](https://www.edmunds.com/car-buying/car-depreciation.html) consistently shows depreciation accounting for roughly 40% of total 5-year ownership costs.
 
+For more on this topic, see [*Is It Better to Lease or Buy a Car? Decision Framework*](/blog/is-it-better-to-lease-or-buy-a-car-decision-framework).
+
 ### 2. Financing
 
 At 7% interest over 60 months, a $30,000 loan costs roughly $5,600 in total interest. Shorter terms save interest but raise monthly payments.
@@ -61,6 +63,8 @@ Our [total cost of ownership calculator](/) adds all these categories. Input pur
 
 The average US driver spends $0.60-0.80 per mile in total ownership costs, broadly consistent with figures published by [Consumer Reports on car ownership expenses](https://www.consumerreports.org/cars/). Luxury and electric vehicles have different profiles. EVs save on fuel and maintenance but may cost more upfront and in insurance.
 
+For more on this topic, see [*Electric Car Total Cost of Ownership: EV vs Gas in 2025*](/blog/electric-car-total-cost-of-ownership-ev-vs-gas-in-2025).
+
 ## How to Reduce Ownership Costs
 
 - Buy 2-3 year old used cars to skip steepest depreciation
@@ -72,6 +76,8 @@ The average US driver spends $0.60-0.80 per mile in total ownership costs, broad
 ## The Bottom Line
 
 Before buying any car, calculate total ownership cost. A cheaper car with better reliability often costs less than a more expensive car with high maintenance. Use our calculator to see your real number.
+
+For more on this topic, see [*Lease vs Buy Car Calculator 2025: Total Cost Comparison*](/blog/lease-vs-buy-car-calculator-2025-total-cost-comparison).
 
 ---
 

@@ -23,9 +23,13 @@ sources:
 
 If you have read about health and fitness for any length of time, you have likely encountered the debate: BMI or body fat percentage — which one actually tells you whether you are healthy? The answer is not as simple as picking one over the other. Each metric has strengths and blind spots, and the smartest approach uses both in context.
 
+For more on this topic, see [*What Is a Healthy BMI? Ranges, Categories, and What They Mean*](/blog/what-is-a-healthy-bmi).
+
 ## How BMI Works
 
 BMI is calculated from just two numbers — height and weight — using a formula developed nearly 200 years ago. Its greatest strength is its simplicity: anyone can calculate it with a scale, a tape measure, and a minute of arithmetic (or use our [free BMI calculator](/)).
+
+For more on this topic, see [*The Limitations of BMI: What It Doesn't Measure and When It Misleads*](/blog/limitations-of-bmi).
 
 **What BMI is good at:**
 - Population-level health screening
@@ -68,6 +72,8 @@ NIH recommends DEXA as the clinical gold standard, but even consumer-grade metho
 | Obese | 32%+ | 25%+ |
 
 Source: [American Council on Exercise](https://www.acefitness.org/education-and-resources/lifestyle/blog/7649/ace-bmi-chart-and-body-fat-calculator/)
+
+For more on this topic, see [*BMI Calculator for Women: What Your Number Means and Why It Matters*](/blog/bmi-calculator-for-women).
 
 ## Head-to-Head Comparison
 

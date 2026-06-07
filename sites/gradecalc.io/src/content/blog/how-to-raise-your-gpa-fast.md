@@ -18,7 +18,11 @@ Before acting, know where you stand and what is actually achievable.
 
 Cumulative GPA is slow to change the more credits you have earned. Someone with 30 credits can swing their GPA by 0.3–0.5 points in a single semester of strong performance. Someone with 90 credits might only move 0.1–0.15 points in the same semester.
 
+For more on this topic, see [*Semester GPA vs Cumulative GPA: What's the Difference and Which One Matters?*](/blog/semester-gpa-vs-cumulative-gpa).
+
 Use the [GPA calculator](/) to run realistic projections. Enter your current cumulative GPA and credits, then model target semester GPAs to see exactly what is achievable. This prevents both despair (thinking it is hopeless) and overconfidence (expecting a miracle).
+
+For more on this topic, see [*How to Calculate Weighted GPA: Honors, AP, and IB Explained*](/blog/how-to-calculate-weighted-gpa-honors-ap-and-ib-explained).
 
 ## Strategy 1: Retake Courses Where You Earned Low Grades
 
@@ -84,6 +88,8 @@ Caution: core requirements, major courses, and courses needed for prerequisites 
 ## What Not to Do
 
 **Do not overload credits hoping volume helps.** Taking 21 credits to earn more quality points only works if you can maintain a high GPA across all of them. An overloaded schedule that produces mediocre grades across every course makes your GPA worse, not better.
+
+For more on this topic, see [*GPA Scale 4.0 Explained: Letter Grades, Plus/Minus, and Weighted vs Unweighted*](/blog/gpa-scale-4-0-explained).
 
 **Do not ignore small assignments.** Students often focus entirely on exam scores while letting homework, quizzes, and participation drag down the final grade. Those components can represent 30–40% of a course grade.
 

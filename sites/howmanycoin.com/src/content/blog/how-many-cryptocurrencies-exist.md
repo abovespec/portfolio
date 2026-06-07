@@ -20,6 +20,8 @@ These figures should be understood as the number of assets that have met each pl
 
 The number of total ever-created crypto tokens — including those never listed on any exchange, those deployed and abandoned on test networks, and those created purely for scams — is likely orders of magnitude higher and is practically uncountable.
 
+For more on this topic, see [*Circulating Supply in Crypto: What It Is and Why It Changes*](/blog/what-is-circulating-supply).
+
 ## Why So Many Exist: The Low Barrier to Creation
 
 Creating a new cryptocurrency is technically straightforward and often cheap. This is the primary reason so many exist.
@@ -34,9 +36,13 @@ Creating a new cryptocurrency is technically straightforward and often cheap. Th
 
 Despite thousands of listed assets, market value is highly concentrated. Bitcoin (BTC) and Ethereum (ETH) alone typically represent 50–65% of total crypto market capitalization. The top 10 assets by market cap often represent 75–80% of the entire industry's value.
 
+For more on this topic, see [*How to Calculate Crypto Market Cap (Step by Step)*](/blog/how-to-calculate-crypto-market-cap).
+
 This concentration reflects genuine adoption differences. Bitcoin and Ethereum have years of network effects, developer activity, institutional participation, and infrastructure built around them. The vast majority of altcoins — assets other than Bitcoin — have a fraction of this established ecosystem.
 
 "Bitcoin dominance" (BTC's percentage of total crypto market cap) is tracked as its own metric on CoinGecko and CoinMarketCap. It fluctuates based on market conditions but has historically remained in the 40–60% range.
+
+For more on this topic, see [*What Is Market Cap in Crypto? The Metric That Matters Most*](/blog/what-is-crypto-market-cap).
 
 ## Categories of Cryptocurrency
 

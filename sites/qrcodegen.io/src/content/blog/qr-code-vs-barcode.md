@@ -14,7 +14,11 @@ QR codes and barcodes both encode data in a scannable format, but they work diff
 
 A traditional barcode (1D barcode) encodes data in a single dimension — the width and spacing of vertical lines. A QR code (2D barcode) encodes data in two dimensions — a grid of dark and light squares.
 
+For more on this topic, see [*How to Create a QR Code: A Complete Beginner's Guide*](/blog/how-to-create-a-qr-code).
+
 This fundamental difference determines almost everything else: how much data each can hold, how they're scanned, and where each is used.
+
+For more on this topic, see [*Dynamic QR Code vs Static QR Code: What's the Difference?*](/blog/dynamic-vs-static-qr-code).
 
 ## Data capacity comparison
 
@@ -38,6 +42,8 @@ A QR code holds roughly 100 times more data than a standard UPC barcode. This ca
 **Scan distance:**
 - 1D barcodes: typically 5–50 cm with consumer scanners, up to several meters with industrial long-range scanners
 - QR codes: typically 5 cm to several meters depending on code size, limited mainly by physical code size relative to camera resolution
+
+For more on this topic, see [*QR Code Best Practices: Design, Size, Placement, and Testing*](/blog/qr-code-best-practices).
 
 ## Damage tolerance
 

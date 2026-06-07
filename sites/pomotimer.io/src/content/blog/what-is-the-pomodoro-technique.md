@@ -21,6 +21,8 @@ A standard Pomodoro session follows four steps:
 3. **When the timer rings, take a 5-minute break.** Step away from the screen. Move around. Don't check your inbox.
 4. **Repeat.** After four work intervals (called "pomodoros"), take a longer break of 15–30 minutes.
 
+For more on this topic, see [*Why 25 Minutes? The Logic Behind the Pomodoro Timer*](/blog/pomodoro-timer-25-minutes).
+
 One 25-minute block plus the break that follows it is called one pomodoro. Four pomodoros make up a set. Cirillo's original book, *The Pomodoro Technique* (published in 2006), recommends completing four to six sets per workday, though most people adapt the volume to their own workload.
 
 The structure is deliberately simple. You don't need software, an account, or a subscription to use it. A kitchen timer works fine — which is, after all, exactly how it started.
@@ -30,6 +32,8 @@ The structure is deliberately simple. You don't need software, an account, or a 
 Cirillo settled on 25 minutes through his own informal experimentation while a student at Università Commerciale Luigi Bocconi in Milan. He wasn't drawing on neuroscience research at the time; he was trying to find an interval that felt urgent enough to keep him focused but long enough to make real progress on a task.
 
 The 25-minute figure has since attracted a lot of commentary about human attention spans, but it's worth being clear: the popular claim that "the average attention span is 8 seconds" is not supported by solid research. What we do know is that sustained, uninterrupted focus is genuinely difficult for most people, and that performance tends to degrade when people push through fatigue rather than rest. The 25/5 rhythm works because it builds rest into the schedule, not because 25 minutes is a magic neurological threshold.
+
+For more on this topic, see [*Focus Techniques for Studying: 7 Methods Compared*](/blog/focus-techniques-for-studying).
 
 ## The Philosophy Behind It
 
@@ -68,3 +72,6 @@ The Pomodoro Technique has been adopted across a striking range of fields: softw
 It doesn't work equally well for everyone or every task. Jobs that require constant availability or frequent interruption — customer support, management, nursing — don't fit the model well, because the model depends on being able to protect the interval. And some creative work benefits from longer uninterrupted stretches that 25 minutes cuts short.
 
 But for anyone who spends large portions of their day on focused, self-directed work — writing, studying, coding, designing — the Pomodoro Technique remains a practical and low-cost way to structure that work. Its longevity, across four decades and every productivity trend that has come and gone in that time, suggests it's doing something right.
+
+
+For more on this topic, see [*Pomodoro Technique Benefits: What Changes When You Work This Way*](/blog/pomodoro-technique-benefits).

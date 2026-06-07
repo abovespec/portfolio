@@ -17,8 +17,12 @@ You have three main options:
 **1. A PDF of your menu**
 Upload your menu PDF to your website or a file host (Google Drive, Dropbox). Copy the direct link and encode it. Simple, but updating the menu requires uploading a new file and, if the URL changes, regenerating the QR code.
 
+For more on this topic, see [*QR Code for Website: Link Any Page to a Scannable Code*](/blog/qr-code-for-website).
+
 **2. A webpage on your website**
 Create a `/menu` page on your site. This is the most flexible option — update the page any time and the QR code never changes. It also lets you add photos, filtering by dietary preference, and ordering links.
+
+For more on this topic, see [*How to Create a QR Code: A Complete Beginner's Guide*](/blog/how-to-create-a-qr-code).
 
 **3. A third-party menu platform**
 Services like Square, Toast, or Canva's menu builder generate a shareable URL. Encode that URL. The tradeoff: you're dependent on the platform's uptime and branding.
@@ -33,6 +37,8 @@ Services like Square, Toast, or Canva's menu builder generate a shareable URL. E
 4. Download as SVG (for professional printing) or high-resolution PNG (minimum 1000 × 1000 px for print).
 5. Place the QR code in your table tent, menu card, or signage design.
 6. Print a test copy and scan with both iPhone and Android before printing in quantity.
+
+For more on this topic, see [*QR Code Size Guide for Printing: Minimum Sizes, DPI, and Scan Distance*](/blog/qr-code-size-guide-for-printing).
 
 ## Sizing for print
 

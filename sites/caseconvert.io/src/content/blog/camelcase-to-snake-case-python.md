@@ -12,6 +12,8 @@ Python's style guide ([PEP 8](https://peps.python.org/pep-0008/#function-and-var
 
 Here are four approaches, from quick one-liner to production-ready.
 
+For more on this topic, see [*Naming Conventions in Programming: The Complete Guide*](/blog/naming-conventions-programming).
+
 ## 1. Regex with `re.sub` (recommended)
 
 The cleanest general-purpose solution inserts an underscore before each uppercase letter that follows a lowercase letter, then lowercases the whole string:
@@ -160,6 +162,11 @@ print(user.first_name)  # → "Alice"
 - **Abbreviation handling:** Test your regex on inputs like `parseHTTPSURL`, `myAWSKey`, `JSONParser` to verify you get sensible output.
 - **Leading underscore:** `_privateName` — the leading underscore is preserved by the regex above.
 
+For more on this topic, see [*What Is snake_case? A Practical Guide for Developers*](/blog/what-is-snake-case).
+
 ## Quick online conversion
 
 For bulk renaming — renaming a set of variables, converting an API response schema — the [caseconvert.io](/) tool converts entire text blocks between camelCase, snake_case, kebab-case, and PascalCase without writing any code.
+
+
+For more on this topic, see [*camelCase vs snake_case: Which Should You Use?*](/blog/camelcase-vs-snake-case).

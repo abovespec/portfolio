@@ -14,7 +14,11 @@ One of the most common debates in frontend CSS is whether to reach for Flexbox o
 
 The clearest framing: **Flexbox is one-dimensional; Grid is two-dimensional.**
 
+For more on this topic, see [*What Is CSS Flexbox? A Plain-English Introduction*](/blog/what-is-flexbox).
+
 Flexbox arranges items along a single axis — either a row or a column. When you add `display: flex`, you're telling the browser to lay children out in a line and give you control over how they grow, shrink, and align in that one direction.
+
+For more on this topic, see [*CSS Flexbox Interview Questions and Answers (2026 Edition)*](/blog/flexbox-interview-questions).
 
 Grid arranges items across both a row axis and a column axis simultaneously. You define explicit tracks in both dimensions and place items into that grid.
 
@@ -182,5 +186,7 @@ Grid controls the big picture; Flexbox handles the fine-grained alignment inside
 ## The Actual Answer
 
 There's no single correct layout tool. Flexbox is not "worse" than Grid, and Grid is not "replacing" Flexbox. They solve adjacent problems and the language has been richer for having both.
+
+For more on this topic, see [*The Holy Grail Layout with Flexbox (and Why It's No Longer Holy)*](/blog/holy-grail-layout-css).
 
 The decision is genuinely simple: one direction means Flexbox, two directions means Grid, complex real page means probably both. After you've used them a few times, the right choice becomes instinctive, and the debate that fills comment sections stops seeming relevant.

@@ -69,11 +69,17 @@ EV depreciation is volatile. Early models depreciated rapidly. Popular models li
 | Tax Credit | $0 | -$7,500 |
 | **Total** | **$41,600** | **$28,400** |
 
+For more on this topic, see [*Fuel Cost Calculator for Road Trips: Budget Your Gas Expenses*](/blog/fuel-cost-calculator-for-road-trips-budget-your-gas-expenses).
+
 In this scenario, the EV costs $13,200 less over 5 years despite the higher purchase price.
 
 ## Using Our Calculator
 
 Our [total cost of ownership calculator](/) compares EV and gas side by side. Input vehicle prices, tax credits, electricity rates, gas prices, and your mileage. It outputs true cost over any timeframe.
+
+For more on this topic, see [*Total Cost of Car Ownership Calculator: The Real Monthly Number*](/blog/total-cost-of-car-ownership-calculator-the-real-monthly-number).
+
+For more on this topic, see [*Lease vs Buy Car Calculator 2025: Total Cost Comparison*](/blog/lease-vs-buy-car-calculator-2025-total-cost-comparison).
 
 ## When EVs Win
 

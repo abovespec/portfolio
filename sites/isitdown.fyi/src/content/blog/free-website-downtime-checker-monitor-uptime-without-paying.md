@@ -14,9 +14,13 @@ Website downtime costs money, reputation, and trust. Monitoring uptime does not 
 
 **Our Tool:** The [isitdown.fyi status checker](/) queries websites from multiple global locations instantly. No signup required.
 
+For more on this topic, see [*Website Status Page Best Practices: Build Trust During Outages*](/blog/website-status-page-best-practices-build-trust-during-outages).
+
 **DownForEveryoneOrJustMe:** Simple, fast, and reliable for one-off checks.
 
 **Site24x7 Free:** Tests from one location every 60 minutes.
+
+For more on this topic, see [*How to Check If a Website Is Down: 5 Methods That Work*](/blog/how-to-check-if-a-website-is-down-5-methods-that-work).
 
 ## Free Uptime Monitoring Services
 
@@ -27,6 +31,8 @@ Website downtime costs money, reputation, and trust. Monitoring uptime does not 
 | Better Uptime | 10 monitors | 3 min | Global | Email, Slack |
 | Pingdom (free) | 1 monitor | 1 min | 1 location | Email |
 | Upptime | Unlimited | Custom | Your choice | GitHub issues |
+
+For more on this topic, see [*Is GitHub Down Right Now? How to Check and Verify*](/blog/is-github-down-right-now-how-to-check-and-verify).
 
 ## Setting Up Basic Monitoring
 

@@ -29,6 +29,8 @@ Present three pricing tiers:
 - **Standard:** Full scope, your target price.
 - **Premium:** Full scope plus extras, higher price.
 
+For more on this topic, see [*Project-Based Pricing Formula: How to Quote Fixed-Price Work*](/blog/project-based-pricing-formula-how-to-quote-fixed-price-work).
+
 Most clients choose Standard. Some choose Premium. Almost no one chooses Basic. This is called price anchoring through options.
 
 ## Handling "Your Rate Is Too High"
@@ -38,6 +40,8 @@ Responses that work:
 - "I can adjust the scope to fit your budget." (Protects rate)
 - "My rate reflects the specialized nature of this work." (Reinforces value)
 - "I understand. Here are two other freelancers who might fit your budget." (Willingness to walk away)
+
+For more on this topic, see [*Value-Based Pricing for Freelancers: Charge for Outcomes, Not Hours*](/blog/value-based-pricing-for-freelancers-charge-for-outcomes-not-hours).
 
 ## When to Walk Away
 
@@ -62,6 +66,8 @@ Most clients expect annual increases. The ones who leave over 10% were probably 
 Negotiation is a skill. Practice with friends. Record yourself. Join freelance communities and share experiences. Confidence grows with repetition.
 
 Use our [freelance rate calculator](/) to know your floor before every negotiation. The freelancer who knows their numbers negotiates from strength.
+
+For more on this topic, see [*Freelance Hourly Rate Calculator by Industry: What to Charge in 2025*](/blog/freelance-hourly-rate-calculator-by-industry-what-to-charge-in-2025).
 
 ---
 

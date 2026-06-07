@@ -42,6 +42,8 @@ Create `.prettierrc` in your project root:
 
 Lines longer than `printWidth` (default: 80) trigger attribute wrapping. For HTML with long attribute lists, 100–120 is often more practical:
 
+For more on this topic, see [*HTML Beautifier: Making Minified or Messy HTML Readable*](/blog/html-beautifier-guide).
+
 ```html
 <!-- printWidth: 80 — wraps attributes -->
 <input
@@ -58,6 +60,8 @@ Lines longer than `printWidth` (default: 80) trigger attribute wrapping. For HTM
 ### `htmlWhitespaceInsensitivity`
 
 This setting controls how Prettier handles whitespace in HTML:
+
+For more on this topic, see [*How to Validate HTML: W3C Validator, HTMLHint, and CI Integration*](/blog/validate-html).
 
 - `"css"` (default): respects CSS display type. Block elements are whitespace-insensitive; inline elements are sensitive.
 - `"strict"`: all whitespace is significant — Prettier won't remove any spaces.
@@ -119,6 +123,8 @@ Force each attribute onto its own line when wrapping (Prettier ≥ 2.6):
 ```
 
 If you have multiple formatters installed (e.g., the built-in VS Code HTML formatter), make Prettier explicit for HTML files to avoid conflicts.
+
+For more on this topic, see [*How to Format HTML: Tools, Rules, and Editor Shortcuts*](/blog/how-to-format-html).
 
 ## Ignoring specific HTML blocks
 

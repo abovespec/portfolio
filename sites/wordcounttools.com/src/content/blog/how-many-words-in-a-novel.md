@@ -35,6 +35,8 @@ Most adult fiction novels run **70,000 to 110,000 words**. That's the range agen
 | Chapter books | 4,000–10,000 | Ages 6–10 |
 | Picture books | 500–1,000 | Text only; the rest is illustration |
 
+For more on this topic, see [*How Long Should a Blog Post Be for SEO in 2026?*](/blog/how-long-should-a-blog-post-be).
+
 ## Why word count matters to publishers
 
 **Printing costs:** Print-on-demand and traditional offset printing both have per-page costs. A 150,000-word debut fantasy novel costs significantly more to print than an 80,000-word thriller, making it harder to price competitively and sell enough copies to earn out the advance.
@@ -71,9 +73,13 @@ Don't submit a 50,000-word manuscript as a finished novel unless your genre supp
 
 Every word processing app counts words differently (Microsoft Word, Google Docs, and Scrivener have slightly different tokenization rules for hyphenated words and special characters). For a consistent count:
 
+For more on this topic, see [*How to Check Word Count in Google Docs (Every Method)*](/blog/word-count-google-docs).
+
 - Use Scrivener's project count for works in progress
 - Use Google Docs or Word for finished drafts
 - For platform-agnostic counting, paste sections into [wordcounttools.com](/) for a character-exact count alongside reading time and readability
+
+For more on this topic, see [*Word Count for a Resume: How Long Is Too Long?*](/blog/word-count-for-a-resume).
 
 ## What if your draft is over- or under-length?
 

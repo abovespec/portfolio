@@ -14,6 +14,8 @@ Depreciation is the single largest cost of car ownership. Some vehicles lose hal
 
 Depreciation is the difference between what you pay and what the car is worth later. New cars depreciate fastest in the first three years. Used cars depreciate more slowly because the steepest drop has already occurred.
 
+For more on this topic, see [*Lease vs Buy Car Calculator 2025: Total Cost Comparison*](/blog/lease-vs-buy-car-calculator-2025-total-cost-comparison).
+
 ## Depreciation by Year (Average)
 
 According to [iSeeCars depreciation research](https://www.iseecars.com/depreciation), new vehicles follow a predictable decline curve:
@@ -50,6 +52,10 @@ Luxury sedans depreciate faster than trucks and SUVs. Electric vehicles have mix
 ## Using Our Calculator
 
 Our [car depreciation calculator](/) estimates future value by make, model, year, and mileage. Input your car's details and see projected value at 1, 3, 5, and 10 years.
+
+For more on this topic, see [*Total Cost of Car Ownership Calculator: The Real Monthly Number*](/blog/total-cost-of-car-ownership-calculator-the-real-monthly-number).
+
+For more on this topic, see [*Electric Car Total Cost of Ownership: EV vs Gas in 2025*](/blog/electric-car-total-cost-of-ownership-ev-vs-gas-in-2025).
 
 **Example:** 2024 Toyota RAV4 purchased at $32,000
 - Year 1 value: ~$25,600 (20% loss)

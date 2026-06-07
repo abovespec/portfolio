@@ -84,6 +84,8 @@ For Tokyo-only trips, a Suica/Pasmo card is cheaper. Budget $10-20 per day for u
 
 Our [trip cost calculator](/) builds custom Japan budgets. Input your travel style, duration, and cities. It estimates flights, hotels, food, and local transport.
 
+For more on this topic, see [*Travel Budget Calculator by Destination: Estimate Any Trip*](/blog/travel-budget-calculator-by-destination-estimate-any-trip).
+
 ## Money-Saving Tips
 
 - Eat at convenience stores. 7-Eleven and Lawson food is surprisingly good.
@@ -92,6 +94,10 @@ Our [trip cost calculator](/) builds custom Japan budgets. Input your travel sty
 - Travel in shoulder season for lower prices.
 
 Japan can be affordable or extravagant. Use our calculator to plan your perfect trip within your budget.
+
+For more on this topic, see [*Japan Trip Budget Calculator 2025: Plan Your Perfect Visit*](/blog/japan-trip-budget-calculator-2025-plan-your-perfect-visit).
+
+For more on this topic, see [*Road Trip Cost Calculator: Gas, Hotels, Food, and Fun*](/blog/road-trip-cost-calculator-gas-hotels-food-and-fun).
 
 ---
 

@@ -12,11 +12,15 @@ A website needs more from its colors than looking attractive in a mock. It needs
 
 Building a functional website color palette is a step-by-step process. Here's how to do it.
 
+For more on this topic, see [*What Is Color Theory? A Practical Guide for Designers and Developers*](/blog/what-is-color-theory).
+
 ## Step 1: Choose Your Anchor Color
 
 Start with one color. Not five colors — one. Everything else flows from here.
 
 Your anchor color is usually your primary brand color: the hue most associated with your identity. If you already have a brand, you're starting with your established primary. If you're building from scratch, choose a hue that fits your product's emotional register and the expectations of your audience.
+
+For more on this topic, see [*How to Choose Brand Colors That Actually Work*](/blog/how-to-choose-brand-colors).
 
 The anchor color doesn't need to appear everywhere on your site. It needs to be distinctive enough that when it does appear — your primary button, your logo, a key highlight — it's immediately recognized as "yours."
 
@@ -49,6 +53,8 @@ A website color palette isn't just "colors you like" — it's a map of functiona
 ## Step 3: Use a Color Palette Generator
 
 Once you have your anchor color, use a color palette generator to build out the system. Enter your anchor hex code and explore the tool's output — tints and shades of your anchor, analogous colors, split-complementary suggestions.
+
+For more on this topic, see [*Complementary Colors: What They Are and How to Use Them*](/blog/complementary-colors).
 
 This is faster than manually guessing and adjusting, and it exposes you to combinations you wouldn't have thought of independently. Most generators show you how colors look together, which is more useful than evaluating them individually.
 

@@ -23,6 +23,8 @@ sources:
 
 Every fixed-rate mortgage comes with an amortization schedule — a table that maps out every single payment from Month 1 to the final payoff. Most borrowers glance at the monthly payment figure, sign, and never look at the table again. That is a missed opportunity. The schedule is one of the most powerful documents in your mortgage file, and once you understand each column, you can use it to reduce your total interest cost and track your equity month by month.
 
+For more on this topic, see [*How Extra Mortgage Payments Reduce Your Loan: The Math Explained*](/blog/extra-mortgage-payments).
+
 This guide walks through every column in detail, using a single example loan so all the numbers connect.
 
 ## The Example Loan
@@ -33,6 +35,8 @@ Throughout this article we will use:
 - **Interest rate:** 6.5% fixed
 - **Term:** 30 years (360 payments)
 - **Monthly payment:** $1,896.20
+
+For more on this topic, see [*What Is Amortization? How Loan Payments Are Structured*](/blog/what-is-amortization).
 
 *These figures are illustrative. Actual rates vary with market conditions, credit profile, loan type, and lender.*
 
@@ -47,6 +51,8 @@ Why it matters: when you look up your current payment number, you can instantly 
 For a fixed-rate mortgage, this number never changes. Every row shows the same dollar amount: **$1,896.20** in our example.
 
 The payment is calculated at closing using the standard mortgage formula, which accounts for the loan amount, the monthly interest rate, and the number of payments. Once set, it stays constant even as the split between interest and principal shifts dramatically over time.
+
+For more on this topic, see [*Interest vs. Principal: Why You Pay So Much Interest at the Start of a Mortgage*](/blog/interest-vs-principal).
 
 Adjustable-rate mortgages (ARMs) recalculate this figure periodically, which is one reason ARMs can be harder to plan around.
 

@@ -14,6 +14,8 @@ HTML validation checks your markup against the HTML5 specification. Invalid HTML
 
 The [W3C Nu HTML Checker](https://validator.w3.org/nu/) is the authoritative validator — the same engine browsers use to determine conformance.
 
+For more on this topic, see [*How to Format HTML: Tools, Rules, and Editor Shortcuts*](/blog/how-to-format-html).
+
 **Online:** Paste a URL, upload a file, or paste HTML directly at `validator.w3.org/nu/`.
 
 **CLI (validator.nu):**
@@ -77,6 +79,8 @@ HTMLHint doesn't implement every W3C rule, but it catches the most common mistak
 ## Browser DevTools
 
 Modern browsers don't display HTML parsing errors by default, but you can check them:
+
+For more on this topic, see [*HTML Beautifier: Making Minified or Messy HTML Readable*](/blog/html-beautifier-guide).
 
 **Chrome:**
 1. Open DevTools → Console tab
@@ -219,3 +223,6 @@ jobs:
 ## Format then validate
 
 Formatting HTML before validating makes it easier to spot structural errors. Paste into [htmlformat.io](/) to clean up indentation, then copy to the W3C validator.
+
+
+For more on this topic, see [*HTML Indentation Best Practices*](/blog/html-indentation-best-practices).

@@ -16,6 +16,8 @@ Here's what each abbreviation actually means and when each one applies.
 
 EST stands for Eastern Standard Time. It is a fixed offset of UTC-5, meaning the Eastern US is five hours behind Coordinated Universal Time when standard time is in effect.
 
+For more on this topic, see [*What Is UTC? The Time Standard That Keeps the World in Sync*](/blog/what-is-utc).
+
 EST applies from the first Sunday in November, when clocks "fall back," to the second Sunday in March, when clocks "spring forward." During this period — roughly November through mid-March — New York, Miami, Atlanta, Boston, Washington D.C., and other Eastern cities are all on EST.
 
 So if it's 12:00 UTC noon in the winter, it's 7:00 AM in New York.
@@ -23,6 +25,8 @@ So if it's 12:00 UTC noon in the winter, it's 7:00 AM in New York.
 ## EDT: Eastern Daylight Time
 
 EDT stands for Eastern Daylight Time. It is a fixed offset of UTC-4, meaning the Eastern US is four hours behind UTC when daylight saving is in effect.
+
+For more on this topic, see [*US Time Zones Explained: All 6 and What States They Cover*](/blog/us-time-zones).
 
 EDT applies from the second Sunday in March through the first Sunday in November. This covers most of the calendar year — roughly eight months out of twelve. During this window, Eastern cities are one hour ahead of where they were during standard time.
 
@@ -46,6 +50,8 @@ This is wrong in a technical sense, and it can actually cause scheduling errors 
 ## "ET" as the Safe Abbreviation
 
 To avoid this confusion, the technically correct approach is to use "ET" — Eastern Time — as a season-agnostic abbreviation when you don't want to specify whether it's EST or EDT. ET automatically implies whichever offset is currently in effect for the Eastern time zone.
+
+For more on this topic, see [*How to Schedule Meetings Across Time Zones Without the Confusion*](/blog/how-to-schedule-meetings-across-time-zones).
 
 Many broadcast networks, event organizers, and US government agencies have adopted this convention. If you're writing a newsletter or scheduling a recurring event, "ET" is cleaner and more accurate than guessing which of EST or EDT applies.
 

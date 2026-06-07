@@ -35,6 +35,8 @@ HTML indentation has no enforced standard — browsers ignore whitespace — but
 
 **2 spaces per level** is the dominant web convention. Google's HTML Style Guide, Airbnb's style guide, and most popular editors default to 2 spaces. 4 spaces is common in some teams; tabs are used by others.
 
+For more on this topic, see [*Prettier HTML Formatting: Configuration and Common Issues*](/blog/prettier-html-formatting).
+
 **Consistency within a project matters more than which you choose.** Pick one and use `.editorconfig` to enforce it.
 
 ## When NOT to indent
@@ -111,6 +113,8 @@ Some style guides don't indent `<head>` and `<body>` themselves (treating them a
 
 HTML that exceeds 5–6 levels of nesting is usually a structural problem. Symptoms:
 
+For more on this topic, see [*HTML Minification: How It Works and When It's Worth It*](/blog/html-minification).
+
 ```html
 <!-- Hard to read, fragile structure -->
 <div class="page">
@@ -156,6 +160,8 @@ end_of_line = lf
 trim_trailing_whitespace = true
 insert_final_newline = true
 ```
+
+For more on this topic, see [*How to Validate HTML: W3C Validator, HTMLHint, and CI Integration*](/blog/validate-html).
 
 ## Editor configuration
 

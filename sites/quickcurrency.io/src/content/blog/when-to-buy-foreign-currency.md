@@ -48,6 +48,8 @@ Here's a direct comparison of the two main approaches:
 - You may end up with more cash than you need
 - You're exposed to rate movements between exchange and travel
 
+For more on this topic, see [*Bank Exchange Rate vs Market Rate: Why They're Different*](/blog/bank-exchange-rate-vs-market-rate).
+
 **Best for:** Destinations where card acceptance is limited, first-time visitors to unfamiliar countries, or travelers going somewhere with ATM reliability issues.
 
 ### Use ATMs After Arrival
@@ -84,8 +86,13 @@ With a week to go, stop worrying about the rate and focus on logistics:
 - If cash-dependent, exchange through a competitive channel — your bank's online order, a specialist currency service, or a local exchange bureau with a competitive rate
 - Check that you have a small amount of local currency for immediate arrival needs if your destination doesn't have easily accessible ATMs in the arrival area
 
+For more on this topic, see [*Currency Exchange Fees Explained: Banks, ATMs, and Credit Cards*](/blog/currency-exchange-fees-explained).
+
 The travelers who save the most on currency exchange are usually not the ones who timed the market — they're the ones who avoided expensive convenience options, used the right card, and withdrew cash from in-city ATMs rather than airport kiosks. Getting those structural choices right is almost always worth more than rate timing.
 
 ---
 
 *Exchange rate guidance is general in nature. Rates are volatile and no method guarantees a particular outcome. Always verify current rates with a [currency converter](/) before making decisions.*
+
+
+For more on this topic, see [*How Currency Exchange Rates Work: A Plain-English Guide*](/blog/how-currency-exchange-rates-work).

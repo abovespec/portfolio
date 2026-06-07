@@ -14,6 +14,8 @@ Scheduling jobs at fixed intervals is the most common cron use case. Here's how 
 
 Cron uses the `/` (slash) character to specify step values. `*/5` in the minutes field means "every 5 minutes starting from 0":
 
+For more on this topic, see [*How to Schedule a Cron Job on Linux: Step-by-Step*](/blog/how-to-schedule-a-cron-job).
+
 ```
 */5 * * * * /script.sh
 ```
@@ -113,6 +115,8 @@ Run every 5 minutes, but only during business hours:
 
 Standard cron has a 1-minute resolution. You can't schedule something every 10 seconds in a crontab.
 
+For more on this topic, see [*Crontab Syntax: A Complete Reference for Cron Expressions*](/blog/crontab-syntax).
+
 For sub-minute scheduling:
 
 ```bash
@@ -156,3 +160,6 @@ For true sub-minute scheduling, use a process supervisor (systemd timer with `On
 ```
 
 Build and test your cron schedule at [crontab.io](/).
+
+
+For more on this topic, see [*Linux Crontab Tutorial: From Basics to Real Automation*](/blog/linux-crontab-tutorial).

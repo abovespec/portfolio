@@ -79,11 +79,17 @@ Neither method disadvantages the server significantly in typical restaurants. Ca
 
 Many restaurants operate tip pools — card tips go into a shared pool that's distributed among servers, bussers, food runners, and sometimes bartenders. Some restaurants have house tip-out policies where a percentage of each server's card tips is contributed to the pool.
 
+For more on this topic, see [*What Is the Average Tip Percentage at US Restaurants?*](/blog/average-tip-percentage).
+
 This means your tip may not go entirely to the individual server. This is legal in most states (with rules about who can participate in pools) and is standard at many establishments. It doesn't change how much you should tip — the full standard amount still flows through the system to service workers.
+
+For more on this topic, see [*How Much to Tip a Server: The Complete Guide*](/blog/how-much-to-tip-a-server).
 
 ## Using a Tip Calculator Before You Sign
 
 The most common mistake at bill time: trying to calculate 20% mentally on an unfamiliar total while distracted. Use our [tip calculator](/) before the server collects your card, and write the pre-calculated amounts directly onto the receipt.
+
+For more on this topic, see [*How to Calculate a Tip Without a Calculator*](/blog/how-to-calculate-a-tip).
 
 ## Quick Reference: The Card Tip Process
 

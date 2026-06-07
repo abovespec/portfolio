@@ -14,6 +14,8 @@ Cron is a time-based job scheduler built into Unix-like systems. A crontab file 
 
 Each line in a crontab has five time fields followed by the command to run:
 
+For more on this topic, see [*Linux Crontab Tutorial: From Basics to Real Automation*](/blog/linux-crontab-tutorial).
+
 ```
 * * * * * command to execute
 │ │ │ │ │
@@ -147,6 +149,8 @@ Names are also accepted in most cron implementations:
 0 0 * * Sun /script.sh             # Midnight every Sunday
 ```
 
+For more on this topic, see [*How to Schedule a Cron Job on Linux: Step-by-Step*](/blog/how-to-schedule-a-cron-job).
+
 ## Month values
 
 Month can be 1-12 or three-letter abbreviations:
@@ -159,6 +163,8 @@ Month can be 1-12 or three-letter abbreviations:
 ## Crontab environment
 
 Cron jobs run with a minimal environment — not your login shell's environment. The PATH is usually just `/usr/bin:/bin`. Always use full paths for commands:
+
+For more on this topic, see [*Cron Expression Examples: 40+ Ready-to-Use Schedules*](/blog/cron-expression-examples).
 
 ```bash
 # Wrong: 'python3' may not be found

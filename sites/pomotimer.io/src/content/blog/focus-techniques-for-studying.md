@@ -18,7 +18,11 @@ There's no shortage of methods claiming to fix this. The seven techniques below 
 
 **How it works:** Work for 25 minutes, take a 5-minute break, repeat four times, then take a longer 15–30-minute break. Use a timer; don't adjust the interval mid-session.
 
+For more on this topic, see [*Why 25 Minutes? The Logic Behind the Pomodoro Timer*](/blog/pomodoro-timer-25-minutes).
+
 **Why people use it:** The Pomodoro Technique is the most widely recommended focus method for students, and the reason is practical: it attacks procrastination at the start. When you're dreading a task, committing to 25 minutes feels manageable where committing to "study until it's done" doesn't. Once you've started, the inertia carries you.
+
+For more on this topic, see [*The 52/17 Rule: Is It Better Than Pomodoro?*](/blog/52-17-rule).
 
 It also builds regular breaks into your schedule, which reduces the accumulated fatigue that makes a three-hour study session feel worse than a 90-minute one.
 
@@ -83,6 +87,8 @@ Caio Carneiro described this approach as a way to preserve flow states while sti
 **How it works:** Assign specific tasks to specific blocks of time in your calendar or planner. "9–10am: read chapter 5. 10–11:30am: problem set. 1–2pm: review notes." The block is a commitment, not an aspiration.
 
 This is a scheduling technique as much as a focus technique. Cal Newport describes it extensively in *Deep Work* and his blog, though the concept itself is older.
+
+For more on this topic, see [*Pomodoro Technique Benefits: What Changes When You Work This Way*](/blog/pomodoro-technique-benefits).
 
 **Honest pros:**
 - Creates clarity about when things will happen, reducing the open-ended anxiety of "I should study today"

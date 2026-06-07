@@ -18,13 +18,19 @@ Dropshipping attracts beginners because it requires no inventory. But the margin
 4. **Platform fees** - Shopify plans and current pricing are listed on the [Shopify pricing page](https://www.shopify.com/pricing). Other apps add up.
 5. **Advertising** - This is usually the largest cost. Facebook and TikTok ads often run $10-30 per purchase for new stores.
 
+For more on this topic, see [*eBay Fee Calculator 2025: Final Value, Insertion, and Store Costs*](/blog/ebay-fee-calculator-2025-final-value-insertion-and-store-costs).
+
 ## Why Gross Margin Lies
 
 A $40 product that costs $15 from the supplier shows a $25 gross margin. That looks like 62.5%. But add $5 shipping, $1.50 processing, $8 in ad spend, and $1 in app fees. Net profit drops to $9.50, or 23.8% margin. Still viable, but very different from the headline number.
 
+For more on this topic, see [*How to Calculate Net Profit in Ecommerce: A Sellers Guide*](/blog/how-to-calculate-net-profit-in-ecommerce-a-sellers-guide).
+
 ## Using the Calculator
 
 Our [dropshipping margin calculator](/) breaks this down visually. Input selling price, product cost, shipping, processing rate, ad spend per sale, and platform fees. It outputs gross margin, net profit, profit margin percentage, and ROI.
+
+For more on this topic, see [*Amazon FBA Fee Calculator 2025: Every Fee Explained With Examples*](/blog/amazon-fba-fee-calculator-2025-every-fee-explained-with-examples).
 
 **Example:** $49.99 product, $18 cost, $5 shipping, 2.9% processing, $8 ads, $0 fees:
 - Gross margin: $26.99

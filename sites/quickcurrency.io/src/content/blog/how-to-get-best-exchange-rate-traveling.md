@@ -14,6 +14,8 @@ Getting a good exchange rate when you travel doesn't require obsessive rate-watc
 
 Before any trip, look up the mid-market rate between your home currency and your destination's currency using a [currency converter](/). This is the "true" exchange rate — the midpoint of what buyers and sellers are trading at in the global market.
 
+For more on this topic, see [*When to Buy Foreign Currency Before a Trip*](/blog/when-to-buy-foreign-currency).
+
 Write it down or take a screenshot. You won't transact at this exact rate — every exchange method has a spread and possibly fees on top — but it gives you a reference point for evaluating what you're actually being offered. If you see a rate that's 10% worse than mid-market, you know to keep looking.
 
 ## The Methods Ranked by Typical Rate Quality
@@ -23,6 +25,8 @@ Not all exchange methods are equal. Here's how they tend to stack up, from best 
 **1. No-foreign-transaction-fee credit card** — For purchases you can pay by card, this is often the best rate available to travelers. Visa and Mastercard apply exchange rates very close to mid-market. With a fee-free card, the total cost above mid-market is typically under 1%.
 
 **2. ATM withdrawal in local currency** — When you use an ATM abroad and decline Dynamic Currency Conversion (more on this below), your card network applies its exchange rate — usually close to mid-market. Your home bank may charge a flat fee per withdrawal ($3–$5 is common), which you can minimize by withdrawing larger amounts less frequently.
+
+For more on this topic, see [*Bank Exchange Rate vs Market Rate: Why They're Different*](/blog/bank-exchange-rate-vs-market-rate).
 
 **3. Online currency exchange or specialist money transfer services** — For larger amounts or planning ahead, some services offer competitive rates with transparent fees. Rates vary, so comparing a few options is worthwhile for anything over $500.
 
@@ -39,6 +43,8 @@ Not all exchange methods are equal. Here's how they tend to stack up, from best 
 Whether at a point-of-sale terminal, a restaurant, or an ATM, you will sometimes be offered the option to pay or withdraw in your home currency instead of the local one. This is called Dynamic Currency Conversion (DCC), and it should almost always be declined.
 
 When you accept DCC, the merchant or ATM operator applies their own exchange rate — which is typically 3–7% worse than what your card network would apply. They keep the difference. The "convenience" of seeing your home currency amount costs you real money.
+
+For more on this topic, see [*Travel Money Tips: How to Keep More of Your Cash When Traveling Abroad*](/blog/travel-money-tips).
 
 At an ATM, the screen will ask something like "Would you like to be charged in USD instead of EUR?" Always choose the local currency. At a card terminal, if the receipt shows your home currency and you didn't choose that, you can often ask the merchant to run the transaction again in local currency.
 

@@ -18,6 +18,8 @@ Cumulative GPA is the weighted average of every grade you have earned across all
 
 This is different from your semester GPA, which only reflects one term. Cumulative GPA is the long-running total.
 
+For more on this topic, see [*Semester GPA vs Cumulative GPA: What's the Difference and Which One Matters?*](/blog/semester-gpa-vs-cumulative-gpa).
+
 ## The Formula
 
 ```
@@ -33,6 +35,8 @@ For example: A B+ (3.3) in a 4-credit course = 13.2 quality points.
 **Step 1: List every graded course with its credit hours and letter grade.**
 
 **Step 2: Convert each letter grade to GPA points.**
+
+For more on this topic, see [*GPA Scale 4.0 Explained: Letter Grades, Plus/Minus, and Weighted vs Unweighted*](/blog/gpa-scale-4-0-explained).
 
 | Grade | GPA Points |
 |---|---|
@@ -103,6 +107,8 @@ Always check your institution's academic policies. Some schools exclude transfer
 Early semesters have outsized influence because there are fewer total credits. A 2.5 in your first semester of 15 credits pulls your GPA down more than a 2.5 in a later semester once you have 90 credits in the bank.
 
 This has a practical implication: the earlier you raise your grades, the easier it is to lift your cumulative GPA. By junior or senior year, each new semester moves the needle less.
+
+For more on this topic, see [*How to Raise Your GPA Fast: Practical Strategies That Actually Work*](/blog/how-to-raise-your-gpa-fast).
 
 **Impact of credit accumulation:**
 

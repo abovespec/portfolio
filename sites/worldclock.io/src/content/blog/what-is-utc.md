@@ -14,6 +14,8 @@ UTC appears everywhere once you start looking: server logs, API responses, fligh
 
 UTC is Coordinated Universal Time, the primary time standard by which the world regulates clocks and schedules. It has no daylight saving offset — it runs at a constant, unvarying rate year-round, regardless of geography or season.
 
+For more on this topic, see [*Daylight Saving Time Explained: Why It Exists and How It Works*](/blog/daylight-saving-time-explained).
+
 The name carries an odd quirk: the English abbreviation would logically be CUT, and the French abbreviation (Temps Universel Coordonné) would be TUC. The agreed compromise was UTC, which belongs fully to neither language. This was an intentional choice to give no single language priority.
 
 ## Before UTC: Local Mean Time and the Chaos of Early Timekeeping
@@ -21,6 +23,8 @@ The name carries an odd quirk: the English abbreviation would logically be CUT, 
 Before coordinated time standards, every city used its own local mean time — solar noon in London was 12:00 in London, solar noon in Paris was 12:00 in Paris, and they differed by about 9 minutes and 21 seconds. This worked fine when travel was slow, but the expansion of railways in the 19th century made the patchwork of local times a serious operational problem.
 
 Railway timetables couldn't function reliably when each station kept its own time. Britain standardized on Greenwich Mean Time (GMT) — the time at the Royal Observatory in Greenwich, London — across its rail network in the 1840s, and the practice gradually spread. The International Meridian Conference in 1884 formalized the Prime Meridian at Greenwich and established GMT as the basis for global time zones.
+
+For more on this topic, see [*US Time Zones Explained: All 6 and What States They Cover*](/blog/us-time-zones).
 
 By the 20th century, atomic timekeeping had advanced to the point where a more precise standard was needed. UTC was introduced in 1960 and has been refined since. It's based on International Atomic Time (TAI), adjusted periodically by "leap seconds" to stay within 0.9 seconds of mean solar time.
 
@@ -87,5 +91,7 @@ When you encounter an ISO 8601 timestamp with a `Z` suffix in an API response or
 ## Using a World Clock to Work With UTC
 
 The easiest way to work with UTC practically is to use a world clock that shows UTC alongside your local cities. worldclock.io lets you display UTC as one of your tracked zones — so when you're checking what time a server event occurred, or verifying the exact moment of a scheduled job, you can see exactly where that UTC time falls in your day and the day of any international colleagues.
+
+For more on this topic, see [*Why You Need an Online World Clock (and How to Use One)*](/blog/world-clock-online).
 
 UTC isn't just a technical curiosity for developers. It's the common reference point that makes international scheduling, flight times, scientific data, and coordinated systems reliable. Once you have a mental model of your local UTC offset, the rest of time zone math becomes much more manageable.

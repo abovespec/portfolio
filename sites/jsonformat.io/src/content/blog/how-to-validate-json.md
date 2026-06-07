@@ -74,6 +74,8 @@ def validate_json(s):
 
 Error: `Unexpected token }` (the parser expects another key-value pair after the comma).
 
+For more on this topic, see [*Unexpected Token in JSON: What It Means and How to Fix It*](/blog/unexpected-token-json-error).
+
 Fix: Remove the comma after the last key-value pair.
 
 ```json
@@ -161,6 +163,8 @@ JSON value types and their exact spellings:
 
 Syntax validation tells you whether JSON can be parsed. Schema validation tells you whether the parsed data has the structure your application expects — required fields, correct types, value ranges, allowed patterns.
 
+For more on this topic, see [*JSON Schema: Validate Your Data Structures*](/blog/json-schema-guide).
+
 The standard for describing JSON structure is [JSON Schema](https://json-schema.org/).
 
 ### Example schema
@@ -186,6 +190,8 @@ The standard for describing JSON structure is [JSON Schema](https://json-schema.
 ### Validate in Node.js with AJV
 
 [AJV](https://ajv.js.org/) is the most popular JSON Schema validator for JavaScript:
+
+For more on this topic, see [*Pretty-Printing JSON in JavaScript: JSON.stringify, DevTools, and Node.js*](/blog/pretty-print-json-javascript).
 
 ```bash
 npm install ajv

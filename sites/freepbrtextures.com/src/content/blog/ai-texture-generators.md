@@ -17,10 +17,14 @@ At [FreePBRTextures](/), we generate all our textures using a combination of AI 
 
 Before AI, creating a high-quality PBR texture set meant:
 
+For more on this topic, see [*PBR Workflow Explained: From Texture to Final Render*](/blog/pbr-workflow-explained).
+
 1. Photographing a real surface with controlled lighting
 2. Manually blending edges to make it seamless (often 30-60 minutes per texture)
 3. Extracting normal maps, roughness maps, and metallic maps using specialized tools
 4. Validating tileability by rendering test scenes
+
+For more on this topic, see [*What Is a Seamless Texture? (And Why It Matters for 3D Art)*](/blog/what-is-a-seamless-texture).
 
 An experienced artist could produce 5-10 texture sets per day. A single set of 20 textures could take a full week.
 
@@ -35,6 +39,8 @@ The prompt includes:
 - The surface type ("red brick wall", "dark oak wood", "polished marble")
 - Quality modifiers ("photorealistic", "high detail")
 - Tiling context ("seamless texture", "tileable")
+
+For more on this topic, see [*How to Make a Tileable Texture: 4 Proven Methods*](/blog/how-to-make-tileable-texture).
 
 ### Step 2: Make It Seamless
 AI-generated images aren't inherently seamless. We apply an edge-blending algorithm:

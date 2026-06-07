@@ -16,6 +16,8 @@ JWT claims are the key-value pairs in the token's payload. The JWT specification
 
 Who created and signed the token. Typically the URL of your authentication server.
 
+For more on this topic, see [*How JWT Authentication Works: The Complete Flow*](/blog/how-jwt-authentication-works).
+
 ```json
 { "iss": "https://auth.example.com" }
 ```
@@ -66,6 +68,8 @@ Best practices:
 - One-time use tokens (email verification): minutes to hours
 
 Every JWT library validates `exp` automatically when you verify a token. The error is typically `TokenExpiredError` or equivalent.
+
+For more on this topic, see [*What Is a JWT Token? JSON Web Tokens Explained*](/blog/what-is-a-jwt-token).
 
 ```python
 from datetime import datetime, timedelta, timezone
@@ -133,6 +137,8 @@ Beyond registered claims, you can add application-specific claims:
 ```
 
 **Collision avoidance:** The JWT spec recommends either using public (IANA-registered) claim names or URI-namespaced names to avoid collisions with other systems:
+
+For more on this topic, see [*JWT Security Best Practices: What to Do (and What to Avoid)*](/blog/jwt-security-best-practices).
 
 ```json
 {

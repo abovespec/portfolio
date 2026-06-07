@@ -40,6 +40,8 @@ Semester GPA: 49.0 ÷ 14 = **3.50**
 
 Cumulative GPA averages every course you have taken, across every semester, weighted by credit hours.
 
+For more on this topic, see [*GPA Calculator With AP Classes: Weighted and Unweighted*](/blog/gpa-calculator-with-ap-classes-weighted-and-unweighted).
+
 **Formula:**
 ```
 Cumulative GPA = Total Quality Points (All Semesters) ÷ Total Credit Hours (All Semesters)
@@ -63,6 +65,8 @@ Use the [GPA calculator](/) to see exactly how your current semester's grades wi
 | Used for scholarships | Sometimes | Usually |
 | Used by employers | Occasionally | Most often |
 | Used by grad schools | Rarely | Always |
+
+For more on this topic, see [*What Is a Good GPA in College? Context by Major, Grad School, and Employers*](/blog/what-is-a-good-gpa-in-college).
 
 ## Who Looks at Semester GPA?
 
@@ -109,6 +113,8 @@ The reverse is also common: a strong start followed by burnout. A 3.8 cumulative
 2. **Prioritize cumulative GPA for long-term goals.** If you are planning to apply to graduate school or competitive employers, cumulative GPA is the number that matters most.
 3. **Use semester GPA as a progress check.** A strong semester GPA confirms you are on the right trajectory. A weak one signals a need to adjust before too many credits accumulate.
 4. **Understand grade replacement effects.** If your school offers grade replacement for retaken courses, a retake improves cumulative GPA even though it first appears as a semester-level change.
+
+For more on this topic, see [*Letter Grade to GPA Conversion Chart: The Complete Reference*](/blog/letter-grade-to-gpa-conversion-chart).
 
 ## The Bottom Line
 

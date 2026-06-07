@@ -14,6 +14,8 @@ Roofing estimates confuse homeowners because the roof surface is larger than the
 
 A pitched roof has more surface area than the flat footprint below. The steeper the pitch, the more surface area. A 6:12 pitch adds about 12% to the footprint. A 12:12 pitch adds about 41%.
 
+For more on this topic, see [*How Much Paint Do I Need for a 12x12 Room? Exact Calculation*](/blog/how-much-paint-do-i-need-for-a-12x12-room-exact-calculation).
+
 ## The Calculation
 
 1. Measure house footprint (length x width).
@@ -33,6 +35,8 @@ A pitched roof has more surface area than the flat footprint below. The steeper 
 - Footprint: 30 x 40 = 1,200 sq ft
 - With 1-foot overhangs: 32 x 42 = 1,344 sq ft
 - With 6:12 pitch: 1,344 x 1.12 = 1,505 sq ft roof area
+
+For more on this topic, see [*Flooring Cost Calculator by Square Foot: Material and Installation*](/blog/flooring-cost-calculator-by-square-foot-material-and-installation).
 
 ## Roofing Squares
 
@@ -61,6 +65,8 @@ Three bundles of standard asphalt shingles cover one square.
 ## Using Our Calculator
 
 Our [roofing calculator](/) handles pitch, overhang, and waste automatically. Input house dimensions, pitch, and overhang. It outputs roof area, squares, bundles, and estimated cost.
+
+For more on this topic, see [*Roof Replacement Cost Estimator: 2025 Pricing by Material and Size*](/blog/roof-replacement-cost-estimator-2025-pricing-by-material-and-size).
 
 ## When to Hire a Pro
 

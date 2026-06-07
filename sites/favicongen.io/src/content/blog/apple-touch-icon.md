@@ -58,11 +58,15 @@ If you want to serve multiple sizes:
 
 iOS reads the `sizes` attribute and picks the best match for the device. If no match is found, it defaults to the largest available size and scales it down.
 
+For more on this topic, see [*Favicon Sizes: The Complete Size Guide for Every Browser and Device*](/blog/favicon-sizes).
+
 **File placement:** You can place the file anywhere on your server, but the conventional location is your site's root directory. Apple browsers will look for `apple-touch-icon.png` at the root even without an explicit HTML declaration — so having the file at `/apple-touch-icon.png` provides a fallback even if your `<head>` tag is missing. Explicit declarations always take precedence over this automatic lookup.
 
 ## Key Design Differences From a Standard Favicon
 
 The apple-touch-icon and your standard favicon serve related but distinct purposes, and the design requirements differ in a few important ways.
+
+For more on this topic, see [*What Is a Favicon? The Tiny Icon That Does a Big Job*](/blog/what-is-a-favicon).
 
 ### Use a Solid Background
 
@@ -87,6 +91,8 @@ If you are also setting up icons for Android and progressive web apps, you will 
 The apple-touch-icon is not a maskable icon in the Android sense — Apple handles its own masking independently. However, the principle of keeping important content away from the edges applies to both. Designing your icon with padding around the central element serves you well on both platforms.
 
 If you use a favicon generator to create your icon set, it will typically generate separate files for the apple-touch-icon and for maskable Android icons. They share a similar design intent but are not identical files.
+
+For more on this topic, see [*How to Create a Favicon for Your Website (Quick and Easy)*](/blog/how-to-create-a-favicon).
 
 ## Testing Your Apple Touch Icon
 

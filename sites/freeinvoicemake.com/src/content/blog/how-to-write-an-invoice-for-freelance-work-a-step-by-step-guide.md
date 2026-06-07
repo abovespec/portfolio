@@ -18,6 +18,8 @@ Start with your business name, address, email, and phone number. If you have a l
 
 Every invoice needs a unique number. Use a simple sequence like INV-001, INV-002. Include the invoice date and a clear due date. Net 15 means payment within 15 days. Net 30 is standard. Due on receipt is aggressive but acceptable for small projects.
 
+For more on this topic, see [*Invoice Template for Small Business: Free and Professional*](/blog/invoice-template-for-small-business-free-and-professional).
+
 ## Step 3: Line Items
 
 Break down what you did. Instead of "Website work," list:
@@ -31,6 +33,8 @@ Specific line items reduce disputes and justify your total.
 
 Add a subtotal. Apply tax if your jurisdiction requires it. State the tax rate clearly. Show the final total in bold. Per [IRS guidance for small businesses and self-employed individuals](https://www.irs.gov/businesses/small-businesses-self-employed), freelancers are generally responsible for self-employment tax and must keep accurate records of all invoiced income.
 
+For more on this topic, see [*Best Free Invoicing Software 2025: Top Picks for Freelancers and Small Business*](/blog/best-free-invoicing-software-2025-top-picks-for-freelancers-and-small-business).
+
 ## Step 5: Payment Instructions
 
 Tell the client exactly how to pay. Include:
@@ -40,6 +44,8 @@ Tell the client exactly how to pay. Include:
 - Check mailing address
 
 Also state your late payment policy. A common approach is a 1.5% monthly late fee after the due date. According to the [HubSpot invoice guide](https://blog.hubspot.com/sales/invoice), including a written late fee policy on every invoice significantly reduces the average time clients take to pay.
+
+For more on this topic, see [*Invoice Payment Terms Examples: Net 30, Due on Receipt, and More*](/blog/invoice-payment-terms-examples-net-30-due-on-receipt-and-more).
 
 ## Use Our Template
 

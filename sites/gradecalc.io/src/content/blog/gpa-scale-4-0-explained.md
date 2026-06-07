@@ -26,6 +26,8 @@ At its simplest, the GPA scale maps letter grades to numeric points:
 
 Your GPA is the average of those point values, weighted by the credit hours of each course. A 3-credit course has three times the impact of a 1-credit course.
 
+For more on this topic, see [*How to Calculate Weighted GPA: Honors, AP, and IB Explained*](/blog/how-to-calculate-weighted-gpa-honors-ap-and-ib-explained).
+
 ## Plus and Minus Variations
 
 Most schools use plus and minus grades, which add finer steps to the scale:
@@ -45,6 +47,8 @@ Most schools use plus and minus grades, which add finer steps to the scale:
 | D | 1.0 |
 | D− | 0.7 |
 | F | 0.0 |
+
+For more on this topic, see [*Letter Grade to GPA Conversion Chart: The Complete Reference*](/blog/letter-grade-to-gpa-conversion-chart).
 
 A few things worth noting:
 
@@ -78,6 +82,8 @@ Use a [GPA calculator](/) to run these numbers automatically without the arithme
 An unweighted GPA treats every course the same regardless of difficulty. An A in a remedial class gives the same 4.0 as an A in a college-level honors course. The maximum unweighted GPA is 4.0.
 
 Colleges use unweighted GPA as one way to compare students across schools with different grading philosophies. It answers the question: "Did this student earn high grades?" without factoring in course difficulty.
+
+For more on this topic, see [*Semester GPA vs Cumulative GPA: What's the Difference and Which One Matters?*](/blog/semester-gpa-vs-cumulative-gpa).
 
 ## Weighted GPA
 

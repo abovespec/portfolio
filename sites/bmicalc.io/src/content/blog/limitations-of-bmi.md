@@ -22,6 +22,8 @@ sources:
 
 Body mass index is perhaps the most frequently cited — and most frequently misunderstood — number in medicine. Health agencies use it, employers ask about it, and gym posters quote it. But BMI was designed as a population-level statistical tool in 1832, and applying it to individuals as though it were a precise clinical measurement is a category error that health researchers have been warning about for decades.
 
+For more on this topic, see [*BMI Calculator for Women: What Your Number Means and Why It Matters*](/blog/bmi-calculator-for-women).
+
 This article is not an argument to ignore BMI. The metric has real value when used appropriately. It is an argument for understanding exactly what BMI can and cannot tell you.
 
 ## What BMI Actually Measures
@@ -49,6 +51,8 @@ Conversely, someone who has lost significant muscle mass through illness or agin
 Not all fat is equally harmful. Research has established clearly that visceral fat — fat stored around the abdominal organs — carries substantially higher metabolic and cardiovascular risk than subcutaneous fat stored in the hips, buttocks, and thighs.
 
 Two people with identical BMIs can have entirely different fat distributions and therefore entirely different health risks. This is why **waist circumference** is increasingly recommended as a companion measure to BMI. The NHLBI recommends that adults with waist circumference above 40 inches (men) or 35 inches (women) are at increased risk, even if their BMI is in the normal range. ([NHLBI — Assessing Your Weight and Health Risk](https://www.nhlbi.nih.gov/health/educational/lose_wt/risk.htm))
+
+For more on this topic, see [*Normal BMI Range: What 18.5–24.9 Really Means for Your Health*](/blog/normal-bmi-range).
 
 ## The Ethnicity Problem
 
@@ -84,6 +88,8 @@ BMI works best as one data point among several. Clinicians and researchers incre
 BMI is not useless. At the population level it works reasonably well, and for people well outside the normal range in either direction it remains a meaningful signal. If someone has a BMI of 18 or a BMI of 42, that number is conveying real health information.
 
 The danger is treating BMI as a precise individual measure of health or body fatness when it is neither. A BMI in the overweight range does not mean someone is unhealthy. A BMI in the normal range does not mean someone is healthy. The number is a starting point that should be interpreted in context — by a healthcare professional who can consider your full clinical picture.
+
+For more on this topic, see [*What Is a Healthy BMI? Ranges, Categories, and What They Mean*](/blog/what-is-a-healthy-bmi).
 
 Use our [BMI calculator](/) to find your number. Then take it to your doctor, not the internet.
 

@@ -16,7 +16,11 @@ CSS Flexbox questions come up in nearly every frontend interview, from junior ro
 
 **Answer:** Flexbox is a CSS layout model designed for arranging elements along a single axis — either a row or a column. You activate it by applying `display: flex` to a parent element, which makes that element a flex container and its direct children flex items. The model gives you control over how items are sized, spaced, and aligned without using floats or manual position calculations.
 
+For more on this topic, see [*What Is CSS Flexbox? A Plain-English Introduction*](/blog/what-is-flexbox).
+
 The core value of Flexbox is that it handles three things that were painful before it existed: equal-height columns, vertical centering, and distributing space dynamically between items.
+
+For more on this topic, see [*The Holy Grail Layout with Flexbox (and Why It's No Longer Holy)*](/blog/holy-grail-layout-css).
 
 ---
 
@@ -100,6 +104,8 @@ The key mental model: `flex-start` is always the start of whatever axis you're o
 **Answer:** When you need to control layout in two dimensions simultaneously.
 
 Flexbox is one-dimensional — it arranges items along a single axis. Grid is two-dimensional — it lets you place items by row and column at the same time.
+
+For more on this topic, see [*Flexbox vs CSS Grid: When to Use Each*](/blog/flexbox-vs-grid).
 
 Choose Grid when:
 - You're building a page-level layout with a header, sidebar, main content, and footer

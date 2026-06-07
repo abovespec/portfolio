@@ -12,6 +12,8 @@ Most people know their age to the nearest year. Getting the exact figure—years
 
 For one-off lookups the [age calculator](/) is faster. But understanding the manual method is useful when you want to check a calculator's output, work through a historical date by hand, or teach the logic to someone else.
 
+For more on this topic, see [*Age Difference Calculator: How to Find the Gap Between Two People*](/blog/age-difference-calculator-guide).
+
 ## The Three-Step Method
 
 ### Step 1: Calculate Complete Years
@@ -20,6 +22,8 @@ Take today's date. Subtract the birth year from the current year for a provision
 
 - If today is on or after the birth month and day in the current year: your age in years is (current year − birth year)
 - If today is before the birth month and day: subtract 1, because you haven't completed that birthday yet
+
+For more on this topic, see [*How Many Weeks Old Am I? Calculating Your Age in Weeks*](/blog/how-many-weeks-old-am-i).
 
 **Example:** Born June 8, 1990. Today is May 22, 2026.
 
@@ -59,6 +63,8 @@ That's 11 complete months. Now we're at May 8, 2026. Remaining days: May 8 to Ma
 The trickiest part of this calculation is February, because it has 28 or 29 days while most months have 30 or 31.
 
 **Problem scenario:** Born January 31. What is your age on March 31?
+
+For more on this topic, see [*What Is Chronological Age? Definition & How It's Measured*](/blog/what-is-chronological-age).
 
 - Last birthday: January 31 (current year, if it has passed)
 - January 31 → February 28 (or 29): Is this one complete month? The end-of-month convention says yes. When one date is the last day of a month, the "one month later" date is the last day of the following month.

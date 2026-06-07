@@ -67,6 +67,8 @@ If you know, share it. If you do not know, say so. False promises damage trust m
 - **Mobile-friendly:** Many customers check status on their phones.
 - **No login required:** Do not gate status information.
 
+For more on this topic, see [*Is GitHub Down Right Now? How to Check and Verify*](/blog/is-github-down-right-now-how-to-check-and-verify).
+
 ## Communication During Incidents
 
 **Template:**
@@ -87,6 +89,10 @@ If you know, share it. If you do not know, say so. False promises damage trust m
 | Cachet | Self-hosted | Free | Technical teams |
 | Statuspage.io | Atlassian | Free tier | Startups |
 | Better Uptime | Cloud | Free tier | Small businesses |
+
+For more on this topic, see [*Best Free Website Monitoring Tools Compared (2025)*](/blog/best-free-website-monitoring-tools-compared-2025).
+
+For more on this topic, see [*Free Website Downtime Checker: Monitor Uptime Without Paying*](/blog/free-website-downtime-checker-monitor-uptime-without-paying).
 
 ## Post-Incident Reviews
 

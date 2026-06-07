@@ -20,6 +20,8 @@ HTML minification reduces file size by removing whitespace, comments, and option
 - **Collapses boolean attributes** — `<input disabled="disabled">` → `<input disabled>`
 - **Inlines CSS/JS** — some minifiers collapse small `<style>` and `<script>` blocks
 
+For more on this topic, see [*How to Format HTML: Tools, Rules, and Editor Shortcuts*](/blog/how-to-format-html).
+
 Before:
 ```html
 <!DOCTYPE html>
@@ -37,10 +39,14 @@ Before:
 </html>
 ```
 
+For more on this topic, see [*Prettier HTML Formatting: Configuration and Common Issues*](/blog/prettier-html-formatting).
+
 After:
 ```html
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>My Page</title></head><body><div class="container"><p>Hello, world!</p></div></body></html>
 ```
+
+For more on this topic, see [*How to Validate HTML: W3C Validator, HTMLHint, and CI Integration*](/blog/validate-html).
 
 ## How much does it save?
 

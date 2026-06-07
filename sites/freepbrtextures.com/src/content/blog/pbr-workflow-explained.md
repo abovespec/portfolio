@@ -11,6 +11,8 @@ The PBR (Physically Based Rendering) workflow is the modern standard for 3D mate
 
 This guide walks through the complete PBR workflow — from understanding the texture maps to applying them in your 3D software.
 
+For more on this topic, see [*How to Use PBR Textures in Unity: A Practical Guide*](/blog/pbr-textures-in-unity).
+
 ---
 
 ## Step 1: Understand the Map Types
@@ -117,6 +119,8 @@ If it looks good everywhere, your PBR setup is correct.
 ## Ready-Made PBR Textures
 
 Skip the setup and download complete 4K PBR texture sets from [FreePBRTextures](/textures/). All textures include albedo, normal, and roughness maps — ready to drop into your project. Browse categories:
+
+For more on this topic, see [*How to Use PBR Textures in Blender: Complete Setup Guide*](/blog/pbr-textures-in-blender).
 
 - [Seamless Wood Textures](/textures/wood/)
 - [Stone & Rock Textures](/textures/stone/)

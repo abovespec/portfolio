@@ -53,9 +53,13 @@ One gallon covers approximately 350-400 sq ft per coat on smooth walls. Textured
 - **Drastic color change:** Budget 25% more paint.
 - **New drywall:** Absorbs more paint. Prime first.
 
+For more on this topic, see [*Paint Calculator by Square Feet: Coverage, Coats, and Cost*](/blog/paint-calculator-by-square-feet-coverage-coats-and-cost).
+
 ## Using Our Calculator
 
 Our [paint calculator](/) handles all of this. Enter room length, width, height, number of doors and windows, and coats. It outputs exact gallons needed.
+
+For more on this topic, see [*HVAC BTU Calculator by Room Size: Sizing Guide for AC and Heat*](/blog/hvac-btu-calculator-by-room-size-sizing-guide-for-ac-and-heat).
 
 ## Trim Paint
 
@@ -70,5 +74,7 @@ For baseboards, door frames, and window trim in a 12x12 room:
 - 1 gallon ceiling paint at $35/gallon: $35
 - 1 quart trim paint at $20: $20
 - Total material cost: approximately **$175**
+
+For more on this topic, see [*Flooring Cost Calculator by Square Foot: Material and Installation*](/blog/flooring-cost-calculator-by-square-foot-material-and-installation).
 
 Use our calculator before you shop. Buying the right amount saves money and prevents mismatched batches.

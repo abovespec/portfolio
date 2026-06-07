@@ -34,6 +34,8 @@ crontab -e
 
 This opens your user's crontab file in the default editor (usually `vi` or `nano`). Each line is a scheduled job.
 
+For more on this topic, see [*Linux Crontab Tutorial: From Basics to Real Automation*](/blog/linux-crontab-tutorial).
+
 **To use a different editor:**
 
 ```bash
@@ -69,6 +71,8 @@ Example — run a Python script every 15 minutes:
 ## Step 3: Use full paths for everything
 
 Cron runs with a minimal PATH (`/usr/bin:/bin`). Commands in your shell might not be found in cron. Use full paths:
+
+For more on this topic, see [*Cron Job Not Running? How to Diagnose and Fix It*](/blog/cron-job-not-running).
 
 ```bash
 # Check where a command lives
@@ -197,5 +201,7 @@ Apr 25 02:00:01 hostname CRON[12345]: (ubuntu) CMD (/home/ubuntu/backup.sh)
 ```
 
 If you don't see it, double-check the expression, confirm cron is running, and make sure your user has permission to run the command.
+
+For more on this topic, see [*Cron Expression Examples: 40+ Ready-to-Use Schedules*](/blog/cron-expression-examples).
 
 Build and validate cron expressions at [crontab.io](/).

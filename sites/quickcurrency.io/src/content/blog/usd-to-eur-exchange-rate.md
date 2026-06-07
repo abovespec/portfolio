@@ -52,7 +52,13 @@ During periods of global financial stress, the US dollar typically strengthens b
 
 When you use a currency converter to check the USD to EUR rate, you are seeing the current mid-market rate — the midpoint between the buy and sell prices in the interbank market. This is the closest thing to an objective, real-time rate.
 
+For more on this topic, see [*What Is the Mid-Market Rate? Definition, Spread, and Why It Matters*](/blog/what-is-the-mid-market-rate).
+
 The rate you can actually transact at — through your bank, a transfer service, or a currency desk — will be slightly worse than the mid-market rate, by an amount that depends on the provider. Knowing the mid-market rate before you exchange gives you a benchmark to evaluate any quote you receive.
+
+For more on this topic, see [*How Currency Exchange Rates Work: A Plain-English Guide*](/blog/how-currency-exchange-rates-work).
+
+For more on this topic, see [*What Affects Currency Exchange Rates? 6 Key Factors*](/blog/what-affects-currency-exchange-rates).
 
 ## Sending Money: EUR/USD and Remittance Costs
 

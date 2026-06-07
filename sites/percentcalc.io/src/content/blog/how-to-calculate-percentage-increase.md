@@ -86,6 +86,8 @@ To find the combined effect of two percentage increases, multiply the multiplier
 
 A percentage increase tells you *relative* growth. An absolute increase tells you the raw difference. Both are useful, but they tell different stories.
 
+For more on this topic, see [*Percentage Difference vs. Percentage Change: What's the Difference?*](/blog/percentage-difference-vs-change).
+
 A company's revenue growing from $1,000,000 to $1,100,000 is:
 - Absolute increase: $100,000
 - Percentage increase: 10%
@@ -121,3 +123,8 @@ If you need to apply a percentage increase directly to a value, use these multip
 | 100% | 2.00 |
 
 To find the percentage increase from any two numbers, use the [percentage calculator](/). It handles increase, decrease, and percentage change calculations instantly.
+
+
+For more on this topic, see [*Percentage Change Formula: How to Calculate Increase and Decrease*](/blog/percentage-change-formula).
+
+For more on this topic, see [*How to Calculate Percentage: Formula, Examples, and Shortcuts*](/blog/how-to-calculate-percentage).

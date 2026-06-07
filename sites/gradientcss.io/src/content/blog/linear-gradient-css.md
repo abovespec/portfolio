@@ -184,6 +184,8 @@ body {
 }
 ```
 
+For more on this topic, see [*CSS Gradient Background: Full-Page, Section, and Hero Techniques*](/blog/css-gradient-background).
+
 **Fade out edge (for text overflow):**
 
 ```css
@@ -233,3 +235,8 @@ nav {
 ```
 
 Generate linear gradient CSS at [gradientcss.io](/).
+
+
+For more on this topic, see [*CSS radial-gradient: Circles, Ellipses, and Spotlight Effects*](/blog/radial-gradient-css).
+
+For more on this topic, see [*CSS Gradient Animation: Moving and Shifting Gradient Backgrounds*](/blog/css-gradient-animation).

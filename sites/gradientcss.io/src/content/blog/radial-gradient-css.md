@@ -18,6 +18,8 @@ background: radial-gradient(shape size at position, color-stop-1, color-stop-2, 
 
 All parameters except the color stops are optional.
 
+For more on this topic, see [*CSS linear-gradient: Syntax, Direction, Color Stops, and Examples*](/blog/linear-gradient-css).
+
 ## Shape: circle vs. ellipse
 
 ```css
@@ -26,6 +28,8 @@ background: radial-gradient(#667eea, #764ba2);
 
 /* Circle: equal radius in all directions */
 background: radial-gradient(circle, #667eea, #764ba2);
+
+For more on this topic, see [*CSS Gradient Background: Full-Page, Section, and Hero Techniques*](/blog/css-gradient-background).
 
 /* Explicit ellipse */
 background: radial-gradient(ellipse, #667eea, #764ba2);
@@ -209,3 +213,6 @@ background: repeating-radial-gradient(
 ```
 
 Generate radial gradient CSS at [gradientcss.io](/).
+
+
+For more on this topic, see [*CSS Gradient Text: How to Apply Gradients to Text*](/blog/css-gradient-text).

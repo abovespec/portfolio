@@ -11,6 +11,8 @@ If you've ever built a 3D scene — whether in Blender, Unity, Unreal Engine, or
 
 In short: a seamless texture is an image that can be repeated (tiled) across a surface without visible seams or obvious repetition patterns at the edges.
 
+For more on this topic, see [*PBR Workflow Explained: From Texture to Final Render*](/blog/pbr-workflow-explained).
+
 But let's dive deeper.
 
 ## What Makes a Texture "Seamless"?
@@ -27,6 +29,8 @@ These two terms are often used interchangeably, but they're not quite the same:
 
 - **Seamless** — the edges of the texture match perfectly when placed side by side. The texture can tile without visible boundaries.
 - **Tileable** — the texture can be repeated in a grid pattern. All seamless textures are tileable, but not all tileable textures are seamless (some tileable textures may show visible seams, they just "fit" dimensionally).
+
+For more on this topic, see [*How to Make a Tileable Texture: 4 Proven Methods*](/blog/how-to-make-tileable-texture).
 
 In practice, when someone says "tileable texture," they usually mean "seamless tileable texture." At FreePBRTextures, all our textures are both.
 
@@ -68,3 +72,6 @@ You can also tile it manually: duplicate the texture 4 times in a 2x2 grid and c
 ## Download Ready-to-Use Seamless Textures
 
 All textures on [FreePBRTextures](/textures/) are 4K seamless PBR sets available under the CC0 license — free for any use, no attribution required. Browse categories like [seamless wood textures](/textures/wood/), [stone textures](/textures/stone/), [brick textures](/textures/brick/), and more.
+
+
+For more on this topic, see [*How to Use PBR Textures in Blender: Complete Setup Guide*](/blog/pbr-textures-in-blender).

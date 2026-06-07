@@ -24,6 +24,8 @@ JWT authentication replaces server-side session storage with a self-contained to
 
 The client sends credentials to the authentication endpoint:
 
+For more on this topic, see [*JWT vs Session Authentication: Which Should You Use?*](/blog/jwt-vs-session).
+
 ```http
 POST /auth/login HTTP/1.1
 Content-Type: application/json
@@ -107,6 +109,8 @@ def verify_token(credentials = Depends(security)):
         raise HTTPException(status_code=401, detail="Invalid token")
 ```
 
+For more on this topic, see [*JWT Security Best Practices: What to Do (and What to Avoid)*](/blog/jwt-security-best-practices).
+
 The verification checks:
 1. **Signature** — the token was signed by the expected key
 2. **Expiration (`exp`)** — the token hasn't expired
@@ -136,6 +140,8 @@ JWTs are stateless — there's no server-side session to destroy. Logout strateg
 - **Short expiration + client deletion:** Delete the tokens client-side. If the access token expires in 15 minutes, the attacker's window is small.
 - **Refresh token revocation:** Keep a blocklist of revoked refresh token JTI values. Blacklist the refresh token on logout; access tokens continue to work until they expire.
 - **Access token revocation:** Maintain a blocklist for access tokens (reintroduces database lookups — partially defeats the point of JWT).
+
+For more on this topic, see [*JWT Token Expiration: Access Tokens, Refresh Tokens, and Rotation*](/blog/jwt-token-expiration).
 
 For most applications, short access token lifetimes + refresh token revocation is the right balance.
 

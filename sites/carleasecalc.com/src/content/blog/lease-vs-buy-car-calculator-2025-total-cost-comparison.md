@@ -33,6 +33,8 @@ When you buy, you finance the full purchase price minus your down payment. You o
 
 [Edmunds' lease vs. buy analysis](https://www.edmunds.com/car-buying/car-depreciation.html) notes that residual value is the single biggest lever in determining whether leasing or buying comes out ahead.
 
+For more on this topic, see [*Is It Better to Lease or Buy a Car? Decision Framework*](/blog/is-it-better-to-lease-or-buy-a-car-decision-framework).
+
 ## Total Cost Comparison Example
 
 $40,000 vehicle, 36 months, 12,000 miles/year, $3,000 down.
@@ -57,6 +59,10 @@ In this scenario, leasing costs less over 36 months. But at month 37, the buyer 
 ## Using Our Calculator
 
 Our [lease vs buy calculator](/) handles all of these inputs. Enter vehicle price, down payment, lease terms, loan terms, and expected mileage. It outputs total cost for both options and identifies the break-even point.
+
+For more on this topic, see [*Total Cost of Car Ownership Calculator: The Real Monthly Number*](/blog/total-cost-of-car-ownership-calculator-the-real-monthly-number).
+
+For more on this topic, see [*Electric Car Total Cost of Ownership: EV vs Gas in 2025*](/blog/electric-car-total-cost-of-ownership-ev-vs-gas-in-2025).
 
 ## When Leasing Wins
 

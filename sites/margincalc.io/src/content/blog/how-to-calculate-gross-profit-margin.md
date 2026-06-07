@@ -23,6 +23,8 @@ sources:
 
 Gross profit margin is one of the most important numbers on an income statement — and one of the easiest to calculate once you know which numbers to use. This guide walks through the formula step by step, applies it to four different business types, shows you how to use it in a spreadsheet, and highlights the mistakes that cause incorrect results.
 
+For more on this topic, see [*What Is Profit Margin? Definition, Formula, and Why It Matters*](/blog/what-is-profit-margin).
+
 ---
 
 ## The Gross Profit Margin Formula
@@ -90,6 +92,8 @@ If you include non-COGS items in your cost figure, your gross margin will be und
 **Calculation:**
 1. Gross Profit = $480,000 − $234,000 = $246,000
 2. Gross Margin = ($246,000 ÷ $480,000) × 100 = **51.25%**
+
+For more on this topic, see [*How to Improve Profit Margins: 8 Proven Strategies for Small Businesses*](/blog/how-to-improve-profit-margins).
 
 For every $1 in sales, $0.51 is available after product costs to cover store rent, staff, marketing, and profit.
 

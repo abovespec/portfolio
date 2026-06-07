@@ -14,6 +14,8 @@ Homemade meals are healthier than restaurant food, but only if you know what is 
 
 Generic nutrition databases assign averages. Your "chicken breast" might be 4 oz or 8 oz. Your "tablespoon of olive oil" might be a heavy pour. Ingredient-level calculators use the exact weight and brand of each item.
 
+For more on this topic, see [*Macro Meal Planner: Free Tool for Balanced Nutrition*](/blog/macro-meal-planner-free-tool-for-balanced-nutrition).
+
 ## The Process
 
 1. List every ingredient in your recipe
@@ -25,6 +27,10 @@ Generic nutrition databases assign averages. Your "chicken breast" might be 4 oz
 ## Using Our Calculator
 
 Our [nutrition calculator](/) includes a database of common ingredients. Enter your recipe and serving size. It outputs a complete nutrition label.
+
+For more on this topic, see [*Recipe Scaler Calculator: Convert Any Recipe to Any Serving Size*](/blog/recipe-scaler-calculator-convert-any-recipe-to-any-serving-size).
+
+For more on this topic, see [*How to Double a Recipe: Calculator, Tips, and Common Mistakes*](/blog/how-to-double-a-recipe-calculator-tips-and-common-mistakes).
 
 **Example:** Homemade granola (10 servings)
 - 3 cups oats: 900 cal, 30g protein

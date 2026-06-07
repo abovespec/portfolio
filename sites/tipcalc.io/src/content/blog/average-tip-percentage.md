@@ -26,6 +26,8 @@ sources:
 
 The average tip percentage in the United States is a moving target — it has shifted measurably over the past decade, varies by restaurant type, and is influenced by payment technology, economic conditions, and generational attitudes. This article summarizes the best available data on where average tipping stands today.
 
+For more on this topic, see [*How Much to Tip a Server: The Complete Guide*](/blog/how-much-to-tip-a-server).
+
 Use our [tip calculator](/) to apply any tip percentage to your specific bill.
 
 ---
@@ -35,6 +37,8 @@ Use our [tip calculator](/) to apply any tip percentage to your specific bill.
 According to restaurant payment data compiled by Square and Toast (point-of-sale providers with large transaction datasets), **the average restaurant tip in the US runs approximately 19–20%** for full-service sit-down dining. This is up from the historical baseline of 15–17% that prevailed through most of the 2000s.
 
 Bankrate's consumer tipping surveys corroborate this: the majority of respondents report that they leave 20% as their standard tip at sit-down restaurants when service is good.
+
+For more on this topic, see [*Tipping Etiquette in the United States: A Service-by-Service Guide*](/blog/tipping-etiquette-united-states).
 
 ---
 
@@ -51,6 +55,8 @@ Not all dining occasions are equal. Tip norms differ significantly by format:
 | Fast casual (Chipotle, Panera) | 0–10% | Low expectation; tip prompts increasingly present but not obligatory |
 | Food delivery (app-based) | 10–20% of order; $3–5 minimum common | Driver tips are structurally different from restaurant tips |
 | Bars (full tab) | 18–20% of tab | Per-drink tipping of $1–2 also common |
+
+For more on this topic, see [*Should You Tip at Fast Food Restaurants?*](/blog/should-you-tip-at-fast-food).
 
 ---
 

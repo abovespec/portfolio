@@ -22,6 +22,8 @@ Before optimizing, get the real numbers:
 
 A page using 8% of its CSS is showing you a 92% optimization opportunity.
 
+For more on this topic, see [*CSS Optimization Techniques: A Practical Guide*](/blog/css-optimization-techniques).
+
 **Bundle analyzer:**
 
 If you use webpack:
@@ -36,6 +38,8 @@ module.exports = { plugins: [new BundleAnalyzerPlugin()] };
 ```
 
 This opens a treemap of what's in your bundle, though CSS is less detailed than JS.
+
+For more on this topic, see [*How to Minify CSS: Every Method Explained*](/blog/how-to-minify-css).
 
 **Size check in the terminal:**
 
@@ -158,6 +162,8 @@ Re-run the Coverage tab after changes. Check that:
 1. Total CSS file size is smaller
 2. Unused percentage dropped
 3. No styles broke (test key pages across browsers)
+
+For more on this topic, see [*How to Remove Unused CSS: PurgeCSS, UnCSS, and Tree-Shaking*](/blog/remove-unused-css).
 
 Run Lighthouse before and after — the "Unused CSS" audit shows explicit byte savings.
 

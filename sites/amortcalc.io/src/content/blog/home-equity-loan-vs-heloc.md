@@ -36,6 +36,8 @@ A home equity loan is a fixed-amount, fixed-rate loan secured by your home equit
 
 Because the rate and payment are fixed, a home equity loan behaves like a conventional mortgage: you know exactly what you owe and exactly when it ends. Use the [amortization calculator](/) to model what a home equity loan's amortization schedule would look like.
 
+For more on this topic, see [*What Is Amortization? How Loan Payments Are Structured*](/blog/what-is-amortization).
+
 ## What Is a HELOC?
 
 A HELOC is a revolving line of credit — more like a credit card than a loan. The lender approves a maximum credit limit based on your equity, and you draw funds as needed over a **draw period** (typically 10 years). You repay what you borrow and can re-borrow up to the limit again.
@@ -48,6 +50,8 @@ A HELOC is a revolving line of credit — more like a credit card than a loan. T
 - Flexible — borrow only what you need, when you need it
 
 The CFPB notes that HELOCs typically carry variable rates that can increase significantly over the life of the line, which means monthly payments can rise considerably during the repayment period.
+
+For more on this topic, see [*Amortization Schedule Explained: What Every Row Means*](/blog/amortization-schedule-explained).
 
 ## Side-by-Side Comparison
 
@@ -70,6 +74,8 @@ The CFPB notes that HELOCs typically carry variable rates that can increase sign
 **Mortgage balance:** $280,000  
 **Equity:** $170,000  
 **Typical maximum borrowing (80% LTV):** $450,000 × 0.80 − $280,000 = **$80,000**
+
+For more on this topic, see [*15-Year vs. 30-Year Mortgage: Amortization Differences and Trade-offs*](/blog/15-year-vs-30-year-mortgage).
 
 Most lenders cap combined loan-to-value at 80–85%, meaning you can typically access up to $80,000 in this scenario.
 

@@ -18,6 +18,8 @@ Most courses break grades into categories with different weights:
 - Final exam: 40%
 - Participation: 10%
 
+For more on this topic, see [*How to Raise Your GPA Fast: Practical Strategies That Actually Work*](/blog/how-to-raise-your-gpa-fast).
+
 Your final grade is the weighted average of these categories.
 
 ## Example Calculation
@@ -28,6 +30,8 @@ Your final grade is the weighted average of these categories.
 | Midterm | 30% | 82% | 24.6 |
 | Participation | 10% | 95% | 9.5 |
 | Final Exam | 40% | Unknown | 40% |
+
+For more on this topic, see [*How to Calculate Weighted GPA: Honors, AP, and IB Explained*](/blog/how-to-calculate-weighted-gpa-honors-ap-and-ib-explained).
 
 Current weighted total without final: 51.7
 
@@ -53,6 +57,8 @@ Our [final grade calculator](/) handles multiple categories. Enter:
 - Weights (must sum to 100%)
 - Your current scores
 - Final exam weight
+
+For more on this topic, see [*What Grade Do I Need on My Final? Exam Calculator*](/blog/what-grade-do-i-need-on-my-final-exam-calculator).
 
 It outputs what you need on the final for any target grade.
 

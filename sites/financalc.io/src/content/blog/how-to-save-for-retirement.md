@@ -29,13 +29,19 @@ Retirement feels abstract when it's 30 years away. But the math of compounding i
 
 This guide walks through the key questions in sequence: how much you'll need, where to save it, how much to contribute, and what to do at different life stages.
 
+For more on this topic, see [*How Does Compound Interest Work? A Plain-English Guide*](/blog/how-does-compound-interest-work).
+
 ## Step 1: Estimate How Much You'll Need
 
 The starting point is your target annual income in retirement. A commonly used rule of thumb: **you'll need 70%–80% of your pre-retirement income** per year, adjusted for the fact that you won't have commuting costs, work clothing expenses, payroll taxes, or retirement savings contributions.
 
+For more on this topic, see [*The Compound Interest Formula Explained: Variables, Examples, and How to Use It*](/blog/compound-interest-formula-explained).
+
 For a household with $80,000/year in pre-retirement income, that suggests $56,000–$64,000/year in retirement income.
 
 Once you have a target income, apply the **25× rule** (derived from the 4% safe withdrawal rate): multiply your target annual income by 25 to estimate your required portfolio size.
+
+For more on this topic, see [*The Rule of 72 Explained: How to Estimate Doubling Time in Seconds*](/blog/rule-of-72-explained).
 
 | Target Annual Income | Estimated Portfolio Needed |
 |---------------------|---------------------------|

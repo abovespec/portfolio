@@ -14,6 +14,8 @@ If you've looked up a currency exchange rate online and then gone to a bank or e
 
 The mid-market rate (also called the interbank rate or the spot rate) is the midpoint between the buy price and the sell price of a currency pair in the global foreign exchange market at any given moment.
 
+For more on this topic, see [*How to Get the Best Exchange Rate When Traveling*](/blog/how-to-get-best-exchange-rate-traveling).
+
 In other words, if EUR/USD has a buy price of 1.0850 and a sell price of 1.0852, the mid-market rate is 1.0851 — the middle of the two.
 
 When you look up exchange rates on a financial news site, use a [currency converter](/), or see rates quoted in a broad economic context, you are almost always seeing the mid-market rate. It's the "real" exchange rate in the sense that it reflects what the market says a currency is worth, without any service provider's markup applied.
@@ -23,6 +25,8 @@ When you look up exchange rates on a financial news site, use a [currency conver
 The foreign exchange market — often called forex or FX — is a global, decentralized market where currencies are traded continuously during business hours across time zones. It's the largest financial market in the world by daily trading volume.
 
 Within this market, the most active participants are large institutions: major banks, central banks, institutional investors, hedge funds, and large corporations managing international cash flows. These participants trade with each other at very tight spreads — fractions of a cent — and the aggregate of their activity produces the prevailing market rate at any moment.
+
+For more on this topic, see [*Travel Money Tips: How to Keep More of Your Cash When Traveling Abroad*](/blog/travel-money-tips).
 
 This interbank rate is what the mid-market rate reflects. It's not published by a single authority; it emerges from continuous trading activity. Financial data providers collect quotes from this market and calculate the midpoint, which is what you see on financial sites and in converter tools.
 
@@ -56,6 +60,8 @@ Some exchange services advertise "no fees" or "zero commission." This is technic
 A service that charges 0% explicit fees but offers a rate 5% worse than mid-market is more expensive than a service that charges an explicit 0.5% fee on a rate 0.3% worse than mid-market. The only way to compare is to calculate what you'd actually receive for a given amount and compare that to what the mid-market rate would give you.
 
 The all-in comparison is: how many units of the foreign currency do I receive for my home currency amount, versus how many would I receive at the mid-market rate? The difference, expressed as a percentage, is your total cost.
+
+For more on this topic, see [*When to Buy Foreign Currency Before a Trip*](/blog/when-to-buy-foreign-currency).
 
 ## How the Mid-Market Rate Changes
 

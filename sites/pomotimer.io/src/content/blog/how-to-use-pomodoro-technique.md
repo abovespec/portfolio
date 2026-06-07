@@ -12,6 +12,8 @@ Reading about the Pomodoro Technique takes about five minutes. Doing it for the 
 
 Here's how to run a proper Pomodoro session from the first timer set to the final review.
 
+For more on this topic, see [*Why 25 Minutes? The Logic Behind the Pomodoro Timer*](/blog/pomodoro-timer-25-minutes).
+
 ## Before You Start: Pick One Task
 
 The most common mistake is starting a timer and then deciding what to work on. Do that in reverse.
@@ -37,6 +39,10 @@ This is where the technique either holds or collapses. The 25-minute block only 
 **Internal interruptions** — sudden impulses to check your phone, look something up, or switch tasks — should be handled with your capture list. Note the urge, let it go, and return to the work. Most of these feel urgent and aren't.
 
 **External interruptions** — a colleague with a question, a message that needs a response — are harder. Cirillo's original method suggests telling the person you'll get back to them, making a note, and resuming. In practice, some interruptions genuinely can't wait, and that's fine: if you get pulled away, the pomodoro is voided and you start a new one when you return. Don't try to "resume" a partially-interrupted timer and count it as complete.
+
+For more on this topic, see [*What Is the Pomodoro Technique? The Focus Method Millions Use*](/blog/what-is-the-pomodoro-technique).
+
+For more on this topic, see [*The 52/17 Rule: Is It Better Than Pomodoro?*](/blog/52-17-rule).
 
 The goal is to treat the 25-minute window as genuinely protected time. This often requires environmental setup: phone in another room or on Do Not Disturb, browser notifications off, your status set to something that signals unavailability to people who work with you.
 

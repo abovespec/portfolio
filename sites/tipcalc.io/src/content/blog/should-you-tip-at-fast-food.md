@@ -35,6 +35,8 @@ This is a legitimate business strategy, and the workers who receive those tips a
 
 At traditional full-service restaurants, servers in most states are paid a tipped minimum wage — in some states as low as $2.13 per hour — with the legal expectation that tips bring them to the regular minimum wage. Tips are functionally their primary income.
 
+For more on this topic, see [*Tipping Etiquette in the United States: A Service-by-Service Guide*](/blog/tipping-etiquette-united-states).
+
 **Fast food and quick-service workers are generally paid the regular state or federal minimum wage, not the tipped sub-minimum.** In many states, that minimum wage has risen significantly — $15–17 per hour in California, New York, Washington, and others. Fast food workers in these states often earn more per hour before tips than tipped restaurant servers.
 
 This doesn't mean fast food workers don't deserve more pay or that tips aren't welcome. It does mean the moral urgency is different. A 20% tip at McDonald's is not filling the same gap that a 20% tip fills at a table-service restaurant.
@@ -42,6 +44,8 @@ This doesn't mean fast food workers don't deserve more pay or that tips aren't w
 ## When Tipping at Counter Service Makes Sense
 
 There are genuine scenarios where tipping at counter-service makes sense:
+
+For more on this topic, see [*Hotel Tipping Etiquette: Housekeeping, Bellhop, Concierge, and Valet*](/blog/hotel-tipping-etiquette).
 
 | Situation | Tip Appropriate? |
 |---|---|
@@ -76,5 +80,7 @@ Both positions have merit. The practical takeaway: **you have no social obligati
 ## The Bottom Line
 
 Tipping at fast food and counter-service is optional, not expected. The workers who receive those tips are real people who benefit from them, but unlike servers at full-service restaurants, they aren't paid a sub-minimum wage with the legal assumption that tips cover the gap. Tip if the service was genuinely helpful, if you're a regular, or if you simply want to. Press "No Tip" without guilt when you don't.
+
+For more on this topic, see [*Tipping Around the World: What's Expected in 20+ Countries*](/blog/tipping-by-country).
 
 When you do eat at a table-service restaurant, our [tip calculator](/) makes it easy to tip accurately on any bill.

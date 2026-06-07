@@ -14,12 +14,16 @@ Regular expressions (regex) are patterns that match text. They're supported in v
 
 A regex can be as simple as a literal string:
 
+For more on this topic, see [*Regex Cheatsheet: Quick Reference for Regular Expressions*](/blog/regex-cheatsheet).
+
 ```
 Pattern: hello
 Matches: "say hello world" → "hello"
 ```
 
 But regex becomes powerful when you use special characters. Let's build up from basics.
+
+For more on this topic, see [*How to Use Regex: Practical Guide to Regular Expressions*](/blog/how-to-use-regex).
 
 ## Literal characters
 
@@ -239,3 +243,6 @@ Hex color:          #([0-9a-fA-F]{3}|[0-9a-fA-F]{6})
 ```
 
 Test and build regex patterns at [regexbuilder.io](/).
+
+
+For more on this topic, see [*Regex Email Validation: Patterns, Limitations, and Best Practices*](/blog/regex-email-validation).

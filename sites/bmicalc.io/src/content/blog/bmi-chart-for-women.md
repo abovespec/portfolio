@@ -22,6 +22,8 @@ sources:
 
 BMI applies the same four-category framework to all adults regardless of sex — but there are meaningful differences in how women's bodies carry weight, how BMI shifts across the lifespan, and how the number should be interpreted for women specifically. This guide walks through the reference chart, the age-related nuances, and what to do with your result.
 
+For more on this topic, see [*The Limitations of BMI: What It Doesn't Measure and When It Misleads*](/blog/limitations-of-bmi).
+
 ## BMI Categories: The Standard Framework
 
 The Centers for Disease Control and Prevention (CDC) and World Health Organization (WHO) use the same cut-points for adult women and men:
@@ -40,6 +42,8 @@ Source: [CDC — Adult BMI](https://www.cdc.gov/healthyweight/assessing/bmi/adul
 ## BMI Reference Chart for Women by Height
 
 The table below shows the weight ranges that correspond to Normal weight (BMI 18.5–24.9) and Overweight (BMI 25–29.9) for common women's heights. Use it as a rough orientation — your [BMI calculator](/) gives you the exact number.
+
+For more on this topic, see [*What Is a Healthy BMI? Ranges, Categories, and What They Mean*](/blog/what-is-a-healthy-bmi).
 
 | Height | Underweight (< 18.5) | Normal weight (18.5–24.9) | Overweight (25–29.9) | Obese (≥ 30) |
 |--------|----------------------|---------------------------|----------------------|--------------|
@@ -69,6 +73,8 @@ Standard BMI ranges are not applicable during pregnancy. Weight gain recommendat
 ## Why Women Naturally Carry More Body Fat
 
 At any given BMI, women on average have 6–11% more body fat than men of the same age. This is physiologically normal — higher estrogen levels promote fat storage, particularly in the hips, thighs, and breasts, where fat supports reproductive function. This means that a woman and a man with identical BMIs are not equivalent in body composition. The BMI chart above reflects this context: the same numerical range applies to both sexes, but what it implies about body fat and health risk differs.
+
+For more on this topic, see [*Normal BMI Range: What 18.5–24.9 Really Means for Your Health*](/blog/normal-bmi-range).
 
 ## Women of Asian Descent
 

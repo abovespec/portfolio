@@ -14,7 +14,11 @@ Your first freelance invoice is a milestone. It means someone values your work e
 
 Set your rates before you start work. Hourly, project-based, or retainer. Write them down. Tell the client your rate before any work begins. This prevents awkward conversations later. The [SBA's resources for self-employed individuals](https://www.sba.gov/) provide practical guidance on structuring client agreements and protecting yourself legally from the start.
 
+For more on this topic, see [*How to Write an Invoice for Freelance Work: A Step-by-Step Guide*](/blog/how-to-write-an-invoice-for-freelance-work-a-step-by-step-guide).
+
 Decide on payment terms. Net 15 is fair for new relationships. Net 30 is standard. Some freelancers require 50% upfront for projects over $1,000.
+
+For more on this topic, see [*Invoice Payment Terms Examples: Net 30, Due on Receipt, and More*](/blog/invoice-payment-terms-examples-net-30-due-on-receipt-and-more).
 
 ## What Goes on the Invoice
 
@@ -25,6 +29,8 @@ Decide on payment terms. Net 15 is fair for new relationships. Net 30 is standar
 - Description of work completed
 - Amount owed
 - Payment instructions
+
+For more on this topic, see [*Invoice Template for Small Business: Free and Professional*](/blog/invoice-template-for-small-business-free-and-professional).
 
 If you receive $600 or more from a single client in a calendar year, that client may be required to issue you a [1099-MISC or 1099-NEC form](https://www.irs.gov/forms-pubs/about-form-1099-misc). Keep your invoices organized — they serve as your record of income for tax purposes.
 

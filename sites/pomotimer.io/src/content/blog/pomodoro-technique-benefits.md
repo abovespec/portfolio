@@ -30,9 +30,13 @@ Using pomodoros gives you a concrete unit for measuring actual output. Once you'
 
 This is one of the Pomodoro Technique's less-discussed but practically valuable outcomes. The scheduling improvements that come from accurate time estimation compound over weeks and months.
 
+For more on this topic, see [*How to Use the Pomodoro Technique: A Step-by-Step Walkthrough*](/blog/how-to-use-pomodoro-technique).
+
 ### Better Focus During Work Sessions
 
 The artificially-created time pressure of a running timer reliably narrows attention in the moment. You know the interval will end — distracting yourself for the full 25 minutes is the worst possible outcome, because you'll have nothing to show for the ring — so you return to the task sooner when your mind wanders.
+
+For more on this topic, see [*Why 25 Minutes? The Logic Behind the Pomodoro Timer*](/blog/pomodoro-timer-25-minutes).
 
 This isn't a complex psychological mechanism. It's a simple application of mild urgency. But mild urgency, consistently applied across a workday, adds up to meaningfully more focused time than most people manage without some external structure.
 
@@ -65,6 +69,8 @@ If your work regularly produces flow states — periods of deep, almost effortle
 Collaborative work has its own rhythm. Pair programming, whiteboard sessions, and live collaborative document editing don't respect a private timer. Interrupting a collaborative flow because your 25 minutes ended creates friction for the other person and disrupts the shared working state.
 
 The Pomodoro Technique is fundamentally a solo focus tool. It can work alongside collaboration — you use it for your individual work blocks and not during collaborative sessions — but it doesn't translate directly to team use.
+
+For more on this topic, see [*What Is the Pomodoro Technique? The Focus Method Millions Use*](/blog/what-is-the-pomodoro-technique).
 
 ## Who It Works Best For
 

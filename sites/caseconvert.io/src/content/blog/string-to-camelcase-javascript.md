@@ -14,6 +14,8 @@ Converting strings to camelCase in JavaScript comes up in two main contexts: nor
 
 A single function that handles snake_case, kebab-case, spaces, mixed input, and abbreviations:
 
+For more on this topic, see [*What Is snake_case? A Practical Guide for Developers*](/blog/what-is-snake-case).
+
 ```js
 function toCamelCase(str) {
   return str
@@ -90,6 +92,8 @@ const response = {
     postal_code: '12345'
   }
 };
+
+For more on this topic, see [*camelCase to snake_case in Python: Four Approaches*](/blog/camelcase-to-snake-case-python).
 
 camelizeKeys(response);
 // {

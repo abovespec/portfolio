@@ -40,6 +40,8 @@ A reference of commonly needed cron schedules, organized by interval. Each entry
 
 **Use cases:** Health checks, queue polling, cache warming, metric collection.
 
+For more on this topic, see [*Crontab Every 5 Minutes (and Other Intervals Explained)*](/blog/crontab-every-5-minutes).
+
 ## Hourly
 
 ```bash
@@ -66,6 +68,8 @@ A reference of commonly needed cron schedules, organized by interval. Each entry
 ```
 
 **Use cases:** Batch imports, API sync, report generation, data aggregation.
+
+For more on this topic, see [*Linux Crontab Tutorial: From Basics to Real Automation*](/blog/linux-crontab-tutorial).
 
 ## Daily
 
@@ -239,3 +243,6 @@ A reference of commonly needed cron schedules, organized by interval. Each entry
 ```
 
 Build and validate expressions at [crontab.io](/).
+
+
+For more on this topic, see [*Crontab Syntax: A Complete Reference for Cron Expressions*](/blog/crontab-syntax).

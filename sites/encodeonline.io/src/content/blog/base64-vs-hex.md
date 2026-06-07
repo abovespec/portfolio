@@ -14,6 +14,8 @@ Base64 and hexadecimal (hex) encoding both convert binary data into a text-safe 
 
 The same 16-byte value (MD5 hash of "hello") encoded both ways:
 
+For more on this topic, see [*MD5 Hash: What It Is, How It Works, and When Not to Use It*](/blog/md5-hash-explained).
+
 ```
 Bytes (raw):  5d 41 40 2a bc 4b 2a 76 b9 71 9d 91 10 17 c5 92
 
@@ -33,6 +35,8 @@ For a 1,000-byte input:
 | Raw binary | 1,000 bytes | — |
 | Hex | 2,000 chars | +100% |
 | Base64 | 1,368 chars | +37% |
+
+For more on this topic, see [*URL Encoding (Percent-Encoding): The Complete Guide*](/blog/url-encoding-guide).
 
 Base64 is more space-efficient. For large payloads (images, files), this matters. For short identifiers (hashes, keys), it rarely matters.
 
@@ -63,6 +67,8 @@ You can't easily scan Base64 for specific bytes or compare hashes visually.
 - **Memory addresses and debugging** — hex aligns with how debuggers and hex editors display data
 - **MAC addresses, IPv6 addresses** — these use hex notation by convention
 - **Git commit hashes** — Git displays SHA-1/SHA-256 as hex
+
+For more on this topic, see [*Hash Functions Explained: MD5, SHA-1, SHA-256, and Beyond*](/blog/hash-functions-explained).
 
 ```python
 import hashlib

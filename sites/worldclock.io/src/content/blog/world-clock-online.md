@@ -14,6 +14,8 @@ Knowing "London is 5 hours ahead" works until daylight saving transitions on dif
 
 An online world clock displays the current local time in multiple cities or time zones simultaneously, updated in real time. The key word is simultaneously — rather than looking up one city at a time and trying to hold multiple times in your head, you see all of them at once in a single view.
 
+For more on this topic, see [*How to Schedule Meetings Across Time Zones Without the Confusion*](/blog/how-to-schedule-meetings-across-time-zones).
+
 Some world clocks also include the date alongside the time, which matters more than it sounds. At 11 PM in New York, it's already tomorrow morning in Tokyo. Confirming the date alongside the time prevents one of the more embarrassing scheduling errors — proposing a meeting for "Thursday at 9 AM Tokyo time" when your Thursday is their Friday.
 
 worldclock.io is built around this exact use case: add the cities your work touches, and see all of their current times in one place without any conversion math.
@@ -23,6 +25,8 @@ worldclock.io is built around this exact use case: add the cities your work touc
 **Remote team standups**: If your team spans three or four cities, a world clock is the first thing to check before proposing a meeting time. Add every city where a team member is located and scan for the window where everyone falls within business hours. What looks like "9 AM" in your timezone could immediately show you it's already 11 PM for a colleague.
 
 **International client calls**: You're scheduling a call with a prospect in Singapore. You know you're UTC-5 and Singapore is UTC+8, so that's 13 hours. But wait — is it currently EDT or EST? Is it currently SGT or is there a daylight offset in Singapore? (There isn't — Singapore stays at UTC+8 year-round.) A world clock surfaces the correct current local times without requiring you to remember all these details.
+
+For more on this topic, see [*EST vs EDT: What's the Difference and When Does Each Apply?*](/blog/est-vs-edt).
 
 **Travel planning**: When you're booking flights or planning an itinerary, a world clock helps you orient around local times at your destination. It's especially useful for figuring out whether your arrival time lands in the middle of the night, and for planning when to call home to avoid waking family members.
 
@@ -65,3 +69,6 @@ worldclock.io shows real-time local times across any cities you want to track. Y
 The workflow is straightforward: before you send a calendar invite or write a message suggesting a meeting time, open your world clock, check that the proposed time is reasonable for every zone involved, and confirm the dates match. The entire check takes about fifteen seconds — far less than the time you'd spend apologizing for a scheduling mistake.
 
 For anyone who regularly works across time zones, a world clock isn't a luxury. It's the same category of tool as a currency converter or a unit converter: something that removes a class of preventable errors entirely.
+
+
+For more on this topic, see [*Daylight Saving Time Explained: Why It Exists and How It Works*](/blog/daylight-saving-time-explained).

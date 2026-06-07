@@ -21,6 +21,8 @@ Amazon charges a **referral fee** (8–45% depending on category, typically 15%)
 
 If you use FBA (Fulfillment by Amazon), add fulfillment fees based on size and weight, plus monthly storage. A standard item might cost $3–5 to fulfill. See our [Amazon FBA fee calculator](/) for exact numbers.
 
+For more on this topic, see [*How Much Does Amazon FBA Cost Per Item? A Complete Breakdown*](/blog/how-much-does-amazon-fba-cost-per-item-a-complete-breakdown).
+
 ### eBay Seller Fees
 
 eBay charges:
@@ -29,6 +31,8 @@ eBay charges:
 - **Final value fee**: 13.25% of sale price (most categories), capped at $750 per item
 - **Payment processing**: Included in the final value fee since eBay Managed Payments
 - **Promoted listings (optional)**: 2–10% ad rate to boost visibility
+
+For more on this topic, see [*Etsy Fee Calculator 2025: Transaction, Payment, and Offsite Ad Costs*](/blog/etsy-fee-calculator-2025-transaction-payment-and-offsite-ad-costs).
 
 For a $30 item: eBay takes roughly $3.98 (13.25%), vs Amazon's $4.50 referral fee + fulfillment. eBay is often cheaper on fees alone for self-shipped items.
 
@@ -41,6 +45,8 @@ For a $30 item: eBay takes roughly $3.98 (13.25%), vs Amazon's $4.50 referral fe
 | Trust in sellers | Platform-first | Seller reputation matters |
 | Best for | New goods, Prime shoppers | Used goods, collectibles, unique items |
 | Returns expectations | Hassle-free, expected | More negotiable |
+
+For more on this topic, see [*How to Calculate Net Profit in Ecommerce: A Sellers Guide*](/blog/how-to-calculate-net-profit-in-ecommerce-a-sellers-guide).
 
 Amazon buyers search for products. eBay buyers search for deals. If you're selling a commodity product at market price, Amazon's intent-driven traffic converts better. If you're selling used gear or niche items, eBay's auction and best-offer model can get you above-market prices from motivated buyers.
 

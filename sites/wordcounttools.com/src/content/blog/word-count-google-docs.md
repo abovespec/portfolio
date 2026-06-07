@@ -14,11 +14,15 @@ Google Docs has a built-in word count tool that shows words, characters, pages, 
 
 **Tools → Word count** (or **Tools → Word count** on Mac)
 
+For more on this topic, see [*Flesch-Kincaid Readability Score: What It Means and How to Improve It*](/blog/flesch-kincaid-readability).
+
 This opens the Word Count dialog showing:
 - Pages
 - Words
 - Characters (without spaces)
 - Characters (with spaces)
+
+For more on this topic, see [*How Many Words Is a Novel? Genre-by-Genre Word Count Guide*](/blog/how-many-words-in-a-novel).
 
 Click **OK** to close it.
 
@@ -85,3 +89,6 @@ For consistency in academic submission, check your target institution's instruct
 ## Online word count for quick checks
 
 If you're working outside Google Docs — pasting text from an email, checking a social media caption, or counting words in a code comment — [wordcounttools.com](/) gives you word count, character count, reading time, and readability in one paste.
+
+
+For more on this topic, see [*Average Words Per Minute for Reading: What the Research Says*](/blog/average-words-per-minute-reading).

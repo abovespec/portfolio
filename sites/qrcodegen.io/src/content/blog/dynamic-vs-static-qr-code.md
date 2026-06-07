@@ -14,6 +14,8 @@ Static and dynamic QR codes look identical — they're both scannable squares �
 
 A **static QR code** encodes the destination directly in the code's modules. The URL or text is baked into the pattern.
 
+For more on this topic, see [*How to Create a QR Code: A Complete Beginner's Guide*](/blog/how-to-create-a-qr-code).
+
 **Characteristics:**
 - The content is permanent — once printed, it can't be changed
 - Free to generate, no account required
@@ -29,6 +31,8 @@ A **static QR code** encodes the destination directly in the code's modules. The
 - When you want the code to work even if a redirect service goes down
 
 **Example:** A QR code for your GitHub profile page — `https://github.com/username` — is unlikely to change and doesn't need tracking.
+
+For more on this topic, see [*QR Code for Website: Link Any Page to a Scannable Code*](/blog/qr-code-for-website).
 
 ## Dynamic QR codes
 
@@ -58,6 +62,8 @@ A **dynamic QR code** encodes a short URL that redirects to the actual destinati
 | Depends on third-party | No | Yes |
 | Code size | Larger (full URL) | Smaller (short URL) |
 | Privacy | Higher | Lower |
+
+For more on this topic, see [*QR Code Best Practices: Design, Size, Placement, and Testing*](/blog/qr-code-best-practices).
 
 ## Tracking with static codes (using UTM parameters)
 

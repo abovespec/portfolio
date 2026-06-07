@@ -25,6 +25,8 @@ sources:
 
 When you apply for a mortgage, car loan, or credit card, lenders are required to disclose two separate rates: the **interest rate** and the **APR**. They're always shown together. They're almost never equal. And yet most borrowers don't know what distinguishes them — which means most borrowers can't accurately compare loan costs.
 
+For more on this topic, see [*How Does Compound Interest Work? A Plain-English Guide*](/blog/how-does-compound-interest-work).
+
 Here's what each number means, why they differ, and how to use both when evaluating any loan.
 
 ## The Interest Rate: The Base Cost of Borrowing
@@ -93,6 +95,8 @@ Fixed rates offer certainty; variable rates can be lower initially but carry ris
 4. **Watch for excluded costs.** APR doesn't include all costs — property taxes, homeowner's insurance, and title insurance are not included in mortgage APR.
 5. **For credit cards, prioritize the lowest APR** if you carry balances. If you pay in full every month, APR is irrelevant — you're never charged interest.
 
+For more on this topic, see [*Simple Interest vs. Compound Interest: Key Differences with Real Examples*](/blog/simple-interest-vs-compound-interest).
+
 ## The Effective Annual Rate (EAR)
 
 One further distinction: the **Effective Annual Rate (EAR)** accounts for intra-year compounding. APR is a simple annualization; EAR reflects what the loan actually costs when compounding is factored in.
@@ -100,3 +104,6 @@ One further distinction: the **Effective Annual Rate (EAR)** accounts for intra-
 For a loan at 12% APR compounded monthly, the EAR = (1 + 0.12/12)^12 − 1 = **12.68%**. For most consumer loans, this distinction is less significant than APR vs. interest rate, but it matters for precise comparisons.
 
 Use our [loan calculator](/tools/loan-calculator/) or [mortgage calculator](/tools/mortgage-calculator/) to compute exact payment amounts and total interest for any rate and term combination.
+
+
+For more on this topic, see [*How to Use a Loan Calculator: Inputs, Outputs, and What the Numbers Mean*](/blog/how-to-use-a-loan-calculator).

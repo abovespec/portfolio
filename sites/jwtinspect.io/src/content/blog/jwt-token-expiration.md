@@ -14,6 +14,8 @@ JWT expiration is one of the most important — and most misunderstood — parts
 
 The `exp` claim is a Unix timestamp (seconds since the epoch). Any JWT library that verifies a token will reject it if the current time is past `exp`.
 
+For more on this topic, see [*JWT vs Session Authentication: Which Should You Use?*](/blog/jwt-vs-session).
+
 ```json
 {
   "sub": "user_123",
@@ -36,6 +38,8 @@ payload = {
     "exp": now + timedelta(minutes=15),
 }
 ```
+
+For more on this topic, see [*JWT Claims Explained: iss, sub, aud, exp, iat, nbf, and jti*](/blog/jwt-claims-explained).
 
 ```js
 const token = jwt.sign(
@@ -159,6 +163,8 @@ def refresh_tokens(old_refresh_token: str) -> dict:
 JWT doesn't natively support sliding expiration, but you can approximate it:
 - Issue a new access token with a fresh `exp` whenever the user makes a request (or at the refresh point)
 - Use a server-side record to track last activity and expire refresh tokens after a period of inactivity
+
+For more on this topic, see [*What Is a JWT Token? JSON Web Tokens Explained*](/blog/what-is-a-jwt-token).
 
 ## Clock skew handling
 

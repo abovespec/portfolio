@@ -12,6 +12,8 @@ Your phone is dead. You are standing at a market stall trying to figure out if a
 
 These situations come up more often than you think, and the good news is that mental percentage math is a learnable skill. You do not need to be a maths genius — you just need a few reliable strategies.
 
+For more on this topic, see [*What Percentage Is X of Y? The Simple Formula Explained*](/blog/what-percentage-is-x-of-y).
+
 ## Strategy 1: The 10% building block
 
 The most powerful single trick for mental percentage math is this:
@@ -63,6 +65,8 @@ Certain percentages are just familiar fractions. Memorise these and you can skip
 | 40% | 2/5 | Divide by 5, multiply by 2 |
 | 60% | 3/5 | Divide by 5, multiply by 3 |
 
+For more on this topic, see [*How to Calculate Percentage: Formula, Examples, and Shortcuts*](/blog/how-to-calculate-percentage).
+
 ### Worked examples using fractions
 
 **25% of 64:** Divide by 4 → **16**
@@ -90,6 +94,8 @@ This means that if the original calculation looks hard, you can swap the numbers
 - 16% of 25: 25% of 16 = 4. So 16% of 25 = **4**.
 
 This works best when swapping gives you a percentage from the fraction table above (like 25%, 50%, 75%) combined with a small, easy number.
+
+For more on this topic, see [*Percentage of a Number: What It Means and How to Calculate It*](/blog/percentage-of-a-number).
 
 ## Strategy 4: Estimation by rounding
 

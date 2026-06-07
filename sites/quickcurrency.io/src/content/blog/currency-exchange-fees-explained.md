@@ -16,6 +16,8 @@ Here's how each type of fee works, how they compare, and what to watch for.
 
 Before looking at explicit fees, understand that the most significant cost of exchanging currency is often invisible: the spread between the mid-market rate and the rate you're actually offered.
 
+For more on this topic, see [*What Is the Mid-Market Rate? Definition, Spread, and Why It Matters*](/blog/what-is-the-mid-market-rate).
+
 The mid-market rate — the true exchange rate — is the midpoint between what buyers and sellers are willing to trade at in the global market. No retail customer gets this rate. Every exchange provider marks it up, and that markup is profit for them, cost for you.
 
 A bank might quote you a rate that is 2–4% worse than the mid-market rate. An airport kiosk might be 8–12% worse. A dynamic currency conversion at a foreign ATM might be 5–7% worse.
@@ -44,6 +46,8 @@ Using an ATM in another country is often one of the most convenient ways to get 
 
 **Exchange rate markup**: The ATM uses an exchange rate set by either your card network (Visa or Mastercard) or the local bank. Card network rates are generally close to the mid-market rate — this is often the best rate mechanism available to travelers.
 
+For more on this topic, see [*How to Get the Best Exchange Rate When Traveling*](/blog/how-to-get-best-exchange-rate-traveling).
+
 **Dynamic Currency Conversion (DCC)**: This is the trap. When an ATM asks if you want to pay in your home currency instead of the local currency, always decline. When you say yes, the ATM applies its own (typically very poor) exchange rate instead of letting your card network handle it. You pay for the "convenience" of seeing your home currency amount — usually an extra 3–7% on top of everything else.
 
 A typical cost structure for an ATM withdrawal abroad: $3–$5 flat fee from your bank, possibly a small operator fee, and a rate that's close to mid-market if you decline DCC. That's a manageable total, especially for larger withdrawals.
@@ -53,6 +57,8 @@ A typical cost structure for an ATM withdrawal abroad: $3–$5 flat fee from you
 When you pay by credit card in a foreign currency, two things happen: your card network converts the currency (usually at a rate close to mid-market), and your card issuer may charge a foreign transaction fee on top.
 
 **Foreign transaction fee**: Many credit cards charge 1–3% of each foreign transaction. Cards marketed for travel typically waive this fee entirely. If your card has a 3% foreign transaction fee, every $1,000 you spend abroad costs an extra $30 in fees alone.
+
+For more on this topic, see [*Travel Money Tips: How to Keep More of Your Cash When Traveling Abroad*](/blog/travel-money-tips).
 
 **Card network conversion**: Visa and Mastercard apply their own exchange rates, which are generally close to the mid-market rate with a very small spread. American Express also converts currency but may apply a slightly larger spread depending on the situation.
 

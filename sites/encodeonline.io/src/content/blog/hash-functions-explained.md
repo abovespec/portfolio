@@ -14,13 +14,19 @@ A hash function takes any input — a file, a password, a message — and produc
 
 A cryptographic hash function must have four properties:
 
+For more on this topic, see [*MD5 Hash: What It Is, How It Works, and When Not to Use It*](/blog/md5-hash-explained).
+
 1. **Deterministic** — the same input always gives the same output
 2. **Fast to compute** — computing the hash should be quick
 3. **Avalanche effect** — a single bit change in input should change roughly half the output bits
 4. **One-way (preimage resistance)** — given a hash, it should be computationally infeasible to find the original input
 5. **Collision resistance** — finding two different inputs that produce the same hash should be computationally infeasible
 
+For more on this topic, see [*Base64 Encoding Explained: How It Works and When to Use It*](/blog/base64-encoding-explained).
+
 Hash functions used in security (digital signatures, TLS, file integrity) must be **cryptographically secure**. Functions that fail these properties are broken for security use, even if they remain useful for non-security tasks.
+
+For more on this topic, see [*URL Encoding (Percent-Encoding): The Complete Guide*](/blog/url-encoding-guide).
 
 ## Common hash algorithms
 

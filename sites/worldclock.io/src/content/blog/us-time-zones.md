@@ -21,7 +21,11 @@ The continental United States spans four time zones, Alaska gets a fifth, and Ha
 | Alaska Time | UTC-9 (AKST) | UTC-8 (AKDT) | AKT |
 | Hawaii-Aleutian Time | UTC-10 (HST) | UTC-9 (HDT)* | HT |
 
+For more on this topic, see [*What Is UTC? The Time Standard That Keeps the World in Sync*](/blog/what-is-utc).
+
 *Hawaii itself does not observe daylight saving time and stays at UTC-10 year-round. The Aleutian Islands portion of Alaska does observe DST, which is why the zone is called Hawaii-Aleutian and carries both offsets — but for Hawaii specifically, the daylight offset is never used.
+
+For more on this topic, see [*Daylight Saving Time Explained: Why It Exists and How It Works*](/blog/daylight-saving-time-explained).
 
 ## Eastern Time (ET)
 
@@ -46,6 +50,8 @@ Parts of several states straddle the CT/ET or CT/MT line. Kansas is primarily CT
 Mountain Time covers the Rocky Mountain states and a chunk of the Southwest. States primarily on MT: Montana, Wyoming, Colorado, New Mexico, Utah, and Idaho (most of it).
 
 **The Arizona exception**: Arizona does not observe daylight saving time. The state remains on Mountain Standard Time (UTC-7) year-round. This means that in summer, when the surrounding states move to UTC-6 (MDT), Arizona is still on UTC-7 — effectively putting it on the same clock as Pacific Daylight Time (also UTC-7). During winter, Arizona and the Mountain states are aligned. During summer, Arizona is one hour behind MT and aligned with PT.
+
+For more on this topic, see [*Why You Need an Online World Clock (and How to Use One)*](/blog/world-clock-online).
 
 The **Navajo Nation**, which occupies a large part of northeastern Arizona and extends into Utah and New Mexico, does observe DST and follows MT for the full year. The **Hopi Reservation**, which is entirely surrounded by the Navajo Nation inside Arizona, follows Arizona's no-DST rule. This creates an unusual nested zone situation within a small geographic area.
 

@@ -26,6 +26,8 @@ Use [Google Flights](https://www.google.com/travel/flights) or [Skyscanner](http
 | Boutique/Airbnb | N/A | $80-150/night | N/A |
 | Luxury hotel | N/A | N/A | $300+/night |
 
+For more on this topic, see [*Backpacking Budget by Country 2025: Daily Costs Ranked*](/blog/backpacking-budget-by-country-2025-daily-costs-ranked).
+
 ### 3. Food
 
 - Street food/local markets: $5-15/day
@@ -49,9 +51,13 @@ Use [Google Flights](https://www.google.com/travel/flights) or [Skyscanner](http
 
 Our [trip cost calculator](/) includes cost databases for 50+ destinations. Select your destination, travel style, and duration. It outputs a detailed budget.
 
+For more on this topic, see [*How Much Does a Trip to Japan Cost? 2025 Budget Breakdown*](/blog/how-much-does-a-trip-to-japan-cost-2025-budget-breakdown).
+
 ## Regional Daily Budgets (Mid-Range, 2025)
 
 The figures below are based on [Budget Your Trip averages](https://www.budgetyourtrip.com/) and [Numbeo cost of living comparisons](https://www.numbeo.com/cost-of-living/):
+
+For more on this topic, see [*Japan Trip Budget Calculator 2025: Plan Your Perfect Visit*](/blog/japan-trip-budget-calculator-2025-plan-your-perfect-visit).
 
 | Region | Daily Cost |
 |---|---|

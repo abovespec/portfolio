@@ -20,6 +20,8 @@ Our [trip cost calculator](/) asks for:
 - Cities visiting
 - JR Pass needed? (yes/no)
 
+For more on this topic, see [*Travel Budget Calculator by Destination: Estimate Any Trip*](/blog/travel-budget-calculator-by-destination-estimate-any-trip).
+
 ## Output Breakdown
 
 The calculator produces:
@@ -29,6 +31,8 @@ The calculator produces:
 - Transportation costs (local + intercity)
 - Activity estimates
 - Contingency buffer (10%)
+
+For more on this topic, see [*Road Trip Cost Calculator: Gas, Hotels, Food, and Fun*](/blog/road-trip-cost-calculator-gas-hotels-food-and-fun).
 
 ## Seasonal Price Adjustments
 
@@ -68,6 +72,8 @@ According to [Japan National Tourism Organization data](https://www.jnto.go.jp/e
 The 7-day JR Pass costs roughly $280 (verify current pricing via [Japan National Tourism Organization](https://www.jnto.go.jp/eng/)). It pays for itself if you take:
 - Tokyo to Kyoto round trip (Shinkansen)
 - Or three medium-distance trips
+
+For more on this topic, see [*How Much Does a Trip to Japan Cost? 2025 Budget Breakdown*](/blog/how-much-does-a-trip-to-japan-cost-2025-budget-breakdown).
 
 Our calculator includes a JR Pass recommendation based on your city list.
 

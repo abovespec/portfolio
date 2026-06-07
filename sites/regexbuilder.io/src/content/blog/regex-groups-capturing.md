@@ -14,6 +14,8 @@ Parentheses in regex do two things: group part of a pattern (so quantifiers appl
 
 Wrap any part of a pattern in `(...)` to capture what it matches:
 
+For more on this topic, see [*Regex Tutorial: Learn Regular Expressions from Scratch*](/blog/regex-tutorial).
+
 ```regex
 Pattern: (\d{4})-(\d{2})-(\d{2})
 Input:   "2026-04-25"
@@ -36,6 +38,8 @@ if match:
     print(match.group(2))  # "04"
     print(match.group(3))  # "25"
 
+For more on this topic, see [*Regex Lookahead and Lookbehind: Zero-Width Assertions Explained*](/blog/regex-lookahead-lookbehind).
+
 year, month, day = match.groups()
 ```
 
@@ -55,6 +59,8 @@ if (match) {
 ## Named capturing groups
 
 Named groups make patterns self-documenting:
+
+For more on this topic, see [*How to Use Regex: Practical Guide to Regular Expressions*](/blog/how-to-use-regex).
 
 ```regex
 (?P<year>\d{4})-(?P<month>\d{2})-(?P<day>\d{2})   ← Python syntax

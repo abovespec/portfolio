@@ -17,9 +17,13 @@ A CSS framework like Bootstrap ships ~190 KB of styles. Your site probably uses 
 - **Legacy code** — styles for features that were removed but the CSS wasn't
 - **Page-specific styles in a global bundle** — dashboard styles loading on the homepage
 
+For more on this topic, see [*Critical CSS: What It Is and How to Implement It*](/blog/critical-css).
+
 ## PurgeCSS
 
 [PurgeCSS](https://purgecss.com/) analyzes your HTML, JavaScript, and template files to find class names actually used, then removes all other CSS rules.
+
+For more on this topic, see [*How to Minify CSS: Every Method Explained*](/blog/how-to-minify-css).
 
 ```bash
 npm install --save-dev @fullhuman/postcss-purgecss
@@ -137,6 +141,8 @@ Before adding tooling, identify how much unused CSS you have:
 3. Click the record button, reload the page, stop recording
 4. Click any CSS file to see which lines are used (green) vs. unused (red)
 5. Export the coverage report
+
+For more on this topic, see [*CSS File Too Large? How to Diagnose and Fix It*](/blog/css-file-size-too-large).
 
 This gives you a precise unused-CSS percentage and shows which selectors to target.
 

@@ -19,6 +19,8 @@ sources:
 
 Calculating a restaurant tip is simple with a phone, but there are good reasons to be able to do it in your head: the payment terminal is facing away from you, the table is mid-conversation, or you just prefer to know before you tap. This guide covers the formula, three fast mental math methods, and a quick-reference table for any common bill amount.
 
+For more on this topic, see [*How to Split a Restaurant Bill with Tip Fairly*](/blog/how-to-split-a-bill-with-tip).
+
 Or, skip the math entirely with our [tip calculator](/) — it runs on any device in about three seconds.
 
 ---
@@ -28,6 +30,8 @@ Or, skip the math entirely with our [tip calculator](/) — it runs on any devic
 The core formula is straightforward:
 
 **Tip Amount = Bill Total × (Tip Percentage ÷ 100)**
+
+For more on this topic, see [*Should You Tip at Fast Food Restaurants?*](/blog/should-you-tip-at-fast-food).
 
 Then:
 
@@ -122,6 +126,8 @@ Use this table to look up your tip when the bill rounds close to a common amount
 ## Pre-Tax or Post-Tax: Which to Use?
 
 The technical argument for tipping on the pre-tax subtotal: tax isn't a service, so you shouldn't tip on it. The practical argument for tipping on the total: it's simpler and the difference is small.
+
+For more on this topic, see [*Tipping Etiquette in the United States: A Service-by-Service Guide*](/blog/tipping-etiquette-united-states).
 
 **How small?** On a $60 bill in a city with 9% tax:
 - Pre-tax total: $60.00 → 20% tip = $12.00

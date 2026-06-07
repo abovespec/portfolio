@@ -20,10 +20,14 @@ Currency apps aren't all built for the same purpose. Understanding the category 
 
 These apps show you the current exchange rate between two currencies — usually the mid-market rate — and let you input an amount for a converted figure. They're reference tools, not transaction tools. You can't exchange money through them.
 
+For more on this topic, see [*Bank Exchange Rate vs Market Rate: Why They're Different*](/blog/bank-exchange-rate-vs-market-rate).
+
 A [currency converter](/) in this category is most useful for:
 - Comparing prices while shopping abroad
 - Checking whether an exchange rate you've been quoted is reasonable
 - Doing quick conversions while traveling without needing to do mental math
+
+For more on this topic, see [*Travel Money Tips: How to Keep More of Your Cash When Traveling Abroad*](/blog/travel-money-tips).
 
 The key feature here is data freshness. Exchange rates update constantly during trading hours. A good rate-lookup app pulls live data frequently; a poor one might show rates that are hours out of date.
 
@@ -87,6 +91,8 @@ For travel finance apps and money transfer apps, historical rate charts let you 
 A few things worth being clear on:
 
 **Apps show mid-market rates; you won't transact at those rates.** The mid-market rate is a reference point. Whatever method you use to actually exchange money will include a spread and possibly fees on top. Use a [currency converter](/) to establish your baseline, then evaluate what any exchange provider is actually offering relative to that baseline.
+
+For more on this topic, see [*Currency Exchange Fees Explained: Banks, ATMs, and Credit Cards*](/blog/currency-exchange-fees-explained).
 
 **Rate alerts are useful but not a trading system.** Many apps let you set alerts when a rate crosses a threshold. This can be genuinely helpful if you have a flexible window for converting. It doesn't let you predict the market — it just ensures you don't miss a favorable move.
 

@@ -14,6 +14,8 @@ Setting your freelance hourly rate is one of the most important business decisio
 
 The ranges below draw on data from [Upwork freelancer research](https://www.upwork.com/research/) and [PayScale](https://www.payscale.com/). Treat them as starting points — your actual rate should be validated with your cost floor formula.
 
+For more on this topic, see [*How Much Should I Charge as a Freelancer? A Pricing Framework*](/blog/how-much-should-i-charge-as-a-freelancer-a-pricing-framework).
+
 | Industry | Entry Level | Mid Level | Expert |
 |---|---|---|---|
 | Web Development | $50-75 | $75-150 | $150-300 |
@@ -47,6 +49,8 @@ Your minimum hourly rate must cover your income goal, expenses, taxes, and billa
 
 Our [freelance hourly rate calculator](/) does this automatically. Enter your goal, hours, expenses, and tax rate. It outputs your minimum rate and suggested buffer rate.
 
+For more on this topic, see [*Freelance Income Goal Calculator: Set and Hit Your Target Earnings*](/blog/freelance-income-goal-calculator-set-and-hit-your-target-earnings).
+
 ## Geographic Adjustments
 
 Rates vary by location. US coastal cities command 20-40% premiums over rural areas. Remote work has flattened this somewhat, but clients in expensive markets still expect to pay more.
@@ -66,3 +70,5 @@ Use our calculator to find your floor, then charge what the market will bear abo
 ---
 
 *Disclaimer: The information on this page is for general informational purposes only and does not constitute financial, tax, or legal advice. Freelance rates vary significantly by industry, experience, and geography. Consult a qualified financial advisor or accountant for advice tailored to your situation.*
+
+For more on this topic, see [*How to Negotiate Freelance Rates Without Losing the Client*](/blog/how-to-negotiate-freelance-rates-without-losing-the-client).

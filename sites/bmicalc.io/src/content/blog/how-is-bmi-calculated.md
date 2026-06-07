@@ -18,6 +18,8 @@ sources:
 
 Body mass index (BMI) is one of the most widely used health screening metrics in the world — and the formula behind it is surprisingly simple. You only need two measurements: your weight and your height. Here is exactly how the calculation works in both metric and imperial units, with step-by-step examples.
 
+For more on this topic, see [*BMI Chart for Women: Understanding Your Results by Age and Height*](/blog/bmi-chart-for-women).
+
 ## The BMI Formula
 
 ### Metric (kilograms and centimetres)
@@ -111,6 +113,8 @@ Values rounded to the nearest pound/kilogram.
 ## Calculate Yours Now
 
 Rather than doing the arithmetic manually, use our [free BMI calculator](/) — it handles both metric and imperial inputs, gives you your category instantly, and shows where you fall on the standard range.
+
+For more on this topic, see [*BMI Calculator for Women: What Your Number Means and Why It Matters*](/blog/bmi-calculator-for-women).
 
 ---
 

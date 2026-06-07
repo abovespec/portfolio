@@ -14,9 +14,13 @@ Final exam season brings a specific anxiety: "What grade do I need on my final t
 
 **Final Exam Grade Needed = (Target Grade - (Current Grade x (1 - Final Weight))) / Final Weight**
 
+For more on this topic, see [*How to Raise Your GPA Fast: Practical Strategies That Actually Work*](/blog/how-to-raise-your-gpa-fast).
+
 ## Example Calculation
 
 Your current grade is 82%. The final is worth 30% of your grade. You want a B (80%) in the class.
+
+For more on this topic, see [*Letter Grade to GPA Conversion Chart: The Complete Reference*](/blog/letter-grade-to-gpa-conversion-chart).
 
 - Target: 80
 - Current: 82
@@ -26,6 +30,8 @@ Your current grade is 82%. The final is worth 30% of your grade. You want a B (8
 Current contribution: 82 x 0.70 = 57.4
 Points needed from final: 80 - 57.4 = 22.6
 Final grade needed: 22.6 / 0.30 = **75.3%**
+
+For more on this topic, see [*How to Get a 4.0 GPA in College: Strategies That Work*](/blog/how-to-get-a-4-0-gpa-in-college-strategies-that-work).
 
 You need a 75.3% on the final to finish with an 80%.
 

@@ -25,6 +25,8 @@ sources:
 
 If you have ever taken out a mortgage, car loan, or student loan, you have encountered amortization — even if no one used that word to describe it. Amortization is the mechanism that determines how each of your monthly payments is divided between interest and principal, and how your balance declines over the life of the loan.
 
+For more on this topic, see [*15-Year vs. 30-Year Mortgage: Amortization Differences and Trade-offs*](/blog/15-year-vs-30-year-mortgage).
+
 Understanding amortization helps you compare loan products, plan extra payments strategically, and know exactly where your money is going each month. This article explains what amortization is, how it works across different loan types, and why it matters to you as a borrower.
 
 ## The Core Definition
@@ -47,6 +49,8 @@ Interest on most consumer loans accrues on the **outstanding principal balance**
 When you first take out a loan, your balance is at its highest point — so interest is at its highest. As you pay down principal month by month, the balance shrinks, and the interest portion of each payment shrinks with it. The fixed payment amount stays the same, so the freed-up portion goes to principal.
 
 This is not a quirk or a trick — it is a mathematical consequence of how interest accrues. The CFPB notes that in the early years of a mortgage, the majority of each payment goes toward interest rather than reducing your balance. ([CFPB — What is amortization?](https://www.consumerfinance.gov/ask-cfpb/what-is-amortization-en-1589/))
+
+For more on this topic, see [*How to Pay Off a 30-Year Mortgage in 15 Years*](/blog/how-to-pay-off-30-year-mortgage-early).
 
 ## Types of Loans That Amortize
 
@@ -115,6 +119,8 @@ This single formula is the engine behind every amortization schedule. Once you k
 Because of how amortization front-loads interest, the total interest paid over the life of a loan can be substantial. On the $300,000, 7%, 30-year mortgage above, the borrower pays approximately **$418,527 in total** — more than $118,000 in interest on top of the $300,000 principal.
 
 Choosing a shorter loan term or making extra payments can dramatically reduce this figure.
+
+For more on this topic, see [*How Extra Mortgage Payments Reduce Your Loan: The Math Explained*](/blog/extra-mortgage-payments).
 
 ### 2. Equity Building
 

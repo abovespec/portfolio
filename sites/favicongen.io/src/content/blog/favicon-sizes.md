@@ -14,6 +14,8 @@ If you have ever tried to figure out exactly which favicon sizes you need, you h
 
 The original favicon specification called for a 16×16 pixel ICO file placed at the root of your domain as `favicon.ico`. When Internet Explorer 5 introduced favicons in 1999, this was the only size that mattered.
 
+For more on this topic, see [*How to Create a Favicon for Your Website (Quick and Easy)*](/blog/how-to-create-a-favicon).
+
 The 16×16 icon still matters today. It is the size displayed in browser tabs on most desktop browsers, in bookmark lists, and in browser history panels. At this resolution, every pixel counts. Your design needs to read clearly with almost no detail — a single initial, a simple geometric shape, or a heavily simplified version of your logo.
 
 ## The Modern Desktop Set
@@ -45,6 +47,8 @@ When an iOS user taps "Add to Home Screen," Safari reaches for a specific icon t
 ### 180×180
 
 The primary apple-touch-icon size. This covers modern iPhones with standard and high-density screens. If you only declare one apple-touch-icon, make it 180×180.
+
+For more on this topic, see [*Apple Touch Icon: Size, Setup, and Why You Need One*](/blog/apple-touch-icon).
 
 ### 152×152
 
@@ -142,6 +146,8 @@ Here is a complete, production-ready set of favicon declarations for your `<head
 
 <!-- SVG favicon (modern browsers) -->
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+For more on this topic, see [*What Is a Favicon? The Tiny Icon That Does a Big Job*](/blog/what-is-a-favicon).
 
 <!-- PNG fallback -->
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">

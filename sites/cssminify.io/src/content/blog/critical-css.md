@@ -14,6 +14,8 @@ Critical CSS is the minimum set of styles needed to render the visible portion o
 
 When the browser parses `<link rel="stylesheet" href="styles.css">`, it stops rendering until the stylesheet is fully downloaded and parsed. On a slow connection, this adds hundreds of milliseconds to the time before the user sees anything.
 
+For more on this topic, see [*CSS Optimization Techniques: A Practical Guide*](/blog/css-optimization-techniques).
+
 **Normal rendering path:**
 ```
 HTML parse → Download CSS → Parse CSS → Layout → Paint
@@ -171,6 +173,8 @@ On a typical site, critical CSS reduces FCP by 200–800ms on slower connections
 
 **Too much critical CSS:** If the critical CSS block is large (> 50 KB gzipped), the inline approach adds more to the HTML than it saves in round-trips. Keep critical CSS focused.
 
+For more on this topic, see [*CSS File Too Large? How to Diagnose and Fix It*](/blog/css-file-size-too-large).
+
 **Missing font declarations:** If above-the-fold text uses a custom font, include the `@font-face` declarations and `font-display` property in the critical CSS.
 
 **Dynamic content:** Pages that render differently for logged-in users may need per-template critical CSS extraction.
@@ -180,6 +184,8 @@ On a typical site, critical CSS reduces FCP by 200–800ms on slower connections
 ## After extracting: minify the critical CSS
 
 Critical CSS tools often produce readable CSS. Minify the inlined block for maximum benefit:
+
+For more on this topic, see [*How to Minify CSS: Every Method Explained*](/blog/how-to-minify-css).
 
 ```js
 critical.generate({

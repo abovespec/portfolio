@@ -58,6 +58,8 @@ Breakeven happens when equity gains exceed the excess cost of owning plus opport
 | San Francisco, CA | 25 | Rent |
 | New York, NY | 24 | Rent |
 
+For more on this topic, see [*Average Rent by City 2025: Top Markets Ranked*](/blog/average-rent-by-city-2025-top-markets-ranked).
+
 Lower ratios favor buying. Higher ratios favor renting. The [HUD housing affordability dataset](https://www.huduser.gov/portal/datasets/rhfs.html) provides additional context on owner- vs renter-cost burdens across metro areas.
 
 ## Using Our Calculator
@@ -67,6 +69,8 @@ Our [rent vs buy calculator](/) customizes results by city. It includes:
 - Typical HOA fees
 - Historical appreciation by metro area
 - Closing cost estimates
+
+For more on this topic, see [*Salary Comparison by City: What Your Pay Is Really Worth*](/blog/salary-comparison-by-city-what-your-pay-is-really-worth).
 
 ## When Buying Wins
 
@@ -89,3 +93,5 @@ Rent vs buy is a math problem disguised as a lifestyle choice. Use our calculato
 ---
 
 *Disclaimer: The information on this page is for general informational purposes only and does not constitute financial or real estate advice. Rent prices, cost of living data, and salary comparisons change frequently and vary by neighborhood and individual circumstances. Consult a financial advisor or housing counselor for advice specific to your situation.*
+
+For more on this topic, see [*Cheapest Cities to Rent in 2025: Affordable Housing Markets*](/blog/cheapest-cities-to-rent-in-2025-affordable-housing-markets).

@@ -14,6 +14,8 @@ You can generate QR codes entirely in the browser using JavaScript — no server
 
 [qrcode.js](https://github.com/davidshimjs/qrcodejs) is a simple, dependency-free library that works in any browser.
 
+For more on this topic, see [*QR Code for Website: Link Any Page to a Scannable Code*](/blog/qr-code-for-website).
+
 **CDN setup:**
 
 ```html
@@ -32,6 +34,8 @@ You can generate QR codes entirely in the browser using JavaScript — no server
   });
 </script>
 ```
+
+For more on this topic, see [*QR Code for Business Card: vCard Setup and Best Practices*](/blog/qr-code-for-business-card).
 
 **Generate from input:**
 
@@ -217,6 +221,8 @@ downloadQR(canvas);
 ## Styling with CSS
 
 The QR code is usually a canvas or SVG element — style the container:
+
+For more on this topic, see [*How to Create a QR Code: A Complete Beginner's Guide*](/blog/how-to-create-a-qr-code).
 
 ```css
 .qr-container {

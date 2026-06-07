@@ -14,6 +14,8 @@ A QR code that looks good but fails to scan is worse than useless. These best pr
 
 The minimum printable size depends on the scan distance:
 
+For more on this topic, see [*QR Code Size Guide for Printing: Minimum Sizes, DPI, and Scan Distance*](/blog/qr-code-size-guide-for-printing).
+
 | Context | Minimum size | Recommended size | Scan distance |
 |---------|-------------|-----------------|--------------|
 | Business card | 1 cm (0.4 in) | 1.5 cm (0.6 in) | < 10 cm |
@@ -24,6 +26,8 @@ The minimum printable size depends on the scan distance:
 | Billboard | 30 cm (12 in) | 50 cm (20 in) | 5-10 m |
 
 Rule of thumb: the scan distance is approximately 10× the code's physical size. A 3cm code should be scannable from 30cm.
+
+For more on this topic, see [*QR Code for Restaurant Menu: A Practical Setup Guide*](/blog/qr-code-for-restaurant-menu).
 
 ## 2. Contrast: dark on light
 
@@ -46,6 +50,8 @@ QR codes require high contrast between dark and light modules. Black on white is
 The quiet zone is the white space around the code. Minimum: 4 modules (the unit size of a small square in the code). On a 2cm code with ~25 modules, that's about 3mm per side.
 
 **Common mistake:** Placing the QR code too close to text, images, or page edges. Scanners look for the quiet zone to locate the code boundary.
+
+For more on this topic, see [*QR Code for Website: Link Any Page to a Scannable Code*](/blog/qr-code-for-website).
 
 Leave at least 5mm of white space around the code at any print size.
 

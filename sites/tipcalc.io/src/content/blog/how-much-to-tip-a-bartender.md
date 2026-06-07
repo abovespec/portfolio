@@ -19,6 +19,8 @@ sources:
 
 Bartender tipping operates differently from restaurant tipping because you're often paying per drink rather than at the end of a meal. Knowing which method to use — and when — keeps the math simple and the service attentive.
 
+For more on this topic, see [*Tipping Etiquette in the United States: A Service-by-Service Guide*](/blog/tipping-etiquette-united-states).
+
 For larger bar tabs, our [tip calculator](/) handles the percentage work instantly.
 
 ## The Two Methods: Per Drink vs. Tab Percentage
@@ -31,6 +33,8 @@ This per-drink approach is the norm at busy bars where you're ordering one drink
 **Tab percentage (running a tab):**
 When you close a tab, tip **18–20%** as you would at a restaurant. This is the right method when you've had a full bar experience: multiple drinks, personalized service, table service, or cocktails tailored to your preferences.
 
+For more on this topic, see [*How Much to Tip a Server: The Complete Guide*](/blog/how-much-to-tip-a-server).
+
 | Situation | Recommended Tip |
 |---|---|
 | Single beer at a busy bar | $1 |
@@ -40,6 +44,8 @@ When you close a tab, tip **18–20%** as you would at a restaurant. This is the
 | Full tab close-out | 18–20% |
 | Bottle service | 15–20% of bottle cost |
 | Open bar event | $1–2 per drink still appropriate |
+
+For more on this topic, see [*What Is the Average Tip Percentage at US Restaurants?*](/blog/average-tip-percentage).
 
 ## Why Per-Drink Tips at Open Bars Still Matter
 

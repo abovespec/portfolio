@@ -17,6 +17,8 @@ The two factors that matter most:
 1. **Length** — longer passwords have exponentially more combinations
 2. **Randomness** — human-chosen passwords are predictable; random passwords aren't
 
+For more on this topic, see [*What Makes a Good Password? Length, Entropy, and Randomness*](/blog/what-makes-a-good-password).
+
 Everything else is secondary. A 20-character random string beats a 12-character "complex" password chosen by a human every time.
 
 ### Password entropy
@@ -104,6 +106,8 @@ A password manager solves the uniqueness problem. It:
 - Autofills them in your browser
 - Syncs across devices
 
+For more on this topic, see [*Password Generator: How to Generate Strong Passwords Online and in Code*](/blog/password-generator-guide).
+
 Top options:
 - **Bitwarden** — open source, free tier, self-hostable
 - **1Password** — teams feature, travel mode
@@ -111,6 +115,8 @@ Top options:
 - **KeePass / KeePassXC** — local-only, no cloud
 
 The master password for your password manager should be a strong passphrase (see below) that you can memorize.
+
+For more on this topic, see [*Passphrase vs Password: Which Is More Secure?*](/blog/passphrase-vs-password).
 
 ## Passphrases for memorable passwords
 

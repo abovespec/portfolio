@@ -18,6 +18,8 @@ Git tracks files in three states:
 - **Staging area (index)** — changes added with `git add`, ready to commit
 - **Repository** — committed changes
 
+For more on this topic, see [*Myers Diff Algorithm: How git diff Finds Changes*](/blog/myers-diff-algorithm).
+
 `git diff` compares between these states or between named commits and branches.
 
 ## Most common uses
@@ -110,6 +112,8 @@ index a1b2c3d..e4f5g6h 100644
 - `+` lines: added in new version
 - Lines with spaces: context (unchanged)
 
+For more on this topic, see [*How Does diff Work? The Algorithm Behind File Comparison*](/blog/how-does-diff-work).
+
 ## Useful flags
 
 | Flag | Effect |
@@ -125,6 +129,8 @@ index a1b2c3d..e4f5g6h 100644
 | `--no-color` | Force plain output (for piping) |
 | `-p` or `--patch` | Show patch output (default for most uses) |
 | `--diff-algorithm=histogram` | Use histogram diff (often cleaner) |
+
+For more on this topic, see [*Unified Diff Format: How to Read and Write Patch Files*](/blog/unified-diff-format).
 
 Examples:
 

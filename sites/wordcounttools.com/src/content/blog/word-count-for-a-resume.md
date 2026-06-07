@@ -25,6 +25,8 @@ The word count ranges look wide because resumes aren't prose — they're structu
 
 Use the [word count tool](/) to paste your resume and check where you land.
 
+For more on this topic, see [*How to Check Word Count in Google Docs (Every Method)*](/blog/word-count-google-docs).
+
 ## Why One Page Is Still the Default
 
 For anyone with fewer than 10 years of experience, a single page signals discipline. It shows you can prioritize. Recruiters at large companies often spend under 10 seconds on an initial scan; a tight one-pager means everything they see is intentional.
@@ -79,6 +81,8 @@ A typical mid-career resume breaks down roughly like this:
 
 If your work experience section alone is over 600 words and you have fewer than 10 years of history, you're probably over-explaining each role. Three to five bullets per job is typically enough; more than six per role starts to read as a job description rather than an achievement summary.
 
+For more on this topic, see [*How Long Does It Take to Read 1,000 Words?*](/blog/how-long-to-read-1000-words).
+
 ## ATS vs. Human Reader Word Counts
 
 Applicant Tracking Systems (ATS) parse resumes before a human sees them. For ATS optimization, word count matters less than keyword density — specifically, whether your resume includes the exact phrases from the job description.
@@ -90,6 +94,8 @@ A resume that reads well to a human and uses job-relevant language will typicall
 ## Checking Your Resume Word Count
 
 Paste your resume text into the [word count tool](/) to get an instant count. The tool also shows character count, reading time, and paragraph count — useful if you're comparing a trimmed version against your original.
+
+For more on this topic, see [*Reading Time Calculator: How Long Will Readers Spend on Your Content?*](/blog/reading-time-calculator).
 
 If you're at 950 words on a single page and want to know whether a cut version reads better, paste both versions and check which one keeps the density without losing the key achievements.
 

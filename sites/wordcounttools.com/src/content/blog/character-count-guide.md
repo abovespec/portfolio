@@ -29,6 +29,8 @@ Character count matters anywhere text appears in a constrained space: social pos
 | Pinterest description | 500 characters | ~75-100 visible in feed |
 | Reddit post title | 300 characters | |
 
+For more on this topic, see [*How Long Should a Blog Post Be for SEO in 2026?*](/blog/how-long-should-a-blog-post-be).
+
 ## SEO and web character limits
 
 | Field | Recommended | Maximum | Notes |
@@ -95,7 +97,11 @@ Most word processors and character counters offer both:
 - **Characters with spaces:** Every character, including spaces. This is the raw character count.
 - **Characters without spaces:** Only non-space characters. This is the "printable character" count.
 
+For more on this topic, see [*How to Check Word Count in Google Docs (Every Method)*](/blog/word-count-google-docs).
+
 For SEO meta lengths, Google measures in *pixel width*, not character count. A title with many narrow letters (`i`, `l`, `1`) fits more characters than one with wide letters (`W`, `M`). Tools like [wordcounttools.com](/) show character counts; for pixel-precise SEO preview, use a SERP preview tool.
+
+For more on this topic, see [*How Many Words Is a Novel? Genre-by-Genre Word Count Guide*](/blog/how-many-words-in-a-novel).
 
 ## How to count characters accurately
 

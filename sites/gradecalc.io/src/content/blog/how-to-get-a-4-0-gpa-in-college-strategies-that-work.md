@@ -23,6 +23,8 @@ A 4.0 in an impossible course load is harder than a 4.0 with strategic balance.
 
 Attendance correlates strongly with grades. Professors drop hints about exam content in lectures. Participation points add up. The 10% of students who skip regularly are rarely the top performers.
 
+For more on this topic, see [*GPA Scale 4.0 Explained: Letter Grades, Plus/Minus, and Weighted vs Unweighted*](/blog/gpa-scale-4-0-explained).
+
 ## Strategy 3: Do the Reading Before Class
 
 Walking into a lecture already familiar with concepts lets you focus on nuance rather than basics. You ask better questions. You take better notes. Pre-reading takes 30 minutes and transforms lecture value.
@@ -38,6 +40,8 @@ Go to office hours. Ask thoughtful questions. Professors help students they know
 ## Strategy 5: Start Assignments Early
 
 Starting early reveals confusion while there is still time to fix it. Last-minute work has no margin for error. Early starters submit better work with less stress.
+
+For more on this topic, see [*How to Raise Your GPA Fast: Practical Strategies That Actually Work*](/blog/how-to-raise-your-gpa-fast).
 
 ## Strategy 6: Form Study Groups
 
@@ -63,6 +67,8 @@ These marginal points separate a 3.9 from a 4.0.
 ## Using Our Calculators
 
 Our [GPA calculator](/) helps you model scenarios. Input current grades and target grades to see what is needed. Our [study schedule generator](/) ensures you prepare efficiently.
+
+For more on this topic, see [*Cumulative GPA Calculator Guide: What It Is and How to Calculate It*](/blog/cumulative-gpa-calculator-guide).
 
 ## The Mindset
 

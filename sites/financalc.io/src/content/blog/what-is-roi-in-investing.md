@@ -25,6 +25,8 @@ sources:
 
 Every investment decision comes down to a simple question: is this worth it? Return on investment (ROI) is the number that answers it. It expresses how much you gained or lost as a percentage of what you put in — giving you a common language to compare a rental property to a stock trade to a business expense.
 
+For more on this topic, see [*The Compound Interest Formula Explained: Variables, Examples, and How to Use It*](/blog/compound-interest-formula-explained).
+
 ## The ROI Formula
 
 **ROI = (Net Gain / Cost of Investment) × 100**
@@ -58,6 +60,10 @@ Using the same $5,000 → $6,750 example:
 - Over **10 years**: (6,750/5,000)^(1/10) − 1 = **3.0% per year**
 
 This is also called the **Compound Annual Growth Rate (CAGR)**. It is the standard metric used in investment reports, fund prospectuses, and financial analysis to compare returns across different time periods. ([Investopedia — CAGR](https://www.investopedia.com/terms/c/cagr.asp))
+
+For more on this topic, see [*How Does Compound Interest Work? A Plain-English Guide*](/blog/how-does-compound-interest-work).
+
+For more on this topic, see [*How to Save for Retirement: A Step-by-Step Starter Guide*](/blog/how-to-save-for-retirement).
 
 ## What Is a "Good" ROI?
 

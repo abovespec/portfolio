@@ -12,6 +12,8 @@ JSON parsing is unforgiving. One character out of place causes the entire docume
 
 The JSON spec does not allow a comma after the last element of an object or array.
 
+For more on this topic, see [*How to Validate JSON: Common Errors and How to Fix Them*](/blog/how-to-validate-json).
+
 ```json
 // ❌ Invalid
 {
@@ -31,6 +33,8 @@ Trailing commas are legal in modern JavaScript object literals, which is why thi
 ## 2. Single-quoted strings
 
 JSON strings must use double quotes. Single quotes are not valid.
+
+For more on this topic, see [*What Is JSON? A Plain-English Introduction*](/blog/what-is-json).
 
 ```json
 // ❌ Invalid
@@ -133,3 +137,6 @@ A valid JSON document can be a bare value — a string, number, boolean, or null
 ## Fixing errors quickly
 
 The fastest way to identify and fix JSON errors is to paste your text into the [JSON Formatter & Validator](/) on this site. It highlights the exact position of the first error so you can fix it rather than hunting through the raw text.
+
+
+For more on this topic, see [*Unexpected Token in JSON: What It Means and How to Fix It*](/blog/unexpected-token-json-error).

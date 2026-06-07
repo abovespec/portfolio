@@ -14,6 +14,8 @@ canonical: "is-it-better-to-lease-or-buy-a-car-decision-framework"
 
 If you get a new car every 2-3 years, leasing often costs less. If you drive cars until they die, buying saves money. The average American keeps a car for 8 years. At that timeline, buying is almost always cheaper. [Consumer Reports' car ownership research](https://www.consumerreports.org/cars/) confirms that long ownership periods strongly favor purchasing over leasing.
 
+For more on this topic, see [*Total Cost of Car Ownership Calculator: The Real Monthly Number*](/blog/total-cost-of-car-ownership-calculator-the-real-monthly-number).
+
 ## Question 2: How Many Miles Do You Drive?
 
 Leases charge $0.15-0.30 for every mile over the limit. If you drive 20,000 miles annually, a 12,000-mile lease will cost you $2,400-3,600 in excess mileage fees. High-mileage drivers should buy.
@@ -36,6 +38,10 @@ Calculate the cost per mile for both options over your expected ownership period
 
 **Lease cost per mile:** (Total lease payments + fees - equity) / miles driven
 **Buy cost per mile:** (Total payments + maintenance - resale value) / miles driven
+
+For more on this topic, see [*Lease vs Buy Car Calculator 2025: Total Cost Comparison*](/blog/lease-vs-buy-car-calculator-2025-total-cost-comparison).
+
+For more on this topic, see [*Electric Car Total Cost of Ownership: EV vs Gas in 2025*](/blog/electric-car-total-cost-of-ownership-ev-vs-gas-in-2025).
 
 ## Lifestyle Considerations
 

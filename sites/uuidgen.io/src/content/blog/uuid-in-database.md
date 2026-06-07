@@ -23,6 +23,8 @@ UUIDs are commonly used as primary keys in databases, especially in distributed 
 - **Index fragmentation** — UUID v4 causes B-tree fragmentation (use v7 or ULID to mitigate)
 - **Less readable** — `550e8400-e29b-41d4-a716-446655440000` vs. `42`
 
+For more on this topic, see [*UUID v4 vs v7: Which Should You Use?*](/blog/uuid-v4-vs-v7).
+
 ## PostgreSQL
 
 PostgreSQL has a native `UUID` type that stores UUIDs efficiently as 16 bytes.
@@ -41,6 +43,8 @@ CREATE EXTENSION IF NOT EXISTS "pgcrypto";
 SELECT gen_random_uuid();  -- from pgcrypto
 ```
 
+For more on this topic, see [*What Is a UUID? Format, Versions, and How They Work*](/blog/what-is-a-uuid).
+
 **UUID v7 with pg_uuidv7 extension:**
 ```sql
 CREATE EXTENSION IF NOT EXISTS pg_uuidv7;
@@ -52,6 +56,8 @@ CREATE TABLE events (
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 ```
+
+For more on this topic, see [*UUID vs GUID: Are They the Same Thing?*](/blog/uuid-vs-guid).
 
 **Creating an index:**
 ```sql

@@ -12,6 +12,8 @@ JSON (JavaScript Object Notation) is a lightweight text format for storing and e
 
 A JSON document is built from two structures:
 
+For more on this topic, see [*How to Minify JSON: Tools, Commands, and Code Examples*](/blog/how-to-minify-json).
+
 - **Objects** — unordered collections of key/value pairs, surrounded by curly braces `{}`
 - **Arrays** — ordered lists of values, surrounded by square brackets `[]`
 
@@ -33,6 +35,8 @@ Values can be strings (in double quotes), numbers, booleans (`true`/`false`), `n
 ## Why JSON won
 
 Before JSON, XML was the dominant data exchange format. XML is verbose: every value needs an opening tag and a closing tag, attributes complicate nesting, and parsers are heavy. JSON carries the same information in roughly half the bytes and maps directly to the data structures (objects and arrays) that every programming language already has.
+
+For more on this topic, see [*How to Format JSON in Python: json.dumps, json.tool, and More*](/blog/format-json-python).
 
 Douglas Crockford popularized JSON in the early 2000s. By 2010 it had become the default format for web APIs, and by 2015 it had largely replaced XML outside of enterprise and document-centric contexts.
 
@@ -62,5 +66,7 @@ When working with JSON in JavaScript, use `JSON.parse()` to convert a JSON strin
 ## Validating JSON
 
 One pitfall is that JSON has zero tolerance for syntax errors. A single missing comma, an extra trailing comma, or an unescaped special character will cause a parser to reject the entire document.
+
+For more on this topic, see [*How to Validate JSON: Common Errors and How to Fix Them*](/blog/how-to-validate-json).
 
 Use the [JSON Formatter & Validator](/) on this site to quickly check whether your JSON is valid and to see exactly where a problem is if it isn't.

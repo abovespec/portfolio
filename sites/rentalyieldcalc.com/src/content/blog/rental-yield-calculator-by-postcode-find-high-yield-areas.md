@@ -14,6 +14,8 @@ Location drives rental yield more than any other factor. Two identical propertie
 
 Rental yield measures annual rental income as a percentage of property value. Gross yield ignores expenses. Net yield subtracts costs like maintenance, management, insurance, and vacancy.
 
+For more on this topic, see [*What Is a Good Rental Yield in 2025? Benchmarks by Market*](/blog/what-is-a-good-rental-yield-in-2025-benchmarks-by-market).
+
 **Gross yield** = (Annual Rent / Property Value) x 100
 **Net yield** = ((Annual Rent - Annual Expenses) / Property Value) x 100
 
@@ -33,6 +35,8 @@ Data from [Zillow Research](https://www.zillow.com/research/) and [Redfin's data
 ## Using Our Calculator
 
 Our [rental yield calculator](/) lets you input rent, property value, expenses, and vacancy rate. It outputs gross yield, net yield, and monthly cash flow instantly.
+
+For more on this topic, see [*Cash Flow Positive Rental Property: How to Find and Verify One*](/blog/cash-flow-positive-rental-property-how-to-find-and-verify-one).
 
 **Example:** A $300,000 property renting for $2,000 monthly:
 - Gross yield: 8.0%
@@ -63,3 +67,5 @@ Use our calculator to test any postcode. The numbers do not lie.
 ---
 
 *Disclaimer: The information on this page is for general informational purposes only and does not constitute financial, investment, or real estate advice. Rental yields, cap rates, and property returns vary by location, property type, and market conditions. Past performance does not guarantee future results. Always consult a licensed real estate professional or financial advisor before making investment decisions.*
+
+For more on this topic, see [*Rental Property ROI Calculator: Total Return on Investment*](/blog/rental-property-roi-calculator-total-return-on-investment).

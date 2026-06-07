@@ -71,9 +71,13 @@ Running out of an ingredient mid-recipe is frustrating. Knowing reliable substit
 | 1 tsp baking powder | 1/4 tsp baking soda + 1/2 tsp cream of tartar | Immediate use |
 | 1 tsp baking soda | 2 tsp baking powder (remove acidic ingredient) | Adjust recipe |
 
+For more on this topic, see [*How to Double a Recipe: Calculator, Tips, and Common Mistakes*](/blog/how-to-double-a-recipe-calculator-tips-and-common-mistakes).
+
 ## Using Our Substitution Tool
 
 Our [recipe scaler](/) includes a substitution database. Enter what you have and what you need. It suggests the best swap with ratio adjustments.
+
+For more on this topic, see [*Recipe Scaler Calculator: Convert Any Recipe to Any Serving Size*](/blog/recipe-scaler-calculator-convert-any-recipe-to-any-serving-size).
 
 ## Substitution Rules
 
@@ -85,3 +89,5 @@ Our [recipe scaler](/) includes a substitution database. Enter what you have and
 ## The Bottom Line
 
 Baking substitutions work when you understand the role each ingredient plays. Use our chart and tool to rescue recipes, accommodate allergies, and experiment with confidence.
+
+For more on this topic, see [*Nutrition Calculator by Ingredient: Build Recipes with Confidence*](/blog/nutrition-calculator-by-ingredient-build-recipes-with-confidence).

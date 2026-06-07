@@ -70,6 +70,8 @@ Always verify the actual server response in your browser's Network tab when debu
 
 If you're generating JSON programmatically, use your language's JSON serialiser (`json.dumps` in Python, `JSON.stringify` in JavaScript) instead of building strings manually.
 
+For more on this topic, see [*How to Format JSON in Python: json.dumps, json.tool, and More*](/blog/format-json-python).
+
 ### 3. Single-quoted strings
 
 **Cause:** JSON requires double quotes. Single quotes are not valid.
@@ -123,6 +125,8 @@ Other escapes to know:
 ```
 
 **Fix:** Remove the comment. If you need annotated config files, use [JSON5](https://json5.org/) or YAML instead, and convert to plain JSON before passing to APIs.
+
+For more on this topic, see [*What Is JSON? A Plain-English Introduction*](/blog/what-is-json).
 
 ### 6. `undefined` values
 
@@ -186,3 +190,6 @@ const data = JSON.parse(raw);
 - [RFC 8259 — The JavaScript Object Notation (JSON) Data Interchange Format](https://www.rfc-editor.org/rfc/rfc8259)
 - [MDN — JSON.parse](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse)
 - [json.org — JSON grammar](https://www.json.org/json-en.html)
+
+
+For more on this topic, see [*How to Format JSON in VS Code: Shortcuts, Settings, and Extensions*](/blog/format-json-vscode).

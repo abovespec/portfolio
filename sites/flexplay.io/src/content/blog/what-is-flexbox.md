@@ -14,6 +14,8 @@ Before Flexbox existed, centering a div vertically was the kind of thing develop
 
 The original CSS layout primitives — `float`, `inline-block`, `position` — were designed for document layout, not application UI. When the web shifted toward rich interfaces, those primitives started showing their cracks:
 
+For more on this topic, see [*Flexbox vs CSS Grid: When to Use Each*](/blog/flexbox-vs-grid).
+
 - Equal-height columns required hacks or JavaScript
 - Centering content vertically was painful
 - Distributing space evenly between elements required manual math
@@ -24,6 +26,8 @@ Flexbox was introduced specifically to handle one-dimensional layout: arranging 
 ## Flex Containers and Flex Items
 
 Flexbox operates on a parent-child relationship. You declare a **flex container** by applying `display: flex` to a parent element. Every direct child of that element automatically becomes a **flex item**.
+
+For more on this topic, see [*CSS Flexbox Cheat Sheet: Every Property Explained*](/blog/flexbox-cheat-sheet).
 
 ```css
 .container {
@@ -166,5 +170,7 @@ Three declarations. No floats, no clearfix, no absolute positioning tricks.
 ## What Flexbox Is Not For
 
 Flexbox handles one dimension well. When you need to control both rows and columns simultaneously — a full page layout with a sidebar and a header — CSS Grid is usually the better tool. Grid and Flexbox complement each other, and modern layouts typically use both: Grid for the macro structure, Flexbox for component-level alignment.
+
+For more on this topic, see [*CSS Flexbox Interview Questions and Answers (2026 Edition)*](/blog/flexbox-interview-questions).
 
 Understanding Flexbox's core model — containers, items, main axis, cross axis — makes everything else click into place. From there it's just a matter of knowing which property addresses which axis, and most layout problems reduce to a one-liner.

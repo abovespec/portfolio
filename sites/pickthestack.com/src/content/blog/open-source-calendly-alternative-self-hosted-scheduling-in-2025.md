@@ -14,6 +14,8 @@ Privacy concerns and SaaS subscription fatigue are driving demand for self-hoste
 
 Cal.com is the most polished open-source scheduler. The codebase is on GitHub under an AGPL license. You can self-host on Docker, Railway, or your own VPS. Features include unlimited event types, team scheduling, payments via Stripe, and API access.
 
+For more on this topic, see [*Software Buying Guide for Startups: Build Your Stack Without Overspending*](/blog/software-buying-guide-for-startups-build-your-stack-without-overspending).
+
 **Setup complexity:** Medium. Requires Node.js, PostgreSQL, and a server.
 
 ## Easy!Appointments
@@ -25,6 +27,8 @@ A lighter PHP-based scheduler. Easier to deploy on shared hosting. Less feature-
 ## Appointment Scheduler (Python/Django)
 
 Several Django-based scheduling apps exist on GitHub. Best for developers who want to customize deeply and embed scheduling into existing applications.
+
+For more on this topic, see [*Best Free Scheduling Software for Small Business in 2025*](/blog/best-free-scheduling-software-for-small-business-in-2025).
 
 **Setup complexity:** High. Requires Python knowledge.
 
@@ -44,6 +48,8 @@ Several Django-based scheduling apps exist on GitHub. Best for developers who wa
 ## Cost Comparison
 
 Self-hosting Cal.com on a $10 VPS costs $120/year. Calendly Teams for five users costs $960/year. The savings are real, but only if your time has no value. For most small teams, the managed SaaS is worth the premium.
+
+For more on this topic, see [*Calendly vs Cal.com Pricing 2025: Which Scheduling Tool Wins?*](/blog/calendly-vs-cal-com-pricing-2025-which-scheduling-tool-wins).
 
 ## Getting Started
 

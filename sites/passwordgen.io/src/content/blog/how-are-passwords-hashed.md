@@ -14,6 +14,8 @@ Passwords should never be stored in plaintext or encrypted. They should be **has
 
 **Plaintext:** If the database is breached, every user's password is immediately exposed.
 
+For more on this topic, see [*How to Create a Strong Password: A Practical Security Guide*](/blog/how-to-create-a-strong-password).
+
 **Encrypted:** Encryption is reversible — if you store the key anywhere accessible to the application, an attacker who breaches the server gets both the ciphertext and the key.
 
 **Hashing (correct approach):** A cryptographic hash is a one-way function. You can verify a password by hashing it and comparing to the stored hash, but you can't reverse the hash to get the password.
@@ -30,6 +32,8 @@ A **salt** is a random value added to the password before hashing. It serves two
 
 1. **Prevents rainbow table attacks** — precomputed tables of `hash → password` don't work because the salt changes the hash for the same password.
 2. **Makes identical passwords produce different hashes** — two users with the same password get different hashes, so one hash doesn't reveal the other.
+
+For more on this topic, see [*What Makes a Good Password? Length, Entropy, and Randomness*](/blog/what-makes-a-good-password).
 
 ```python
 import os
@@ -178,3 +182,6 @@ user.authenticate("hunter2")  # BCrypt::Password comparison
 ```
 
 Generate strong passwords at [passwordgen.io](/).
+
+
+For more on this topic, see [*Password Generator: How to Generate Strong Passwords Online and in Code*](/blog/password-generator-guide).

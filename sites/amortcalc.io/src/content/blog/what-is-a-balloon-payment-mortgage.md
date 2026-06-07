@@ -23,6 +23,8 @@ sources:
 
 Most mortgage borrowers expect a predictable monthly payment that ends with a paid-off home. A balloon payment mortgage works differently: payments are lower than a conventional loan for a fixed period — typically 5 to 7 years — and then the entire remaining balance comes due in one large lump sum. That final payment is the "balloon."
 
+For more on this topic, see [*How Extra Mortgage Payments Reduce Your Loan: The Math Explained*](/blog/extra-mortgage-payments).
+
 For the right borrower in the right situation, balloon mortgages offer short-term flexibility. For most homeowners, the risks at the end of the term are significant and worth understanding clearly before signing.
 
 ## How a Balloon Mortgage Works
@@ -53,6 +55,8 @@ Over those 7 years, the borrower paid $141,038 in monthly payments, of which app
 ### Borrowers who plan to sell before the balloon date
 
 If you are buying a property you intend to sell in 4–5 years, a balloon mortgage's lower initial rate can reduce carrying costs. You plan to pay off the balloon with sale proceeds before it matures.
+
+For more on this topic, see [*How to Pay Off a 30-Year Mortgage in 15 Years*](/blog/how-to-pay-off-30-year-mortgage-early).
 
 ### Investors and house flippers
 
@@ -104,6 +108,8 @@ If a balloon mortgage appeals to you because of lower initial payments or a shor
 **15-year fixed mortgage:** Higher payments than a balloon but builds equity rapidly and terminates cleanly. No refinancing gamble required.
 
 **30-year fixed with extra payments:** A conventional 30-year loan lets you make extra principal payments when cash flow allows, effectively shortening the term. Use the [amortization calculator](/) to model how extra payments affect your payoff date without committing to higher required payments.
+
+For more on this topic, see [*What Is Amortization? How Loan Payments Are Structured*](/blog/what-is-amortization).
 
 **Bridge loan:** For investors needing short-term financing, a bridge loan is explicitly designed for a 6–24 month hold and is priced accordingly — more transparent than a balloon mortgage used for the same purpose.
 

@@ -29,6 +29,8 @@ A quick reference for regular expression syntax, organized by category. Covers P
 | `[a-z]` | Range: a through z |
 | `[a-zA-Z0-9]` | Alphanumeric |
 
+For more on this topic, see [*Regex Tutorial: Learn Regular Expressions from Scratch*](/blog/regex-tutorial).
+
 ## Quantifiers
 
 | Pattern | Matches |
@@ -75,6 +77,8 @@ Lazy:   <.+?> → <b>, </b>, <i>, </i>            (four matches)
 | `\k<name>` | Backreference to named group |
 | `(a|b)` | Alternation in group |
 
+For more on this topic, see [*Regex Groups and Capturing: How to Extract Data with Parentheses*](/blog/regex-groups-capturing).
+
 ```
 Pattern: (\w+)\s+\1
 Matches: "hello hello" (repeated word via backreference)
@@ -88,6 +92,8 @@ Matches: "hello hello" (repeated word via backreference)
 | `(?!abc)` | Negative lookahead: NOT followed by |
 | `(?<=abc)` | Positive lookbehind: preceded by |
 | `(?<!abc)` | Negative lookbehind: NOT preceded by |
+
+For more on this topic, see [*Regex Lookahead and Lookbehind: Zero-Width Assertions Explained*](/blog/regex-lookahead-lookbehind).
 
 ```
 # Prices (number followed by dollar sign without capturing $)

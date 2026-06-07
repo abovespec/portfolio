@@ -14,6 +14,8 @@ Modern JavaScript bundlers handle CSS minification as part of the production bui
 
 webpack doesn't minify CSS by default. You need `css-minimizer-webpack-plugin`.
 
+For more on this topic, see [*Critical CSS: What It Is and How to Implement It*](/blog/critical-css).
+
 ```bash
 npm install --save-dev css-minimizer-webpack-plugin mini-css-extract-plugin css-loader
 ```
@@ -46,6 +48,8 @@ module.exports = {
   },
 };
 ```
+
+For more on this topic, see [*How to Remove Unused CSS: PurgeCSS, UnCSS, and Tree-Shaking*](/blog/remove-unused-css).
 
 `MiniCssExtractPlugin` extracts CSS into separate files (instead of injecting into `<style>` tags). `CssMinimizerPlugin` minifies the extracted CSS using cssnano by default.
 
@@ -187,6 +191,8 @@ export default {
   ],
 };
 ```
+
+For more on this topic, see [*CSS File Too Large? How to Diagnose and Fix It*](/blog/css-file-size-too-large).
 
 ## Verifying minification
 

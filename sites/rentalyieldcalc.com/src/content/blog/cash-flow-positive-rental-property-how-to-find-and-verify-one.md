@@ -16,6 +16,8 @@ A property is cash flow positive when:
 
 **Rental Income > Mortgage + Operating Expenses + Vacancy Reserve**
 
+For more on this topic, see [*What Is a Good Rental Yield in 2025? Benchmarks by Market*](/blog/what-is-a-good-rental-yield-in-2025-benchmarks-by-market).
+
 Note: Principal paydown is not cash flow. It is equity growth. Cash flow is what you can spend or reinvest today.
 
 ## The 1% Rule Shortcut
@@ -42,6 +44,8 @@ In Midwest and Southern markets, $150,000 properties renting for $1,500 still ex
 ## Using Our Calculator
 
 Our [rental yield calculator](/) includes a cash flow mode. Enter rent, mortgage payment, and expenses. It shows monthly cash flow instantly.
+
+For more on this topic, see [*Rental Yield Calculator by Postcode: Find High-Yield Areas*](/blog/rental-yield-calculator-by-postcode-find-high-yield-areas).
 
 **Example:**
 - Rent: $1,800
@@ -71,3 +75,5 @@ Verify every deal with our calculator before you write an offer.
 ---
 
 *Disclaimer: The information on this page is for general informational purposes only and does not constitute financial, investment, or real estate advice. Rental yields, cap rates, and property returns vary by location, property type, and market conditions. Past performance does not guarantee future results. Always consult a licensed real estate professional or financial advisor before making investment decisions.*
+
+For more on this topic, see [*Rental Property ROI Calculator: Total Return on Investment*](/blog/rental-property-roi-calculator-total-return-on-investment).

@@ -14,6 +14,8 @@ Cooking for a crowd from a recipe that serves four requires math. So does halvin
 
 Baking is chemistry. Doubling a recipe does not always mean doubling every ingredient. Leavening agents, liquids, and spices do not scale linearly. Savory cooking is more forgiving, but accurate scaling still ensures consistent flavor.
 
+For more on this topic, see [*How to Double a Recipe: Calculator, Tips, and Common Mistakes*](/blog/how-to-double-a-recipe-calculator-tips-and-common-mistakes).
+
 ## The Scaling Formula
 
 **Scaling Factor = Desired Servings / Original Servings**
@@ -63,6 +65,10 @@ When scaling savory recipes for meal prep:
 - Use larger pots. Boiling over is common with scaled-up soups.
 - Season in stages. Taste and adjust rather than dumping scaled spices at once.
 
+For more on this topic, see [*Macro Meal Planner: Free Tool for Balanced Nutrition*](/blog/macro-meal-planner-free-tool-for-balanced-nutrition).
+
 ## The Bottom Line
 
 Scaling recipes is simple math with important exceptions. Our calculator handles the math and flags the exceptions. Use it for your next dinner party, holiday meal, or batch cooking session.
+
+For more on this topic, see [*Nutrition Calculator by Ingredient: Build Recipes with Confidence*](/blog/nutrition-calculator-by-ingredient-build-recipes-with-confidence).

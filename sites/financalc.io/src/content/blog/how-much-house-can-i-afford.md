@@ -63,6 +63,8 @@ Working backward from these ratios to a home purchase price requires knowing you
 5. Estimated homeowner's insurance
 6. Current mortgage interest rate
 
+For more on this topic, see [*APR vs. Interest Rate: What's the Difference and Why It Matters*](/blog/apr-vs-interest-rate).
+
 A simplified example for a household earning $100,000/year ($8,333/month gross):
 
 | Input | Value |
@@ -78,6 +80,8 @@ A simplified example for a household earning $100,000/year ($8,333/month gross):
 | With 10% down ($29,000) | **Home price ~$290,000** |
 
 The exact number shifts significantly with interest rate, down payment, and local taxes. Use our [mortgage calculator](/tools/mortgage-calculator/) to model your specific inputs precisely.
+
+For more on this topic, see [*How to Use a Loan Calculator: Inputs, Outputs, and What the Numbers Mean*](/blog/how-to-use-a-loan-calculator).
 
 ## The Down Payment: How Much Do You Need?
 
@@ -115,6 +119,8 @@ A $350,000 home in a high-property-tax state with a $400/month HOA and $3,500/ye
 ## What You're Approved for vs. What You Should Buy
 
 Lenders will often approve you for more than you should spend. Approval is based on maximum debt-service capacity, not on your other financial goals: retirement savings, college funds, travel, emergency reserves, or career flexibility.
+
+For more on this topic, see [*How to Save for Retirement: A Step-by-Step Starter Guide*](/blog/how-to-save-for-retirement).
 
 A useful framework: after your mortgage payment, taxes, insurance, and other debt, do you still have enough for:
 - 15% of gross income to retirement savings

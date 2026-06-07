@@ -21,6 +21,8 @@ sources:
 
 Return on investment is the most commonly cited metric in investing, business, and personal finance. It's also one of the most frequently misused. The formula is simple, but what it includes — and what it doesn't — determines whether it's telling you something useful or giving you a misleading picture. This guide covers the math, real-world examples, and the limitations every investor should understand.
 
+For more on this topic, see [*What Is ROI in Investing? A Plain-English Guide to Return on Investment*](/blog/what-is-roi-in-investing).
+
 ## The Basic ROI Formula
 
 **ROI = (Net Return ÷ Cost of Investment) × 100**
@@ -36,6 +38,8 @@ Where:
 
 This formula always answers the same question: for every dollar I put in, how many cents (or dollars) did I get back as profit?
 
+For more on this topic, see [*The Compound Interest Formula Explained: Variables, Examples, and How to Use It*](/blog/compound-interest-formula-explained).
+
 ## Worked Example 1: Stock Investment
 
 You buy 50 shares of a stock at $40 per share. Total cost: $2,000. Two years later, the shares are trading at $54. You sell all 50 shares for $2,700.
@@ -45,6 +49,8 @@ ROI = (700 ÷ 2,000) × 100
 **ROI = 35%**
 
 You earned a 35% return on your investment. Note that this is the total return over the entire 2-year holding period — not per year. We'll address the time dimension in a moment.
+
+For more on this topic, see [*The Rule of 72 Explained: How to Estimate Doubling Time in Seconds*](/blog/rule-of-72-explained).
 
 ## Worked Example 2: Real Estate
 

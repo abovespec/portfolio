@@ -22,6 +22,8 @@ NXDOMAIN stands for "Non-Existent Domain." Your DNS query returned no results. T
 
 The most common cause is a typo. Verify the spelling. Try adding or removing "www." Some sites redirect one to the other.
 
+For more on this topic, see [*Is GitHub Down Right Now? How to Check and Verify*](/blog/is-github-down-right-now-how-to-check-and-verify).
+
 ## Fix 2: Flush DNS Cache
 
 **Windows:**
@@ -106,6 +108,10 @@ Unplug your router for 30 seconds. This clears the router's DNS cache and refres
 ## When Nothing Works
 
 If the domain truly does not exist, no DNS fix helps. Verify the domain with our [status checker](/) or a WHOIS lookup. If the domain is registered but not resolving, the issue is on the website owner's side.
+
+For more on this topic, see [*How to Check If a Website Is Down: 5 Methods That Work*](/blog/how-to-check-if-a-website-is-down-5-methods-that-work).
+
+For more on this topic, see [*Website Status Page Best Practices: Build Trust During Outages*](/blog/website-status-page-best-practices-build-trust-during-outages).
 
 ## The Bottom Line
 

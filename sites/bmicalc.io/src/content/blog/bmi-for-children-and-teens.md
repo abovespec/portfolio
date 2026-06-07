@@ -21,6 +21,8 @@ sources:
 
 BMI works differently for children and teenagers than it does for adults. The formula is the same — weight divided by height squared — but the interpretation is entirely different. For children aged 2–19, BMI is not evaluated against fixed category thresholds. Instead, it is compared against a reference population of same-age, same-sex peers and expressed as a **percentile**. This matters, and getting it wrong can cause unnecessary anxiety or miss real concerns.
 
+For more on this topic, see [*BMI Chart for Women: Understanding Your Results by Age and Height*](/blog/bmi-chart-for-women).
+
 ## Why BMI Is Interpreted Differently for Children
 
 Children's bodies change dramatically during growth. A BMI that is entirely appropriate for a 6-year-old girl is different from an appropriate BMI for a 15-year-old girl or a 6-year-old boy. Body fatness naturally fluctuates during childhood: it is typically higher in infancy, lower during the "adiposity rebound" period around ages 5–6, and then rises again through adolescence.
@@ -42,6 +44,8 @@ Source: [CDC — Defining Childhood Obesity](https://www.cdc.gov/obesity/childho
 
 Note what these categories do **not** include: a fixed BMI number like 25 or 30. A 10-year-old at the 95th percentile may have a BMI of 22, while an adult with the same BMI 22 is in the "normal" range. The absolute number is much less meaningful than the percentile position.
 
+For more on this topic, see [*Normal BMI Range: What 18.5–24.9 Really Means for Your Health*](/blog/normal-bmi-range).
+
 ## Why Both Age and Sex Matter
 
 **Age:** A BMI of 17 in a 5-year-old likely reflects healthy growth. The same BMI in a 17-year-old would warrant attention. The percentile framework captures this automatically.
@@ -57,6 +61,8 @@ Note what these categories do **not** include: a fixed BMI number like 25 or 30.
 3. The 75th–80th percentile is within the Healthy weight range (5th to 85th percentile).
 
 **Interpretation:** This child's BMI is healthy. The 80th percentile does not mean 80% body fat — it means the child is heavier than 80% of other 12-year-old girls in the reference population, but still within the normal range.
+
+For more on this topic, see [*What Is a Healthy BMI? Ranges, Categories, and What They Mean*](/blog/what-is-a-healthy-bmi).
 
 The [CDC's child BMI calculator](https://www.cdc.gov/healthyweight/assessing/bmi/childrens_bmi/index.html) plots the percentile automatically once you enter age, sex, height, and weight.
 

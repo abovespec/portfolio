@@ -20,6 +20,8 @@ Before formatting, collect:
 - **Publisher** — the publishing company (drop location in APA 7)
 - **DOI or URL** — if you accessed it digitally
 
+For more on this topic, see [*How to Cite a Website: APA, MLA, and Chicago Formats*](/blog/how-to-cite-a-website).
+
 ## APA 7th edition
 
 ### Single author
@@ -116,6 +118,8 @@ Cain, Susan. Quiet: The Power of Introverts in a World That Can't Stop Talking. 
 
 Chicago Notes-Bibliography is used in history, arts, and humanities. Citations appear in footnotes or endnotes, plus a bibliography.
 
+For more on this topic, see [*Chicago Citation Style: Notes, Bibliography, and Author-Date*](/blog/chicago-citation-style).
+
 ### Footnote format
 
 **Single author:**
@@ -170,5 +174,7 @@ Kahneman, Daniel. 2011. Thinking, Fast and Slow. New York: Farrar, Straus and Gi
 | Title casing | Sentence case | Title case | Title case | Title case |
 | Publisher location | Omitted | Omitted | Required | Required |
 | Book title | *Italics* | *Italics* | *Italics* | *Italics* |
+
+For more on this topic, see [*MLA Citation Format: Complete Guide to MLA 9th Edition*](/blog/mla-citation-format).
 
 Generate book citations at [citefast.io](/).

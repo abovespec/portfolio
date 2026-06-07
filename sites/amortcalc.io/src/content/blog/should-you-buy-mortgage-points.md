@@ -74,6 +74,8 @@ Use the [mortgage calculator](/) to calculate the exact payment difference for y
 
 In many cases, mortgage points paid on a primary residence purchase are deductible in the year paid (subject to IRS rules and income limitations). Points paid on a refinance must typically be amortized over the loan term rather than deducted in full upfront.
 
+For more on this topic, see [*15-Year vs. 30-Year Mortgage: Amortization Differences and Trade-offs*](/blog/15-year-vs-30-year-mortgage).
+
 This tax treatment, where applicable, improves the effective break-even point — the real after-tax cost of the points is lower than the nominal cost. Consult a tax advisor to determine whether you qualify and what deduction applies to your situation.
 
 ## When Buying Points Makes Sense
@@ -98,6 +100,8 @@ This tax treatment, where applicable, improves the effective break-even point �
 
 **The per-point reduction is small.** If the lender is offering only 0.125% per point, the break-even stretches to 10+ years, dramatically reducing the range of scenarios where points pay off.
 
+For more on this topic, see [*How to Pay Off a 30-Year Mortgage in 15 Years*](/blog/how-to-pay-off-30-year-mortgage-early).
+
 ## How to Compare Offers Across Lenders
 
 When comparing loan offers, use the Loan Estimate (which federal law requires lenders to provide within 3 business days of your application) to compare:
@@ -112,6 +116,8 @@ Run the break-even calculation on each option using your realistic expected hold
 ## Lender Credits: The Inverse of Points
 
 The same math works in reverse. Instead of paying points to lower your rate, you can accept **lender credits** — the lender pays some of your closing costs in exchange for a higher interest rate. This increases your monthly payment but reduces cash needed at closing.
+
+For more on this topic, see [*How Mortgage Amortization Works: Principal, Interest, and Your Monthly Payment*](/blog/how-amortization-works).
 
 Lender credits make sense when:
 - You are short on cash

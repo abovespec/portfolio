@@ -54,12 +54,16 @@ Where:
 - **r** = monthly interest rate (APR ÷ 12 ÷ 100)
 - **M** = fixed monthly payment
 
+For more on this topic, see [*APR vs. Interest Rate: What's the Difference and Why It Matters*](/blog/apr-vs-interest-rate).
+
 For a $5,000 balance at 22% APR, paying $200/month:  
 r = 22/12/100 = 0.01833  
 N = −ln(1 − (0.01833 × 5,000/200)) / ln(1.01833)  
 N ≈ **31 months**
 
 You don't need to do this math manually — our [debt payoff calculator](/tools/loan-calculator/) handles it instantly. But understanding the formula shows you the three levers: **principal**, **rate**, and **payment amount**.
+
+For more on this topic, see [*How to Use a Loan Calculator: Inputs, Outputs, and What the Numbers Mean*](/blog/how-to-use-a-loan-calculator).
 
 ## The Two Main Debt Payoff Strategies
 
@@ -86,6 +90,8 @@ Pay minimums on all debts. Put all extra money toward the **smallest balance fir
 A 2016 paper published in the *Journal of Marketing Research* found that focusing on one debt at a time (regardless of rate) led to faster overall debt reduction in real-world behavior — because motivation to continue is higher when you see balances reach zero. ([Investopedia — Snowball vs. Avalanche](https://www.investopedia.com/articles/personal-finance/080716/debt-avalanche-vs-debt-snowball-which-best-you.asp))
 
 **The practical answer:** The avalanche saves more money. The snowball may save more money in practice because you'll actually stick with it. Choose the one you'll execute.
+
+For more on this topic, see [*How Much House Can I Afford? A Practical Buyer's Guide*](/blog/how-much-house-can-i-afford).
 
 ## What Changes the Payoff Timeline Most
 

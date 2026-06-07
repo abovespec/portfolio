@@ -26,6 +26,8 @@ By separating these groups, each muscle only works during its designated day and
 
 The classic PPL argument is that it is best for intermediates because the 6-day version hits each muscle twice a week. For true beginners with no training history, a 3-day full body plan is often recommended first.
 
+For more on this topic, see [*3 Day Workout Split for Beginners: Full Body Strength Plan*](/blog/3-day-workout-split-for-beginners-full-body-strength-plan).
+
 That said, many beginners thrive on PPL immediately — especially if you have time to train 6 days, enjoy a structured daily schedule, and learn movements quickly. If you have already done 4–8 weeks of full body training, PPL is a natural and effective step up.
 
 If six days feels like too much, simply run PPL three days a week instead of six. Train Push Monday, Pull Wednesday, Legs Friday and repeat the following week.
@@ -43,6 +45,8 @@ If six days feels like too much, simply run PPL three days a week instead of six
 | Sunday | Rest |
 
 This runs each muscle twice per week with at least one full day separating the same session.
+
+For more on this topic, see [*4 Day Workout Split for Muscle Growth: Hypertrophy Program*](/blog/4-day-workout-split-muscle-growth).
 
 ## Push Day
 
@@ -108,5 +112,7 @@ Consistency over a 3-day schedule beats sporadic attendance on a 6-day schedule 
 ## When to Move On
 
 PPL scales well. You can run a version of this split for years by increasing volume, introducing periodization, or specializing in lagging body parts. Most people graduate from this specific beginner program when weekly weight jumps are no longer possible on the main lifts — typically 3–6 months in. At that point, adjust rep ranges, add sets, and consider an intermediate program with planned deload weeks.
+
+For more on this topic, see [*Upper Lower Split Workout Program: 4-Day Plan for Strength and Size*](/blog/upper-lower-split-workout-program).
 
 The logic of the split stays the same. That is why PPL has lasted as long as it has.

@@ -14,6 +14,8 @@ Cramming the night before an exam is inefficient and stressful. A structured stu
 
 Memory decays exponentially. Reviewing material at increasing intervals (1 day, 3 days, 7 days, 14 days) locks information into long-term memory. Cramming produces short-term recall that evaporates within days.
 
+For more on this topic, see [*How to Get a 4.0 GPA in College: Strategies That Work*](/blog/how-to-get-a-4-0-gpa-in-college-strategies-that-work).
+
 ## Building Your Schedule
 
 **Step 1: Count backward from exam day.**
@@ -21,6 +23,8 @@ Memory decays exponentially. Reviewing material at increasing intervals (1 day, 
 **Step 3: Assign topics to days, with harder topics earlier.**
 **Step 4: Include review days with no new material.**
 **Step 5: Add buffer days for topics that take longer than expected.**
+
+For more on this topic, see [*Final Exam Grade Calculator: Predict Your Course Grade*](/blog/final-exam-grade-calculator-predict-your-course-grade).
 
 ## Sample 2-Week Schedule
 
@@ -36,6 +40,8 @@ Memory decays exponentially. Reviewing material at increasing intervals (1 day, 
 | Day 8 | Weak areas | Practice problems | Review E |
 | Day 9 | Review all | Timed practice | Light review |
 | Day 10 | Final review | Rest | Exam prep |
+
+For more on this topic, see [*What Grade Do I Need on My Final? Exam Calculator*](/blog/what-grade-do-i-need-on-my-final-exam-calculator).
 
 ## Using Our Generator
 

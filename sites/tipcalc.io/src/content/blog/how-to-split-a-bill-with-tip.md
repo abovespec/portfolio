@@ -23,6 +23,8 @@ Splitting the bill is one of the most reliably awkward moments in group dining. 
 
 This guide covers every method for splitting a bill fairly, when each applies, and how to handle the common edge cases. Or, skip straight to our [tip calculator](/) — it handles the math and the split in one step.
 
+For more on this topic, see [*How Much to Tip a Server: The Complete Guide*](/blog/how-much-to-tip-a-server).
+
 ---
 
 ## The Two Core Splitting Philosophies
@@ -57,6 +59,8 @@ There is no universally "correct" choice — it depends on the group, the occasi
 
 **The etiquette principle:** When you agree to go to dinner as a group, you're partly agreeing to socialize the cost. Minor differences in order price are absorbed. This is the norm in most friend groups.
 
+For more on this topic, see [*Tipping Etiquette in the United States: A Service-by-Service Guide*](/blog/tipping-etiquette-united-states).
+
 ---
 
 ## Method 2: Proportional (Itemized) Split
@@ -74,6 +78,8 @@ There is no universally "correct" choice — it depends on the group, the occasi
 - Person A ordered $22 in food + drinks
 - Person B ordered $48 in food + drinks
 - Each adds 20% tip: A pays $26.40, B pays $57.60
+
+For more on this topic, see [*Should You Tip at Fast Food Restaurants?*](/blog/should-you-tip-at-fast-food).
 
 **When to use it:**
 - Large orders with major price differences (someone had one cocktail vs. a full meal)
