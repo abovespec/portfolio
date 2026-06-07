@@ -124,3 +124,16 @@
 | 98 | mendeley cite | How-to | Mendeley Word plugin |
 | 99 | zotero word plugin | How-to | Zotero integration |
 | 100 | citation styles comparison | Informational | Style overview |
+
+---
+
+## Tier 2 — Published (2026-06-07)
+
+| Article | Published |
+|---------|-----------|
+| how-to-cite-a-journal-article.md | 2026-06-07 |
+| apa-7th-edition-guide.md | 2026-06-07 |
+| how-to-cite-website-apa.md | 2026-06-07 |
+| how-to-cite-youtube-video.md | 2026-06-07 |
+| harvard-referencing-guide.md | 2026-06-07 |
+| in-text-citation-apa.md | 2026-06-07 |

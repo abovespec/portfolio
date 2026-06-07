@@ -120,3 +120,16 @@ Generated: 2026-04-25
 | 98 | GTD vs pomodoro | Comparison | ~2K/mo |
 | 99 | time audit productivity | Informational | ~4K/mo |
 | 100 | best productivity method 2026 | Informational | ~5K/mo |
+
+---
+
+## Tier 2 — Published (2026-06-07)
+
+| Article | Published |
+|---------|-----------|
+| pomodoro-technique-for-students.md | 2026-06-07 |
+| pomodoro-technique-adhd.md | 2026-06-07 |
+| free-pomodoro-timer.md | 2026-06-07 |
+| pomodoro-technique-work-from-home.md | 2026-06-07 |
+| how-to-stay-focused-studying.md | 2026-06-07 |
+| time-management-for-students.md | 2026-06-07 |

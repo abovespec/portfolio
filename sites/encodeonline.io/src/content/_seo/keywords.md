@@ -124,3 +124,16 @@
 | 98 | api key encoding best practices | How-to | API security |
 | 99 | webhook signature verification | How-to | HMAC webhook |
 | 100 | pgp armor encoding | Informational | PGP ASCII armor |
+
+---
+
+## Tier 2 — Published (2026-06-07)
+
+| Article | Published |
+|---------|-----------|
+| sha256-hash-explained.md | 2026-06-07 |
+| encoding-vs-encryption.md | 2026-06-07 |
+| md5-vs-sha256.md | 2026-06-07 |
+| hex-to-ascii.md | 2026-06-07 |
+| base64-python.md | 2026-06-07 |
+| utf8-character-encoding.md | 2026-06-07 |

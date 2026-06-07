@@ -124,3 +124,16 @@
 | 98 | certbot cron | How-to | Certbot renewal |
 | 99 | cron email alert | How-to | Alert on failure |
 | 100 | cron best practices | How-to | Cron best practices |
+
+---
+
+## Tier 2 — Published (2026-06-07)
+
+| Article | Published |
+|---------|-----------|
+| cron-environment-variables.md | 2026-06-07 |
+| cron-path-variable.md | 2026-06-07 |
+| systemd-timer-vs-cron.md | 2026-06-07 |
+| cron-timezone.md | 2026-06-07 |
+| kubernetes-cronjob.md | 2026-06-07 |
+| github-actions-schedule.md | 2026-06-07 |

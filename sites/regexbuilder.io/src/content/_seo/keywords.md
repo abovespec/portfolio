@@ -124,3 +124,16 @@
 | 98 | json schema pattern | How-to | JSON schema regex |
 | 99 | openapi pattern | How-to | OpenAPI regex |
 | 100 | regex unit testing | How-to | Testing regex |
+
+---
+
+## Tier 2 — Published (2026-06-07)
+
+| Article | Published |
+|---------|-----------|
+| regex-python.md | 2026-06-07 |
+| regex-javascript.md | 2026-06-07 |
+| regex-find-replace.md | 2026-06-07 |
+| regex-phone-number.md | 2026-06-07 |
+| regex-flags.md | 2026-06-07 |
+| regex-catastrophic-backtracking.md | 2026-06-07 |

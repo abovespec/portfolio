@@ -124,3 +124,16 @@
 | 98 | gitleaks | Tool | Git secret detection |
 | 99 | sops secrets | Tool | SOPS encryption |
 | 100 | age encryption | Tool | Age encryption |
+
+---
+
+## Tier 2 — Published (2026-06-07)
+
+| Article | Published |
+|---------|-----------|
+| password-entropy.md | 2026-06-07 |
+| how-long-should-a-password-be.md | 2026-06-07 |
+| nist-password-guidelines.md | 2026-06-07 |
+| two-factor-authentication.md | 2026-06-07 |
+| multi-factor-authentication.md | 2026-06-07 |
+| passwordless-authentication-passkeys.md | 2026-06-07 |
