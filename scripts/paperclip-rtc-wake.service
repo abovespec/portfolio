@@ -1,0 +1,14 @@
+[Unit]
+Description=Set RTC wake alarm for Paperclip Morning Report (06:50 AM EDT)
+# Run after basic system init; also run before shutdown to re-arm for next day
+DefaultDependencies=no
+After=sysinit.target
+Before=shutdown.target reboot.target halt.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/set-paperclip-rtcwake.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

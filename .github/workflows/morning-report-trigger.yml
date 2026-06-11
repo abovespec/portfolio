@@ -1,0 +1,54 @@
+name: Morning Report Trigger
+
+# Fires the Paperclip Morning Report routine webhook at 6:55 AM EDT daily.
+# Connects to the home tailnet so the Paperclip server (bind: tailnet) is reachable.
+#
+# Required GitHub secrets:
+#   TS_OAUTH_CLIENT_ID         — Tailscale OAuth client ID (tag:ci)
+#   TS_OAUTH_SECRET            — Tailscale OAuth secret
+#   MORNING_REPORT_WEBHOOK_URL — Full URL: http://7500ryzen5.tail8e7777.ts.net:3100/api/routine-triggers/public/<publicId>/fire
+#   MORNING_REPORT_WEBHOOK_SECRET — Bearer secret returned when the webhook trigger was created
+
+on:
+  schedule:
+    # 6:55 AM EDT = 10:55 UTC. Fires 5 min before the routine's 7:00 AM cron
+    # so the webhook beats the cron on days the host is running, but the cron
+    # acts as a backup when GitHub Actions is delayed.
+    - cron: '55 10 * * *'
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: 'Manual trigger reason'
+        required: false
+        default: 'manual'
+
+jobs:
+  fire-morning-report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Connect to Tailscale
+        uses: tailscale/github-action@v3
+        with:
+          oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
+          oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
+          tags: tag:ci
+
+      - name: Fire Morning Report webhook
+        run: |
+          HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
+            -X POST \
+            -H "Authorization: Bearer ${{ secrets.MORNING_REPORT_WEBHOOK_SECRET }}" \
+            -H "Content-Type: application/json" \
+            -d '{"source":"github-actions"}' \
+            "${{ secrets.MORNING_REPORT_WEBHOOK_URL }}")
+
+          echo "Webhook response status: $HTTP_STATUS"
+
+          if [[ "$HTTP_STATUS" -lt 200 || "$HTTP_STATUS" -ge 300 ]]; then
+            echo "ERROR: Webhook returned non-2xx status $HTTP_STATUS"
+            exit 1
+          fi
+
+          echo "Morning Report webhook fired successfully at $(date -u)"
