@@ -6,6 +6,7 @@ updatedDate: 2026-06-07
 author: "Editorial Team"
 tags: ["color psychology", "marketing", "brand colors", "consumer behavior", "design"]
 draft: false
+heroImage: "/images/blog/color-psychology-marketing-hero.png"
 ---
 
 Before a customer reads your tagline, processes your value proposition, or evaluates your pricing, they've already formed an impression — and a significant part of that impression comes from color. Research consistently shows that color accounts for a substantial share of snap judgments about products and brands. Understanding why colors trigger the responses they do, and how leading brands use this deliberately, is foundational to effective marketing design.

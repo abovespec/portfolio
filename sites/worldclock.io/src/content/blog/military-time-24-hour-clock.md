@@ -6,6 +6,7 @@ updatedDate: 2026-06-07
 author: "Editorial Team"
 tags: ["military time", "24-hour clock", "time conversion", "time zones"]
 draft: false
+heroImage: "/images/blog/military-time-24-hour-clock-hero.png"
 ---
 
 Military time is the 24-hour clock system used by the US military, emergency services, hospitals, aviation, and much of the rest of the world. Instead of repeating 12-hour cycles with AM and PM, it runs from 0000 (midnight) to 2359 (one minute before the next midnight), creating an unambiguous way to express any time of day.

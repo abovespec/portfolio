@@ -6,6 +6,7 @@ updatedDate: 2026-06-07
 author: "Editorial Team"
 tags: ["dark mode", "color palette", "UI design", "accessibility", "design systems"]
 draft: false
+heroImage: "/images/blog/dark-mode-color-palette-hero.png"
 ---
 
 Dark mode has moved from niche developer preference to mainstream user expectation. Operating systems support it natively, and most modern applications offer it as a standard option. But designing a good dark mode palette is considerably more nuanced than flipping a dark/light switch. Done poorly, dark mode produces muddy interfaces with poor contrast and eyestrain-inducing color choices. Done well, it creates a polished, comfortable experience that users prefer for sustained use. Here's the approach that produces the latter.

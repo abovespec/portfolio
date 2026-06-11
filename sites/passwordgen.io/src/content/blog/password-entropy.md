@@ -6,6 +6,7 @@ updatedDate: 2026-06-07
 author: "Editorial Team"
 tags: ["password entropy", "password strength", "security", "bits", "randomness"]
 draft: false
+heroImage: "/images/blog/password-entropy-hero.png"
 ---
 
 Password strength meters on most websites are largely theater. They check whether you included a capital letter or a symbol, but those rules tell you almost nothing about how hard a password actually is to crack. The real measure is **entropy** — a number expressed in bits that captures how unpredictable a password is, regardless of how it looks.

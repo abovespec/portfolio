@@ -6,6 +6,7 @@ updatedDate: 2026-06-07
 author: "Editorial Team"
 tags: ["uuid", "uuid v4", "collision", "probability", "security"]
 draft: false
+heroImage: "/images/blog/uuid-collision-probability-hero.png"
 ---
 
 "What are the chances two UUIDs are the same?" is one of the most common questions developers ask when first using UUIDs. The short answer is: the probability is so small that for any realistic application, you can treat it as zero. But understanding the actual math helps you make informed decisions — and explains when you should care.

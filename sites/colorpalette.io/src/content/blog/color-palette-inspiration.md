@@ -6,6 +6,7 @@ updatedDate: 2026-06-07
 author: "Editorial Team"
 tags: ["color palette", "color inspiration", "design", "color theory"]
 draft: false
+heroImage: "/images/blog/color-palette-inspiration-hero.png"
 ---
 
 A great color palette rarely appears out of nowhere. Every compelling combination — from a brand's identity colors to a web app's UI — comes from somewhere. Knowing where to look and how to extract a palette from what you find is one of the most useful skills in design.

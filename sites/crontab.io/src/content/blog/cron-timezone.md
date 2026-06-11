@@ -6,6 +6,7 @@ updatedDate: 2026-06-07
 author: "Editorial Team"
 tags: ["cron", "timezone", "crontab", "UTC", "DST", "linux"]
 draft: false
+heroImage: "/images/blog/cron-timezone-hero.png"
 ---
 
 Scheduling a cron job at "9 AM every weekday" sounds simple, but time zones introduce complexity that can cause jobs to run at the wrong time, fire twice, or be skipped entirely. This article explains how cron interprets time, how to configure time zones properly, and why UTC is usually the safest choice for production systems.

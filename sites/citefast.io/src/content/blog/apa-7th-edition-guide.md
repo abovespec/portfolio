@@ -6,6 +6,7 @@ updatedDate: 2026-06-07
 author: "Editorial Team"
 tags: ["apa 7th edition", "apa", "citation", "reference list", "academic writing"]
 draft: false
+heroImage: "/images/blog/apa-7th-edition-guide-hero.png"
 ---
 
 The American Psychological Association published the 7th edition of its Publication Manual in October 2019, with it taking effect for most publications and course submissions in 2020. If your institution or instructor specifies "APA format," they almost certainly mean the 7th edition — the 6th edition (2009) is now outdated. This guide explains every significant change from the 6th edition and provides current rules for formatting your paper and citations.

@@ -6,6 +6,7 @@ updatedDate: 2026-06-07
 author: "Editorial Team"
 tags: ["snake case", "kebab case", "naming conventions", "css", "python"]
 draft: false
+heroImage: "/images/blog/snake-case-vs-kebab-case-hero.png"
 ---
 
 snake_case and kebab-case look nearly identical — both are lowercase, both separate words — but the single difference between them (underscore vs hyphen) determines where each one can appear.

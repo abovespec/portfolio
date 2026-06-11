@@ -6,6 +6,7 @@ updatedDate: 2026-06-07
 author: "Editorial Team"
 tags: ["passkeys", "passwordless", "fido2", "webauthn", "authentication"]
 draft: false
+heroImage: "/images/blog/passwordless-authentication-passkeys-hero.png"
 ---
 
 Passwords have a fundamental problem: they're secrets that need to be transmitted to a server, stored in a database, and remembered by humans. Every step in that chain creates risk. Passkeys eliminate all of it.

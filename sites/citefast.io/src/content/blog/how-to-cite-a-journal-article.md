@@ -6,6 +6,7 @@ updatedDate: 2026-06-07
 author: "Editorial Team"
 tags: ["journal article", "apa", "mla", "chicago", "doi", "citation", "how-to"]
 draft: false
+heroImage: "/images/blog/how-to-cite-a-journal-article-hero.png"
 ---
 
 Journal articles are among the most cited source types in academic writing. Whether you are submitting a psychology paper, a literature essay, or a biomedical report, you will almost certainly need to cite at least one peer-reviewed article. The challenge is that the format differs significantly between APA, MLA, and Chicago — and even within those styles there are variations for print versus online sources, sources with DOIs versus those with URLs, and sources with missing information like volume or issue numbers.

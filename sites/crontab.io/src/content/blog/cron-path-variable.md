@@ -6,6 +6,7 @@ updatedDate: 2026-06-07
 author: "Editorial Team"
 tags: ["cron", "PATH", "crontab", "debugging", "linux"]
 draft: false
+heroImage: "/images/blog/cron-path-variable-hero.png"
 ---
 
 The single most common reason a cron job works perfectly in your terminal but fails when scheduled is the `PATH` variable. Cron runs with a stripped-down `PATH` that excludes most directories where tools are installed. This guide explains why it happens, how to diagnose it, and how to fix it permanently.

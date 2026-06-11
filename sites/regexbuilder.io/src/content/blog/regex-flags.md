@@ -6,6 +6,7 @@ updatedDate: 2026-06-07
 author: "Editorial Team"
 tags: ["regex", "flags", "modifiers", "regular expressions", "programming"]
 draft: false
+heroImage: "/images/blog/regex-flags-hero.png"
 ---
 
 Regex flags (also called modifiers) change how a pattern is interpreted and applied. Without flags, a regex pattern is case-sensitive, matches only the first occurrence, and treats `.` as "any character except newline." Flags override these defaults.

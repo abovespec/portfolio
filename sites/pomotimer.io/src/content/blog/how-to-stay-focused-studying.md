@@ -6,6 +6,7 @@ updatedDate: 2026-06-07
 author: "Editorial Team"
 tags: ["focus", "studying", "productivity", "pomodoro", "concentration"]
 draft: false
+heroImage: "/images/blog/how-to-stay-focused-studying-hero.png"
 ---
 
 Sitting down to study is the easy part. Staying focused once you're there is what most students struggle with. Phones, notifications, wandering thoughts, and the endless availability of more interesting things — these aren't character flaws; they're the natural result of studying in environments designed to compete for your attention.

@@ -6,6 +6,7 @@ updatedDate: 2026-06-07
 author: "Editorial Team"
 tags: ["password length", "password", "nist", "security", "brute force"]
 draft: false
+heroImage: "/images/blog/how-long-should-a-password-be-hero.png"
 ---
 
 If you have ever wondered whether your 8-character password is good enough — it is not. The single most important thing you can do to make a password stronger is to make it longer. More characters mean exponentially more possible combinations, and that directly translates to how long it takes an attacker to guess your password.

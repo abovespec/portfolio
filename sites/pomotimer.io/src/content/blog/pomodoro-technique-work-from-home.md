@@ -6,6 +6,7 @@ updatedDate: 2026-06-07
 author: "Editorial Team"
 tags: ["pomodoro", "work from home", "remote work", "productivity", "focus"]
 draft: false
+heroImage: "/images/blog/pomodoro-technique-work-from-home-hero.png"
 ---
 
 Working from home removes the physical and social structures that an office provides almost by accident: a commute that creates a psychological transition between "home" and "work," a desk that signals to your brain that it's time to focus, colleagues whose visible presence raises the social cost of slacking, and a building you leave at the end of the day to mark that work is over.

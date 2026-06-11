@@ -6,6 +6,7 @@ updatedDate: 2026-06-07
 author: "Editorial Team"
 tags: ["regex", "backtracking", "redos", "performance", "security"]
 draft: false
+heroImage: "/images/blog/regex-catastrophic-backtracking-hero.png"
 ---
 
 A regular expression that takes milliseconds on short strings can hang indefinitely on slightly longer input. This isn't a bug in your code — it's a fundamental property of how most regex engines work, and it can be exploited to cause denial-of-service attacks. Understanding catastrophic backtracking is essential for anyone writing regex that processes untrusted input.

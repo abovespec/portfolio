@@ -6,6 +6,7 @@ updatedDate: 2026-06-07
 author: "Editorial Team"
 tags: ["harvard referencing", "citation", "bibliography", "academic writing"]
 draft: false
+heroImage: "/images/blog/harvard-referencing-guide-hero.png"
 ---
 
 Harvard referencing is one of the most widely used citation systems in higher education, particularly in UK, Australian, and South African universities. Unlike APA or MLA, "Harvard" is not a single official standard maintained by one organization — it's a family of author-date styles with significant variation between institutions. What they share is the core format: the author's surname and year of publication appear in the text, and full details go in a reference list at the end.

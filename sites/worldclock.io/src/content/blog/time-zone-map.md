@@ -6,6 +6,7 @@ updatedDate: 2026-06-07
 author: "Editorial Team"
 tags: ["time zone map", "time zones", "UTC offsets", "world time zones", "geography"]
 draft: false
+heroImage: "/images/blog/time-zone-map-hero.png"
 ---
 
 If you've ever looked at a time zone map and wondered why the lines jag and zigzag instead of following clean longitude lines, you've noticed something genuinely interesting about how time zones work. The short answer is that time zones are political as much as they are geographic. The longer answer involves 19th-century railways, colonial administrators, national pride, and a Himalayan kingdom that runs its clocks at an offset no other country shares.

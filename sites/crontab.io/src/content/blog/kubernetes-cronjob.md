@@ -6,6 +6,7 @@ updatedDate: 2026-06-07
 author: "Editorial Team"
 tags: ["kubernetes", "cronjob", "cron", "scheduling", "devops"]
 draft: false
+heroImage: "/images/blog/kubernetes-cronjob-hero.png"
 ---
 
 Kubernetes CronJobs bring the familiar cron scheduling model to containerized workloads. Rather than running a cron daemon on a VM, you define a `CronJob` resource that Kubernetes manages — spawning Job (and therefore Pod) objects on your configured schedule. This guide covers everything you need to configure and operate Kubernetes CronJobs reliably.

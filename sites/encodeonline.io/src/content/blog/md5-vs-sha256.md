@@ -6,6 +6,7 @@ updatedDate: 2026-06-07
 author: "Editorial Team"
 tags: ["md5", "sha256", "hash functions", "cryptography", "security"]
 draft: false
+heroImage: "/images/blog/md5-vs-sha256-hero.png"
 ---
 
 MD5 and SHA-256 are both cryptographic hash functions, but they occupy very different places in the security landscape. MD5, designed by Ronald Rivest in 1991, is fast, compact, and broken. SHA-256, part of NIST's SHA-2 family published in 2001, is the current standard for security-critical applications. Understanding the difference tells you when each is appropriate and when switching is mandatory.

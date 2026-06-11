@@ -6,6 +6,7 @@ updatedDate: 2026-06-07
 author: "Editorial Team"
 tags: ["time management", "students", "productivity", "study skills", "pomodoro"]
 draft: false
+heroImage: "/images/blog/time-management-for-students-hero.png"
 ---
 
 Most time management advice for students is generic to the point of uselessness. "Make a schedule." "Prioritize." "Don't procrastinate." None of it tells you *how*.

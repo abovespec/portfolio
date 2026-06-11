@@ -6,6 +6,7 @@ updatedDate: 2026-06-07
 author: "Editorial Team"
 tags: ["encoding", "encryption", "hashing", "security", "cryptography"]
 draft: false
+heroImage: "/images/blog/encoding-vs-encryption-hero.png"
 ---
 
 "I'm encoding the password in Base64 to keep it secure." This sentence appears in real codebases and real pull requests — and it is dangerously wrong. Encoding, encryption, and hashing are three entirely different operations. Conflating them is one of the most common security mistakes developers make.

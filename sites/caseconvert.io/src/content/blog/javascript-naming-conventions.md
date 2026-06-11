@@ -6,6 +6,7 @@ updatedDate: 2026-06-07
 author: "Editorial Team"
 tags: ["javascript", "naming conventions", "camelcase", "programming style", "code style"]
 draft: false
+heroImage: "/images/blog/javascript-naming-conventions-hero.png"
 ---
 
 JavaScript's naming conventions are enforced by community style guides rather than the language spec. The interpreter accepts almost any identifier, so the rules are social contracts — and violating them is jarring to other developers who read your code.

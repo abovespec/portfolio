@@ -6,6 +6,7 @@ updatedDate: 2026-06-07
 author: "Editorial Team"
 tags: ["uuid", "python", "uuid4", "programming", "backend"]
 draft: false
+heroImage: "/images/blog/uuid-python-hero.png"
 ---
 
 Python's built-in `uuid` module provides everything you need to generate and work with UUIDs. No external dependencies required for the most common use cases.

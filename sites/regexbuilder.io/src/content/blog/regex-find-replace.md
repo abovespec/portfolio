@@ -6,6 +6,7 @@ updatedDate: 2026-06-07
 author: "Editorial Team"
 tags: ["regex", "find and replace", "sed", "python", "javascript", "VS Code"]
 draft: false
+heroImage: "/images/blog/regex-find-replace-hero.png"
 ---
 
 Find and replace with regex is one of the most powerful text-processing techniques a developer can master. Once you learn how to use capture groups in replacement strings, you can reformat dates, restructure data, rename patterns, and transform entire files in seconds rather than hours.

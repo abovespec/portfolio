@@ -6,6 +6,7 @@ updatedDate: 2026-06-07
 author: "Editorial Team"
 tags: ["analogous colors", "color harmony", "color theory", "color wheel", "design"]
 draft: false
+heroImage: "/images/blog/analogous-colors-hero.png"
 ---
 
 Few things feel as immediately pleasing as a well-chosen analogous palette. Unlike the high-tension drama of complementary colors, analogous schemes create a sense of calm, flow, and cohesion — qualities that make them a reliable starting point for interfaces, brand identities, and editorial design alike. Understanding how analogous colors work, and where they can go wrong, gives you one of the most practical tools in color theory.

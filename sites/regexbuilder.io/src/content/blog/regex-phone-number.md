@@ -6,6 +6,7 @@ updatedDate: 2026-06-07
 author: "Editorial Team"
 tags: ["regex", "phone number", "validation", "E.164", "form validation"]
 draft: false
+heroImage: "/images/blog/regex-phone-number-hero.png"
 ---
 
 Phone number validation with regex is notoriously tricky. Unlike email addresses, phone numbers have no single global standard — they vary by country, carrier, and era, with different digit counts, separators, optional area codes, and extension formats. This guide covers practical patterns, their limitations, and when to reach for a dedicated library instead.

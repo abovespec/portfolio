@@ -6,6 +6,7 @@ updatedDate: 2026-06-07
 author: "Editorial Team"
 tags: ["camelcase", "naming conventions", "javascript", "java", "programming style"]
 draft: false
+heroImage: "/images/blog/what-is-camelcase-hero.png"
 ---
 
 camelCase is a naming style that writes multi-word identifiers without spaces, capitalizing the first letter of every word after the first:

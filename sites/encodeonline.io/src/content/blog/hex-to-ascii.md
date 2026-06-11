@@ -6,6 +6,7 @@ updatedDate: 2026-06-07
 author: "Editorial Team"
 tags: ["hex", "ascii", "encoding", "conversion", "python"]
 draft: false
+heroImage: "/images/blog/hex-to-ascii-hero.png"
 ---
 
 Hexadecimal (hex) encoding is ubiquitous in computing: memory addresses, color codes, cryptographic digests, network packet dumps, and binary file inspection all use it. Being able to read hex and convert it to ASCII text is a practical skill for anyone working with low-level data, network protocols, or binary formats.

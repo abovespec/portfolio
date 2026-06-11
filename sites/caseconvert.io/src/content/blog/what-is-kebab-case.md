@@ -6,6 +6,7 @@ updatedDate: 2026-06-07
 author: "Editorial Team"
 tags: ["kebab case", "naming conventions", "css", "html", "urls"]
 draft: false
+heroImage: "/images/blog/what-is-kebab-case-hero.png"
 ---
 
 kebab-case is a naming style that writes multi-word identifiers in all lowercase with hyphens between words:

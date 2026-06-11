@@ -6,6 +6,7 @@ updatedDate: 2026-06-07
 author: "Editorial Team"
 tags: ["ulid", "uuid", "unique identifier", "database", "distributed systems"]
 draft: false
+heroImage: "/images/blog/what-is-ulid-hero.png"
 ---
 
 UUIDs have a well-known weakness as database primary keys: UUID v4 is entirely random, which means each new insert lands at a random position in the B-tree index. At millions of rows this causes significant fragmentation and write slowdowns. ULID was designed to solve this problem while keeping the distributed-generation and collision-resistance properties that make UUIDs attractive.

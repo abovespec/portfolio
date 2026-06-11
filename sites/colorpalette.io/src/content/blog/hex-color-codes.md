@@ -6,6 +6,7 @@ updatedDate: 2026-06-07
 author: "Editorial Team"
 tags: ["hex color codes", "CSS colors", "RGB", "web design", "color reference"]
 draft: false
+heroImage: "/images/blog/hex-color-codes-hero.png"
 ---
 
 If you've spent any time in a browser's developer tools, a design application, or a CSS file, you've encountered hex color codes. They appear everywhere: `#FF5733`, `#0A0A0A`, `#fff`. They're concise, widely supported, and once you understand their structure, entirely readable. Here's everything you need to know to work with them confidently.

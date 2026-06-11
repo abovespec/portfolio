@@ -6,6 +6,7 @@ updatedDate: 2026-06-07
 author: "Editorial Team"
 tags: ["PST", "PDT", "Pacific Time", "time zones", "DST", "California"]
 draft: false
+heroImage: "/images/blog/pst-vs-pdt-hero.png"
 ---
 
 If you've ever seen a product launch announced for "10 AM PST" in April and felt confused — PST isn't active in April — you've encountered one of the most common time zone errors in US tech and entertainment, where Pacific Time reigns but the abbreviations get muddled constantly. PST and PDT are not interchangeable. Here's what each one means, when it applies, and how to use the right term.

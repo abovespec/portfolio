@@ -6,6 +6,7 @@ updatedDate: 2026-06-07
 author: "Editorial Team"
 tags: ["systemd", "cron", "crontab", "linux", "scheduling"]
 draft: false
+heroImage: "/images/blog/systemd-timer-vs-cron-hero.png"
 ---
 
 Most Linux systems today ship with both `cron` and `systemd`, and both can schedule recurring tasks. Cron has been the default for decades. systemd timers are newer, more powerful in certain ways, and deeply integrated with modern Linux init systems. Choosing between them is a practical decision that depends on your requirements, your team's tooling preferences, and the complexity of the task.

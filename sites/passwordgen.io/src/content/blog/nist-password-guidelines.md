@@ -6,6 +6,7 @@ updatedDate: 2026-06-07
 author: "Editorial Team"
 tags: ["nist", "password guidelines", "sp 800-63b", "security policy", "password"]
 draft: false
+heroImage: "/images/blog/nist-password-guidelines-hero.png"
 ---
 
 For decades, organizations followed password rules that security researchers now know make things worse: mandatory capital letters, required symbols, 90-day rotation, security questions. Most of those rules came from a 2003 NIST document — one whose own author later said he got it wrong.

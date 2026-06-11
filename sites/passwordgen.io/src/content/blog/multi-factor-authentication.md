@@ -6,6 +6,7 @@ updatedDate: 2026-06-07
 author: "Editorial Team"
 tags: ["mfa", "multi-factor authentication", "security", "authentication"]
 draft: false
+heroImage: "/images/blog/multi-factor-authentication-hero.png"
 ---
 
 Multi-factor authentication (MFA) requires users to verify their identity using two or more independent credentials before gaining access. It's widely recognized as the single most effective security control for preventing unauthorized account access — and it stops the vast majority of automated attacks outright.

@@ -6,6 +6,7 @@ updatedDate: 2026-06-07
 author: "Editorial Team"
 tags: ["time zone converter", "time zones", "UTC offsets", "EST", "PST", "IST", "DST"]
 draft: false
+heroImage: "/images/blog/time-zone-converter-guide-hero.png"
 ---
 
 Converting between time zones looks complicated at first, but it reduces to a single consistent method: convert to UTC first, then convert to the destination. Once you understand UTC offsets and a few seasonal caveats, you can work out any time zone math in your head. This guide covers the method, the most common conversions, the DST complications, and the Date Line.

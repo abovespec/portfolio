@@ -6,6 +6,7 @@ updatedDate: 2026-06-07
 author: "Editorial Team"
 tags: ["apa", "website citation", "apa 7th edition", "how-to", "citation", "web sources"]
 draft: false
+heroImage: "/images/blog/how-to-cite-website-apa-hero.png"
 ---
 
 Websites are the trickiest sources to cite in APA because they vary so widely. Some have named authors; others are written by organizations. Some have clear publication dates; many do not. Some are stable government pages; others are blog posts that can disappear tomorrow. APA 7th edition (2020) provides clear rules for all of these situations — but you need to know which rule applies to which source.

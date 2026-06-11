@@ -6,6 +6,7 @@ updatedDate: 2026-06-07
 author: "Editorial Team"
 tags: ["uuid", "nanoid", "unique identifier", "javascript", "database"]
 draft: false
+heroImage: "/images/blog/nanoid-vs-uuid-hero.png"
 ---
 
 UUID is the long-established standard for unique identifiers. NanoID is a newer, leaner alternative that has gained significant popularity in JavaScript ecosystems. Both generate unique IDs — but they make different trade-offs. Here's a practical comparison.

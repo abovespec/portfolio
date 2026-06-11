@@ -6,6 +6,7 @@ updatedDate: 2026-06-07
 author: "Editorial Team"
 tags: ["database", "naming conventions", "sql", "postgresql", "snake case"]
 draft: false
+heroImage: "/images/blog/database-naming-conventions-hero.png"
 ---
 
 Inconsistent database naming is one of the most persistent sources of developer friction. A schema where some tables are `Users`, others are `user_accounts`, and one is `tbl_Order` makes every query a memory exercise. Consistent naming conventions make schemas self-documenting and ORM integration predictable.

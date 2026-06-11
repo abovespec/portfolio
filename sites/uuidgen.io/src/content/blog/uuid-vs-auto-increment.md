@@ -6,6 +6,7 @@ updatedDate: 2026-06-07
 author: "Editorial Team"
 tags: ["uuid", "database", "primary key", "auto-increment", "distributed systems"]
 draft: false
+heroImage: "/images/blog/uuid-vs-auto-increment-hero.png"
 ---
 
 Choosing a primary key strategy is one of the first decisions you make when designing a database schema, and it's hard to change later. The two dominant options are auto-incrementing integers (INT or BIGINT with `AUTO_INCREMENT` / `SERIAL`) and UUIDs. Each has real tradeoffs. Here's how to think through the choice.

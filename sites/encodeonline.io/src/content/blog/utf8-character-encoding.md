@@ -6,6 +6,7 @@ updatedDate: 2026-06-07
 author: "Editorial Team"
 tags: ["utf-8", "encoding", "unicode", "character encoding", "programming"]
 draft: false
+heroImage: "/images/blog/utf8-character-encoding-hero.png"
 ---
 
 UTF-8 is the encoding used by over 98% of the web. Every time you view a webpage, send an email, or write code, you're almost certainly working with UTF-8. Understanding how it works — not just that it exists — is foundational for any developer dealing with text.

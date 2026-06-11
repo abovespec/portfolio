@@ -6,6 +6,7 @@ updatedDate: 2026-06-07
 author: "Editorial Team"
 tags: ["regex", "python", "re module", "python regex", "pattern matching"]
 draft: false
+heroImage: "/images/blog/regex-python-hero.png"
 ---
 
 Python's `re` module is the standard library's built-in engine for regular expressions. It follows the PCRE (Perl-Compatible Regular Expression) tradition closely, supports named groups, verbose mode, and all the standard flags. This guide covers everything you need to work with regex in Python effectively.

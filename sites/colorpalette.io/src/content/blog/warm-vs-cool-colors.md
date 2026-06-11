@@ -6,6 +6,7 @@ updatedDate: 2026-06-07
 author: "Editorial Team"
 tags: ["warm colors", "cool colors", "color theory", "color wheel", "design fundamentals"]
 draft: false
+heroImage: "/images/blog/warm-vs-cool-colors-hero.png"
 ---
 
 Every color has a temperature — not literally, but perceptually. Some colors feel warm; others feel cool. This distinction is one of the most fundamental concepts in color theory, and understanding it gives you a lever to pull whenever you need to control the emotional register of a design, create depth on a flat surface, or establish a mood in seconds.

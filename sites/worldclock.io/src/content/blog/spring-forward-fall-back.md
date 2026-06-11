@@ -6,6 +6,7 @@ updatedDate: 2026-06-07
 author: "Editorial Team"
 tags: ["daylight saving time", "spring forward", "fall back", "time zones", "DST"]
 draft: false
+heroImage: "/images/blog/spring-forward-fall-back-hero.png"
 ---
 
 "Spring forward, fall back" is the mnemonic most people use to remember how Daylight Saving Time (DST) works. In spring, clocks move forward one hour. In fall, they move back one hour. The result: longer evening light in summer, and the return of morning light in winter.

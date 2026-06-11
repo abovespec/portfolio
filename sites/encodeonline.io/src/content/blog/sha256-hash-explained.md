@@ -6,6 +6,7 @@ updatedDate: 2026-06-07
 author: "Editorial Team"
 tags: ["sha256", "cryptography", "hash functions", "security", "python"]
 draft: false
+heroImage: "/images/blog/sha256-hash-explained-hero.png"
 ---
 
 SHA-256 (Secure Hash Algorithm 256-bit) is the most widely deployed member of the SHA-2 family, standardized by NIST in 2001. It takes any input — a byte, a file, or a petabyte of data — and produces a deterministic, fixed-length 256-bit (32-byte) output, usually represented as 64 lowercase hexadecimal characters.

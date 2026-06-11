@@ -6,6 +6,7 @@ updatedDate: 2026-06-07
 author: "Editorial Team"
 tags: ["python", "pep8", "naming conventions", "snake case", "programming style"]
 draft: false
+heroImage: "/images/blog/python-naming-conventions-pep8-hero.png"
 ---
 
 Python's naming conventions are defined by [PEP 8](https://peps.python.org/pep-0008/), the official Python style guide authored by Guido van Rossum and maintained by the Python core team. Following PEP 8 is not enforced by the Python interpreter — your code will run either way — but it is the universal community standard, expected in open-source projects, code reviews, and professional Python teams.

@@ -6,6 +6,7 @@ updatedDate: 2026-06-07
 author: "Editorial Team"
 tags: ["GMT", "UTC", "time standards", "time zones", "Greenwich Mean Time"]
 draft: false
+heroImage: "/images/blog/gmt-vs-utc-hero.png"
 ---
 
 GMT and UTC are two of the most frequently confused terms in timekeeping. They're often treated as synonyms — your weather app might say "GMT," your server log says "UTC," and a flight itinerary might use either. For everyday purposes, the difference is negligible. But there is a real technical distinction, and knowing it prevents confusion when accuracy matters.

@@ -6,6 +6,7 @@ updatedDate: 2026-06-07
 author: "Editorial Team"
 tags: ["cron", "environment variables", "crontab", "linux", "debugging"]
 draft: false
+heroImage: "/images/blog/cron-environment-variables-hero.png"
 ---
 
 One of the most common reasons cron jobs fail silently is the difference between the shell environment you see when you log in and the stripped-down environment that cron provides at runtime. Understanding how cron handles environment variables is essential for writing reliable scheduled tasks.

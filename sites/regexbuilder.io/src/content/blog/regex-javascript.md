@@ -6,6 +6,7 @@ updatedDate: 2026-06-07
 author: "Editorial Team"
 tags: ["regex", "javascript", "javascript regex", "RegExp", "ES2018"]
 draft: false
+heroImage: "/images/blog/regex-javascript-hero.png"
 ---
 
 JavaScript has native regular expression support built into the language. Regex literals, the `RegExp` constructor, and methods on `String` and `RegExp` objects give you a complete toolkit for matching, extracting, validating, and transforming text.

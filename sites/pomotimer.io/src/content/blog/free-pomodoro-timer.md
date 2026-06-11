@@ -6,6 +6,7 @@ updatedDate: 2026-06-07
 author: "Editorial Team"
 tags: ["pomodoro", "timer", "productivity", "focus", "tools"]
 draft: false
+heroImage: "/images/blog/free-pomodoro-timer-hero.png"
 ---
 
 The search for a free Pomodoro timer usually starts with good intentions and ends with a browser tab full of options that are hard to distinguish from each other. Some are stripped-down countdown clocks with no customization. Others require creating an account before you can start the timer. A few are built well and genuinely useful.

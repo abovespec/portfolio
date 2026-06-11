@@ -6,6 +6,7 @@ updatedDate: 2026-06-07
 author: "Editorial Team"
 tags: ["base64", "python", "encoding", "programming"]
 draft: false
+heroImage: "/images/blog/base64-python-hero.png"
 ---
 
 Python's standard library includes a full-featured `base64` module that handles encoding and decoding without any third-party dependencies. This guide covers every common use case with working code examples.

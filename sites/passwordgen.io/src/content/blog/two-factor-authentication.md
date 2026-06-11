@@ -6,6 +6,7 @@ updatedDate: 2026-06-07
 author: "Editorial Team"
 tags: ["two factor authentication", "2fa", "totp", "security", "authentication"]
 draft: false
+heroImage: "/images/blog/two-factor-authentication-hero.png"
 ---
 
 A strong password is necessary but not sufficient. Credential breaches, phishing attacks, and password reuse mean that passwords alone can be compromised without any mistake on your part — your credentials may be in a breach database you have never heard of. Two-factor authentication (2FA) adds a second layer that remains effective even when your password is known.

@@ -6,6 +6,7 @@ updatedDate: 2026-06-07
 author: "Editorial Team"
 tags: ["uuid", "database", "postgresql", "performance", "primary key"]
 draft: false
+heroImage: "/images/blog/uuid-database-performance-hero.png"
 ---
 
 UUIDs are globally unique and don't require a central counter, but they come with a database performance cost that surprises many developers. Understanding *why* the cost exists — and how to mitigate it — is essential for making good ID strategy decisions.

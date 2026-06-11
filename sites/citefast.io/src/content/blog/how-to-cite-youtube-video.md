@@ -6,6 +6,7 @@ updatedDate: 2026-06-07
 author: "Editorial Team"
 tags: ["youtube citation", "apa", "mla", "chicago", "video citation", "how-to"]
 draft: false
+heroImage: "/images/blog/how-to-cite-youtube-video-hero.png"
 ---
 
 YouTube videos are a legitimate source for many types of academic and professional writing — whether you are citing a TED talk, a government press briefing, a documentary excerpt, a tutorial, or a primary-source speech. All three major citation styles (APA, MLA, and Chicago) have specific formats for online video content. Getting the details right requires understanding how to identify the "author" of a YouTube video, how to format the video title, and how to handle special cases like timestamps and channels that have since been taken down.

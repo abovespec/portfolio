@@ -6,6 +6,7 @@ updatedDate: 2026-06-07
 author: "Editorial Team"
 tags: ["apa citation", "in-text citation", "apa format", "academic writing"]
 draft: false
+heroImage: "/images/blog/in-text-citation-apa-hero.png"
 ---
 
 In-text citations are the core of APA style. Every time you quote, paraphrase, or summarize information from a source, you include a brief citation in the text that points your reader to the full reference in your reference list. APA 7th edition uses the **author-date** format: the author's last name and the year of publication appear in parentheses.

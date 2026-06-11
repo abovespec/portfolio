@@ -6,6 +6,7 @@ updatedDate: 2026-06-07
 author: "Editorial Team"
 tags: ["github actions", "cron", "ci/cd", "automation", "scheduling"]
 draft: false
+heroImage: "/images/blog/github-actions-schedule-hero.png"
 ---
 
 GitHub Actions supports scheduled workflow runs using standard cron syntax via the `schedule` trigger. This is ideal for nightly builds, weekly reports, dependency updates, and any task that should run automatically on a time-based interval.
